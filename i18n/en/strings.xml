@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name=""></string>
+	
+	<!-- Index screen -->
+	<string name="index_lblFbConnect">Connect with Facebook</string>
+	<string name="index_lblOr">-or-</string>
+	<string name="index_tfEmail">Email</string>
+	<string name="index_tfPassword">Password</string>
+	<string name="index_lblGetIt">Get It!</string>
+	
+	<string name=""></string>
+	<string name=""></string>
+	<string name=""></string>
+	
+</resources>

@@ -1,15 +1,59 @@
-".container": {
-	backgroundColor:"white"
+"#winIndex": {
+	backgroundColor: "#000000"
 }
 
-"Label": {
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	color: "#000"
+"#vwMain": {
+	top: 0,
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
 }
 
-"#label": {
+"#vwFbConnect": {
+	top: 60,
+	backgroundColor: "#4BA5FF",
+	width: "90%"
+}
+
+"#lblFbConnect": {
+	color: "#ffffff",
 	font: {
-		fontSize: 12
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
+	}
+}
+
+"#lblOr": {
+	color: "#ffffff",
+	bottom: 10,
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
+	}
+}
+
+".tfClass": {
+	top: 10,
+	backgroundColor: "#ffffff",
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	color: "#000000",
+	height: 40,
+	width: "90%",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
+	}
+}
+
+"#vwGetIt": {
+	top: 15,
+	right: 20,
+	height: 40,
+	width: "30%",
+	backgroundColor: "#ffffff",
+	borderRadius: 10
+}
+
+"#lblGetIt": {
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
 	}
 }
