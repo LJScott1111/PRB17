@@ -9,3 +9,9 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+
+var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.3.1');
+Kinvey.init({
+    appKey    : 'kid_-J7bI_4EJe',
+    appSecret : '2efdea93496240ccb02d05a5e0086ee3'
+});
