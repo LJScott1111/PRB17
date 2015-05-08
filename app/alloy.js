@@ -12,8 +12,8 @@
 
 var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.3.1');
 Kinvey.init({
-    appKey    : 'kid_-J7bI_4EJe',
-    appSecret : '2efdea93496240ccb02d05a5e0086ee3'
+    appKey    : 'kid_b1vnajEDkl',
+    appSecret : '10609ec172544ae6b75923af98bfab95'
 });
 
 Alloy.Globals.densityFactor = (Titanium.Platform.osname === "android") ? Titanium.Platform.displayCaps.logicalDensityFactor : 1;
