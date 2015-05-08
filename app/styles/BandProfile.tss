@@ -1,4 +1,175 @@
+"#winBandProfile": {
+	backgroundColor: "#000000"
+}
 
-".container" : {
-  
+"#vwMain": {
+	backgroundColor: "#ffffff",
+	top: Alloy.Globals.theme.sizes.headerbar,
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+"#svMain": {
+	top: 0,
+	layout: "vertical",
+	scrollType: "vertical",
+	showVerticalScrollIndicator: true,
+	height: Titanium.UI.SIZE
+}
+
+"#ivBandImage": {
+	top: 0,
+	width: Titanium.UI.FILL,
+	backgroundColor: "red"
+}
+
+"#vwBandInfo": {
+	top: 0,
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	backgroundColor: "yellow"
+}
+
+"#lblBandName": {
+	top: 0,
+	// bottom: 5,
+	left: 5,
+	right: 5,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size25Fonts
+	}
+}
+
+"#vwBandSchedule": {
+	top: 0,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+"#vwScheduleInfo": {
+	left: 0,
+	height: Titanium.UI.SIZE,
+	width: "70%",
+	layout: "vertical"
+}
+
+"#lblDay": {
+	top: 0,
+	// bottom: 5,
+	left: 5,
+	right: 5,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts
+	}
+}
+
+"#lblTime": {
+	// top: 5,
+	// bottom: 5,
+	left: 5,
+	right: 5,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size10Fonts
+	}
+}
+
+"#lblVenue": {
+	top: 0,
+	bottom: 5,
+	left: 5,
+	right: 5,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size10Fonts
+	}
+}
+
+"#vwAddBand": {
+	right: 20,
+	height: Titanium.UI.SIZE,
+	width: "20%",
+	layout: "vertical"
+}
+
+"#ivFavouriteStar": {
+	height: 30,
+	width: 30,
+	backgroundColor: "#000000"
+}
+
+"#lblAddBand": {
+	top: 5,
+	bottom: 5,
+	// left: 5,
+	// right: 5,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
+	}
+}
+
+"#vwSocialActivities": {
+	top: 0,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	layout: "vertical"
+}
+
+".socialViewClass": {
+	top: 0,
+	layout: "horizontal",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	borderColor: "#000000"
+}
+
+".socialIconClass": {
+	top: 5,
+	bottom: 5,
+	left: 30,
+	height: 25,
+	width: 25,
+	backgroundColor: "#000000"
+}
+
+".socialLabelClass": {
+	left: 30,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
+	}
+}
+
+"#lblMoreInfo": {
+	left: 10,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
+	}
 }

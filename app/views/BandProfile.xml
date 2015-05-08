@@ -1,4 +1,47 @@
 <Alloy>
-	<View class="container">
-	</View>
+	<Window id="winBandProfile">
+		<Require src="header" onMore="nsBandProfile.getMoreOptions" onSetting="nsBandProfile.getSettings"></Require>
+		<View id="vwMain">
+			<ScrollView id="svMain">
+			<ImageView id="ivBandImage"></ImageView>
+			<View id="vwBandInfo">
+				<Label id="lblBandName"></Label>
+				<View id="vwBandSchedule">
+					<View id="vwScheduleInfo">
+						<Label id="lblDay"></Label>
+						<Label id="lblTime"></Label>
+						<Label id="lblVenue"></Label>
+					</View>
+					<View id="vwAddBand">
+						<ImageView id="ivFavouriteStar"></ImageView>
+						<Label id="lblAddBand" textid="bandProfile_lblAddBand"></Label>
+					</View>
+				</View>
+			</View>
+			<View id="vwSocialActivities">
+				<View id="vwSoundCloud" class="socialViewClass">
+					<ImageView id="ivSoundCloud" class="socialIconClass"></ImageView>
+					<Label id="lblSoundCloud" class="socialLabelClass" textid="bandProfile_lblSoundCloud"></Label>
+				</View>
+				<View id="vwYouTube" class="socialViewClass">
+					<ImageView id="ivYouTube" class="socialIconClass"></ImageView>
+					<Label id="lblYouTube" class="socialLabelClass" textid="bandProfile_lblYouTube"></Label>
+				</View>
+				<View id="vwWebsite" class="socialViewClass">
+					<ImageView id="ivWebsite" class="socialIconClass"></ImageView>
+					<Label id="lblWebsite" class="socialLabelClass" textid="bandProfile_lblWebsite"></Label>
+				</View>
+				<View id="vwFacebook" class="socialViewClass">
+					<ImageView id="ivFacebook" class="socialIconClass"></ImageView>
+					<Label id="lblFacebook" class="socialLabelClass" textid="bandProfile_lblFacebook"></Label>
+				</View>
+				<View id="vwTwitter" class="socialViewClass">
+					<ImageView id="ivTwitter" class="socialIconClass"></ImageView>
+					<Label id="lblTwitter" class="socialLabelClass" textid="bandProfile_lblTwitter"></Label>
+				</View>
+			</View>
+			<Label id="lblMoreInfo"></Label>
+			</ScrollView>
+		</View>
+	</Window>
 </Alloy>

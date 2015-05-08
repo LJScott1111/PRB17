@@ -1,4 +1,7 @@
 <Alloy>
-	<View class="container">
-	</View>
+	<Window id="winBandList">
+		<Require src="header" onMore="nsBandList.getMoreOptions" onSetting="nsBandList.getSettings"></Require>
+		<View id="vwMain">
+		</View>
+	</Window>
 </Alloy>

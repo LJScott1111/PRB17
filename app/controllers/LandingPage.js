@@ -7,17 +7,18 @@ nsLanding.getSettings = function() {
 };
 
 nsLanding.getBands = function() {
-	// Alloy.createController("BandList").getView().open();
+	Alloy.createController("BandList").getView().open();
 };
 
 nsLanding.getEvents = function() {
 };
 
 nsLanding.getSchedule = function() {
+	Alloy.createController("UserSchedule").getView().open();
 };
 
 nsLanding.getVenues = function() {
-	// Alloy.createController("VenueList").getView().open();
+	Alloy.createController("VenueList").getView().open();
 };
 
 nsLanding.init = function() {

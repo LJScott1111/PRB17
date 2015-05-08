@@ -1,0 +1,7 @@
+<Alloy>
+	<Window id="winUserSchedule">
+		<Require src="header" onMore="nsUserSchedule.getMoreOptions" onSetting="nsUserSchedule.getSettings"></Require>
+		<View id="vwMain">
+		</View>
+	</Window>
+</Alloy>

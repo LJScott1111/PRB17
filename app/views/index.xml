@@ -6,8 +6,8 @@
 				<Label id="lblFbConnect" textid="index_lblFbConnect"></Label>
 			</View>
 			<Label id="lblOr" textid="index_lblOr"></Label>
-			<TextField id="tfEmail" class="tfClass"></TextField>
-			<TextField id="tfPassword" class="tfClass"></TextField>
+			<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_EMAIL"></TextField>
+			<TextField id="tfPassword" passwordMask="true" class="tfClass"></TextField>
 			<View id="vwGetIt" onClick="nsIndex.getIt">
 				<Label id="lblGetIt" textid="index_lblGetIt"></Label>>
 			</View>
