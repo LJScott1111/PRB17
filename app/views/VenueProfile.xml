@@ -1,6 +1,6 @@
 <Alloy>
 	<Window id="winVenueProfile">
-		<Require src="header" onMore="nsVenueProfile.getMoreOptions" onSetting="nsVenueProfile.getSettings"></Require>
+		<Require src="header" screenId="winVenueProfile" onBackButtonClick="nsVenueProfile.closeWindow" onSetting="nsVenueProfile.getSettings"></Require>
 		<View id="vwMain">
 			<ScrollView id="svMain">
 				<ImageView id="ivVenueImage"></ImageView>

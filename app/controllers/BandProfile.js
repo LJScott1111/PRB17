@@ -1,10 +1,17 @@
 var nsBandProfile = {};
 
-nsBandProfile.getMoreOptions = function(){};
+nsBandProfile.closeWindow = function(){
+	$.winBandProfile.close();
+};
 
 nsBandProfile.getSettings = function(){};
 
 nsBandProfile.init = function(){
+	$.winBandProfile.addEventListener('android:back', function(e) {
+		console.debug("Pressing Back Will Not Close The Activity/Window");
+		nsBandProfile.closeWindow();
+	});
+	
 	$.ivBandImage.setHeight(Alloy.Globals.platformHeight * 0.30);
 	
 	$.lblBandName.setText("The Band Name");

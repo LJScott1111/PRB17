@@ -1,12 +1,18 @@
 var nsBandList = {};
 
-nsBandList.getMoreOptions = function() {
+nsBandList.closeWindow = function() {
+	$.winBandList.close();
 };
 
 nsBandList.getSettings = function() {
 };
 
 nsBandList.init = function(){
+	
+	$.winBandList.addEventListener('android:back', function(e) {
+		console.debug("Pressing Back Will Not Close The Activity/Window");
+		nsBandList.closeWindow();
+	});
 	
 	var searchList = require("searchList");
 	var list = searchList.init("BandList");

@@ -1,6 +1,7 @@
 var nsLanding = {};
 
-nsLanding.getMoreOptions = function() {
+nsLanding.closeWindow = function() {
+	$.winLanding.close();
 };
 
 nsLanding.getSettings = function() {
@@ -22,6 +23,11 @@ nsLanding.getVenues = function() {
 };
 
 nsLanding.init = function() {
+	$.winLanding.addEventListener('android:back', function(e) {
+		console.debug("Pressing Back Will Not Close The Activity/Window");
+		nsLanding.closeWindow();
+	});
+	
 	$.ivBands.setLeft(10);
 	$.ivEvents.setRight(10);
 	$.ivSchedule.setLeft(10);

@@ -1,6 +1,6 @@
 <Alloy>
 	<Window id="winBandList">
-		<Require src="header" onMore="nsBandList.getMoreOptions" onSetting="nsBandList.getSettings"></Require>
+		<Require src="header" screenId="winBandList" onBackButtonClick="nsBandList.closeWindow" onSetting="nsBandList.getSettings"></Require>
 		<View id="vwMain">
 		</View>
 	</Window>

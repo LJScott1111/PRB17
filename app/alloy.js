@@ -54,7 +54,11 @@ Alloy.Globals.init();
 Alloy.Globals.theme = {
 	"icons" : {},
 	"sizes" : {
-		"headerbar" : Alloy.Globals.platformHeight * 0.1056
+		"headerbar" : Alloy.Globals.platformHeight * 0.1056,
+		"logo": Alloy.Globals.platformHeight * 0.2112,
+		"landingOptionHeight": Alloy.Globals.platformHeight * 0.1056,
+		"punkRockHeight": Alloy.Globals.platformHeight * 0.42,
+		"punckRockWidth": Alloy.Globals.platformWidth * 0.60
 	},
 	"fonts" : {
 		"size10Fonts" : Alloy.Globals.platformHeight * 0.0176,

@@ -1,14 +1,15 @@
 "#vwHeader": {
 	top: 0,
 	height: Alloy.Globals.theme.sizes.headerbar,
-	backgroundColor: "#000000"
+	// backgroundColor: "#000000"
+	backgroundImage: "/icons/navbar.png"
 }
 
-"#ivMore": {
+"#ivBack": {
 	left: 10,
 	height: 30,
 	width: 30,
-	backgroundColor: "#ffffff"
+	image: "/images/back.png"
 }
 
 "#ivSettings": {

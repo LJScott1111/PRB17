@@ -1,6 +1,6 @@
 <Alloy>
 	<View id="vwHeader">
-		<ImageView id="ivMore" onClick="nsHeader.getMore"></ImageView>
+		<ImageView id="ivBack" onClick="nsHeader.closeWindow"></ImageView>
 		<ImageView id="ivSettings" onClick="nsHeader.getSettings"></ImageView>
 	</View>
 </Alloy>

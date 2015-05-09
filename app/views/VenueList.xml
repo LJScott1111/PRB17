@@ -1,6 +1,6 @@
 <Alloy>
 	<Window id="winVenueList">
-		<Require src="header" onMore="nsVenueList.getMoreOptions" onSetting="nsVenueList.getSettings"></Require>
+		<Require src="header" screenId="winVenueList" onBackButtonClick="nsVenueList.closeWindow" onSetting="nsVenueList.getSettings"></Require>
 		<View id="vwMain">
 		</View>
 	</Window>
