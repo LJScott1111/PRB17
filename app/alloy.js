@@ -12,6 +12,58 @@
 
 var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.3.1');
 Kinvey.init({
-    appKey    : 'kid_-J7bI_4EJe',
-    appSecret : '2efdea93496240ccb02d05a5e0086ee3'
+    appKey    : 'kid_b1vnajEDkl',
+    appSecret : '10609ec172544ae6b75923af98bfab95'
 });
+
+Alloy.Globals.densityFactor = (Titanium.Platform.osname === "android") ? Titanium.Platform.displayCaps.logicalDensityFactor : 1;
+Alloy.Globals.platformHeight = 0;
+Alloy.Globals.platformWidth = 0;
+
+// Calculating px to dp
+Alloy.Globals.pixelToDp = function(px) {
+	var pixelToDP;
+	pixelToDP = parseInt(px) / (Titanium.Platform.displayCaps.dpi / 160);
+	return pixelToDP;
+};
+
+Alloy.Globals.init = function() {
+	var height = 0;
+	var width = 0;
+
+	if (Titanium.Platform.displayCaps.platformHeight > Titanium.Platform.displayCaps.platformWidth) {
+		//portrait mode
+		height = Titanium.Platform.displayCaps.platformHeight;
+		width = Titanium.Platform.displayCaps.platformWidth;
+	} else {
+		// landscape mode
+		height = Titanium.Platform.displayCaps.platformWidth;
+		width = Titanium.Platform.displayCaps.platformHeight;
+	}
+
+	if (Titanium.Platform.osname === "android") {
+		Alloy.Globals.platformHeight = Alloy.Globals.pixelToDp(height);
+		Alloy.Globals.platformWidth = Alloy.Globals.pixelToDp(width);
+	} else {
+		Alloy.Globals.platformHeight = height;
+		Alloy.Globals.platformWidth = width;
+	}
+};
+Alloy.Globals.init();
+
+Alloy.Globals.theme = {
+	"icons" : {},
+	"sizes" : {
+		"headerbar" : Alloy.Globals.platformHeight * 0.1056
+	},
+	"fonts" : {
+		"size10Fonts" : Alloy.Globals.platformHeight * 0.0176,
+		"size15Fonts" : Alloy.Globals.platformHeight * 0.0264,
+		"size20Fonts" : Alloy.Globals.platformHeight * 0.0352,
+		"size25Fonts" : Alloy.Globals.platformHeight * 0.044,
+	},
+	"colors" : {
+		"dark" : "#000000",
+		"light" : "#FFFFFF",
+	}
+};

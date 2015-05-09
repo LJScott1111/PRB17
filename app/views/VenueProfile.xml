@@ -1,4 +1,18 @@
 <Alloy>
-	<View class="container">
-	</View>
+	<Window id="winVenueProfile">
+		<Require src="header" onMore="nsVenueProfile.getMoreOptions" onSetting="nsVenueProfile.getSettings"></Require>
+		<View id="vwMain">
+			<ScrollView id="svMain">
+				<ImageView id="ivVenueImage"></ImageView>
+				<View id="vwVenueInfo">
+					<Label id="lblVenueName"></Label>
+					<Label id="lblAddress1"></Label>
+					<Label id="lblAddress2"></Label>
+					<Label id="lblNumber"></Label>
+				</View>
+				
+				<!-- <View id="vwBandDetails"></View> -->
+			</ScrollView>
+		</View>
+	</Window>
 </Alloy>

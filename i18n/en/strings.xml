@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name=""></string>
+	
+	<!-- Index screen -->
+	<string name="index_lblFbConnect">Connect with Facebook</string>
+	<string name="index_lblOr">-or-</string>
+	<string name="index_tfEmail">Email</string>
+	<string name="index_tfPassword">Password</string>
+	<string name="index_lblGetIt">Get It!</string>
+	
+	<!-- Band Profile -->
+	<string name="bandProfile_lblSoundCloud">Listen</string>
+	<string name="bandProfile_lblYouTube">Watch</string>
+	<string name="bandProfile_lblWebsite">Official Site</string>
+	<string name="bandProfile_lblFacebook">Facebook</string>
+	<string name="bandProfile_lblTwitter">Twitter</string>
+	<string name="bandProfile_lblAddBand">ADD</string>
+	
+	<string name=""></string>
+	<string name=""></string>
+	<string name=""></string>
+	
+</resources>

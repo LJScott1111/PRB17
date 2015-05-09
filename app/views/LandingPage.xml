@@ -1,4 +1,11 @@
 <Alloy>
-	<View class="container">
-	</View>
+	<Window id="winLanding">
+		<Require src="header" onMore="nsLanding.getMoreOptions" onSetting="nsLanding.getSettings"></Require>
+		<View id="vwMain">
+			<ImageView id="ivBands" class="optionClass" onClick="nsLanding.getBands"></ImageView>
+			<ImageView id="ivEvents" class="optionClass" onClick="nsLanding.getEvents"></ImageView>
+			<ImageView id="ivSchedule" class="optionClass" onClick="nsLanding.getSchedule"></ImageView>
+			<ImageView id="ivVenues" class="optionClass" onClick="nsLanding.getVenues"></ImageView>
+		</View>
+	</Window>
 </Alloy>

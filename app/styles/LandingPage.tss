@@ -1,4 +1,19 @@
 
-".container" : {
-  
+"#winLanding": {
+	backgroundColor: "#000000"
+}
+
+"#vwMain": {
+	top: Alloy.Globals.theme.sizes.headerbar,
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+".optionClass": {
+	height: 40,
+	width: "50%",
+	backgroundColor: "#ffffff",
+	top: 3,
+	borderRadius: 10
 }

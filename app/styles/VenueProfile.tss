@@ -1,4 +1,107 @@
-
-".container" : {
-  
+"#winVenueProfile": {
+	backgroundColor: "#000000"
 }
+
+"#vwMain": {
+	backgroundColor: "#ffffff",
+	top: Alloy.Globals.theme.sizes.headerbar,
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+"#svMain": {
+	top: 0,
+	layout: "vertical",
+	scrollType: "vertical",
+	showVerticalScrollIndicator: true,
+	height: Titanium.UI.SIZE
+}
+
+"#ivVenueImage": {
+	top: 0,
+	width: Titanium.UI.FILL,
+	backgroundColor: "red"
+}
+
+"#vwVenueInfo": {
+	top: 0,
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	backgroundColor: "yellow"
+}
+
+"#lblVenueName": {
+	top: 0,
+	// bottom: 5,
+	left: 5,
+	right: 5,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size25Fonts
+	}
+}
+
+"#vwVenueSchedule": {
+	top: 0,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+"#vwScheduleInfo": {
+	left: 0,
+	height: Titanium.UI.SIZE,
+	width: "70%",
+	layout: "vertical"
+}
+
+"#lblAddress1": {
+	top: 0,
+	// bottom: 5,
+	left: 5,
+	right: 5,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts
+	}
+}
+
+"#lblAddress2": {
+	// top: 5,
+	// bottom: 5,
+	left: 5,
+	right: 5,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size10Fonts
+	}
+}
+
+"#lblNumber": {
+	top: 0,
+	bottom: 5,
+	left: 5,
+	right: 5,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size10Fonts
+	}
+}
+
+"#vwBandDetails": {
+	layout: "vertical",
+}
+
