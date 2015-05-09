@@ -25,11 +25,13 @@ nsIndex.validateEmail = function(){
 
 nsIndex.validatePassword = function(){
 	//TODO: Need rules
+	// No validation necessary, handled by Kinvey
 };
 
 nsIndex.getIt = function(){
 	if(nsIndex.validateEmail()){
 		console.debug("Go to next screen!");
+		// TODO: Use NavigationWindow for iOS
 		Alloy.createController("LandingPage").getView().open();
 	}
 };
