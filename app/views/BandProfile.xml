@@ -13,29 +13,29 @@
 						<Label id="lblVenue"></Label>
 					</View>
 					<View id="vwAddBand">
-						<ImageView id="ivFavouriteStar"></ImageView>
+						<ImageView id="ivFavouriteStar" onClick="nsBandProfile.markFavourite"></ImageView>
 						<Label id="lblAddBand" textid="bandProfile_lblAddBand"></Label>
 					</View>
 				</View>
 			</View>
 			<View id="vwSocialActivities">
-				<View id="vwSoundCloud" class="socialViewClass">
+				<View id="vwSoundCloud" class="socialViewClass" onClick="nsBandProfile.doSocialActivity">
 					<ImageView id="ivSoundCloud" class="socialIconClass"></ImageView>
 					<Label id="lblSoundCloud" class="socialLabelClass" textid="bandProfile_lblSoundCloud"></Label>
 				</View>
-				<View id="vwYouTube" class="socialViewClass">
+				<View id="vwYouTube" class="socialViewClass" onClick="nsBandProfile.doSocialActivity">
 					<ImageView id="ivYouTube" class="socialIconClass"></ImageView>
 					<Label id="lblYouTube" class="socialLabelClass" textid="bandProfile_lblYouTube"></Label>
 				</View>
-				<View id="vwWebsite" class="socialViewClass">
+				<View id="vwWebsite" class="socialViewClass" onClick="nsBandProfile.doSocialActivity">
 					<ImageView id="ivWebsite" class="socialIconClass"></ImageView>
 					<Label id="lblWebsite" class="socialLabelClass" textid="bandProfile_lblWebsite"></Label>
 				</View>
-				<View id="vwFacebook" class="socialViewClass">
+				<View id="vwFacebook" class="socialViewClass" onClick="nsBandProfile.doSocialActivity">
 					<ImageView id="ivFacebook" class="socialIconClass"></ImageView>
 					<Label id="lblFacebook" class="socialLabelClass" textid="bandProfile_lblFacebook"></Label>
 				</View>
-				<View id="vwTwitter" class="socialViewClass">
+				<View id="vwTwitter" class="socialViewClass" onClick="nsBandProfile.doSocialActivity">
 					<ImageView id="ivTwitter" class="socialIconClass"></ImageView>
 					<Label id="lblTwitter" class="socialLabelClass" textid="bandProfile_lblTwitter"></Label>
 				</View>

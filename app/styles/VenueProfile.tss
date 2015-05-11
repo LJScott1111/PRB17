@@ -21,7 +21,7 @@
 "#ivVenueImage": {
 	top: 0,
 	width: Titanium.UI.FILL,
-	backgroundColor: "red"
+	// backgroundColor: "red"
 }
 
 "#vwVenueInfo": {

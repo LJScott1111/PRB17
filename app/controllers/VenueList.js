@@ -1,5 +1,7 @@
 var nsVenueList = {};
 
+// nsVenueList.args = arguments[0];
+
 nsVenueList.closeWindow = function() {
 	$.winVenueList.close();
 };
@@ -14,7 +16,7 @@ nsVenueList.init = function(){
 	});
 	
 	var searchList = require("searchList");
-	var list = searchList.init("VenueList");
+	var list = searchList.init("VenueList", Alloy.Globals.venues);
 	console.debug(JSON.stringify(list));
 	$.vwMain.add(list);
 };

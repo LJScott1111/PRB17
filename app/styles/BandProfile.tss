@@ -20,8 +20,8 @@
 
 "#ivBandImage": {
 	top: 0,
-	width: Titanium.UI.FILL,
-	backgroundColor: "red"
+	width: Titanium.UI.FILL
+	// backgroundColor: "red"
 }
 
 "#vwBandInfo": {
@@ -109,9 +109,9 @@
 }
 
 "#ivFavouriteStar": {
-	height: 30,
-	width: 30,
-	backgroundColor: "#000000"
+	height: 40,
+	width: 40,
+	// backgroundColor: "#000000"
 }
 
 "#lblAddBand": {
@@ -149,7 +149,8 @@
 	left: 30,
 	height: 25,
 	width: 25,
-	backgroundColor: "#000000"
+	backgroundColor: "#000000",
+	touchEnabled: false
 }
 
 ".socialLabelClass": {
@@ -158,12 +159,16 @@
 	width: Titanium.UI.SIZE,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	color: "#000000",
+	touchEnabled: false,
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size20Fonts
 	}
 }
 
 "#lblMoreInfo": {
+	top: 10,
+	right: 10,
+	bottom: 10,
 	left: 10,
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,

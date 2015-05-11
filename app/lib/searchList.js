@@ -1,5 +1,6 @@
 var nsSearchList = {};
 nsSearchList.type = "";
+nsSearchList.data = null;
 nsSearchList.vwSearchView = null;
 
 nsSearchList.createList = function() {
@@ -15,13 +16,13 @@ nsSearchList.createList = function() {
 		// borderRadius : 10,
 	});
 
-	sbSearchBar.addEventListener("change", function(e) {
-		e.value
-	});
+	// sbSearchBar.addEventListener("change", function(e) {
+	// e.value;
+	// });
 
 	nsSearchList.vwSearchView.add(sbSearchBar);
 
-	var contacts = ["Adam", "Andrew", "Boris", "Claus", "Debby", 'Saba', 'Sana', 'Wahhab', 'Zohaib', 'Zzaid', 'Zzxad'];
+	// var contacts = ["Adam", "Andrew", "Boris", "Claus", "Debby", 'Saba', 'Sana', 'Wahhab', 'Zohaib', 'Zzaid', 'Zzxad'];
 
 	var currHeader = "A";
 	var sectionArr = [];
@@ -31,9 +32,9 @@ nsSearchList.createList = function() {
 	    lastL,
 	    l,
 	    currSection,
-	    len = contacts.length; i < len; i++) {
+	    len = nsSearchList.data.length; i < len; i++) {
 
-		l = contacts[i].substr(0, 1);
+		l = nsSearchList.data[i].name.substr(0, 1);
 
 		if (lastL != l) {
 			index.push({
@@ -48,21 +49,32 @@ nsSearchList.createList = function() {
 
 		var row = Ti.UI.createTableViewRow({
 			id : i,
-			title : contacts[i],
-			filter : contacts[i]
+			title : nsSearchList.data[i].name,
+			filter : nsSearchList.data[i].name,
+			hasChild : true
 		});
 
 		row.addEventListener('click', function(e) {
-			console.debug(JSON.stringify(e));
+			// console.debug(JSON.stringify(e));
 			// console.debug(nsSearchList.type, " ", e.source.rowData.id, " ", e.source.rowData.title);
-			if(nsSearchList.type === "BandList"){
-				Alloy.createController("BandProfile").getView().open();
-			} else if(nsSearchList.type === "VenueList"){
-				Alloy.createController("VenueProfile").getView().open();
+			var data = null;
+			// console.debug("e.source.id ", e.source.id);
+			if (e.source.id !== "ivFavouriteStar") {
+				if (nsSearchList.type === "BandList") {
+
+					Alloy.createController("BandProfile", {
+						"id" : nsSearchList.data[e.row.id]._id
+					}).getView().open();
+				} else if (nsSearchList.type === "VenueList") {
+
+					Alloy.createController("VenueProfile", {
+						"id" : nsSearchList.data[e.row.id]._id
+					}).getView().open();
+				}
 			}
 		});
 
-		// row.filter = contacts[i];
+		// row.filter = nsSearchList.data[i];
 		// console.debug(row.filter);
 
 		var vwRowView = Titanium.UI.createView({
@@ -76,14 +88,15 @@ nsSearchList.createList = function() {
 			bottom : 5,
 			width : Alloy.Globals.platformWidth * 0.25,
 			height : Alloy.Globals.platformHeight * 0.088,
-			borderColor : "#000000"
+			borderColor : "#000000",
+			image : nsSearchList.data[i].image_link
 		});
 
 		vwRowView.add(ivImage);
 
 		var lblName = Titanium.UI.createLabel({
 			left : Alloy.Globals.platformWidth * 0.30,
-			text : contacts[i],
+			text : nsSearchList.data[i].name,
 			color : "#000000",
 			font : {
 				fontSize : Alloy.Globals.theme.fonts.size20Fonts
@@ -94,22 +107,38 @@ nsSearchList.createList = function() {
 
 		var ivFavouriteStar = Titanium.UI.createImageView({
 			right : 35,
-			height : 30,
-			width : 30,
-			backgroundColor : "#000000",
+			height : 40,
+			width : 40,
+			id : "ivFavouriteStar",
+			// backgroundColor : "#000000",
 			selected : false
+		});
+
+		if (!ivFavouriteStar.selected) {
+			ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
+		} else {
+			ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
+		}
+
+		ivFavouriteStar.addEventListener('click', function(e) {
+			if (!e.source.selected) {
+				e.source.setImage(Alloy.Globals.theme.icons.star);
+			} else {
+				e.source.setImage(Alloy.Globals.theme.icons.star_off);
+			}
+			e.source.selected = !e.source.selected;
 		});
 
 		vwRowView.add(ivFavouriteStar);
 
-		var ivNext = Titanium.UI.createImageView({
-			right : 10,
-			height : 30,
-			width : 20,
-			backgroundColor : "#000030"
-		});
-
-		vwRowView.add(ivNext);
+		// var ivNext = Titanium.UI.createImageView({
+		// right : 10,
+		// height : 30,
+		// width : 20,
+		// backgroundColor : "#000030"
+		// });
+		//
+		// vwRowView.add(ivNext);
 		row.add(vwRowView);
 
 		currSection.add(row);
@@ -132,17 +161,17 @@ nsSearchList.createList = function() {
 	table.setSearch(sbSearchBar);
 	// table.filterAttribute = 'filter';
 	table.index = index;
-	// console.debug("table ... " + JSON.stringify(table));
 	nsSearchList.vwSearchView.add(table);
-	// console.debug(JSON.stringify(nsSearchList.vwSearchView));
-
 	return nsSearchList.vwSearchView;
 
 };
 
-nsSearchList.init = function(type) {
+nsSearchList.init = function(type, data) {
 	nsSearchList.type = type;
+	nsSearchList.data = JSON.parse(JSON.stringify(data));
+
 	console.debug("In searchList");
+	console.debug("Data: ", JSON.stringify(nsSearchList.data));
 
 	nsSearchList.vwSearchView = Titanium.UI.createView({
 		layout : "vertical",

@@ -1,25 +1,77 @@
 var nsBandProfile = {};
 
-nsBandProfile.closeWindow = function(){
+nsBandProfile.args = arguments[0];
+nsBandProfile.data = null;
+
+nsBandProfile.closeWindow = function() {
 	$.winBandProfile.close();
 };
 
-nsBandProfile.getSettings = function(){};
+nsBandProfile.getSettings = function() {
+};
 
-nsBandProfile.init = function(){
+nsBandProfile.markFavourite = function(e) {
+	// TODO: service call to add favourite
+	if (!e.source.selected) {
+		e.source.setImage(Alloy.Globals.theme.icons.star);
+	} else {
+		e.source.setImage(Alloy.Globals.theme.icons.star_off);
+	}
+	e.source.selected = !e.source.selected;
+};
+
+nsBandProfile.doSocialActivity = function(e) {
+	console.debug(e.source.id);
+	if (e.source.id === "vwSoundCloud") {
+		Titanium.Platform.openURL(nsBandProfile.data.bandDetails.audio_link);
+	} else if (e.source.id === "vwYouTube") {
+		Titanium.Platform.openURL(nsBandProfile.data.bandDetails.video_link);
+	} else if (e.source.id === "vwWebsite") {
+		Titanium.Platform.openURL(nsBandProfile.data.bandDetails.site_link);
+	} else if (e.source.id === "vwFacebook") {
+		Titanium.Platform.openURL(nsBandProfile.data.bandDetails.fb_link);
+	} else if (e.source.id === "vwTwitter") {
+		Titanium.Platform.openURL(nsBandProfile.data.bandDetails.tw_link);
+	}
+};
+
+nsBandProfile.init = function() {
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	for (var i = 0,
+	    len = appdata.details.length; i < len; i++) {
+
+		if (appdata.details[i].bandDetails._id === nsBandProfile.args.id) {
+			nsBandProfile.data = JSON.parse(JSON.stringify(appdata.details[i]));
+			break;
+		}
+	}
+
+	console.debug("BandProfile id ", JSON.stringify(nsBandProfile.args));
+	console.debug("BandProfile data ", JSON.stringify(nsBandProfile.data));
+
 	$.winBandProfile.addEventListener('android:back', function(e) {
 		console.debug("Pressing Back Will Not Close The Activity/Window");
 		nsBandProfile.closeWindow();
 	});
-	
+
 	$.ivBandImage.setHeight(Alloy.Globals.platformHeight * 0.30);
+
+	Alloy.Globals.getFormattedDate(nsBandProfile.data.showDetails.start_time);
 	
-	$.lblBandName.setText("The Band Name");
-	$.lblDay.setText("Friday, May 22nd");
+	$.ivFavouriteStar.selected = false; // TODO: hard coded - need a response from service
+	if (!$.ivFavouriteStar.selected) {
+		$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
+	} else {
+		$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
+	}
+
+	$.lblBandName.setText(nsBandProfile.data.bandDetails.name);
+	$.ivBandImage.setImage(nsBandProfile.data.bandDetails.image_link);
+	$.lblDay.setText(Alloy.Globals.getFormattedDate(nsBandProfile.data.showDetails.start_time));
 	$.lblTime.setText("9:00pm");
-	$.lblVenue.setText("Venue name goes here");
-	$.lblMoreInfo.setText("More info: This will be filled with bio text from PRB site");
-	
+	$.lblVenue.setText(nsBandProfile.data.venueDetails.name);
+	$.lblMoreInfo.setText(nsBandProfile.data.bandDetails.description);
+
 };
 
 nsBandProfile.init();
