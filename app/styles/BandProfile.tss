@@ -15,14 +15,8 @@
 	layout: "vertical",
 	scrollType: "vertical",
 	showVerticalScrollIndicator: true,
-	height: Titanium.UI.SIZE
-}
-
-"#vwToScroll": {
-	layout: "vertical",
-	height: Titanium.UI.SIZE,
-	width: Titanium.UI.FILL,
-	top: 0
+	// height: Titanium.UI.SIZE
+	// height: Alloy.Globals.platformHeight
 }
 
 "#ivBandImage": {

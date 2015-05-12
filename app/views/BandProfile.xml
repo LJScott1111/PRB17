@@ -3,7 +3,7 @@
 		<Require src="header" screenId="winBandProfile" onBackButtonClick="nsBandProfile.closeWindow" onSetting="nsBandProfile.getSettings"></Require>
 		<View id="vwMain">
 			<ScrollView id="svMain">
-				<View id="vwToScroll">
+				<!-- <View id="vwToScroll"> -->
 			<ImageView id="ivBandImage"></ImageView>
 			<View id="vwBandInfo">
 				<Label id="lblBandName"></Label>
@@ -42,7 +42,7 @@
 				</View>
 			</View>
 			<Label id="lblMoreInfo"></Label>
-				</View>
+				<!-- </View> -->
 			</ScrollView>
 		</View>
 	</Window>

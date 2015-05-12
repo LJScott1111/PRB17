@@ -71,7 +71,12 @@ nsBandProfile.init = function() {
 	$.lblTime.setText(datetime[1]);
 	$.lblVenue.setText(nsBandProfile.data.venueDetails.name);
 	$.lblMoreInfo.setText(nsBandProfile.data.bandDetails.description);
-
+	
+	if(Titanium.Platform.osname === "android"){
+		$.svMain.setHeight(Titanium.UI.SIZE);
+	}else{
+	$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar);
+}
 };
 
 nsBandProfile.init();
