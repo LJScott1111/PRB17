@@ -56,7 +56,7 @@ nsBandProfile.init = function() {
 
 	$.ivBandImage.setHeight(Alloy.Globals.platformHeight * 0.30);
 
-	Alloy.Globals.getFormattedDate(nsBandProfile.data.showDetails.start_time);
+	var datetime = Alloy.Globals.getFormattedDate(nsBandProfile.data.showDetails.start_time);
 	
 	$.ivFavouriteStar.selected = false; // TODO: hard coded - need a response from service
 	if (!$.ivFavouriteStar.selected) {
@@ -67,8 +67,8 @@ nsBandProfile.init = function() {
 
 	$.lblBandName.setText(nsBandProfile.data.bandDetails.name);
 	$.ivBandImage.setImage(nsBandProfile.data.bandDetails.image_link);
-	$.lblDay.setText(Alloy.Globals.getFormattedDate(nsBandProfile.data.showDetails.start_time));
-	$.lblTime.setText("9:00pm");
+	$.lblDay.setText(datetime[0]);
+	$.lblTime.setText(datetime[1]);
 	$.lblVenue.setText(nsBandProfile.data.venueDetails.name);
 	$.lblMoreInfo.setText(nsBandProfile.data.bandDetails.description);
 

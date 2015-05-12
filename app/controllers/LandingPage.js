@@ -33,37 +33,13 @@ nsLanding.getBands = function() {
 			$.winLanding.remove(nsLanding.controller);
 		});
 
-		// var count = Alloy.Globals.getAndStoreData();
-		// if (count === 3) {
-		// Alloy.createController("BandList").getView().open();
-		// } else {
-		// console.debug("All data did get downloaded!!!");
-		// alert("Some error occured while fetching the band details");
-		// }
-		// }
-		//
-		// if (!Alloy.Globals.hasBandsData || Alloy.Globals.bands.length === 0) {
-		// this.onloadCallback = function(bandlist) {
-		// console.debug("Go to next screen!");
-		// Alloy.createController("BandList").getView().open();
-		// $.winLanding.remove(nsLanding.controller);
-		// };
-		//
-		// this.onerrorCallback = function() {
-		// console.debug("Error occured in getting bandlist");
-		// alert("Some error occured. Please try again");
-		// //TODO - Proper error handling
-		// $.winLanding.remove(nsLanding.controller);
-		// };
-		//
-		// $.winLanding.add(nsLanding.controller);
-		// var getBandList = new nsLanding.serviceCalls.getBandList(this.onloadCallback, this.onerrorCallback);
 	} else {
 		Alloy.createController("BandList").getView().open();
 	}
 };
 
 nsLanding.getEvents = function() {
+	Alloy.createController("Events").getView().open();
 };
 
 nsLanding.getSchedule = function() {

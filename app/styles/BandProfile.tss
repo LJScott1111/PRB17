@@ -18,10 +18,16 @@
 	height: Titanium.UI.SIZE
 }
 
+"#vwToScroll": {
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	top: 0
+}
+
 "#ivBandImage": {
 	top: 0,
 	width: Titanium.UI.FILL
-	// backgroundColor: "red"
 }
 
 "#vwBandInfo": {
@@ -29,7 +35,7 @@
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL,
-	backgroundColor: "yellow"
+	backgroundColor: "#FFD801"
 }
 
 "#lblBandName": {
@@ -110,8 +116,7 @@
 
 "#ivFavouriteStar": {
 	height: 40,
-	width: 40,
-	// backgroundColor: "#000000"
+	width: 40
 }
 
 "#lblAddBand": {

@@ -1,0 +1,16 @@
+"#winBowlingEvents": {
+	backgroundColor: "#000000"
+}
+
+"#vwMain": {
+	top: Alloy.Globals.theme.sizes.headerbar,
+	// layout: "vertical",
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+}
+
+"#wvBowling": {
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	top: 0
+}

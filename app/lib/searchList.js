@@ -49,9 +49,10 @@ nsSearchList.createList = function() {
 
 		var row = Ti.UI.createTableViewRow({
 			id : i,
-			title : nsSearchList.data[i].name,
+			// title : nsSearchList.data[i].name,
 			filter : nsSearchList.data[i].name,
-			hasChild : true
+			hasChild : true,
+			top: 0
 		});
 
 		row.addEventListener('click', function(e) {
@@ -79,7 +80,8 @@ nsSearchList.createList = function() {
 
 		var vwRowView = Titanium.UI.createView({
 			height : Titanium.UI.SIZE,
-			width : Titanium.UI.FILL
+			width : Titanium.UI.FILL,
+			top: 0
 		});
 
 		var ivImage = Titanium.UI.createImageView({
@@ -151,9 +153,10 @@ nsSearchList.createList = function() {
 		// data: sectionArr,
 		// search : sbSearchBar,
 		filterAttribute : 'filter',
-		filterCaseInsensitive : true
+		filterCaseInsensitive : true,
+		// borderColor: "red",
 		// search : sbSearchBar,
-		// searchHidden: true
+		searchHidden: true
 	});
 
 	table.setData(sectionArr);
@@ -175,7 +178,7 @@ nsSearchList.init = function(type, data) {
 
 	nsSearchList.vwSearchView = Titanium.UI.createView({
 		layout : "vertical",
-		height : Titanium.UI.FILL,
+		height : "100%",
 		width : Titanium.UI.FILL,
 		top : 10,
 		backgroundColor : "#ffffff"

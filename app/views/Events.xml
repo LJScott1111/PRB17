@@ -1,0 +1,18 @@
+<Alloy>
+	<Window id="winEvents">
+		<Require src="header" screenId="winEvents" onBackButtonClick="nsEvents.closeWindow"></Require>
+		<View id="vwMain">
+			<View id="vwTopOptions">
+				<View id="vwTopYellow"></View>
+				<ImageView id="ivMusic" class="optionClass" onClick="nsEvents.getMusic"></ImageView>
+				<ImageView id="ivMovies" class="optionClass" onClick="nsEvents.getMovies"></ImageView>
+				<ImageView id="ivBowling" class="optionClass" onClick="nsEvents.getBowling"></ImageView>
+				<ImageView id="ivPoker" class="optionClass" onClick="nsEvents.getPoker"></ImageView>
+				<ImageView id="ivArt" class="optionClass" onClick="nsEvents.getArt"></ImageView>
+			</View>
+			<View id="vwBottomView">
+				<ImageView id="ivLogo"></ImageView>
+			</View>
+		</View>
+	</Window>
+</Alloy>

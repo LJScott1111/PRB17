@@ -178,29 +178,40 @@ Alloy.Globals.combinedDetails = function() {
 
 // Format date object
 Alloy.Globals.getFormattedDate = function(timestamp) {
-	var dateObj = new Date(timestamp);
-	var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	/*
 
-	var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	 var dateObj = new Date(timestamp);
+	 var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-	function nth(d) {
-		if (d > 3 && d < 21)
-			return 'th';
-		// thanks kennebec
-		switch (d % 10) {
-		case 1:
-			return "st";
-		case 2:
-			return "nd";
-		case 3:
-			return "rd";
-		default:
-			return "th";
-		}
-	}
-	
-	var dateString = weekday[dateObj.getDay()] + ", " + monthNames[dateObj.getMonth() + 1] + " " + dateObj.getDate() + nth(dateObj.getDate());
-	console.debug(dateString);
+	 var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+	 function nth(d) {
+	 if (d > 3 && d < 21)
+	 return 'th';
+	 // thanks kennebec
+	 switch (d % 10) {
+	 case 1:
+	 return "st";
+	 case 2:
+	 return "nd";
+	 case 3:
+	 return "rd";
+	 default:
+	 return "th";
+	 }
+	 }
+
+	 var dateString = weekday[dateObj.getDay()] + ", " + monthNames[dateObj.getMonth() + 1] + " " + dateObj.getDate() + nth(dateObj.getDate());
+	 console.debug(dateString);
+	 return dateString;
+	 */
+
+	var momentjs = require('moment');
+	var dateObj = momentjs(timestamp * 1000);
+	var dateString = [];
+	dateString[0] = dateObj.format('dddd, MMMM, Do');
+	dateString[1] = dateObj.format('h:mm a');
+	console.debug(JSON.stringify(dateString));
 	return dateString;
 };
 

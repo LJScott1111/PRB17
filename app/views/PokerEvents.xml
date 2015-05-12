@@ -1,0 +1,8 @@
+<Alloy>
+	<Window id="winPokerEvents">
+		<Require src="header" screenId="winPokerEvents" onBackButtonClick="nsPokerEvents.closeWindow"></Require>
+		<View id="vwMain">
+			<WebView id="wvPoker"></WebView>
+		</View>
+	</Window>
+</Alloy>
