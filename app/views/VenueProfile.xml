@@ -10,8 +10,26 @@
 					<Label id="lblAddress2"></Label>
 					<Label id="lblNumber"></Label>
 				</View>
-				
-				<!-- <View id="vwBandDetails"></View> -->
+				<View id="vwBandDetails">
+					<View id="vwDays" class="vwDaysClass">
+						<View id="vwDay1" class = "dayClass" day="friday" >
+							<Label id="lblDay1" class="lblDayClass" text = "Friday"></Label>
+						</View>
+						
+						<View id="vwDays2" class="vwDaysClass">
+							<View id="vwDay2" class = "dayClass" day="saturday" >
+								<Label id="lblDay2" class="lblDayClass" text="Saturday"></Label>
+							</View>
+							<View id="vwDay3" class = "dayClass" day="sunday" >
+								<Label id="lblDay3" class="lblDayClass" text="Sunday"></Label>
+							</View>
+						</View>
+						<View id="vwDay4" class = "dayClass" day="monday" >
+							<Label id="lblDay4" class="lblDayClass" text="Monday"></Label>
+						</View>
+					</View>
+					<View id="vwBandSchedule"></View>
+				</View>
 			</ScrollView>
 		</View>
 	</Window>

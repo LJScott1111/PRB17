@@ -58,13 +58,8 @@ nsIndex.getIt = function() {
 			console.debug("Go to next screen!");
 			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 				console.debug("fetchedData ", fetchedData);
-				// if (fetchedData) {
-					Alloy.createController("LandingPage").getView().open();
-					$.winIndex.remove(nsIndex.controller);
-				// } else {
-					// console.debug("All data did not get downloaded!!!");
-					// alert("Some error occured while fetching the band/show details");
-				// }
+				Alloy.createController("LandingPage").getView().open();
+				$.winIndex.remove(nsIndex.controller);
 			});
 		};
 
@@ -122,8 +117,6 @@ nsIndex.init = function() {
 
 		$.winIndex.open();
 	} else {
-
-		// Alloy.Globals.getAndStoreData();
 		setTimeout(function() {
 			Alloy.createController("LandingPage").getView().open();
 		}, 2000);

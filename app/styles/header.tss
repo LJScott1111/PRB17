@@ -2,7 +2,7 @@
 	top: 0,
 	height: Alloy.Globals.theme.sizes.headerbar,
 	// backgroundColor: "#000000"
-	backgroundImage: "/icons/navbar.png"
+	backgroundImage: "/icons/navbar1.png"
 }
 
 "#ivBack": {
@@ -14,7 +14,8 @@
 
 "#ivSettings": {
 	right: 10,
-	height: 30,
-	width: 30,
-	backgroundColor: "#ffffff"
+	height: 0,
+	width: 0,
+	backgroundColor: "#ffffff",
+	visible: false
 }

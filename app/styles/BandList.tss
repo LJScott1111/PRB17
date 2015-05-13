@@ -1,7 +1,6 @@
 
 "#winBandList": {
 	backgroundColor: "#000000",
-	navBarHidden: true
 }
 
 "#vwMain": {

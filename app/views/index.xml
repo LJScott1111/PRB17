@@ -9,9 +9,8 @@
 				<Label id="lblOr" textid="index_lblOr"></Label>
 				<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_EMAIL"></TextField>
 				<TextField id="tfPassword" passwordMask="true" class="tfClass"></TextField>
-			
 				<View id="vwGetIt" onClick="nsIndex.getIt">
-					<Label id="lblGetIt" textid="index_lblGetIt"></Label>>
+					<Label id="lblGetIt" textid="index_lblGetIt"></Label>
 				</View>
 			</View>
 			<View id="vwBottomView">

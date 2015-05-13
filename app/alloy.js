@@ -8,6 +8,9 @@ Kinvey.init({
 // To close the index screen after login
 Alloy.Globals.windowStack = [];
 
+// iOS NavMenu
+Alloy.Globals.navMenu = null;
+
 // iOS - Android Screens UI match base
 Alloy.Globals.densityFactor = (Titanium.Platform.osname === "android") ? Titanium.Platform.displayCaps.logicalDensityFactor : 1;
 Alloy.Globals.platformHeight = 0;

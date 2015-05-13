@@ -1,6 +1,7 @@
 
 "#winLanding": {
-	backgroundColor: "#000000"
+	backgroundColor: "#000000",
+	exitOnClose: true
 }
 
 "#vwMain": {

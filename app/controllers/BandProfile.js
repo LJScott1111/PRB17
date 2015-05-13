@@ -57,8 +57,9 @@ nsBandProfile.init = function() {
 	$.ivBandImage.setHeight(Alloy.Globals.platformHeight * 0.30);
 
 	var datetime = Alloy.Globals.getFormattedDate(nsBandProfile.data.showDetails.start_time);
-	
-	$.ivFavouriteStar.selected = false; // TODO: hard coded - need a response from service
+
+	$.ivFavouriteStar.selected = false;
+	// TODO: hard coded - need a response from service
 	if (!$.ivFavouriteStar.selected) {
 		$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
 	} else {
@@ -71,12 +72,12 @@ nsBandProfile.init = function() {
 	$.lblTime.setText(datetime[1]);
 	$.lblVenue.setText(nsBandProfile.data.venueDetails.name);
 	$.lblMoreInfo.setText(nsBandProfile.data.bandDetails.description);
-	
-	if(Titanium.Platform.osname === "android"){
+
+	if (Titanium.Platform.osname === "android") {
 		$.svMain.setHeight(Titanium.UI.SIZE);
-	}else{
-	$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar);
-}
+	} else {
+		$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar);
+	}
 };
 
 nsBandProfile.init();

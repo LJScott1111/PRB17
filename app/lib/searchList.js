@@ -22,8 +22,6 @@ nsSearchList.createList = function() {
 
 	nsSearchList.vwSearchView.add(sbSearchBar);
 
-	// var contacts = ["Adam", "Andrew", "Boris", "Claus", "Debby", 'Saba', 'Sana', 'Wahhab', 'Zohaib', 'Zzaid', 'Zzxad'];
-
 	var currHeader = "A";
 	var sectionArr = [];
 	var index = [];

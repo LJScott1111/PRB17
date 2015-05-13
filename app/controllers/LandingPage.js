@@ -25,7 +25,7 @@ nsLanding.getBands = function() {
 			console.debug("fetchedData ", fetchedData);
 			if (fetchedData) {
 				Alloy.createController("BandList").getView().open();
-				// $.winIndex.remove(nsIndex.controller);
+				$.winLanding.remove(nsLanding.controller);
 			} else {
 				console.debug("All data did not get downloaded!!!");
 				alert("Some error occured while fetching the details. Please try again");
@@ -43,7 +43,45 @@ nsLanding.getEvents = function() {
 };
 
 nsLanding.getSchedule = function() {
-	// Alloy.createController("UserSchedule").getView().open();
+
+	$.winLanding.add(nsLanding.controller);
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
+
+	if (appdata.details.length === 0) {
+		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+			console.debug("fetchedData ", fetchedData);
+			if (fetchedData) {
+
+				var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+
+					console.debug(JSON.stringify(schedule));
+					Alloy.createController("UserSchedule", schedule).getView().open();
+					$.winLanding.remove(nsLanding.controller);
+
+				}, function(error) {
+					alert("Some error occured. Please try again.");
+					$.winLanding.remove(nsLanding.controller);
+				});
+
+			} else {
+				console.debug("All data did not get downloaded!!!");
+				alert("Some error occured while fetching the details. Please try again");
+				$.winLanding.remove(nsLanding.controller);
+			}
+		});
+	} else {
+		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+
+			console.debug(JSON.stringify(schedule));
+			Alloy.createController("UserSchedule", schedule).getView().open();
+			$.winLanding.remove(nsLanding.controller);
+
+		}, function(error) {
+			alert("Some error occured. Please try again.");
+			$.winLanding.remove(nsLanding.controller);
+		});
+	}
+
 };
 
 nsLanding.getVenues = function() {
@@ -55,7 +93,7 @@ nsLanding.getVenues = function() {
 			console.debug("fetchedData ", fetchedData);
 			if (fetchedData) {
 				Alloy.createController("VenueList").getView().open();
-				// $.winIndex.remove(nsIndex.controller);
+				// $.winLanding.remove(nsLanding.controller);
 			} else {
 				console.debug("All data did not get downloaded!!!");
 				alert("Some error occured while fetching the details. Please try again");
@@ -68,7 +106,6 @@ nsLanding.getVenues = function() {
 };
 
 nsLanding.init = function() {
-	// Alloy.Globals.combinedDetails();
 	nsLanding.controller = new nsLanding.activityControl($.vwMain);
 
 	$.winLanding.addEventListener('android:back', function(e) {

@@ -9,7 +9,7 @@ nsEvents.closeWindow = function() {
 };
 
 nsEvents.getMusic = function() {
-	
+
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
 	if (appdata.details.length === 0) {
@@ -28,8 +28,6 @@ nsEvents.getMusic = function() {
 	} else {
 		Alloy.createController("MusicEvents").getView().open();
 	}
-	
-	// Alloy.createController("MusicEvents").getView().open();
 };
 
 nsEvents.getMovies = function() {
@@ -49,7 +47,6 @@ nsEvents.getArt = function() {
 };
 
 nsEvents.init = function() {
-	// Alloy.Globals.combinedDetails();
 	nsEvents.controller = new nsEvents.activityControl($.vwMain);
 
 	$.winEvents.addEventListener('android:back', function(e) {
@@ -58,7 +55,7 @@ nsEvents.init = function() {
 	});
 
 	$.vwTopYellow.setHeight(Alloy.Globals.platformHeight * 0.0704);
-	
+
 	$.ivMusic.setLeft(10);
 	$.ivMovies.setRight(10);
 	$.ivBowling.setLeft(10);
