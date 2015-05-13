@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.punkrockbowling2015.mobile</id>
     <name>Punk Rock Bowling Mobile</name>
-    <version>1.0.3</version>
+    <version>1.0.5</version>
     <publisher>PRB</publisher>
     <url>http://punkrockbowling.com</url>
     <description>Punk Rock Bowling mobile</description>
@@ -11,7 +11,7 @@
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <statusbar-hidden>false</statusbar-hidden>
-    <statusbar-style>opaque</statusbar-style> 
+    <statusbar-style>opaque</statusbar-style>
     <analytics>false</analytics>
     <guid>912d6693-d5c6-4084-9134-ded88d697d9d</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
