@@ -11,6 +11,11 @@ Alloy.Globals.windowStack = [];
 // iOS NavMenu
 Alloy.Globals.navMenu = null;
 
+//Fb appID
+Alloy.Globals.fbAppID = function(){
+	return 993161744029602;
+};
+
 // iOS - Android Screens UI match base
 Alloy.Globals.densityFactor = (Titanium.Platform.osname === "android") ? Titanium.Platform.displayCaps.logicalDensityFactor : 1;
 Alloy.Globals.platformHeight = 0;
@@ -44,6 +49,12 @@ Alloy.Globals.init = function() {
 		Alloy.Globals.platformHeight = height;
 		Alloy.Globals.platformWidth = width;
 	}
+	
+	// Status bar -iphone - not working 
+	// if(Titanium.Platform.osname === "iphone"){
+		// var statusbar = require("com.widbook.statusbar");
+		// statusbar.show();
+	// }
 };
 Alloy.Globals.init();
 
@@ -54,7 +65,7 @@ Alloy.Globals.theme = {
 		"star_off" : "/images/star_off.png"
 	},
 	"sizes" : {
-		"headerbar" : Alloy.Globals.platformHeight * 0.1056,
+		"headerbar" : Alloy.Globals.platformHeight * 0.0774,
 		"logo" : Alloy.Globals.platformHeight * 0.2112,
 		"landingOptionHeight" : Alloy.Globals.platformHeight * 0.1056,
 		"punkRockHeight" : Alloy.Globals.platformHeight * 0.42,

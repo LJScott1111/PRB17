@@ -1,0 +1,22 @@
+<Alloy>
+	<Window id="winIndex">
+		<Require src="header" screenId="winIndex" onSettings="nsIndex.getSettings"></Require>
+		<View id="vwMain">
+			<View id="vwTopLogin">
+				<View id="vwFbConnect" onClick="nsIndex.connectToFb">
+					<Label id="lblFbConnect" textid="index_lblFbConnect"></Label>
+				</View>
+				<Label id="lblOr" textid="index_lblOr"></Label>
+				<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_EMAIL"></TextField>
+				<TextField id="tfPassword" passwordMask="true" class="tfClass"></TextField>
+				<View id="vwGetIt" onClick="nsIndex.getIt">
+					<Label id="lblGetIt" textid="index_lblGetIt"></Label>
+				</View>
+			</View>
+			<View id="vwBottomView">
+				<ImageView id="ivPoker"></ImageView>
+				<ImageView id="ivLogo"></ImageView>
+			</View>
+		</View>
+	</Window>
+</Alloy>

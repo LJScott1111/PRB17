@@ -6,8 +6,14 @@
 	<string name="index_lblFbConnect">Connect with Facebook</string>
 	<string name="index_lblOr">-or-</string>
 	<string name="index_tfEmail">Email</string>
-	<string name="index_tfPassword">Password</string>
+	<string name="index_tfPassword">Choose Password</string>
 	<string name="index_lblGetIt">Get It!</string>
+	
+	<!-- Login -->
+	<string name="login_lblFbConnect">Login with Facebook</string>
+	<string name="login_lbllogin">Login</string>
+	<string name="login_tfPassword">Password</string>
+	<string name=""></string>
 	
 	<!-- Band Profile -->
 	<string name="bandProfile_lblSoundCloud">Listen</string>
@@ -16,9 +22,5 @@
 	<string name="bandProfile_lblFacebook">Facebook</string>
 	<string name="bandProfile_lblTwitter">Twitter</string>
 	<string name="bandProfile_lblAddBand">ADD</string>
-	
-	<string name=""></string>
-	<string name=""></string>
-	<string name=""></string>
-	
+
 </resources>

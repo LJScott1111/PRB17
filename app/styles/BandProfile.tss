@@ -148,8 +148,28 @@
 	left: 30,
 	height: 25,
 	width: 25,
-	backgroundColor: "#000000",
+	// backgroundColor: "#000000",
 	touchEnabled: false
+}
+
+"#ivSoundCloud": {
+	image: "/images/listen_icon.png"
+}
+
+"#ivYouTube": {
+	image: "/images/utube_icon.png"
+}
+
+"#ivWebsite": {
+	image: "/images/website_icon.png"
+}
+
+"#ivFacebook": {
+	image: "/images/fb_icon.png"
+}
+
+"#ivTwitter": {
+	image: "/images/twitter_icon.png"
 }
 
 ".socialLabelClass": {

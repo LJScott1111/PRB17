@@ -131,7 +131,7 @@ nsVenueProfile.getList = function(source) {
 
 	if (day === "friday") {
 		$.vwDay1.selected = true;
-		$.vwDay1.backgroundColor = "#F1F1F1";
+		$.vwDay1.backgroundColor = "#c0c0c0";
 
 		$.vwDay2.selected = false;
 		$.vwDay2.backgroundColor = "#ffffff";
@@ -147,7 +147,7 @@ nsVenueProfile.getList = function(source) {
 		$.vwDay1.backgroundColor = "#ffffff";
 
 		$.vwDay2.selected = true;
-		$.vwDay2.backgroundColor = "#F1F1F1";
+		$.vwDay2.backgroundColor = "#c0c0c0";
 
 		$.vwDay3.selected = false;
 		$.vwDay3.backgroundColor = "#ffffff";
@@ -163,7 +163,7 @@ nsVenueProfile.getList = function(source) {
 		$.vwDay2.backgroundColor = "#ffffff";
 
 		$.vwDay3.selected = true;
-		$.vwDay3.backgroundColor = "#F1F1F1";
+		$.vwDay3.backgroundColor = "#c0c0c0";
 		
 		$.vwDay4.selected = false;
 		$.vwDay4.backgroundColor = "#ffffff";
@@ -179,7 +179,7 @@ nsVenueProfile.getList = function(source) {
 		$.vwDay3.backgroundColor = "#ffffff";
 		
 		$.vwDay4.selected = true;
-		$.vwDay4.backgroundColor = "#F1F1F1";
+		$.vwDay4.backgroundColor = "#c0c0c0";
 	}
 
 	// Get list

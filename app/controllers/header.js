@@ -6,16 +6,13 @@ nsHeader.closeWindow = function() {
 };
 
 nsHeader.getSettings = function() {
-	alert("Coming Soon!");
+	$.trigger("settings");
 };
 
 nsHeader.init = function(){
-	if(nsHeader.args.screenId === "winIndex"){
+	if(nsHeader.args.screenId === "winIndex" || nsHeader.args.screenId === "winLanding"){
 		$.ivBack.setHeight(0);
 		$.ivBack.setVisible(false);
-		
-		$.ivSettings.setHeight(0);
-		$.ivSettings.setVisible(false);
 	}
 };
 

@@ -1,8 +1,6 @@
-
-"#winLanding": {
+"#winIndex": {
 	backgroundColor: "#000000",
-	exitOnClose: true,
-	fullscreen: false
+	modal: true
 }
 
 "#vwMain": {
@@ -12,16 +10,7 @@
 	width: Titanium.UI.FILL
 }
 
-".optionClass": {
-	height: Alloy.Globals.theme.sizes.landingOptionHeight,
-	width: Titanium.UI.SIZE,
-	// backgroundColor: "#ffffff",
-	top: 0,
-	// borderRadius: 10
-	// borderColor: "yellow"
-}
-
-"#vwTopOptions": {
+"#vwTopLogin": {
 	top: 0,
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
@@ -29,21 +18,54 @@
 	zIndex: 99
 }
 
-"#ivBands": {
+"#vwFbConnect": {
 	top: 10,
-	image:"/icons/bands.png"
+	backgroundColor: "#4BA5FF",
+	width: "90%"
 }
 
-"#ivEvents": {
-	image:"/icons/events.png"
+"#lblFbConnect": {
+	color: "#ffffff",
+	touchEnabled: false,
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
+	}
 }
 
-"#ivSchedule": {
-	image:"/icons/schedule.png"
+"#lblOr": {
+	color: "#ffffff",
+	bottom: 10,
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
+	}
 }
 
-"#ivVenues": {
-	image:"/icons/venues.png"
+".tfClass": {
+	top: 10,
+	backgroundColor: "#ffffff",
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	color: "#000000",
+	height: 40,
+	width: "90%",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
+	}
+}
+
+"#vwGetIt": {
+	top: 15,
+	right: 20,
+	height: 40,
+	width: "30%",
+	backgroundColor: "#ffffff",
+	borderRadius: 10
+}
+
+"#lblGetIt": {
+	color: "#000000",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
+	}
 }
 
 "#vwBottomView": {
@@ -62,6 +84,7 @@
 	// height: Alloy.Globals.theme.sizes.punkRockHeight,
 	height: Titanium.UI.SIZE,
 	width: Alloy.Globals.theme.sizes.punckRockWidth
+	
 }
 
 "#ivLogo": {

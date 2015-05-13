@@ -68,6 +68,19 @@ nsServerCalls.logout = function(onloadCallback, errorCallback) {
 
 exports.logout = nsServerCalls.logout;
 
+// User Login with fb
+nsServerCalls.fbLogin = function(onloadCallback, errorCallback) {
+	Kinvey.Social.connect(null, 'facebook', {
+    appId   : Alloy.Globals.fbAppID(),
+    success : function(response) {
+    	onloadCallback(response);
+    }
+});
+};
+
+exports.fbLogin = nsServerCalls.fbLogin;
+
+
 // Get band list
 nsServerCalls.getBandList = function(onloadCallback, errorCallback) {
 	var promise = Kinvey.DataStore.find('bands', null);

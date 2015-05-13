@@ -14,8 +14,9 @@
 
 "#ivSettings": {
 	right: 10,
-	height: 0,
-	width: 0,
-	backgroundColor: "#ffffff",
-	visible: false
+	height: 30,
+	width: 30,
+	// backgroundColor: "#ffffff",
+	// visible: false,
+	image: "/images/settings.png"
 }

@@ -6,7 +6,7 @@ nsSearchList.vwSearchView = null;
 nsSearchList.createList = function() {
 
 	var sbSearchBar = Titanium.UI.createSearchBar({
-		barColor : '#000000',
+		barColor : '#FFD801',
 		backgroundColor : "#ffffff",
 		showCancel : false,
 		hintText : "Search",
@@ -154,7 +154,8 @@ nsSearchList.createList = function() {
 		filterCaseInsensitive : true,
 		// borderColor: "red",
 		// search : sbSearchBar,
-		searchHidden: true
+		searchHidden: true,
+		backgroundColor: "#ffffff"
 	});
 
 	table.setData(sectionArr);
@@ -179,7 +180,7 @@ nsSearchList.init = function(type, data) {
 		height : "100%",
 		width : Titanium.UI.FILL,
 		top : 10,
-		backgroundColor : "#ffffff"
+		backgroundColor : "#FFD801"
 	});
 
 	var vwList = nsSearchList.createList();
