@@ -1,5 +1,6 @@
 "#winLogin": {
-	backgroundColor: "#000000"
+	backgroundColor: "#000000",
+	modal: true
 }
 
 "#vwMain": {

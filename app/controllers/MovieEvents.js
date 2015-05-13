@@ -1,10 +1,12 @@
 var nsMovieEvents = {};
 
 nsMovieEvents.closeWindow = function() {
+	Alloy.Globals.windowStack.pop();
 	$.winMovieEvents.close();
 };
 
 nsMovieEvents.init = function() {
+	Alloy.Globals.windowStack.push($.winMovieEvents);
 
 	$.winMovieEvents.addEventListener('android:back', function(e) {
 		console.debug("Pressing Back Will Not Close The Activity/Window");

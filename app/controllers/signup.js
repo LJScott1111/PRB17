@@ -79,8 +79,8 @@ nsIndex.connectToFb = function() {
 					console.debug("Go to next screen!");
 					var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 						console.debug("fetchedData ", fetchedData);
-						Alloy.createController("LandingPage").getView().open();
 						$.winIndex.remove(nsIndex.controller);
+						nsIndex.closeWindow();
 					});
 				});
 
@@ -125,7 +125,7 @@ nsIndex.getIt = function() {
 		};
 
 		$.winIndex.add(nsIndex.controller);
-		var signupService = new nsIndex.serviceCalls.login(tfEmail, tfPass, this.onloadCallback, this.onerrorCallback);
+		var signupService = new nsIndex.serviceCalls.signup(tfEmail, tfPass, this.onloadCallback, this.onerrorCallback);
 
 	} else {
 		alert("Please enter correct details");
@@ -155,7 +155,7 @@ nsIndex.userCheck = function() {
 nsIndex.init = function() {
 	console.debug("Hello Signup");
 	
-	Alloy.Globals.windowStack.push($.winIndex);
+	// Alloy.Globals.windowStack.push($.winIndex);
 
 	// NOT WORKING : TODO
 	var user = null;

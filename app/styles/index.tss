@@ -57,6 +57,7 @@
 
 "#ivNews":{
 	// height: Alloy.Globals.theme.sizes.landingOptionHeight,
+	top: 30,
 	right: 2,
 	width: Titanium.UI.SIZE,
 	image: "/icons/news.png"

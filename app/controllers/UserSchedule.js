@@ -4,6 +4,7 @@ nsUserSchedule.args = arguments[0];
 nsUserSchedule.momentjs = require('moment');
 
 nsUserSchedule.closeWindow = function() {
+	Alloy.Globals.windowStack.pop();
 	$.winUserSchedule.close();
 };
 
@@ -160,7 +161,7 @@ nsUserSchedule.getList = function(source) {
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	console.debug("day ", day);
 
-	day = "tuesday";
+	// day = "tuesday";
 
 	console.debug("day ", day);
 
@@ -230,6 +231,7 @@ nsUserSchedule.getShows = function() {
 };
 
 nsUserSchedule.init = function() {
+	Alloy.Globals.windowStack.push($.winUserSchedule);
 
 	$.winUserSchedule.addEventListener('android:back', function(e) {
 		console.debug("Pressing Back Will Not Close The Activity/Window");

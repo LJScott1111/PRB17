@@ -5,7 +5,8 @@ nsLogin.activityControl = require("activityControl");
 nsLogin.controller = null;
 
 nsLogin.closeWindow = function() {
-	Alloy.Globals.windowStack.pop();
+	// Alloy.Globals.windowStack.pop();
+	Alloy.createController("signup").getView().open();
 	$.winLogin.close();
 };
 
@@ -54,8 +55,10 @@ nsLogin.login = function() {
 			console.debug("Go to next screen!");
 			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 				console.debug("fetchedData ", fetchedData);
-				Alloy.createController("LandingPage").getView().open();
+				// Alloy.createController("LandingPage").getView().open();
 				$.winLogin.remove(nsLogin.controller);
+				Alloy.Globals.windowStack.pop();
+				$.winLogin.close();
 			});
 		};
 
@@ -76,29 +79,29 @@ nsLogin.login = function() {
 };
 
 nsLogin.init = function() {
-	Alloy.Globals.windowStack.push($.winLogin);
+	// Alloy.Globals.windowStack.push($.winLogin);
 
 	// NOT WORKING : TODO
-	var user = null;
-	try {
-		// To fetch the active user
-		user = Kinvey.getActiveUser();
-		var promise = Kinvey.User.me();
-		promise.then(function(user1) {
-			console.log("Hello User" + JSON.stringify(user1));
-		}, function(error) {
-			console.log("No user");
-		});
-		console.debug("Active User: ", JSON.stringify(user));
+	// var user = null;
+	// try {
+		// // To fetch the active user
+		// user = Kinvey.getActiveUser();
+		// var promise = Kinvey.User.me();
+		// promise.then(function(user1) {
+			// console.log("Hello User" + JSON.stringify(user1));
+		// }, function(error) {
+			// console.log("No user");
+		// });
+		// console.debug("Active User: ", JSON.stringify(user));
+// 
+	// } catch(e) {
+		// user = null;
+		// // var logout = new nsLogin.serviceCalls.logout();
+		// console.debug("Kinvey user exception ", JSON.stringify(e));
+	// }
+	// console.debug("-- User: ", JSON.stringify(user));
 
-	} catch(e) {
-		user = null;
-		// var logout = new nsLogin.serviceCalls.logout();
-		console.debug("Kinvey user exception ", JSON.stringify(e));
-	}
-	console.debug("-- User: ", JSON.stringify(user));
-
-	if (user === null) {
+	// if (user === null) {
 		// Setting blank object
 		Titanium.App.Properties.setObject('appdata', Alloy.Globals.appData);
 
@@ -111,12 +114,13 @@ nsLogin.init = function() {
 		$.tfEmail.setHintText(L('index_tfEmail'));
 		$.tfPassword.setHintText(L('login_tfPassword'));
 
-		$.winLogin.open();
-	} else {
-		setTimeout(function() {
-			Alloy.createController("LandingPage").getView().open();
-		}, 2000);
-	}
+		// $.winLogin.open();
+	// } 
+	// else {
+		// setTimeout(function() {
+			// Alloy.createController("LandingPage").getView().open();
+		// }, 2000);
+	// }
 
 };
 

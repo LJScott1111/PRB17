@@ -1,6 +1,7 @@
 var nsMusicEvents = {};
 
 nsMusicEvents.closeWindow = function() {
+	Alloy.Globals.windowStack.pop();
 	$.winMusicEvents.close();
 };
 
@@ -55,6 +56,7 @@ nsMusicEvents.createShowList = function() {
 };
 
 nsMusicEvents.init = function() {
+	Alloy.Globals.windowStack.push($.winMusicEvents);
 
 	$.winMusicEvents.addEventListener('android:back', function(e) {
 		console.debug("Pressing Back Will Not Close The Activity/Window");

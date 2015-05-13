@@ -5,6 +5,7 @@ nsEvents.activityControl = require("activityControl");
 nsEvents.controller = null;
 
 nsEvents.closeWindow = function() {
+	Alloy.Globals.windowStack.pop();
 	$.winEvents.close();
 };
 
@@ -47,6 +48,7 @@ nsEvents.getArt = function() {
 };
 
 nsEvents.init = function() {
+	Alloy.Globals.windowStack.push($.winEvents);
 	nsEvents.controller = new nsEvents.activityControl($.vwMain);
 
 	$.winEvents.addEventListener('android:back', function(e) {

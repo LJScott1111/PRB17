@@ -4,6 +4,7 @@ nsVenueProfile.args = arguments[0];
 nsVenueProfile.momentjs = require('moment');
 
 nsVenueProfile.closeWindow = function() {
+	Alloy.Globals.windowStack.pop();
 	$.winVenueProfile.close();
 };
 
@@ -212,6 +213,7 @@ nsVenueProfile.getList = function(source) {
 };
 
 nsVenueProfile.init = function() {
+	Alloy.Globals.windowStack.push($.winVenueProfile);
 
 	console.debug("VenueProfile ", JSON.stringify(nsVenueProfile.args));
 

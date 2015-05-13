@@ -6,6 +6,7 @@ nsBandProfile.data = null;
 nsBandProfile.serverCalls = require('serverCalls');
 
 nsBandProfile.closeWindow = function() {
+	Alloy.Globals.windowStack.pop();
 	$.winBandProfile.close();
 };
 
@@ -47,6 +48,8 @@ nsBandProfile.doSocialActivity = function(e) {
 };
 
 nsBandProfile.init = function() {
+	Alloy.Globals.windowStack.push($.winBandProfile);
+	
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {

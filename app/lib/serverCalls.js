@@ -63,8 +63,10 @@ nsServerCalls.logout = function(onloadCallback, errorCallback) {
 		var promise = Kinvey.User.logout();
 		promise.then(function() {
 			console.debug("Logout Success");
+			onloadCallback();
 		}, function(error) {
 			console.debug("Logout Error");
+			errorCallback(error);
 		});
 	}
 };
