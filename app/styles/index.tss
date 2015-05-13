@@ -5,6 +5,13 @@
 	fullscreen: false
 }
 
+"#navWin": {
+	backgroundColor: '#000000',
+	includeOpaqueBars: true,
+	translucent: false,
+	titleImage: "/icons/navbar1.png"
+}
+
 "#vwMain": {
 	top: Alloy.Globals.theme.sizes.headerbar,
 	// layout: "vertical",

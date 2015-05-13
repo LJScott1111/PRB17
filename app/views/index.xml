@@ -1,5 +1,21 @@
 <Alloy>
-	<Window id="winLanding">
+	<NavigationWindow id="navWin" platform="ios">
+		<Window id="winLanding">
+			<View id="vwMain">
+				<View id="vwTopOptions">
+					<ImageView id="ivBands" class="optionClass" onClick="nsLanding.getBands"></ImageView>
+					<ImageView id="ivEvents" class="optionClass" onClick="nsLanding.getEvents"></ImageView>
+					<ImageView id="ivSchedule" class="optionClass" onClick="nsLanding.getSchedule"></ImageView>
+					<ImageView id="ivVenues" class="optionClass" onClick="nsLanding.getVenues"></ImageView>
+				</View>
+				<View id="vwBottomView">
+					<ImageView id="ivPoker"></ImageView>
+					<ImageView id="ivLogo"></ImageView>
+				</View>
+			</View>
+		</Window>
+	</NavigationWindow>
+	<Window id="winLanding" platform="android">
 		<Require src="header" screenId="winLanding" onBackButtonClick="nsLanding.closeWindow" onSetting="nsLanding.getSettings"></Require>
 		<View id="vwMain">
 			<View id="vwTopOptions">

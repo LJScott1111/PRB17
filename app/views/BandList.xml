@@ -1,6 +1,10 @@
 <Alloy>
-	<Window id="winBandList">
-		<Require src="header" screenId="winBandList" onBackButtonClick="nsBandList.closeWindow" onSetting="nsBandList.getSettings"></Require>
+	<Window id="winBandList" platform="ios">
+		<View id="vwMain">
+		</View>
+	</Window>
+	<Window id="winBandList" platform="android">
+		<Require platform="android" src="header" screenId="winBandList" onBackButtonClick="nsBandList.closeWindow" onSetting="nsBandList.getSettings"></Require>
 		<View id="vwMain">
 		</View>
 	</Window>

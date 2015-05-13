@@ -1,4 +1,5 @@
 var nsLanding = {};
+Alloy.Globals.navWin = $.navWin;
 nsLanding.serviceCalls = require("serverCalls");
 
 nsLanding.activityControl = require("activityControl");
@@ -7,16 +8,16 @@ nsLanding.controller = null;
 nsLanding.closeWindow = function() {
 
 	// if (Titanium.Platform.osname === "android") {
-		// var activity = Titanium.Android.currentActivity;
-		// activity.finish();
+	// var activity = Titanium.Android.currentActivity;
+	// activity.finish();
 	// } else {
 
-		$.winLanding.close();
-		// if (Alloy.Globals.windowStack.length > 0) {
-			// Alloy.Globals.windowStack[0].close();
-			// Alloy.Globals.windowStack.pop();
-			// // Closing Index - temp solution - need to login check (Service not working to check if user is already logged in) - TODO
-		// }
+	$.winLanding.close();
+	// if (Alloy.Globals.windowStack.length > 0) {
+	// Alloy.Globals.windowStack[0].close();
+	// Alloy.Globals.windowStack.pop();
+	// // Closing Index - temp solution - need to login check (Service not working to check if user is already logged in) - TODO
+	// }
 	// }
 };
 
@@ -31,7 +32,11 @@ nsLanding.getBands = function() {
 		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 			console.debug("fetchedData ", fetchedData);
 			if (fetchedData) {
-				Alloy.createController("BandList").getView().open();
+				if (Titanium.Platform.osname === "android") {
+					Alloy.createController("BandList").getView().open();
+				} else {
+					$.navWin.openWindow(Alloy.createController("BandList").getView());
+				}
 				$.winLanding.remove(nsLanding.controller);
 			} else {
 				console.debug("All data did not get downloaded!!!");
@@ -41,7 +46,13 @@ nsLanding.getBands = function() {
 		});
 
 	} else {
-		Alloy.createController("BandList").getView().open();
+		console.log('Opening bands');
+		if (Titanium.Platform.osname === "android") {
+			Alloy.createController("BandList").getView().open();
+		} else {
+			console.log('Nav open');
+			$.navWin.openWindow(Alloy.createController("BandList").getView());
+		}
 	}
 };
 
@@ -124,9 +135,14 @@ nsLanding.init = function() {
 	$.ivEvents.setRight(10);
 	$.ivSchedule.setLeft(10);
 	$.ivVenues.setRight(10);
-	
-	$.winLanding.open();
-	
+
+	if (Titanium.Platform.osname === "android") {
+		$.winLanding.open();
+	} else {
+		$.navWin.open();
+	}
+
+	// TODO: Check if user exists, already logged in, dont need to show this.
 	Alloy.createController("Signup").getView().open();
 };
 
