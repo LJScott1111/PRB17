@@ -9,6 +9,8 @@ nsServerCalls.signup = function(username, password, onloadCallback, errorCallbac
 	});
 	promise.then(function(user) {
 		console.debug("Signup success - user ", JSON.stringify(user));
+		
+		Titanium.App.Properties.setString('userid', user._id);
 
 		var thisUser = Kinvey.setActiveUser(user);
 		// var promise = Kinvey.User.me();
@@ -39,6 +41,7 @@ nsServerCalls.login = function(username, password, onloadCallback, errorCallback
 	});
 	promise.then(function(user) {
 		console.debug("Login success - user ", JSON.stringify(user));
+		Titanium.App.Properties.setString('userid', user._id);
 
 		var thisUser = Kinvey.setActiveUser(user);
 		console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
@@ -71,15 +74,14 @@ exports.logout = nsServerCalls.logout;
 // User Login with fb
 nsServerCalls.fbLogin = function(onloadCallback, errorCallback) {
 	Kinvey.Social.connect(null, 'facebook', {
-    appId   : Alloy.Globals.fbAppID(),
-    success : function(response) {
-    	onloadCallback(response);
-    }
-});
+		appId : Alloy.Globals.fbAppID(),
+		success : function(response) {
+			onloadCallback(response);
+		}
+	});
 };
 
 exports.fbLogin = nsServerCalls.fbLogin;
-
 
 // Get band list
 nsServerCalls.getBandList = function(onloadCallback, errorCallback) {
@@ -148,3 +150,19 @@ nsServerCalls.getUserSchedule = function(onloadCallback, errorCallback) {
 };
 
 exports.getUserSchedule = nsServerCalls.getUserSchedule;
+
+//Saving a User schedule
+nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback) {
+	var promise = Kinvey.DataStore.save('user-schedules', {
+		// _id : 'optional-id',
+		"user_id" : Titanium.App.Properties.getString('userid'),
+		"show_id" : show_id,
+	});
+	promise.then(function(entity) {
+		onloadCallback(entity);
+	}, function(error) {
+		errorCallback(error);
+	});
+};
+
+exports.saveUserSchedule = nsServerCalls.saveUserSchedule;

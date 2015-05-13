@@ -13,7 +13,7 @@ nsMovieEvents.init = function() {
 	
 	// $.ivMovieImage.setImage("http://postimg.org/image/jzj62plln/");
 	
-	$.wvMovieImage.setUrl("http://postimg.org/image/jzj62plln/");
+	$.wvMovieImage.setUrl("http://www.punkrockbowling.com/pool-parties/");
 
 };
 

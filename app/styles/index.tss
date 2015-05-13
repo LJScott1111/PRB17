@@ -23,9 +23,7 @@
 	height: Alloy.Globals.theme.sizes.landingOptionHeight,
 	width: Titanium.UI.SIZE,
 	// backgroundColor: "#ffffff",
-	top: 0,
-	// borderRadius: 10
-	// borderColor: "yellow"
+	top: 0
 }
 
 "#vwTopOptions": {
@@ -38,28 +36,37 @@
 
 "#ivBands": {
 	top: 10,
-	image:"/icons/bands.png"
+	left: 10,
+	image: "/icons/bands.png"
 }
 
 "#ivEvents": {
-	image:"/icons/events.png"
+	right: 10,
+	image: "/icons/events.png"
 }
 
 "#ivSchedule": {
-	image:"/icons/schedule.png"
+	left: 10,
+	image: "/icons/schedule.png"
 }
 
 "#ivVenues": {
-	image:"/icons/venues.png"
+	right: 10,
+	image: "/icons/venues.png"
+}
+
+"#ivNews":{
+	// height: Alloy.Globals.theme.sizes.landingOptionHeight,
+	right: 2,
+	width: Titanium.UI.SIZE,
+	image: "/icons/news.png"
 }
 
 "#vwBottomView": {
 	// top: 0,
 	bottom: 0,
 	height: Titanium.UI.SIZE,
-	width: Titanium.UI.FILL,
-	// borderColor: "yellow",
-	// zIndex: 99
+	width: Titanium.UI.FILL
 }
 
 "#ivPoker": {

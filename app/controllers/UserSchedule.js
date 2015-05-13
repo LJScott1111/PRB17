@@ -68,7 +68,7 @@ nsUserSchedule.createList = function(shows) {
 
 			var lblTime = Titanium.UI.createLabel({
 				right : 15,
-				text : time +"\n"+shows[i].venueDetails.name,
+				text : time + "\n" + shows[i].venueDetails.name,
 				color : "#000000",
 				font : {
 					fontSize : Alloy.Globals.theme.fonts.size20Fonts,
@@ -77,34 +77,6 @@ nsUserSchedule.createList = function(shows) {
 			});
 
 			vwRowView.add(lblTime);
-
-			/*
-			 var ivFavouriteStar = Titanium.UI.createImageView({
-			 right : 10,
-			 height : 40,
-			 width : 40,
-			 id : "ivFavouriteStar",
-			 // backgroundColor : "#000000",
-			 selected : false
-			 });
-
-			 if (!ivFavouriteStar.selected) {
-			 ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
-			 } else {
-			 ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
-			 }
-
-			 ivFavouriteStar.addEventListener('click', function(e) {
-			 if (!e.source.selected) {
-			 e.source.setImage(Alloy.Globals.theme.icons.star);
-			 } else {
-			 e.source.setImage(Alloy.Globals.theme.icons.star_off);
-			 }
-			 e.source.selected = !e.source.selected;
-			 });
-
-			 vwRowView.add(ivFavouriteStar);
-			 */
 
 			row.add(vwRowView);
 			tabledata.push(row);
@@ -188,7 +160,7 @@ nsUserSchedule.getList = function(source) {
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	console.debug("day ", day);
 
-	// day = "tuesday";
+	day = "tuesday";
 
 	console.debug("day ", day);
 
@@ -201,12 +173,10 @@ nsUserSchedule.getList = function(source) {
 	    len = appdata.details.length; i < len; i++) {
 
 		dayOfShow = nsUserSchedule.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
-
 		console.debug("dayOfShow ", dayOfShow);
-
 		if (day === dayOfShow) {
 			for (var j = 0,
-			    len = nsUserSchedule.args.length; j < len; j++) {
+			    len2 = nsUserSchedule.args.length; j < len2; j++) {
 
 				console.log(appdata.details[i].showDetails._id, " ", nsUserSchedule.args[j].show_id);
 
@@ -214,9 +184,7 @@ nsUserSchedule.getList = function(source) {
 					shows.push(appdata.details[i]);
 				}
 			}
-
 		}
-
 	}
 	console.debug(JSON.stringify(shows));
 
@@ -224,7 +192,45 @@ nsUserSchedule.getList = function(source) {
 	nsUserSchedule.createList(shows);
 };
 
+nsUserSchedule.getShows = function() {
+	var shows = [];
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	for (var i = 0,
+	    len = appdata.details.length; i < len; i++) {
+
+		dayOfShow = nsUserSchedule.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
+		console.debug("dayOfShow ", dayOfShow);
+		for (var j = 0,
+		    len2 = nsUserSchedule.args.length; j < len2; j++) {
+
+			console.log(appdata.details[i].showDetails._id, " ", nsUserSchedule.args[j].show_id);
+
+			if (nsUserSchedule.args[j].show_id === appdata.details[i].showDetails._id) {
+				console.log(nsUserSchedule.args[j].show_id === appdata.details[i].showDetails._id);
+				shows.push(appdata.details[i]);
+				console.debug(JSON.stringify(shows));
+				console.debug(i, " ", j);
+			}
+		}
+		console.log("1", " ",i);
+	}
+	
+	console.log("User shows " +shows.length +JSON.stringify(shows));
+
+	// if (shows.length === 0) {
+		// $.lblNoSchedule.setText("press the star next to band name you want to see to create your own custom schedule.");
+		// $.vwMain.setHeight(0);
+		// $.vwMain.setVisible(false);
+	// } else {
+		// $.vwNoSchedule.setHeight(0);
+		// $.vwNoSchedule.setVisible(false);
+	// }
+
+	return shows.length;
+};
+
 nsUserSchedule.init = function() {
+
 	$.winUserSchedule.addEventListener('android:back', function(e) {
 		console.debug("Pressing Back Will Not Close The Activity/Window");
 		nsUserSchedule.closeWindow();
@@ -232,40 +238,54 @@ nsUserSchedule.init = function() {
 
 	console.debug("User schedule: ", JSON.stringify(nsUserSchedule.args));
 
-	// Setting width of days
-	$.vwDays2.setWidth(Alloy.Globals.platformWidth / 2);
+	var shows = nsUserSchedule.getShows();
+	console.debug("SHOWS LENGTH ", shows);
 
-	var vwDaysWidth = Alloy.Globals.platformWidth / 4.15;
-	$.vwDay1.setWidth(vwDaysWidth);
-	$.vwDay1.setLeft(2);
+	if (shows > 0) {
+		
+		$.vwNoSchedule.setHeight(0);
+		$.vwNoSchedule.setVisible(false);
 
-	$.vwDay2.setWidth(vwDaysWidth);
-	$.vwDay2.setLeft(2);
+		// Setting width of days
+		$.vwDays2.setWidth(Alloy.Globals.platformWidth / 2);
 
-	$.vwDay3.setWidth(vwDaysWidth);
-	$.vwDay3.setRight(2);
+		var vwDaysWidth = Alloy.Globals.platformWidth / 4.15;
+		$.vwDay1.setWidth(vwDaysWidth);
+		$.vwDay1.setLeft(2);
 
-	$.vwDay4.setWidth(vwDaysWidth);
-	$.vwDay4.setRight(2);
+		$.vwDay2.setWidth(vwDaysWidth);
+		$.vwDay2.setLeft(2);
 
-	// Event listeners for show views
-	$.vwDay1.addEventListener('click', function(e) {
-		nsUserSchedule.getList(e.source);
-	});
+		$.vwDay3.setWidth(vwDaysWidth);
+		$.vwDay3.setRight(2);
 
-	$.vwDay2.addEventListener('click', function(e) {
-		nsUserSchedule.getList(e.source);
-	});
+		$.vwDay4.setWidth(vwDaysWidth);
+		$.vwDay4.setRight(2);
 
-	$.vwDay3.addEventListener('click', function(e) {
-		nsUserSchedule.getList(e.source);
-	});
+		// Event listeners for show views
+		$.vwDay1.addEventListener('click', function(e) {
+			nsUserSchedule.getList(e.source);
+		});
 
-	$.vwDay4.addEventListener('click', function(e) {
-		nsUserSchedule.getList(e.source);
-	});
+		$.vwDay2.addEventListener('click', function(e) {
+			nsUserSchedule.getList(e.source);
+		});
 
-	nsUserSchedule.getList($.vwDay1);
+		$.vwDay3.addEventListener('click', function(e) {
+			nsUserSchedule.getList(e.source);
+		});
+
+		$.vwDay4.addEventListener('click', function(e) {
+			nsUserSchedule.getList(e.source);
+		});
+
+		nsUserSchedule.getList($.vwDay1);
+
+	} else {
+		$.lblNoSchedule.setText("press the star next to band name you want to see to create your own custom schedule.");
+		$.vwMain.setHeight(0);
+		$.vwMain.setVisible(false);
+	}
 };
 
 nsUserSchedule.init();

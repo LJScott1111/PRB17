@@ -153,6 +153,8 @@ nsIndex.userCheck = function() {
 };
 
 nsIndex.init = function() {
+	console.debug("Hello Signup");
+	
 	Alloy.Globals.windowStack.push($.winIndex);
 
 	// NOT WORKING : TODO

@@ -54,7 +54,7 @@ nsEvents.init = function() {
 		nsEvents.closeWindow();
 	});
 
-	$.vwTopYellow.setHeight(Alloy.Globals.platformHeight * 0.0704);
+	// $.vwTopYellow.setHeight(Alloy.Globals.platformHeight * 0.0704);
 
 	$.ivMusic.setLeft(10);
 	$.ivMovies.setRight(10);

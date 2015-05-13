@@ -123,6 +123,10 @@ nsLanding.getVenues = function() {
 	}
 };
 
+nsLanding.getNews = function() {
+
+};
+
 nsLanding.init = function() {
 	nsLanding.controller = new nsLanding.activityControl($.vwMain);
 
@@ -131,19 +135,30 @@ nsLanding.init = function() {
 		nsLanding.closeWindow();
 	});
 
-	$.ivBands.setLeft(10);
-	$.ivEvents.setRight(10);
-	$.ivSchedule.setLeft(10);
-	$.ivVenues.setRight(10);
+	$.ivNews.setHeight(Alloy.Globals.platformHeight * 0.0774);
 
-	if (Titanium.Platform.osname === "android") {
+	// $.winLanding.open();
+
+	Alloy.Globals.checkUser(function(user) {
+		console.debug("Alloy.Globals.checkUser user - " + user);
+		// $.winLanding.open();
+		if (Titanium.Platform.osname === "android") {
+			$.winLanding.open();
+		} else {
+			$.navWin.open();
+		}
+		if (user === null) {
+			Alloy.createController("Signup").getView().open();
+		};
+	}, function(error) {
+		console.debug("Alloy.Globals.checkUser - error - " - error);
 		$.winLanding.open();
-	} else {
-		$.navWin.open();
-	}
+		Alloy.createController("Signup").getView().open();
+	});
 
-	// TODO: Check if user exists, already logged in, dont need to show this.
-	Alloy.createController("Signup").getView().open();
+	// $.winLanding.open();
+	// Alloy.createController("Signup").getView().open();
+
 };
 
 nsLanding.init();

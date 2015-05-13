@@ -17,12 +17,12 @@
 	top: 0
 }
 
-"#vwTopYellow": {
-	width: Titanium.UI.FILL,
-	// height: Alloy.Globals.theme.sizes.headerbar,
-	top: 0,
-	backgroundColor: "#FFD801"
-}
+// "#vwTopYellow": {
+	// width: Titanium.UI.FILL,
+	// // height: Alloy.Globals.theme.sizes.headerbar,
+	// top: 0,
+	// backgroundColor: "#FFD801"
+// }
 
 "#vwTopOptions": {
 	top: 0,
@@ -38,7 +38,7 @@
 }
 
 "#ivMovies": {
-	image: "/icons/movies.png"
+	image: "/icons/parties.png"
 }
 
 "#ivBowling": {

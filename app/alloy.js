@@ -1,9 +1,30 @@
 // Kinvey credentials
 var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.3.1');
-Kinvey.init({
-	appKey : 'kid_b1vnajEDkl',
-	appSecret : '10609ec172544ae6b75923af98bfab95'
-});
+Alloy.Globals.checkUser = function(callback, errorCallback) {
+	var promise = Kinvey.init({
+		appKey : 'kid_b1vnajEDkl',
+		appSecret : '10609ec172544ae6b75923af98bfab95'
+	});
+
+	// var loggedIn = false;
+	promise.then(function(user) {
+		//check user here
+		console.log("USER!! ", JSON.stringify(user));
+		if (user !== null) {
+			console.log("User not nulll ");
+			Titanium.App.Properties.setString('userid', user._id);
+		} else {
+			Titanium.App.Properties.setString('userid', null);
+		}
+		// loggedIn = true;
+		callback(user);
+	}, function(error) {
+		console.log("NO USER!!");
+		// loggedIn = false;
+		errorCallback(error);
+	});
+	// return loggedIn;
+};
 
 // To close the index screen after login
 Alloy.Globals.windowStack = [];
@@ -12,7 +33,7 @@ Alloy.Globals.windowStack = [];
 Alloy.Globals.navMenu = null;
 
 //Fb appID
-Alloy.Globals.fbAppID = function(){
+Alloy.Globals.fbAppID = function() {
 	return 993161744029602;
 };
 
@@ -49,11 +70,11 @@ Alloy.Globals.init = function() {
 		Alloy.Globals.platformHeight = height;
 		Alloy.Globals.platformWidth = width;
 	}
-	
-	// Status bar -iphone - not working 
+
+	// Status bar -iphone - not working
 	// if(Titanium.Platform.osname === "iphone"){
-		// var statusbar = require("com.widbook.statusbar");
-		// statusbar.show();
+	// var statusbar = require("com.widbook.statusbar");
+	// statusbar.show();
 	// }
 };
 Alloy.Globals.init();

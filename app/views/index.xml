@@ -10,6 +10,7 @@
 				</View>
 				<View id="vwBottomView">
 					<ImageView id="ivPoker"></ImageView>
+					<ImageView id="ivNews" class="optionClass" onClick="nsLanding.getNews"></ImageView>
 					<ImageView id="ivLogo"></ImageView>
 				</View>
 			</View>
@@ -26,6 +27,7 @@
 			</View>
 			<View id="vwBottomView">
 				<ImageView id="ivPoker"></ImageView>
+				<ImageView id="ivNews" class="optionClass" onClick="nsLanding.getNews"></ImageView>
 				<ImageView id="ivLogo"></ImageView>
 			</View>
 		</View>

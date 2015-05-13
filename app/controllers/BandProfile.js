@@ -3,6 +3,8 @@ var nsBandProfile = {};
 nsBandProfile.args = arguments[0];
 nsBandProfile.data = null;
 
+nsBandProfile.serverCalls = require('serverCalls');
+
 nsBandProfile.closeWindow = function() {
 	$.winBandProfile.close();
 };
@@ -13,10 +15,19 @@ nsBandProfile.getSettings = function() {
 nsBandProfile.markFavourite = function(e) {
 	// TODO: service call to add favourite
 	if (!e.source.selected) {
-		e.source.setImage(Alloy.Globals.theme.icons.star);
-	} else {
-		e.source.setImage(Alloy.Globals.theme.icons.star_off);
+
+		var show_id = nsBandProfile.data.showDetails._id;
+		var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
+			console.debug("success --- ", JSON.stringify(response));
+			e.source.setImage(Alloy.Globals.theme.icons.star);
+		}, function(error) {
+			alert("Some error occured");
+		});
 	}
+
+	// else {
+	// e.source.setImage(Alloy.Globals.theme.icons.star_off);
+	// }
 	e.source.selected = !e.source.selected;
 };
 
@@ -58,13 +69,13 @@ nsBandProfile.init = function() {
 
 	var datetime = Alloy.Globals.getFormattedDate(nsBandProfile.data.showDetails.start_time);
 
-	$.ivFavouriteStar.selected = false;
+	// $.ivFavouriteStar.selected = false;
 	// TODO: hard coded - need a response from service
-	if (!$.ivFavouriteStar.selected) {
-		$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
-	} else {
-		$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
-	}
+	// if (!$.ivFavouriteStar.selected) {
+	$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
+	// } else {
+	// $.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
+	// }
 
 	$.lblBandName.setText(nsBandProfile.data.bandDetails.name);
 	$.ivBandImage.setImage(nsBandProfile.data.bandDetails.image_link);

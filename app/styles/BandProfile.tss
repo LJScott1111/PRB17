@@ -69,7 +69,7 @@
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	color: "#000000",
 	font: {
-		fontSize: Alloy.Globals.theme.fonts.size15Fonts
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
 	}
 }
 
@@ -83,7 +83,7 @@
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	color: "#000000",
 	font: {
-		fontSize: Alloy.Globals.theme.fonts.size10Fonts
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts
 	}
 }
 
@@ -97,7 +97,7 @@
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	color: "#000000",
 	font: {
-		fontSize: Alloy.Globals.theme.fonts.size10Fonts
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts
 	}
 }
 

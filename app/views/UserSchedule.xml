@@ -23,5 +23,12 @@
 			</View>
 			<View id="vwBandSchedule"></View>
 		</View>
+		<View id="vwNoSchedule">
+			<Label id="lblNoSchedule"></Label>
+			<View id="vwImagesNoSchedule">
+				<ImageView id="ivHand"></ImageView>
+				<ImageView id="ivStar"></ImageView>
+			</View>
+		</View>
 	</Window>
 </Alloy>

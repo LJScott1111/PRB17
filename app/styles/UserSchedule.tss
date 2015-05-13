@@ -29,10 +29,8 @@
 
 ".vwDaysClass": {
 	top: 0,
-	// layout: "horizontl",
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
-	// borderColor: "#000000"
 }
 
 ".dayClass": {
@@ -64,4 +62,46 @@
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL
+}
+
+"#vwNoSchedule": {
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	top:0,
+	layout: "vertical"
+}
+
+"#lblNoSchedule": {
+	top: 100,
+	left: 20,
+	right: 20,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size25Fonts,
+		fontWeight : "bold"
+	}
+}
+
+"#vwImagesNoSchedule": {
+	top: 40,
+	width: Titanium.UI.SIZE,
+	height: Titanium.UI.SIZE,
+	top: 0,
+	layout: "horizontal"
+}
+
+"#ivHand": {
+	// top: 10,
+	left: 5,
+	height : 80,
+	width: Titanium.UI.SIZE,
+	image: "/icons/hand.png"
+}
+
+"#ivStar": {
+	// top: 10,
+	right: 5,
+	height : 120,
+	width: Titanium.UI.SIZE,
+	image: "/images/star.png"
 }

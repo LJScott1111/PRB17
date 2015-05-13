@@ -5,8 +5,17 @@ nsHeader.closeWindow = function() {
 	$.trigger("backButtonClick");
 };
 
-nsHeader.getSettings = function() {
-	$.trigger("settings");
+nsHeader.getSettings = function(e) {
+	console.log(e.source," ", e.source.parent.parent);
+	console.debug(Titanium.App.Properties.getString('userid'));
+	var userid = Titanium.App.Properties.getString('userid');
+	// $.trigger("settings");
+	
+	// var vwOptionFullView = Titanium.UI.createView({
+		// // height: Titanium
+		// top: Alloy.Globals.theme.sizes.headerbar,
+// 		
+	// });
 };
 
 nsHeader.init = function(){
