@@ -57,7 +57,12 @@ nsLanding.getBands = function() {
 };
 
 nsLanding.getEvents = function() {
-	Alloy.createController("Events").getView().open();
+	if (Titanium.Platform.osname === "android") {
+		Alloy.createController("Events").getView().open();
+	} else {
+		Alloy.Globals.navWin.openWindow(Alloy.createController("Events").getView());
+	}
+
 };
 
 nsLanding.getSchedule = function() {
@@ -73,7 +78,12 @@ nsLanding.getSchedule = function() {
 				var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
 
 					console.debug(JSON.stringify(schedule));
-					Alloy.createController("UserSchedule", schedule).getView().open();
+					if (Titanium.Platform.osname === "android") {
+						Alloy.createController("UserSchedule", schedule).getView().open();
+					} else {
+						Alloy.Globals.navWin.openWindow(Alloy.createController("UserSchedule", schedule).getView());
+					}
+
 					$.winLanding.remove(nsLanding.controller);
 
 				}, function(error) {
@@ -91,7 +101,12 @@ nsLanding.getSchedule = function() {
 		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
 
 			console.debug(JSON.stringify(schedule));
-			Alloy.createController("UserSchedule", schedule).getView().open();
+			if (Titanium.Platform.osname === "android") {
+				Alloy.createController("UserSchedule", schedule).getView().open();
+			} else {
+				Alloy.Globals.navWin.openWindow(Alloy.createController("UserSchedule", schedule).getView());
+			}
+
 			$.winLanding.remove(nsLanding.controller);
 
 		}, function(error) {
@@ -110,7 +125,13 @@ nsLanding.getVenues = function() {
 		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 			console.debug("fetchedData ", fetchedData);
 			if (fetchedData) {
-				Alloy.createController("VenueList").getView().open();
+
+				if (Titanium.Platform.osname === "android") {
+					Alloy.createController("VenueList").getView().open();
+				} else {
+					Alloy.Globals.navWin.openWindow(Alloy.createController("VenueList").getView());
+				}
+
 				// $.winLanding.remove(nsLanding.controller);
 			} else {
 				console.debug("All data did not get downloaded!!!");
@@ -119,7 +140,11 @@ nsLanding.getVenues = function() {
 			$.winLanding.remove(nsLanding.controller);
 		});
 	} else {
-		Alloy.createController("VenueList").getView().open();
+		if (Titanium.Platform.osname === "android") {
+			Alloy.createController("VenueList").getView().open();
+		} else {
+			Alloy.Globals.navWin.openWindow(Alloy.createController("VenueList").getView());
+		}
 	}
 };
 
@@ -148,12 +173,12 @@ nsLanding.init = function() {
 			$.navWin.open();
 		}
 		if (user === null) {
-			Alloy.createController("Signup").getView().open();
+			Alloy.createController("signup").getView().open();
 		};
 	}, function(error) {
 		console.debug("Alloy.Globals.checkUser - error - " - error);
 		$.winLanding.open();
-		Alloy.createController("Signup").getView().open();
+		Alloy.createController("signup").getView().open();
 	});
 
 	// $.winLanding.open();

@@ -50,7 +50,7 @@ nsSearchList.createList = function() {
 			// title : nsSearchList.data[i].name,
 			filter : nsSearchList.data[i].name,
 			hasChild : true,
-			top: 0
+			top : 0
 		});
 
 		row.addEventListener('click', function(e) {
@@ -60,15 +60,26 @@ nsSearchList.createList = function() {
 			// console.debug("e.source.id ", e.source.id);
 			if (e.source.id !== "ivFavouriteStar") {
 				if (nsSearchList.type === "BandList") {
-
-					Alloy.createController("BandProfile", {
-						"id" : nsSearchList.data[e.row.id]._id
-					}).getView().open();
+					if (Titanium.Platform.osname === "android") {
+						Alloy.createController("BandProfile", {
+							"id" : nsSearchList.data[e.row.id]._id
+						}).getView().open();
+					} else {
+						Alloy.Globals.navWin.openWindow(Alloy.createController("BandProfile", {
+							"id" : nsSearchList.data[e.row.id]._id
+						}).getView());
+					}
 				} else if (nsSearchList.type === "VenueList") {
+					if (Titanium.Platform.osname === "android") {
+						Alloy.createController("VenueProfile", {
+							"id" : nsSearchList.data[e.row.id]._id
+						}).getView().open();
+					} else {
+						Alloy.Globals.navWin.openWindow(Alloy.createController("VenueProfile", {
+							"id" : nsSearchList.data[e.row.id]._id
+						}).getView());
+					}
 
-					Alloy.createController("VenueProfile", {
-						"id" : nsSearchList.data[e.row.id]._id
-					}).getView().open();
 				}
 			}
 		});
@@ -79,7 +90,7 @@ nsSearchList.createList = function() {
 		var vwRowView = Titanium.UI.createView({
 			height : Titanium.UI.SIZE,
 			width : Titanium.UI.FILL,
-			top: 0
+			top : 0
 		});
 
 		var ivImage = Titanium.UI.createImageView({
@@ -154,8 +165,8 @@ nsSearchList.createList = function() {
 		filterCaseInsensitive : true,
 		// borderColor: "red",
 		// search : sbSearchBar,
-		searchHidden: true,
-		backgroundColor: "#ffffff"
+		searchHidden : true,
+		backgroundColor : "#ffffff"
 	});
 
 	table.setData(sectionArr);
