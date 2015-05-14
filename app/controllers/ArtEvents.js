@@ -20,7 +20,7 @@ nsArtEvents.init = function() {
 	
 	// $.ivArtImage.setImage("http://postimg.org/image/ndhjkkhnt/");
 	
-	$.wvArtImage.setUrl("http://postimg.org/image/ndhjkkhnt/");
+	$.wvArtImage.setUrl("https://www.punkrockbowling.com/art-exhibit/");
 };
 
 nsArtEvents.init();

@@ -194,9 +194,10 @@ nsIndex.init = function() {
 
 		$.winIndex.open();
 	} else {
-		setTimeout(function() {
-			Alloy.createController("LandingPage").getView().open();
-		}, 2000);
+		// setTimeout(function() {
+			// Alloy.createController("LandingPage").getView().open();
+		// }, 2000);
+		$.winIndex.open();
 	}
 
 	// nsIndex.userCheck();

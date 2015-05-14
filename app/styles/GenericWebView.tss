@@ -1,8 +1,8 @@
-"#winMovieEvents": {
+"#winGenericWebView": {
 	backgroundColor: "#000000"
 }
 
-"#winMovieEvents[platform=ios]": {
+"#winGenericWebView[platform=ios]": {
 	barImage: "/icons/navbar1.png"
 }
 
@@ -13,7 +13,7 @@
 	width: Titanium.UI.FILL
 }
 
-"#wvMovieImage": {
+"#wvGenericWebView": {
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL,
 	top: 0

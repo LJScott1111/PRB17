@@ -140,7 +140,11 @@ nsLanding.getVenues = function() {
 };
 
 nsLanding.getNews = function() {
-
+	if (Titanium.Platform.osname === "android") {
+		Alloy.createController("GenericWebView", {url: "http://punkrockbowling.com/news/"}).getView().open();
+	} else {
+		Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {url: "http://punkrockbowling.com/news/"}).getView());
+	}
 };
 
 nsLanding.init = function() {

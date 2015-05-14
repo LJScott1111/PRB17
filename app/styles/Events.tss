@@ -8,10 +8,13 @@
 }
 
 "#vwMain": {
-	top: Alloy.Globals.theme.sizes.headerbar,
+	top: 0,
 	// layout: "vertical",
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL
+}
+"#vwMain[platform=android]": {
+	top: Alloy.Globals.theme.sizes.headerbar,
 }
 
 ".optionClass": {

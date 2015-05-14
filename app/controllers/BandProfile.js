@@ -31,21 +31,70 @@ nsBandProfile.markFavourite = function(e) {
 nsBandProfile.doSocialActivity = function(e) {
 	console.debug(e.source.id);
 	if (e.source.id === "vwSoundCloud") {
-		Titanium.Platform.openURL(nsBandProfile.data.bandDetails.audio_link);
+		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.audio_link);
+		if (Titanium.Platform.osname === "android") {
+			Alloy.createController("GenericWebView", {
+				url : nsBandProfile.data.bandDetails.audio_link
+			}).getView().open();
+		} else {
+			Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
+				url : nsBandProfile.data.bandDetails.audio_link
+			}).getView());
+		}
+
 	} else if (e.source.id === "vwYouTube") {
-		Titanium.Platform.openURL(nsBandProfile.data.bandDetails.video_link);
+		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.video_link);
+		if (Titanium.Platform.osname === "android") {
+			Alloy.createController("GenericWebView", {
+				url : nsBandProfile.data.bandDetails.video_link
+			}).getView().open();
+		} else {
+			Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
+				url : nsBandProfile.data.bandDetails.video_link
+			}).getView());
+		}
+		
 	} else if (e.source.id === "vwWebsite") {
-		Titanium.Platform.openURL(nsBandProfile.data.bandDetails.site_link);
+		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.site_link);
+		if (Titanium.Platform.osname === "android") {
+			Alloy.createController("GenericWebView", {
+				url : nsBandProfile.data.bandDetails.site_link
+			}).getView().open();
+		} else {
+			Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
+				url : nsBandProfile.data.bandDetails.site_link
+			}).getView());
+		}
+		
 	} else if (e.source.id === "vwFacebook") {
-		Titanium.Platform.openURL(nsBandProfile.data.bandDetails.fb_link);
+		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.fb_link);
+		if (Titanium.Platform.osname === "android") {
+			Alloy.createController("GenericWebView", {
+				url : nsBandProfile.data.bandDetails.fb_link
+			}).getView().open();
+		} else {
+			Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
+				url : nsBandProfile.data.bandDetails.fb_link
+			}).getView());
+		}
+		
 	} else if (e.source.id === "vwTwitter") {
-		Titanium.Platform.openURL(nsBandProfile.data.bandDetails.tw_link);
+		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.tw_link);
+		if (Titanium.Platform.osname === "android") {
+			Alloy.createController("GenericWebView", {
+				url : nsBandProfile.data.bandDetails.tw_link
+			}).getView().open();
+		} else {
+			Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
+				url : nsBandProfile.data.bandDetails.tw_link
+			}).getView());
+		}
 	}
 };
 
 nsBandProfile.init = function() {
 	Alloy.Globals.windowStack.push($.winBandProfile);
-	
+
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
