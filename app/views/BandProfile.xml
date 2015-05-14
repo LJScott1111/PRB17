@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winBandProfile">
+	<Window id="winBandProfile" backButtonTitle="">
 		<RightNavButton platform="ios">
 			<Button image="/images/settings.png" width="32" height="32" onClick="nsBandProfile.getSettings"/>
 		</RightNavButton>

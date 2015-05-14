@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winUserSchedule">
+	<Window id="winUserSchedule" backButtonTitle="">
 		<RightNavButton platform="ios">
 			<Button image="/images/settings.png" onClick="nsUserSchedule.getSettings"/>
 		</RightNavButton>

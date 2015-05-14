@@ -1,9 +1,10 @@
 <Alloy>
-	<Window id="winArtEvents">
+	<Window id="winArtEvents" navBarHidden="true">
 		<RightNavButton platform="ios">
 			<Button image="/images/settings.png" onClick="nsArtEvents.getSettings"/>
 		</RightNavButton>
 		<Require platform="android" src="header" screenId="winArtEvents" onBackButtonClick="nsArtEvents.closeWindow"></Require>
+		<Button platform="ios" image="/images/back.png" left="10" top="20" height="24" width="24" onClick="nsArtEvents.closeWindow"></Button>
 		<View id="vwMain">
 			<!-- <ImageView id="ivArtImage"></ImageView> -->
 			<WebView id="wvArtImage"></WebView>

@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winPokerEvents">
+	<Window id="winPokerEvents" backButtonTitle="">
 		<RightNavButton platform="ios">
 			<Button image="/images/settings.png" onClick="nsPokerEvents.getSettings"/>
 		</RightNavButton>

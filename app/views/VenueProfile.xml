@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winVenueProfile">
+	<Window id="winVenueProfile" backButtonTitle="">
 		<RightNavButton platform="ios">
 			<Button image="/images/settings.png" onClick="nsVenueProfile.getSettings"/>
 		</RightNavButton>

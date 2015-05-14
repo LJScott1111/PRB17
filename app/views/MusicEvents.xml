@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winMusicEvents">
+	<Window id="winMusicEvents" backButtonTitle="">
 		<RightNavButton platform="ios">
 			<Button image="/images/settings.png" onClick="nsMusicEvents.getSettings"/>
 		</RightNavButton>
