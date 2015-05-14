@@ -1,7 +1,7 @@
 <Alloy>
 	<Window id="winBandProfile">
 		<RightNavButton platform="ios">
-			<Button image="/images/settings.png" onClick="nsBandProfile.getSettings"/>
+			<Button image="/images/settings.png" width="32" height="32" onClick="nsBandProfile.getSettings"/>
 		</RightNavButton>
 		<Require platform="android" src="header" screenId="winBandProfile" onBackButtonClick="nsBandProfile.closeWindow" onSetting="nsBandProfile.getSettings"></Require>
 		<View id="vwMain">
