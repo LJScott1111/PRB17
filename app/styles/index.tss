@@ -13,7 +13,8 @@
 	backgroundColor: '#000000',
 	includeOpaqueBars: true,
 	translucent: false,
-	titleImage: "/icons/navbar1.png"
+	titleImage: "/icons/navbar1.png",
+	tintColor: '#FFFFFF'
 }
 
 "#vwMain": {

@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winBandProfile">
+	<Window id="winBandProfile" backButtonTitle="">
 		<Require platform="android" src="header" screenId="winBandProfile" onBackButtonClick="nsBandProfile.closeWindow" onSetting="nsBandProfile.getSettings"></Require>
 		<View id="vwMain">
 			<ScrollView id="svMain">

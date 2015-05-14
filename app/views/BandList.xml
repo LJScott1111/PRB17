@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winBandList" platform="ios">
+	<Window id="winBandList" platform="ios" backButtonTitle="">
 		<View id="vwMain">
 		</View>
 	</Window>

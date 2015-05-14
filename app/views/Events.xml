@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winEvents">
+	<Window id="winEvents" backButtonTitle="">
 		<Require platform="android" src="header" screenId="winEvents" onBackButtonClick="nsEvents.closeWindow"></Require>
 		<View id="vwMain">
 			<View id="vwTopOptions">

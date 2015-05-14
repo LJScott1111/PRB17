@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winMusicEvents">
+	<Window id="winMusicEvents" backButtonTitle="">
 		<Require platform="android" src="header" screenId="winMusicEvents" onBackButtonClick="nsMusicEvents.closeWindow"></Require>
 		<View id="vwMain">
 			

@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winUserSchedule">
+	<Window id="winUserSchedule" backButtonTitle="">
 		<Require platform="android" src="header" screenId="winUserSchedule" onBackButtonClick="nsUserSchedule.closeWindow" onSetting="nsUserSchedule.getSettings"></Require>
 		<View id="vwMain">
 			<View id="vwTopYellow">

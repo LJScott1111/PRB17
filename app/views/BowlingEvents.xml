@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winBowlingEvents">
+	<Window id="winBowlingEvents" backButtonTitle="">
 		<Require platform="android" src="header" screenId="winBowlingEvents" onBackButtonClick="nsBowlingEvents.closeWindow"></Require>
 		<View id="vwMain">
 			<WebView id="wvBowling"></WebView>

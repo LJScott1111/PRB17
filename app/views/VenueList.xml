@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winVenueList">
+	<Window id="winVenueList" backButtonTitle="">
 		<Require platform="android" src="header" screenId="winVenueList" onBackButtonClick="nsVenueList.closeWindow" onSetting="nsVenueList.getSettings"></Require>
 		<View id="vwMain">
 		</View>

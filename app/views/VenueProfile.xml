@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winVenueProfile">
+	<Window id="winVenueProfile" backButtonTitle="">
 		<Require platform="android" src="header" screenId="winVenueProfile" onBackButtonClick="nsVenueProfile.closeWindow" onSetting="nsVenueProfile.getSettings"></Require>
 		<View id="vwMain">
 			<ScrollView id="svMain">

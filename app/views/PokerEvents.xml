@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winPokerEvents">
+	<Window id="winPokerEvents" backButtonTitle="">
 		<Require platform="android" src="header" screenId="winPokerEvents" onBackButtonClick="nsPokerEvents.closeWindow"></Require>
 		<View id="vwMain">
 			<WebView id="wvPoker"></WebView>

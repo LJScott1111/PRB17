@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winMovieEvents">
+	<Window id="winMovieEvents" backButtonTitle="">
 		<Require platform="android" src="header" screenId="winMovieEvents" onBackButtonClick="nsMovieEvents.closeWindow"></Require>
 		<View id="vwMain">
 			<!-- <ImageView id="ivMovieImage"></ImageView> -->
