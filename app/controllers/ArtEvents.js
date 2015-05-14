@@ -5,6 +5,10 @@ nsArtEvents.closeWindow = function() {
 	$.winArtEvents.close();
 };
 
+nsArtEvents.getSettings = function() {
+	Alloy.Globals.getSettings($.winArtEvents);
+};
+
 nsArtEvents.init = function() {
 	
 	Alloy.Globals.windowStack.push($.winArtEvents);

@@ -51,7 +51,10 @@ nsHeader.getSettings = function(e) {
 			// Open login
 			// if (userid === null) {
 			if(vwOption.activity === "login"){
-				Alloy.createController("Login").getView().open();
+				// Alloy.createController("Login").getView().open();
+				
+				currentWin.add(Alloy.createController("Login", {"win":currentWin}).getView());
+				
 				currentWin.remove(vwOptionFullView);
 				if (currentWin.id === "winIndex") {
 					// currentWin.close();
@@ -60,6 +63,7 @@ nsHeader.getSettings = function(e) {
 				// Call Logout and back to main screen
 				var servercalls = require('serverCalls');
 				var logout = new servercalls.logout(function() {
+					currentWin.remove(vwOptionFullView);
 					if (currentWin.id === "winLanding") {
 						Alloy.createController("signup").getView().open();
 					} else {
@@ -96,7 +100,6 @@ nsHeader.getSettings = function(e) {
 	}
 
 	currentWin.add(vwOptionFullView);
-
 };
 
 nsHeader.init = function() {
@@ -105,10 +108,10 @@ nsHeader.init = function() {
 		$.ivBack.setVisible(false);
 	}
 
-	if (nsHeader.args.screenId === "winLogin") {
-		$.ivSettings.setHeight(0);
-		$.ivSettings.setVisible(false);
-	}
+	// if (nsHeader.args.screenId === "winLogin") {
+		// $.ivSettings.setHeight(0);
+		// $.ivSettings.setVisible(false);
+	// }
 };
 
 nsHeader.init();

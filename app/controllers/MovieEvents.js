@@ -5,6 +5,10 @@ nsMovieEvents.closeWindow = function() {
 	$.winMovieEvents.close();
 };
 
+nsMovieEvents.getSettings = function() {
+	Alloy.Globals.getSettings($.winMovieEvents);
+};
+
 nsMovieEvents.init = function() {
 	Alloy.Globals.windowStack.push($.winMovieEvents);
 

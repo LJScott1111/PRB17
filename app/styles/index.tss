@@ -40,7 +40,7 @@
 }
 
 "#ivBands": {
-	top: 10,
+	// top: 10,
 	left: 10,
 	image: "/icons/bands.png"
 }

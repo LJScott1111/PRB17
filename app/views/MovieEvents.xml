@@ -1,5 +1,8 @@
 <Alloy>
-	<Window id="winMovieEvents" backButtonTitle="">
+	<Window id="winMovieEvents">
+		<RightNavButton platform="ios">
+			<Button image="/images/settings.png" onClick="nsMovieEvents.getSettings"/>
+		</RightNavButton>
 		<Require platform="android" src="header" screenId="winMovieEvents" onBackButtonClick="nsMovieEvents.closeWindow"></Require>
 		<View id="vwMain">
 			<!-- <ImageView id="ivMovieImage"></ImageView> -->

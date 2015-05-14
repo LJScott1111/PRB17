@@ -6,22 +6,11 @@ nsLanding.activityControl = require("activityControl");
 nsLanding.controller = null;
 
 nsLanding.closeWindow = function() {
-
-	// if (Titanium.Platform.osname === "android") {
-	// var activity = Titanium.Android.currentActivity;
-	// activity.finish();
-	// } else {
-
 	$.winLanding.close();
-	// if (Alloy.Globals.windowStack.length > 0) {
-	// Alloy.Globals.windowStack[0].close();
-	// Alloy.Globals.windowStack.pop();
-	// // Closing Index - temp solution - need to login check (Service not working to check if user is already logged in) - TODO
-	// }
-	// }
 };
 
 nsLanding.getSettings = function() {
+	Alloy.Globals.getSettings($.winLanding);
 };
 
 nsLanding.getBands = function() {

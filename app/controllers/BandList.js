@@ -8,6 +8,7 @@ nsBandList.closeWindow = function() {
 };
 
 nsBandList.getSettings = function() {
+	Alloy.Globals.getSettings($.winBandList);
 };
 
 nsBandList.init = function() {

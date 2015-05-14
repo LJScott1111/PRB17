@@ -1,5 +1,8 @@
 <Alloy>
-	<Window id="winUserSchedule" backButtonTitle="">
+	<Window id="winUserSchedule">
+		<RightNavButton platform="ios">
+			<Button image="/images/settings.png" onClick="nsUserSchedule.getSettings"/>
+		</RightNavButton>
 		<Require platform="android" src="header" screenId="winUserSchedule" onBackButtonClick="nsUserSchedule.closeWindow" onSetting="nsUserSchedule.getSettings"></Require>
 		<View id="vwMain">
 			<View id="vwTopYellow">

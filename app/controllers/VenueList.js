@@ -8,6 +8,7 @@ nsVenueList.closeWindow = function() {
 };
 
 nsVenueList.getSettings = function() {
+	Alloy.Globals.getSettings($.winVenueList);
 };
 
 nsVenueList.init = function(){

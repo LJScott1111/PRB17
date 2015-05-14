@@ -11,6 +11,7 @@ nsBandProfile.closeWindow = function() {
 };
 
 nsBandProfile.getSettings = function() {
+	Alloy.Globals.getSettings($.winBandProfile);
 };
 
 nsBandProfile.markFavourite = function(e) {

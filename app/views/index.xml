@@ -1,6 +1,10 @@
 <Alloy>
 	<NavigationWindow id="navWin" platform="ios" >
 		<Window id="winLanding">
+			<RightNavButton platform="ios">
+                <Button image="/images/settings.png" onClick="nsLanding.getSettings"/>
+            </RightNavButton>
+
 			<View id="vwMain">
 				<View id="vwTopOptions">
 					<ImageView id="ivBands" class="optionClass" onClick="nsLanding.getBands"></ImageView>
@@ -17,7 +21,7 @@
 		</Window>
 	</NavigationWindow>
 	<Window id="winLanding" platform="android">
-		<Require src="header" screenId="winLanding" onBackButtonClick="nsLanding.closeWindow" onSetting="nsLanding.getSettings"></Require>
+		<Require src="header" screenId="winLanding" onBackButtonClick="nsLanding.closeWindow"></Require>
 		<View id="vwMain">
 			<View id="vwTopOptions">
 				<ImageView id="ivBands" class="optionClass" onClick="nsLanding.getBands"></ImageView>

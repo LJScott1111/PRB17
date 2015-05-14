@@ -5,6 +5,10 @@ nsBowlingEvents.closeWindow = function() {
 	$.winBowlingEvents.close();
 };
 
+nsBowlingEvents.getSettings = function() {
+	Alloy.Globals.getSettings($.winBowlingEvents);
+};
+
 nsBowlingEvents.init = function() {
 	Alloy.Globals.windowStack.push($.winBowlingEvents);
 

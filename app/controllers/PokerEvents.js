@@ -5,6 +5,10 @@ nsPokerEvents.closeWindow = function() {
 	$.winPokerEvents.close();
 };
 
+nsPokerEvents.getSettings = function() {
+	Alloy.Globals.getSettings($.winPokerEvents);
+};
+
 nsPokerEvents.init = function() {
 	Alloy.Globals.windowStack.push($.winPokerEvents);
 

@@ -9,6 +9,10 @@ nsEvents.closeWindow = function() {
 	$.winEvents.close();
 };
 
+nsEvents.getSettings = function() {
+	Alloy.Globals.getSettings($.winEvents);
+};
+
 nsEvents.getMusic = function() {
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
