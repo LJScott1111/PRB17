@@ -18,8 +18,10 @@ nsVenueList.init = function(){
 		nsVenueList.closeWindow();
 	});
 	
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	
 	var searchList = require("searchList");
-	var list = searchList.init("VenueList", Alloy.Globals.venues);
+	var list = searchList.init("VenueList", appdata.venues);
 	console.debug(JSON.stringify(list));
 	$.vwMain.add(list);
 };

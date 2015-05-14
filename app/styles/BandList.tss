@@ -3,6 +3,10 @@
 	backgroundColor: "#000000",
 }
 
+"#winBandList[platform=ios]": {
+	barImage: "/icons/navbar1.png"
+}
+
 "#vwMain": {
 	layout: "vertical",
 	height: Titanium.UI.SIZE,

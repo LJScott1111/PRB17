@@ -18,7 +18,11 @@ nsEvents.getMusic = function() {
 		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 			console.debug("fetchedData ", fetchedData);
 			if (fetchedData) {
-				Alloy.createController("MusicEvents").getView().open();
+				if (Titanium.Platform.osname === "android") {
+					Alloy.createController("MusicEvents").getView().open();
+				} else {
+					Alloy.Globals.navWin.openWindow(Alloy.createController("MusicEvents").getView());
+				}
 			} else {
 				console.debug("All data did not get downloaded!!!");
 				alert("Some error occured while fetching the details. Please try again");
@@ -27,24 +31,48 @@ nsEvents.getMusic = function() {
 		});
 
 	} else {
-		Alloy.createController("MusicEvents").getView().open();
+		if (Titanium.Platform.osname === "android") {
+			Alloy.createController("MusicEvents").getView().open();
+		} else {
+			Alloy.Globals.navWin.openWindow(Alloy.createController("MusicEvents").getView());
+		}
 	}
 };
 
 nsEvents.getMovies = function() {
-	Alloy.createController("MovieEvents").getView().open();
+	if (Titanium.Platform.osname === "android") {
+		Alloy.createController("MovieEvents").getView().open();
+	} else {
+		Alloy.Globals.navWin.openWindow(Alloy.createController("MovieEvents").getView());
+	}
+	// Alloy.createController("MovieEvents").getView().open();
 };
 
 nsEvents.getBowling = function() {
-	Alloy.createController("BowlingEvents").getView().open();
+	if (Titanium.Platform.osname === "android") {
+		Alloy.createController("BowlingEvents").getView().open();
+	} else {
+		Alloy.Globals.navWin.openWindow(Alloy.createController("BowlingEvents").getView());
+	}
+	// Alloy.createController("BowlingEvents").getView().open();
 };
 
 nsEvents.getPoker = function() {
-	Alloy.createController("PokerEvents").getView().open();
+	if (Titanium.Platform.osname === "android") {
+		Alloy.createController("PokerEvents").getView().open();
+	} else {
+		Alloy.Globals.navWin.openWindow(Alloy.createController("PokerEvents").getView());
+	}
+	// Alloy.createController("PokerEvents").getView().open();
 };
 
 nsEvents.getArt = function() {
-	Alloy.createController("ArtEvents").getView().open();
+	if (Titanium.Platform.osname === "android") {
+		Alloy.createController("ArtEvents").getView().open();
+	} else {
+		Alloy.Globals.navWin.openWindow(Alloy.createController("ArtEvents").getView());
+	}
+	// Alloy.createController("ArtEvents").getView().open();
 };
 
 nsEvents.init = function() {

@@ -90,14 +90,25 @@ nsServerCalls.getBandList = function(onloadCallback, errorCallback) {
 	var promise = Kinvey.DataStore.find('bands', null);
 	promise.then(function(entities) {
 		console.debug("Band List success ", JSON.stringify(entities));
-		onloadCallback(entities);
-		Alloy.Globals.bands = JSON.parse(JSON.stringify(entities));
+		
+		// Alloy.Globals.bands = JSON.parse(JSON.stringify(entities));
+		var appdata = Titanium.App.Properties.getObject('appdata', {});
+		appdata.bands = JSON.parse(JSON.stringify(entities));
+		Titanium.App.Properties.setObject('appdata', appdata);
 		Alloy.Globals.hasBandsData = true;
+		
+		onloadCallback(entities);
+		
 	}, function(error) {
 		console.debug("Band List Error ", error);
 		Alloy.Globals.hasBandsData = false;
+		
+		// Alloy.Globals.bands.length = 0;
+		var appdata = Titanium.App.Properties.getObject('appdata', {});
+		appdata.bands.length = 0;
+		Titanium.App.Properties.setObject('appdata', appdata);
+		
 		errorCallback(error);
-		Alloy.Globals.bands.length = 0;
 	});
 };
 
@@ -108,14 +119,25 @@ nsServerCalls.getVenueList = function(onloadCallback, errorCallback) {
 	var promise = Kinvey.DataStore.find('venues', null);
 	promise.then(function(entities) {
 		console.debug("Venue List success ", JSON.stringify(entities));
-		onloadCallback(entities);
-		Alloy.Globals.venues = JSON.parse(JSON.stringify(entities));
+		
+		// Alloy.Globals.venues = JSON.parse(JSON.stringify(entities));
+		var appdata = Titanium.App.Properties.getObject('appdata', {});
+		appdata.venues = JSON.parse(JSON.stringify(entities));
+		Titanium.App.Properties.setObject('appdata', appdata);
 		Alloy.Globals.hasVenuesData = true;
+		
+		onloadCallback(entities);
+		
 	}, function(error) {
 		console.debug("Venue List Error ", error);
-		errorCallback(error);
+		
 		Alloy.Globals.hasVenuesData = false;
-		Alloy.Globals.venues.length = 0;
+		// Alloy.Globals.venues.length = 0;
+		var appdata = Titanium.App.Properties.getObject('appdata', {});
+		appdata.venues.length = 0;
+		Titanium.App.Properties.setObject('appdata', appdata);
+		
+		errorCallback(error);
 	});
 };
 
@@ -126,14 +148,25 @@ nsServerCalls.getShows = function(onloadCallback, errorCallback) {
 	var promise = Kinvey.DataStore.find('shows', null);
 	promise.then(function(entities) {
 		console.debug("Shows success ", JSON.stringify(entities));
-		Alloy.Globals.shows = JSON.parse(JSON.stringify(entities));
+		// Alloy.Globals.shows = JSON.parse(JSON.stringify(entities));
+		
+		var appdata = Titanium.App.Properties.getObject('appdata', {});
+		appdata.shows = JSON.parse(JSON.stringify(entities));
+		Titanium.App.Properties.setObject('appdata', appdata);
+		
 		Alloy.Globals.hasShowsData = true;
 		onloadCallback(entities);
+		
 	}, function(error) {
 		console.debug("Shows Error ", error);
-		errorCallback(error);
+		
 		Alloy.Globals.hasShowsData = false;
-		Alloy.Globals.shows.length = 0;
+		// Alloy.Globals.shows.length = 0;
+		var appdata = Titanium.App.Properties.getObject('appdata', {});
+		appdata.shows.length = 0;
+		Titanium.App.Properties.setObject('appdata', appdata);
+		
+		errorCallback(error);
 	});
 };
 

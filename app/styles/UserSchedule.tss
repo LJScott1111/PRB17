@@ -2,11 +2,19 @@
 	backgroundColor: "#ffffff"
 }
 
+"#winUserSchedule[platform=ios]": {
+	barImage: "/icons/navbar1.png"
+}
+
 "#vwMain": {
-	top: Alloy.Globals.theme.sizes.headerbar,
+	top: 0,
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL
+}
+
+"#vwMain[platform=android]": {
+	top: Alloy.Globals.theme.sizes.headerbar
 }
 
 "#vwTopYellow": {

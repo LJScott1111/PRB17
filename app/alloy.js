@@ -105,11 +105,11 @@ Alloy.Globals.theme = {
 };
 
 // Get All data (bands, venues, and shows) from server and store it in local
-Alloy.Globals.bands = [];
+// Alloy.Globals.bands = [];
 Alloy.Globals.hasBandsData = false;
-Alloy.Globals.venues = [];
+// Alloy.Globals.venues = [];
 Alloy.Globals.hasVenuesData = false;
-Alloy.Globals.shows = [];
+// Alloy.Globals.shows = [];
 Alloy.Globals.hasShowsData = false;
 
 Alloy.Globals.getAndStoreData = function(callback) {
@@ -173,34 +173,34 @@ Alloy.Globals.combinedDetails = function() {
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	var combinedData = [];
+	
+	console.debug("appdata  .... "+JSON.stringify(appdata));
 
 	// bandProfile.bandDetails = JSON.parse(JSON.stringify(nsSearchList.data[e.row.id]));
 	console.debug("Alloy.Globals.combinedDetails ... Calling");
 	for (var i = 0,
-	    bandLen = Alloy.Globals.bands.length; i < bandLen; i++) {
+	    bandLen = appdata.bands.length; i < bandLen; i++) {
 
 		var bandProfile = {};
-		bandProfile.bandDetails = Alloy.Globals.bands[i];
+		bandProfile.bandDetails = appdata.bands[i];
 
 		for (var j = 0,
-		    showLen = Alloy.Globals.shows.length; j < showLen; j++) {
+		    showLen = appdata.shows.length; j < showLen; j++) {
 
-			if (Alloy.Globals.shows[j].band_id === bandProfile.bandDetails._id) {
-				bandProfile.showDetails = JSON.parse(JSON.stringify(Alloy.Globals.shows[j]));
+			if (appdata.shows[j].band_id === bandProfile.bandDetails._id) {
+				bandProfile.showDetails = JSON.parse(JSON.stringify(appdata.shows[j]));
 			}
 
 			for (var k = 0,
-			    venueLen = Alloy.Globals.venues.length; k < venueLen; k++) {
-				if (bandProfile.showDetails.venue_id === Alloy.Globals.venues[k]._id) {
-					bandProfile.venueDetails = JSON.parse(JSON.stringify(Alloy.Globals.venues[k]));
+			    venueLen = appdata.venues.length; k < venueLen; k++) {
+				if (bandProfile.showDetails.venue_id === appdata.venues[k]._id) {
+					bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
 					// Alloy.Globals.combinedShowDetails.push(bandProfile);
 					combinedData.push(bandProfile);
 					console.log("... ", JSON.stringify(bandProfile));
 				}
 			}
-
 		}
-
 	}
 	console.debug("JSON.stringify(combinedData) ", JSON.stringify(combinedData));
 	// Setting all details in appdata
@@ -252,5 +252,8 @@ Alloy.Globals.getFormattedDate = function(timestamp) {
 
 // Application data for storing combined details
 Alloy.Globals.appData = {
-	"details" : []
+	"details" : [],
+	"bands": [],
+	"shows": [],
+	"venues": []
 };

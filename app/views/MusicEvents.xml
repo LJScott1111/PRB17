@@ -1,6 +1,6 @@
 <Alloy>
 	<Window id="winMusicEvents">
-		<Require src="header" screenId="winMusicEvents" onBackButtonClick="nsMusicEvents.closeWindow"></Require>
+		<Require platform="android" src="header" screenId="winMusicEvents" onBackButtonClick="nsMusicEvents.closeWindow"></Require>
 		<View id="vwMain">
 			
 		</View>

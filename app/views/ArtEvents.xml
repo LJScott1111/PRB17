@@ -1,6 +1,6 @@
 <Alloy>
 	<Window id="winArtEvents">
-		<Require src="header" screenId="winArtEvents" onBackButtonClick="nsArtEvents.closeWindow"></Require>
+		<Require platform="android" src="header" screenId="winArtEvents" onBackButtonClick="nsArtEvents.closeWindow"></Require>
 		<View id="vwMain">
 			<!-- <ImageView id="ivArtImage"></ImageView> -->
 			<WebView id="wvArtImage"></WebView>

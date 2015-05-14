@@ -3,6 +3,10 @@
 	backgroundColor: "#000000"
 }
 
+"#winEvents[platform=ios]": {
+	barImage: "/icons/navbar1.png"
+}
+
 "#vwMain": {
 	top: Alloy.Globals.theme.sizes.headerbar,
 	// layout: "vertical",

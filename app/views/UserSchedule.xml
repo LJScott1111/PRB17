@@ -1,6 +1,6 @@
 <Alloy>
 	<Window id="winUserSchedule">
-		<Require src="header" screenId="winUserSchedule" onBackButtonClick="nsUserSchedule.closeWindow" onSetting="nsUserSchedule.getSettings"></Require>
+		<Require platform="android" src="header" screenId="winUserSchedule" onBackButtonClick="nsUserSchedule.closeWindow" onSetting="nsUserSchedule.getSettings"></Require>
 		<View id="vwMain">
 			<View id="vwTopYellow">
 				<Label id="lblYourSchedule" text="Your Schedule"></Label>

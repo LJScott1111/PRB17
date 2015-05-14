@@ -5,6 +5,10 @@
 	fullscreen: false
 }
 
+"#winLanding[platform=ios]": {
+	barImage: "/icons/navbar1.png"
+}
+
 "#navWin": {
 	backgroundColor: '#000000',
 	includeOpaqueBars: true,

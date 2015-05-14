@@ -139,7 +139,7 @@ nsSearchList.createList = function() {
 			    len = appdata.details.length; i < len; i++) {
 
 				if (nsSearchList.type === "BandList") {
-					if (appdata.details[i].showDetails.band_id === nsSearchList.args.id) {
+					if (appdata.details[i].showDetails.band_id === nsSearchList.data._id) {
 						// nsSearchList.data = JSON.parse(JSON.stringify(appdata.details[i]));
 						var show_id = appdata.details[i].showDetails._id;
 						var addShow = new nsSearchList.serverCalls.saveUserSchedule(show_id, function(response) {
@@ -151,7 +151,7 @@ nsSearchList.createList = function() {
 						break;
 					}
 				} else {
-					if (appdata.details[i].showDetails.venue_id === nsSearchList.args.id) {
+					if (appdata.details[i].showDetails.venue_id === nsSearchList.data._id) {
 						// nsSearchList.data = JSON.parse(JSON.stringify(appdata.details[i]));
 						var show_id = appdata.details[i].showDetails._id;
 						var addShow = new nsSearchList.serverCalls.saveUserSchedule(show_id, function(response) {

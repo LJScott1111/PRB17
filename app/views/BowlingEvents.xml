@@ -1,6 +1,6 @@
 <Alloy>
 	<Window id="winBowlingEvents">
-		<Require src="header" screenId="winBowlingEvents" onBackButtonClick="nsBowlingEvents.closeWindow"></Require>
+		<Require platform="android" src="header" screenId="winBowlingEvents" onBackButtonClick="nsBowlingEvents.closeWindow"></Require>
 		<View id="vwMain">
 			<WebView id="wvBowling"></WebView>
 		</View>

@@ -1,6 +1,6 @@
 <Alloy>
 	<Window id="winVenueList">
-		<Require src="header" screenId="winVenueList" onBackButtonClick="nsVenueList.closeWindow" onSetting="nsVenueList.getSettings"></Require>
+		<Require platform="android" src="header" screenId="winVenueList" onBackButtonClick="nsVenueList.closeWindow" onSetting="nsVenueList.getSettings"></Require>
 		<View id="vwMain">
 		</View>
 	</Window>

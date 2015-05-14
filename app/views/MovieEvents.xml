@@ -1,6 +1,6 @@
 <Alloy>
 	<Window id="winMovieEvents">
-		<Require src="header" screenId="winMovieEvents" onBackButtonClick="nsMovieEvents.closeWindow"></Require>
+		<Require platform="android" src="header" screenId="winMovieEvents" onBackButtonClick="nsMovieEvents.closeWindow"></Require>
 		<View id="vwMain">
 			<!-- <ImageView id="ivMovieImage"></ImageView> -->
 			<WebView id="wvMovieImage"></WebView>

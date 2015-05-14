@@ -1,5 +1,5 @@
 <Alloy>
-	<NavigationWindow id="navWin" platform="ios">
+	<NavigationWindow id="navWin" platform="ios" >
 		<Window id="winLanding">
 			<View id="vwMain">
 				<View id="vwTopOptions">

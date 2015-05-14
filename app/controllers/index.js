@@ -26,6 +26,8 @@ nsLanding.getSettings = function() {
 
 nsLanding.getBands = function() {
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	
+	console.debug("Alloy.Globals.bands emply ", JSON.stringify(appdata.bands));
 
 	if (appdata.details.length === 0) {
 		$.winLanding.add(nsLanding.controller);
