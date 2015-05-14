@@ -79,7 +79,6 @@ nsSearchList.createList = function() {
 							"id" : nsSearchList.data[e.row.id]._id
 						}).getView());
 					}
-
 				}
 			}
 		});
@@ -132,11 +131,44 @@ nsSearchList.createList = function() {
 		}
 
 		ivFavouriteStar.addEventListener('click', function(e) {
-			if (!e.source.selected) {
-				e.source.setImage(Alloy.Globals.theme.icons.star);
-			} else {
-				e.source.setImage(Alloy.Globals.theme.icons.star_off);
+
+			console.debug(nsSearchList.data[e.row.id]._id);
+
+			var appdata = Titanium.App.Properties.getObject('appdata', {});
+			for (var i = 0,
+			    len = appdata.details.length; i < len; i++) {
+
+				if (nsSearchList.type === "BandList") {
+					if (appdata.details[i].showDetails.band_id === nsSearchList.args.id) {
+						// nsSearchList.data = JSON.parse(JSON.stringify(appdata.details[i]));
+						var show_id = appdata.details[i].showDetails._id;
+						var addShow = new nsSearchList.serverCalls.saveUserSchedule(show_id, function(response) {
+							e.source.setImage(Alloy.Globals.theme.icons.star);
+						}, function(error) {
+							alert("Some error occured");
+						});
+
+						break;
+					}
+				} else {
+					if (appdata.details[i].showDetails.venue_id === nsSearchList.args.id) {
+						// nsSearchList.data = JSON.parse(JSON.stringify(appdata.details[i]));
+						var show_id = appdata.details[i].showDetails._id;
+						var addShow = new nsSearchList.serverCalls.saveUserSchedule(show_id, function(response) {
+							e.source.setImage(Alloy.Globals.theme.icons.star);
+						}, function(error) {
+							alert("Some error occured");
+						});
+
+						break;
+					}
+				}
+
 			}
+
+			// else {
+			// e.source.setImage(Alloy.Globals.theme.icons.star_off);
+			// }
 			e.source.selected = !e.source.selected;
 		});
 

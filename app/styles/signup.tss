@@ -1,7 +1,7 @@
 "#winIndex": {
 	backgroundColor: "#000000",
 	modal: true,
-	exitOnClose: true
+	// exitOnClose: true
 }
 
 "#vwMain": {

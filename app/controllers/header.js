@@ -49,16 +49,21 @@ nsHeader.getSettings = function(e) {
 
 		if (e.source.id === "vwOption") {
 			// Open login
-			if (userid === null) {
+			// if (userid === null) {
+			if(vwOption.activity === "login"){
 				Alloy.createController("Login").getView().open();
 				currentWin.remove(vwOptionFullView);
 				if (currentWin.id === "winIndex") {
-					currentWin.close();
+					// currentWin.close();
 				}
 			} else {
 				// Call Logout and back to main screen
 				var servercalls = require('serverCalls');
 				var logout = new servercalls.logout(function() {
+					if (currentWin.id === "winLanding") {
+						Alloy.createController("signup").getView().open();
+					} else {
+					
 					console.debug(Alloy.Globals.windowStack.length);
 					for (var i = Alloy.Globals.windowStack.length - 1; i >= 0; i--) {
 
@@ -70,7 +75,7 @@ nsHeader.getSettings = function(e) {
 						Titanium.App.Properties.removeProperty('userid');
 						// Titanium.App.Properties.setString('userid', null);
 						Alloy.createController("signup").getView().open();
-					}
+					}}
 				}, function(error) {
 					// TODO
 				});
@@ -80,12 +85,14 @@ nsHeader.getSettings = function(e) {
 		}
 	});
 
-	if (userid === null || userid === undefined) {
+	if (currentWin.id === "winIndex") {
 		console.debug("User not logged in");
 		lblLoginActivity.setText("Login");
+		vwOption.activity = "login";
 	} else {
 		console.debug("User logged in");
 		lblLoginActivity.setText("Logout");
+		vwOption.activity = "logout";
 	}
 
 	currentWin.add(vwOptionFullView);

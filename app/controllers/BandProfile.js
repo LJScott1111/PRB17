@@ -14,21 +14,16 @@ nsBandProfile.getSettings = function() {
 };
 
 nsBandProfile.markFavourite = function(e) {
-	// TODO: service call to add favourite
 	if (!e.source.selected) {
 
 		var show_id = nsBandProfile.data.showDetails._id;
 		var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
-			console.debug("success --- ", JSON.stringify(response));
 			e.source.setImage(Alloy.Globals.theme.icons.star);
 		}, function(error) {
 			alert("Some error occured");
 		});
 	}
 
-	// else {
-	// e.source.setImage(Alloy.Globals.theme.icons.star_off);
-	// }
 	e.source.selected = !e.source.selected;
 };
 

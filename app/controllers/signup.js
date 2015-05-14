@@ -10,6 +10,7 @@ nsIndex.activityControl = require("activityControl");
 nsIndex.controller = null;
 
 nsIndex.closeWindow = function() {
+	$.winIndex.exitOnClose = true;
 	$.winIndex.close();
 };
 
@@ -111,6 +112,7 @@ nsIndex.getIt = function() {
 			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 				console.debug("fetchedData ", fetchedData);
 				// Alloy.createController("LandingPage").getView().open();
+				Alloy.Globals.windowStack.pop();
 				$.winIndex.remove(nsIndex.controller);
 				nsIndex.closeWindow();
 			});
@@ -155,7 +157,7 @@ nsIndex.userCheck = function() {
 nsIndex.init = function() {
 	console.debug("Hello Signup");
 	
-	// Alloy.Globals.windowStack.push($.winIndex);
+	Alloy.Globals.windowStack.push($.winIndex);
 
 	// NOT WORKING : TODO
 	var user = null;

@@ -6,7 +6,7 @@ nsLogin.controller = null;
 
 nsLogin.closeWindow = function() {
 	// Alloy.Globals.windowStack.pop();
-	Alloy.createController("signup").getView().open();
+	// Alloy.createController("signup").getView().open();
 	$.winLogin.close();
 };
 
@@ -57,8 +57,15 @@ nsLogin.login = function() {
 				console.debug("fetchedData ", fetchedData);
 				// Alloy.createController("LandingPage").getView().open();
 				$.winLogin.remove(nsLogin.controller);
-				Alloy.Globals.windowStack.pop();
-				$.winLogin.close();
+				console.debug("length ---- " + Alloy.Globals.windowStack.length);
+				// for (var i = 0,
+				    // len = Alloy.Globals.windowStack.length; i < len; i++) {
+				    	for (var i = Alloy.Globals.windowStack.length - 1; i >= 0; i--){
+					Alloy.Globals.windowStack[i].close();
+					console.debug("closing "+Alloy.Globals.windowStack[i].id);
+					Alloy.Globals.windowStack.pop();
+				}
+				// $.winLogin.close();
 			});
 		};
 
@@ -79,49 +86,49 @@ nsLogin.login = function() {
 };
 
 nsLogin.init = function() {
-	// Alloy.Globals.windowStack.push($.winLogin);
+	Alloy.Globals.windowStack.push($.winLogin);
 
 	// NOT WORKING : TODO
 	// var user = null;
 	// try {
-		// // To fetch the active user
-		// user = Kinvey.getActiveUser();
-		// var promise = Kinvey.User.me();
-		// promise.then(function(user1) {
-			// console.log("Hello User" + JSON.stringify(user1));
-		// }, function(error) {
-			// console.log("No user");
-		// });
-		// console.debug("Active User: ", JSON.stringify(user));
-// 
+	// // To fetch the active user
+	// user = Kinvey.getActiveUser();
+	// var promise = Kinvey.User.me();
+	// promise.then(function(user1) {
+	// console.log("Hello User" + JSON.stringify(user1));
+	// }, function(error) {
+	// console.log("No user");
+	// });
+	// console.debug("Active User: ", JSON.stringify(user));
+	//
 	// } catch(e) {
-		// user = null;
-		// // var logout = new nsLogin.serviceCalls.logout();
-		// console.debug("Kinvey user exception ", JSON.stringify(e));
+	// user = null;
+	// // var logout = new nsLogin.serviceCalls.logout();
+	// console.debug("Kinvey user exception ", JSON.stringify(e));
 	// }
 	// console.debug("-- User: ", JSON.stringify(user));
 
 	// if (user === null) {
-		// Setting blank object
-		Titanium.App.Properties.setObject('appdata', Alloy.Globals.appData);
+	// Setting blank object
+	Titanium.App.Properties.setObject('appdata', Alloy.Globals.appData);
 
-		$.winLogin.addEventListener('android:back', function(e) {
-			console.debug("Pressing Back Will Not Close The Activity/Window");
-			nsLogin.closeWindow();
-		});
+	$.winLogin.addEventListener('android:back', function(e) {
+		console.debug("Pressing Back Will Not Close The Activity/Window");
+		nsLogin.closeWindow();
+	});
 
-		// $.vwFbConnect.setHeight(Alloy.Globals.platformHeight * 0.088);
-		$.tfEmail.setHintText(L('index_tfEmail'));
-		$.tfPassword.setHintText(L('login_tfPassword'));
+	// $.vwFbConnect.setHeight(Alloy.Globals.platformHeight * 0.088);
+	$.tfEmail.setHintText(L('index_tfEmail'));
+	$.tfPassword.setHintText(L('login_tfPassword'));
 
-		// $.winLogin.open();
-	// } 
+	// $.winLogin.open();
+	// }
 	// else {
-		// setTimeout(function() {
-			// Alloy.createController("LandingPage").getView().open();
-		// }, 2000);
+	// setTimeout(function() {
+	// Alloy.createController("LandingPage").getView().open();
+	// }, 2000);
 	// }
 
 };
 
-nsLogin.init(); 
+nsLogin.init();
