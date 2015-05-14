@@ -9,6 +9,7 @@ nsUserSchedule.closeWindow = function() {
 };
 
 nsUserSchedule.getSettings = function() {
+	Alloy.Globals.getSettings($.winUserSchedule);
 };
 
 nsUserSchedule.getDay = function(timestamp, type) {

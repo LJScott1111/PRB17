@@ -9,6 +9,7 @@ nsVenueProfile.closeWindow = function() {
 };
 
 nsVenueProfile.getSettings = function() {
+	Alloy.Globals.getSettings($.winVenueProfile);
 };
 
 nsVenueProfile.getDay = function(timestamp, type) {

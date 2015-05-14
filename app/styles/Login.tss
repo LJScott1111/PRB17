@@ -4,14 +4,23 @@
 }
 
 "#vwMain": {
-	top: Alloy.Globals.theme.sizes.headerbar,
+	backgroundColor: "#000000",
+	top: 0,
 	// layout: "vertical",
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL
 }
 
+"#ivClose": {
+	top: 10,
+	right: 10,
+	height: 30,
+	width: 30,
+	image: "/images/close.png"
+}
+
 "#vwTopLogin": {
-	top: 0,
+	top: Alloy.Globals.theme.sizes.headerbar,
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL,

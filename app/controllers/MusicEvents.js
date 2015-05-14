@@ -5,6 +5,10 @@ nsMusicEvents.closeWindow = function() {
 	$.winMusicEvents.close();
 };
 
+nsMusicEvents.getSettings = function() {
+	Alloy.Globals.getSettings($.winMusicEvents);
+};
+
 nsMusicEvents.createShowList = function() {
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});

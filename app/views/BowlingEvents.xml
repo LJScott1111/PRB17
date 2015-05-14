@@ -1,5 +1,8 @@
 <Alloy>
 	<Window id="winBowlingEvents">
+		<RightNavButton platform="ios">
+			<Button image="/images/settings.png" onClick="nsBowlingEvents.getSettings"/>
+		</RightNavButton>
 		<Require platform="android" src="header" screenId="winBowlingEvents" onBackButtonClick="nsBowlingEvents.closeWindow"></Require>
 		<View id="vwMain">
 			<WebView id="wvBowling"></WebView>

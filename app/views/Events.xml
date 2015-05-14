@@ -1,5 +1,8 @@
 <Alloy>
 	<Window id="winEvents">
+		<RightNavButton platform="ios">
+			<Button image="/images/settings.png" onClick="nsEvents.getSettings"/>
+		</RightNavButton>
 		<Require platform="android" src="header" screenId="winEvents" onBackButtonClick="nsEvents.closeWindow"></Require>
 		<View id="vwMain">
 			<View id="vwTopOptions">

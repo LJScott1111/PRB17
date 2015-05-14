@@ -1,7 +1,8 @@
 <Alloy>
-	<Window id="winLogin">
-		<Require src="header" screenId="winLogin" onBackButtonClick="nsLogin.closeWindow"></Require>
+	<!-- <Window id="winLogin"> -->
+		<!-- <Require src="header" screenId="winLogin" onBackButtonClick="nsLogin.closeWindow"></Require> -->
 		<View id="vwMain">
+			<ImageView id="ivClose" onClick="nsLogin.closeWindow"></ImageView>
 			<View id="vwTopLogin">
 				<!-- <View id="vwFbConnect">
 					<Label id="lblFbConnect" textid="login_lblFbConnect"></Label>
@@ -18,5 +19,5 @@
 				<ImageView id="ivLogo"></ImageView>
 			</View>
 		</View>
-	</Window>
+	<!-- </Window> -->
 </Alloy>

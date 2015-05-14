@@ -4,10 +4,14 @@ nsLogin.serviceCalls = require("serverCalls");
 nsLogin.activityControl = require("activityControl");
 nsLogin.controller = null;
 
+nsLogin.args = arguments[0];
+
 nsLogin.closeWindow = function() {
 	// Alloy.Globals.windowStack.pop();
 	// Alloy.createController("signup").getView().open();
-	$.winLogin.close();
+	// $.winLogin.close();
+	
+	nsLogin.args.win.remove($.vwMain);
 };
 
 nsLogin.validateEmail = function() {
@@ -45,8 +49,8 @@ nsLogin.validatePassword = function() {
 
 nsLogin.login = function() {
 	nsLogin.controller = new nsLogin.activityControl($.vwMain);
+	nsLogin.args.win.add(nsLogin.controller);
 	if (nsLogin.validateEmail() && nsLogin.validatePassword()) {
-
 		//Login
 		var tfEmail = $.tfEmail.getValue();
 		var tfPass = $.tfPassword.getValue();
@@ -55,17 +59,8 @@ nsLogin.login = function() {
 			console.debug("Go to next screen!");
 			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 				console.debug("fetchedData ", fetchedData);
-				// Alloy.createController("LandingPage").getView().open();
-				$.winLogin.remove(nsLogin.controller);
-				console.debug("length ---- " + Alloy.Globals.windowStack.length);
-				// for (var i = 0,
-				    // len = Alloy.Globals.windowStack.length; i < len; i++) {
-				    	for (var i = Alloy.Globals.windowStack.length - 1; i >= 0; i--){
-					Alloy.Globals.windowStack[i].close();
-					console.debug("closing "+Alloy.Globals.windowStack[i].id);
-					Alloy.Globals.windowStack.pop();
-				}
-				// $.winLogin.close();
+				nsLogin.args.win.remove(nsLogin.controller);
+				nsLogin.args.win.close();
 			});
 		};
 
@@ -74,10 +69,11 @@ nsLogin.login = function() {
 			alert("Some error occured. Please try again");
 			//TODO - Proper error handling
 			// alert(error.message);
-			$.winLogin.remove(nsLogin.controller);
+			// $.winLogin.remove(nsLogin.controller);
+			nsLogin.args.win.remove(nsLogin.controller);
 		};
 
-		$.winLogin.add(nsLogin.controller);
+		// $.winLogin.add(nsLogin.controller);
 		var signupService = new nsLogin.serviceCalls.login(tfEmail, tfPass, this.onloadCallback, this.onerrorCallback);
 
 	} else {
@@ -85,8 +81,11 @@ nsLogin.login = function() {
 	}
 };
 
+nsLogin.window = null;
 nsLogin.init = function() {
-	Alloy.Globals.windowStack.push($.winLogin);
+	// nsLogin.args.win = $.vwMain.parent;
+	// nsLogin.window = window;
+	// Alloy.Globals.windowStack.push($.winLogin);
 
 	// NOT WORKING : TODO
 	// var user = null;
@@ -112,10 +111,10 @@ nsLogin.init = function() {
 	// Setting blank object
 	Titanium.App.Properties.setObject('appdata', Alloy.Globals.appData);
 
-	$.winLogin.addEventListener('android:back', function(e) {
-		console.debug("Pressing Back Will Not Close The Activity/Window");
-		nsLogin.closeWindow();
-	});
+	// $.winLogin.addEventListener('android:back', function(e) {
+		  // console.debug("Pressing Back Will Not Close The Activity/Window");
+		// nsLogin.closeWindow();
+	// });
 
 	// $.vwFbConnect.setHeight(Alloy.Globals.platformHeight * 0.088);
 	$.tfEmail.setHintText(L('index_tfEmail'));
@@ -130,5 +129,5 @@ nsLogin.init = function() {
 	// }
 
 };
-
 nsLogin.init();
+// exports.init = nsLogin.init;
