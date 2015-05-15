@@ -14,31 +14,35 @@ nsEvents.getSettings = function() {
 };
 
 nsEvents.getMusic = function() {
-
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
+	console.debug("Alloy.Globals.bands emply ", JSON.stringify(appdata.bands));
+
 	if (appdata.details.length === 0) {
-		$.winEvents.add(nsEvents.controller);
+		$.winLanding.add(nsLanding.controller);
 		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 			console.debug("fetchedData ", fetchedData);
 			if (fetchedData) {
 				if (Titanium.Platform.osname === "android") {
-					Alloy.createController("MusicEvents").getView().open();
+					Alloy.createController("BandList").getView().open();
 				} else {
-					Alloy.Globals.navWin.openWindow(Alloy.createController("MusicEvents").getView());
+					Alloy.Globals.navWin.openWindow(Alloy.createController("BandList").getView());
 				}
+				$.winLanding.remove(nsLanding.controller);
 			} else {
 				console.debug("All data did not get downloaded!!!");
 				alert("Some error occured while fetching the details. Please try again");
 			}
-			$.winEvents.remove(nsEvents.controller);
+			$.winLanding.remove(nsLanding.controller);
 		});
 
 	} else {
+		console.log('Opening bands');
 		if (Titanium.Platform.osname === "android") {
-			Alloy.createController("MusicEvents").getView().open();
+			Alloy.createController("BandList").getView().open();
 		} else {
-			Alloy.Globals.navWin.openWindow(Alloy.createController("MusicEvents").getView());
+			console.log('Nav open');
+			Alloy.Globals.navWin.openWindow(Alloy.createController("BandList").getView());
 		}
 	}
 };

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <id>com.punkrockbowling2015.mobile</id>
+    <id>com.interfuel.festfuel</id>
     <name>Punk Rock Bowling Mobile</name>
-    <version>1.0.7</version>
-    <publisher>PRB</publisher>
+    <version>1.1.3</version>
+    <publisher>Buzzplay</publisher>
     <url>http://punkrockbowling.com</url>
     <description>Punk Rock Bowling mobile</description>
-    <copyright>2015 by PRB</copyright>
+    <copyright>2015 by Buzzplay</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
