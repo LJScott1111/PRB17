@@ -172,7 +172,11 @@ nsLanding.init = function() {
 		};
 	}, function(error) {
 		console.debug("Alloy.Globals.checkUser - error - " - error);
-		$.winLanding.open();
+		if (Titanium.Platform.osname === "android") {
+			$.winLanding.open();
+		} else {
+			$.navWin.open();
+		}
 		Alloy.createController("signup").getView().open();
 	});
 

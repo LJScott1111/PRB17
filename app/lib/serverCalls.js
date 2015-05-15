@@ -53,6 +53,8 @@ nsServerCalls.logout = function(onloadCallback, errorCallback) {
 		var promise = Kinvey.User.logout();
 		promise.then(function() {
 			console.debug("Logout Success");
+			Titanium.App.Properties.removeProperty('userid');
+			console.debug("Titanium.App.Properties.removeProperty('userid') ", Titanium.App.Properties.getString('userid'));
 			onloadCallback();
 		}, function(error) {
 			console.debug("Logout Error");
