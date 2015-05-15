@@ -1,12 +1,14 @@
 <Alloy>
-	<Window id="winMovieEvents" backButtonTitle="">
+	<Window id="winMovieEvents" backButtonTitle="" navBarHidden="true">
 		<RightNavButton platform="ios">
 			<Button image="/images/settings.png" onClick="nsMovieEvents.getSettings"/>
 		</RightNavButton>
 		<Require platform="android" src="header" screenId="winMovieEvents" ></Require>
+		
 		<View id="vwMain">
 			<!-- <ImageView id="ivMovieImage"></ImageView> -->
 			<WebView id="wvMovieImage"></WebView>
 		</View>
+		<Button platform="ios" image="/images/back.png" left="10" top="20" height="24" width="24" onClick="nsMovieEvents.closeWindow"></Button>
 	</Window>
 </Alloy>
