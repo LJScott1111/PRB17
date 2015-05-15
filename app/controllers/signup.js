@@ -56,9 +56,9 @@ nsIndex.connectToFb = function() {
 
 	var fb = require('facebook');
 	fb.appid = Alloy.Globals.fbAppID();
-	fb.permissions = ['email'];
+	fb.permissions = [];
 	var accessToken = "";
-	fb.forceDialogAuth = true;
+	// fb.forceDialogAuth = true;
 
 	if (!Titanium.Network.online) {
 		Titanium.UI.createAlertDialog({
@@ -67,40 +67,25 @@ nsIndex.connectToFb = function() {
 		}).show();
 		return;
 	} else {
-		fb.addEventListener('login', function(e) {
-			$.winIndex.add(nsIndex.controller);
-			if (e.success) {
-				console.debug(JSON.stringify(e));
-				console.debug(JSON.stringify(JSON.parse(e.data)));
-
-				fb.accessToken = nsLoginManager.fb.getAccessToken();
-				console.debug("accessToken " + nsLoginManager.fb.accessToken);
-
-				var kinveyFb = new nsIndex.serviceCalls.fbLogin(function() {
-					console.debug("Go to next screen!");
-					var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
-						console.debug("fetchedData ", fetchedData);
-						$.winIndex.remove(nsIndex.controller);
-						nsIndex.closeWindow();
-					});
-				});
-
-			} else if (e.error) {
-				alert("Some error occured. Please try again.");
-			} else if (e.cancelled) {
-				alert("Login cancelled. Please try again.");
-			} else {
-				alert("Unknown error");
-			}
-
+		
+		$.winIndex.add(nsIndex.controller);
+		var kinveyFb = new nsIndex.serviceCalls.fbLogin(function(response) {
+			console.debug("Go to next screen!");
+			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+				console.debug("fetchedData ", fetchedData);
+			});
+			$.winIndex.remove(nsIndex.controller);
+			nsIndex.closeWindow();
+		}, function(error){
+			console.debug("FB ERROR ", error);
+			alert("Some error occured while logging into Facebook.");
+			$.winIndex.remove(nsIndex.controller);
 		});
-		fb.authorize();
 	}
 
 };
 
 nsIndex.getIt = function() {
-	nsIndex.controller = new nsIndex.activityControl($.vwMain);
 	if (nsIndex.validateEmail() && nsIndex.validatePassword()) {
 
 		//Login
@@ -138,6 +123,7 @@ nsIndex.getIt = function() {
 };
 
 nsIndex.userCheck = function() {
+	
 	var user = null;
 	try {
 		// To fetch the active user
@@ -158,12 +144,13 @@ nsIndex.userCheck = function() {
 };
 
 nsIndex.init = function() {
+	nsIndex.controller = new nsIndex.activityControl($.vwMain);
 	console.debug("Hello Signup");
-	
+
 	if (Titanium.Platform.osname !== "android") {
 		$.vwMain.setTop(Alloy.Globals.platformHeight * 0.1056);
 	}
-	
+
 	Alloy.Globals.windowStack.push($.winIndex);
 
 	// NOT WORKING : TODO
@@ -180,7 +167,7 @@ nsIndex.init = function() {
 		console.debug("Active User: ", JSON.stringify(user));
 
 	} catch(e) {
-		user = null;
+		// user = null;
 		// var logout = new nsIndex.serviceCalls.logout();
 		console.debug("Kinvey user exception ", JSON.stringify(e));
 	}
@@ -202,7 +189,7 @@ nsIndex.init = function() {
 		$.winIndex.open();
 	} else {
 		// setTimeout(function() {
-			// Alloy.createController("LandingPage").getView().open();
+		// Alloy.createController("LandingPage").getView().open();
 		// }, 2000);
 		$.winIndex.open();
 	}

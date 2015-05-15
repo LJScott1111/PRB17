@@ -68,15 +68,44 @@ exports.logout = nsServerCalls.logout;
 
 // User Login with fb
 nsServerCalls.fbLogin = function(onloadCallback, errorCallback) {
-	Kinvey.Social.connect(null, 'facebook', {
+	console.log("Logging to FB");
+	var promise = Kinvey.Social.connect(null, 'facebook', {
 		appId : Alloy.Globals.fbAppID(),
 		success : function(response) {
+			console.debug("FB RESPONSE ", JSON.stringify(response));
+			Titanium.App.Properties.setString('login-type', "FB");
+			// TODO: Need to capture userid and put it in App Properties
+			// Titanium.App.Properties.setString('userid', user._id);
 			onloadCallback(response);
+		}, 
+		error: function(error){
+			console.debug("FB ERROR ", JSON.stringify(error));
+			errorCallback(error);
 		}
 	});
 };
 
 exports.fbLogin = nsServerCalls.fbLogin;
+
+// User Logout with fb
+nsServerCalls.fbLogout = function(onloadCallback, errorCallback) {
+	console.log("Logging out from FB");
+	var user = Kinvey.getActiveUser();
+	var promise = Kinvey.Social.disconnect(user, 'facebook', {
+		// appId : Alloy.Globals.fbAppID(),
+		success : function(response) {
+			console.debug("FB RESPONSE ", JSON.stringify(response));
+			onloadCallback(response);
+			Titanium.App.Properties.removeProperty('userid');
+			Titanium.App.Properties.removeProperty('login-type');
+		}, 
+		error: function(error){
+			console.debug("FB ERROR ", JSON.stringify(error));
+		}
+	});
+};
+
+exports.fbLogout = nsServerCalls.fbLogout;
 
 // Get band list
 nsServerCalls.getBandList = function(onloadCallback, errorCallback) {
