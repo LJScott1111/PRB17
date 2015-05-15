@@ -178,23 +178,30 @@ Alloy.Globals.combinedDetails = function() {
 	console.debug("Alloy.Globals.combinedDetails ... Calling");
 	for (var i = 0,
 	    bandLen = appdata.bands.length; i < bandLen; i++) {
-
+		console.log("Inside bands");
 		var bandProfile = {};
 		bandProfile.bandDetails = appdata.bands[i];
+		console.debug("bandProfile.bandDetails " + JSON.stringify(bandProfile.bandDetails));
 
 		for (var j = 0,
 		    showLen = appdata.shows.length; j < showLen; j++) {
+			console.log("Inside shows");
 
 			if (appdata.shows[j].band_id === bandProfile.bandDetails._id) {
+				console.log("Inside band IF");
 				bandProfile.showDetails = JSON.parse(JSON.stringify(appdata.shows[j]));
-			}
+				// } else {
+				// continue;
 
-			for (var k = 0,
-			    venueLen = appdata.venues.length; k < venueLen; k++) {
-				if (bandProfile.showDetails.venue_id === appdata.venues[k]._id) {
-					bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
-					combinedData.push(bandProfile);
-					console.log("... ", JSON.stringify(bandProfile));
+				for (var k = 0,
+				    venueLen = appdata.venues.length; k < venueLen; k++) {
+					console.log("Inside Venues");
+					if (bandProfile.showDetails.venue_id === appdata.venues[k]._id) {
+						console.log("Inside venues IF");
+						bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
+						combinedData.push(bandProfile);
+						console.log("... ", JSON.stringify(bandProfile));
+					}
 				}
 			}
 		}
@@ -301,28 +308,56 @@ Alloy.Globals.getSettings = function(currentWin) {
 			} else {
 				// Call Logout and back to main screen
 				var servercalls = require('serverCalls');
-				var logout = new servercalls.logout(function() {
-					currentWin.remove(vwOptionFullView);
-					if (currentWin.id === "winLanding") {
-						Alloy.createController("signup").getView().open();
-					} else {
 
-						console.debug(Alloy.Globals.windowStack.length);
-						for (var i = Alloy.Globals.windowStack.length - 1; i >= 0; i--) {
+				var login_type = Titanium.App.Properties.getString('login-type');
+				if (login_type === "FB") {
 
-							console.debug(Alloy.Globals.windowStack[i].id);
-
-							console.debug("Alloy.Globals.windowStack.pop() " + Alloy.Globals.windowStack.length);
-							Alloy.Globals.windowStack[i].close();
-							Alloy.Globals.windowStack.pop();
-							Titanium.App.Properties.removeProperty('userid');
+					var fbLogout = new servercalls.fbLogout(function() {
+						if (currentWin.id === "winLanding") {
 							Alloy.createController("signup").getView().open();
+						} else {
+
+							console.debug(Alloy.Globals.windowStack.length);
+							for (var i = Alloy.Globals.windowStack.length - 1; i >= 0; i--) {
+
+								console.debug(Alloy.Globals.windowStack[i].id);
+
+								console.debug("Alloy.Globals.windowStack.pop() " + Alloy.Globals.windowStack.length);
+								Alloy.Globals.windowStack[i].close();
+								Alloy.Globals.windowStack.pop();
+								Titanium.App.Properties.removeProperty('userid');
+								Alloy.createController("signup").getView().open();
+							}
 						}
-					}
-					currentWin.remove(vwOptionFullView);
-				}, function(error) {
-					// TODO
-				});
+						currentWin.remove(vwOptionFullView);
+					}, function() {
+						// Error while logout
+					});
+
+				} else {
+					var logout = new servercalls.logout(function() {
+						currentWin.remove(vwOptionFullView);
+						if (currentWin.id === "winLanding") {
+							Alloy.createController("signup").getView().open();
+						} else {
+
+							console.debug(Alloy.Globals.windowStack.length);
+							for (var i = Alloy.Globals.windowStack.length - 1; i >= 0; i--) {
+
+								console.debug(Alloy.Globals.windowStack[i].id);
+
+								console.debug("Alloy.Globals.windowStack.pop() " + Alloy.Globals.windowStack.length);
+								Alloy.Globals.windowStack[i].close();
+								Alloy.Globals.windowStack.pop();
+								Titanium.App.Properties.removeProperty('userid');
+								Alloy.createController("signup").getView().open();
+							}
+						}
+						// currentWin.remove(vwOptionFullView);
+					}, function(error) {
+						// TODO
+					});
+				}
 			}
 		} else if (e.source.id === "vwOption_1") {
 			if (Titanium.Platform.osname === "android") {

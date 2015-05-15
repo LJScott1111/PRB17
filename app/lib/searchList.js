@@ -98,6 +98,8 @@ nsSearchList.createList = function() {
 			left : Alloy.Globals.platformWidth * 0.30,
 			text : nsSearchList.data[i].name,
 			color : "#000000",
+			height: Titanium.UI.SIZE,
+			width :"50%",
 			font : {
 				fontSize : Alloy.Globals.theme.fonts.size20Fonts
 			}
@@ -106,7 +108,7 @@ nsSearchList.createList = function() {
 		vwRowView.add(lblName);
 
 		var ivFavouriteStar = Titanium.UI.createImageView({
-			right : 35,
+			right : 15,
 			height : 40,
 			width : 40,
 			id : "ivFavouriteStar",
