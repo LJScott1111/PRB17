@@ -27,7 +27,7 @@ nsBandProfile.markFavourite = function(e) {
 				console.log("startDate ", startDate);
 
 				var notification = Ti.App.iOS.scheduleLocalNotification({
-					alertBody : "Your show is in next 10 minutes.",
+					alertBody : nsBandProfile.data.bandDetails.name+"\n"+nsBandProfile.data.venueDetails.name+"\n"+startDate,
 					badge : 1,
 					date : startDate,
 				});

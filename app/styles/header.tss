@@ -5,11 +5,8 @@
 	backgroundImage: "/icons/navbar1.png"
 }
 
-"#ivBack": {
-	left: 10,
-	height: 30,
-	width: 30,
-	image: "/images/back.png"
+"#vwHeader[platform=android]": {
+	backgroundImage: "/icons/navbar-android.png"
 }
 
 "#ivSettings": {

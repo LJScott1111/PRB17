@@ -10,7 +10,7 @@
 	backgroundColor: "#ffffff",
 	top: 0,
 	layout: "vertical",
-	height: Titanium.UI.SIZE,
+	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL
 }
 

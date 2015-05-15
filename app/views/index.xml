@@ -21,7 +21,7 @@
 		</Window>
 	</NavigationWindow>
 	<Window id="winLanding" platform="android">
-		<Require src="header" screenId="winLanding" onBackButtonClick="nsLanding.closeWindow"></Require>
+		<Require src="header" screenId="winLanding" ></Require>
 		<View id="vwMain">
 			<View id="vwTopOptions">
 				<ImageView id="ivBands" class="optionClass" onClick="nsLanding.getBands"></ImageView>

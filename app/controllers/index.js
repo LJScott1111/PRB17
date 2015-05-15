@@ -142,9 +142,9 @@ nsLanding.getVenues = function() {
 
 nsLanding.getNews = function() {
 	if (Titanium.Platform.osname === "android") {
-		Alloy.createController("GenericWebView", {url: "http://punkrockbowling.com/news/"}).getView().open();
+		Alloy.createController("GenericWebView", {url: "https://twitter.com/PRBCommittee"}).getView().open();
 	} else {
-		Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {url: "http://punkrockbowling.com/news/"}).getView());
+		Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {url: "https://twitter.com/PRBCommittee"}).getView());
 	}
 };
 
@@ -161,7 +161,6 @@ nsLanding.init = function() {
 
 	Alloy.Globals.checkUser(function(user) {
 		console.debug("Alloy.Globals.checkUser user - " + user);
-		// $.winLanding.open();
 		if (Titanium.Platform.osname === "android") {
 			$.winLanding.open();
 		} else {
