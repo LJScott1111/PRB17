@@ -3,7 +3,7 @@
 		<RightNavButton platform="ios">
 			<Button image="/images/settings.png" onClick="nsMusicEvents.getSettings"/>
 		</RightNavButton>
-		<Require platform="android" src="header" screenId="winMusicEvents" onBackButtonClick="nsMusicEvents.closeWindow"></Require>
+		<Require platform="android" src="header" screenId="winMusicEvents" ></Require>
 		<View id="vwMain">
 			
 		</View>

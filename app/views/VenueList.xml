@@ -3,7 +3,7 @@
 		<RightNavButton platform="ios">
 			<Button image="/images/settings.png" onClick="nsVenueList.getSettings"/>
 		</RightNavButton>
-		<Require platform="android" src="header" screenId="winVenueList" onBackButtonClick="nsVenueList.closeWindow" onSetting="nsVenueList.getSettings"></Require>
+		<Require platform="android" src="header" screenId="winVenueList" onSetting="nsVenueList.getSettings"></Require>
 		<View id="vwMain">
 		</View>
 	</Window>

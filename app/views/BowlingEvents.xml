@@ -3,8 +3,9 @@
 		<RightNavButton platform="ios">
 			<Button image="/images/settings.png" onClick="nsBowlingEvents.getSettings"/>
 		</RightNavButton>
-		<Require platform="android" src="header" screenId="winBowlingEvents" onBackButtonClick="nsBowlingEvents.closeWindow"></Require>
-		<Button platform="ios" image="/images/back.png" left="10" top="20" height="24" width="24" onClick="nsBowlingEvents.closeWindow"></Button>
+		<Require platform="android" src="header" screenId="winBowlingEvents" ></Require>
+
+<Button platform="ios" image="/images/back.png" left="10" top="20" height="24" width="24" onClick="nsBowlingEvents.closeWindow"></Button>
 		<View id="vwMain">
 			<WebView id="wvBowling"></WebView>
 		</View>

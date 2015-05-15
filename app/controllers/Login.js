@@ -10,7 +10,7 @@ nsLogin.closeWindow = function() {
 	// Alloy.Globals.windowStack.pop();
 	// Alloy.createController("signup").getView().open();
 	// $.winLogin.close();
-	
+
 	nsLogin.args.win.remove($.vwMain);
 };
 
@@ -50,6 +50,7 @@ nsLogin.validatePassword = function() {
 nsLogin.login = function() {
 	nsLogin.controller = new nsLogin.activityControl($.vwMain);
 	nsLogin.args.win.add(nsLogin.controller);
+
 	if (nsLogin.validateEmail() && nsLogin.validatePassword()) {
 		//Login
 		var tfEmail = $.tfEmail.getValue();
@@ -62,11 +63,9 @@ nsLogin.login = function() {
 				nsLogin.args.win.remove(nsLogin.controller);
 				nsLogin.args.win.close();
 				var notify = Titanium.App.Properties.getBool('notify');
-				if(Titanium.Platform.osname !== "android"){//} && !notify){
+				if (Titanium.Platform.osname !== "android") {
 					Alloy.Globals.askToNotify();
 				}
-				// Titanium.App.fireEvent('askToNotify');
-				// Titanium.App.addEventListener('askToNotify', Alloy.Globals.askToNotify());
 			});
 		};
 
@@ -75,11 +74,9 @@ nsLogin.login = function() {
 			alert("Some error occured. Please try again");
 			//TODO - Proper error handling
 			// alert(error.message);
-			// $.winLogin.remove(nsLogin.controller);
 			nsLogin.args.win.remove(nsLogin.controller);
 		};
 
-		// $.winLogin.add(nsLogin.controller);
 		var signupService = new nsLogin.serviceCalls.login(tfEmail, tfPass, this.onloadCallback, this.onerrorCallback);
 
 	} else {
@@ -89,51 +86,15 @@ nsLogin.login = function() {
 
 nsLogin.window = null;
 nsLogin.init = function() {
-	// nsLogin.args.win = $.vwMain.parent;
-	// nsLogin.window = window;
-	// Alloy.Globals.windowStack.push($.winLogin);
-
-	// NOT WORKING : TODO
-	// var user = null;
-	// try {
-	// // To fetch the active user
-	// user = Kinvey.getActiveUser();
-	// var promise = Kinvey.User.me();
-	// promise.then(function(user1) {
-	// console.log("Hello User" + JSON.stringify(user1));
-	// }, function(error) {
-	// console.log("No user");
-	// });
-	// console.debug("Active User: ", JSON.stringify(user));
-	//
-	// } catch(e) {
-	// user = null;
-	// // var logout = new nsLogin.serviceCalls.logout();
-	// console.debug("Kinvey user exception ", JSON.stringify(e));
-	// }
-	// console.debug("-- User: ", JSON.stringify(user));
-
-	// if (user === null) {
+	
+	if (Titanium.Platform.osname !== "android") {
+		$.vwTopLogin.setTop(Alloy.Globals.platformHeight * 0.1056);
+	}
+	
 	// Setting blank object
 	Titanium.App.Properties.setObject('appdata', Alloy.Globals.appData);
 
-	// $.winLogin.addEventListener('android:back', function(e) {
-		  // console.debug("Pressing Back Will Not Close The Activity/Window");
-		// nsLogin.closeWindow();
-	// });
-
-	// $.vwFbConnect.setHeight(Alloy.Globals.platformHeight * 0.088);
 	$.tfEmail.setHintText(L('index_tfEmail'));
 	$.tfPassword.setHintText(L('login_tfPassword'));
-
-	// $.winLogin.open();
-	// }
-	// else {
-	// setTimeout(function() {
-	// Alloy.createController("LandingPage").getView().open();
-	// }, 2000);
-	// }
-
 };
 nsLogin.init();
-// exports.init = nsLogin.init;

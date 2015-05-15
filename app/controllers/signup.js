@@ -115,7 +115,9 @@ nsIndex.getIt = function() {
 				Alloy.Globals.windowStack.pop();
 				$.winIndex.remove(nsIndex.controller);
 				nsIndex.closeWindow();
-				Alloy.Globals.askToNotify();
+				if (Titanium.Platform.osname !== "android") {
+					Alloy.Globals.askToNotify();
+				}
 			});
 		};
 
@@ -157,6 +159,10 @@ nsIndex.userCheck = function() {
 
 nsIndex.init = function() {
 	console.debug("Hello Signup");
+	
+	if (Titanium.Platform.osname !== "android") {
+		$.vwMain.setTop(Alloy.Globals.platformHeight * 0.1056);
+	}
 	
 	Alloy.Globals.windowStack.push($.winIndex);
 

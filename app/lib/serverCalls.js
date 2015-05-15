@@ -4,7 +4,7 @@ var nsServerCalls = {};
 // User signup
 nsServerCalls.signup = function(username, password, onloadCallback, errorCallback) {
 	var promise = Kinvey.User.signup({
-		username : username,
+		username : username.toLowerCase(),
 		password : password
 	});
 	promise.then(function(user) {
@@ -26,8 +26,9 @@ exports.signup = nsServerCalls.signup;
 
 // User login
 nsServerCalls.login = function(username, password, onloadCallback, errorCallback) {
+	
 	var promise = Kinvey.User.login({
-		username : username,
+		username : username.toLowerCase(),
 		password : password
 	});
 	promise.then(function(user) {

@@ -140,7 +140,7 @@ nsSearchList.createList = function() {
 								console.log("startDate ", startDate);
 
 								var notification = Ti.App.iOS.scheduleLocalNotification({
-									alertBody : "Your show is in next 10 minutes.",
+									alertBody : appdata.details[i].bandDetails.name+"\n"+appdata.details[i].venueDetails.name+"\n"+startDate,
 									badge : 1,
 									date : startDate,
 								});
@@ -177,7 +177,7 @@ nsSearchList.createList = function() {
 								console.log("startDate ", startDate);
 
 								var notification = Ti.App.iOS.scheduleLocalNotification({
-									alertBody : "Your show is in next 10 minutes.",
+									alertBody : appdata.details[i].bandDetails.name+"\n"+appdata.details[i].venueDetails.name+"\n"+startDate,
 									badge : 1,
 									date : startDate,
 								});

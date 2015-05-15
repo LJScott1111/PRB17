@@ -3,7 +3,7 @@
 		<RightNavButton platform="ios">
 			<Button image="/images/settings.png" width="32" height="32" onClick="nsBandProfile.getSettings"/>
 		</RightNavButton>
-		<Require platform="android" src="header" screenId="winBandProfile" onBackButtonClick="nsBandProfile.closeWindow" onSetting="nsBandProfile.getSettings"></Require>
+		<Require platform="android" src="header" screenId="winBandProfile" onSetting="nsBandProfile.getSettings"></Require>
 		<View id="vwMain">
 			<ScrollView id="svMain">
 				<!-- <View id="vwToScroll"> -->

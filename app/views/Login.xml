@@ -1,23 +1,16 @@
 <Alloy>
-	<!-- <Window id="winLogin"> -->
-		<!-- <Require src="header" screenId="winLogin" onBackButtonClick="nsLogin.closeWindow"></Require> -->
-		<View id="vwMain">
-			<ImageView id="ivClose" onClick="nsLogin.closeWindow"></ImageView>
-			<View id="vwTopLogin">
-				<!-- <View id="vwFbConnect">
-					<Label id="lblFbConnect" textid="login_lblFbConnect"></Label>
-				</View> -->
-				<!-- <Label id="lblOr" textid="index_lblOr"></Label> -->
-				<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_EMAIL"></TextField>
-				<TextField id="tfPassword" passwordMask="true" class="tfClass"></TextField>
-				<View id="vwLogin" onClick="nsLogin.login">
-					<Label id="lblLogin" textid="login_lbllogin"></Label>
-				</View>
-			</View>
-			<View id="vwBottomView">
-				<ImageView id="ivPoker"></ImageView>
-				<ImageView id="ivLogo"></ImageView>
+	<View id="vwMain">
+		<ImageView id="ivClose" onClick="nsLogin.closeWindow"></ImageView>
+		<View id="vwTopLogin">
+			<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_EMAIL"></TextField>
+			<TextField id="tfPassword" passwordMask="true" class="tfClass"></TextField>
+			<View id="vwLogin" onClick="nsLogin.login">
+				<Label id="lblLogin" textid="login_lbllogin"></Label>
 			</View>
 		</View>
-	<!-- </Window> -->
+		<View id="vwBottomView">
+			<ImageView id="ivPoker"></ImageView>
+			<ImageView id="ivLogo"></ImageView>
+		</View>
+	</View>
 </Alloy>

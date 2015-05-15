@@ -7,7 +7,7 @@
 		</View>
 	</Window>
 	<Window id="winBandList" platform="android">
-		<Require platform="android" src="header" screenId="winBandList" onBackButtonClick="nsBandList.closeWindow" onSetting="nsBandList.getSettings"></Require>
+		<Require platform="android" src="header" screenId="winBandList" onSetting="nsBandList.getSettings"></Require>
 		<View id="vwMain">
 		</View>
 	</Window>
