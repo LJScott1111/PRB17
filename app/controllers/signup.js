@@ -115,6 +115,7 @@ nsIndex.getIt = function() {
 				Alloy.Globals.windowStack.pop();
 				$.winIndex.remove(nsIndex.controller);
 				nsIndex.closeWindow();
+				Alloy.Globals.askToNotify();
 			});
 		};
 

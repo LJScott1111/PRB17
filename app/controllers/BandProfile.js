@@ -20,6 +20,32 @@ nsBandProfile.markFavourite = function(e) {
 		var show_id = nsBandProfile.data.showDetails._id;
 		var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
 			e.source.setImage(Alloy.Globals.theme.icons.star);
+
+			if (Titanium.App.Properties !== "android") {
+				var MS_PER_MINUTE = 60000;
+				var startDate = new Date((nsBandProfile.data.showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
+				console.log("startDate ", startDate);
+
+				var notification = Ti.App.iOS.scheduleLocalNotification({
+					alertBody : "Your show is in next 10 minutes.",
+					badge : 1,
+					date : startDate,
+				});
+
+				Ti.App.iOS.addEventListener('notification', function(e) {
+
+					Ti.API.info('background event received = ' + notification);
+
+					// Reset the badge value
+					if (e.badge > 0) {
+						Ti.App.iOS.scheduleLocalNotification({
+							date : new Date(new Date().getTime()),
+							badge : -1
+						});
+					}
+				});
+			}
+
 		}, function(error) {
 			alert("Some error occured");
 		});
@@ -53,7 +79,7 @@ nsBandProfile.doSocialActivity = function(e) {
 				url : nsBandProfile.data.bandDetails.video_link
 			}).getView());
 		}
-		
+
 	} else if (e.source.id === "vwWebsite") {
 		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.site_link);
 		if (Titanium.Platform.osname === "android") {
@@ -65,7 +91,7 @@ nsBandProfile.doSocialActivity = function(e) {
 				url : nsBandProfile.data.bandDetails.site_link
 			}).getView());
 		}
-		
+
 	} else if (e.source.id === "vwFacebook") {
 		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.fb_link);
 		if (Titanium.Platform.osname === "android") {
@@ -77,7 +103,7 @@ nsBandProfile.doSocialActivity = function(e) {
 				url : nsBandProfile.data.bandDetails.fb_link
 			}).getView());
 		}
-		
+
 	} else if (e.source.id === "vwTwitter") {
 		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.tw_link);
 		if (Titanium.Platform.osname === "android") {

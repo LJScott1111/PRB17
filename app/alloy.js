@@ -22,6 +22,18 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 	});
 };
 
+// Permission for notifications
+Alloy.Globals.askToNotify = function() {
+	var notify = Titanium.App.Properties.getBool('notify');
+
+	if (Titanium.Platform.osname !== "android") {
+		// Register for Local notifications
+		var register = Titanium.App.iOS.registerUserNotificationSettings({
+			types : [Ti.App.iOS.USER_NOTIFICATION_TYPE_ALERT, Ti.App.iOS.USER_NOTIFICATION_TYPE_SOUND, Ti.App.iOS.USER_NOTIFICATION_TYPE_BADGE]
+		});
+	}
+};
+
 // To close the index screen after login
 Alloy.Globals.windowStack = [];
 
@@ -207,33 +219,29 @@ Alloy.Globals.getFormattedDate = function(timestamp) {
 	return dateString;
 };
 
-Alloy.Globals.getSettings = function(currentWin, added) {
+Alloy.Globals.getSettings = function(currentWin) {
 	console.debug(Titanium.App.Properties.getString('userid'));
 	var userid = Titanium.App.Properties.getString('userid');
+	var child = currentWin.getChildren();
 
-	if (added) {
-
-		var child = currentWin.getChildren();
-
-		for (var i = 0,
-		    len = child.length; i < len; i++) {
-			if (child[i].id === "vwOptionFullView") {
-				currentWin.remove(child[i]);
-				break;
-			}
+	for (var i = 0,
+	    len = child.length; i < len; i++) {
+		if (child[i].id === "vwOptionFullView") {
+			currentWin.remove(child[i]);
+			return;
 		}
-		return;
 	}
 
 	var vwOptionFullView = Titanium.UI.createView({
 		height : Titanium.UI.FILL,
-		top : (Titanium.Platform.osname === "android") ? Alloy.Globals.theme.sizes.headerbar : 0,
+		top : (Titanium.Platform.osname === "android" || currentWin.id === "winIndex") ? Alloy.Globals.theme.sizes.headerbar : 0,
 		width : Titanium.UI.FILL,
 		id : "vwOptionFullView",
 		layout : "vertical"
 	});
 
-	for (var i = 0; i < 4; i++) {
+	var len = (currentWin.id === "winIndex") ? 1 : 4;
+	for (var i = 0; i < len; i++) {
 		var vwOption = Titanium.UI.createView({
 			top : 0,
 			right : 10,
@@ -261,21 +269,16 @@ Alloy.Globals.getSettings = function(currentWin, added) {
 			if (currentWin.id === "winIndex") {
 				console.debug("User not logged in");
 				lblLoginActivity.setText("Login");
-				vwOption.activity = "login";
 			} else {
 				console.debug("User logged in");
 				lblLoginActivity.setText("Logout");
-				vwOption.activity = "logout";
 			}
 		} else if (i === 1) {
 			lblLoginActivity.setText("Map");
-			vwOption.activity = "map";
 		} else if (i === 2) {
 			lblLoginActivity.setText("Privacy Policy");
-			vwOption.activity = "privacy";
-		} else {
+		} else if (i === 3) {
 			lblLoginActivity.setText("FAQ");
-			vwOption.activity = "faq";
 		}
 
 		vwOption.add(lblLoginActivity);
@@ -283,10 +286,11 @@ Alloy.Globals.getSettings = function(currentWin, added) {
 	}
 	vwOptionFullView.addEventListener('click', function(e) {
 		console.debug(currentWin.id);
+		console.log("e.source.id .. ", e.source.id);
 
 		if (e.source.id === "vwOption_0") {
 			// Open login
-			if (vwOption.activity === "login") {
+			if (currentWin.id === "winIndex") {
 
 				currentWin.add(Alloy.createController("Login", {
 					"win" : currentWin
@@ -315,12 +319,12 @@ Alloy.Globals.getSettings = function(currentWin, added) {
 							Alloy.createController("signup").getView().open();
 						}
 					}
+					currentWin.remove(vwOptionFullView);
 				}, function(error) {
 					// TODO
 				});
 			}
 		} else if (e.source.id === "vwOption_1") {
-
 			if (Titanium.Platform.osname === "android") {
 				Alloy.createController("GenericWebView", {
 					url : "https://www.punkrockbowling.com/wp-content/uploads/2013/11/Punk-Rock-Bowling-map.jpg"
@@ -330,9 +334,9 @@ Alloy.Globals.getSettings = function(currentWin, added) {
 					url : "https://www.punkrockbowling.com/wp-content/uploads/2013/11/Punk-Rock-Bowling-map.jpg"
 				}).getView());
 			}
+			currentWin.remove(vwOptionFullView);
 
 		} else if (e.source.id === "vwOption_2") {
-
 			if (Titanium.Platform.osname === "android") {
 				Alloy.createController("GenericWebView", {
 					url : "http://www.punkrockbowling.com/our-privacy-policy/"
@@ -342,9 +346,9 @@ Alloy.Globals.getSettings = function(currentWin, added) {
 					url : "http://www.punkrockbowling.com/our-privacy-policy/"
 				}).getView());
 			}
+			currentWin.remove(vwOptionFullView);
 
 		} else if (e.source.id === "vwOption_3") {
-
 			if (Titanium.Platform.osname === "android") {
 				Alloy.createController("GenericWebView", {
 					url : "http://www.punkrockbowling.com/faq/"
@@ -354,13 +358,12 @@ Alloy.Globals.getSettings = function(currentWin, added) {
 					url : "http://www.punkrockbowling.com/faq/"
 				}).getView());
 			}
+			currentWin.remove(vwOptionFullView);
 
 		} else {
 			currentWin.remove(vwOptionFullView);
 		}
-
 	});
-
 	currentWin.add(vwOptionFullView);
 };
 

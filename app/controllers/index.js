@@ -14,6 +14,7 @@ nsLanding.getSettings = function() {
 };
 
 nsLanding.getBands = function() {
+	
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	
 	console.debug("Alloy.Globals.bands emply ", JSON.stringify(appdata.bands));
@@ -148,6 +149,7 @@ nsLanding.getNews = function() {
 };
 
 nsLanding.init = function() {
+	
 	nsLanding.controller = new nsLanding.activityControl($.vwMain);
 
 	$.winLanding.addEventListener('android:back', function(e) {
@@ -156,8 +158,6 @@ nsLanding.init = function() {
 	});
 
 	$.ivNews.setHeight(Alloy.Globals.platformHeight * 0.0774);
-
-	// $.winLanding.open();
 
 	Alloy.Globals.checkUser(function(user) {
 		console.debug("Alloy.Globals.checkUser user - " + user);
@@ -175,9 +175,6 @@ nsLanding.init = function() {
 		$.winLanding.open();
 		Alloy.createController("signup").getView().open();
 	});
-
-	// $.winLanding.open();
-	// Alloy.createController("Signup").getView().open();
 
 };
 

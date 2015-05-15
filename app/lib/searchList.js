@@ -15,12 +15,7 @@ nsSearchList.createList = function() {
 		height : 43,
 		top : 10,
 		width : "80%",
-		// borderRadius : 10,
 	});
-
-	// sbSearchBar.addEventListener("change", function(e) {
-	// e.value;
-	// });
 
 	nsSearchList.vwSearchView.add(sbSearchBar);
 
@@ -49,17 +44,13 @@ nsSearchList.createList = function() {
 
 		var row = Ti.UI.createTableViewRow({
 			id : i,
-			// title : nsSearchList.data[i].name,
 			filter : nsSearchList.data[i].name,
 			hasChild : true,
 			top : 0
 		});
 
 		row.addEventListener('click', function(e) {
-			// console.debug(JSON.stringify(e));
-			// console.debug(nsSearchList.type, " ", e.source.rowData.id, " ", e.source.rowData.title);
 			var data = null;
-			// console.debug("e.source.id ", e.source.id);
 			if (e.source.id !== "ivFavouriteStar") {
 				if (nsSearchList.type === "BandList") {
 					if (Titanium.Platform.osname === "android") {
@@ -84,9 +75,6 @@ nsSearchList.createList = function() {
 				}
 			}
 		});
-
-		// row.filter = nsSearchList.data[i];
-		// console.debug(row.filter);
 
 		var vwRowView = Titanium.UI.createView({
 			height : Titanium.UI.SIZE,
@@ -122,7 +110,6 @@ nsSearchList.createList = function() {
 			height : 40,
 			width : 40,
 			id : "ivFavouriteStar",
-			// backgroundColor : "#000000",
 			selected : false
 		});
 
@@ -142,10 +129,35 @@ nsSearchList.createList = function() {
 
 				if (nsSearchList.type === "BandList") {
 					if (appdata.details[i].showDetails.band_id === nsSearchList.data[e.row.id]._id) {
-						// nsSearchList.data = JSON.parse(JSON.stringify(appdata.details[i]));
 						var show_id = appdata.details[i].showDetails._id;
 						var addShow = new nsSearchList.serverCalls.saveUserSchedule(show_id, function(response) {
 							e.source.setImage(Alloy.Globals.theme.icons.star);
+
+							// Schedule notifications for IOS
+							if (Titanium.App.Properties !== "android") {
+								var MS_PER_MINUTE = 60000;
+								var startDate = new Date((appdata.details[i].showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
+								console.log("startDate ", startDate);
+
+								var notification = Ti.App.iOS.scheduleLocalNotification({
+									alertBody : "Your show is in next 10 minutes.",
+									badge : 1,
+									date : startDate,
+								});
+
+								Ti.App.iOS.addEventListener('notification', function(e) {
+
+									Ti.API.info('background event received = ' + notification);
+
+									// Reset the badge value
+									if (e.badge > 0) {
+										Ti.App.iOS.scheduleLocalNotification({
+											date : new Date(new Date().getTime()),
+											badge : -1
+										});
+									}
+								});
+							}
 						}, function(error) {
 							alert("Some error occured");
 						});
@@ -154,10 +166,36 @@ nsSearchList.createList = function() {
 					}
 				} else {
 					if (appdata.details[i].showDetails.venue_id === nsSearchList.data[e.row.id]._id) {
-						// nsSearchList.data = JSON.parse(JSON.stringify(appdata.details[i]));
 						var show_id = appdata.details[i].showDetails._id;
 						var addShow = new nsSearchList.serverCalls.saveUserSchedule(show_id, function(response) {
 							e.source.setImage(Alloy.Globals.theme.icons.star);
+
+							// Schedule notifications for IOS
+							if (Titanium.App.Properties !== "android") {
+								var MS_PER_MINUTE = 60000;
+								var startDate = new Date((appdata.details[i].showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
+								console.log("startDate ", startDate);
+
+								var notification = Ti.App.iOS.scheduleLocalNotification({
+									alertBody : "Your show is in next 10 minutes.",
+									badge : 1,
+									date : startDate,
+								});
+
+								Ti.App.iOS.addEventListener('notification', function(e) {
+
+									Ti.API.info('background event received = ' + notification);
+
+									// Reset the badge value
+									if (e.badge > 0) {
+										Ti.App.iOS.scheduleLocalNotification({
+											date : new Date(new Date().getTime()),
+											badge : -1
+										});
+									}
+								});
+							}
+
 						}, function(error) {
 							alert("Some error occured");
 						});
@@ -168,22 +206,11 @@ nsSearchList.createList = function() {
 
 			}
 
-			// else {
-			// e.source.setImage(Alloy.Globals.theme.icons.star_off);
-			// }
 			e.source.selected = !e.source.selected;
 		});
 
 		vwRowView.add(ivFavouriteStar);
 
-		// var ivNext = Titanium.UI.createImageView({
-		// right : 10,
-		// height : 30,
-		// width : 20,
-		// backgroundColor : "#000030"
-		// });
-		//
-		// vwRowView.add(ivNext);
 		row.add(vwRowView);
 
 		currSection.add(row);
@@ -232,5 +259,4 @@ nsSearchList.init = function(type, data) {
 	return vwList;
 };
 
-// nsSearchList.init();
 exports.init = nsSearchList.init;

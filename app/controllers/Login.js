@@ -61,6 +61,12 @@ nsLogin.login = function() {
 				console.debug("fetchedData ", fetchedData);
 				nsLogin.args.win.remove(nsLogin.controller);
 				nsLogin.args.win.close();
+				var notify = Titanium.App.Properties.getBool('notify');
+				if(Titanium.Platform.osname !== "android"){//} && !notify){
+					Alloy.Globals.askToNotify();
+				}
+				// Titanium.App.fireEvent('askToNotify');
+				// Titanium.App.addEventListener('askToNotify', Alloy.Globals.askToNotify());
 			});
 		};
 

@@ -8,8 +8,7 @@ nsHeader.closeWindow = function() {
 
 nsHeader.getSettings = function(e) {
 	var currentWin = e.source.parent.parent;
-	Alloy.Globals.getSettings(currentWin, nsHeader.settingsAdded);
-	nsHeader.settingsAdded = !nsHeader.settingsAdded;
+	Alloy.Globals.getSettings(currentWin);
 };
 
 nsHeader.init = function() {

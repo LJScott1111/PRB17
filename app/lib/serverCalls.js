@@ -13,17 +13,8 @@ nsServerCalls.signup = function(username, password, onloadCallback, errorCallbac
 		Titanium.App.Properties.setString('userid', user._id);
 
 		var thisUser = Kinvey.setActiveUser(user);
-		// var promise = Kinvey.User.me();
-		// promise.then(function(user) {
-		// console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
-		// onloadCallback(thisUser);
-		// }, function(error) {
-		// console.debug("Active user Error! ", error);
-		// // user = null;
-		// });
-		console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
 		onloadCallback(thisUser);
-
+		
 	}, function(error) {
 		console.debug("Signup error ", error);
 		errorCallback(error);
@@ -46,8 +37,7 @@ nsServerCalls.login = function(username, password, onloadCallback, errorCallback
 		var thisUser = Kinvey.setActiveUser(user);
 		console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
 		onloadCallback(thisUser);
-
-		// onloadCallback(user);
+		
 	}, function(error) {
 		console.debug("Login error ", error);
 		errorCallback(error);
@@ -195,6 +185,7 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 	});
 	promise.then(function(entity) {
 		onloadCallback(entity);
+		
 	}, function(error) {
 		errorCallback(error);
 	});
