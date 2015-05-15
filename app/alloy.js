@@ -176,15 +176,13 @@ Alloy.Globals.combinedDetails = function() {
 	console.debug("appdata  .... " + JSON.stringify(appdata));
 
 	console.debug("Alloy.Globals.combinedDetails ... Calling");
-	for (var i = 0,
-	    bandLen = appdata.bands.length; i < bandLen; i++) {
+	for (var i = 0,bandLen = appdata.bands.length; i < bandLen; i++) {
 		console.log("Inside bands");
 		var bandProfile = {};
 		bandProfile.bandDetails = appdata.bands[i];
 		console.debug("bandProfile.bandDetails " + JSON.stringify(bandProfile.bandDetails));
 
-		for (var j = 0,
-		    showLen = appdata.shows.length; j < showLen; j++) {
+		for (var j = 0,showLen = appdata.shows.length; j < showLen; j++) {
 			console.log("Inside shows");
 
 			if (appdata.shows[j].band_id === bandProfile.bandDetails._id) {
@@ -193,8 +191,7 @@ Alloy.Globals.combinedDetails = function() {
 				// } else {
 				// continue;
 
-				for (var k = 0,
-				    venueLen = appdata.venues.length; k < venueLen; k++) {
+				for (var k = 0,venueLen = appdata.venues.length; k < venueLen; k++) {
 					console.log("Inside Venues");
 					if (bandProfile.showDetails.venue_id === appdata.venues[k]._id) {
 						console.log("Inside venues IF");

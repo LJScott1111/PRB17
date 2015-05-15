@@ -17,9 +17,9 @@ nsGenericWebView.init = function() {
 		console.debug("Pressing Back Will Not Close The Activity/Window");
 		nsGenericWebView.closeWindow();
 	});
-	
-	
+
 	$.wvGenericWebView.setUrl(nsGenericWebView.args.url);
+	$.winGenericWebView.setNavBarHidden(nsGenericWebView.args.showNavBar !== true);
 
 };
 

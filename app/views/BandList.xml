@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winBandList" platform="ios">
+	<Window id="winBandList" platform="ios" backButtonTitle="">
 		<RightNavButton platform="ios">
 			<Button image="/images/settings.png" onClick="nsBandList.getSettings"/>
 		</RightNavButton>

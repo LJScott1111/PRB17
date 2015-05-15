@@ -142,9 +142,9 @@ nsLanding.getVenues = function() {
 
 nsLanding.getNews = function() {
 	if (Titanium.Platform.osname === "android") {
-		Alloy.createController("GenericWebView", {url: "https://twitter.com/PRBCommittee"}).getView().open();
+		Alloy.createController("GenericWebView", {url: "twitter.html"}).getView().open();
 	} else {
-		Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {url: "https://twitter.com/PRBCommittee"}).getView());
+		Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {url: "twitter.html",showNavBar:true}).getView());
 	}
 };
 

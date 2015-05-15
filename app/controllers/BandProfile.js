@@ -16,7 +16,7 @@ nsBandProfile.getSettings = function() {
 
 nsBandProfile.markFavourite = function(e) {
 	if (!e.source.selected) {
-
+		console.log('MARK favorite');
 		var show_id = nsBandProfile.data.showDetails._id;
 		var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
 			e.source.setImage(Alloy.Globals.theme.icons.star);
@@ -27,7 +27,7 @@ nsBandProfile.markFavourite = function(e) {
 				console.log("startDate ", startDate);
 
 				var notification = Ti.App.iOS.scheduleLocalNotification({
-					alertBody : nsBandProfile.data.bandDetails.name+"\n"+nsBandProfile.data.venueDetails.name+"\n"+startDate,
+					alertBody : nsBandProfile.data.bandDetails.name + "\n" + nsBandProfile.data.venueDetails.name + "\n" + startDate,
 					badge : 1,
 					date : startDate,
 				});
@@ -119,6 +119,7 @@ nsBandProfile.doSocialActivity = function(e) {
 };
 
 nsBandProfile.init = function() {
+	console.log('INIT Band Profile');
 	Alloy.Globals.windowStack.push($.winBandProfile);
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
@@ -140,7 +141,7 @@ nsBandProfile.init = function() {
 	});
 
 	$.ivBandImage.setHeight(Alloy.Globals.platformHeight * 0.30);
-
+	console.log('showDetails:'+JSON.stringify(nsBandProfile.data));
 	var datetime = Alloy.Globals.getFormattedDate(nsBandProfile.data.showDetails.start_time);
 
 	// $.ivFavouriteStar.selected = false;
