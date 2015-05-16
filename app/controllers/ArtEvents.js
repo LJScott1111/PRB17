@@ -18,8 +18,6 @@ nsArtEvents.init = function() {
 		nsArtEvents.closeWindow();
 	});
 	
-	// $.ivArtImage.setImage("http://postimg.org/image/ndhjkkhnt/");
-	
 	$.wvArtImage.setUrl("https://www.punkrockbowling.com/art-exhibit/");
 };
 

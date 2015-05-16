@@ -34,6 +34,9 @@ Alloy.Globals.askToNotify = function() {
 	}
 };
 
+// To debug Kinvey
+ //KINVEY_DEBUG = true;
+
 // To close the index screen after login
 Alloy.Globals.windowStack = [];
 
@@ -81,6 +84,18 @@ Alloy.Globals.init = function() {
 
 };
 Alloy.Globals.init();
+
+// Function to sort array
+Alloy.Globals.sortArray = function(prop) {
+	return function(a, b) {
+		if (a[prop] > b[prop]) {
+			return 1;
+		} else if (a[prop] < b[prop]) {
+			return -1;
+		}
+		return 0;
+	};
+};
 
 // App theme values
 Alloy.Globals.theme = {
