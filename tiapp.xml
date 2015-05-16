@@ -1,95 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-	<id>com.interfuel.festfuel</id>
-	<name>Punk Rock Bowling Mobile</name>
-	<version>1.1.7</version>
-	<publisher>Buzzplay</publisher>
-	<url>http://punkrockbowling.com</url>
-	<description>Punk Rock Bowling mobile</description>
-	<copyright>2015 by Buzzplay</copyright>
-	<icon>appicon.png</icon>
-	<fullscreen>false</fullscreen>
-	<navbar-hidden>false</navbar-hidden>
-	<statusbar-hidden>false</statusbar-hidden>
-	<statusbar-style>opaque</statusbar-style>
-	<analytics>false</analytics>
-	<guid>95040078-7551-4c2f-9111-73101a77574c</guid>
-	<property name="ti.ui.defaultunit" type="string">dp</property>
-	<property name="ti.facebook.appid">993161744029602</property>
-	<ios>
-		<plist>
-			<dict>
-				<key>CFBundleURLTypes</key>
-				<array>
-					<dict>
-						<key>CFBundleURLName</key>
-						<!-- Application ID same as the id value in the tiapp.xml file -->
-						<string>com.interfuel.festfuel</string>
-						<key>CFBundleURLSchemes</key>
-						<array>
-							<!-- Prefix the Facebook App ID with 'fb' -->
-							<string>fb993161744029602</string>
-						</array>
-					</dict>
-				</array>
-				<key>FacebookAppID</key>
-				<!-- Facebook App ID -->
-				<string>993161744029602</string> 
-				<key>FacebookDisplayName</key>
-				<!-- Facebook App Name from developer.facebook.com -->
-				<string>Punk Rock Bowling</string>
-				<key>UISupportedInterfaceOrientations~iphone</key>
-				<array>
-					<string>UIInterfaceOrientationPortrait</string>
-				</array>
-				<key>UISupportedInterfaceOrientations~ipad</key>
-				<array>
-					<string>UIInterfaceOrientationPortrait</string>
-					<string>UIInterfaceOrientationPortraitUpsideDown</string>
-				</array>
-				<key>UIRequiresPersistentWiFi</key>
-				<false/>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-				<key>UIStatusBarHidden</key>
-				<false/>
-				<key>UIStatusBarStyle</key>
-				<string>UIStatusBarStyleLightContent</string>
-			</dict>
-		</plist>
-	</ios>
-	<android xmlns:android="http://schemas.android.com/apk/res/android">
-		<manifest android:installLocation="preferExternal"
-		android:versionCode="1" android:versionName="1">
-			<application android:theme="@style/Theme.NoActionBar">
-				<activity android:alwaysRetainTaskState="true" android:label="@string/app_name"
+    <id>com.interfuel.festfuel</id>
+    <name>Punk Rock Bowling Mobile</name>
+    <version>1.1.7</version>
+    <publisher>Buzzplay</publisher>
+    <url>http://punkrockbowling.com</url>
+    <description>Punk Rock Bowling mobile</description>
+    <copyright>2015 by Buzzplay</copyright>
+    <icon>appicon.png</icon>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <statusbar-hidden>false</statusbar-hidden>
+    <statusbar-style>opaque</statusbar-style>
+    <analytics>false</analytics>
+    <guid>95040078-7551-4c2f-9111-73101a77574c</guid>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <property name="ti.facebook.appid">993161744029602</property>
+    <ios>
+        <plist>
+            <dict>
+                <key>CFBundleURLTypes</key>
+                <array>
+                    <dict>
+                        <key>CFBundleURLName</key>
+                        <!-- Application ID same as the id value in the tiapp.xml file -->
+                        <string>com.interfuel.festfuel</string>
+                        <key>CFBundleURLSchemes</key>
+                        <array>
+                            <!-- Prefix the Facebook App ID with 'fb' -->
+                            <string>fb993161744029602</string>
+                        </array>
+                    </dict>
+                </array>
+                <key>FacebookAppID</key>
+                <!-- Facebook App ID -->
+                <string>993161744029602</string>
+                <key>FacebookDisplayName</key>
+                <!-- Facebook App Name from developer.facebook.com -->
+                <string>Punk Rock Bowling</string>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                    <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleLightContent</string>
+            </dict>
+        </plist>
+    </ios>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <manifest android:installLocation="preferExternal"
+            android:versionCode="1" android:versionName="1">
+            <application android:theme="@style/Theme.NoActionBar">
+                <activity android:alwaysRetainTaskState="true"
+                    android:label="@string/app_name"
                     android:name="com.facebook.LoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
                 <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-			</application>
-			<uses-sdk android:minSdkVersion="10" android:targetSdkVersion="21"/>
-		</manifest>
-	</android>
-	<mobileweb>
-		<precache/>
-		<splash>
-			<enabled>true</enabled>
-			<inline-css-images>true</inline-css-images>
-		</splash>
-		<theme>default</theme>
-	</mobileweb>
-	<modules>
-		<module platform="android">facebook</module>
-	</modules>
-	<deployment-targets>
-		<target device="android">true</target>
-		<target device="blackberry">false</target>
-		<target device="ipad">false</target>
-		<target device="iphone">true</target>
-		<target device="mobileweb">false</target>
-	</deployment-targets>
-	<sdk-version>4.0.0.RC4</sdk-version>
-	<plugins>
-		<plugin version="1.0">ti.alloy</plugin>
-	</plugins>
-	<property name="appc-app-id" type="string">55579b4417cc08501b6c52f4</property>
+            </application>
+            <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="21"/>
+        </manifest>
+    </android>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="iphone" version="4.0.3">facebook</module>
+        <module platform="android">facebook</module>
+    </modules>
+    <deployment-targets>
+        <target device="android">true</target>
+        <target device="blackberry">false</target>
+        <target device="ipad">false</target>
+        <target device="iphone">true</target>
+        <target device="mobileweb">false</target>
+    </deployment-targets>
+    <sdk-version>4.0.0.Beta3</sdk-version>
+    <plugins>
+        <plugin version="1.0">ti.alloy</plugin>
+    </plugins>
+    <property name="appc-app-id" type="string">55579b4417cc08501b6c52f4</property>
 </ti:app>
