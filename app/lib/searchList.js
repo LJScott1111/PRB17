@@ -220,7 +220,7 @@ nsSearchList.createList = function() {
 	}
 
 	var table = Ti.UI.createTableView({
-		top : 10,
+		top : 0,
 		// index: index,
 		// data: sectionArr,
 		// search : sbSearchBar,
@@ -245,6 +245,9 @@ nsSearchList.createList = function() {
 nsSearchList.init = function(type, data) {
 	nsSearchList.type = type;
 	nsSearchList.data = JSON.parse(JSON.stringify(data));
+	
+	nsSearchList.data.sort(Alloy.Globals.sortArray('name'));
+	console.log("sorted ", JSON.stringify(nsSearchList.data));
 
 	console.debug("In searchList");
 	console.debug("Data: ", JSON.stringify(nsSearchList.data));
@@ -253,7 +256,7 @@ nsSearchList.init = function(type, data) {
 		layout : "vertical",
 		height : "100%",
 		width : Titanium.UI.FILL,
-		top : 10,
+		top : 0,
 		backgroundColor : "#FFD801"
 	});
 

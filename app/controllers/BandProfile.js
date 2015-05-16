@@ -15,7 +15,7 @@ nsBandProfile.getSettings = function() {
 };
 
 nsBandProfile.markFavourite = function(e) {
-	if (!e.source.selected) {
+	if (!e.source.selected && (nsBandProfile.data.showDetails !== undefined || nsBandProfile.data.showDetails !== null)) {
 		console.log('MARK favorite');
 		var show_id = nsBandProfile.data.showDetails._id;
 		var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
@@ -23,11 +23,13 @@ nsBandProfile.markFavourite = function(e) {
 
 			if (Titanium.App.Properties !== "android") {
 				var MS_PER_MINUTE = 60000;
-				var startDate = new Date((nsBandProfile.data.showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
+				var startDate = (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null) ? new Date((nsBandProfile.data.showDetails.start_time * 1000) - 10 * MS_PER_MINUTE) : "";
 				console.log("startDate ", startDate);
 
+				var venueName = (nsBandProfile.data.venueDetails !== undefined && nsBandProfile.data.venueDetails !== null) ? nsBandProfile.data.venueDetails.name : "";
+
 				var notification = Ti.App.iOS.scheduleLocalNotification({
-					alertBody : nsBandProfile.data.bandDetails.name + "\n" + nsBandProfile.data.venueDetails.name + "\n" + startDate,
+					alertBody : nsBandProfile.data.bandDetails.name + "\n" + venueName + "\n" + startDate,
 					badge : 1,
 					date : startDate,
 				});
@@ -57,7 +59,6 @@ nsBandProfile.markFavourite = function(e) {
 nsBandProfile.doSocialActivity = function(e) {
 	console.debug(e.source.id);
 	if (e.source.id === "vwSoundCloud") {
-		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.audio_link);
 		if (Titanium.Platform.osname === "android") {
 			Alloy.createController("GenericWebView", {
 				url : nsBandProfile.data.bandDetails.audio_link
@@ -67,9 +68,8 @@ nsBandProfile.doSocialActivity = function(e) {
 				url : nsBandProfile.data.bandDetails.audio_link
 			}).getView());
 		}
-
 	} else if (e.source.id === "vwYouTube") {
-		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.video_link);
+
 		if (Titanium.Platform.osname === "android") {
 			Alloy.createController("GenericWebView", {
 				url : nsBandProfile.data.bandDetails.video_link
@@ -81,7 +81,7 @@ nsBandProfile.doSocialActivity = function(e) {
 		}
 
 	} else if (e.source.id === "vwWebsite") {
-		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.site_link);
+
 		if (Titanium.Platform.osname === "android") {
 			Alloy.createController("GenericWebView", {
 				url : nsBandProfile.data.bandDetails.site_link
@@ -91,9 +91,7 @@ nsBandProfile.doSocialActivity = function(e) {
 				url : nsBandProfile.data.bandDetails.site_link
 			}).getView());
 		}
-
 	} else if (e.source.id === "vwFacebook") {
-		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.fb_link);
 		if (Titanium.Platform.osname === "android") {
 			Alloy.createController("GenericWebView", {
 				url : nsBandProfile.data.bandDetails.fb_link
@@ -105,7 +103,6 @@ nsBandProfile.doSocialActivity = function(e) {
 		}
 
 	} else if (e.source.id === "vwTwitter") {
-		// Titanium.Platform.openURL(nsBandProfile.data.bandDetails.tw_link);
 		if (Titanium.Platform.osname === "android") {
 			Alloy.createController("GenericWebView", {
 				url : nsBandProfile.data.bandDetails.tw_link
@@ -141,23 +138,33 @@ nsBandProfile.init = function() {
 	});
 
 	$.ivBandImage.setHeight(Alloy.Globals.platformHeight * 0.30);
-	console.log('showDetails:'+JSON.stringify(nsBandProfile.data));
-	var datetime = Alloy.Globals.getFormattedDate(nsBandProfile.data.showDetails.start_time);
+	console.log('showDetails:' + JSON.stringify(nsBandProfile.data));
 
-	// $.ivFavouriteStar.selected = false;
-	// TODO: hard coded - need a response from service
-	// if (!$.ivFavouriteStar.selected) {
+	if (nsBandProfile.data === null || nsBandProfile.data === undefined) {
+		nsBandProfile.data = {};
+		for (var i = 0,
+		    len = appdata.bands.length; i < len; i++) {
+			if (appdata.bands[i]._id === nsBandProfile.args.id) {
+				nsBandProfile.data.bandDetails = JSON.parse(JSON.stringify(appdata.bands[i]));
+				break;
+			}
+		}
+	}
+
+	console.log('bandprodata:' + JSON.stringify(nsBandProfile.data));
+
 	$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
-	// } else {
-	// $.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
-	// }
 
-	$.lblBandName.setText(nsBandProfile.data.bandDetails.name);
-	$.ivBandImage.setImage(nsBandProfile.data.bandDetails.image_link);
-	$.lblDay.setText(datetime[0]);
-	$.lblTime.setText(datetime[1]);
-	$.lblVenue.setText(nsBandProfile.data.venueDetails.name);
-	$.lblMoreInfo.setText(nsBandProfile.data.bandDetails.description);
+	if (nsBandProfile.data !== null && nsBandProfile.data !== undefined) {
+		var datetime = (nsBandProfile.data.showDetails !== null && nsBandProfile.data.showDetails !== undefined) ? Alloy.Globals.getFormattedDate(nsBandProfile.data.showDetails.start_time) : "";
+
+		$.lblBandName.setText(nsBandProfile.data.bandDetails.name || "");
+		$.ivBandImage.setImage(nsBandProfile.data.bandDetails.image_link || "");
+		$.lblDay.setText(datetime[0] || "");
+		$.lblTime.setText(datetime[1] || "");
+		$.lblVenue.setText((nsBandProfile.data.venueDetails !== undefined && nsBandProfile.data.venueDetails !== null) ? nsBandProfile.data.venueDetails.name : "");
+		$.lblMoreInfo.setText(nsBandProfile.data.bandDetails.description || "");
+	}
 
 	if (Titanium.Platform.osname === "android") {
 		$.svMain.setHeight(Titanium.UI.SIZE);

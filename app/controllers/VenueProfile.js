@@ -29,7 +29,7 @@ nsVenueProfile.createList = function(shows) {
 		var tabledata = [];
 
 		for (var i = 0; i < len; i++) {
-			
+
 			var time = nsVenueProfile.getDay(shows[i].showDetails.start_time, "time");
 
 			var row = Titanium.UI.createTableViewRow({
@@ -125,7 +125,7 @@ nsVenueProfile.createList = function(shows) {
 };
 
 nsVenueProfile.getList = function(source) {
-	
+
 	console.debug(JSON.stringify(source));
 
 	//UI changes
@@ -140,7 +140,7 @@ nsVenueProfile.getList = function(source) {
 
 		$.vwDay3.selected = false;
 		$.vwDay3.backgroundColor = "#ffffff";
-		
+
 		$.vwDay4.selected = false;
 		$.vwDay4.backgroundColor = "#ffffff";
 
@@ -153,7 +153,7 @@ nsVenueProfile.getList = function(source) {
 
 		$.vwDay3.selected = false;
 		$.vwDay3.backgroundColor = "#ffffff";
-		
+
 		$.vwDay4.selected = false;
 		$.vwDay4.backgroundColor = "#ffffff";
 
@@ -166,10 +166,10 @@ nsVenueProfile.getList = function(source) {
 
 		$.vwDay3.selected = true;
 		$.vwDay3.backgroundColor = "#c0c0c0";
-		
+
 		$.vwDay4.selected = false;
 		$.vwDay4.backgroundColor = "#ffffff";
-		
+
 	} else if (day === "monday") {
 		$.vwDay1.selected = false;
 		$.vwDay1.backgroundColor = "#ffffff";
@@ -179,7 +179,7 @@ nsVenueProfile.getList = function(source) {
 
 		$.vwDay3.selected = false;
 		$.vwDay3.backgroundColor = "#ffffff";
-		
+
 		$.vwDay4.selected = true;
 		$.vwDay4.backgroundColor = "#c0c0c0";
 	}
@@ -199,7 +199,7 @@ nsVenueProfile.getList = function(source) {
 	    len = appdata.details.length; i < len; i++) {
 
 		dayOfShow = nsVenueProfile.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
-
+		// (appdata.details[i].showDetails !== undefined && appdata.details[i].showDetails !== null) ? nsVenueProfile.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim() : 0;
 		console.debug("dayOfShow ", dayOfShow);
 
 		if (day === dayOfShow) {
@@ -234,21 +234,34 @@ nsVenueProfile.init = function() {
 	}
 
 	console.debug("VenueProile id ", JSON.stringify(nsVenueProfile.args));
+	// console.debug("VenueProile data ", JSON.stringify(nsVenueProfile.data));
+
+	if (nsVenueProfile.data === null || nsVenueProfile.data === undefined) {
+		nsVenueProfile.data = {};
+		for (var i = 0,
+		    len = appdata.venues.length; i < len; i++) {
+			if (appdata.venues[i]._id === nsVenueProfile.args.id) {
+				nsVenueProfile.data.venueDetails = JSON.parse(JSON.stringify(appdata.venues[i]));
+				break;
+			}
+		}
+	}
+
 	console.debug("VenueProile data ", JSON.stringify(nsVenueProfile.data));
 
 	$.ivVenueImage.setHeight(Alloy.Globals.platformHeight * 0.30);
 
-	$.lblVenueName.setText(nsVenueProfile.data.venueDetails.name);
-	$.lblAddress1.setText(nsVenueProfile.data.venueDetails.address);
+	$.lblVenueName.setText(nsVenueProfile.data.venueDetails.name || "");
+	$.lblAddress1.setText(nsVenueProfile.data.venueDetails.address || "");
 
 	// console.log(nsVenueProfile.data.venueDetails.city, ", ", nsVenueProfile.data.venueDetails.state, ", ", nsVenueProfile.data.venueDetails.zip);
 
-	$.lblAddress2.setText(nsVenueProfile.data.venueDetails.city + ", " + nsVenueProfile.data.venueDetails.state + ", " + nsVenueProfile.data.venueDetails.zip);
-	$.lblNumber.setText(nsVenueProfile.data.venueDetails.phone);
+	$.lblAddress2.setText((nsVenueProfile.data.venueDetails.city || "") + ", " + (nsVenueProfile.data.venueDetails.state || "") + ", " + (nsVenueProfile.data.venueDetails.zip || ""));
+	$.lblNumber.setText((nsVenueProfile.data.venueDetails.phone || ""));
 
 	// Setting width of days
-	$.vwDays2.setWidth(Alloy.Globals.platformWidth/2);
-	
+	$.vwDays2.setWidth(Alloy.Globals.platformWidth / 2);
+
 	var vwDaysWidth = Alloy.Globals.platformWidth / 4.15;
 	$.vwDay1.setWidth(vwDaysWidth);
 	$.vwDay1.setLeft(2);
@@ -258,7 +271,7 @@ nsVenueProfile.init = function() {
 
 	$.vwDay3.setWidth(vwDaysWidth);
 	$.vwDay3.setRight(2);
-	
+
 	$.vwDay4.setWidth(vwDaysWidth);
 	$.vwDay4.setRight(2);
 
@@ -267,24 +280,24 @@ nsVenueProfile.init = function() {
 	} else {
 		$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar);
 	}
-	
+
 	// Event listeners for show views
-	$.vwDay1.addEventListener('click',function(e){
+	$.vwDay1.addEventListener('click', function(e) {
 		nsVenueProfile.getList(e.source);
 	});
-	
-	$.vwDay2.addEventListener('click',function(e){
+
+	$.vwDay2.addEventListener('click', function(e) {
 		nsVenueProfile.getList(e.source);
 	});
-	
-	$.vwDay3.addEventListener('click',function(e){
+
+	$.vwDay3.addEventListener('click', function(e) {
 		nsVenueProfile.getList(e.source);
 	});
-	
-	$.vwDay4.addEventListener('click',function(e){
+
+	$.vwDay4.addEventListener('click', function(e) {
 		nsVenueProfile.getList(e.source);
 	});
-	
+
 	nsVenueProfile.getList($.vwDay1);
 };
 
