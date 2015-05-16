@@ -15,7 +15,7 @@ nsBandProfile.getSettings = function() {
 };
 
 nsBandProfile.markFavourite = function(e) {
-	if (!e.source.selected && (nsBandProfile.data.showDetails !== undefined || nsBandProfile.data.showDetails !== null)) {
+	if (!e.source.selected && (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null)) {
 		console.log('MARK favorite');
 		var show_id = nsBandProfile.data.showDetails._id;
 		var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
