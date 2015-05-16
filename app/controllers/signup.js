@@ -54,9 +54,7 @@ nsIndex.getSettings = function() {
 
 nsIndex.connectToFb = function() {
 
-	var fb = require('facebook');
-	fb.appid = Alloy.Globals.fbAppID();
-	fb.permissions = [];
+	
 	var accessToken = "";
 	// fb.forceDialogAuth = true;
 

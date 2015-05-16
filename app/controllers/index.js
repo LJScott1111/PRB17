@@ -14,9 +14,9 @@ nsLanding.getSettings = function() {
 };
 
 nsLanding.getBands = function() {
-	
+
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
-	
+
 	console.debug("Alloy.Globals.bands emply ", JSON.stringify(appdata.bands));
 
 	if (appdata.details.length === 0) {
@@ -142,14 +142,19 @@ nsLanding.getVenues = function() {
 
 nsLanding.getNews = function() {
 	if (Titanium.Platform.osname === "android") {
-		Alloy.createController("GenericWebView", {url: "twitter.html"}).getView().open();
+		Alloy.createController("GenericWebView", {
+			url : "twitter.html"
+		}).getView().open();
 	} else {
-		Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {url: "twitter.html",showNavBar:true}).getView());
+		Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
+			url : "twitter.html",
+			showNavBar : true
+		}).getView());
 	}
 };
 
 nsLanding.init = function() {
-	
+
 	nsLanding.controller = new nsLanding.activityControl($.vwMain);
 
 	$.winLanding.addEventListener('android:back', function(e) {
@@ -167,7 +172,13 @@ nsLanding.init = function() {
 			$.navWin.open();
 		}
 		if (user === null) {
-			Alloy.createController("signup").getView().open();
+			var signupWindow = Alloy.createController("signup").getView();
+			if (OS_ANDROID) {
+				signupWindow.fbProxy = Alloy.Globals.Facebook.createActivityWorker({
+					lifecycleContainer : signupWindow
+				});
+			}
+			signupWindow.open();
 		};
 	}, function(error) {
 		console.debug("Alloy.Globals.checkUser - error - " - error);
@@ -176,7 +187,13 @@ nsLanding.init = function() {
 		} else {
 			$.navWin.open();
 		}
-		Alloy.createController("signup").getView().open();
+		var signupWindow = Alloy.createController("signup").getView();
+		if (OS_ANDROID) {
+			signupWindow.fbProxy = Alloy.Globals.Facebook.createActivityWorker({
+				lifecycleContainer : signupWindow
+			});
+		}
+		signupWindow.open();
 	});
 
 };

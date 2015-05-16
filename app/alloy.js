@@ -1,4 +1,5 @@
 // Kinvey credentials
+var KINVEY_DEBUG = true;
 var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.3.1');
 Alloy.Globals.checkUser = function(callback, errorCallback) {
 	var promise = Kinvey.init({
@@ -421,3 +422,7 @@ Alloy.Globals.appData = {
 	"shows" : [],
 	"venues" : []
 };
+
+Alloy.Globals.Facebook = require('facebook');
+Alloy.Globals.Facebook.appid = Alloy.Globals.fbAppID();
+Alloy.Globals.Facebook.permissions = [];

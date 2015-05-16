@@ -3597,6 +3597,7 @@ var exports=exports||this;exports.Google=function(e){function t(){var e=this,t=t
         // Cast and validate arguments.
         options = options || {};
         options.create = 'undefined' !== typeof options.create ? options.create : true;
+        
         if(!Kinvey.Social.isSupported(provider)) {
           error = new Kinvey.Error('provider argument is not supported.');
           return wrapCallbacks(Kinvey.Defer.reject(error), options);
@@ -3637,7 +3638,7 @@ var exports=exports||this;exports.Google=function(e){function t(){var e=this,t=t
           return Kinvey.User.login(user, null, options).then(null, function(error) {
             // If `options.create`, attempt to signup as a new user if no user with
             // the identity exists.
-            if(options.create && Kinvey.Error.USER_NOT_FOUND === error.name) {
+            if(options.create) {
               return Kinvey.User.signup(user, options);
             }
             return Kinvey.Defer.reject(error);
@@ -11308,7 +11309,7 @@ var exports=exports||this;exports.Google=function(e){function t(){var e=this,t=t
           if(event.success) {
             var expires = TiFacebook.getExpirationDate().getTime();
             return deferred.resolve({
-              access_token: TiFacebook.getAccessToken(),
+              access_token: TiFacebook.accessToken,
               expires_in: root.parseInt((expires - new Date().getTime()) / 1000, 10)
             });
           }

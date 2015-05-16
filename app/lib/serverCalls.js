@@ -81,7 +81,8 @@ nsServerCalls.fbLogin = function(onloadCallback, errorCallback) {
 		error: function(error){
 			console.debug("FB ERROR ", JSON.stringify(error));
 			errorCallback(error);
-		}
+		},
+		create : true
 	});
 };
 

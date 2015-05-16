@@ -5,7 +5,7 @@
 			<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_EMAIL"></TextField>
 			<TextField id="tfPassword" passwordMask="true" class="tfClass"></TextField>
 			<View id="vwLogin" onClick="nsLogin.login">
-				<Label id="lblLogin" textid="login_lbllogin"></Label>
+				<Label id="lblLogin" text="L('login_lbllogin')"></Label>
 			</View>
 		</View>
 		<View id="vwBottomView">

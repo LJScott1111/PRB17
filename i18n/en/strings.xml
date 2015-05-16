@@ -20,7 +20,7 @@
 	<string name="bandProfile_lblYouTube">Watch</string>
 	<string name="bandProfile_lblWebsite">Official Site</string>
 	<string name="bandProfile_lblFacebook">Facebook</string>
-	<string name="bandProfile_lblTwitter">Twitter</string>
+	<string name="bandProfile_lblTwitter">Twitter</string> 
 	<string name="bandProfile_lblAddBand">ADD</string>
 
 </resources>
