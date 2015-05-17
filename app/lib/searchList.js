@@ -161,7 +161,7 @@ nsSearchList.createList = function() {
 								});
 							}
 						}, function(error) {
-							alert("Some error occured");
+							alert(L('err_serviceError'));
 						});
 
 						break;
@@ -199,7 +199,7 @@ nsSearchList.createList = function() {
 							}
 
 						}, function(error) {
-							alert("Some error occured");
+							alert(L('err_serviceError'));
 						});
 
 						break;

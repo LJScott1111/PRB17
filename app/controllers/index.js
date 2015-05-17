@@ -32,7 +32,7 @@ nsLanding.getBands = function() {
 				$.winLanding.remove(nsLanding.controller);
 			} else {
 				console.debug("All data did not get downloaded!!!");
-				alert("Some error occured while fetching the details. Please try again");
+				alert(L('err_fetchingDetails'));
 			}
 			$.winLanding.remove(nsLanding.controller);
 		});
@@ -79,13 +79,13 @@ nsLanding.getSchedule = function() {
 					$.winLanding.remove(nsLanding.controller);
 
 				}, function(error) {
-					alert("Some error occured. Please try again.");
+					alert(L('err_fetchingDetails'));
 					$.winLanding.remove(nsLanding.controller);
 				});
 
 			} else {
 				console.debug("All data did not get downloaded!!!");
-				alert("Some error occured while fetching the details. Please try again");
+				alert(L('err_fetchingDetails'));
 				$.winLanding.remove(nsLanding.controller);
 			}
 		});
@@ -102,7 +102,7 @@ nsLanding.getSchedule = function() {
 			$.winLanding.remove(nsLanding.controller);
 
 		}, function(error) {
-			alert("Some error occured. Please try again.");
+			alert(L('err_fetchingDetails'));
 			$.winLanding.remove(nsLanding.controller);
 		});
 	}
@@ -127,7 +127,7 @@ nsLanding.getVenues = function() {
 				// $.winLanding.remove(nsLanding.controller);
 			} else {
 				console.debug("All data did not get downloaded!!!");
-				alert("Some error occured while fetching the details. Please try again");
+				alert(L('err_fetchingDetails'));
 			}
 			$.winLanding.remove(nsLanding.controller);
 		});

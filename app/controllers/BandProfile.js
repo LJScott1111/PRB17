@@ -49,7 +49,7 @@ nsBandProfile.markFavourite = function(e) {
 			}
 
 		}, function(error) {
-			alert("Some error occured");
+			alert(L('err_serviceError'));
 		});
 	}
 

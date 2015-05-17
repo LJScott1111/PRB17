@@ -71,7 +71,7 @@ nsLogin.login = function() {
 
 		this.onerrorCallback = function(error) {
 			console.debug("Error occured in login");
-			alert("Some error occured. Please try again");
+			alert(L('err_login'));
 			//TODO - Proper error handling
 			// alert(error.message);
 			nsLogin.args.win.remove(nsLogin.controller);
@@ -80,7 +80,7 @@ nsLogin.login = function() {
 		var signupService = new nsLogin.serviceCalls.login(tfEmail, tfPass, this.onloadCallback, this.onerrorCallback);
 
 	} else {
-		alert("Please enter correct details");
+		alert(L('err_loginDetails'));
 	}
 };
 
