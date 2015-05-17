@@ -13,7 +13,6 @@
 	<string name="login_lblFbConnect">Login with Facebook</string>
 	<string name="login_lbllogin">Login</string>
 	<string name="login_tfPassword">Password</string>
-	<string name=""></string>
 	
 	<!-- Band Profile -->
 	<string name="bandProfile_lblSoundCloud">Listen</string>
@@ -35,5 +34,14 @@
 	<string name="saturday">Saturday</string>
 	<string name="sunday">Sunday</string>
 	<string name="monday">Monday</string>
+	
+	<!-- Settings Menu -->
+	<string name="settings_login">Login</string>
+	<string name="settings_logout">Logout</string>
+	<string name="settings_map">Map</string>
+	<string name="settings_sponsors">Sponsors / Vendors</string>
+	<string name="settings_privacy">Privacy Policy</string>
+	<string name="settings_faq">FAQ</string>
+	
 
 </resources>

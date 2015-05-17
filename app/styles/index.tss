@@ -64,9 +64,13 @@
 	image: "/icons/venues.png"
 }
 
+"#ivFood": {
+	left: 10,
+	image: "/icons/food.png"
+}
 "#ivNews":{
 	// height: Alloy.Globals.theme.sizes.landingOptionHeight,
-	top: 30,
+	top: 20,
 	right: 2,
 	width: Titanium.UI.SIZE,
 	image: "/icons/news.png"

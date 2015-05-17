@@ -11,6 +11,7 @@
 					<ImageView id="ivEvents" class="optionClass" onClick="nsLanding.getEvents"></ImageView>
 					<ImageView id="ivSchedule" class="optionClass" onClick="nsLanding.getSchedule"></ImageView>
 					<ImageView id="ivVenues" class="optionClass" onClick="nsLanding.getVenues"></ImageView>
+					<ImageView id="ivFood" class="optionClass" onClick="nsLanding.getFood"></ImageView>
 				</View>
 				<View id="vwBottomView">
 					<ImageView id="ivPoker"></ImageView>

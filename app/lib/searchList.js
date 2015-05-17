@@ -108,7 +108,7 @@ nsSearchList.createList = function() {
 		vwRowView.add(lblName);
 
 		var ivFavouriteStar = Titanium.UI.createImageView({
-			right : 15,
+			right : 5,
 			height : 40,
 			width : 40,
 			id : "ivFavouriteStar",

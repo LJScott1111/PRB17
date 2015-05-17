@@ -17,7 +17,7 @@ nsBowlingEvents.init = function() {
 		nsBowlingEvents.closeWindow();
 	});
 	
-	$.wvBowling.setUrl("https://punkrockbowling.com/bowling-info/");
+	$.wvBowling.setUrl("https://punkrockbowling.com/prborder/bowling");
 
 };
 

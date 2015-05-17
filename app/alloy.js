@@ -12,10 +12,12 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 		if (user !== null) {
 			console.log("User not nulll ");
 			Titanium.App.Properties.setString('userid', user._id);
+			callback(user);
 		} else {
 			Titanium.App.Properties.setString('userid', null);
+			callback(user);
 		}
-		callback(user);
+		
 	}, function(error) {
 		console.log("NO USER!!");
 		errorCallback(error);
@@ -106,7 +108,7 @@ Alloy.Globals.theme = {
 	"sizes" : {
 		"headerbar" : Alloy.Globals.platformHeight * 0.0774,
 		"logo" : Alloy.Globals.platformHeight * 0.2112,
-		"landingOptionHeight" : Alloy.Globals.platformHeight * 0.1056,
+		"landingOptionHeight" : Alloy.Globals.platformHeight * 0.088,
 		"punkRockHeight" : Alloy.Globals.platformHeight * 0.42,
 		"punckRockWidth" : Alloy.Globals.platformWidth * 0.60
 	},
@@ -255,7 +257,7 @@ Alloy.Globals.getSettings = function(currentWin) {
 		zIndex: 999
 	});
 
-	for (var i = 0; i < 4; i++) {
+	for (var i = 0; i < 5; i++) {
 		var vwOption = Titanium.UI.createView({
 			top : 0,
 			right : 10,
@@ -282,17 +284,19 @@ Alloy.Globals.getSettings = function(currentWin) {
 		if (i === 0) {
 			if (currentWin.id === "winIndex") {
 				console.debug("User not logged in");
-				lblLoginActivity.setText("Login");
+				lblLoginActivity.setText(L('settings_login'));
 			} else {
 				console.debug("User logged in");
-				lblLoginActivity.setText("Logout");
+				lblLoginActivity.setText(L('settings_logout'));
 			}
 		} else if (i === 1) {
-			lblLoginActivity.setText("Map");
+			lblLoginActivity.setText(L('settings_map'));
 		} else if (i === 2) {
-			lblLoginActivity.setText("Privacy Policy");
+			lblLoginActivity.setText(L('settings_sponsors'));
 		} else if (i === 3) {
-			lblLoginActivity.setText("FAQ");
+			lblLoginActivity.setText(L('settings_privacy'));
+		} else if (i === 4) {
+			lblLoginActivity.setText(L('settings_faq'));
 		}
 
 		vwOption.add(lblLoginActivity);
@@ -369,16 +373,28 @@ Alloy.Globals.getSettings = function(currentWin) {
 		} else if (e.source.id === "vwOption_1") {
 			if (Titanium.Platform.osname === "android") {
 				Alloy.createController("GenericWebView", {
-					url : "https://www.punkrockbowling.com/wp-content/uploads/2013/11/Punk-Rock-Bowling-map.jpg"
+					url : "prb_map_2015.pdf"
 				}).getView().open();
 			} else {
 				Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-					url : "https://www.punkrockbowling.com/wp-content/uploads/2013/11/Punk-Rock-Bowling-map.jpg"
+					url : "prb_map_2015.pdf"
 				}).getView());
 			}
 			currentWin.remove(vwOptionFullView);
 
-		} else if (e.source.id === "vwOption_2") {
+		} else if (e.source.id === "vwOption_2") { // TODO: sponsors and vendors
+			if (Titanium.Platform.osname === "android") {
+				Alloy.createController("GenericWebView", {
+					url : "http://punkrockbowling.com/sponsors-vendors/"
+				}).getView().open();
+			} else {
+				Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
+					url : "http://punkrockbowling.com/sponsors-vendors/"
+				}).getView());
+			}
+			currentWin.remove(vwOptionFullView);
+
+		} else if (e.source.id === "vwOption_3") {
 			if (Titanium.Platform.osname === "android") {
 				Alloy.createController("GenericWebView", {
 					url : "http://www.punkrockbowling.com/our-privacy-policy/"
@@ -390,7 +406,7 @@ Alloy.Globals.getSettings = function(currentWin) {
 			}
 			currentWin.remove(vwOptionFullView);
 
-		} else if (e.source.id === "vwOption_3") {
+		} else if (e.source.id === "vwOption_4") {
 			if (Titanium.Platform.osname === "android") {
 				Alloy.createController("GenericWebView", {
 					url : "http://www.punkrockbowling.com/faq/"
