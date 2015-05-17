@@ -22,5 +22,18 @@
 	<string name="bandProfile_lblFacebook">Facebook</string>
 	<string name="bandProfile_lblTwitter">Twitter</string> 
 	<string name="bandProfile_lblAddBand">ADD</string>
+	
+	<string name="err_serviceError">Some error occurred. Please try again.</string>
+	<string name="err_fetchingDetails">Some error occured while fetching the details. Please try again</string>
+	<string name="err_login">Some error occurred while login. Please try again.</string>
+	<string name="err_loginDetails">Please enter correct details.</string>
+	<string name="err_noConnection">No Internet connetion.</string>
+	<string name="err_facebook">Some error occured while logging into Facebook.</string>
+	
+	<!-- Schedule -->
+	<string name="friday">Friday</string>
+	<string name="saturday">Saturday</string>
+	<string name="sunday">Sunday</string>
+	<string name="monday">Monday</string>
 
 </resources>

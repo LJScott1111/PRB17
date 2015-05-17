@@ -31,7 +31,7 @@ nsEvents.getMusic = function() {
 				$.winEvents.remove(nsEvents.controller);
 			} else {
 				console.debug("All data did not get downloaded!!!");
-				alert("Some error occured while fetching the details. Please try again");
+				alert(L('err_fetchingDetails'));
 			}
 			$.winEvents.remove(nsEvents.controller);
 		});
