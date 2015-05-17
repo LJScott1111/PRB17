@@ -1,5 +1,5 @@
 // Kinvey credentials
-var KINVEY_DEBUG = true;
+//var KINVEY_DEBUG = true;
 var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.3.1');
 Alloy.Globals.checkUser = function(callback, errorCallback) {
 	var promise = Kinvey.init({
