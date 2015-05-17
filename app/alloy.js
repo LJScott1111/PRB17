@@ -251,11 +251,11 @@ Alloy.Globals.getSettings = function(currentWin) {
 		top : (Titanium.Platform.osname === "android" || currentWin.id === "winIndex") ? Alloy.Globals.theme.sizes.headerbar : 0,
 		width : Titanium.UI.FILL,
 		id : "vwOptionFullView",
-		layout : "vertical"
+		layout : "vertical",
+		zIndex: 999
 	});
 
-	var len = (currentWin.id === "winIndex") ? 1 : 4;
-	for (var i = 0; i < len; i++) {
+	for (var i = 0; i < 4; i++) {
 		var vwOption = Titanium.UI.createView({
 			top : 0,
 			right : 10,

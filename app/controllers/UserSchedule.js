@@ -180,7 +180,7 @@ nsUserSchedule.getList = function(source) {
 	    len = appdata.details.length; i < len; i++) {
 
 		dayOfShow = nsUserSchedule.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
-		console.debug("dayOfShow ", dayOfShow);
+		// console.debug("dayOfShow ", dayOfShow);
 		if (day === dayOfShow) {
 			for (var j = 0,
 			    len2 = nsUserSchedule.args.length; j < len2; j++) {
@@ -206,7 +206,7 @@ nsUserSchedule.getShows = function() {
 	    len = appdata.details.length; i < len; i++) {
 
 		dayOfShow = nsUserSchedule.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
-		console.debug("dayOfShow ", dayOfShow);
+		// console.debug("dayOfShow ", dayOfShow);
 		for (var j = 0,
 		    len2 = nsUserSchedule.args.length; j < len2; j++) {
 

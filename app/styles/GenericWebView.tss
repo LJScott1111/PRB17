@@ -1,5 +1,6 @@
 "#winGenericWebView": {
-	backgroundColor: "#000000"
+	backgroundColor: "#000000",
+	zIndex: 9999
 }
 
 "#winGenericWebView[platform=ios]": {
