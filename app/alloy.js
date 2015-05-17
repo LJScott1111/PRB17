@@ -373,11 +373,12 @@ Alloy.Globals.getSettings = function(currentWin) {
 		} else if (e.source.id === "vwOption_1") {
 			if (Titanium.Platform.osname === "android") {
 				Alloy.createController("GenericWebView", {
-					url : "prb_map_2015.pdf"
+					url : "https://www.punkrockbowling.com/wp-content/uploads/2013/11/Punk-Rock-Bowling-map.jpg"
 				}).getView().open();
 			} else {
 				Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-					url : "prb_map_2015.pdf"
+					url : "https://www.punkrockbowling.com/wp-content/uploads/2013/11/Punk-Rock-Bowling-map.jpg",
+					"map": true
 				}).getView());
 			}
 			currentWin.remove(vwOptionFullView);
