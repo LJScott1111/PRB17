@@ -61,7 +61,7 @@ nsIndex.connectToFb = function() {
 	if (!Titanium.Network.online) {
 		Titanium.UI.createAlertDialog({
 			// title : L("lbl_appname"),
-			message : "No Internet connetion."
+			message : L('err_noConnection')
 		}).show();
 		return;
 	} else {
@@ -76,7 +76,7 @@ nsIndex.connectToFb = function() {
 			nsIndex.closeWindow();
 		}, function(error){
 			console.debug("FB ERROR ", error);
-			alert("Some error occured while logging into Facebook.");
+			alert(L('err_facebook'));
 			$.winIndex.remove(nsIndex.controller);
 		});
 	}
@@ -106,7 +106,7 @@ nsIndex.getIt = function() {
 
 		this.onerrorCallback = function(error) {
 			console.debug("Error occured in login");
-			alert("Some error occured. Please try again");
+			alert(L('err_serviceError'));
 			//TODO - Proper error handling
 			// alert(error.message);
 			$.winIndex.remove(nsIndex.controller);
@@ -116,7 +116,7 @@ nsIndex.getIt = function() {
 		var signupService = new nsIndex.serviceCalls.signup(tfEmail, tfPass, this.onloadCallback, this.onerrorCallback);
 
 	} else {
-		alert("Please enter correct details");
+		alert(L('err_loginDetails'));
 	}
 };
 

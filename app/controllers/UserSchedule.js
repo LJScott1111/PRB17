@@ -60,6 +60,8 @@ nsUserSchedule.createList = function(shows) {
 			var lblName = Titanium.UI.createLabel({
 				left : Alloy.Globals.platformWidth * 0.30,
 				text : shows[i].bandDetails.name,
+				height: Titanium.UI.SIZE,
+				width: "50%",
 				color : "#000000",
 				font : {
 					fontSize : Alloy.Globals.theme.fonts.size20Fonts
@@ -69,11 +71,14 @@ nsUserSchedule.createList = function(shows) {
 			vwRowView.add(lblName);
 
 			var lblTime = Titanium.UI.createLabel({
-				right : 15,
+				right : 5,
 				text : time + "\n" + shows[i].venueDetails.name,
 				color : "#000000",
+				height: Titanium.UI.SIZE,
+				width: "30%",
+				textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
 				font : {
-					fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+					fontSize : Alloy.Globals.theme.fonts.size15Fonts,
 					fontWeight : "bold"
 				}
 			});
