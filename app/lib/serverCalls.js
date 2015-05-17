@@ -71,6 +71,7 @@ nsServerCalls.fbLogin = function(onloadCallback, errorCallback) {
 	console.log("Logging to FB");
 	var promise = Kinvey.Social.connect(null, 'facebook', {
 		appId : Alloy.Globals.fbAppID(),
+		permissions : ['email'],
 		success : function(response) {
 			console.debug("FB RESPONSE ", JSON.stringify(response));
 			Titanium.App.Properties.setString('login-type', "FB");
