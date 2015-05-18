@@ -104,7 +104,12 @@ nsUserSchedule.createList = function(shows) {
 			nsUserSchedule.serviceCalls.deleteUserSchedule(e.row.rawData.showDetails._id, function() {
 				
 				Alloy.Globals.getAndStoreData(function() {
-					nsUserSchedule.getList(nsUserSchedule.currentDay);
+					
+					nsUserSchedule.serviceCalls.getUserSchedule(function(result){
+						
+						nsUserSchedule.args = result;
+						nsUserSchedule.getList(nsUserSchedule.currentDay);
+					});
 				});
 			});
 		});
