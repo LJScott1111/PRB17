@@ -104,7 +104,7 @@ nsUserSchedule.createList = function(shows) {
 			nsUserSchedule.serviceCalls.deleteUserSchedule(e.row.rawData.showDetails._id, function() {
 				
 				Alloy.Globals.getAndStoreData(function() {
-					
+					nsUserSchedule.getList(nsUserSchedule.currentDay);
 				});
 			});
 		});
@@ -120,10 +120,11 @@ nsUserSchedule.createList = function(shows) {
 	}
 };
 
+nsUserSchedule.currentDay = null;
+
 nsUserSchedule.getList = function(source) {
 
-	console.debug(JSON.stringify(source));
-
+	nsUserSchedule.currentDay = source;
 	//UI changes
 	var day = source.day.toLowerCase().trim();
 
