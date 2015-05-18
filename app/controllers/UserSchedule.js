@@ -1,5 +1,6 @@
 var nsUserSchedule = {};
 nsUserSchedule.args = arguments[0];
+nsUserSchedule.serviceCalls = require("serverCalls");
 
 nsUserSchedule.momentjs = require('moment');
 
@@ -29,6 +30,8 @@ nsUserSchedule.createList = function(shows) {
 		var tabledata = [];
 
 		for (var i = 0; i < len; i++) {
+			
+			
 
 			var time = nsUserSchedule.getDay(shows[i].showDetails.start_time, "time");
 
@@ -36,7 +39,8 @@ nsUserSchedule.createList = function(shows) {
 				top : 10,
 				height : Titanium.UI.SIZE,
 				width : Titanium.UI.SIZE,
-				rowIndex : i
+				rowIndex : i,
+				rawData : shows[i]
 			});
 
 			var vwRowView = Titanium.UI.createView({
@@ -88,12 +92,24 @@ nsUserSchedule.createList = function(shows) {
 			row.add(vwRowView);
 			tabledata.push(row);
 		}
-
-		$.vwBandSchedule.add(Titanium.UI.createTableView({
+		
+		var tableView = Titanium.UI.createTableView({
 			data : tabledata,
 			top : 0,
 			editable:true
-		}));
+		});
+		
+		tableView.addEventListener('delete', function(e) {
+			
+			nsUserSchedule.serviceCalls.deleteUserSchedule(e.row.rawData.showDetails._id, function() {
+				
+				Alloy.Globals.getAndStoreData(function() {
+					
+				});
+			});
+		});
+
+		$.vwBandSchedule.add(tableView);
 
 	} else {
 		var lblNoShows = Titanium.UI.createLabel({

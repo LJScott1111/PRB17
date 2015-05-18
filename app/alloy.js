@@ -190,14 +190,11 @@ Alloy.Globals.combinedDetails = function() {
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	var combinedData = [];
 
-	console.debug("appdata  .... " + JSON.stringify(appdata));
 
-	console.debug("Alloy.Globals.combinedDetails ... Calling");
 	for (var i = 0,
 	    bandLen = appdata.bands.length; i < bandLen; i++) {
 		var bandProfile = {};
 		bandProfile.bandDetails = appdata.bands[i];
-		console.debug("bandProfile.bandDetails " + JSON.stringify(bandProfile.bandDetails));
 
 		for (var j = 0,
 		    showLen = appdata.shows.length; j < showLen; j++) {
@@ -212,7 +209,6 @@ Alloy.Globals.combinedDetails = function() {
 					if (bandProfile.showDetails.venue_id === appdata.venues[k]._id) {
 						bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
 						combinedData.push(bandProfile);
-						console.log("... ", JSON.stringify(bandProfile));
 					}
 				}
 			}

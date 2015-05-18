@@ -80,7 +80,7 @@ nsServerCalls.fbLogin = function(onloadCallback, errorCallback) {
 			Titanium.App.Properties.removeProperty('appdata');
 			Titanium.App.Properties.setString('login-type', "FB");
 			// TODO: Need to capture userid and put it in App Properties
-			// Titanium.App.Properties.setString('userid', user._id);
+			Titanium.App.Properties.setString('userid', response._id);
 			onloadCallback(response);
 		},
 		error : function(error) {
@@ -203,7 +203,11 @@ exports.getShows = nsServerCalls.getShows;
 
 // Get user schedule
 nsServerCalls.getUserSchedule = function(onloadCallback, errorCallback) {
-	var promise = Kinvey.DataStore.find('user-schedules', null);
+	
+	var query = new Kinvey.Query();
+	query.equalTo('user_id', Titanium.App.Properties.getString('userid'));
+	
+	var promise = Kinvey.DataStore.find('user-schedules', query);
 	promise.then(function(entities) {
 		console.debug("user schedule success ", JSON.stringify(entities));
 		onloadCallback(entities);
@@ -227,15 +231,18 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 	promise.then(function(entities) {
 
 		if (entities.length == 0) {
+			
 			var promise2 = Kinvey.DataStore.save('user-schedules', {
 				// _id : 'optional-id',
 				"user_id" : Titanium.App.Properties.getString('userid'),
 				"show_id" : show_id,
 			});
 			promise2.then(function(entity) {
+				
 				onloadCallback(entity);
 
 			}, function(error) {
+				
 				errorCallback(error);
 			});
 		}
@@ -248,3 +255,33 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 };
 
 exports.saveUserSchedule = nsServerCalls.saveUserSchedule;
+
+//Deleting a User schedule
+nsServerCalls.deleteUserSchedule = function(show_id, onloadCallback, errorCallback) {
+
+	var query = new Kinvey.Query();
+
+	query.equalTo('user_id', Titanium.App.Properties.getString('userid'));
+	query.equalTo('show_id', show_id);
+
+	var promise = Kinvey.DataStore.find('user-schedules', query);
+	promise.then(function(entities) {
+
+		if (entities.length != 0) {
+
+			for (var i in entities) {
+
+				var promise = Kinvey.DataStore.destroy('user-schedules', entities[i]._id);
+				promise.then(function() {
+					
+					onloadCallback();
+				}, function(error) {
+				});
+			}
+		}
+	}, function(error) {
+	});
+
+};
+
+exports.deleteUserSchedule = nsServerCalls.deleteUserSchedule;
