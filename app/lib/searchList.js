@@ -173,7 +173,7 @@ nsSearchList.createList = function() {
 								});
 								// Set the interval to run the service;
 								intent.putExtra('interval', 1000);
-								// Send extra data to the service; 
+								// Send extra data to the service;
 								intent.putExtra('timestamp', startDate);
 
 								intent.putExtra('band', appdata.details[i].bandDetails.name);
@@ -227,7 +227,7 @@ nsSearchList.createList = function() {
 								});
 								// Set the interval to run the service;
 								intent.putExtra('interval', 1000);
-								// Send extra data to the service; 
+								// Send extra data to the service;
 								intent.putExtra('timestamp', startDate);
 
 								intent.putExtra('band', appdata.details[i].bandDetails.name);
