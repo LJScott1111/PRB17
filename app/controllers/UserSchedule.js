@@ -91,7 +91,8 @@ nsUserSchedule.createList = function(shows) {
 
 		$.vwBandSchedule.add(Titanium.UI.createTableView({
 			data : tabledata,
-			top : 0
+			top : 0,
+			editable:true
 		}));
 
 	} else {

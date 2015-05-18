@@ -33,6 +33,7 @@ nsServerCalls.login = function(username, password, onloadCallback, errorCallback
 	});
 	promise.then(function(user) {
 		console.debug("Login success - user ", JSON.stringify(user));
+		Titanium.App.Properties.removeProperty('appdata');
 		Titanium.App.Properties.setString('userid', user._id);
 
 		var thisUser = Kinvey.setActiveUser(user);
@@ -40,6 +41,7 @@ nsServerCalls.login = function(username, password, onloadCallback, errorCallback
 		onloadCallback(thisUser);
 		
 	}, function(error) {
+		Titanium.App.Properties.removeProperty('appdata');
 		console.debug("Login error ", error);
 		errorCallback(error);
 	});
@@ -54,6 +56,7 @@ nsServerCalls.logout = function(onloadCallback, errorCallback) {
 		var promise = Kinvey.User.logout();
 		promise.then(function() {
 			console.debug("Logout Success");
+			Titanium.App.Properties.removeProperty('appdata');
 			Titanium.App.Properties.removeProperty('userid');
 			console.debug("Titanium.App.Properties.removeProperty('userid') ", Titanium.App.Properties.getString('userid'));
 			onloadCallback();
@@ -74,6 +77,7 @@ nsServerCalls.fbLogin = function(onloadCallback, errorCallback) {
 		permissions : ['email'],
 		success : function(response) {
 			console.debug("FB RESPONSE ", JSON.stringify(response));
+			Titanium.App.Properties.removeProperty('appdata');
 			Titanium.App.Properties.setString('login-type', "FB");
 			// TODO: Need to capture userid and put it in App Properties
 			// Titanium.App.Properties.setString('userid', user._id);
@@ -98,6 +102,7 @@ nsServerCalls.fbLogout = function(onloadCallback, errorCallback) {
 		success : function(response) {
 			console.debug("FB RESPONSE ", JSON.stringify(response));
 			onloadCallback(response);
+			Titanium.App.Properties.removeProperty('appdata');
 			Titanium.App.Properties.removeProperty('userid');
 			Titanium.App.Properties.removeProperty('login-type');
 		}, 
