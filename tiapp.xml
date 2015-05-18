@@ -59,6 +59,9 @@
         </plist>
     </ios>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
+    	<services>
+            <service url="android_notifications.js" type="interval" />
+        </services>
         <manifest android:installLocation="preferExternal"
             android:versionCode="1" android:versionName="1">
             <application android:theme="@style/Theme.NoActionBar">

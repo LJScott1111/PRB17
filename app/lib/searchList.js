@@ -141,11 +141,12 @@ nsSearchList.createList = function() {
 						var addShow = new nsSearchList.serverCalls.saveUserSchedule(show_id, function(response) {
 							e.source.setImage(Alloy.Globals.theme.icons.star);
 
+							var MS_PER_MINUTE = 60000;
+							var startDate = new Date((appdata.details[i].showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
+							console.log("startDate ", startDate);
+
 							// Schedule notifications for IOS
 							if (Titanium.Platform.osname !== "android") {
-								var MS_PER_MINUTE = 60000;
-								var startDate = new Date((appdata.details[i].showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
-								console.log("startDate ", startDate);
 
 								var notification = Ti.App.iOS.scheduleLocalNotification({
 									alertBody : appdata.details[i].bandDetails.name + "\n" + appdata.details[i].venueDetails.name + "\n" + startDate,
@@ -165,7 +166,23 @@ nsSearchList.createList = function() {
 										});
 									}
 								});
+							} else {
+								// Create an intent using the JavaScript service file
+								var intent = Ti.Android.createServiceIntent({
+									url : 'android_notifications.js'
+								});
+								// Set the interval to run the service;
+								intent.putExtra('interval', 1000);
+								// Send extra data to the service; 
+								intent.putExtra('timestamp', startDate);
+
+								intent.putExtra('band', appdata.details[i].bandDetails.name);
+								intent.putExtra('message', appdata.details[i].venueDetails.name + "\n" + startDate);
+
+								// Start the service
+								Ti.Android.startService(intent);
 							}
+
 						}, function(error) {
 							alert(L('err_serviceError'));
 						});
@@ -204,7 +221,20 @@ nsSearchList.createList = function() {
 									}
 								});
 							} else {
-								
+								// Create an intent using the JavaScript service file
+								var intent = Ti.Android.createServiceIntent({
+									url : 'android_notifications.js'
+								});
+								// Set the interval to run the service;
+								intent.putExtra('interval', 1000);
+								// Send extra data to the service; 
+								intent.putExtra('timestamp', startDate);
+
+								intent.putExtra('band', appdata.details[i].bandDetails.name);
+								intent.putExtra('message', appdata.details[i].venueDetails.name + "\n" + startDate);
+
+								// Start the service
+								Ti.Android.startService(intent);
 							}
 
 						}, function(error) {

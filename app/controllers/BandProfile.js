@@ -21,13 +21,13 @@ nsBandProfile.markFavourite = function(e) {
 		var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
 			e.source.setImage(Alloy.Globals.theme.icons.star);
 
-			if (Titanium.App.Properties !== "android") {
-				var MS_PER_MINUTE = 60000;
-				var startDate = (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null) ? new Date((nsBandProfile.data.showDetails.start_time * 1000) - 10 * MS_PER_MINUTE) : "";
-				console.log("startDate ", startDate);
+			var MS_PER_MINUTE = 60000;
+			var startDate = (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null) ? new Date((nsBandProfile.data.showDetails.start_time * 1000) - 10 * MS_PER_MINUTE) : "";
+			console.log("startDate ", startDate);
 
-				var venueName = (nsBandProfile.data.venueDetails !== undefined && nsBandProfile.data.venueDetails !== null) ? nsBandProfile.data.venueDetails.name : "";
+			var venueName = (nsBandProfile.data.venueDetails !== undefined && nsBandProfile.data.venueDetails !== null) ? nsBandProfile.data.venueDetails.name : "";
 
+			if (Titanium.Platform.osname !== "android") {
 				var notification = Ti.App.iOS.scheduleLocalNotification({
 					alertBody : nsBandProfile.data.bandDetails.name + "\n" + venueName + "\n" + startDate,
 					badge : 1,
@@ -46,6 +46,23 @@ nsBandProfile.markFavourite = function(e) {
 						});
 					}
 				});
+			} else {
+				// android_notifications
+
+				// Create an intent using the JavaScript service file
+				var intent = Ti.Android.createServiceIntent({
+					url : 'android_notifications.js'
+				});
+				// Set the interval to run the service; 
+				intent.putExtra('interval', 1000);
+				// Send extra data to the service;
+				intent.putExtra('timestamp', startDate);
+				
+				intent.putExtra('band', nsBandProfile.data.bandDetails.name);
+				intent.putExtra('message', venueName + "\n" + startDate);
+				
+				// Start the service
+				Ti.Android.startService(intent);
 			}
 
 		}, function(error) {
