@@ -3,7 +3,12 @@ nsGenericWebView.args = arguments[0];
 
 nsGenericWebView.closeWindow = function() {
 	Alloy.Globals.windowStack.pop();
+
+	if (Alloy.Globals.isSignupWindow) {
+		Alloy.createController("signup").getView().open();
+	}
 	$.winGenericWebView.close();
+
 };
 
 nsGenericWebView.getSettings = function() {
@@ -17,8 +22,8 @@ nsGenericWebView.init = function() {
 		console.debug("Pressing Back Will Not Close The Activity/Window");
 		nsGenericWebView.closeWindow();
 	});
-	
-	if(nsGenericWebView.args.map){
+
+	if (nsGenericWebView.args.map) {
 		$.vwMain.height = Titanium.UI.SIZE;
 		$.vwMain.width = Titanium.UI.SIZE;
 		$.wvGenericWebView.scalesPageToFit = false;

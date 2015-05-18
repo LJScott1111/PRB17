@@ -147,8 +147,7 @@ nsLanding.getFood = function(){
 		}).getView().open();
 	} else {
 		Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-			url : "twitter.html",
-			showNavBar : true
+			url : "twitter.html"
 		}).getView());
 	}
 };

@@ -61,6 +61,7 @@ nsLogin.login = function() {
 			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 				console.debug("fetchedData ", fetchedData);
 				nsLogin.args.win.remove(nsLogin.controller);
+				Alloy.Globals.isSignupWindow = false;
 				nsLogin.args.win.close();
 				var notify = Titanium.App.Properties.getBool('notify');
 				if (Titanium.Platform.osname !== "android") {

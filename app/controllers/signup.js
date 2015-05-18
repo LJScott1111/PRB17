@@ -53,8 +53,6 @@ nsIndex.getSettings = function() {
 };
 
 nsIndex.connectToFb = function() {
-
-	
 	var accessToken = "";
 	// fb.forceDialogAuth = true;
 
@@ -97,6 +95,7 @@ nsIndex.getIt = function() {
 				// Alloy.createController("LandingPage").getView().open();
 				Alloy.Globals.windowStack.pop();
 				$.winIndex.remove(nsIndex.controller);
+				Alloy.Globals.isSignupWindow = false;
 				nsIndex.closeWindow();
 				if (Titanium.Platform.osname !== "android") {
 					Alloy.Globals.askToNotify();
