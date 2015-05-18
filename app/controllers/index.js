@@ -143,11 +143,11 @@ nsLanding.getVenues = function() {
 nsLanding.getFood = function(){
 	if (Titanium.Platform.osname === "android") {
 		Alloy.createController("GenericWebView", {
-			url : "twitter.html"
+			url : "http://punkrockbowling.com/food/"
 		}).getView().open();
 	} else {
 		Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-			url : "twitter.html"
+			url : "http://punkrockbowling.com/food/"
 		}).getView());
 	}
 };

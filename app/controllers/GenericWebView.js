@@ -30,7 +30,10 @@ nsGenericWebView.init = function() {
 	}
 
 	$.wvGenericWebView.setUrl(nsGenericWebView.args.url);
-	$.winGenericWebView.setNavBarHidden(nsGenericWebView.args.showNavBar !== true);
+
+	if (Titanium.Platform.osname !== "android") {
+		$.winGenericWebView.setNavBarHidden(nsGenericWebView.args.showNavBar !== true);
+	}
 
 };
 
