@@ -174,7 +174,9 @@ exports.getVenueList = nsServerCalls.getVenueList;
 
 // Get shows
 nsServerCalls.getShows = function(onloadCallback, errorCallback) {
-	var promise = Kinvey.DataStore.find('shows', null);
+	var query = new Kinvey.Query();
+	query.ascending('start_time');
+	var promise = Kinvey.DataStore.find('shows', query);
 	promise.then(function(entities) {
 		console.debug("Shows success ", JSON.stringify(entities));
 		// Alloy.Globals.shows = JSON.parse(JSON.stringify(entities));

@@ -58,22 +58,23 @@ nsVenueProfile.createList = function(shows) {
 			vwRowView.add(ivImage);
 
 			var lblName = Titanium.UI.createLabel({
-				left : Alloy.Globals.platformWidth * 0.30,
+				left : Alloy.Globals.platformWidth * 0.29,
+				width : Alloy.Globals.platformWidth * 0.44,
 				text : shows[i].bandDetails.name,
 				color : "#000000",
 				font : {
-					fontSize : Alloy.Globals.theme.fonts.size20Fonts
+					fontSize : Alloy.Globals.theme.fonts.size15Fonts
 				}
 			});
 
 			vwRowView.add(lblName);
 
 			var lblTime = Titanium.UI.createLabel({
-				right : 60,
+				right : 55,
 				text : time,
 				color : "#000000",
 				font : {
-					fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+					fontSize : Alloy.Globals.theme.fonts.size15Fonts,
 					fontWeight : "bold"
 				}
 			});
@@ -197,17 +198,24 @@ nsVenueProfile.getList = function(source) {
 
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
+		if (appdata.details[i].showDetails.venue_id == nsVenueProfile.args.id) {
+			dayOfShow = nsVenueProfile.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
+			// (appdata.details[i].showDetails !== undefined && appdata.details[i].showDetails !== null) ? nsVenueProfile.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim() : 0;
+			console.debug("dayOfShow ", dayOfShow);
 
-		dayOfShow = nsVenueProfile.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
-		// (appdata.details[i].showDetails !== undefined && appdata.details[i].showDetails !== null) ? nsVenueProfile.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim() : 0;
-		console.debug("dayOfShow ", dayOfShow);
-
-		if (day === dayOfShow) {
-			shows.push(appdata.details[i]);
+			if (day === dayOfShow) {
+				shows.push(appdata.details[i]);
+			}
 		}
-
 	}
-	console.debug(JSON.stringify(shows));
+	shows.sort(function(a, b) {
+		if (a.showDetails.start_time < b.showDetails.start_time)
+			return -1;
+		if (a.showDetails.start_time > b.showDetails.start_time)
+			return 1;
+		return 0;
+	});
+	console.log(JSON.stringify(shows));
 
 	// var tabledata = [];
 	nsVenueProfile.createList(shows);
@@ -250,7 +258,7 @@ nsVenueProfile.init = function() {
 	console.debug("VenueProile data ", JSON.stringify(nsVenueProfile.data));
 
 	$.ivVenueImage.setHeight(Alloy.Globals.platformHeight * 0.30);
-
+	$.ivVenueImage.setImage(nsVenueProfile.data.venueDetails.image_link || "");
 	$.lblVenueName.setText(nsVenueProfile.data.venueDetails.name || "");
 	$.lblAddress1.setText(nsVenueProfile.data.venueDetails.address || "");
 
