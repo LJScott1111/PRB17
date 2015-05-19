@@ -1,37 +1,39 @@
 // Kinvey credentials
 var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.3.1');
-Alloy.Globals.checkUser = function(callback, errorCallback) { 
+Alloy.Globals.checkUser = function(callback, errorCallback) {
 	var promise = Kinvey.init({
 		appKey : 'kid_b1vnajEDkl',
 		appSecret : '10609ec172544ae6b75923af98bfab95'
 	});
 
 	promise.then(function(user) {
-		
+
 		if (!user) {
 
-		var promise2 = Kinvey.User.login({
-			username : 'mobile@buzzplay.com',
-			password : 'prb%2015'
-		});
-		promise2.then(function(user) {
-			console.debug("Login success - user ", JSON.stringify(user));
-			//Titanium.App.Properties.removeProperty('appdata');
-			Titanium.App.Properties.setString('userid', user._id);
+			var promise2 = Kinvey.User.login({
+				username : 'mobile@buzzplay.com',
+				password : 'prb%2015'
+			});
+			promise2.then(function(user) {
+				console.debug("Login success - user ", JSON.stringify(user));
+				//Titanium.App.Properties.removeProperty('appdata');
+				Titanium.App.Properties.setString('userid', user._id);
 
-			var thisUser = Kinvey.setActiveUser(user);
-			console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
-			callback(thisUser);
+				var thisUser = Kinvey.setActiveUser(user);
+				console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
+				
+				Alloy.Globals.getAndStoreData();
+				callback(thisUser);
 
-		}, function(error) {
-			//Titanium.App.Properties.removeProperty('appdata');
-			console.debug("Login error ", error);
-			errorCallback(error);
-		});
-		}
-		else {
-			
+			}, function(error) {
+				//Titanium.App.Properties.removeProperty('appdata');
+				console.debug("Login error ", error);
+				errorCallback(error);
+			});
+		} else {
+
 			var thisUser = Kinvey.getActiveUser();
+			Alloy.Globals.getAndStoreData();
 			callback(thisUser);
 		}
 
