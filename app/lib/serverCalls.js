@@ -204,56 +204,56 @@ nsServerCalls.getShows = function(onloadCallback, errorCallback) {
 exports.getShows = nsServerCalls.getShows;
 
 // Get user schedule
+// Get user schedule
 nsServerCalls.getUserSchedule = function(onloadCallback, errorCallback) {
-	
-	var query = new Kinvey.Query();
-	query.equalTo('user_id', Titanium.App.Properties.getString('userid'));
-	
-	var promise = Kinvey.DataStore.find('user-schedules', query);
-	promise.then(function(entities) {
-		console.debug("user schedule success ", JSON.stringify(entities));
-		onloadCallback(entities);
-	}, function(error) {
-		console.debug("user schedule Error ", error);
-		errorCallback(error);
-	});
+	//var promise = Kinvey.DataStore.find('user-schedules', null);
+	//promise.then(function(entities) {
+	//	console.debug("user schedule success ", JSON.stringify(entities));
+	//	onloadCallback(entities);
+	//}, function(error) {
+	//	console.debug("user schedule Error ", error);
+	//	errorCallback(error);
+	//});
+
+	onloadCallback(Ti.App.Properties.getList('userSchedule', []));
 };
 
 exports.getUserSchedule = nsServerCalls.getUserSchedule;
 
 //Saving a User schedule
 nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback) {
+	//var promise = Kinvey.DataStore.save('user-schedules', {
+	// _id : 'optional-id',
+	//	"user_id" : Titanium.App.Properties.getString('userid'),
+	//	"show_id" : show_id,
+	//});
+	//promise.then(function(entity) {
+	//	onloadCallback(entity);
 
-	var query = new Kinvey.Query();
+	//}, function(error) {
+	//	errorCallback(error);
+	//});
 
-	query.equalTo('user_id', Titanium.App.Properties.getString('userid'));
-	query.equalTo('show_id', show_id);
-
-	var promise = Kinvey.DataStore.find('user-schedules', query);
-	promise.then(function(entities) {
-
-		if (entities.length == 0) {
+	var userSchedule = Ti.App.Properties.getList('userSchedule', []);
+	
+	if (userSchedule.length != 0) {
+		
+		for (var i in userSchedule) {
 			
-			var promise2 = Kinvey.DataStore.save('user-schedules', {
-				// _id : 'optional-id',
-				"user_id" : Titanium.App.Properties.getString('userid'),
-				"show_id" : show_id,
-			});
-			promise2.then(function(entity) {
+			if (userSchedule[i].show_id == show_id) {
 				
-				onloadCallback(entity);
-
-			}, function(error) {
-				
-				errorCallback(error);
-			});
+				alert('You already added this show.');
+				return;
+			}
 		}
-		else {
-			alert('You already added this show.');
-		}
-	}, function(error) {
+	}
+	
+	userSchedule.push({
+		show_id : show_id
 	});
-
+	
+	Ti.App.Properties.setList('userSchedule', userSchedule);
+	onloadCallback();
 };
 
 exports.saveUserSchedule = nsServerCalls.saveUserSchedule;
@@ -261,7 +261,7 @@ exports.saveUserSchedule = nsServerCalls.saveUserSchedule;
 //Deleting a User schedule
 nsServerCalls.deleteUserSchedule = function(show_id, onloadCallback, errorCallback) {
 
-	var query = new Kinvey.Query();
+	/*var query = new Kinvey.Query();
 
 	query.equalTo('user_id', Titanium.App.Properties.getString('userid'));
 	query.equalTo('show_id', show_id);
@@ -283,6 +283,21 @@ nsServerCalls.deleteUserSchedule = function(show_id, onloadCallback, errorCallba
 		}
 	}, function(error) {
 	});
+	*/
+	var userSchedule = Ti.App.Properties.getList('userSchedule', []);
+	
+	if (userSchedule.length != 0) {
+		
+		for (var i in userSchedule) {
+			
+			if (userSchedule[i].show_id == show_id) {
+				
+				userSchedule.splice(i, 1);
+			}
+		}
+	}
+	
+	Ti.App.Properties.setList('userSchedule', userSchedule);
 
 };
 

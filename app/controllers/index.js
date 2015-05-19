@@ -177,12 +177,14 @@ nsLanding.init = function() {
 	$.ivNews.setHeight(Alloy.Globals.platformHeight * 0.0774);
 
 	Alloy.Globals.checkUser(function(user) {
-		console.debug("Alloy.Globals.checkUser user - " + user);
+	/*	console.debug("Alloy.Globals.checkUser user - " + user);
+		*/
 		if (Titanium.Platform.osname === "android") {
 			$.winLanding.open();
 		} else {
 			$.navWin.open();
 		}
+		/*
 		if (user === null) {
 			var signupWindow = Alloy.createController("signup").getView();
 			if (OS_ANDROID) {
@@ -206,7 +208,9 @@ nsLanding.init = function() {
 			});
 		}
 		signupWindow.open();
+		*/
 	});
+	
 
 };
 
