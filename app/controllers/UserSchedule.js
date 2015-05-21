@@ -19,7 +19,7 @@ nsUserSchedule.getDay = function(timestamp, type) {
 	if (type === "day") {
 		return dateObj.format('dddd');
 	} else {
-		return dateObj.format('h a');
+		return dateObj.format('h:m a');
 	}
 };
 

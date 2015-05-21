@@ -18,7 +18,7 @@ nsVenueProfile.getDay = function(timestamp, type) {
 	if (type === "day") {
 		return dateObj.format('dddd');
 	} else {
-		return dateObj.format('h a');
+		return dateObj.format('h:mm a');
 	}
 };
 
@@ -73,7 +73,7 @@ nsVenueProfile.createList = function(shows) {
 
 			var lblName = Titanium.UI.createLabel({
 				left : Alloy.Globals.platformWidth * 0.29,
-				width : Alloy.Globals.platformWidth * 0.44,
+				width : Alloy.Globals.platformWidth * 0.42,
 				text : shows[i].bandDetails.name,
 				color : "#000000",
 				font : {
