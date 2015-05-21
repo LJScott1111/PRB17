@@ -2,10 +2,275 @@ var nsSearchList = {};
 nsSearchList.type = "";
 nsSearchList.data = null;
 nsSearchList.vwSearchView = null;
+nsSearchList.table = null;
+
+nsSearchList.selectedTab = null;
+nsSearchList.vwAll = null;
 
 nsSearchList.serverCalls = require('serverCalls');
+nsSearchList.momentjs = require('moment');
 
-nsSearchList.createList = function() {
+nsSearchList.getList = function(day) {
+	// Get list
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	console.debug("day ", day);
+
+	var dayOfShow = "";
+
+	var bands = [];
+
+	for (var i = 0,
+	    len = appdata.details.length; i < len; i++) {
+		dayOfShow = nsSearchList.momentjs(appdata.details[i].showDetails.start_time * 1000).format('dddd').toLowerCase().trim();
+
+		console.debug("dayOfShow ", dayOfShow);
+
+		if (day === dayOfShow) {
+			bands.push(appdata.details[i].bandDetails);
+		}
+	}
+
+	bands.sort(Alloy.Globals.sortArray('name'));
+	console.log(JSON.stringify(bands));
+	return bands;
+};
+
+nsSearchList.createHeader = function() {
+	var header = Ti.UI.createView({
+		height : Titanium.UI.SIZE,
+		width : Titanium.UI.FILL,
+		layout : "horizontal",
+		top : 5
+	});
+
+	var viewWidth = Alloy.Globals.platformWidth / 5.3;
+
+	nsSearchList.vwAll = Titanium.UI.createView({
+		top : 5,
+		left : 2,
+		bottom : 5,
+		height : Titanium.UI.SIZE,
+		borderRadius : 10,
+		borderColor : "#000000",
+		width : viewWidth,
+		day : "all"
+	});
+
+	var lblAll = Titanium.UI.createLabel({
+		top : 5,
+		bottom : 5,
+		height : Titanium.UI.SIZE,
+		touchEnabled : false,
+		color : "#000000",
+		text : L('all'),
+		font : {
+			fontSize : Alloy.Globals.theme.fonts.size10Fonts
+		}
+	});
+
+	nsSearchList.vwAll.addEventListener('click', function(e) {
+		nsSearchList.selectedTab = e.source.day;
+		console.log("e.source ", e.source.day);
+		if (!nsSearchList.vwAll.selected) {
+			nsSearchList.vwSearchView.removeAllChildren();
+
+			var vwList = nsSearchList.createList(nsSearchList.data);
+			return vwList;
+		}
+	});
+
+	nsSearchList.vwAll.add(lblAll);
+	header.add(nsSearchList.vwAll);
+
+	var vwFriday = Titanium.UI.createView({
+		top : 5,
+		left : 2,
+		bottom : 5,
+		height : Titanium.UI.SIZE,
+		borderRadius : 10,
+		borderColor : "#000000",
+		width : viewWidth,
+		day : "friday",
+		selected : false
+	});
+
+	var lblFriday = Titanium.UI.createLabel({
+		top : 5,
+		bottom : 5,
+		height : Titanium.UI.SIZE,
+		touchEnabled : false,
+		color : "#000000",
+		text : L('friday'),
+		font : {
+			fontSize : Alloy.Globals.theme.fonts.size10Fonts
+		}
+	});
+
+	vwFriday.addEventListener('click', function(e) {
+		console.log("e.source ", e.source.day);
+		nsSearchList.selectedTab = e.source.day;
+		if (!vwFriday.selected) {
+			var bands = nsSearchList.getList(e.source.day);
+
+			nsSearchList.vwSearchView.removeAllChildren();
+
+			var vwList = nsSearchList.createList(bands);
+			return vwList;
+		}
+	});
+
+	vwFriday.add(lblFriday);
+	header.add(vwFriday);
+
+	var vwSaturday = Titanium.UI.createView({
+		top : 5,
+		left : 2,
+		bottom : 5,
+		height : Titanium.UI.SIZE,
+		borderRadius : 10,
+		borderColor : "#000000",
+		width : viewWidth,
+		day : "saturday",
+		selected : false
+	});
+
+	var lblSaturday = Titanium.UI.createLabel({
+		top : 5,
+		bottom : 5,
+		height : Titanium.UI.SIZE,
+		touchEnabled : false,
+		color : "#000000",
+		text : L('saturday'),
+		font : {
+			fontSize : Alloy.Globals.theme.fonts.size10Fonts
+		}
+	});
+
+	vwSaturday.addEventListener('click', function(e) {
+		console.log("e.source ", e.source.day);
+		nsSearchList.selectedTab = e.source.day;
+		if (!vwSaturday.selected) {
+			var bands = nsSearchList.getList(e.source.day);
+
+			nsSearchList.vwSearchView.removeAllChildren();
+
+			var vwList = nsSearchList.createList(bands);
+			return vwList;
+		}
+	});
+
+	vwSaturday.add(lblSaturday);
+	header.add(vwSaturday);
+
+	var vwSunday = Titanium.UI.createView({
+		top : 5,
+		left : 2,
+		bottom : 5,
+		height : Titanium.UI.SIZE,
+		borderRadius : 10,
+		borderColor : "#000000",
+		width : viewWidth,
+		day : "sunday",
+		selected : false
+	});
+
+	var lblSunday = Titanium.UI.createLabel({
+		top : 5,
+		bottom : 5,
+		height : Titanium.UI.SIZE,
+		touchEnabled : false,
+		color : "#000000",
+		text : L('sunday'),
+		font : {
+			fontSize : Alloy.Globals.theme.fonts.size10Fonts
+		}
+	});
+
+	vwSunday.addEventListener('click', function(e) {
+		console.log("e.source ", e.source.day);
+		nsSearchList.selectedTab = e.source.day;
+		if (!vwSunday.selected) {
+			var bands = nsSearchList.getList(e.source.day);
+
+			nsSearchList.vwSearchView.removeAllChildren();
+
+			var vwList = nsSearchList.createList(bands);
+			return vwList;
+		}
+	});
+
+	vwSunday.add(lblSunday);
+	header.add(vwSunday);
+
+	var vwMonday = Titanium.UI.createView({
+		top : 5,
+		left : 2,
+		bottom : 5,
+		height : Titanium.UI.SIZE,
+		borderRadius : 10,
+		borderColor : "#000000",
+		selected : false,
+		width : viewWidth,
+		day : "monday"
+	});
+
+	var lblMonday = Titanium.UI.createLabel({
+		top : 5,
+		bottom : 5,
+		height : Titanium.UI.SIZE,
+		touchEnabled : false,
+		color : "#000000",
+		text : L('monday'),
+		font : {
+			fontSize : Alloy.Globals.theme.fonts.size10Fonts
+		}
+	});
+
+	vwMonday.addEventListener('click', function(e) {
+		console.log("e.source ", e.source.day);
+		nsSearchList.selectedTab = e.source.day;
+		if (!vwMonday.selected) {
+			var bands = nsSearchList.getList(e.source.day);
+
+			nsSearchList.vwSearchView.removeAllChildren();
+
+			var vwList = nsSearchList.createList(bands);
+			return vwList;
+		}
+	});
+
+	vwMonday.add(lblMonday);
+	header.add(vwMonday);
+
+	if (nsSearchList.selectedTab === "friday") {
+		vwFriday.selected = true;
+		vwFriday.backgroundColor = "#c0c0c0";
+	} else if (nsSearchList.selectedTab === "saturday") {
+		vwSaturday.selected = true;
+		vwSaturday.backgroundColor = "#c0c0c0";
+	} else if (nsSearchList.selectedTab === "sunday") {
+		vwSunday.selected = true;
+		vwSunday.backgroundColor = "#c0c0c0";
+	} else if (nsSearchList.selectedTab === "monday") {
+		vwMonday.selected = true;
+		vwMonday.backgroundColor = "#c0c0c0";
+	} else {
+		nsSearchList.vwAll.selected = true;
+		nsSearchList.vwAll.backgroundColor = "#c0c0c0";
+	}
+
+	return header;
+};
+
+nsSearchList.createList = function(tblData) {
+
+	if (nsSearchList.type === "BandList") {
+
+		if (nsSearchList.selectedTab !== null) {
+			nsSearchList.selectedTab.selected = true;
+			nsSearchList.selectedTab.backgroundColor = "#c0c0c0";
+		}
+	}
 
 	var sbSearchBar = Titanium.UI.createSearchBar({
 		barColor : '#FFD801',
@@ -27,9 +292,9 @@ nsSearchList.createList = function() {
 	    lastL,
 	    l,
 	    currSection,
-	    len = nsSearchList.data.length; i < len; i++) {
+	    len = tblData.length; i < len; i++) {
 
-		l = nsSearchList.data[i].name.substr(0, 1);
+		l = tblData[i].name.substr(0, 1);
 
 		if (lastL != l) {
 			index.push({
@@ -44,7 +309,7 @@ nsSearchList.createList = function() {
 
 		var row = Ti.UI.createTableViewRow({
 			id : i,
-			filter : nsSearchList.data[i].name,
+			filter : tblData[i].name,
 			hasChild : true,
 			top : 0
 		});
@@ -56,21 +321,21 @@ nsSearchList.createList = function() {
 				if (nsSearchList.type === "BandList") {
 					if (Titanium.Platform.osname === "android") {
 						Alloy.createController("BandProfile", {
-							"id" : nsSearchList.data[e.source.id]._id
+							"id" : tblData[e.source.id]._id
 						}).getView().open();
 					} else {
 						Alloy.Globals.navWin.openWindow(Alloy.createController("BandProfile", {
-							"id" : nsSearchList.data[e.row.id]._id
+							"id" : tblData[e.row.id]._id
 						}).getView());
 					}
 				} else if (nsSearchList.type === "VenueList") {
 					if (Titanium.Platform.osname === "android") {
 						Alloy.createController("VenueProfile", {
-							"id" : nsSearchList.data[e.source.id]._id
+							"id" : tblData[e.source.id]._id
 						}).getView().open();
 					} else {
 						Alloy.Globals.navWin.openWindow(Alloy.createController("VenueProfile", {
-							"id" : nsSearchList.data[e.row.id]._id
+							"id" : tblData[e.row.id]._id
 						}).getView());
 					}
 				}
@@ -91,7 +356,7 @@ nsSearchList.createList = function() {
 			width : Alloy.Globals.platformWidth * 0.25,
 			height : Alloy.Globals.platformHeight * 0.088,
 			borderColor : "#000000",
-			image : nsSearchList.data[i].image_link,
+			image : tblData[i].image_link,
 			touchEnabled : false
 		});
 
@@ -99,7 +364,7 @@ nsSearchList.createList = function() {
 
 		var lblName = Titanium.UI.createLabel({
 			left : Alloy.Globals.platformWidth * 0.30,
-			text : nsSearchList.data[i].name,
+			text : tblData[i].name,
 			color : "#000000",
 			height : Titanium.UI.SIZE,
 			touchEnabled : false,
@@ -128,8 +393,8 @@ nsSearchList.createList = function() {
 
 		ivFavouriteStar.addEventListener('click', function(e) {
 
-			// console.debug(nsSearchList.data[e.row.id]._id);
-			var data_id = (Titanium.Platform.osname === "android") ? nsSearchList.data[e.source.index]._id : nsSearchList.data[e.row.id]._id;
+			// console.debug(tblData[e.row.id]._id);
+			var data_id = (Titanium.Platform.osname === "android") ? tblData[e.source.index]._id : tblData[e.row.id]._id;
 
 			var appdata = Titanium.App.Properties.getObject('appdata', {});
 			for (var i = 0,
@@ -258,7 +523,7 @@ nsSearchList.createList = function() {
 		lastL = l;
 	}
 
-	var table = Ti.UI.createTableView({
+	nsSearchList.table = Ti.UI.createTableView({
 		top : 0,
 		// index: index,
 		// data: sectionArr,
@@ -268,20 +533,26 @@ nsSearchList.createList = function() {
 		// borderColor: "red",
 		// search : sbSearchBar,
 		searchHidden : true,
-		backgroundColor : "#ffffff"
+		backgroundColor : "#ffffff",
+		// headerView : nsSearchList.createHeader()
 	});
 
-	table.setData(sectionArr);
-	// table.search = sbSearchBar;
-	table.setSearch(sbSearchBar);
-	// table.filterAttribute = 'filter';
-	table.index = index;
-	nsSearchList.vwSearchView.add(table);
+	if (nsSearchList.type === "BandList") {
+		nsSearchList.table.headerView = nsSearchList.createHeader();
+	}
+
+	nsSearchList.table.setData(sectionArr);
+	// nsSearchList.table.search = sbSearchBar;
+	nsSearchList.table.setSearch(sbSearchBar);
+	// nsSearchList.table.filterAttribute = 'filter';
+	nsSearchList.table.index = index;
+	nsSearchList.vwSearchView.add(nsSearchList.table);
 	return nsSearchList.vwSearchView;
 
 };
 
 nsSearchList.init = function(type, data) {
+	nsSearchList.selectedTab = null;
 	nsSearchList.type = type;
 	nsSearchList.data = JSON.parse(JSON.stringify(data));
 
@@ -299,7 +570,7 @@ nsSearchList.init = function(type, data) {
 		backgroundColor : "#FFD801"
 	});
 
-	var vwList = nsSearchList.createList();
+	var vwList = nsSearchList.createList(nsSearchList.data);
 	return vwList;
 };
 
