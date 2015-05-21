@@ -300,21 +300,12 @@ Alloy.Globals.getSettings = function(currentWin) {
 		});
 
 		if (i === 0) {
-			if (currentWin.id === "winIndex") {
-				Alloy.Globals.isSignupWindow = true;
-				console.debug("User not logged in");
-				lblLoginActivity.setText(L('settings_login'));
-			} else {
-				console.debug("User logged in");
-				lblLoginActivity.setText(L('settings_logout'));
-			}
-		} else if (i === 1) {
 			lblLoginActivity.setText(L('settings_map'));
-		} else if (i === 2) {
+		} else if (i === 1) {
 			lblLoginActivity.setText(L('settings_sponsors'));
-		} else if (i === 3) {
+		} else if (i === 2) {
 			lblLoginActivity.setText(L('settings_privacy'));
-		} else if (i === 4) {
+		} else if (i === 3) {
 			lblLoginActivity.setText(L('settings_faq'));
 		}
 
@@ -326,70 +317,6 @@ Alloy.Globals.getSettings = function(currentWin) {
 		console.log("e.source.id .. ", e.source.id);
 
 		if (e.source.id === "vwOption_0") {
-			// Open login
-			if (currentWin.id === "winIndex") {
-
-				currentWin.add(Alloy.createController("Login", {
-					"win" : currentWin
-				}).getView());
-
-				currentWin.remove(vwOptionFullView);
-
-			} else {
-				// Call Logout and back to main screen
-				var servercalls = require('serverCalls');
-
-				var login_type = Titanium.App.Properties.getString('login-type');
-				if (login_type === "FB") {
-
-					var fbLogout = new servercalls.fbLogout(function() {
-						if (currentWin.id === "winLanding") {
-							Alloy.createController("signup").getView().open();
-						} else {
-
-							console.debug(Alloy.Globals.windowStack.length);
-							for (var i = Alloy.Globals.windowStack.length - 1; i >= 0; i--) {
-
-								console.debug(Alloy.Globals.windowStack[i].id);
-
-								console.debug("Alloy.Globals.windowStack.pop() " + Alloy.Globals.windowStack.length);
-								Alloy.Globals.windowStack[i].close();
-								Alloy.Globals.windowStack.pop();
-								Titanium.App.Properties.removeProperty('userid');
-								Alloy.createController("signup").getView().open();
-							}
-						}
-						currentWin.remove(vwOptionFullView);
-					}, function() {
-						// Error while logout
-					});
-
-				} else {
-					var logout = new servercalls.logout(function() {
-						currentWin.remove(vwOptionFullView);
-						if (currentWin.id === "winLanding") {
-							Alloy.createController("signup").getView().open();
-						} else {
-
-							console.debug(Alloy.Globals.windowStack.length);
-							for (var i = Alloy.Globals.windowStack.length - 1; i >= 0; i--) {
-
-								console.debug(Alloy.Globals.windowStack[i].id);
-
-								console.debug("Alloy.Globals.windowStack.pop() " + Alloy.Globals.windowStack.length);
-								Alloy.Globals.windowStack[i].close();
-								Alloy.Globals.windowStack.pop();
-								Titanium.App.Properties.removeProperty('userid');
-								Alloy.createController("signup").getView().open();
-							}
-						}
-						// currentWin.remove(vwOptionFullView);
-					}, function(error) {
-						// TODO
-					});
-				}
-			}
-		} else if (e.source.id === "vwOption_1") {
 			if (currentWin.id === "winIndex") {
 				// console.log("Alloy.Globals.windowStack.length - 1 ", Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].id);
 				Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].close();
@@ -407,7 +334,7 @@ Alloy.Globals.getSettings = function(currentWin) {
 			}
 			currentWin.remove(vwOptionFullView);
 
-		} else if (e.source.id === "vwOption_2") {
+		} else if (e.source.id === "vwOption_1") {
 			if (currentWin.id === "winIndex") {
 				// console.log("Alloy.Globals.windowStack.length - 1 ", Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].id);
 				Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].close();
@@ -424,7 +351,7 @@ Alloy.Globals.getSettings = function(currentWin) {
 			}
 			currentWin.remove(vwOptionFullView);
 
-		} else if (e.source.id === "vwOption_3") {
+		} else if (e.source.id === "vwOption_2") {
 			if (currentWin.id === "winIndex") {
 				console.log("Alloy.Globals.windowStack.length - 1 ", Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].id);
 				Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].close();
@@ -441,7 +368,7 @@ Alloy.Globals.getSettings = function(currentWin) {
 			}
 			currentWin.remove(vwOptionFullView);
 
-		} else if (e.source.id === "vwOption_4") {
+		} else if (e.source.id === "vwOption_3") {
 			if (currentWin.id === "winIndex") {
 				console.log("Alloy.Globals.windowStack.length - 1 ", Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].id);
 				Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].close();

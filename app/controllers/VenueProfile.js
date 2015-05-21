@@ -36,7 +36,21 @@ nsVenueProfile.createList = function(shows) {
 				top : 10,
 				height : Titanium.UI.SIZE,
 				width : Titanium.UI.SIZE,
-				rowIndex : i
+				rowIndex : i,
+				bandDetails:shows[i].bandDetails
+			});
+			
+			row.addEventListener('click', function(e){
+				console.log(e);
+				if (Titanium.Platform.osname === "android") {
+						Alloy.createController("BandProfile", {
+							"id" : e.row.bandDetails._id
+						}).getView().open();
+					} else {
+						Alloy.Globals.navWin.openWindow(Alloy.createController("BandProfile", {
+							"id" : e.row.bandDetails._id
+						}).getView());
+					}
 			});
 
 			var vwRowView = Titanium.UI.createView({
