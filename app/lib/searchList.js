@@ -4,6 +4,9 @@ nsSearchList.data = null;
 nsSearchList.vwSearchView = null;
 nsSearchList.table = null;
 
+nsSearchList.selectedTab = null;
+nsSearchList.vwAll = null;
+
 nsSearchList.serverCalls = require('serverCalls');
 nsSearchList.momentjs = require('moment');
 
@@ -12,34 +15,20 @@ nsSearchList.getList = function(day) {
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	console.debug("day ", day);
 
-	// day = "tuesday";
-
 	var dayOfShow = "";
-	//nsVenueProfile.momentjs(timestamp * 1000);
 
 	var bands = [];
 
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
-		// if (appdata.details[i].bandDetails.band_id == nsVenueProfile.args.id) {
-		// dayOfShow = nsVenueProfile.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
 		dayOfShow = nsSearchList.momentjs(appdata.details[i].showDetails.start_time * 1000).format('dddd').toLowerCase().trim();
 
-		// (appdata.details[i].showDetails !== undefined && appdata.details[i].showDetails !== null) ? nsVenueProfile.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim() : 0;
 		console.debug("dayOfShow ", dayOfShow);
 
 		if (day === dayOfShow) {
 			bands.push(appdata.details[i].bandDetails);
 		}
-		// }
 	}
-	// bands.sort(function(a, b) {
-	// if (a.bandDetails.start_time < b.bandDetails.start_time)
-	// return -1;
-	// if (a.bandDetails.start_time > b.bandDetails.start_time)
-	// return 1;
-	// return 0;
-	// });
 
 	bands.sort(Alloy.Globals.sortArray('name'));
 	console.log(JSON.stringify(bands));
@@ -50,14 +39,13 @@ nsSearchList.createHeader = function() {
 	var header = Ti.UI.createView({
 		height : Titanium.UI.SIZE,
 		width : Titanium.UI.FILL,
-		// backgroundColor: 'red',
 		layout : "horizontal",
 		top : 5
 	});
 
 	var viewWidth = Alloy.Globals.platformWidth / 5.3;
 
-	var vwAll = Titanium.UI.createView({
+	nsSearchList.vwAll = Titanium.UI.createView({
 		top : 5,
 		left : 2,
 		bottom : 5,
@@ -65,8 +53,6 @@ nsSearchList.createHeader = function() {
 		borderRadius : 10,
 		borderColor : "#000000",
 		width : viewWidth,
-		// backgroundColor : "c0c0c0",
-		// selected : true,
 		day : "all"
 	});
 
@@ -82,24 +68,10 @@ nsSearchList.createHeader = function() {
 		}
 	});
 
-	vwAll.addEventListener('click', function(e) {
+	nsSearchList.vwAll.addEventListener('click', function(e) {
+		nsSearchList.selectedTab = e.source.day;
 		console.log("e.source ", e.source.day);
-		if (!vwAll.selected) {
-			vwAll.selected = true;
-			vwAll.backgroundColor = "#c0c0c0";
-
-			vwFriday.selected = false;
-			vwFriday.backgroundColor = "#ffffff";
-
-			vwSaturday.selected = false;
-			vwSaturday.backgroundColor = "#ffffff";
-
-			vwSunday.selected = false;
-			vwSunday.backgroundColor = "#ffffff";
-
-			vwMonday.selected = false;
-			vwMonday.backgroundColor = "#ffffff";
-
+		if (!nsSearchList.vwAll.selected) {
 			nsSearchList.vwSearchView.removeAllChildren();
 
 			var vwList = nsSearchList.createList(nsSearchList.data);
@@ -107,8 +79,8 @@ nsSearchList.createHeader = function() {
 		}
 	});
 
-	vwAll.add(lblAll);
-	header.add(vwAll);
+	nsSearchList.vwAll.add(lblAll);
+	header.add(nsSearchList.vwAll);
 
 	var vwFriday = Titanium.UI.createView({
 		top : 5,
@@ -136,22 +108,8 @@ nsSearchList.createHeader = function() {
 
 	vwFriday.addEventListener('click', function(e) {
 		console.log("e.source ", e.source.day);
+		nsSearchList.selectedTab = e.source.day;
 		if (!vwFriday.selected) {
-			vwAll.selected = false;
-			vwAll.backgroundColor = "#ffffff";
-
-			vwFriday.selected = true;
-			vwFriday.backgroundColor = "#c0c0c0";
-
-			vwSaturday.selected = false;
-			vwSaturday.backgroundColor = "#ffffff";
-
-			vwSunday.selected = false;
-			vwSunday.backgroundColor = "#ffffff";
-
-			vwMonday.selected = false;
-			vwMonday.backgroundColor = "#ffffff";
-
 			var bands = nsSearchList.getList(e.source.day);
 
 			nsSearchList.vwSearchView.removeAllChildren();
@@ -190,22 +148,8 @@ nsSearchList.createHeader = function() {
 
 	vwSaturday.addEventListener('click', function(e) {
 		console.log("e.source ", e.source.day);
+		nsSearchList.selectedTab = e.source.day;
 		if (!vwSaturday.selected) {
-			vwAll.selected = false;
-			vwAll.backgroundColor = "#ffffff";
-
-			vwFriday.selected = false;
-			vwFriday.backgroundColor = "#ffffff";
-
-			vwSaturday.selected = true;
-			vwSaturday.backgroundColor = "#c0c0c0";
-
-			vwSunday.selected = false;
-			vwSunday.backgroundColor = "#ffffff";
-
-			vwMonday.selected = false;
-			vwMonday.backgroundColor = "#ffffff";
-
 			var bands = nsSearchList.getList(e.source.day);
 
 			nsSearchList.vwSearchView.removeAllChildren();
@@ -244,22 +188,8 @@ nsSearchList.createHeader = function() {
 
 	vwSunday.addEventListener('click', function(e) {
 		console.log("e.source ", e.source.day);
+		nsSearchList.selectedTab = e.source.day;
 		if (!vwSunday.selected) {
-			vwAll.selected = false;
-			vwAll.backgroundColor = "#ffffff";
-
-			vwFriday.selected = false;
-			vwFriday.backgroundColor = "#ffffff";
-
-			vwSaturday.selected = false;
-			vwSaturday.backgroundColor = "#ffffff";
-
-			vwSunday.selected = true;
-			vwSunday.backgroundColor = "#c0c0c0";
-
-			vwMonday.selected = false;
-			vwMonday.backgroundColor = "#ffffff";
-
 			var bands = nsSearchList.getList(e.source.day);
 
 			nsSearchList.vwSearchView.removeAllChildren();
@@ -298,22 +228,8 @@ nsSearchList.createHeader = function() {
 
 	vwMonday.addEventListener('click', function(e) {
 		console.log("e.source ", e.source.day);
+		nsSearchList.selectedTab = e.source.day;
 		if (!vwMonday.selected) {
-			vwAll.selected = false;
-			vwAll.backgroundColor = "#ffffff";
-
-			vwFriday.selected = false;
-			vwFriday.backgroundColor = "#ffffff";
-
-			vwSaturday.selected = false;
-			vwSaturday.backgroundColor = "#ffffff";
-
-			vwSunday.selected = false;
-			vwSunday.backgroundColor = "#ffffff";
-
-			vwMonday.selected = true;
-			vwMonday.backgroundColor = "#c0c0c0";
-
 			var bands = nsSearchList.getList(e.source.day);
 
 			nsSearchList.vwSearchView.removeAllChildren();
@@ -326,10 +242,35 @@ nsSearchList.createHeader = function() {
 	vwMonday.add(lblMonday);
 	header.add(vwMonday);
 
+	if (nsSearchList.selectedTab === "friday") {
+		vwFriday.selected = true;
+		vwFriday.backgroundColor = "#c0c0c0";
+	} else if (nsSearchList.selectedTab === "saturday") {
+		vwSaturday.selected = true;
+		vwSaturday.backgroundColor = "#c0c0c0";
+	} else if (nsSearchList.selectedTab === "sunday") {
+		vwSunday.selected = true;
+		vwSunday.backgroundColor = "#c0c0c0";
+	} else if (nsSearchList.selectedTab === "monday") {
+		vwMonday.selected = true;
+		vwMonday.backgroundColor = "#c0c0c0";
+	} else {
+		nsSearchList.vwAll.selected = true;
+		nsSearchList.vwAll.backgroundColor = "#c0c0c0";
+	}
+
 	return header;
 };
 
 nsSearchList.createList = function(tblData) {
+
+	if (nsSearchList.type === "BandList") {
+
+		if (nsSearchList.selectedTab !== null) {
+			nsSearchList.selectedTab.selected = true;
+			nsSearchList.selectedTab.backgroundColor = "#c0c0c0";
+		}
+	}
 
 	var sbSearchBar = Titanium.UI.createSearchBar({
 		barColor : '#FFD801',
@@ -611,6 +552,7 @@ nsSearchList.createList = function(tblData) {
 };
 
 nsSearchList.init = function(type, data) {
+	nsSearchList.selectedTab = null;
 	nsSearchList.type = type;
 	nsSearchList.data = JSON.parse(JSON.stringify(data));
 
