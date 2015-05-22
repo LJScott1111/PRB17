@@ -294,7 +294,7 @@ Alloy.Globals.getSettings = function(currentWin) {
 		zIndex : 999
 	});
 
-	for (var i = 0; i < 5; i++) {
+	for (var i = 0; i < 4; i++) {
 		var vwOption = Titanium.UI.createView({
 			top : 0,
 			right : 10,
