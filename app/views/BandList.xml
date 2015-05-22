@@ -5,10 +5,12 @@
 		</RightNavButton>
 		<View id="vwMain">
 		</View>
+		<ActivityIndicator id="activityIndicator" message="Loading..."/>
 	</Window>
 	<Window id="winBandList" platform="android">
 		<Require platform="android" src="header" screenId="winBandList" onSetting="nsBandList.getSettings"></Require>
 		<View id="vwMain">
 		</View>
+		<ActivityIndicator id="activityIndicator" message="Loading..."/>
 	</Window>
 </Alloy>

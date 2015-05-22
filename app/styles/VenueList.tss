@@ -16,3 +16,7 @@
 "#vwMain[platform=android]": {
 	top: Alloy.Globals.theme.sizes.headerbar
 }
+
+"#activityIndicator": {
+	color: "#ffffff"
+}
