@@ -6,5 +6,6 @@
 		<Require platform="android" src="header" screenId="winVenueList" onSetting="nsVenueList.getSettings"></Require>
 		<View id="vwMain">
 		</View>
+		<ActivityIndicator id="activityIndicator" message="Loading..."/>
 	</Window>
 </Alloy>

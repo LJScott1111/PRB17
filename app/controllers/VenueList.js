@@ -18,7 +18,8 @@ nsVenueList.init = function() {
 		console.debug("Pressing Back Will Not Close The Activity/Window");
 		nsVenueList.closeWindow();
 	});
-
+	
+	$.activityIndicator.show();
 	Alloy.Globals.getAndStoreData(function(data) {
 		var appdata = Titanium.App.Properties.getObject('appdata', {});
 
@@ -26,6 +27,7 @@ nsVenueList.init = function() {
 		var list = searchList.init("VenueList", appdata.venues);
 		console.debug(JSON.stringify(list));
 		$.vwMain.add(list);
+		$.activityIndicator.hide();
 	});
 };
 
