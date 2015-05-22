@@ -53,14 +53,14 @@ nsBandProfile.markFavourite = function(e) {
 				var intent = Ti.Android.createServiceIntent({
 					url : 'android_notifications.js'
 				});
-				// Set the interval to run the service; 
+				// Set the interval to run the service;
 				intent.putExtra('interval', 1000);
 				// Send extra data to the service;
 				intent.putExtra('timestamp', startDate);
-				
+
 				intent.putExtra('band', nsBandProfile.data.bandDetails.name);
 				intent.putExtra('message', venueName + "\n" + startDate);
-				
+
 				// Start the service
 				Ti.Android.startService(intent);
 			}
@@ -186,7 +186,7 @@ nsBandProfile.init = function() {
 	if (Titanium.Platform.osname === "android") {
 		$.svMain.setHeight(Titanium.UI.SIZE);
 	} else {
-		$.svMain.setHeight(Alloy.Globals.platformHeight);
+		$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar);
 	}
 };
 

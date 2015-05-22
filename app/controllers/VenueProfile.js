@@ -42,100 +42,105 @@ nsVenueProfile.createList = function(shows) {
 		var tabledata = [];
 
 		for (var i = 0; i < len; i++) {
+			if (shows[i].bandDetails !== undefined) {
 
-			var time = nsVenueProfile.getDay(shows[i].showDetails.start_time, "time");
+				var time = nsVenueProfile.getDay(shows[i].showDetails.start_time, "time");
 
-			var row = Titanium.UI.createTableViewRow({
-				top : 10,
-				height : Titanium.UI.SIZE,
-				width : Titanium.UI.SIZE,
-				rowIndex : i,
-				bandDetails : shows[i].bandDetails
-			});
+				var row = Titanium.UI.createTableViewRow({
+					top : 10,
+					height : Titanium.UI.SIZE,
+					width : Titanium.UI.FILL,
+					rowIndex : i,
+					bandDetails : shows[i].bandDetails
+				});
 
-			row.addEventListener('click', function(e) {
-				console.log(e);
-				if (Titanium.Platform.osname === "android") {
-					Alloy.createController("BandProfile", {
-						"id" : e.row.bandDetails._id
-					}).getView().open();
+				row.addEventListener('click', function(e) {
+					console.log(e);
+					if (Titanium.Platform.osname === "android") {
+						Alloy.createController("BandProfile", {
+							"id" : e.row.bandDetails._id
+						}).getView().open();
+					} else {
+						Alloy.Globals.navWin.openWindow(Alloy.createController("BandProfile", {
+							"id" : e.row.bandDetails._id
+						}).getView());
+					}
+				});
+
+				var vwRowView = Titanium.UI.createView({
+					height : Titanium.UI.SIZE,
+					width : Titanium.UI.FILL,
+					top : 0
+				});
+
+				var ivImage = Titanium.UI.createImageView({
+					left : 10,
+					top : 5,
+					bottom : 5,
+					width : Alloy.Globals.platformWidth * 0.25,
+					height : Alloy.Globals.platformHeight * 0.088,
+					borderColor : "#000000",
+					image : shows[i].bandDetails.image_link
+				});
+
+				vwRowView.add(ivImage);
+
+				var lblName = Titanium.UI.createLabel({
+					left : Alloy.Globals.platformWidth * 0.29,
+					width : Alloy.Globals.platformWidth * 0.40,
+					text : shows[i].bandDetails.name,
+					color : "#000000",
+					height : Titanium.UI.SIZE,
+					font : {
+						fontSize : Alloy.Globals.theme.fonts.size15Fonts
+					}
+				});
+
+				vwRowView.add(lblName);
+
+				var lblTime = Titanium.UI.createLabel({
+					right : 20,
+					text : time,
+					color : "#000000",
+					height : Titanium.UI.SIZE,
+					width : "25%",
+					font : {
+						fontSize : Alloy.Globals.theme.fonts.size15Fonts,
+						fontWeight : "bold"
+					}
+				});
+
+				vwRowView.add(lblTime);
+
+				var ivFavouriteStar = Titanium.UI.createImageView({
+					right : 0,
+					height : 40,
+					width : 40,
+					id : "ivFavouriteStar",
+					// backgroundColor : "#000000",
+					selected : false
+				});
+
+				if (!ivFavouriteStar.selected) {
+					ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
 				} else {
-					Alloy.Globals.navWin.openWindow(Alloy.createController("BandProfile", {
-						"id" : e.row.bandDetails._id
-					}).getView());
+					ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
 				}
-			});
 
-			var vwRowView = Titanium.UI.createView({
-				height : Titanium.UI.SIZE,
-				width : Titanium.UI.FILL,
-				top : 0
-			});
+				ivFavouriteStar.addEventListener('click', function(e) {
+					if (!e.source.selected) {
+						e.source.setImage(Alloy.Globals.theme.icons.star);
+					} else {
+						e.source.setImage(Alloy.Globals.theme.icons.star_off);
+					}
+					e.source.selected = !e.source.selected;
+				});
 
-			var ivImage = Titanium.UI.createImageView({
-				left : 10,
-				top : 5,
-				bottom : 5,
-				width : Alloy.Globals.platformWidth * 0.25,
-				height : Alloy.Globals.platformHeight * 0.088,
-				borderColor : "#000000",
-				image : shows[i].bandDetails.image_link
-			});
+				vwRowView.add(ivFavouriteStar);
 
-			vwRowView.add(ivImage);
-
-			var lblName = Titanium.UI.createLabel({
-				left : Alloy.Globals.platformWidth * 0.29,
-				width : Alloy.Globals.platformWidth * 0.40,
-				text : shows[i].bandDetails.name,
-				color : "#000000",
-				font : {
-					fontSize : Alloy.Globals.theme.fonts.size15Fonts
-				}
-			});
-
-			vwRowView.add(lblName);
-
-			var lblTime = Titanium.UI.createLabel({
-				right : 48,
-				text : time,
-				color : "#000000",
-				font : {
-					fontSize : Alloy.Globals.theme.fonts.size15Fonts,
-					fontWeight : "bold"
-				}
-			});
-
-			vwRowView.add(lblTime);
-
-			var ivFavouriteStar = Titanium.UI.createImageView({
-				right : 10,
-				height : 40,
-				width : 40,
-				id : "ivFavouriteStar",
-				// backgroundColor : "#000000",
-				selected : false
-			});
-
-			if (!ivFavouriteStar.selected) {
-				ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
-			} else {
-				ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
+				row.add(vwRowView);
+				tabledata.push(row);
 			}
-
-			ivFavouriteStar.addEventListener('click', function(e) {
-				if (!e.source.selected) {
-					e.source.setImage(Alloy.Globals.theme.icons.star);
-				} else {
-					e.source.setImage(Alloy.Globals.theme.icons.star_off);
-				}
-				e.source.selected = !e.source.selected;
-			});
-
-			vwRowView.add(ivFavouriteStar);
-
-			row.add(vwRowView);
-			tabledata.push(row);
 		}
 
 		$.vwBandSchedule.add(Titanium.UI.createTableView({

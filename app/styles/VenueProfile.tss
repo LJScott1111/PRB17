@@ -23,7 +23,7 @@
 	layout: "vertical",
 	scrollType: "vertical",
 	showVerticalScrollIndicator: true,
-	height: Titanium.UI.SIZE
+	// height: Titanium.UI.SIZE
 }
 
 "#ivVenueImage": {
