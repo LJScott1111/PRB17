@@ -155,7 +155,7 @@ nsLanding.getFood = function(){
 nsLanding.getNews = function() {
 	if (Titanium.Platform.osname === "android") {
 		Alloy.createController("GenericWebView", {
-			url : "twitter.html"
+			url : "/twitter.html"
 		}).getView().open();
 	} else {
 		Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {

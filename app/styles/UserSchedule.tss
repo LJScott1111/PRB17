@@ -84,6 +84,7 @@
 	left: 20,
 	right: 20,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#000000",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size25Fonts,
 		fontWeight : "bold"
