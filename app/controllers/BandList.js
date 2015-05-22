@@ -19,13 +19,15 @@ nsBandList.init = function() {
 		console.debug("Pressing Back Will Not Close The Activity/Window");
 		nsBandList.closeWindow();
 	});
-	
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
-	var searchList = require("searchList");
-	var list = searchList.init("BandList", appdata.bands);
-	console.debug(JSON.stringify(list));
-	$.vwMain.add(list);
+	Alloy.Globals.getAndStoreData(function(data) {
+		var appdata = Titanium.App.Properties.getObject('appdata', {});
+
+		var searchList = require("searchList");
+		var list = searchList.init("BandList", appdata.bands);
+		console.debug(JSON.stringify(list));
+		$.vwMain.add(list);
+	});
 };
 
 nsBandList.init();

@@ -210,21 +210,19 @@ Alloy.Globals.combinedDetails = function() {
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	var combinedData = [];
 
-	for (var i = 0,
-	    bandLen = appdata.bands.length; i < bandLen; i++) {
+
+	/*for (var i = 0,bandLen = appdata.bands.length; i < bandLen; i++) {
 		var bandProfile = {};
 		bandProfile.bandDetails = appdata.bands[i];
 
-		for (var j = 0,
-		    showLen = appdata.shows.length; j < showLen; j++) {
+		for (var j = 0,showLen = appdata.shows.length; j < showLen; j++) {
 
 			if (appdata.shows[j].band_id === bandProfile.bandDetails._id) {
 				bandProfile.showDetails = JSON.parse(JSON.stringify(appdata.shows[j]));
 				// } else {
 				// continue;
 
-				for (var k = 0,
-				    venueLen = appdata.venues.length; k < venueLen; k++) {
+				for (var k = 0,venueLen = appdata.venues.length; k < venueLen; k++) {
 					if (bandProfile.showDetails.venue_id === appdata.venues[k]._id) {
 						bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
 						combinedData.push(bandProfile);
@@ -232,7 +230,28 @@ Alloy.Globals.combinedDetails = function() {
 				}
 			}
 		}
+	}*/
+	
+	for (var j = 0,showLen = appdata.shows.length; j < showLen; j++) {
+		var bandProfile = {};
+		bandProfile.showDetails = JSON.parse(JSON.stringify(appdata.shows[j]));
+		// Find the matching band
+		for (var i = 0,bandLen = appdata.bands.length; i < bandLen; i++) {
+			if(appdata.bands[i]._id == bandProfile.showDetails.band_id) {
+				bandProfile.bandDetails = JSON.parse(JSON.stringify(appdata.bands[i]));
+				break;
+			}
+		}
+		// Find the matching venue
+		for (var k = 0,venueLen = appdata.venues.length; k < venueLen; k++) {
+			if(appdata.venues[k]._id == bandProfile.showDetails.venue_id) {
+				bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
+				break;
+			}
+		}
+		combinedData.push(bandProfile);
 	}
+	
 	console.debug("JSON.stringify(combinedData) ", JSON.stringify(combinedData));
 	// Setting all details in appdata
 	appdata.details = JSON.parse(JSON.stringify(combinedData));

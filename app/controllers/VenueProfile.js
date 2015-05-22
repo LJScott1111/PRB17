@@ -22,6 +22,19 @@ nsVenueProfile.getDay = function(timestamp, type) {
 	}
 };
 
+nsVenueProfile.isShowDuplicate = function(showDetails, allShows) {
+	var result = false;
+	var length = allShows.length;
+	for (var i = 0; i < length; i++) {
+		var showItem = allShows[i].showDetails;
+		if ((showItem.venue_id == showDetails.venue_id) && (showItem.band_id == showDetails.band_id) && (showItem.start_time == showDetails.start_time)) {
+			result = true;
+			break;
+		}
+	}
+	return result;
+};
+
 nsVenueProfile.createList = function(shows) {
 	$.vwBandSchedule.removeAllChildren();
 	var len = shows.length;
@@ -37,20 +50,20 @@ nsVenueProfile.createList = function(shows) {
 				height : Titanium.UI.SIZE,
 				width : Titanium.UI.SIZE,
 				rowIndex : i,
-				bandDetails:shows[i].bandDetails
+				bandDetails : shows[i].bandDetails
 			});
-			
-			row.addEventListener('click', function(e){
+
+			row.addEventListener('click', function(e) {
 				console.log(e);
 				if (Titanium.Platform.osname === "android") {
-						Alloy.createController("BandProfile", {
-							"id" : e.row.bandDetails._id
-						}).getView().open();
-					} else {
-						Alloy.Globals.navWin.openWindow(Alloy.createController("BandProfile", {
-							"id" : e.row.bandDetails._id
-						}).getView());
-					}
+					Alloy.createController("BandProfile", {
+						"id" : e.row.bandDetails._id
+					}).getView().open();
+				} else {
+					Alloy.Globals.navWin.openWindow(Alloy.createController("BandProfile", {
+						"id" : e.row.bandDetails._id
+					}).getView());
+				}
 			});
 
 			var vwRowView = Titanium.UI.createView({
@@ -73,7 +86,7 @@ nsVenueProfile.createList = function(shows) {
 
 			var lblName = Titanium.UI.createLabel({
 				left : Alloy.Globals.platformWidth * 0.29,
-				width : Alloy.Globals.platformWidth * 0.42,
+				width : Alloy.Globals.platformWidth * 0.40,
 				text : shows[i].bandDetails.name,
 				color : "#000000",
 				font : {
@@ -84,7 +97,7 @@ nsVenueProfile.createList = function(shows) {
 			vwRowView.add(lblName);
 
 			var lblTime = Titanium.UI.createLabel({
-				right : 55,
+				right : 48,
 				text : time,
 				color : "#000000",
 				font : {
@@ -201,6 +214,8 @@ nsVenueProfile.getList = function(source) {
 
 	// Get list
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	console.log('FULL:' + JSON.stringify(appdata));
+	console.log('END FULL');
 	console.debug("day ", day);
 
 	// day = "tuesday";
@@ -209,11 +224,13 @@ nsVenueProfile.getList = function(source) {
 	//nsVenueProfile.momentjs(timestamp * 1000);
 
 	var shows = [];
-
+	console.log('VENUE PROFILE:' + JSON.stringify(nsVenueProfile.args));
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
-		if (appdata.details[i].showDetails.venue_id == nsVenueProfile.args.id) {
+		console.log('FOUND VENUE ID:' + appdata.details[i].showDetails.venue_id);
+		if ((appdata.details[i].showDetails.venue_id == nsVenueProfile.args.id) && !nsVenueProfile.isShowDuplicate(appdata.details[i].showDetails, shows)) {
 			dayOfShow = nsVenueProfile.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
+			console.log('MATCH:' + JSON.stringify(appdata.details[i].showDetails) + 'DAY:' + dayOfShow);
 			// (appdata.details[i].showDetails !== undefined && appdata.details[i].showDetails !== null) ? nsVenueProfile.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim() : 0;
 			console.debug("dayOfShow ", dayOfShow);
 
@@ -229,7 +246,7 @@ nsVenueProfile.getList = function(source) {
 			return 1;
 		return 0;
 	});
-	console.log(JSON.stringify(shows));
+	console.log('SHOWS:' + JSON.stringify(shows));
 
 	// var tabledata = [];
 	nsVenueProfile.createList(shows);

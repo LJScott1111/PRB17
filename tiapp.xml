@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.interfuel.festfuel</id>
     <name>Punk Rock Bowling Mobile</name>
-    <version>2.0.5</version>
+    <version>2.0.8</version>
     <publisher>Buzzplay</publisher>
     <url>http://punkrockbowling.com</url>
     <description>Punk Rock Bowling mobile</description>
@@ -70,7 +70,7 @@
                     android:name="com.facebook.LoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
                 <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
             </application>
-            <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="21"/>
+            <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="22"/>
         </manifest>
     </android>
     <mobileweb>
