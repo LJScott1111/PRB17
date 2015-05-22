@@ -140,7 +140,7 @@ nsBandProfile.init = function() {
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
 
-		if (appdata.details[i].bandDetails._id === nsBandProfile.args.id) {
+		if (appdata.details[i].bandDetails !== undefined && (appdata.details[i].bandDetails._id === nsBandProfile.args.id)) {
 			nsBandProfile.data = JSON.parse(JSON.stringify(appdata.details[i]));
 			break;
 		}
