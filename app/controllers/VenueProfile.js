@@ -320,7 +320,7 @@ nsVenueProfile.init = function() {
 	$.vwDay4.setRight(2);
 
 	if (Titanium.Platform.osname === "android") {
-		$.svMain.setHeight(Titanium.UI.SIZE);
+		$.svMain.setHeight(Titanium.UI.FILL);
 	} else {
 		$.svMain.setHeight(Alloy.Globals.platformHeight);
 	}
