@@ -68,10 +68,10 @@
             <application android:theme="@style/Theme.AppCompat.NoActionBar">
                 <activity android:alwaysRetainTaskState="true"
                     android:label="@string/app_name"
-                    android:name="com.facebook.LoginActivity" android:theme="@android:style/Theme.AppCompat.Translucent.NoTitleBar"/>
+                    android:name="com.facebook.LoginActivity" android:theme="@style/Theme.AppCompat.Translucent.NoTitleBar"/>
                 <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
             </application>
-            <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="23"/>
+            <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="23"/>
         </manifest>
     </android>
     <mobileweb>
