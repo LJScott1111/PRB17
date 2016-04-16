@@ -7,7 +7,7 @@
 					<Label id="lblFbConnect" text="L('index_lblFbConnect')"></Label>
 				</View>
 				<Label id="lblOr" text="L('index_lblOr')"></Label>
-				<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_EMAIL"></TextField>
+				<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_TYPE_EMAIL"></TextField>
 				<TextField id="tfPassword" passwordMask="true" class="tfClass"></TextField>
 				<View id="vwGetIt" onClick="nsIndex.getIt">
 					<Label id="lblGetIt" text="L('index_lblGetIt')"></Label>
