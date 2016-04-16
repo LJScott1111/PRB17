@@ -184,8 +184,8 @@ nsLanding.init = function() {
 		} else {
 			$.navWin.open();
 		}
-		/*
-		if (user === null) {
+		
+		if (!user) {
 			var signupWindow = Alloy.createController("signup").getView();
 			if (OS_ANDROID) {
 				signupWindow.fbProxy = Alloy.Globals.Facebook.createActivityWorker({
@@ -208,7 +208,7 @@ nsLanding.init = function() {
 			});
 		}
 		signupWindow.open();
-		*/
+		
 	});
 	
 

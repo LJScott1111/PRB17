@@ -70,13 +70,13 @@ nsIndex.connectToFb = function() {
 			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 				console.debug("fetchedData ", fetchedData);
 			});
-			$.winIndex.remove(nsIndex.controller);
 			nsIndex.closeWindow();
 		}, function(error){
 			console.debug("FB ERROR ", error);
 			alert(L('err_facebook'));
-			$.winIndex.remove(nsIndex.controller);
 		});
+		
+		$.winIndex.remove(nsIndex.controller);
 	}
 
 };
