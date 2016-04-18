@@ -52,6 +52,10 @@ nsIndex.getSettings = function() {
 	// Alloy.createController("Login").getView().open();
 };
 
+nsIndex.skipSignUp = function(){
+	
+};
+
 nsIndex.connectToFb = function() {
 	var accessToken = "";
 	// fb.forceDialogAuth = true;
@@ -81,7 +85,7 @@ nsIndex.connectToFb = function() {
 
 };
 
-nsIndex.getIt = function() {
+nsIndex.login = function() {
 	if (nsIndex.validateEmail() && nsIndex.validatePassword()) {
 
 		//Login
@@ -179,7 +183,7 @@ nsIndex.init = function() {
 			nsIndex.closeWindow();
 		});
 
-		$.vwFbConnect.setHeight(Alloy.Globals.platformHeight * 0.088);
+		// $.vwFbConnect.setHeight(Alloy.Globals.platformHeight * 0.088);
 		$.tfEmail.setHintText(L('index_tfEmail'));
 		$.tfPassword.setHintText(L('index_tfPassword'));
 

@@ -8,8 +8,10 @@
 	<string name="index_lblFbConnect">Connect with Facebook</string>
 	<string name="index_lblOr">-or-</string>
 	<string name="index_tfEmail">Email</string>
-	<string name="index_tfPassword">Choose Password</string>
-	<string name="index_lblGetIt">Get It!</string>
+	<string name="index_tfPassword">Password</string>
+	<string name="index_lblGetIt">Login</string>
+	<string name="login_message">Log In to receive special offers\nfrom our sponsers.</string>
+	<string name="index_lblSkip">Skip</string>
 	
 	<!-- Login -->
 	<string name="login_lblFbConnect">Login with Facebook</string>
