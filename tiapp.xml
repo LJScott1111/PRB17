@@ -33,6 +33,10 @@
                         </array>
                     </dict>
                 </array>
+                <key>NSLocationAlwaysUsageDescription</key>
+                <string>
+                    This feature not only allows you to use your phone's GPS but it also required if you'd like to receive helpful on-site notifications.
+                </string>
                 <key>FacebookAppID</key>
                 <!-- Facebook App ID -->
                 <string>993161744029602</string>
@@ -69,6 +73,12 @@
         </services>
         <manifest android:installLocation="preferExternal"
             android:versionCode="1" android:versionName="1">
+
+            <uses-permission android:name="android.permission.ACCESS_LOCATION"/>
+			<uses-permission android:name="android.permission.ACCESS_GPS"/>
+			<uses-permission android:name="android.permission.INTERNET"/>
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
             <application android:theme="@style/Theme.AppCompat.NoActionBar">
                 <activity
                     android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"

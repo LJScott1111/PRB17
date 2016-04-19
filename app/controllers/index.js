@@ -165,6 +165,25 @@ nsLanding.getNews = function() {
 	}
 };
 
+nsLanding.checkLocationPermissions = function(){
+	
+	var utils = require('utils');
+
+	utils.networkCheck(function() {
+
+		utils.locationEnableCheck(function() {
+
+			utils.getLocation(function(coords){
+				
+				console.log('Locations - ', coords);
+			});
+			Titanium.App.removeEventListener('checkLocationPermissions', nsLanding.checkLocationPermissions);
+		});
+	});
+};
+
+Titanium.App.addEventListener('checkLocationPermissions', nsLanding.checkLocationPermissions);
+
 nsLanding.init = function() {
 
 	nsLanding.controller = new nsLanding.activityControl($.vwMain);
@@ -177,8 +196,8 @@ nsLanding.init = function() {
 	$.ivNews.setHeight(Alloy.Globals.platformHeight * 0.0774);
 
 	Alloy.Globals.checkUser(function(user) {
-	/*	console.debug("Alloy.Globals.checkUser user - " + user);
-		*/
+		console.debug("Alloy.Globals.checkUser user - " + user);
+		
 		if (Titanium.Platform.osname === "android") {
 			$.winLanding.open();
 		} else {
@@ -193,7 +212,9 @@ nsLanding.init = function() {
 				});
 			}
 			signupWindow.open();
-		};
+		} else {
+			Titanium.App.fireEvent('checkLocationPermissions');
+		}
 	}, function(error) {
 		console.debug("Alloy.Globals.checkUser - error - " - error);
 		if (Titanium.Platform.osname === "android") {
