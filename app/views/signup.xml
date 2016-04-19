@@ -6,12 +6,12 @@
 
 				<Label id="login_message" class="padding_bottom" text="L('login_message')"></Label>
 				<View class="absolute_layout padding_top">
-					<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_TYPE_EMAIL"></TextField>
+					<TextField id="emailField" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_TYPE_EMAIL"></TextField>
 					<Label class="lblClass" text="L('index_tfEmail')" id="lblHint_email"></Label>
 				</View>
 				
 				<View class="absolute_layout padding_top">
-					<TextField id="tfPassword" passwordMask="true" class="tfClass"></TextField>
+					<TextField id="passwordField" passwordMask="true" class="tfClass"></TextField>
 					<Label class="lblClass" text="L('index_tfPassword')" id="lblHint_pass"></Label>
 				</View>
 				

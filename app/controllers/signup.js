@@ -13,12 +13,12 @@ nsIndex.showHideHint = function(label, txtField) {
 	label.visible = (txtField.value.trim() == "");
 };
 
-$.tfEmail.addEventListener('change', function() {
-	nsIndex.showHideHint($.lblHint_email, $.tfEmail);
+$.emailField.addEventListener('change', function() {
+	nsIndex.showHideHint($.lblHint_email, $.emailField);
 });
 
-$.tfPassword.addEventListener('change', function() {
-	nsIndex.showHideHint($.lblHint_pass, $.tfPassword);
+$.passwordField.addEventListener('change', function() {
+	nsIndex.showHideHint($.lblHint_pass, $.passwordField);
 });
 
 nsIndex.closeWindow = function() {
@@ -28,12 +28,12 @@ nsIndex.closeWindow = function() {
 nsIndex.validateEmail = function() {
 	var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
-	var tfEmail = $.tfEmail.getValue();
-	console.debug(tfEmail);
+	var emailField = $.emailField.getValue();
+	console.debug(emailField);
 
 	var emailResult = false;
 
-	if (reg.test(tfEmail)) {
+	if (reg.test(emailField)) {
 		emailResult = true;
 	} else {
 		emailResult = false;
@@ -44,7 +44,7 @@ nsIndex.validateEmail = function() {
 };
 
 nsIndex.validatePassword = function() {
-	var tfPass = $.tfPassword.getValue().trim();
+	var tfPass = $.passwordField.getValue().trim();
 	var passResult = false;
 
 	console.debug("tfPass Value ", tfPass);
@@ -100,8 +100,8 @@ nsIndex.login = function() {
 	if (nsIndex.validateEmail() && nsIndex.validatePassword()) {
 
 		//Login
-		var tfEmail = $.tfEmail.getValue();
-		var tfPass = $.tfPassword.getValue();
+		var emailField = $.emailField.getValue();
+		var tfPass = $.passwordField.getValue();
 
 		this.onloadCallback = function(user) {
 			console.debug("Go to next screen!");
@@ -128,7 +128,7 @@ nsIndex.login = function() {
 		};
 
 		$.winIndex.add(nsIndex.controller);
-		var signupService = new nsIndex.serviceCalls.signup(tfEmail, tfPass, this.onloadCallback, this.onerrorCallback);
+		var signupService = new nsIndex.serviceCalls.signup(emailField, tfPass, this.onloadCallback, this.onerrorCallback);
 
 	} else {
 		alert(L('err_loginDetails'));
@@ -158,8 +158,8 @@ nsIndex.userCheck = function() {
 
 nsIndex.init = function() {
 
-	nsIndex.showHideHint($.lblHint_email, $.tfEmail);
-	nsIndex.showHideHint($.lblHint_pass, $.tfPassword);
+	nsIndex.showHideHint($.lblHint_email, $.emailField);
+	nsIndex.showHideHint($.lblHint_pass, $.passwordField);
 	
 	nsIndex.controller = new nsIndex.activityControl($.vwMain);
 	console.debug("Hello Signup");
@@ -200,8 +200,8 @@ nsIndex.init = function() {
 		});
 
 		// $.vwFbConnect.setHeight(Alloy.Globals.platformHeight * 0.088);
-		// $.tfEmail.setHintText(L('index_tfEmail'));
-		// $.tfPassword.setHintText(L('index_tfPassword'));
+		// $.emailField.setHintText(L('index_tfEmail'));
+		// $.passwordField.setHintText(L('index_tfPassword'));
 
 		$.winIndex.open();
 	} else {

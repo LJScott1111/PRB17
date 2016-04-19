@@ -1,4 +1,6 @@
+// Namespace
 var nsLanding = {};
+
 Alloy.Globals.navWin = $.navWin;
 nsLanding.serviceCalls = require("serverCalls");
 
