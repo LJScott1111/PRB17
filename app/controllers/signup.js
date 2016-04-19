@@ -9,8 +9,19 @@ nsIndex.serviceCalls = require("serverCalls");
 nsIndex.activityControl = require("activityControl");
 nsIndex.controller = null;
 
+nsIndex.showHideHint = function(label, txtField) {
+	label.visible = (txtField.value.trim() == "");
+};
+
+$.tfEmail.addEventListener('change', function() {
+	nsIndex.showHideHint($.lblHint_email, $.tfEmail);
+});
+
+$.tfPassword.addEventListener('change', function() {
+	nsIndex.showHideHint($.lblHint_pass, $.tfPassword);
+});
+
 nsIndex.closeWindow = function() {
-	$.winIndex.exitOnClose = true;
 	$.winIndex.close();
 };
 
@@ -52,8 +63,8 @@ nsIndex.getSettings = function() {
 	// Alloy.createController("Login").getView().open();
 };
 
-nsIndex.skipSignUp = function(){
-	
+nsIndex.skipSignUp = function() {
+	nsIndex.closeWindow();
 };
 
 nsIndex.connectToFb = function() {
@@ -67,7 +78,7 @@ nsIndex.connectToFb = function() {
 		}).show();
 		return;
 	} else {
-		
+
 		$.winIndex.add(nsIndex.controller);
 		var kinveyFb = new nsIndex.serviceCalls.fbLogin(function(response) {
 			console.debug("Go to next screen!");
@@ -75,11 +86,11 @@ nsIndex.connectToFb = function() {
 				console.debug("fetchedData ", fetchedData);
 			});
 			nsIndex.closeWindow();
-		}, function(error){
+		}, function(error) {
 			console.debug("FB ERROR ", error);
 			alert(L('err_facebook'));
 		});
-		
+
 		$.winIndex.remove(nsIndex.controller);
 	}
 
@@ -104,6 +115,7 @@ nsIndex.login = function() {
 				if (Titanium.Platform.osname !== "android") {
 					Alloy.Globals.askToNotify();
 				}
+				Titanium.App.fireEvent('checkLocationPermissions');
 			});
 		};
 
@@ -124,7 +136,7 @@ nsIndex.login = function() {
 };
 
 nsIndex.userCheck = function() {
-	
+
 	var user = null;
 	try {
 		// To fetch the active user
@@ -145,6 +157,10 @@ nsIndex.userCheck = function() {
 };
 
 nsIndex.init = function() {
+
+	nsIndex.showHideHint($.lblHint_email, $.tfEmail);
+	nsIndex.showHideHint($.lblHint_pass, $.tfPassword);
+	
 	nsIndex.controller = new nsIndex.activityControl($.vwMain);
 	console.debug("Hello Signup");
 
@@ -184,8 +200,8 @@ nsIndex.init = function() {
 		});
 
 		// $.vwFbConnect.setHeight(Alloy.Globals.platformHeight * 0.088);
-		$.tfEmail.setHintText(L('index_tfEmail'));
-		$.tfPassword.setHintText(L('index_tfPassword'));
+		// $.tfEmail.setHintText(L('index_tfEmail'));
+		// $.tfPassword.setHintText(L('index_tfPassword'));
 
 		$.winIndex.open();
 	} else {

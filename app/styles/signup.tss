@@ -1,5 +1,11 @@
 "#winIndex": {
 	backgroundColor: "#000000",
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	zIndex: 11
+}
+
+"#winIndex[platform=ios]": {
 	modal: true
 }
 
@@ -32,7 +38,7 @@
 }
 
 ".tfClass": {
-	top: 10,
+	// top: 10,
 	backgroundColor: "#ffffff",
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 	borderRadius: 10,
@@ -54,6 +60,15 @@
 	}
 }
 
+".lblClass": {
+	color: '#666',
+	zIndex: 99,
+	left: 20,
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts
+	}
+}
+
 "#login_message": {
 	height: Titanium.UI.SIZE,
 	top: 10,
@@ -65,19 +80,12 @@
 }
 
 "#btnLogin": {
-	// top: 15,
-	// height: 35,
-	// width: "90%",
 	backgroundColor: "#F5C787",
-	// borderRadius: 10,
 	color: "#000000"
 }
 
 "#btnSkip": {
-	// top: 15,
-	// height: 35,
 	color: "#ffffff",
-	// width: "90%",
 	backgroundColor: "#898A7B"
 }
 

@@ -1,0 +1,58 @@
+
+/*
+	PADDINGS
+*/
+".padding_left": {
+	left: '10dp'
+}
+
+".padding_right": {
+	right: '10dp'
+}
+
+".padding_top": {
+	top: '10dp'
+}
+
+".padding_bottom": {
+	bottom: '10dp'
+}
+
+/*
+	LAYOUTS
+*/
+
+".vertical_layout": {
+	layout: 'vertical',
+	height: Titanium.UI.SIZE
+}
+
+".horizontal_layout": {
+	layout: 'horizontal',
+	height: Titanium.UI.SIZE
+}
+
+".absolute_layout": {
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+/*
+	FONTS
+*/
+
+'Label': {
+	width: Titanium.UI.SIZE,
+	height: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	backgroundColor: 'transparent',
+	color: '#000000'
+}
+
+".option_lbl": {
+	font: {
+		fontSize: '13dp',
+		fontWeight: 'bold'
+	}
+}
+
