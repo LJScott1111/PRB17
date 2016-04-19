@@ -2,7 +2,7 @@
 	<View id="vwMain">
 		<ImageView id="ivClose" onClick="nsLogin.closeWindow"></ImageView>
 		<View id="vwTopLogin">
-			<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_EMAIL"></TextField>
+			<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_TYPE_EMAIL"></TextField>
 			<TextField id="tfPassword" passwordMask="true" class="tfClass"></TextField>
 			<View id="vwLogin" onClick="nsLogin.login">
 				<Label id="lblLogin" text="L('login_lbllogin')"></Label>

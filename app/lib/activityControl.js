@@ -41,7 +41,7 @@ ActivityControl = function(vwParent) {
 	if (Titanium.Platform.osname === "android") {
 		actInd.setStyle(Titanium.UI.ActivityIndicatorStyle.BIG_DARK);
 	} else {
-		actInd.setStyle(Titanium.UI.iPhone.ActivityIndicatorStyle.DARK);
+		actInd.setStyle(Titanium.UI.ActivityIndicatorStyle.DARK);
 	}
 
 	vwActivityView.add(actInd);
