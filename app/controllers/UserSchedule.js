@@ -4,13 +4,8 @@ nsUserSchedule.serviceCalls = require("serverCalls");
 
 nsUserSchedule.momentjs = require('moment');
 
-nsUserSchedule.closeWindow = function() {
-	Alloy.Globals.windowStack.pop();
-	$.winUserSchedule.close();
-};
-
 nsUserSchedule.getSettings = function() {
-	Alloy.Globals.getSettings($.winUserSchedule);
+	// Alloy.Globals.getSettings($.winUserSchedule);
 };
 
 nsUserSchedule.getDay = function(timestamp, type) {
@@ -30,8 +25,6 @@ nsUserSchedule.createList = function(shows) {
 		var tabledata = [];
 
 		for (var i = 0; i < len; i++) {
-			
-			
 
 			var time = nsUserSchedule.getDay(shows[i].showDetails.start_time, "time");
 
@@ -64,8 +57,8 @@ nsUserSchedule.createList = function(shows) {
 			var lblName = Titanium.UI.createLabel({
 				left : Alloy.Globals.platformWidth * 0.30,
 				text : shows[i].bandDetails.name,
-				height: Titanium.UI.SIZE,
-				width: "50%",
+				height : Titanium.UI.SIZE,
+				width : "50%",
 				color : "#000000",
 				font : {
 					fontSize : Alloy.Globals.theme.fonts.size20Fonts
@@ -78,9 +71,9 @@ nsUserSchedule.createList = function(shows) {
 				right : 5,
 				text : time + "\n" + shows[i].venueDetails.name,
 				color : "#000000",
-				height: Titanium.UI.SIZE,
-				width: "30%",
-				textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+				height : Titanium.UI.SIZE,
+				width : "30%",
+				textAlign : Titanium.UI.TEXT_ALIGNMENT_CENTER,
 				font : {
 					fontSize : Alloy.Globals.theme.fonts.size15Fonts,
 					fontWeight : "bold"
@@ -92,21 +85,21 @@ nsUserSchedule.createList = function(shows) {
 			row.add(vwRowView);
 			tabledata.push(row);
 		}
-		
+
 		var tableView = Titanium.UI.createTableView({
 			data : tabledata,
 			top : 0,
-			editable:true
+			editable : true
 		});
-		
+
 		tableView.addEventListener('delete', function(e) {
-			
+
 			nsUserSchedule.serviceCalls.deleteUserSchedule(e.row.rawData.showDetails._id, function() {
-				
+
 				Alloy.Globals.getAndStoreData(function() {
-					
-					nsUserSchedule.serviceCalls.getUserSchedule(function(result){
-						
+
+					nsUserSchedule.serviceCalls.getUserSchedule(function(result) {
+
 						nsUserSchedule.args = result;
 						nsUserSchedule.getList(nsUserSchedule.currentDay);
 					});
@@ -242,38 +235,22 @@ nsUserSchedule.getShows = function() {
 				console.debug(i, " ", j);
 			}
 		}
-		console.log("1", " ",i);
+		console.log("1", " ", i);
 	}
-	
-	console.log("User shows " +shows.length +JSON.stringify(shows));
 
-	// if (shows.length === 0) {
-		// $.lblNoSchedule.setText("press the star next to band name you want to see to create your own custom schedule.");
-		// $.vwMain.setHeight(0);
-		// $.vwMain.setVisible(false);
-	// } else {
-		// $.vwNoSchedule.setHeight(0);
-		// $.vwNoSchedule.setVisible(false);
-	// }
+	console.log("User shows " + shows.length + JSON.stringify(shows));
 
 	return shows.length;
 };
 
 nsUserSchedule.init = function() {
-	Alloy.Globals.windowStack.push($.winUserSchedule);
-
-	$.winUserSchedule.addEventListener('android:back', function(e) {
-		console.debug("Pressing Back Will Not Close The Activity/Window");
-		nsUserSchedule.closeWindow();
-	});
-
 	console.debug("User schedule: ", JSON.stringify(nsUserSchedule.args));
 
 	var shows = nsUserSchedule.getShows();
 	console.debug("SHOWS LENGTH ", shows);
 
 	if (shows > 0) {
-		
+
 		$.vwNoSchedule.setHeight(0);
 		$.vwNoSchedule.setVisible(false);
 

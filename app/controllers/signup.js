@@ -6,7 +6,7 @@
 var nsIndex = {};
 nsIndex.serviceCalls = require("serverCalls");
 
-nsIndex.activityControl = require("activityControl");
+nsIndex.activityControl = require("activityControl"); // TODO: add simple method to do this
 nsIndex.controller = null;
 
 nsIndex.showHideHint = function(label, txtField) {
@@ -160,7 +160,7 @@ nsIndex.init = function() {
 
 	nsIndex.showHideHint($.lblHint_email, $.emailField);
 	nsIndex.showHideHint($.lblHint_pass, $.passwordField);
-	
+
 	nsIndex.controller = new nsIndex.activityControl($.vwMain);
 	console.debug("Hello Signup");
 

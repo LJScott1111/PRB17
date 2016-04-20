@@ -1,0 +1,31 @@
+<Alloy>
+	<View id="vwMain">
+		<View id="vwTopOptions">
+
+			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getBands">
+				<Label class="options_lbl touch_false" id="lblBands" text="L('bands').toUpperCase()"></Label>
+			</View>
+			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getEvents">
+				<Label class="options_lbl touch_false" id="lblEvents" text="L('events').toUpperCase()"></Label>
+			</View>
+			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule">
+				<Label class="options_lbl touch_false" id="lblSchedule" text="L('schedule').toUpperCase()"></Label>
+			</View>
+			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getVenues">
+				<Label class="options_lbl touch_false" id="lblVenues" text="L('venues').toUpperCase()"></Label>
+			</View>
+			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getNews">
+				<Label class="options_lbl touch_false" id="lblVendors" text="L('vendors').toUpperCase()"></Label>
+			</View>
+			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getFood">
+				<Label class="options_lbl touch_false" id="lblFood" text="L('food').toUpperCase()"></Label>
+			</View>
+
+		</View>
+		<View id="vwBottomView">
+			<!-- <ImageView id="ivPoker"></ImageView>
+			<ImageView id="ivNews" class="optionClass" onClick="nsLanding.getNews"></ImageView>
+			<ImageView id="ivLogo"></ImageView> -->
+		</View>
+	</View>
+</Alloy>

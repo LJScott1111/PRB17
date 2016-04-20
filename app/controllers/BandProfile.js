@@ -5,13 +5,8 @@ nsBandProfile.data = null;
 
 nsBandProfile.serverCalls = require('serverCalls');
 
-nsBandProfile.closeWindow = function() {
-	Alloy.Globals.windowStack.pop();
-	$.winBandProfile.close();
-};
-
 nsBandProfile.getSettings = function() {
-	Alloy.Globals.getSettings($.winBandProfile);
+	// Alloy.Globals.getSettings($.winBandProfile);
 };
 
 nsBandProfile.markFavourite = function(e) {
@@ -76,65 +71,41 @@ nsBandProfile.markFavourite = function(e) {
 nsBandProfile.doSocialActivity = function(e) {
 	console.debug(e.source.id);
 	if (e.source.id === "vwSoundCloud") {
-		if (Titanium.Platform.osname === "android") {
-			Alloy.createController("GenericWebView", {
-				url : nsBandProfile.data.bandDetails.audio_link
-			}).getView().open();
-		} else {
-			Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-				url : nsBandProfile.data.bandDetails.audio_link
-			}).getView());
-		}
+
+		Alloy.Globals.openWindow("GenericWebView", {
+			url : nsBandProfile.data.bandDetails.audio_link
+		}, true);
+
 	} else if (e.source.id === "vwYouTube") {
 
-		if (Titanium.Platform.osname === "android") {
-			Alloy.createController("GenericWebView", {
-				url : nsBandProfile.data.bandDetails.video_link
-			}).getView().open();
-		} else {
-			Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-				url : nsBandProfile.data.bandDetails.video_link
-			}).getView());
-		}
+		Alloy.Globals.openWindow("GenericWebView", {
+			url : nsBandProfile.data.bandDetails.video_link
+		}, true);
 
 	} else if (e.source.id === "vwWebsite") {
 
-		if (Titanium.Platform.osname === "android") {
-			Alloy.createController("GenericWebView", {
-				url : nsBandProfile.data.bandDetails.site_link
-			}).getView().open();
-		} else {
-			Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-				url : nsBandProfile.data.bandDetails.site_link
-			}).getView());
-		}
+		Alloy.Globals.openWindow("GenericWebView", {
+			url : nsBandProfile.data.bandDetails.site_link
+		}, true);
+
 	} else if (e.source.id === "vwFacebook") {
-		if (Titanium.Platform.osname === "android") {
-			Alloy.createController("GenericWebView", {
-				url : nsBandProfile.data.bandDetails.fb_link
-			}).getView().open();
-		} else {
-			Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-				url : nsBandProfile.data.bandDetails.fb_link
-			}).getView());
-		}
+
+		Alloy.Globals.openWindow("GenericWebView", {
+			url : nsBandProfile.data.bandDetails.fb_link
+		}, true);
 
 	} else if (e.source.id === "vwTwitter") {
-		if (Titanium.Platform.osname === "android") {
-			Alloy.createController("GenericWebView", {
-				url : nsBandProfile.data.bandDetails.tw_link
-			}).getView().open();
-		} else {
-			Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-				url : nsBandProfile.data.bandDetails.tw_link
-			}).getView());
-		}
+
+		Alloy.Globals.openWindow("GenericWebView", {
+			url : nsBandProfile.data.bandDetails.tw_link
+		}, true);
+
 	}
 };
 
 nsBandProfile.init = function() {
 	console.log('INIT Band Profile');
-	Alloy.Globals.windowStack.push($.winBandProfile);
+	// Alloy.Globals.windowStack.push($.winBandProfile);
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	for (var i = 0,
@@ -148,11 +119,6 @@ nsBandProfile.init = function() {
 
 	console.debug("BandProfile id ", JSON.stringify(nsBandProfile.args));
 	console.debug("BandProfile data ", JSON.stringify(nsBandProfile.data));
-
-	$.winBandProfile.addEventListener('android:back', function(e) {
-		console.debug("Pressing Back Will Not Close The Activity/Window");
-		nsBandProfile.closeWindow();
-	});
 
 	$.ivBandImage.setHeight(Alloy.Globals.platformHeight * 0.30);
 	console.log('showDetails:' + JSON.stringify(nsBandProfile.data));

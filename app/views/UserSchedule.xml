@@ -1,10 +1,6 @@
 <Alloy>
-	<Window id="winUserSchedule" backButtonTitle="">
-		<RightNavButton platform="ios">
-			<Button image="/images/settings.png" onClick="nsUserSchedule.getSettings"/>
-		</RightNavButton>
-		<Require platform="android" src="header" screenId="winUserSchedule" onSetting="nsUserSchedule.getSettings"></Require>
-		<View id="vwMain">
+	<View id="vwMain">
+		<View class="vertical_layout">
 			<View id="vwTopYellow">
 				<Label id="lblYourSchedule" text="Your Schedule"></Label>
 			</View>
@@ -33,5 +29,5 @@
 				<ImageView id="ivStar"></ImageView>
 			</View>
 		</View>
-	</Window>
+	</View>
 </Alloy>

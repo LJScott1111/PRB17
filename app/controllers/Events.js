@@ -1,25 +1,21 @@
 var nsEvents = {};
 nsEvents.serviceCalls = require("serverCalls");
 
-nsEvents.activityControl = require("activityControl");
-nsEvents.controller = null;
-
-nsEvents.closeWindow = function() {
-	Alloy.Globals.windowStack.pop();
-	$.winEvents.close();
-};
+// nsEvents.activityControl = require("activityControl");: TODO Loading View
+// nsEvents.controller = null;
 
 nsEvents.getSettings = function() {
-	Alloy.Globals.getSettings($.winEvents);
+	// Alloy.Globals.getSettings($.winEvents);
 };
 
+/*
 nsEvents.getMusic = function() {
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
 	console.debug("Alloy.Globals.bands emply ", JSON.stringify(appdata.bands));
 
 	if (appdata.details.length === 0) {
-		$.winEvents.add(nsEvents.controller);
+		// $.winEvents.add(nsEvents.controller);
 		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 			console.debug("fetchedData ", fetchedData);
 			if (fetchedData) {
@@ -28,12 +24,12 @@ nsEvents.getMusic = function() {
 				} else {
 					Alloy.Globals.navWin.openWindow(Alloy.createController("BandList").getView());
 				}
-				$.winEvents.remove(nsEvents.controller);
+				// $.winEvents.remove(nsEvents.controller);
 			} else {
 				console.debug("All data did not get downloaded!!!");
 				alert(L('err_fetchingDetails'));
 			}
-			$.winEvents.remove(nsEvents.controller);
+			// $.winEvents.remove(nsEvents.controller);
 		});
 
 	} else {
@@ -46,59 +42,38 @@ nsEvents.getMusic = function() {
 		}
 	}
 };
+*/
 
 nsEvents.getMovies = function() {
-	if (Titanium.Platform.osname === "android") {
-		Alloy.createController("MovieEvents").getView().open();
-	} else {
-		Alloy.Globals.navWin.openWindow(Alloy.createController("MovieEvents").getView());
-	}
-	// Alloy.createController("MovieEvents").getView().open();
+
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://www.punkrockbowling.com/pool-parties/"
+	}, true);
 };
 
 nsEvents.getBowling = function() {
-	if (Titanium.Platform.osname === "android") {
-		Alloy.createController("BowlingEvents").getView().open();
-	} else {
-		Alloy.Globals.navWin.openWindow(Alloy.createController("BowlingEvents").getView());
-	}
-	// Alloy.createController("BowlingEvents").getView().open();
+
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.com/prborder/bowling"
+	}, true);
 };
 
 nsEvents.getPoker = function() {
-	if (Titanium.Platform.osname === "android") {
-		Alloy.createController("PokerEvents").getView().open();
-	} else {
-		Alloy.Globals.navWin.openWindow(Alloy.createController("PokerEvents").getView());
-	}
-	// Alloy.createController("PokerEvents").getView().open();
+
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.com/poker/"
+	}, true);
 };
 
 nsEvents.getArt = function() {
-	if (Titanium.Platform.osname === "android") {
-		Alloy.createController("ArtEvents").getView().open();
-	} else {
-		Alloy.Globals.navWin.openWindow(Alloy.createController("ArtEvents").getView());
-	}
-	// Alloy.createController("ArtEvents").getView().open();
+
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://www.punkrockbowling.com/art-exhibit/"
+	}, true);
 };
 
 nsEvents.init = function() {
-	Alloy.Globals.windowStack.push($.winEvents);
-	nsEvents.controller = new nsEvents.activityControl($.vwMain);
-
-	$.winEvents.addEventListener('android:back', function(e) {
-		console.debug("Pressing Back Will Not Close The Activity/Window");
-		nsEvents.closeWindow();
-	});
-
-	// $.vwTopYellow.setHeight(Alloy.Globals.platformHeight * 0.0704);
-
-	$.ivMusic.setLeft(10);
-	$.ivMovies.setRight(10);
-	$.ivBowling.setLeft(10);
-	$.ivPoker.setRight(10);
-	$.ivArt.setLeft(30);
+	// Alloy.Globals.windowStack.push($.winEvents); : TODO Loading View
 };
 
 nsEvents.init();

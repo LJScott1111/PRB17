@@ -1,6 +1,6 @@
-
+// TODO: remove unused later
 /*
-	PADDINGS
+PADDINGS
 */
 ".padding_left": {
 	left: '10dp'
@@ -19,7 +19,7 @@
 }
 
 /*
-	LAYOUTS
+LAYOUTS
 */
 
 ".vertical_layout": {
@@ -37,8 +37,18 @@
 	width: Titanium.UI.FILL
 }
 
+".options_view": {
+	height: Alloy.Globals.theme.sizes.landingOptionHeight,
+	width: Titanium.UI.FILL,
+	backgroundColor: 'red'
+}
+
+".touch_false": {
+	touchEnabled: false
+}
+
 /*
-	FONTS
+FONTS
 */
 
 'Label': {
@@ -49,9 +59,10 @@
 	color: '#000000'
 }
 
-".option_lbl": {
+".options_lbl": {
+	color: '#ffffff',
 	font: {
-		fontSize: '13dp',
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts,
 		fontWeight: 'bold'
 	}
 }

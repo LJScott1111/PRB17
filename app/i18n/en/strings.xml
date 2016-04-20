@@ -18,6 +18,23 @@
 	<string name="login_lbllogin">Login</string>
 	<string name="login_tfPassword">Password</string>
 	
+	<!-- Main screen -->
+	<string name="bands">Bands</string>
+	<string name="events">Events</string>
+	<string name="schedule">Schedule</string>
+	<string name="venues">Venues</string>
+	<string name="vendors">Vendors</string>
+	<string name="food">Food</string>
+	
+	<!-- Events screen -->
+	<string name="movies">Movies</string>
+	<string name="bowling">Bowling</string>
+	<string name="poker">Poker</string>
+	<string name="art">Art</string>
+	<string name="las_vegas">Las Vegas</string>
+	<string name="denver">Denver</string>
+	<string name="absury_park">Absury park</string>
+	
 	<!-- Band Profile -->
 	<string name="bandProfile_lblSoundCloud">Listen</string>
 	<string name="bandProfile_lblYouTube">Watch</string>

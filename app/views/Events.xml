@@ -1,21 +1,29 @@
 <Alloy>
-	<Window id="winEvents" backButtonTitle="">
-		<RightNavButton platform="ios">
-			<Button image="/images/settings.png" onClick="nsEvents.getSettings"/>
-		</RightNavButton>
-		<Require platform="android" src="header" screenId="winEvents" ></Require>
-		<View id="vwMain">
-			<View id="vwTopOptions">
-				<!-- <View id="vwTopYellow"></View> -->
-				<ImageView id="ivMusic" class="optionClass" onClick="nsEvents.getMusic"></ImageView>
-				<ImageView id="ivMovies" class="optionClass" onClick="nsEvents.getMovies"></ImageView>
-				<ImageView id="ivBowling" class="optionClass" onClick="nsEvents.getBowling"></ImageView>
-				<ImageView id="ivPoker" class="optionClass" onClick="nsEvents.getPoker"></ImageView>
-				<ImageView id="ivArt" class="optionClass" onClick="nsEvents.getArt"></ImageView>
+	<View id="vwMain">
+		<View id="vwTopOptions">
+
+			<View class="absolute_layout options_view padding_top" onClick="nsEvents.getMovies">
+				<Label class="options_lbl touch_false" id="lblEvents" text="L('movies').toUpperCase()"></Label>
 			</View>
-			<View id="vwBottomView">
-				<ImageView id="ivLogo"></ImageView>
+			<View class="absolute_layout options_view padding_top" onClick="nsEvents.getBowling">
+				<Label class="options_lbl touch_false" id="lblSchedule" text="L('bowling').toUpperCase()"></Label>
 			</View>
+			<View class="absolute_layout options_view padding_top" onClick="nsEvents.getPoker">
+				<Label class="options_lbl touch_false" id="lblVenues" text="L('poker').toUpperCase()"></Label>
+			</View>
+			<View class="absolute_layout options_view padding_top" onClick="nsEvents.getArt">
+				<Label class="options_lbl touch_false" id="lblVendors" text="L('art').toUpperCase()"></Label>
+			</View>
+			<View class="absolute_layout options_view padding_top" id="city2">
+				<Label class="options_lbl touch_false" id="lblEvents" text="City2"></Label>
+			</View>
+			<View class="absolute_layout options_view padding_top" id="city3">
+				<Label class="options_lbl touch_false" id="lblSchedule" text="City3"></Label>
+			</View>
+
 		</View>
-	</Window>
+		<View id="vwBottomView">
+			<!-- <ImageView id="ivLogo"></ImageView> -->
+		</View>
+	</View>
 </Alloy>

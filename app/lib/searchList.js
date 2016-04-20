@@ -319,25 +319,17 @@ nsSearchList.createList = function(tblData) {
 				console.log(e.source, " ", e.source.id);
 				if (e.source.id !== "ivFavouriteStar") {
 					if (nsSearchList.type === "BandList") {
-						if (Titanium.Platform.osname === "android") {
-							Alloy.createController("BandProfile", {
-								"id" : tblData[e.source.id]._id
-							}).getView().open();
-						} else {
-							Alloy.Globals.navWin.openWindow(Alloy.createController("BandProfile", {
-								"id" : tblData[e.row.id]._id
-							}).getView());
-						}
+
+						Alloy.Globals.openWindow("BandProfile", {
+							"id" : tblData[e.source.id]._id
+						}, true);
+
 					} else if (nsSearchList.type === "VenueList") {
-						if (Titanium.Platform.osname === "android") {
-							Alloy.createController("VenueProfile", {
-								"id" : tblData[e.source.id]._id
-							}).getView().open();
-						} else {
-							Alloy.Globals.navWin.openWindow(Alloy.createController("VenueProfile", {
-								"id" : tblData[e.row.id]._id
-							}).getView());
-						}
+
+						Alloy.Globals.openWindow("VenueProfile", {
+							"id" : tblData[e.source.id]._id
+						}, true);
+
 					}
 				}
 			});
@@ -365,7 +357,7 @@ nsSearchList.createList = function(tblData) {
 			var lblName = Titanium.UI.createLabel({
 				left : Alloy.Globals.platformWidth * 0.30,
 				text : tblData[i].name,
-				color : "#000000",
+				color : "#ffffff",
 				height : Titanium.UI.SIZE,
 				touchEnabled : false,
 				width : "50%",
@@ -534,7 +526,7 @@ nsSearchList.createList = function(tblData) {
 		// borderColor: "red",
 		// search : sbSearchBar,
 		searchHidden : true,
-		backgroundColor : "#ffffff",
+		backgroundColor : "#000000",
 		// headerView : nsSearchList.createHeader()
 	});
 

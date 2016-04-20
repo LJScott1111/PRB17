@@ -1,21 +1,10 @@
-"#winVenueProfile": {
-	backgroundColor: "#000000"
-}
-
-"#winVenueProfile[platform=ios]": {
-	barImage: "/icons/navbar1.png"
-}
 
 "#vwMain": {
-	backgroundColor: "#ffffff",
+	backgroundColor: "#000000",
 	top: 0,
 	layout: "vertical",
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL
-}
-
-"#vwMain[platform=android]":{
-	top: Alloy.Globals.theme.sizes.headerbar
 }
 
 "#svMain": {
@@ -37,7 +26,7 @@
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL,
-	backgroundColor: "#FFD801"
+	backgroundColor: "#cc0000"
 }
 
 "#lblVenueName": {
@@ -48,7 +37,7 @@
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
-	color: "#000000",
+	color: "#ffffff",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size25Fonts
 	}
@@ -58,7 +47,8 @@
 	top: 0,
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
-	width: Titanium.UI.FILL
+	width: Titanium.UI.FILL,
+	backgroundColor: '#000000'
 }
 
 "#vwScheduleInfo": {
@@ -76,7 +66,7 @@
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-	color: "#000000",
+	color: "#ffffff",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size20Fonts
 	}
@@ -90,7 +80,7 @@
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-	color: "#000000",
+	color: "#ffffff",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size15Fonts
 	}
@@ -104,7 +94,7 @@
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-	color: "#000000",
+	color: "#ffffff",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size15Fonts
 	}
@@ -119,8 +109,7 @@
 	top: 0,
 	// layout: "horizontl",
 	height: Titanium.UI.SIZE,
-	width: Titanium.UI.SIZE,
-	// borderColor: "#000000"
+	width: Titanium.UI.SIZE
 }
 
 ".dayClass": {
