@@ -1,7 +1,7 @@
 <Alloy>
 	<View id="menuWrapper">
 		<View id="iosHeader" platform="ios" />
-		<ScrollView class="container">
+		<ScrollView class="container padding_bottom">
 
 			<Require id="settings" src="misc/menu_button" title="L('settings').toUpperCase()" />
 			<Require id="lineup" src="misc/menu_button" title="L('lineup').toUpperCase()" />
