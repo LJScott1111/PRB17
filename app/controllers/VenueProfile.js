@@ -3,13 +3,8 @@ var nsVenueProfile = {};
 nsVenueProfile.args = arguments[0];
 nsVenueProfile.momentjs = require('moment');
 
-nsVenueProfile.closeWindow = function() {
-	Alloy.Globals.windowStack.pop();
-	$.winVenueProfile.close();
-};
-
 nsVenueProfile.getSettings = function() {
-	Alloy.Globals.getSettings($.winVenueProfile);
+	// Alloy.Globals.getSettings($.winVenueProfile);
 };
 
 nsVenueProfile.getDay = function(timestamp, type) {
@@ -56,15 +51,11 @@ nsVenueProfile.createList = function(shows) {
 
 				row.addEventListener('click', function(e) {
 					console.log(e);
-					if (Titanium.Platform.osname === "android") {
-						Alloy.createController("BandProfile", {
-							"id" : e.row.bandDetails._id
-						}).getView().open();
-					} else {
-						Alloy.Globals.navWin.openWindow(Alloy.createController("BandProfile", {
-							"id" : e.row.bandDetails._id
-						}).getView());
-					}
+
+					Alloy.Globals.openWindow("BandProfile", {
+						"id" : e.row.bandDetails._id
+					}, true);
+
 				});
 
 				var vwRowView = Titanium.UI.createView({
@@ -89,7 +80,7 @@ nsVenueProfile.createList = function(shows) {
 					left : Alloy.Globals.platformWidth * 0.29,
 					width : Alloy.Globals.platformWidth * 0.40,
 					text : shows[i].bandDetails.name,
-					color : "#000000",
+					color : "#ffffff",
 					height : Titanium.UI.SIZE,
 					font : {
 						fontSize : Alloy.Globals.theme.fonts.size15Fonts
@@ -101,7 +92,7 @@ nsVenueProfile.createList = function(shows) {
 				var lblTime = Titanium.UI.createLabel({
 					right : 20,
 					text : time,
-					color : "#000000",
+					color : "#ffffff",
 					height : Titanium.UI.SIZE,
 					width : "25%",
 					font : {
@@ -117,7 +108,6 @@ nsVenueProfile.createList = function(shows) {
 					height : 40,
 					width : 40,
 					id : "ivFavouriteStar",
-					// backgroundColor : "#000000",
 					selected : false
 				});
 
@@ -258,14 +248,8 @@ nsVenueProfile.getList = function(source) {
 };
 
 nsVenueProfile.init = function() {
-	Alloy.Globals.windowStack.push($.winVenueProfile);
 
 	console.debug("VenueProfile ", JSON.stringify(nsVenueProfile.args));
-
-	$.winVenueProfile.addEventListener('android:back', function(e) {
-		console.debug("Pressing Back Will Not Close The Activity/Window");
-		nsVenueProfile.closeWindow();
-	});
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	for (var i = 0,

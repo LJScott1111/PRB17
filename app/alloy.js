@@ -8,9 +8,8 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 
 	promise.then(function(user) {
 
-		if (!user) {
+		if (!user) { // For testing! TODO: need to add proper functions for login and skip
 
-			/*
 			var promise2 = Kinvey.User.login({
 				username : 'mobile@buzzplay.com',
 				password : 'prb%2015'
@@ -22,7 +21,7 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 
 				var thisUser = Kinvey.setActiveUser(user);
 				console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
-				
+
 				Alloy.Globals.getAndStoreData();
 				callback(thisUser);
 
@@ -30,10 +29,9 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 				//Titanium.App.Properties.removeProperty('appdata');
 				console.debug("Login error ", error);
 				errorCallback(error);
-			});
-			*/
+			}); 
 			callback(user);
-			
+
 		} else {
 
 			var thisUser = Kinvey.getActiveUser();
@@ -64,7 +62,9 @@ Alloy.Globals.askToNotify = function() {
 //KINVEY_DEBUG = true;
 
 // To close the index screen after login
-Alloy.Globals.windowStack = [];
+Alloy.Globals.windowStack = []; // TODO: remove this and related code
+// Loading indicator
+Alloy.Globals.loading = Alloy.createWidget("nl.fokkezb.loading");
 
 // iOS NavMenu
 Alloy.Globals.navMenu = null;
@@ -213,8 +213,7 @@ Alloy.Globals.combinedDetails = function() {
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	var combinedData = [];
-
-
+	
 	/*for (var i = 0,bandLen = appdata.bands.length; i < bandLen; i++) {
 		var bandProfile = {};
 		bandProfile.bandDetails = appdata.bands[i];
@@ -235,27 +234,30 @@ Alloy.Globals.combinedDetails = function() {
 			}
 		}
 	}*/
-	
-	for (var j = 0,showLen = appdata.shows.length; j < showLen; j++) {
+
+	for (var j = 0,
+	    showLen = appdata.shows.length; j < showLen; j++) {
 		var bandProfile = {};
 		bandProfile.showDetails = JSON.parse(JSON.stringify(appdata.shows[j]));
 		// Find the matching band
-		for (var i = 0,bandLen = appdata.bands.length; i < bandLen; i++) {
-			if(appdata.bands[i]._id == bandProfile.showDetails.band_id) {
+		for (var i = 0,
+		    bandLen = appdata.bands.length; i < bandLen; i++) {
+			if (appdata.bands[i]._id == bandProfile.showDetails.band_id) {
 				bandProfile.bandDetails = JSON.parse(JSON.stringify(appdata.bands[i]));
 				break;
 			}
 		}
 		// Find the matching venue
-		for (var k = 0,venueLen = appdata.venues.length; k < venueLen; k++) {
-			if(appdata.venues[k]._id == bandProfile.showDetails.venue_id) {
+		for (var k = 0,
+		    venueLen = appdata.venues.length; k < venueLen; k++) {
+			if (appdata.venues[k]._id == bandProfile.showDetails.venue_id) {
 				bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
 				break;
 			}
 		}
 		combinedData.push(bandProfile);
 	}
-	
+
 	console.debug("JSON.stringify(combinedData) ", JSON.stringify(combinedData));
 	// Setting all details in appdata
 	appdata.details = JSON.parse(JSON.stringify(combinedData));
@@ -345,16 +347,11 @@ Alloy.Globals.getSettings = function(currentWin) {
 				Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].close();
 				Alloy.Globals.windowStack.pop();
 			}
-			if (Titanium.Platform.osname === "android") {
-				Alloy.createController("GenericWebView", {
-					url : "https://www.punkrockbowling.com/wp-content/uploads/2013/11/Punk-Rock-Bowling-map.jpg"
-				}).getView().open();
-			} else {
-				Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-					url : "https://www.punkrockbowling.com/wp-content/uploads/2013/11/Punk-Rock-Bowling-map.jpg",
-					"map" : true
-				}).getView());
-			}
+
+			Alloy.Globals.openWindow("GenericWebView", {
+				url : "https://www.punkrockbowling.com/wp-content/uploads/2013/11/Punk-Rock-Bowling-map.jpg"
+			}, true);
+
 			currentWin.remove(vwOptionFullView);
 
 		} else if (e.source.id === "vwOption_1") {
@@ -363,15 +360,11 @@ Alloy.Globals.getSettings = function(currentWin) {
 				Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].close();
 				Alloy.Globals.windowStack.pop();
 			}
-			if (Titanium.Platform.osname === "android") {
-				Alloy.createController("GenericWebView", {
-					url : "http://punkrockbowling.com/sponsors-vendors/"
-				}).getView().open();
-			} else {
-				Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-					url : "http://punkrockbowling.com/sponsors-vendors/"
-				}).getView());
-			}
+
+			Alloy.Globals.openWindow("GenericWebView", {
+				url : "http://punkrockbowling.com/sponsors-vendors/"
+			}, true);
+
 			currentWin.remove(vwOptionFullView);
 
 		} else if (e.source.id === "vwOption_2") {
@@ -380,15 +373,11 @@ Alloy.Globals.getSettings = function(currentWin) {
 				Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].close();
 				Alloy.Globals.windowStack.pop();
 			}
-			if (Titanium.Platform.osname === "android") {
-				Alloy.createController("GenericWebView", {
-					url : "http://www.punkrockbowling.com/our-privacy-policy/"
-				}).getView().open();
-			} else {
-				Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-					url : "http://www.punkrockbowling.com/our-privacy-policy/"
-				}).getView());
-			}
+
+			Alloy.Globals.openWindow("GenericWebView", {
+				url : "http://www.punkrockbowling.com/our-privacy-policy/"
+			}, true);
+
 			currentWin.remove(vwOptionFullView);
 
 		} else if (e.source.id === "vwOption_3") {
@@ -397,15 +386,11 @@ Alloy.Globals.getSettings = function(currentWin) {
 				Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].close();
 				Alloy.Globals.windowStack.pop();
 			}
-			if (Titanium.Platform.osname === "android") {
-				Alloy.createController("GenericWebView", {
-					url : "http://www.punkrockbowling.com/faq/"
-				}).getView().open();
-			} else {
-				Alloy.Globals.navWin.openWindow(Alloy.createController("GenericWebView", {
-					url : "http://www.punkrockbowling.com/faq/"
-				}).getView());
-			}
+
+			Alloy.Globals.openWindow("GenericWebView", {
+				url : "http://www.punkrockbowling.com/faq/"
+			}, true);
+
 			currentWin.remove(vwOptionFullView);
 
 		} else {
@@ -426,3 +411,82 @@ Alloy.Globals.appData = {
 Alloy.Globals.Facebook = require('facebook');
 Alloy.Globals.Facebook.appid = Alloy.Globals.fbAppID();
 Alloy.Globals.Facebook.permissions = ['email'];
+
+// Pageflow
+Alloy.Globals.jolicode = {};
+Alloy.Globals.jolicode.pageflow = {};
+Alloy.Globals.jolicode.pageflow.height = Ti.Platform.displayCaps.platformHeight;
+Alloy.Globals.jolicode.pageflow.width = Ti.Platform.displayCaps.platformWidth;
+
+if (OS_ANDROID) {
+	Alloy.Globals.jolicode.pageflow.height = Ti.Platform.displayCaps.platformHeight / Ti.Platform.displayCaps.logicalDensityFactor;
+	Alloy.Globals.jolicode.pageflow.width = Ti.Platform.displayCaps.platformWidth / Ti.Platform.displayCaps.logicalDensityFactor;
+}
+
+// Open a controller
+Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, rightMenu) {
+
+	if (Alloy.Globals.pageflow.getCurrentPage() == null || newOne === true) {
+
+		Alloy.Globals.pageflow.addChild({
+			arguments : arguments,
+			controller : controller,
+			backButton : {
+				image : '/icons/back.png',
+				width : '35dp',
+				height : '35dp',
+				left : 0,
+				backgroundColor : '#000000',
+				hidden : newOne === true ? false : true
+			},
+			navBar : {
+				backgroundColor : '#000000',
+				left : 'misc/openMenu',
+				title : title_text,
+				titleOptions : {
+					color : '#ffffff',
+					font : {
+						fontSize : '15dp'
+					},
+					width : Titanium.UI.SIZE
+				}
+			},
+			direction : {
+				top : 0,
+				left : 1
+			}
+		});
+
+		if (!newOne) {
+
+			currentPage = controller;
+		}
+	} else if (currentPage != controller) {
+
+		Alloy.Globals.pageflow.replacePage(0, {
+			arguments : arguments,
+			controller : controller,
+			backButton : {
+				hidden : true
+			},
+			navBar : {
+				backgroundColor : '#000000',
+				left : 'misc/openMenu',
+				right : rightMenu,
+				title : title_text,
+				titleOptions : {
+					color : '#ffffff',
+					font : {
+						fontSize : '15dp'
+					},
+					width : Titanium.UI.SIZE
+				}
+			},
+			direction : {
+				top : 0,
+				left : 1
+			}
+		});
+		currentPage = controller;
+	}
+}; 

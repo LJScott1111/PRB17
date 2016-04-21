@@ -1,0 +1,22 @@
+"#iosHeader": {
+	width: '100%',
+	height: '20dp',
+	backgroundColor: '#ffffff'
+}
+
+"#drawermenu[platform=ios]": {
+	top: '20dp'
+}
+
+"#mainWindow[platform=android]": {
+	windowSoftInputMode: Titanium.UI.Android.SOFT_INPUT_STATE_HIDDEN | Titanium.UI.Android.SOFT_INPUT_ADJUST_PAN
+}
+
+"#mainWindow": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	orientationModes: [
+		Ti.UI.PORTRAIT
+    ],
+    exitOnClose: true
+}

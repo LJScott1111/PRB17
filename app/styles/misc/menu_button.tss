@@ -1,0 +1,29 @@
+
+"#container": {
+	height: '30dp',
+	width: '100%'
+}
+
+"#title": {
+	center: {
+		y: '50%'
+	},
+	color: "#ffffff",
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts,
+		fontWeight: 'bold'
+	}
+}
+
+"#icon": {
+	left: '23dp',
+	color: "#fff",
+	height: '20dp',
+	width: '20dp',
+	center: {
+		y: '50%'
+	}
+}

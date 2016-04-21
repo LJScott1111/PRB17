@@ -1,9 +1,6 @@
 var nsLogin = {};
 nsLogin.serviceCalls = require("serverCalls");
 
-nsLogin.activityControl = require("activityControl");
-nsLogin.controller = null;
-
 nsLogin.args = arguments[0];
 
 nsLogin.closeWindow = function() {
@@ -48,8 +45,7 @@ nsLogin.validatePassword = function() {
 };
 
 nsLogin.login = function() {
-	nsLogin.controller = new nsLogin.activityControl($.vwMain);
-	nsLogin.args.win.add(nsLogin.controller);
+	Alloy.Globals.loading.show();
 
 	if (nsLogin.validateEmail() && nsLogin.validatePassword()) {
 		//Login
@@ -60,7 +56,7 @@ nsLogin.login = function() {
 			console.debug("Go to next screen!");
 			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 				console.debug("fetchedData ", fetchedData);
-				nsLogin.args.win.remove(nsLogin.controller);
+				Alloy.Globals.loading.hide();
 				Alloy.Globals.isSignupWindow = false;
 				nsLogin.args.win.close();
 				var notify = Titanium.App.Properties.getBool('notify');
@@ -75,7 +71,7 @@ nsLogin.login = function() {
 			alert(L('err_login'));
 			//TODO - Proper error handling
 			// alert(error.message);
-			nsLogin.args.win.remove(nsLogin.controller);
+			Alloy.Globals.loading.hide();
 		};
 
 		var signupService = new nsLogin.serviceCalls.login(tfEmail, tfPass, this.onloadCallback, this.onerrorCallback);

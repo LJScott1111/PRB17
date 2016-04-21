@@ -6,9 +6,6 @@
 var nsIndex = {};
 nsIndex.serviceCalls = require("serverCalls");
 
-nsIndex.activityControl = require("activityControl");
-nsIndex.controller = null;
-
 nsIndex.showHideHint = function(label, txtField) {
 	label.visible = (txtField.value.trim() == "");
 };
@@ -79,7 +76,7 @@ nsIndex.connectToFb = function() {
 		return;
 	} else {
 
-		$.winIndex.add(nsIndex.controller);
+		Alloy.Globals.loading.show();
 		var kinveyFb = new nsIndex.serviceCalls.fbLogin(function(response) {
 			console.debug("Go to next screen!");
 			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
@@ -91,7 +88,7 @@ nsIndex.connectToFb = function() {
 			alert(L('err_facebook'));
 		});
 
-		$.winIndex.remove(nsIndex.controller);
+		Alloy.Globals.loading.hide();
 	}
 
 };
@@ -109,7 +106,7 @@ nsIndex.login = function() {
 				console.debug("fetchedData ", fetchedData);
 				// Alloy.createController("LandingPage").getView().open();
 				Alloy.Globals.windowStack.pop();
-				$.winIndex.remove(nsIndex.controller);
+				Alloy.Globals.loading.hide();
 				Alloy.Globals.isSignupWindow = false;
 				nsIndex.closeWindow();
 				if (Titanium.Platform.osname !== "android") {
@@ -124,10 +121,10 @@ nsIndex.login = function() {
 			alert(L('err_serviceError'));
 			//TODO - Proper error handling
 			// alert(error.message);
-			$.winIndex.remove(nsIndex.controller);
+			Alloy.Globals.loading.hide();
 		};
 
-		$.winIndex.add(nsIndex.controller);
+		Alloy.Globals.loading.show();
 		var signupService = new nsIndex.serviceCalls.signup(emailField, tfPass, this.onloadCallback, this.onerrorCallback);
 
 	} else {
@@ -160,8 +157,7 @@ nsIndex.init = function() {
 
 	nsIndex.showHideHint($.lblHint_email, $.emailField);
 	nsIndex.showHideHint($.lblHint_pass, $.passwordField);
-	
-	nsIndex.controller = new nsIndex.activityControl($.vwMain);
+
 	console.debug("Hello Signup");
 
 	if (Titanium.Platform.osname !== "android") {

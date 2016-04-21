@@ -1,39 +1,32 @@
 <Alloy>
-	<Window id="winVenueProfile" backButtonTitle="">
-		<RightNavButton platform="ios">
-			<Button image="/images/settings.png" onClick="nsVenueProfile.getSettings"/>
-		</RightNavButton>
-		<Require platform="android" src="header" screenId="winVenueProfile" onSetting="nsVenueProfile.getSettings"></Require>
-		<View id="vwMain">
-			<ScrollView id="svMain">
-				<ImageView id="ivVenueImage"></ImageView>
-				<View id="vwVenueInfo">
-					<Label id="lblVenueName"></Label>
-					<Label id="lblAddress1"></Label>
-					<Label id="lblAddress2"></Label>
-					<Label id="lblNumber"></Label>
-				</View>
-				<View id="vwBandDetails">
-					<View id="vwDays" class="vwDaysClass">
-						<View id="vwDay1" class = "dayClass" day="friday" >
-							<Label id="lblDay1" class="lblDayClass" text = "Friday"></Label>
+	<View id="vwMain">
+		<ScrollView id="svMain">
+			<ImageView id="ivVenueImage"></ImageView>
+			<View id="vwVenueInfo">
+				<Label id="lblVenueName"></Label>
+				<Label id="lblAddress1"></Label>
+				<Label id="lblAddress2"></Label>
+				<Label id="lblNumber"></Label>
+			</View>
+			<View id="vwBandDetails">
+				<View id="vwDays" class="vwDaysClass">
+					<View id="vwDay1" class = "dayClass" day="friday" >
+						<Label id="lblDay1" class="lblDayClass" text = "Friday"></Label>
+					</View>
+					<View id="vwDays2" class="vwDaysClass">
+						<View id="vwDay2" class = "dayClass" day="saturday" >
+							<Label id="lblDay2" class="lblDayClass" text="Saturday"></Label>
 						</View>
-						
-						<View id="vwDays2" class="vwDaysClass">
-							<View id="vwDay2" class = "dayClass" day="saturday" >
-								<Label id="lblDay2" class="lblDayClass" text="Saturday"></Label>
-							</View>
-							<View id="vwDay3" class = "dayClass" day="sunday" >
-								<Label id="lblDay3" class="lblDayClass" text="Sunday"></Label>
-							</View>
-						</View>
-						<View id="vwDay4" class = "dayClass" day="monday" >
-							<Label id="lblDay4" class="lblDayClass" text="Monday"></Label>
+						<View id="vwDay3" class = "dayClass" day="sunday" >
+							<Label id="lblDay3" class="lblDayClass" text="Sunday"></Label>
 						</View>
 					</View>
-					<View id="vwBandSchedule"></View>
+					<View id="vwDay4" class = "dayClass" day="monday" >
+						<Label id="lblDay4" class="lblDayClass" text="Monday"></Label>
+					</View>
 				</View>
-			</ScrollView>
-		</View>
-	</Window>
+				<View id="vwBandSchedule"></View>
+			</View>
+		</ScrollView>
+	</View>
 </Alloy>
