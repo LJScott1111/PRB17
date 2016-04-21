@@ -3,28 +3,28 @@
 		<View id="iosHeader" platform="ios" />
 		<ScrollView class="container">
 
-			<Require id="settings" src="misc/menu_button" title="L('settings')" />
-			<Require id="lineup" src="misc/menu_button" title="L('lineup')" />
-			<Require id="schedule" src="misc/menu_button" title="L('schedule')" />
-			<Require id="venues" src="misc/menu_button" title="L('venues')" />
-			<Require id="movies" src="misc/menu_button" title="L('movies')" />
-			<Require id="bowling" src="misc/menu_button" title="L('bowling')" />
-			<Require id="poker" src="misc/menu_button" title="L('poker')" />
-			<Require id="art" src="misc/menu_button" title="L('art')" />
-			<Require id="map" src="misc/menu_button" title="L('map')" />
-			<Require id="food" src="misc/menu_button" title="L('food')" />
-			<Require id="sponsers" src="misc/menu_button" title="L('sponsers')" />
-			<Require id="vendors" src="misc/menu_button" title="L('vendors')" />
-			<Require id="info" src="misc/menu_button" title="L('info')" />
-			<Require id="about" src="misc/menu_button" title="L('about')" />
-			<Require id="faq" src="misc/menu_button" title="L('faq')" />
-			<Require id="privacy_policy" src="misc/menu_button" title="L('privacy_policy')" />
-			<Require id="messages" src="misc/menu_button" title="L('messages')" />
-			<Require id="social" src="misc/menu_button" title="L('social')" />
-			<Require id="profile" src="misc/menu_button" title="L('profile')" />
-			<Require id="venues" src="misc/menu_button" title="L('venues')" />
-			<Require id="my_schedule" src="misc/menu_button" title="L('my_schedule')" />
-			<Require id="my_passes" src="misc/menu_button" title="L('my_passes')" />
+			<Require id="settings" src="misc/menu_button" title="L('settings').toUpperCase()" />
+			<Require id="lineup" src="misc/menu_button" title="L('lineup').toUpperCase()" />
+			<Require id="schedule" src="misc/menu_button" title="L('schedule').toUpperCase()" />
+			<Require id="venues" src="misc/menu_button" title="L('venues').toUpperCase()" />
+			<Require id="movies" src="misc/menu_button" title="L('movies').toUpperCase()" />
+			<Require id="bowling" src="misc/menu_button" title="L('bowling').toUpperCase()" />
+			<Require id="poker" src="misc/menu_button" title="L('poker').toUpperCase()" />
+			<Require id="art" src="misc/menu_button" title="L('art').toUpperCase()" />
+			<Require id="map" src="misc/menu_button" title="L('map').toUpperCase()" />
+			<Require id="food" src="misc/menu_button" title="L('food').toUpperCase()" />
+			<Require id="sponsers" src="misc/menu_button" title="L('sponsers').toUpperCase()" />
+			<Require id="vendors" src="misc/menu_button" title="L('vendors').toUpperCase()" />
+			<Require id="info" src="misc/menu_button" title="L('info').toUpperCase()" />
+			<Require id="about" src="misc/menu_button" title="L('about').toUpperCase()" />
+			<Require id="faq" src="misc/menu_button" title="L('faq').toUpperCase()" />
+			<Require id="privacy_policy" src="misc/menu_button" title="L('privacy_policy').toUpperCase()" />
+			<Require id="messages" src="misc/menu_button" title="L('messages').toUpperCase()" />
+			<Require id="social" src="misc/menu_button" title="L('social').toUpperCase()" />
+			<Require id="profile" src="misc/menu_button" title="L('profile').toUpperCase()" />
+			<Require id="venues" src="misc/menu_button" title="L('venues').toUpperCase()" />
+			<Require id="my_schedule" src="misc/menu_button" title="L('my_schedule').toUpperCase()" />
+			<Require id="my_passes" src="misc/menu_button" title="L('my_passes').toUpperCase()" />
 		</ScrollView>
 	</View>
 </Alloy>
