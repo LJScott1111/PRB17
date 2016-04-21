@@ -9,6 +9,7 @@
 	"os:mobileweb": {},
 	"dependencies": {
 		"com.alcoapps.drawermenu": "2.0",
-		"com.jolicode.pageflow": "1.3"
+		"com.jolicode.pageflow": "1.3",
+		"nl.fokkezb.loading": "1.8.4"
 	}
 }

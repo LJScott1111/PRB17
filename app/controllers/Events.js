@@ -1,9 +1,6 @@
 var nsEvents = {};
 nsEvents.serviceCalls = require("serverCalls");
 
-// nsEvents.activityControl = require("activityControl");: TODO Loading View
-// nsEvents.controller = null;
-
 nsEvents.getSettings = function() {
 	// Alloy.Globals.getSettings($.winEvents);
 };

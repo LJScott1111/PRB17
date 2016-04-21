@@ -62,7 +62,9 @@ Alloy.Globals.askToNotify = function() {
 //KINVEY_DEBUG = true;
 
 // To close the index screen after login
-Alloy.Globals.windowStack = [];
+Alloy.Globals.windowStack = []; // TODO: remove this and related code
+// Loading indicator
+Alloy.Globals.loading = Alloy.createWidget("nl.fokkezb.loading");
 
 // iOS NavMenu
 Alloy.Globals.navMenu = null;

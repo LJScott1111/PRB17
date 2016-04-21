@@ -4,9 +4,6 @@ var nsLanding = {};
 Alloy.Globals.navWin = $.navWin;
 nsLanding.serviceCalls = require("serverCalls");
 
-// nsLanding.activityControl = require("activityControl"); : TODO Loading View
-// nsLanding.controller = null;
-
 nsLanding.getSettings = function() {
 	// Alloy.Globals.getSettings($.winLanding); TODO: remove later
 };
@@ -23,18 +20,18 @@ nsLanding.getBands = function() {
 	console.debug("Alloy.Globals.bands emply ", JSON.stringify(appdata.bands));
 
 	if (appdata.details.length === 0) {
-		// $.winLanding.add(nsLanding.controller);
+		Alloy.Globals.loading.show();
 		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 			console.debug("fetchedData ", fetchedData);
 			if (fetchedData) {
 
 				Alloy.Globals.openWindow('BandList', {}, true);
-				// $.winLanding.remove(nsLanding.controller); : TODO Loading View
+				Alloy.Globals.loading.hide();
 			} else {
 				console.debug("All data did not get downloaded!!!");
 				alert(L('err_fetchingDetails'));
 			}
-			// $.winLanding.remove(nsLanding.controller);
+			Alloy.Globals.loading.hide();
 		});
 
 	} else {
@@ -50,7 +47,7 @@ nsLanding.getEvents = function() {
 
 nsLanding.getSchedule = function() {
 
-	// $.winLanding.add(nsLanding.controller);
+	Alloy.Globals.loading.show();
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
 	if (appdata.details.length === 0) {
@@ -64,17 +61,17 @@ nsLanding.getSchedule = function() {
 
 					Alloy.Globals.openWindow('UserSchedule', schedule, true);
 
-					// $.winLanding.remove(nsLanding.controller);
+					Alloy.Globals.loading.hide();
 
 				}, function(error) {
 					alert(L('err_fetchingDetails'));
-					// $.winLanding.remove(nsLanding.controller);
+					Alloy.Globals.loading.hide();
 				});
 
 			} else {
 				console.debug("All data did not get downloaded!!!");
 				alert(L('err_fetchingDetails'));
-				// $.winLanding.remove(nsLanding.controller);
+				Alloy.Globals.loading.hide();
 			}
 		});
 	} else {
@@ -82,11 +79,11 @@ nsLanding.getSchedule = function() {
 
 			console.debug(JSON.stringify(schedule));
 			Alloy.Globals.openWindow('UserSchedule', schedule, true);
-			// $.winLanding.remove(nsLanding.controller);
+			Alloy.Globals.loading.hide();
 
 		}, function(error) {
 			alert(L('err_fetchingDetails'));
-			// $.winLanding.remove(nsLanding.controller);
+			Alloy.Globals.loading.hide();
 		});
 	}
 
@@ -96,19 +93,19 @@ nsLanding.getVenues = function() {
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
 	if (appdata.details.length === 0) {
-		// $.winLanding.add(nsLanding.controller);
+		Alloy.Globals.loading.show();
 		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 			console.debug("fetchedData ", fetchedData);
 			if (fetchedData) {
 
 				Alloy.Globals.openWindow('VenueList', {}, true);
 
-				// $.winLanding.remove(nsLanding.controller);
+				Alloy.Globals.loading.hide();
 			} else {
 				console.debug("All data did not get downloaded!!!");
 				alert(L('err_fetchingDetails'));
 			}
-			// $.winLanding.remove(nsLanding.controller);
+			Alloy.Globals.loading.hide();
 		});
 	} else {
 		Alloy.Globals.openWindow('VenueList', {}, true);
@@ -149,8 +146,6 @@ nsLanding.checkLocationPermissions = function() {// TODO: failing, check again
 Titanium.App.addEventListener('checkLocationPermissions', nsLanding.checkLocationPermissions);
 
 nsLanding.init = function() {
-
-	// nsLanding.controller = new nsLanding.activityControl($.vwMain);
 
 	Alloy.Globals.checkUser(function(user) {
 		console.debug("Alloy.Globals.checkUser user - " + user);
