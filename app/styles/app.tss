@@ -1,0 +1,69 @@
+// TODO: remove unused later
+/*
+PADDINGS
+*/
+".padding_left": {
+	left: '10dp'
+}
+
+".padding_right": {
+	right: '10dp'
+}
+
+".padding_top": {
+	top: '10dp'
+}
+
+".padding_bottom": {
+	bottom: '10dp'
+}
+
+/*
+LAYOUTS
+*/
+
+".vertical_layout": {
+	layout: 'vertical',
+	height: Titanium.UI.SIZE
+}
+
+".horizontal_layout": {
+	layout: 'horizontal',
+	height: Titanium.UI.SIZE
+}
+
+".absolute_layout": {
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+".options_view": {
+	height: Alloy.Globals.theme.sizes.landingOptionHeight,
+	width: Titanium.UI.FILL,
+	backgroundColor: 'red'
+}
+
+".touch_false": {
+	touchEnabled: false
+}
+
+/*
+FONTS
+*/
+
+'Label': {
+	width: Titanium.UI.SIZE,
+	height: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	backgroundColor: 'transparent',
+	color: '#000000'
+}
+
+".options_lbl": {
+	color: '#ffffff',
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts,
+		fontWeight: 'bold'
+	}
+}
+

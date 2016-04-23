@@ -1,13 +1,5 @@
 <Alloy>
-	<Window id="winGenericWebView" navBarHidden="true" backButtonTitle="">
-		<RightNavButton platform="ios">
-			<Button image="/images/settings.png" onClick="nsGenericWebView.getSettings"/>
-		</RightNavButton>
-		<Require platform="android" src="header" screenId="winGenericWebView" ></Require>
-		
-		<View id="vwMain">
-			<WebView id="wvGenericWebView"></WebView>
-		</View>
-		<Button platform="ios" image="/images/back.png" left="10" top="20" height="24" width="24" onClick="nsGenericWebView.closeWindow"></Button>
-	</Window>
+	<View id="vwMain">
+		<WebView id="wvGenericWebView"></WebView>
+	</View>
 </Alloy>

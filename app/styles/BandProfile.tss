@@ -1,21 +1,10 @@
-"#winBandProfile": {
-	backgroundColor: "#000000"
-}
-
-"#winBandProfile[platform=ios]": {
-	barImage: "/icons/navbar1.png"
-}
 
 "#vwMain": {
-	backgroundColor: "#ffffff",
+	backgroundColor: '#000000',
 	top: 0,
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL
-}
-
-"#vwMain[platform=android]":{
-	top: Alloy.Globals.theme.sizes.headerbar
 }
 
 "#svMain": {
@@ -36,7 +25,7 @@
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL,
-	backgroundColor: "#FFD801"
+	backgroundColor: "#cc0000"
 }
 
 "#lblBandName": {
@@ -47,7 +36,7 @@
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
-	color: "#000000",
+	color: "#ffffff",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size25Fonts
 	}
@@ -74,7 +63,7 @@
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-	color: "#000000",
+	color: "#ffffff",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size20Fonts
 	}
@@ -88,7 +77,7 @@
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-	color: "#000000",
+	color: "#ffffff",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size15Fonts
 	}
@@ -102,7 +91,7 @@
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-	color: "#000000",
+	color: "#ffffff",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size15Fonts
 	}
@@ -128,7 +117,7 @@
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	color: "#000000",
+	color: "#ffffff",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size20Fonts
 	}
@@ -138,15 +127,11 @@
 	top: 0,
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL,
-	layout: "vertical"
-}
-
-".socialViewClass": {
-	top: 0,
 	layout: "horizontal",
-	height: Titanium.UI.SIZE,
-	width: Titanium.UI.FILL,
-	borderColor: "#000000"
+	backgroundColor: '#ffffff',
+	borderColor: '#000000',
+	borderRadius: 10,
+	borderWidth: 1
 }
 
 ".socialIconClass": {
@@ -179,18 +164,6 @@
 	image: "/images/twitter_icon.png"
 }
 
-".socialLabelClass": {
-	left: 30,
-	height: Titanium.UI.SIZE,
-	width: Titanium.UI.SIZE,
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-	color: "#000000",
-	touchEnabled: false,
-	font: {
-		fontSize: Alloy.Globals.theme.fonts.size20Fonts
-	}
-}
-
 "#lblMoreInfo": {
 	top: 10,
 	right: 10,
@@ -199,7 +172,7 @@
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-	color: "#000000",
+	color: "#ffffff",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size20Fonts
 	}

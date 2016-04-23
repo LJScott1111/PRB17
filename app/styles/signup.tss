@@ -1,7 +1,12 @@
 "#winIndex": {
 	backgroundColor: "#000000",
-	modal: true,
-	// exitOnClose: true
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	zIndex: 11
+}
+
+"#winIndex[platform=ios]": {
+	modal: true
 }
 
 "#vwMain": {
@@ -19,18 +24,9 @@
 	zIndex: 99
 }
 
-"#vwFbConnect": {
-	top: 10,
-	backgroundColor: "#4BA5FF",
-	width: "90%"
-}
-
-"#lblFbConnect": {
+"#btnFbConnect": {
 	color: "#ffffff",
-	touchEnabled: false,
-	font: {
-		fontSize: Alloy.Globals.theme.fonts.size20Fonts
-	}
+	backgroundColor: "#4BA5FF"
 }
 
 "#lblOr": {
@@ -42,40 +38,61 @@
 }
 
 ".tfClass": {
-	top: 10,
+	// top: 10,
 	backgroundColor: "#ffffff",
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	borderRadius: 10,
 	color: "#000000",
-	height: 40,
+	height: 35,
 	width: "90%",
 	font: {
-		fontSize: Alloy.Globals.theme.fonts.size20Fonts
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts
 	}
 }
 
-"#vwGetIt": {
-	top: 15,
-	right: 20,
-	height: 40,
-	width: "30%",
-	backgroundColor: "#ffffff",
-	borderRadius: 10
-}
-
-"#lblGetIt": {
-	color: "#000000",
+".btnClass": {
+	top: 25,
+	height: 35,
+	width: "90%",
+	borderRadius: 10,
 	font: {
-		fontSize: Alloy.Globals.theme.fonts.size20Fonts
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts
 	}
+}
+
+".lblClass": {
+	color: '#666',
+	zIndex: 99,
+	left: 20,
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts
+	}
+}
+
+"#login_message": {
+	height: Titanium.UI.SIZE,
+	top: 10,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#F5C787",
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts
+	}
+}
+
+"#btnLogin": {
+	backgroundColor: "#F5C787",
+	color: "#000000"
+}
+
+"#btnSkip": {
+	color: "#ffffff",
+	backgroundColor: "#898A7B"
 }
 
 "#vwBottomView": {
-	// top: 0,
 	bottom: 0,
 	height: Titanium.UI.SIZE,
-	width: Titanium.UI.FILL,
-	// borderColor: "yellow",
-	// zIndex: 99
+	width: Titanium.UI.FILL
 }
 
 "#ivPoker": {
@@ -85,7 +102,6 @@
 	// height: Alloy.Globals.theme.sizes.punkRockHeight,
 	height: Titanium.UI.SIZE,
 	width: Alloy.Globals.theme.sizes.punckRockWidth
-	
 }
 
 "#ivLogo": {

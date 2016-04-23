@@ -1,21 +1,28 @@
 <Alloy>
 	<Window id="winIndex">
-		<Require src="header" screenId="winIndex" onSettings="nsIndex.getSettings"></Require>
+		<!-- <Require src="header" screenId="winIndex" onSettings="nsIndex.getSettings"></Require> -->
 		<View id="vwMain">
 			<View id="vwTopLogin">
-				<View id="vwFbConnect" onClick="nsIndex.connectToFb">
-					<Label id="lblFbConnect" text="L('index_lblFbConnect')"></Label>
+
+				<Label id="login_message" class="padding_bottom" text="L('login_message')"></Label>
+				<View class="absolute_layout padding_top">
+					<TextField id="emailField" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_TYPE_EMAIL"></TextField>
+					<Label class="lblClass" text="L('index_tfEmail')" id="lblHint_email"></Label>
 				</View>
+				
+				<View class="absolute_layout padding_top">
+					<TextField id="passwordField" passwordMask="true" class="tfClass"></TextField>
+					<Label class="lblClass" text="L('index_tfPassword')" id="lblHint_pass"></Label>
+				</View>
+				
+				<Button id="btnLogin" class="btnClass" title="L('index_lblGetIt').toUpperCase()" onClick="nsIndex.login"></Button>
+				<Button id="btnSkip" class="btnClass" title="L('index_lblSkip').toUpperCase()" onClick="nsIndex.skipSignUp"></Button>
 				<Label id="lblOr" text="L('index_lblOr')"></Label>
-				<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_EMAIL"></TextField>
-				<TextField id="tfPassword" passwordMask="true" class="tfClass"></TextField>
-				<View id="vwGetIt" onClick="nsIndex.getIt">
-					<Label id="lblGetIt" text="L('index_lblGetIt')"></Label>
-				</View>
+				<Button id="btnFbConnect" class="btnClass" title="L('index_lblFbConnect')" onClick="nsIndex.connectToFb"></Button>
 			</View>
 			<View id="vwBottomView">
-				<ImageView id="ivPoker"></ImageView> 
-				<ImageView id="ivLogo"></ImageView>
+				<!-- <ImageView id="ivPoker"></ImageView> 
+				<ImageView id="ivLogo"></ImageView> -->
 			</View>
 		</View>
 	</Window>

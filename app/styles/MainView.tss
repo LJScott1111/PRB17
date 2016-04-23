@@ -1,0 +1,42 @@
+
+"#vwMain": {
+	top: 0,
+	backgroundColor: '#000000',
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+}
+
+"#vwTopOptions": {
+	top: 0,
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	zIndex: 99
+}
+
+"#vwBottomView": {
+	// top: 0,
+	bottom: 0,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+/*
+
+"#ivPoker": {
+	bottom: 0,
+	left: 0,
+	image: "/icons/punk-rock.png",
+	// height: Alloy.Globals.theme.sizes.punkRockHeight,
+	height: Titanium.UI.SIZE,
+	width: Alloy.Globals.theme.sizes.punckRockWidth
+}
+
+"#ivLogo": {
+	right: 20,
+	bottom: 20,
+	height: Alloy.Globals.theme.sizes.logo,
+	width: Alloy.Globals.theme.sizes.logo,
+	image: "/icons/logo.png"
+}
+*/

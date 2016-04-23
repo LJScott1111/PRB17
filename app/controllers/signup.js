@@ -6,23 +6,31 @@
 var nsIndex = {};
 nsIndex.serviceCalls = require("serverCalls");
 
-nsIndex.activityControl = require("activityControl");
-nsIndex.controller = null;
+nsIndex.showHideHint = function(label, txtField) {
+	label.visible = (txtField.value.trim() == "");
+};
+
+$.emailField.addEventListener('change', function() {
+	nsIndex.showHideHint($.lblHint_email, $.emailField);
+});
+
+$.passwordField.addEventListener('change', function() {
+	nsIndex.showHideHint($.lblHint_pass, $.passwordField);
+});
 
 nsIndex.closeWindow = function() {
-	$.winIndex.exitOnClose = true;
 	$.winIndex.close();
 };
 
 nsIndex.validateEmail = function() {
 	var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
-	var tfEmail = $.tfEmail.getValue();
-	console.debug(tfEmail);
+	var emailField = $.emailField.getValue();
+	console.debug(emailField);
 
 	var emailResult = false;
 
-	if (reg.test(tfEmail)) {
+	if (reg.test(emailField)) {
 		emailResult = true;
 	} else {
 		emailResult = false;
@@ -33,7 +41,7 @@ nsIndex.validateEmail = function() {
 };
 
 nsIndex.validatePassword = function() {
-	var tfPass = $.tfPassword.getValue().trim();
+	var tfPass = $.passwordField.getValue().trim();
 	var passResult = false;
 
 	console.debug("tfPass Value ", tfPass);
@@ -52,6 +60,10 @@ nsIndex.getSettings = function() {
 	// Alloy.createController("Login").getView().open();
 };
 
+nsIndex.skipSignUp = function() {
+	nsIndex.closeWindow();
+};
+
 nsIndex.connectToFb = function() {
 	var accessToken = "";
 	// fb.forceDialogAuth = true;
@@ -63,30 +75,30 @@ nsIndex.connectToFb = function() {
 		}).show();
 		return;
 	} else {
-		
-		$.winIndex.add(nsIndex.controller);
+
+		Alloy.Globals.loading.show();
 		var kinveyFb = new nsIndex.serviceCalls.fbLogin(function(response) {
 			console.debug("Go to next screen!");
 			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 				console.debug("fetchedData ", fetchedData);
 			});
-			$.winIndex.remove(nsIndex.controller);
 			nsIndex.closeWindow();
-		}, function(error){
+		}, function(error) {
 			console.debug("FB ERROR ", error);
 			alert(L('err_facebook'));
-			$.winIndex.remove(nsIndex.controller);
 		});
+
+		Alloy.Globals.loading.hide();
 	}
 
 };
 
-nsIndex.getIt = function() {
+nsIndex.login = function() {
 	if (nsIndex.validateEmail() && nsIndex.validatePassword()) {
 
 		//Login
-		var tfEmail = $.tfEmail.getValue();
-		var tfPass = $.tfPassword.getValue();
+		var emailField = $.emailField.getValue();
+		var tfPass = $.passwordField.getValue();
 
 		this.onloadCallback = function(user) {
 			console.debug("Go to next screen!");
@@ -94,12 +106,13 @@ nsIndex.getIt = function() {
 				console.debug("fetchedData ", fetchedData);
 				// Alloy.createController("LandingPage").getView().open();
 				Alloy.Globals.windowStack.pop();
-				$.winIndex.remove(nsIndex.controller);
+				Alloy.Globals.loading.hide();
 				Alloy.Globals.isSignupWindow = false;
 				nsIndex.closeWindow();
 				if (Titanium.Platform.osname !== "android") {
 					Alloy.Globals.askToNotify();
 				}
+				Titanium.App.fireEvent('checkLocationPermissions');
 			});
 		};
 
@@ -108,11 +121,11 @@ nsIndex.getIt = function() {
 			alert(L('err_serviceError'));
 			//TODO - Proper error handling
 			// alert(error.message);
-			$.winIndex.remove(nsIndex.controller);
+			Alloy.Globals.loading.hide();
 		};
 
-		$.winIndex.add(nsIndex.controller);
-		var signupService = new nsIndex.serviceCalls.signup(tfEmail, tfPass, this.onloadCallback, this.onerrorCallback);
+		Alloy.Globals.loading.show();
+		var signupService = new nsIndex.serviceCalls.signup(emailField, tfPass, this.onloadCallback, this.onerrorCallback);
 
 	} else {
 		alert(L('err_loginDetails'));
@@ -120,7 +133,7 @@ nsIndex.getIt = function() {
 };
 
 nsIndex.userCheck = function() {
-	
+
 	var user = null;
 	try {
 		// To fetch the active user
@@ -141,7 +154,10 @@ nsIndex.userCheck = function() {
 };
 
 nsIndex.init = function() {
-	nsIndex.controller = new nsIndex.activityControl($.vwMain);
+
+	nsIndex.showHideHint($.lblHint_email, $.emailField);
+	nsIndex.showHideHint($.lblHint_pass, $.passwordField);
+
 	console.debug("Hello Signup");
 
 	if (Titanium.Platform.osname !== "android") {
@@ -179,9 +195,9 @@ nsIndex.init = function() {
 			nsIndex.closeWindow();
 		});
 
-		$.vwFbConnect.setHeight(Alloy.Globals.platformHeight * 0.088);
-		$.tfEmail.setHintText(L('index_tfEmail'));
-		$.tfPassword.setHintText(L('index_tfPassword'));
+		// $.vwFbConnect.setHeight(Alloy.Globals.platformHeight * 0.088);
+		// $.emailField.setHintText(L('index_tfEmail'));
+		// $.passwordField.setHintText(L('index_tfPassword'));
 
 		$.winIndex.open();
 	} else {

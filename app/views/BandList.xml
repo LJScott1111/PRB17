@@ -1,16 +1,3 @@
 <Alloy>
-	<Window id="winBandList" platform="ios" backButtonTitle="">
-		<RightNavButton platform="ios">
-			<Button image="/images/settings.png" onClick="nsBandList.getSettings"/>
-		</RightNavButton>
-		<View id="vwMain">
-		</View>
-		<ActivityIndicator id="activityIndicator" message="Loading..."/>
-	</Window>
-	<Window id="winBandList" platform="android">
-		<Require platform="android" src="header" screenId="winBandList" onSetting="nsBandList.getSettings"></Require>
-		<View id="vwMain">
-		</View>
-		<ActivityIndicator id="activityIndicator" message="Loading..."/>
-	</Window>
+	<View id="vwMain"></View>
 </Alloy>

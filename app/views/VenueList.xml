@@ -1,11 +1,3 @@
 <Alloy>
-	<Window id="winVenueList" backButtonTitle="">
-		<RightNavButton platform="ios">
-			<Button image="/images/settings.png" onClick="nsVenueList.getSettings"/>
-		</RightNavButton>
-		<Require platform="android" src="header" screenId="winVenueList" onSetting="nsVenueList.getSettings"></Require>
-		<View id="vwMain">
-		</View>
-		<ActivityIndicator id="activityIndicator" message="Loading..."/>
-	</Window>
+	<View id="vwMain"></View>
 </Alloy>

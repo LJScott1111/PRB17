@@ -1,20 +1,9 @@
-"#winUserSchedule": {
-	backgroundColor: "#ffffff"
-}
-
-"#winUserSchedule[platform=ios]": {
-	barImage: "/icons/navbar1.png"
-}
 
 "#vwMain": {
 	top: 0,
-	layout: "vertical",
-	height: Titanium.UI.SIZE,
+	backgroundColor: "#000000",
+	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL
-}
-
-"#vwMain[platform=android]": {
-	top: Alloy.Globals.theme.sizes.headerbar
 }
 
 "#vwTopYellow": {
@@ -25,8 +14,8 @@
 }
 
 "#lblYourSchedule": {
-	top:5,
-	bottom:5,
+	top: 5,
+	bottom: 5,
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
 	color: "#000000",
@@ -38,7 +27,7 @@
 ".vwDaysClass": {
 	top: 0,
 	height: Titanium.UI.SIZE,
-	width: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
 }
 
 ".dayClass": {
@@ -75,7 +64,7 @@
 "#vwNoSchedule": {
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL,
-	top:0,
+	top: 0,
 	layout: "vertical"
 }
 
@@ -87,7 +76,7 @@
 	color: "#000000",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size25Fonts,
-		fontWeight : "bold"
+		fontWeight: "bold"
 	}
 }
 
@@ -102,7 +91,7 @@
 "#ivHand": {
 	// top: 10,
 	left: 5,
-	height : 80,
+	height: 80,
 	width: Titanium.UI.SIZE,
 	image: "/icons/hand.png"
 }
@@ -110,7 +99,7 @@
 "#ivStar": {
 	// top: 10,
 	right: 5,
-	height : 120,
+	height: 120,
 	width: Titanium.UI.SIZE,
 	image: "/images/star.png"
 }

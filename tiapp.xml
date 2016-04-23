@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <guid>a4ab95f9-40ed-4c31-9111-2b5503065139</guid>
-    <id>com.buzzplay.prb</id>
+    <id>com.interfuel.festfuel</id>
     <name>Punk Rock Bowling Mobile</name>
     <version>2.1.0</version>
     <publisher>Buzzplay</publisher>
@@ -14,6 +13,8 @@
     <statusbar-hidden>false</statusbar-hidden>
     <statusbar-style>opaque</statusbar-style>
     <analytics>false</analytics>
+    <!--<guid>95040078-7551-4c2f-9111-73101a77574c</guid>-->
+    <guid>f42c4aa0-d86c-45b9-9555-894da7d93b77</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="ti.facebook.appid">993161744029602</property>
     <ios>
@@ -32,12 +33,20 @@
                         </array>
                     </dict>
                 </array>
+                <key>NSLocationAlwaysUsageDescription</key>
+                <string>
+                    This feature not only allows you to use your phone's GPS but it also required if you'd like to receive helpful on-site notifications.
+                </string>
                 <key>FacebookAppID</key>
                 <!-- Facebook App ID -->
                 <string>993161744029602</string>
                 <key>FacebookDisplayName</key>
                 <!-- Facebook App Name from developer.facebook.com -->
                 <string>Punk Rock Bowling</string>
+                <key>LSApplicationQueriesSchemes</key>
+				<array>
+				    <string>fbauth2</string>
+				</array>
                 <key>UISupportedInterfaceOrientations~iphone</key>
                 <array>
                     <string>UIInterfaceOrientationPortrait</string>
@@ -64,13 +73,23 @@
         </services>
         <manifest android:installLocation="preferExternal"
             android:versionCode="1" android:versionName="1">
-            <application android:theme="@style/Theme.NoActionBar">
+
+            <uses-permission android:name="android.permission.ACCESS_LOCATION"/>
+			<uses-permission android:name="android.permission.ACCESS_GPS"/>
+			<uses-permission android:name="android.permission.INTERNET"/>
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+            <application android:theme="@style/Theme.AppCompat.NoActionBar">
+                <activity
+                    android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+                    android:label="@string/app_name"
+                    android:name="com.facebook.FacebookActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
                 <activity android:alwaysRetainTaskState="true"
                     android:label="@string/app_name"
-                    android:name="com.facebook.LoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+                    android:name="com.facebook.LoginActivity" android:theme="@style/Theme.AppCompat.Translucent.NoTitleBar"/>
                 <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
             </application>
-            <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="22"/>
+            <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="23"/>
         </manifest>
     </android>
     <mobileweb>
@@ -82,36 +101,17 @@
         <theme>default</theme>
     </mobileweb>
     <modules>
-        <module platform="iphone" version="4.0.3">facebook</module>
         <module platform="android">facebook</module>
-        <module platform="commonjs">ti.cloud</module>
+        <module platform="iphone">facebook</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>
-        <target device="blackberry">false</target>
         <target device="ipad">false</target>
         <target device="iphone">true</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>5.2.1.GA</sdk-version>
+    <sdk-version>5.2.2.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
-    <property name="appc-app-id" type="string">56c4d792a7678e975222d548</property>
-    <property name="acs-authbase-url-development" type="string">https://secure-identity.cloud.appcelerator.com</property>
-    <property name="acs-base-url-development" type="string">https://api.cloud.appcelerator.com</property>
-    <property name="acs-oauth-secret-development" type="string">0VrNv4iaICi8pZ1vNNaS6mllZdRjqeFb</property>
-    <property name="acs-oauth-key-development" type="string">g0MyzswOmPSwqe98AaPAJmMkFVoHqD7E</property>
-    <property name="acs-api-key-development" type="string">f4J4I97ySgo87JKDZsuhQzD9Z66ppukO</property>
-    <property name="acs-username-development" type="string">appc_app_user_dev</property>
-    <property name="acs-password-development" type="string">dnXaU1TdPMvHxrlUgv</property>
-    <property name="acs-authbase-url-production" type="string">https://secure-identity.cloud.appcelerator.com</property>
-    <property name="acs-base-url-production" type="string">https://api.cloud.appcelerator.com</property>
-    <property name="acs-oauth-secret-production" type="string">WCxJQ7SZQDlrGQS2JIrmUEISNjwJS9ew</property>
-    <property name="acs-oauth-key-production" type="string">FJqEZyJ761mqEirs7EGZgBS0el07dJAQ</property>
-    <property name="acs-api-key-production" type="string">fxUgEAC4x0SRCtiKuBbvY6t6X4e52crh</property>
-    <property name="acs-username-production" type="string">appc_app_user</property>
-    <property name="acs-password-production" type="string">pB8aiNfr0RMVbHgqSB</property>
-    <property name="appc-org-id" type="string">100017879</property>
-    <property name="appc-creator-user-id" type="string">4d96098a-0689-45a1-a7b5-904a9b12eef0</property>
 </ti:app>
