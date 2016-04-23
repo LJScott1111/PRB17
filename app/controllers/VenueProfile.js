@@ -143,10 +143,12 @@ nsVenueProfile.createList = function(shows) {
 			}
 		}
 
-		$.vwBandSchedule.add(Titanium.UI.createTableView({
+		var newTable = Titanium.UI.createTableView({
 			data : tabledata,
 			top : 0
-		}));
+		});
+		$.vwBandSchedule.add(newTable);
+		$.svMain.setContentHeight(newTable.height + $.ivVenueImage.height + $.vwVenueInfo.height);
 
 	} else {
 		var lblNoShows = Titanium.UI.createLabel({
@@ -320,7 +322,7 @@ nsVenueProfile.init = function() {
 	$.vwDay4.setRight(2);
 
 	if (Titanium.Platform.osname === "android") {
-		$.svMain.setHeight(Titanium.UI.FILL);
+		$.svMain.setHeight(Alloy.Globals.platformHeight);
 	} else {
 		$.svMain.setHeight(Alloy.Globals.platformHeight);
 	}

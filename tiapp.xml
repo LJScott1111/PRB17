@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <id>com.interfuel.festfuel</id>
+    <guid>a4ab95f9-40ed-4c31-9111-2b5503065139</guid>
+    <id>com.buzzplay.prb</id>
     <name>Punk Rock Bowling Mobile</name>
     <version>2.1.0</version>
     <publisher>Buzzplay</publisher>
@@ -13,7 +14,6 @@
     <statusbar-hidden>false</statusbar-hidden>
     <statusbar-style>opaque</statusbar-style>
     <analytics>false</analytics>
-    <guid>95040078-7551-4c2f-9111-73101a77574c</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="ti.facebook.appid">993161744029602</property>
     <ios>
@@ -84,6 +84,7 @@
     <modules>
         <module platform="iphone" version="4.0.3">facebook</module>
         <module platform="android">facebook</module>
+        <module platform="commonjs">ti.cloud</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>
@@ -92,8 +93,25 @@
         <target device="iphone">true</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>4.0.0.RC4</sdk-version>
+    <sdk-version>5.2.1.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
+    <property name="appc-app-id" type="string">56c4d792a7678e975222d548</property>
+    <property name="acs-authbase-url-development" type="string">https://secure-identity.cloud.appcelerator.com</property>
+    <property name="acs-base-url-development" type="string">https://api.cloud.appcelerator.com</property>
+    <property name="acs-oauth-secret-development" type="string">0VrNv4iaICi8pZ1vNNaS6mllZdRjqeFb</property>
+    <property name="acs-oauth-key-development" type="string">g0MyzswOmPSwqe98AaPAJmMkFVoHqD7E</property>
+    <property name="acs-api-key-development" type="string">f4J4I97ySgo87JKDZsuhQzD9Z66ppukO</property>
+    <property name="acs-username-development" type="string">appc_app_user_dev</property>
+    <property name="acs-password-development" type="string">dnXaU1TdPMvHxrlUgv</property>
+    <property name="acs-authbase-url-production" type="string">https://secure-identity.cloud.appcelerator.com</property>
+    <property name="acs-base-url-production" type="string">https://api.cloud.appcelerator.com</property>
+    <property name="acs-oauth-secret-production" type="string">WCxJQ7SZQDlrGQS2JIrmUEISNjwJS9ew</property>
+    <property name="acs-oauth-key-production" type="string">FJqEZyJ761mqEirs7EGZgBS0el07dJAQ</property>
+    <property name="acs-api-key-production" type="string">fxUgEAC4x0SRCtiKuBbvY6t6X4e52crh</property>
+    <property name="acs-username-production" type="string">appc_app_user</property>
+    <property name="acs-password-production" type="string">pB8aiNfr0RMVbHgqSB</property>
+    <property name="appc-org-id" type="string">100017879</property>
+    <property name="appc-creator-user-id" type="string">4d96098a-0689-45a1-a7b5-904a9b12eef0</property>
 </ti:app>
