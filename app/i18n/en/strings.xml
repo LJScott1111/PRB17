@@ -31,9 +31,9 @@
 	<string name="bowling">Bowling</string>
 	<string name="poker">Poker</string>
 	<string name="art">Art</string>
-	<string name="las_vegas">Las Vegas</string>
+	<string name="las-vegas">Las Vegas</string>
 	<string name="denver">Denver</string>
-	<string name="absury_park">Absury park</string>
+	<string name="absury-park">Absury park</string>
 	
 	<!-- Band Profile -->
 	<string name="bandProfile_lblSoundCloud">Listen</string>

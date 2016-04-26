@@ -4,6 +4,48 @@ var nsLanding = {};
 Alloy.Globals.navWin = $.navWin;
 nsLanding.serviceCalls = require("serverCalls");
 
+nsLanding.get_next_show = function() {
+
+	// Find out earliest show
+	var appdata = Titanium.App.Properties.getObject('appdata');
+
+	var min = Infinity,
+	    max = -Infinity,
+	    x,
+	    location = '';
+	for (x in appdata.shows) {
+		// console.log('LOCATIONS --- >', appdata.shows[x].location);
+		if (appdata.shows[x].start_time < min) {
+			// console.error('LOCATIONS --- >', appdata.shows[x]);
+			min = appdata.shows[x].start_time;
+			if (appdata.shows[x].location) {
+				location = appdata.shows[x].location;
+			} else {
+				location = '';
+			}
+		}
+	}
+
+	// console.log('CURRENT PAGE ', Alloy.Globals.pageflow.getCurrentPage());
+
+	Alloy.Globals.pageflow.getCurrentPage().setNavTitle(L(location).toUpperCase(), {
+		color : '#ffffff',
+		font : {
+			fontSize : '15dp',
+			fontWeight : 'bold'
+		},
+		width : Titanium.UI.SIZE
+	});
+
+	Alloy.Globals.nextEventCity = location;
+	$.args.city = location;
+
+	console.error('NEXT SHOW ', location);
+	Titanium.App.removeEventListener('get_next_show', nsLanding.get_next_show);
+};
+
+// Titanium.App.addEventListener('get_next_show', nsLanding.get_next_show);
+
 nsLanding.getSettings = function() {
 	// Alloy.Globals.getSettings($.winLanding); TODO: remove later
 };
@@ -25,7 +67,9 @@ nsLanding.getBands = function() {
 			console.debug("fetchedData ", fetchedData);
 			if (fetchedData) {
 
-				Alloy.Globals.openWindow('BandList', {}, true);
+				Alloy.Globals.openWindow('BandList', {
+					city: $.args.city
+				}, true);
 				Alloy.Globals.loading.hide();
 			} else {
 				console.debug("All data did not get downloaded!!!");
@@ -36,13 +80,17 @@ nsLanding.getBands = function() {
 
 	} else {
 		console.log('Opening bands');
-		Alloy.Globals.openWindow('BandList', {}, true);
+		Alloy.Globals.openWindow('BandList', {
+			city: $.args.city
+		}, true);
 	}
 };
 
 nsLanding.getEvents = function() {
 
-	Alloy.Globals.openWindow('Events', {}, true);
+	Alloy.Globals.openWindow('Events', {
+		secondary: $.args.secondary
+	}, true);
 };
 
 nsLanding.getSchedule = function() {
@@ -147,6 +195,12 @@ Titanium.App.addEventListener('checkLocationPermissions', nsLanding.checkLocatio
 
 nsLanding.init = function() {
 
+	if (!$.args.city) {
+		Titanium.App.addEventListener('get_next_show', nsLanding.get_next_show);
+	} else {
+		return;
+	}
+
 	Alloy.Globals.checkUser(function(user) {
 		console.debug("Alloy.Globals.checkUser user - " + user);
 
@@ -173,7 +227,6 @@ nsLanding.init = function() {
 		signupWindow.open();
 
 	});
-
 };
 
 nsLanding.init();

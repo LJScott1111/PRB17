@@ -154,6 +154,8 @@ Alloy.Globals.hasVenuesData = false;
 Alloy.Globals.hasShowsData = false;
 
 Alloy.Globals.getAndStoreData = function(callback) {
+	
+	Alloy.Globals.loading.show();
 
 	var count = 0,
 	    fails = 0;
@@ -261,7 +263,9 @@ Alloy.Globals.combinedDetails = function() {
 	console.debug("JSON.stringify(combinedData) ", JSON.stringify(combinedData));
 	// Setting all details in appdata
 	appdata.details = JSON.parse(JSON.stringify(combinedData));
+	Titanium.App.fireEvent('get_next_show');
 	Titanium.App.Properties.setObject('appdata', appdata);
+	Alloy.Globals.loading.hide();
 
 	console.debug("appdata details ", JSON.stringify(Titanium.App.Properties.getObject('appdata')));
 	return true;
@@ -489,4 +493,4 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, r
 		});
 		currentPage = controller;
 	}
-}; 
+};
