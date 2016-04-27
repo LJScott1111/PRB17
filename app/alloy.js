@@ -66,6 +66,8 @@ Alloy.Globals.windowStack = []; // TODO: remove this and related code
 // Loading indicator
 Alloy.Globals.loading = Alloy.createWidget("nl.fokkezb.loading");
 
+Alloy.Globals.CITIES = ['lasvegas', 'denver', 'absurypark'];
+
 // iOS NavMenu
 Alloy.Globals.navMenu = null;
 
@@ -450,7 +452,8 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, r
 				titleOptions : {
 					color : '#ffffff',
 					font : {
-						fontSize : '15dp'
+						fontSize : '15dp',
+						fontWeight: 'bold'
 					},
 					width : Titanium.UI.SIZE
 				}
@@ -481,7 +484,8 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, r
 				titleOptions : {
 					color : '#ffffff',
 					font : {
-						fontSize : '15dp'
+						fontSize : '15dp',
+						fontWeight: 'bold'
 					},
 					width : Titanium.UI.SIZE
 				}

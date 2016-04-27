@@ -1,6 +1,6 @@
 var nsEvents = {};
 nsEvents.serviceCalls = require("serverCalls");
-var cities = ['las-vegas', 'denver', 'absury-park'];
+var cities = JSON.parse(JSON.stringify(Alloy.Globals.CITIES));
 
 nsEvents.getSettings = function() {
 	// Alloy.Globals.getSettings($.winEvents);
