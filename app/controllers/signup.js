@@ -103,9 +103,8 @@ nsIndex.login = function() {
 		this.onloadCallback = function(user) {
 			console.debug("Go to next screen!");
 			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+
 				console.debug("fetchedData ", fetchedData);
-				// Alloy.createController("LandingPage").getView().open();
-				Alloy.Globals.windowStack.pop();
 				Alloy.Globals.loading.hide();
 				Alloy.Globals.isSignupWindow = false;
 				nsIndex.closeWindow();
@@ -132,6 +131,7 @@ nsIndex.login = function() {
 	}
 };
 
+/*
 nsIndex.userCheck = function() {
 
 	var user = null;
@@ -151,7 +151,8 @@ nsIndex.userCheck = function() {
 		// var logout = new nsLogin.serviceCalls.logout();
 		console.debug("Kinvey user exception ", JSON.stringify(e));
 	}
-};
+};*/
+
 
 nsIndex.init = function() {
 
@@ -164,9 +165,6 @@ nsIndex.init = function() {
 		$.vwMain.setTop(Alloy.Globals.platformHeight * 0.1056);
 	}
 
-	Alloy.Globals.windowStack.push($.winIndex);
-
-	// NOT WORKING : TODO
 	var user = null;
 	try {
 		// To fetch the active user
@@ -195,15 +193,8 @@ nsIndex.init = function() {
 			nsIndex.closeWindow();
 		});
 
-		// $.vwFbConnect.setHeight(Alloy.Globals.platformHeight * 0.088);
-		// $.emailField.setHintText(L('index_tfEmail'));
-		// $.passwordField.setHintText(L('index_tfPassword'));
-
 		$.winIndex.open();
 	} else {
-		// setTimeout(function() {
-		// Alloy.createController("LandingPage").getView().open();
-		// }, 2000);
 		$.winIndex.open();
 	}
 

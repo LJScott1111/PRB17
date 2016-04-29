@@ -8,8 +8,8 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 
 	promise.then(function(user) {
 
-		if (!user) { // For testing! TODO: need to add proper functions for login and skip
-
+		if (!user) { // For testing!
+			/*
 			var promise2 = Kinvey.User.login({
 				username : 'mobile@buzzplay.com',
 				password : 'prb%2015'
@@ -29,7 +29,7 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 				//Titanium.App.Properties.removeProperty('appdata');
 				console.debug("Login error ", error);
 				errorCallback(error);
-			}); 
+			}); */
 			callback(user);
 
 		} else {

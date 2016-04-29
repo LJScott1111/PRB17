@@ -16,8 +16,17 @@ nsServerCalls.signup = function(username, password, onloadCallback, errorCallbac
 		onloadCallback(thisUser);
 
 	}, function(error) {
+
 		console.debug("Signup error ", error);
-		errorCallback(error);
+
+		if (Kinvey.Error.USER_ALREADY_EXISTS) {
+
+			console.error('Kinvey.Error.USER_ALREADY_EXISTS');
+			nsServerCalls.login(username, password, onloadCallback, errorCallback);
+		} else {
+
+			errorCallback(error);
+		}
 	});
 
 };
