@@ -61,7 +61,50 @@ nsIndex.getSettings = function() {
 };
 
 nsIndex.skipSignUp = function() {
-	nsIndex.closeWindow();
+	// If user skips signin, in that case, to get the show data logging in using default user.
+	// If user is logged in using default user, the app will ask her login on every app load
+
+	console.log('SKIP SIGNIN CALLED');
+	if (Kinvey.getActiveUser()) {
+		Alloy.Globals.getAndStoreData();
+		nsIndex.closeWindow();
+		return;
+	};
+
+	Alloy.Globals.checkUser(function(user) {
+
+		if (!user) {
+
+			var Kinvey = Alloy.Globals.Kinvey;
+			var promise2 = Kinvey.User.login({
+				username : 'mobile@buzzplay.com',
+				password : 'prb%2015'
+			});
+			promise2.then(function(user) {
+				console.debug("Login success - user ", JSON.stringify(user));
+				//Titanium.App.Properties.removeProperty('appdata');
+				Titanium.App.Properties.setString('userid', user._id);
+
+				var thisUser = Kinvey.setActiveUser(user);
+				console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
+
+				Titanium.App.Properties.setString('defaultUser', true);
+
+				Alloy.Globals.getAndStoreData();
+				nsIndex.closeWindow();
+
+			}, function(error) {
+				alert(L('err_serviceError'));
+			});
+		} else {
+
+			Alloy.Globals.getAndStoreData();
+			nsIndex.closeWindow();
+		}
+	}, function(error) {
+
+		alert(L('err_serviceError'));
+	});
 };
 
 nsIndex.connectToFb = function() {
@@ -93,38 +136,56 @@ nsIndex.connectToFb = function() {
 
 };
 
+nsIndex.loginServiceCall = function() {
+
+	//Login
+	var emailField = $.emailField.getValue();
+	var tfPass = $.passwordField.getValue();
+
+	this.onloadCallback = function(user) {
+		console.debug("Go to next screen!");
+		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+
+			console.debug("fetchedData ", fetchedData);
+			Alloy.Globals.loading.hide();
+			Alloy.Globals.isSignupWindow = false;
+			nsIndex.closeWindow();
+			if (Titanium.Platform.osname !== "android") {
+				Alloy.Globals.askToNotify();
+			}
+			Titanium.App.fireEvent('checkLocationPermissions');
+		});
+	};
+
+	this.onerrorCallback = function(error) {
+		console.debug("Error occured in login");
+		alert(L('err_serviceError'));
+		//TODO - Proper error handling
+		// alert(error.message);
+		Alloy.Globals.loading.hide();
+	};
+
+	Alloy.Globals.loading.show();
+	var signupService = new nsIndex.serviceCalls.signup(emailField, tfPass, this.onloadCallback, this.onerrorCallback);
+};
+
 nsIndex.login = function() {
+
+	console.log('TRYING TO LOGIN');
+	var user = Kinvey.getActiveUser();
 	if (nsIndex.validateEmail() && nsIndex.validatePassword()) {
 
-		//Login
-		var emailField = $.emailField.getValue();
-		var tfPass = $.passwordField.getValue();
+		if (Kinvey.getActiveUser()) {
 
-		this.onloadCallback = function(user) {
-			console.debug("Go to next screen!");
-			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+			nsIndex.serviceCalls.logout(function() {
 
-				console.debug("fetchedData ", fetchedData);
-				Alloy.Globals.loading.hide();
-				Alloy.Globals.isSignupWindow = false;
-				nsIndex.closeWindow();
-				if (Titanium.Platform.osname !== "android") {
-					Alloy.Globals.askToNotify();
-				}
-				Titanium.App.fireEvent('checkLocationPermissions');
+				nsIndex.loginServiceCall();
+			}, function(error) {
+				alert(L('err_loginDetails'));
 			});
-		};
-
-		this.onerrorCallback = function(error) {
-			console.debug("Error occured in login");
-			alert(L('err_serviceError'));
-			//TODO - Proper error handling
-			// alert(error.message);
-			Alloy.Globals.loading.hide();
-		};
-
-		Alloy.Globals.loading.show();
-		var signupService = new nsIndex.serviceCalls.signup(emailField, tfPass, this.onloadCallback, this.onerrorCallback);
+		} else {
+			nsLogin.loginServiceCall();
+		}
 
 	} else {
 		alert(L('err_loginDetails'));
