@@ -12,21 +12,19 @@ nsSearchList.momentjs = require('moment');
 
 nsSearchList.getList = function(day) {
 	// Get list
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	console.debug("day ", day);
 
 	var dayOfShow = "";
 
 	var bands = [];
 
-	for (var i = 0,
-	    len = appdata.details.length; i < len; i++) {
-		dayOfShow = nsSearchList.momentjs(appdata.details[i].showDetails.start_time * 1000).format('dddd').toLowerCase().trim();
+	for (i in nsSearchList.currentCityData) {
+		dayOfShow = nsSearchList.momentjs(nsSearchList.currentCityData[i].showDetails.start_time * 1000).format('dddd').toLowerCase().trim();
 
-		// console.debug("dayOfShow ", dayOfShow);
+		console.debug("dayOfShow ", dayOfShow);
 
 		if (day === dayOfShow) {
-			bands.push(appdata.details[i].bandDetails);
+			bands.push(nsSearchList.currentCityData[i].bandDetails);
 		}
 	}
 	bands.sort(Alloy.Globals.sortArray('name'));
@@ -388,25 +386,23 @@ nsSearchList.createList = function(tblData) {
 				// console.debug(tblData[e.row.id]._id);
 				var data_id = (Titanium.Platform.osname === "android") ? tblData[e.source.index]._id : tblData[e.row.id]._id;
 
-				var appdata = Titanium.App.Properties.getObject('appdata', {});
-				for (var i = 0,
-				    len = appdata.details.length; i < len; i++) {
+				for (i in nsSearchList.currentCityData.length) {
 
 					if (nsSearchList.type === "BandList") {
-						if (appdata.details[i].showDetails.band_id === data_id) {
-							var show_id = appdata.details[i].showDetails._id;
+						if (nsSearchList.currentCityData[i].showDetails.band_id === data_id) {
+							var show_id = nsSearchList.currentCityData[i].showDetails._id;
 							var addShow = new nsSearchList.serverCalls.saveUserSchedule(show_id, function(response) {
 								e.source.setImage(Alloy.Globals.theme.icons.star);
 
 								var MS_PER_MINUTE = 60000;
-								var startDate = new Date((appdata.details[i].showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
+								var startDate = new Date((nsSearchList.currentCityData[i].showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
 								console.log("startDate ", startDate);
 
 								// Schedule notifications for IOS
 								if (Titanium.Platform.osname !== "android") {
 
 									var notification = Ti.App.iOS.scheduleLocalNotification({
-										alertBody : appdata.details[i].bandDetails.name + "\n" + appdata.details[i].venueDetails.name + "\n" + startDate,
+										alertBody : nsSearchList.currentCityData[i].bandDetails.name + "\n" + nsSearchList.currentCityData[i].venueDetails.name + "\n" + startDate,
 										badge : 1,
 										date : startDate,
 									});
@@ -433,8 +429,8 @@ nsSearchList.createList = function(tblData) {
 									// Send extra data to the service;
 									intent.putExtra('timestamp', startDate);
 
-									intent.putExtra('band', appdata.details[i].bandDetails.name);
-									intent.putExtra('message', appdata.details[i].venueDetails.name + "\n" + startDate);
+									intent.putExtra('band', nsSearchList.currentCityData[i].bandDetails.name);
+									intent.putExtra('message', nsSearchList.currentCityData[i].venueDetails.name + "\n" + startDate);
 
 									// Start the service
 									Ti.Android.startService(intent);
@@ -447,20 +443,20 @@ nsSearchList.createList = function(tblData) {
 							break;
 						}
 					} else {
-						if (appdata.details[i].showDetails.venue_id === data_id) {
-							var show_id = appdata.details[i].showDetails._id;
+						if (nsSearchList.currentCityData[i].showDetails.venue_id === data_id) {
+							var show_id = nsSearchList.currentCityData[i].showDetails._id;
 							var addShow = new nsSearchList.serverCalls.saveUserSchedule(show_id, function(response) {
 								e.source.setImage(Alloy.Globals.theme.icons.star);
 
 								var MS_PER_MINUTE = 60000;
-								var startDate = new Date((appdata.details[i].showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
+								var startDate = new Date((nsSearchList.currentCityData[i].showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
 								console.log("startDate ", startDate);
 
 								// Schedule notifications for IOS
 								if (Titanium.Platform.osname !== "android") {
 
 									var notification = Ti.App.iOS.scheduleLocalNotification({
-										alertBody : appdata.details[i].bandDetails.name + "\n" + appdata.details[i].venueDetails.name + "\n" + startDate,
+										alertBody : nsSearchList.currentCityData[i].bandDetails.name + "\n" + nsSearchList.currentCityData[i].venueDetails.name + "\n" + startDate,
 										badge : 1,
 										date : startDate,
 									});
@@ -487,8 +483,8 @@ nsSearchList.createList = function(tblData) {
 									// Send extra data to the service;
 									intent.putExtra('timestamp', startDate);
 
-									intent.putExtra('band', appdata.details[i].bandDetails.name);
-									intent.putExtra('message', appdata.details[i].venueDetails.name + "\n" + startDate);
+									intent.putExtra('band', nsSearchList.currentCityData[i].bandDetails.name);
+									intent.putExtra('message', nsSearchList.currentCityData[i].venueDetails.name + "\n" + startDate);
 
 									// Start the service
 									Ti.Android.startService(intent);
@@ -518,6 +514,7 @@ nsSearchList.createList = function(tblData) {
 
 	nsSearchList.table = Ti.UI.createTableView({
 		top : 0,
+		bottom : 20,
 		// index: index,
 		// data: sectionArr,
 		// search : sbSearchBar,
@@ -549,7 +546,8 @@ nsSearchList.createList = function(tblData) {
 nsSearchList.init = function(type, data) {
 	nsSearchList.selectedTab = null;
 	nsSearchList.type = type;
-	nsSearchList.data = JSON.parse(JSON.stringify(data));
+	nsSearchList.data = JSON.parse(JSON.stringify(data.list));
+	nsSearchList.currentCityData = JSON.parse(JSON.stringify(data.currentCityData));
 
 	nsSearchList.data.sort(Alloy.Globals.sortArray('name'));
 	console.log("sorted ", JSON.stringify(nsSearchList.data));

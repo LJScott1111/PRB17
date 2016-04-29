@@ -15,7 +15,7 @@
 				<Label class="options_lbl touch_false" id="lblVenues" text="L('venues').toUpperCase()"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getNews">
-				<Label class="options_lbl touch_false" id="lblVendors" text="L('vendors').toUpperCase()"></Label>
+				<Label class="options_lbl touch_false" id="lblVendors" text="L('news').toUpperCase()"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getFood">
 				<Label class="options_lbl touch_false" id="lblFood" text="L('food').toUpperCase()"></Label>

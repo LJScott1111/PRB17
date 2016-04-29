@@ -1,5 +1,6 @@
 var nsEvents = {};
 nsEvents.serviceCalls = require("serverCalls");
+var cities = JSON.parse(JSON.stringify(Alloy.Globals.CITIES));
 
 nsEvents.getSettings = function() {
 	// Alloy.Globals.getSettings($.winEvents);
@@ -69,8 +70,43 @@ nsEvents.getArt = function() {
 	}, true);
 };
 
+nsEvents.openCity2Event = function() {
+
+	Alloy.Globals.openWindow('MainView', {
+		city : cities[0],
+		secondary: true
+	}, true, L(cities[0]).toUpperCase());
+};
+
+nsEvents.openCity3Event = function() {
+
+	Alloy.Globals.openWindow('MainView', {
+		city : cities[1],
+		secondary: true
+	}, true, L(cities[1]).toUpperCase());
+};
+
 nsEvents.init = function() {
 	// Alloy.Globals.windowStack.push($.winEvents); : TODO Loading View
+	
+	if ($.args.secondary) {
+		
+		$.city2.height = 0;
+		$.city3.height = 0;
+		return;
+	};
+
+	for (i in cities) {
+		if (Alloy.Globals.nextEventCity == cities[i]) {
+			cities.splice(i, 1);
+			break;
+		}
+	}
+
+	console.log(cities);
+
+	$.lblCity2.text = L(cities[0]).toUpperCase();
+	$.lblCity3.text = L(cities[1]).toUpperCase();
 };
 
 nsEvents.init();

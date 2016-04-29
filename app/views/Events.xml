@@ -3,22 +3,22 @@
 		<View id="vwTopOptions">
 
 			<View class="absolute_layout options_view padding_top" onClick="nsEvents.getMovies">
-				<Label class="options_lbl touch_false" id="lblEvents" text="L('movies').toUpperCase()"></Label>
+				<Label class="options_lbl touch_false" text="L('movies').toUpperCase()"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" onClick="nsEvents.getBowling">
-				<Label class="options_lbl touch_false" id="lblSchedule" text="L('bowling').toUpperCase()"></Label>
+				<Label class="options_lbl touch_false" text="L('bowling').toUpperCase()"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" onClick="nsEvents.getPoker">
-				<Label class="options_lbl touch_false" id="lblVenues" text="L('poker').toUpperCase()"></Label>
+				<Label class="options_lbl touch_false" text="L('poker').toUpperCase()"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" onClick="nsEvents.getArt">
-				<Label class="options_lbl touch_false" id="lblVendors" text="L('art').toUpperCase()"></Label>
+				<Label class="options_lbl touch_false" text="L('art').toUpperCase()"></Label>
 			</View>
-			<View class="absolute_layout options_view padding_top" id="city2">
-				<Label class="options_lbl touch_false" id="lblEvents" text="City2"></Label>
+			<View class="absolute_layout options_view padding_top" id="city2" onClick="nsEvents.openCity2Event">
+				<Label class="options_lbl touch_false" id="lblCity2" text="City2"></Label>
 			</View>
-			<View class="absolute_layout options_view padding_top" id="city3">
-				<Label class="options_lbl touch_false" id="lblSchedule" text="City3"></Label>
+			<View class="absolute_layout options_view padding_top" id="city3" onClick="nsEvents.openCity3Event">
+				<Label class="options_lbl touch_false" id="lblCity3" text="City3"></Label>
 			</View>
 
 		</View>
