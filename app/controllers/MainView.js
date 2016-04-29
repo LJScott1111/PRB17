@@ -212,8 +212,6 @@ nsLanding.init = function() {
 				});
 			}
 			signupWindow.open();
-		} else {
-			// Titanium.App.fireEvent('checkLocationPermissions'); TODO: failing, check again
 		}
 	}, function(error) {
 		console.debug("Alloy.Globals.checkUser - error - " - error);
