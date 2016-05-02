@@ -3,22 +3,22 @@
 		<View id="vwTopOptions">
 
 			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getBands">
-				<Label class="options_lbl touch_false" id="lblBands" text="L('bands').toUpperCase()"></Label>
+				<Label class="options_lbl knowYourProduct touch_false" id="lblBands" text="L('bands').toUpperCase()"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getEvents">
-				<Label class="options_lbl touch_false" id="lblEvents" text="L('events').toUpperCase()"></Label>
+				<Label class="options_lbl knowYourProduct touch_false" id="lblEvents" text="L('events').toUpperCase()"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule">
-				<Label class="options_lbl touch_false" id="lblSchedule" text="L('schedule').toUpperCase()"></Label>
+				<Label class="options_lbl knowYourProduct touch_false" id="lblSchedule" text="L('schedule').toUpperCase()"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getVenues">
-				<Label class="options_lbl touch_false" id="lblVenues" text="L('venues').toUpperCase()"></Label>
+				<Label class="options_lbl knowYourProduct touch_false" id="lblVenues" text="L('venues').toUpperCase()"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getNews">
-				<Label class="options_lbl touch_false" id="lblVendors" text="L('news').toUpperCase()"></Label>
+				<Label class="options_lbl knowYourProduct touch_false" id="lblVendors" text="L('news').toUpperCase()"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getFood">
-				<Label class="options_lbl touch_false" id="lblFood" text="L('food').toUpperCase()"></Label>
+				<Label class="options_lbl knowYourProduct touch_false" id="lblFood" text="L('food').toUpperCase()"></Label>
 			</View>
 
 		</View>

@@ -1,6 +1,6 @@
 <Alloy>
 	<View id="container" >
 		<ImageView id="icon" />
-		<Label id="title" />
+		<Label id="title" class="knowYourProduct" />
 	</View>
 </Alloy>

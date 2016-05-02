@@ -51,6 +51,12 @@ LAYOUTS
 FONTS
 */
 
+".knowYourProduct": {
+	font: {
+		fontFamily: "KnowYourProduct"
+	}
+}
+
 'Label': {
 	width: Titanium.UI.SIZE,
 	height: Titanium.UI.SIZE,
@@ -62,7 +68,7 @@ FONTS
 ".options_lbl": {
 	color: '#ffffff',
 	font: {
-		fontSize: Alloy.Globals.theme.fonts.size15Fonts,
+		fontSize: Alloy.Globals.theme.fonts.size25Fonts,
 		fontWeight: 'bold'
 	}
 }

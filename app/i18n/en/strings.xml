@@ -25,6 +25,7 @@
 	<string name="venues">Venues</string>
 	<string name="vendors">Vendors</string>
 	<string name="food">Food</string>
+	<string name="news">News</string>
 	
 	<!-- Events screen -->
 	<string name="movies">Movies</string>

@@ -31,8 +31,8 @@ nsLanding.get_next_show = function() {
 	Alloy.Globals.pageflow.getCurrentPage().setNavTitle(L(location).toUpperCase(), {
 		color : '#ffffff',
 		font : {
-			fontSize : '15dp',
-			fontWeight : 'bold'
+			fontSize : Alloy.Globals.theme.fonts.size15Fonts,
+			fontFamily: "KnowYourProduct"
 		},
 		width : Titanium.UI.SIZE
 	});

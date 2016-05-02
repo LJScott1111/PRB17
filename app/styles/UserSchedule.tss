@@ -34,7 +34,7 @@
 	top: 2,
 	bottom: 2,
 	height: Titanium.UI.SIZE,
-	borderRadius: 10,
+	borderRadius: 5,
 	borderColor: "#000000"
 }
 
@@ -50,7 +50,7 @@
 	touchEnabled: false,
 	color: "#000000",
 	font: {
-		fontSize: Alloy.Globals.theme.fonts.size15Fonts
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
 	}
 }
 
