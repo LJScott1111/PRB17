@@ -13,8 +13,7 @@
     <statusbar-hidden>false</statusbar-hidden>
     <statusbar-style>opaque</statusbar-style>
     <analytics>false</analytics>
-    <!--<guid>95040078-7551-4c2f-9111-73101a77574c</guid>-->
-    <guid>f42c4aa0-d86c-45b9-9555-894da7d93b77</guid>
+    <guid>95040078-7551-4c2f-9111-73101a77574c</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="ti.facebook.appid">993161744029602</property>
     <ios>
