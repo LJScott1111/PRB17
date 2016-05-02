@@ -459,7 +459,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, r
 				left : 'misc/openMenu',
 				title : title_text,
 				titleOptions : {
-					color : '#ffffff',
+					color : '#F3CB87',
 					font : {
 						fontSize : Alloy.Globals.theme.fonts.size15Fonts,
 						fontFamily: "KnowYourProduct"
@@ -491,7 +491,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, r
 				right : rightMenu,
 				title : title_text,
 				titleOptions : {
-					color : '#ffffff',
+					color : '#F3CB87',
 					font : {
 						fontSize : Alloy.Globals.theme.fonts.size15Fonts,
 						fontFamily: "KnowYourProduct"

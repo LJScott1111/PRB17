@@ -18,7 +18,7 @@
 	bottom: 5,
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
-	color: "#ffffff",
+	color: "#F3CB87",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size20Fonts
 	}

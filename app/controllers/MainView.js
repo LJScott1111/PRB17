@@ -29,7 +29,7 @@ nsLanding.get_next_show = function() {
 	// console.log('CURRENT PAGE ', Alloy.Globals.pageflow.getCurrentPage());
 
 	Alloy.Globals.pageflow.getCurrentPage().setNavTitle(L(location).toUpperCase(), {
-		color : '#ffffff',
+		color : '#F3CB87',
 		font : {
 			fontSize : Alloy.Globals.theme.fonts.size15Fonts,
 			fontFamily: "KnowYourProduct"
