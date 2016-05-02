@@ -1,23 +1,23 @@
 <Alloy>
 	<View id="vwMain">
-		<View class="vertical_layout">
+		<View class="vertical_layout padding_top">
 			<View id="vwTopYellow">
-				<Label id="lblYourSchedule" text="Your Schedule"></Label>
+				<Label id="lblYourSchedule" text="L('my_schedule').toUpperCase()"></Label>
 			</View>
 			<View id="vwDays" class="vwDaysClass">
 				<View id="vwDay1" class = "dayClass" day="friday" >
-					<Label id="lblDay1" class="lblDayClass" textid="friday"></Label>
+					<Label id="lblDay1" class="lblDayClass" text="L('friday').toUpperCase()"></Label>
 				</View>
 				<View id="vwDays2" class="vwDaysClass">
 					<View id="vwDay2" class = "dayClass" day="saturday" >
-						<Label id="lblDay2" class="lblDayClass" textid="saturday"></Label>
+						<Label id="lblDay2" class="lblDayClass" text="L('saturday').toUpperCase()"></Label>
 					</View>
 					<View id="vwDay3" class = "dayClass" day="sunday" >
-						<Label id="lblDay3" class="lblDayClass" textid="sunday"></Label>
+						<Label id="lblDay3" class="lblDayClass" text="L('sunday').toUpperCase()"></Label>
 					</View>
 				</View>
 				<View id="vwDay4" class = "dayClass" day="monday" >
-					<Label id="lblDay4" class="lblDayClass" textid="monday"></Label>
+					<Label id="lblDay4" class="lblDayClass" text="L('monday').toUpperCase()"></Label>
 				</View>
 			</View>
 			<View id="vwBandSchedule"></View>
