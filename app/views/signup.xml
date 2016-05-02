@@ -17,8 +17,8 @@
 				
 				<Button id="btnLogin" class="btnClass" title="L('index_lblGetIt').toUpperCase()" onClick="nsIndex.login"></Button>
 				<Button id="btnSkip" class="btnClass" title="L('index_lblSkip').toUpperCase()" onClick="nsIndex.skipSignUp"></Button>
-				<Label id="lblOr" text="L('index_lblOr')"></Label>
-				<Button id="btnFbConnect" class="btnClass" title="L('index_lblFbConnect')" onClick="nsIndex.connectToFb"></Button>
+				<!-- <Label id="lblOr" text="L('index_lblOr')"></Label>
+				<Button id="btnFbConnect" class="btnClass" title="L('index_lblFbConnect')" onClick="nsIndex.connectToFb"></Button> -->
 			</View>
 			<View id="vwBottomView">
 				<!-- <ImageView id="ivPoker"></ImageView> 

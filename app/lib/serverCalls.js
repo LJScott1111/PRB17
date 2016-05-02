@@ -13,6 +13,7 @@ nsServerCalls.signup = function(username, password, onloadCallback, errorCallbac
 		Titanium.App.Properties.setString('userid', user._id);
 
 		var thisUser = Kinvey.setActiveUser(user);
+		Titanium.App.Properties.removeProperty('defaultUser', false);
 		onloadCallback(thisUser);
 
 	}, function(error) {
@@ -47,6 +48,7 @@ nsServerCalls.login = function(username, password, onloadCallback, errorCallback
 
 		var thisUser = Kinvey.setActiveUser(user);
 		console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
+		Titanium.App.Properties.removeProperty('defaultUser', false);
 		onloadCallback(thisUser);
 
 	}, function(error) {
@@ -68,6 +70,7 @@ nsServerCalls.logout = function(onloadCallback, errorCallback) {
 			Titanium.App.Properties.removeProperty('appdata');
 			Titanium.App.Properties.removeProperty('userid');
 			console.debug("Titanium.App.Properties.removeProperty('userid') ", Titanium.App.Properties.getString('userid'));
+			Titanium.App.Properties.removeProperty('defaultUser', false);
 			onloadCallback();
 		}, function(error) {
 			console.debug("Logout Error");

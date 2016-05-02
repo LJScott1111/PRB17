@@ -7,6 +7,13 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 	});
 
 	promise.then(function(user) {
+		
+		// If user is logged in using default user, the app will ask her login on every app load
+		console.log('CHECK USER = ', Titanium.App.Properties.getString('defaultUser'));
+		if (Titanium.App.Properties.getString('defaultUser') == true) {
+			callback();
+			return;
+		}
 
 		if (!user) { // For testing!
 			/*

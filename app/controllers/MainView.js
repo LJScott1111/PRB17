@@ -174,7 +174,7 @@ nsLanding.getNews = function() {
 	}, true);
 };
 
-nsLanding.checkLocationPermissions = function() {// TODO: failing, check again
+nsLanding.checkLocationPermissions = function() {
 
 	var utils = require('utils');
 

@@ -184,7 +184,7 @@ exports.getLocation = function getLocation(callback) {
 					console.debug(JSON.stringify(e));
 					if (e.index === 0) {
 						confirm.hide();
-						Titanium.App.fireEvent('closeApp');
+						// Titanium.App.fireEvent('closeApp');
 					}
 				});
 			} else {
