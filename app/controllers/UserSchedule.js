@@ -267,7 +267,7 @@ nsUserSchedule.createLayout = function(data) {
 		// console.log('venue = ', venue);
 
 		var bandBoxContainer = Titanium.UI.createView({
-			width : Titanium.UI.FILL,
+			width : '100%',
 			height : bandBoxContainerHeight,
 			layout : 'absolute',
 			horizontalWrap : false,
@@ -313,7 +313,7 @@ nsUserSchedule.createLayout = function(data) {
 
 		var mainHorizontalScrollContainer = Titanium.UI.createScrollView({
 
-			width : Titanium.UI.SIZE,
+			width : '100%',
 			height : Titanium.UI.SIZE,
 			borderColor : 'black',
 			scrollType : 'horizontal',
@@ -326,14 +326,15 @@ nsUserSchedule.createLayout = function(data) {
 
 		var verticalScrollContainer = Titanium.UI.createScrollView({
 
-			width : Titanium.UI.SIZE,
+			width : '100%',
 			height : 280,
 			scrollType : 'vertical',
 			layout : 'vertical',
 			disableBounce : true,
 			contentHeight : Ti.UI.SIZE,
 			contentWidth : Ti.UI.SIZE,
-			top : 0
+			top : 0,
+			left: 0,
 		});
 
 		for (i in data.showsGroupedByVenue) {
