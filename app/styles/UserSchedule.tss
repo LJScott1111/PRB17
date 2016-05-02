@@ -10,7 +10,7 @@
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.SIZE,
 	top: 0,
-	backgroundColor: "#FFD801"
+	backgroundColor: "#cc0000"
 }
 
 "#lblYourSchedule": {
@@ -18,9 +18,9 @@
 	bottom: 5,
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE,
-	color: "#000000",
+	color: "#ffffff",
 	font: {
-		fontSize: Alloy.Globals.theme.fonts.size25Fonts
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts
 	}
 }
 
@@ -58,13 +58,15 @@
 	top: 0,
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
-	width: Titanium.UI.FILL
+	width: Titanium.UI.FILL,
+	borderColor: 'black'
 }
 
 "#vwNoSchedule": {
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL,
 	top: 0,
+	backgroundColor: '#000000',
 	layout: "vertical"
 }
 
@@ -73,7 +75,7 @@
 	left: 20,
 	right: 20,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	color: "#000000",
+	color: "#ffffff",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size25Fonts,
 		fontWeight: "bold"

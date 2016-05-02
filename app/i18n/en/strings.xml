@@ -33,7 +33,7 @@
 	<string name="art">Art</string>
 	<string name="lasvegas">Las Vegas</string>
 	<string name="denver">Denver</string>
-	<string name="absurypark">Absury park</string>
+	<string name="asburypark">Asbury park</string>
 	
 	<!-- Band Profile -->
 	<string name="bandProfile_lblSoundCloud">Listen</string>
@@ -55,12 +55,14 @@
 	<string name="userDisabledLocation_err">You have disallowed Map App from running geolocation services. Please enable or reset location services.</string>
 	<string name="unknown_err">Unknown error</string>
 	
+	<string name="no_schedule_data">press the star next to band name you want to see to create your own custom schedule.</string>
+	
 	<!-- Schedule -->
 	<string name="all">All</string>
-	<string name="friday">Friday</string>
-	<string name="saturday">Saturday</string>
-	<string name="sunday">Sunday</string>
-	<string name="monday">Monday</string>
+	<string name="friday">Fri</string>
+	<string name="saturday">Sat</string>
+	<string name="sunday">Sun</string>
+	<string name="monday">Mon</string>
 	
 	<!-- Settings Menu -->
 	<string name="settings_login">Login</string>

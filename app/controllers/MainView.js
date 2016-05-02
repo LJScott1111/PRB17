@@ -146,7 +146,9 @@ nsLanding.getVenues = function() {
 			console.debug("fetchedData ", fetchedData);
 			if (fetchedData) {
 
-				Alloy.Globals.openWindow('VenueList', {}, true);
+				Alloy.Globals.openWindow('VenueList', {
+					city: $.args.city
+				}, true);
 
 				Alloy.Globals.loading.hide();
 			} else {
@@ -156,7 +158,9 @@ nsLanding.getVenues = function() {
 			Alloy.Globals.loading.hide();
 		});
 	} else {
-		Alloy.Globals.openWindow('VenueList', {}, true);
+		Alloy.Globals.openWindow('VenueList', {
+			city: $.args.city
+		}, true);
 	}
 };
 
