@@ -73,7 +73,7 @@ Alloy.Globals.windowStack = []; // TODO: remove this and related code
 // Loading indicator
 Alloy.Globals.loading = Alloy.createWidget("nl.fokkezb.loading");
 
-Alloy.Globals.CITIES = ['lasvegas', 'denver', 'absurypark'];
+Alloy.Globals.CITIES = ['lasvegas', 'denver', 'asburypark'];
 
 // iOS NavMenu
 Alloy.Globals.navMenu = null;
