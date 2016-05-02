@@ -44,8 +44,8 @@
 }
 
 ".lblDayClass": {
-	top: 5,
-	bottom: 5,
+	top: 2,
+	bottom: 2,
 	height: Titanium.UI.SIZE,
 	touchEnabled: false,
 	color: "#000000",
