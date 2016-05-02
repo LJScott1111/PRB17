@@ -120,6 +120,370 @@ nsUserSchedule.createList = function(shows) {
 
 nsUserSchedule.currentDay = null;
 
+nsUserSchedule.createLayout = function(data) {
+
+	console.log('dataToCreateSchedule = ', JSON.stringify(data));
+
+	var bandBoxHeight = Alloy.Globals.platformHeight * 0.0792;
+	var bandBoxWidth = Alloy.Globals.platformWidth * 0.3434;
+
+	var bandBoxContainerHeight = Alloy.Globals.platformHeight * 0.088;
+	var venueNameViewWidth = Alloy.Globals.platformWidth * 0.1875;
+
+	var timeBoxWidth = Alloy.Globals.platformWidth * 0.3434 / 2;
+
+	console.log('---------- nsUserSchedule.createLayout ---------');
+
+	this.createTimeFrameBox = function(time) {
+
+		var timeBoxView = Titanium.UI.createView({
+			layout : 'horizontal',
+			height : bandBoxHeight,
+			width : bandBoxWidth,
+			left : 5
+		});
+
+		var timeLabel = Titanium.UI.createLabel({
+			bottom : 2,
+			height : Titanium.UI.FILL,
+			width : Titanium.UI.FILL,
+			text : time.value + time.unit,
+			color : '#ffffff',
+			font : {
+				fontSize : Alloy.Globals.theme.fonts.size10Fonts
+			}
+		});
+
+		timeBoxView.add(timeLabel);
+		return timeBoxView;
+	};
+
+	this.createTimeframe = function() {
+
+		var timeframeContainer = Titanium.UI.createView({
+			width : Titanium.UI.FILL,
+			height : bandBoxContainerHeight / 2,
+			layout : 'horizontal',
+			horizontalWrap : false,
+			borderColor : '#ffffff',
+			borderWidth : 1,
+			left : 0,
+			top : 0
+		});
+
+		var placeholder = Titanium.UI.createView({
+			left : venueNameViewWidth,
+			height : Titanium.UI.FILL,
+			width : 1,
+			backgroundColor : '#ffffff'
+		});
+
+		timeframeContainer.add(placeholder);
+
+		for (i in data.timeframe.timeArray) {
+			// console.error('data.timeArray ', data.timeframe.timeArray[i]);
+			timeframeContainer.add(this.createTimeFrameBox(data.timeframe.timeArray[i]));
+		}
+
+		return timeframeContainer;
+	};
+
+	// Small box of band details --- starts from here
+	this.createBandBox = function(bName, bImage, showTime) {
+
+		var left = venueNameViewWidth;
+		console.log('bName = ', bName, ' ', bImage, ' ', showTime);
+
+		var startTime = nsUserSchedule.momentjs(showTime * 1000).format('H.mm');
+
+		console.log('data.timeArray ', JSON.stringify(data.timeframe.timeArray));
+		console.log('timeframe startTime ', startTime);
+
+		for (i in data.timeframe.timeArray) {
+			console.log('----> ', data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
+			if (data.timeframe.timeArray[i].id == Math.floor(startTime) && Math.floor(startTime) == Math.ceil(startTime)) {
+				console.log('INDEX ', data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]));
+				var block = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]) * 2 + 1;
+				console.log('In odd BLOCK ', block);
+				// console.log('----> ',data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
+				left = timeBoxWidth * block + 5 * block;
+				break;
+			} else if (data.timeframe.timeArray[i].id == Math.ceil(startTime) && Math.floor(startTime) != Math.ceil(startTime)) {
+				var block = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]) * 2;
+				console.log('INDEX ', data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]));
+				console.log('In even BLOCK ', block);
+				// console.log('----> ',data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
+				left = (block == 0) ? left + 5 : timeBoxWidth * block + 5 * block;
+				break;
+			}
+		}
+
+		console.log('left ', left);
+
+		var bandBoxView = Titanium.UI.createView({
+			layout : 'horizontal',
+			height : bandBoxHeight,
+			width : bandBoxWidth,
+			horizontalWrap : false,
+			backgroundColor : '#ffffff',
+			borderRadius : 3,
+			left : left
+		});
+
+		var bandImage = Titanium.UI.createImageView({
+			left : 3,
+			height : bandBoxHeight,
+			width : bandBoxHeight,
+			borderColor : '#000000',
+			borderWidth : 1,
+			image : bImage
+		});
+
+		var bandName = Titanium.UI.createLabel({
+			left : 3,
+			right : 2,
+			height : Titanium.UI.SIZE,
+			width : Titanium.UI.FILL,
+			text : bName,
+			ellipsize : true,
+			horizontalWrap : true,
+			wordWrap : true,
+			textAlign : Titanium.UI.TEXT_ALIGNMENT_CENTER,
+			color : '#000000',
+			font : {
+				fontSize : Alloy.Globals.theme.fonts.size10Fonts
+			}
+		});
+
+		bandBoxView.add(bandImage);
+		bandBoxView.add(bandName);
+		return bandBoxView;
+	};
+	// Small box of band details --- ends here
+
+	// Container row of bands - starts from here
+	this.createBandBoxContainer = function(venue) {
+
+		// console.log('venue = ', venue);
+
+		var bandBoxContainer = Titanium.UI.createView({
+			width : Titanium.UI.FILL,
+			height : bandBoxContainerHeight,
+			layout : 'absolute',
+			horizontalWrap : false,
+			borderColor : '#ffffff',
+			borderWidth : 1,
+			left : 0,
+			top : 0
+		});
+
+		var venueNameView = Titanium.UI.createView({
+			width : venueNameViewWidth,
+			height : Titanium.UI.FILL,
+			borderColor : '#ffffff',
+			borderWidth : 1,
+			left : 0
+		});
+
+		var venueName = Titanium.UI.createLabel({
+			left : 3,
+			height : Titanium.UI.FILL,
+			width : Titanium.UI.FILL,
+			text : venue.venueName,
+			textAlign : Titanium.UI.TEXT_ALIGNMENT_CENTER,
+			color : '#ffffff',
+			font : {
+				fontSize : Alloy.Globals.theme.fonts.size10Fonts
+			}
+		});
+
+		venueNameView.add(venueName);
+		bandBoxContainer.add(venueNameView);
+
+		for (i in venue.shows) {
+			// console.error('venue.show = ', venue.shows[i]);
+			bandBoxContainer.add(this.createBandBox(venue.shows[i].band.name, venue.shows[i].band.image_link, venue.shows[i].show.start_time));
+		}
+		return bandBoxContainer;
+	};
+	// Container row of bands - ends here
+
+	// Add Schedule UI on screen
+	this.addScheduleUI = function() {
+
+		var mainHorizontalScrollContainer = Titanium.UI.createScrollView({
+
+			width : Titanium.UI.SIZE,
+			height : Titanium.UI.SIZE,
+			borderColor : 'black',
+			scrollType : 'horizontal',
+			layout : 'vertical',
+			disableBounce : true,
+			contentHeight : Ti.UI.SIZE,
+			contentWidth : Ti.UI.SIZE,
+			top : 0
+		});
+
+		var verticalScrollContainer = Titanium.UI.createScrollView({
+
+			width : Titanium.UI.SIZE,
+			height : 280,
+			scrollType : 'vertical',
+			layout : 'vertical',
+			disableBounce : true,
+			contentHeight : Ti.UI.SIZE,
+			contentWidth : Ti.UI.SIZE,
+			top : 0
+		});
+
+		for (i in data.showsGroupedByVenue) {
+			// console.error('data.showsGroupedByVenue ', data.showsGroupedByVenue[i]);
+			verticalScrollContainer.add(this.createBandBoxContainer(data.showsGroupedByVenue[i]));
+		}
+
+		mainHorizontalScrollContainer.add(this.createTimeframe());
+		mainHorizontalScrollContainer.add(verticalScrollContainer);
+		$.vwBandSchedule.add(mainHorizontalScrollContainer);
+
+	};
+
+	this.addScheduleUI();
+
+	console.log('---------- End of nsUserSchedule.createLayout ---------');
+};
+
+nsUserSchedule.createDataForLayout = function(data) {
+
+	$.vwBandSchedule.removeAllChildren();
+
+	if (data.length == 0) {
+		return;
+	}
+	var dataToCreateSchedule = {
+		timeframe : {}
+	};
+
+	// Hours array by default
+	var hours = [{id:'0',value:'12',unit:'am'},{id:1,value:'1',unit:'am'},{id:2,value:'2',unit:'am'},{id:3,value:'3',unit:'am'},{id:4,value:'4',unit:'am'},{id:5,value:'5',unit:'am'},{id:6,value:'6',unit:'am'},{id:7,value:'7',unit:'am'},{id:8,value:'8',unit:'am'},{id:9,value:'9',unit:'am'},{id:10,value:'10',unit:'am'},{id:11,value:'11',unit:'am'},{id:12,value:'12',unit:'pm'},{id:13,value:'1',unit:'pm'},{id:14,value:'2',unit:'pm'},{id:15,value:'3',unit:'pm'},{id:16,value:'4',unit:'pm'},{id:17,value:'5',unit:'pm'},{id:18,value:'6',unit:'pm'},{id:19,value:'7',unit:'pm'},{id:20,value:'8',unit:'pm'},{id:21,value:'9',unit:'pm'},{id:22,value:'10',unit:'pm'},{id:23,value:'11',unit:'pm'}];
+
+	// Get the min and max time of shows from the data set
+	var min = data[0].showDetails.start_time,
+	    max = data[0].showDetails.start_time;
+
+	var minIndex = 0,
+	    maxIndex = 0;
+	for (i in data) {
+
+		console.log('DATE = ', new Date(data[i].showDetails.start_time * 1000));
+		// console.log(data[i].showDetails.start_time);
+		// console.log(data[i].showDetails.start_time - min);
+		if (data[i].showDetails.start_time <= min) {
+
+			min = data[i].showDetails.start_time;
+			minIndex = i;
+
+		} else {
+
+			max = data[i].showDetails.start_time;
+			maxIndex = i;
+		}
+	}
+
+	console.error('minIndex = ', minIndex, '/n maxIndex = ', maxIndex);
+
+	console.log('min = ', Alloy.Globals.getFormattedDate(min), '\n max = ', Alloy.Globals.getFormattedDate(max));
+	console.log('min = ', new Date(min * 1000), ' max = ', new Date(max * 1000), ' difference ', new Date(max * 1000).getHours() - new Date(min * 1000).getHours());
+
+	var minMaxDifference = (new Date(max * 1000).getHours() - new Date(min * 1000).getHours()) + 1;
+	// numberOfDateBlocks = 2 blocks for 1 hour => Example 12:00hours = block for 12:00 and 12:30 + 2 blocks for the last hour
+	var numberOfDateBlocks = (new Date(max * 1000).getHours() - new Date(min * 1000).getHours()) * 2 + 2;
+	console.log('numberOfDateBlocks = ', numberOfDateBlocks, ' minMaxDifference = ', minMaxDifference);
+
+	dataToCreateSchedule.timeframe.numberOfBlocks = numberOfDateBlocks;
+
+	min = Math.floor(nsUserSchedule.momentjs(min * 1000).format('H.mm'));
+	max = Math.ceil(nsUserSchedule.momentjs(max * 1000).format('H.mm'));
+
+	console.log('min = ', min, '\n max = ', max);
+
+	// Create array to pass in time layout = value of DateBlocks
+	var startTime = {};
+	var timeArray = [];
+	for (i in hours) {
+		if (hours[i].id == min) {
+			startTime = hours[i];
+			timeArray = hours.splice(i, minMaxDifference + 1);
+			break;
+		}
+	}
+
+	dataToCreateSchedule.timeframe.startTime = JSON.parse(JSON.stringify(startTime));
+	dataToCreateSchedule.timeframe.timeArray = JSON.parse(JSON.stringify(timeArray));
+
+	console.log('startTime ', startTime);
+	console.log('hours for the day -> timeArray = ', timeArray);
+	// console.log('hours array length ', hours.length);
+
+	// Make time data for shows (12pm, 12:30pm, 1pm, 1:30pm ... so on)
+	var timeDataForShows = [];
+	for (i in timeArray) {
+		timeDataForShows.push(timeArray[i].value + timeArray[i].unit);
+		timeDataForShows.push(timeArray[i].value + ':30' + timeArray[i].unit);
+	}
+	// console.log('timeDataForShows ', timeDataForShows);
+
+	dataToCreateSchedule.timeframe.timeDataForShows = JSON.parse(JSON.stringify(timeDataForShows));
+
+	///------------- End of time data here ---------------------------
+
+	// Get unique venue details for selected day
+	// ---------- For testing : TODO: remove later------------------
+	// var venue_ids = [];
+	// for (i in data) {
+	// venue_ids.push(data[i].venueDetails._id);
+	// }
+	// console.log('venue_ids ', venue_ids.length, ' ', JSON.stringify(venue_ids));
+	// ---------- For testing : TODO: remove later------------------
+
+	var lookup = {};
+	var showsGroupedByVenue = [];
+
+	for (var item,
+	    i = 0; item = data[i++]; ) {
+		var venue = item.venueDetails._id;
+
+		if (!( venue in lookup)) {
+			lookup[venue] = 1;
+			// showsGroupedByVenue.push(venue);
+			showsGroupedByVenue.push({
+				venue_id : venue,
+				venueName : item.venueDetails.name,
+				shows : []
+			});
+		}
+	}
+
+	// console.log('venue result ', showsGroupedByVenue.length, ' ', JSON.stringify(showsGroupedByVenue));
+
+	// Group the bands/shows by venues
+	for (i in showsGroupedByVenue) {
+
+		for (j in data) {
+
+			if (showsGroupedByVenue[i].venue_id == data[j].venueDetails._id) {
+				showsGroupedByVenue[i].shows.push({
+					show : data[j].showDetails,
+					band : data[j].bandDetails
+				});
+			};
+		}
+	}
+	console.log('venue result after ', showsGroupedByVenue.length, ' ', JSON.stringify(showsGroupedByVenue));
+	dataToCreateSchedule.showsGroupedByVenue = JSON.parse(JSON.stringify(showsGroupedByVenue));
+
+	nsUserSchedule.createLayout(dataToCreateSchedule);
+};
+
 nsUserSchedule.getList = function(source) {
 
 	nsUserSchedule.currentDay = source;
@@ -201,7 +565,7 @@ nsUserSchedule.getList = function(source) {
 			for (var j = 0,
 			    len2 = nsUserSchedule.args.length; j < len2; j++) {
 
-				console.log(appdata.details[i].showDetails._id, " ", nsUserSchedule.args[j].show_id);
+				// console.log(appdata.details[i].showDetails._id, " ", nsUserSchedule.args[j].show_id);
 
 				if (nsUserSchedule.args[j].show_id === appdata.details[i].showDetails._id) {
 					shows.push(appdata.details[i]);
@@ -209,10 +573,11 @@ nsUserSchedule.getList = function(source) {
 			}
 		}
 	}
-	console.debug(JSON.stringify(shows));
+	console.log('shows data ', JSON.stringify(shows));
 
 	// var tabledata = [];
-	nsUserSchedule.createList(shows);
+	// nsUserSchedule.createList(shows);
+	nsUserSchedule.createDataForLayout(shows);
 };
 
 nsUserSchedule.getShows = function() {
@@ -226,16 +591,16 @@ nsUserSchedule.getShows = function() {
 		for (var j = 0,
 		    len2 = nsUserSchedule.args.length; j < len2; j++) {
 
-			console.log(appdata.details[i].showDetails._id, " ", nsUserSchedule.args[j].show_id);
+			// console.log(appdata.details[i].showDetails._id, " ", nsUserSchedule.args[j].show_id);
 
 			if (nsUserSchedule.args[j].show_id === appdata.details[i].showDetails._id) {
-				console.log(nsUserSchedule.args[j].show_id === appdata.details[i].showDetails._id);
+				// console.log(nsUserSchedule.args[j].show_id === appdata.details[i].showDetails._id);
 				shows.push(appdata.details[i]);
-				console.debug(JSON.stringify(shows));
-				console.debug(i, " ", j);
+				// console.debug(JSON.stringify(shows));
+				// console.debug(i, " ", j);
 			}
 		}
-		console.log("1", " ", i);
+		// console.log("1", " ", i);
 	}
 
 	console.log("User shows " + shows.length + JSON.stringify(shows));
@@ -290,9 +655,9 @@ nsUserSchedule.init = function() {
 		nsUserSchedule.getList($.vwDay1);
 
 	} else {
-		$.lblNoSchedule.setText("press the star next to band name you want to see to create your own custom schedule.");
-		$.vwMain.setHeight(0);
-		$.vwMain.setVisible(false);
+		$.lblNoSchedule.setText(L('no_schedule_data'));
+		// $.vwMain.setHeight(0);
+		// $.vwMain.setVisible(false);
 	}
 };
 

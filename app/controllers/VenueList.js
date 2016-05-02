@@ -17,10 +17,16 @@ nsVenueList.getShowsDataForCity = function() {
 				bandDetails : appdata.details[i].bandDetails,
 				venueDetails : appdata.details[i].venueDetails
 			});
-			console.log(appdata.details[i].venueDetails);
-			venuelist.push(appdata.details[i].venueDetails);
+			// console.log(JSON.stringify(appdata.details[i].venueDetails));
 		}
 	}
+
+	for (i in appdata.venues) {
+		if (appdata.venues[i].location === $.args.city) {
+			venuelist.push(appdata.venues[i]);
+		}
+	}
+
 	console.error('venuelist === ', JSON.stringify(venuelist));
 
 	var searchList = require("searchList");
