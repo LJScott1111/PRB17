@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="appName">PRB</string>
+	
+	<string name="facebook_app_id">993161744029602</string>
+	
+	<!-- Index screen -->
+	<string name="index_lblFbConnect">Connect with Facebook</string>
+	<string name="index_lblOr">-or-</string>
+	<string name="index_tfEmail">Email</string>
+	<string name="index_tfPassword">Password</string>
+	<string name="index_lblGetIt">Login</string>
+	<string name="login_message">Log In to receive special offers\nfrom our sponsers.</string>
+	<string name="index_lblSkip">Skip</string>
+	
+	<!-- Login -->
+	<string name="login_lblFbConnect">Login with Facebook</string>
+	<string name="login_lbllogin">Login</string>
+	<string name="login_tfPassword">Password</string>
+	
+	<!-- Main screen -->
+	<string name="bands">Bands</string>
+	<string name="events">Events</string>
+	<string name="schedule">Schedule</string>
+	<string name="venues">Venues</string>
+	<string name="vendors">Vendors</string>
+	<string name="food">Food</string>
+	
+	<!-- Events screen -->
+	<string name="movies">Movies</string>
+	<string name="bowling">Bowling</string>
+	<string name="poker">Poker</string>
+	<string name="art">Art</string>
+	<string name="lasvegas">Las Vegas</string>
+	<string name="denver">Denver</string>
+	<string name="asburypark">Asbury park</string>
+	
+	<!-- Band Profile -->
+	<string name="bandProfile_lblSoundCloud">Listen</string>
+	<string name="bandProfile_lblYouTube">Watch</string>
+	<string name="bandProfile_lblWebsite">Official Site</string>
+	<string name="bandProfile_lblFacebook">Facebook</string>
+	<string name="bandProfile_lblTwitter">Twitter</string> 
+	<string name="bandProfile_lblAddBand">ADD</string>
+	
+	<string name="err_serviceError">Some error occurred. Please try again.</string>
+	<string name="err_fetchingDetails">Some error occured while fetching the details. Please try again</string>
+	<string name="err_login">Some error occurred while login. Please try again.</string>
+	<string name="err_loginDetails">Please enter correct details.</string>
+	<string name="err_noConnection">No Internet connetion.</string>
+	<string name="err_facebook">Some error occured while logging into Facebook.</string>
+	
+	<string name="locationData_err">Can not load locations. Please check your connection.</string>
+	<string name="enableLocation_err">This feature not only allows you to use your phone's GPS but it also required if you'd like to receive helpful on-site notifications. Please enable or reset location services.</string>
+	<string name="userDisabledLocation_err">You have disallowed Map App from running geolocation services. Please enable or reset location services.</string>
+	<string name="unknown_err">Unknown error</string>
+	
+	<string name="no_schedule_data">press the star next to band name you want to see to create your own custom schedule.</string>
+	
+	<!-- Schedule -->
+	<string name="all">All</string>
+	<string name="friday">Fri</string>
+	<string name="saturday">Sat</string>
+	<string name="sunday">Sun</string>
+	<string name="monday">Mon</string>
+	
+	<!-- Settings Menu -->
+	<string name="settings_login">Login</string>
+	<string name="settings_logout">Logout</string>
+	<string name="settings_map">Map</string>
+	<string name="settings_sponsors">Sponsors / Vendors</string>
+	<string name="settings_privacy">Privacy Policy</string>
+	<string name="faq">FAQ</string>
+	<string name="settings">Settings</string>
+	<string name="lineup">Lineup</string>
+	<string name="map">Map</string>
+	<string name="sponsers">Sponsers</string>
+	<string name="info">Info</string>
+	<string name="about">About</string>
+	<string name="privacy_policy">Privacy Policy</string>
+	<string name="messages">messages</string>
+	<string name="social">Social</string>
+	<string name="profile">Profile</string>
+	<string name="my_schedule">My Schedule</string>
+	<string name="my_passes">My Passes</string>
+
+</resources>
