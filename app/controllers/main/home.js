@@ -24,6 +24,10 @@ if (OS_ANDROID) {
 
 	$.mainWindow.addEventListener('androidback', function() {
 
-		$.mainWindow.close();
+		if (Alloy.Globals.pageflow.countPages() > 1) {
+			Alloy.Globals.pageflow.back();
+		} else {
+			$.mainWindow.close();
+		}
 	});
 }
