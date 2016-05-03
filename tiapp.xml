@@ -13,8 +13,12 @@
     <statusbar-hidden>false</statusbar-hidden>
     <statusbar-style>opaque</statusbar-style>
     <analytics>false</analytics>
+    <!-- Uptown4 ID -->
+    <guid>89355ec6-b84c-4e84-9888-8d786e284522</guid>
+    <!-- Lego ID -->
     <!--<guid>95040078-7551-4c2f-9111-73101a77574c</guid>-->
-    <guid>f42c4aa0-d86c-45b9-9555-894da7d93b77</guid>
+    <!-- Shraddha ID -->
+    <!---><guid>f42c4aa0-d86c-45b9-9555-894da7d93b77</guid>-->
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="ti.facebook.appid">993161744029602</property>
     <ios>
@@ -44,9 +48,9 @@
                 <!-- Facebook App Name from developer.facebook.com -->
                 <string>Punk Rock Bowling</string>
                 <key>LSApplicationQueriesSchemes</key>
-				<array>
-				    <string>fbauth2</string>
-				</array>
+                <array>
+                    <string>fbauth2</string>
+                </array>
                 <key>UISupportedInterfaceOrientations~iphone</key>
                 <array>
                     <string>UIInterfaceOrientationPortrait</string>
@@ -73,12 +77,10 @@
         </services>
         <manifest android:installLocation="preferExternal"
             android:versionCode="1" android:versionName="1">
-
             <uses-permission android:name="android.permission.ACCESS_LOCATION"/>
-			<uses-permission android:name="android.permission.ACCESS_GPS"/>
-			<uses-permission android:name="android.permission.INTERNET"/>
-			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
+            <uses-permission android:name="android.permission.ACCESS_GPS"/>
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
             <application android:theme="@style/Theme.AppCompat.NoActionBar">
                 <activity
                     android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
