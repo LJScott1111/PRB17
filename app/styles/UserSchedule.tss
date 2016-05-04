@@ -105,3 +105,15 @@
 	width: Titanium.UI.SIZE,
 	image: "/images/star.png"
 }
+
+"#vwBottomView": {
+	bottom: 0,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+"#ivLogo": {
+	bottom: 20,
+	width: 120,
+	image: "/icons/sourpuss.png"
+}

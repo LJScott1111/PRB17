@@ -39,8 +39,7 @@ LAYOUTS
 
 ".options_view": {
 	height: Alloy.Globals.theme.sizes.landingOptionHeight,
-	width: Titanium.UI.FILL,
-	backgroundColor: 'red'
+	width: Titanium.UI.FILL
 }
 
 ".touch_false": {

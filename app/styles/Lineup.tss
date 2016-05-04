@@ -5,3 +5,15 @@
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL
 }
+
+"#lasvegas": {
+	backgroundImage: '/icons/bands.png'
+}
+
+"#denver": {
+	backgroundImage: '/icons/events.png'
+}
+
+"#asburypark": {
+	backgroundImage: '/icons/schedule.png'
+}

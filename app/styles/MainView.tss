@@ -1,4 +1,8 @@
 
+".lbl_settings": {
+	width: Titanium.UI.SIZE
+}
+
 "#vwMain": {
 	top: 0,
 	backgroundColor: '#000000',
@@ -21,22 +25,53 @@
 	width: Titanium.UI.FILL
 }
 
-/*
+"#bands_view": {
+	backgroundImage: '/icons/bands.png'
+}
 
-"#ivPoker": {
-	bottom: 0,
-	left: 0,
-	image: "/icons/punk-rock.png",
-	// height: Alloy.Globals.theme.sizes.punkRockHeight,
-	height: Titanium.UI.SIZE,
-	width: Alloy.Globals.theme.sizes.punckRockWidth
+"#events_view": {
+	backgroundImage: '/icons/events.png'
+}
+
+"#schedule_view": {
+	backgroundImage: '/icons/schedule.png'
+}
+
+"#venues_view": {
+	backgroundImage: '/icons/venues.png'
+}
+
+"#news_view": {
+	backgroundImage: '/icons/news.png'
+}
+
+"#food_view": {
+	backgroundImage: '/icons/food.png'
 }
 
 "#ivLogo": {
-	right: 20,
 	bottom: 20,
-	height: Alloy.Globals.theme.sizes.logo,
-	width: Alloy.Globals.theme.sizes.logo,
-	image: "/icons/logo.png"
+	width: 120,
+	image: "/icons/sourpuss.png"
 }
-*/
+
+"#lblBands": {
+	left: 60
+}
+
+"#lblSchedule": {
+	left: 50
+}
+
+"#lblVenues": {
+	left: 120
+}
+
+"#lblNews": {
+	left: 60
+}
+
+"#lblFood": {
+	right: 60
+}
+

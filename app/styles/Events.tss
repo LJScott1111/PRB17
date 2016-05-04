@@ -24,3 +24,33 @@
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL
 }
+
+"#ivLogo": {
+	bottom: 20,
+	width: 120,
+	image: "/icons/sourpuss.png"
+}
+
+"#movies_view": {
+	backgroundImage: '/icons/bands.png'
+}
+
+"#bowling_view": {
+	backgroundImage: '/icons/events.png'
+}
+
+"#poker_view": {
+	backgroundImage: '/icons/schedule.png'
+}
+
+"#art_view": {
+	backgroundImage: '/icons/venues.png'
+}
+
+"#city2": {
+	backgroundImage: '/icons/news.png'
+}
+
+"#city3": {
+	backgroundImage: '/icons/food.png'
+}

@@ -2,30 +2,28 @@
 	<View id="vwMain">
 		<View id="vwTopOptions">
 
-			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getBands">
-				<Label class="options_lbl knowYourProduct touch_false" id="lblBands" text="L('bands').toUpperCase()"></Label>
+			<View id="bands_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getBands">
+				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblBands" text="L('bands').toUpperCase()"></Label>
 			</View>
-			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getEvents">
-				<Label class="options_lbl knowYourProduct touch_false" id="lblEvents" text="L('events').toUpperCase()"></Label>
+			<View id="events_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getEvents">
+				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblEvents" text="L('events').toUpperCase()"></Label>
 			</View>
-			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule">
-				<Label class="options_lbl knowYourProduct touch_false" id="lblSchedule" text="L('schedule').toUpperCase()"></Label>
+			<View id="schedule_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule">
+				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblSchedule" text="L('schedule').toUpperCase()"></Label>
 			</View>
-			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getVenues">
-				<Label class="options_lbl knowYourProduct touch_false" id="lblVenues" text="L('venues').toUpperCase()"></Label>
+			<View id="venues_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getVenues">
+				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblVenues" text="L('venues').toUpperCase()"></Label>
 			</View>
-			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getNews">
-				<Label class="options_lbl knowYourProduct touch_false" id="lblVendors" text="L('news').toUpperCase()"></Label>
+			<View id="news_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getNews">
+				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblNews" text="L('news').toUpperCase()"></Label>
 			</View>
-			<View class="absolute_layout options_view padding_top" onClick="nsLanding.getFood">
-				<Label class="options_lbl knowYourProduct touch_false" id="lblFood" text="L('food').toUpperCase()"></Label>
+			<View id="food_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getFood">
+				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblFood" text="L('food').toUpperCase()"></Label>
 			</View>
 
 		</View>
 		<View id="vwBottomView">
-			<!-- <ImageView id="ivPoker"></ImageView>
-			<ImageView id="ivNews" class="optionClass" onClick="nsLanding.getNews"></ImageView>
-			<ImageView id="ivLogo"></ImageView> -->
+			<ImageView id="ivLogo"></ImageView>
 		</View>
 	</View>
 </Alloy>
