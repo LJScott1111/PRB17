@@ -290,6 +290,7 @@ Alloy.Globals.getFormattedDate = function(timestamp) {
 	console.debug(JSON.stringify(dateString));
 	return dateString;
 };
+/*
 
 Alloy.Globals.getSettings = function(currentWin) {
 	console.debug(Titanium.App.Properties.getString('userid'));
@@ -412,6 +413,7 @@ Alloy.Globals.getSettings = function(currentWin) {
 	});
 	currentWin.add(vwOptionFullView);
 };
+*/
 
 // Application data for storing combined details
 Alloy.Globals.appData = {
@@ -457,10 +459,10 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, r
 				left : 'misc/openMenu',
 				title : title_text,
 				titleOptions : {
-					color : '#ffffff',
+					color : '#F3CB87',
 					font : {
-						fontSize : '15dp',
-						fontWeight: 'bold'
+						fontSize : Alloy.Globals.theme.fonts.size15Fonts,
+						fontFamily: "KnowYourProduct"
 					},
 					width : Titanium.UI.SIZE
 				}
@@ -489,10 +491,10 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, r
 				right : rightMenu,
 				title : title_text,
 				titleOptions : {
-					color : '#ffffff',
+					color : '#F3CB87',
 					font : {
-						fontSize : '15dp',
-						fontWeight: 'bold'
+						fontSize : Alloy.Globals.theme.fonts.size15Fonts,
+						fontFamily: "KnowYourProduct"
 					},
 					width : Titanium.UI.SIZE
 				}

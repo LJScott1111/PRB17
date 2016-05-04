@@ -47,21 +47,23 @@ nsSearchList.createHeader = function() {
 		left : 2,
 		bottom : 5,
 		height : Titanium.UI.SIZE,
-		borderRadius : 10,
+		borderRadius : 5,
 		borderColor : "#000000",
+		backgroundColor: "#ffffff",
 		width : viewWidth,
 		day : "all"
 	});
 
 	var lblAll = Titanium.UI.createLabel({
-		top : 5,
-		bottom : 5,
+		top : 2,
+		bottom : 2,
 		height : Titanium.UI.SIZE,
 		touchEnabled : false,
 		color : "#000000",
 		text : L('all'),
 		font : {
-			fontSize : Alloy.Globals.theme.fonts.size10Fonts
+			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+			fontFamily: "KnowYourProduct"
 		}
 	});
 
@@ -84,22 +86,24 @@ nsSearchList.createHeader = function() {
 		left : 2,
 		bottom : 5,
 		height : Titanium.UI.SIZE,
-		borderRadius : 10,
+		borderRadius : 5,
 		borderColor : "#000000",
+		backgroundColor: "#ffffff",
 		width : viewWidth,
 		day : "friday",
 		selected : false
 	});
 
 	var lblFriday = Titanium.UI.createLabel({
-		top : 5,
-		bottom : 5,
+		top : 2,
+		bottom : 2,
 		height : Titanium.UI.SIZE,
 		touchEnabled : false,
 		color : "#000000",
 		text : L('friday'),
-		font : {
-			fontSize : Alloy.Globals.theme.fonts.size10Fonts
+		font: {
+			fontSize: Alloy.Globals.theme.fonts.size20Fonts,
+			fontFamily: "KnowYourProduct"
 		}
 	});
 
@@ -124,22 +128,24 @@ nsSearchList.createHeader = function() {
 		left : 2,
 		bottom : 5,
 		height : Titanium.UI.SIZE,
-		borderRadius : 10,
+		borderRadius : 5,
 		borderColor : "#000000",
+		backgroundColor: "#ffffff",
 		width : viewWidth,
 		day : "saturday",
 		selected : false
 	});
 
 	var lblSaturday = Titanium.UI.createLabel({
-		top : 5,
-		bottom : 5,
+		top : 2,
+		bottom : 2,
 		height : Titanium.UI.SIZE,
 		touchEnabled : false,
 		color : "#000000",
 		text : L('saturday'),
 		font : {
-			fontSize : Alloy.Globals.theme.fonts.size10Fonts
+			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+			fontFamily: "KnowYourProduct"
 		}
 	});
 
@@ -164,22 +170,24 @@ nsSearchList.createHeader = function() {
 		left : 2,
 		bottom : 5,
 		height : Titanium.UI.SIZE,
-		borderRadius : 10,
+		borderRadius : 5,
 		borderColor : "#000000",
+		backgroundColor: "#ffffff",
 		width : viewWidth,
 		day : "sunday",
 		selected : false
 	});
 
 	var lblSunday = Titanium.UI.createLabel({
-		top : 5,
-		bottom : 5,
+		top : 2,
+		bottom : 2,
 		height : Titanium.UI.SIZE,
 		touchEnabled : false,
 		color : "#000000",
 		text : L('sunday'),
 		font : {
-			fontSize : Alloy.Globals.theme.fonts.size10Fonts
+			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+			fontFamily: "KnowYourProduct"
 		}
 	});
 
@@ -204,22 +212,24 @@ nsSearchList.createHeader = function() {
 		left : 2,
 		bottom : 5,
 		height : Titanium.UI.SIZE,
-		borderRadius : 10,
+		borderRadius : 5,
 		borderColor : "#000000",
+		backgroundColor: "#ffffff",
 		selected : false,
 		width : viewWidth,
 		day : "monday"
 	});
 
 	var lblMonday = Titanium.UI.createLabel({
-		top : 5,
-		bottom : 5,
+		top : 2,
+		bottom : 2,
 		height : Titanium.UI.SIZE,
 		touchEnabled : false,
 		color : "#000000",
 		text : L('monday'),
 		font : {
-			fontSize : Alloy.Globals.theme.fonts.size10Fonts
+			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+			fontFamily: "KnowYourProduct"
 		}
 	});
 
@@ -270,7 +280,7 @@ nsSearchList.createList = function(tblData) {
 	}
 
 	var sbSearchBar = Titanium.UI.createSearchBar({
-		barColor : '#FFD801',
+		barColor : '#000000',
 		backgroundColor : "#ffffff",
 		showCancel : false,
 		hintText : "Search",
@@ -560,7 +570,7 @@ nsSearchList.init = function(type, data) {
 		height : "100%",
 		width : Titanium.UI.FILL,
 		top : 0,
-		backgroundColor : "#FFD801"
+		backgroundColor : "#000000"
 	});
 
 	var vwList = nsSearchList.createList(nsSearchList.data);

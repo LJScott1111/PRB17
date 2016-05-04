@@ -1,5 +1,0 @@
-<Alloy>
-	<View id="vwHeader">
-		<ImageView id="ivSettings" onClick="nsHeader.getSettings"></ImageView>
-	</View>
-</Alloy>

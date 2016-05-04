@@ -148,7 +148,7 @@ nsUserSchedule.createLayout = function(data) {
 			height : Titanium.UI.FILL,
 			width : Titanium.UI.FILL,
 			text : time.value + time.unit,
-			color : '#ffffff',
+			color : '#F3CB87',
 			font : {
 				fontSize : Alloy.Globals.theme.fonts.size10Fonts
 			}
@@ -165,7 +165,7 @@ nsUserSchedule.createLayout = function(data) {
 			height : bandBoxContainerHeight / 2,
 			layout : 'horizontal',
 			horizontalWrap : false,
-			borderColor : '#ffffff',
+			borderColor : '#F3CB87',
 			borderWidth : 1,
 			left : 0,
 			top : 0
@@ -175,7 +175,7 @@ nsUserSchedule.createLayout = function(data) {
 			left : venueNameViewWidth,
 			height : Titanium.UI.FILL,
 			width : 1,
-			backgroundColor : '#ffffff'
+			backgroundColor : '#F3CB87'
 		});
 
 		timeframeContainer.add(placeholder);
@@ -271,7 +271,7 @@ nsUserSchedule.createLayout = function(data) {
 			height : bandBoxContainerHeight,
 			layout : 'absolute',
 			horizontalWrap : false,
-			borderColor : '#ffffff',
+			borderColor : '#F3CB87',
 			borderWidth : 1,
 			left : 0,
 			top : 0
@@ -280,7 +280,7 @@ nsUserSchedule.createLayout = function(data) {
 		var venueNameView = Titanium.UI.createView({
 			width : venueNameViewWidth,
 			height : Titanium.UI.FILL,
-			borderColor : '#ffffff',
+			borderColor : '#F3CB87',
 			borderWidth : 1,
 			left : 0
 		});
@@ -291,7 +291,7 @@ nsUserSchedule.createLayout = function(data) {
 			width : Titanium.UI.FILL,
 			text : venue.venueName,
 			textAlign : Titanium.UI.TEXT_ALIGNMENT_CENTER,
-			color : '#ffffff',
+			color : '#F3CB87',
 			font : {
 				fontSize : Alloy.Globals.theme.fonts.size10Fonts
 			}
@@ -313,9 +313,9 @@ nsUserSchedule.createLayout = function(data) {
 
 		var mainHorizontalScrollContainer = Titanium.UI.createScrollView({
 
-			width : Titanium.UI.SIZE,
+			width : Titanium.UI.FILL,
 			height : Titanium.UI.SIZE,
-			borderColor : 'black',
+			borderColor : '#000000',
 			scrollType : 'horizontal',
 			layout : 'vertical',
 			disableBounce : true,
@@ -326,14 +326,15 @@ nsUserSchedule.createLayout = function(data) {
 
 		var verticalScrollContainer = Titanium.UI.createScrollView({
 
-			width : Titanium.UI.SIZE,
+			width : Titanium.UI.FILL,
 			height : 280,
 			scrollType : 'vertical',
 			layout : 'vertical',
 			disableBounce : true,
 			contentHeight : Ti.UI.SIZE,
 			contentWidth : Ti.UI.SIZE,
-			top : 0
+			top : 0,
+			left: 0,
 		});
 
 		for (i in data.showsGroupedByVenue) {

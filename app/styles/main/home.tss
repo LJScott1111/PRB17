@@ -17,6 +17,5 @@
 	height: Titanium.UI.FILL,
 	orientationModes: [
 		Ti.UI.PORTRAIT
-    ],
-    exitOnClose: true
+    ]
 }

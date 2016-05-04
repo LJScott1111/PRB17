@@ -10,7 +10,8 @@
 	<string name="index_tfEmail">Email</string>
 	<string name="index_tfPassword">Password</string>
 	<string name="index_lblGetIt">Login</string>
-	<string name="login_message">Log In to receive special offers\nfrom our sponsers.</string>
+	<string name="login_message_1">Log In to receive special offers</string>
+	<string name="login_message_2">from our sponsers.</string>
 	<string name="index_lblSkip">Skip</string>
 	
 	<!-- Login -->
@@ -25,6 +26,7 @@
 	<string name="venues">Venues</string>
 	<string name="vendors">Vendors</string>
 	<string name="food">Food</string>
+	<string name="news">News</string>
 	
 	<!-- Events screen -->
 	<string name="movies">Movies</string>
