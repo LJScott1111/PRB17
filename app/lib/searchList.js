@@ -378,18 +378,21 @@ nsSearchList.createList = function(tblData) {
 
 			var ivFavouriteStar = Titanium.UI.createImageView({
 				right : 5,
-				height : 40,
-				width : 40,
+				height : 30,
+				width : 30,
 				id : "ivFavouriteStar",
 				index : i,
-				selected : false
+				selected : false,
+				image: Alloy.Globals.theme.icons.star
 			});
 
+			/*
 			if (!ivFavouriteStar.selected) {
 				ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
 			} else {
 				ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
-			}
+			}*/
+			
 
 			ivFavouriteStar.addEventListener('click', function(e) {
 
