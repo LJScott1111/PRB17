@@ -6,11 +6,11 @@
 	width: Titanium.UI.FILL
 }
 
-"#vwTopYellow": {
+"#vwScheduleHeading": {
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.SIZE,
 	top: 0,
-	backgroundColor: "#cc0000"
+	backgroundImage: '/icons/bands.png'
 }
 
 "#lblYourSchedule": {
@@ -93,15 +93,27 @@
 "#ivHand": {
 	// top: 10,
 	left: 5,
-	height: 80,
+	height: 120,
 	width: Titanium.UI.SIZE,
 	image: "/icons/hand.png"
 }
 
 "#ivStar": {
-	// top: 10,
+	top: 30,
 	right: 5,
-	height: 120,
+	height: 80,
 	width: Titanium.UI.SIZE,
-	image: "/images/star.png"
+	image: "/icons/star_yellow.png"
+}
+
+"#vwBottomView": {
+	bottom: 0,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+"#ivLogo": {
+	bottom: 20,
+	width: 120,
+	image: "/icons/sourpuss.png"
 }

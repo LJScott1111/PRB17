@@ -135,8 +135,8 @@ Alloy.Globals.sortArray = function(prop) {
 // App theme values
 Alloy.Globals.theme = {
 	"icons" : {
-		"star" : "/images/star.png",
-		"star_off" : "/images/star_off.png"
+		"star" : "/icons/star_yellow.png",
+		"star_off" : "/icons/star_white.png"
 	},
 	"sizes" : {
 		"headerbar" : Alloy.Globals.platformHeight * 0.0774,
@@ -439,7 +439,7 @@ if (OS_ANDROID) {
 }
 
 // Open a controller
-Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, rightMenu) {
+Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text) {
 
 	if (Alloy.Globals.pageflow.getCurrentPage() == null || newOne === true) {
 
@@ -457,6 +457,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, r
 			navBar : {
 				backgroundColor : '#000000',
 				left : 'misc/openMenu',
+				right : 'misc/right_logo',
 				title : title_text,
 				titleOptions : {
 					color : '#F3CB87',
@@ -488,7 +489,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, r
 			navBar : {
 				backgroundColor : '#000000',
 				left : 'misc/openMenu',
-				right : rightMenu,
+				right : 'misc/right_logo',
 				title : title_text,
 				titleOptions : {
 					color : '#F3CB87',

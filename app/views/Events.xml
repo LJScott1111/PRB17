@@ -2,16 +2,16 @@
 	<View id="vwMain">
 		<View id="vwTopOptions">
 
-			<View class="absolute_layout options_view padding_top" onClick="nsEvents.getMovies">
+			<View id="movies_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getMovies">
 				<Label class="options_lbl knowYourProduct touch_false" text="L('movies').toUpperCase()"></Label>
 			</View>
-			<View class="absolute_layout options_view padding_top" onClick="nsEvents.getBowling">
+			<View id="bowling_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getBowling">
 				<Label class="options_lbl knowYourProduct touch_false" text="L('bowling').toUpperCase()"></Label>
 			</View>
-			<View class="absolute_layout options_view padding_top" onClick="nsEvents.getPoker">
+			<View id="poker_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getPoker">
 				<Label class="options_lbl knowYourProduct touch_false" text="L('poker').toUpperCase()"></Label>
 			</View>
-			<View class="absolute_layout options_view padding_top" onClick="nsEvents.getArt">
+			<View id="art_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getArt">
 				<Label class="options_lbl knowYourProduct touch_false" text="L('art').toUpperCase()"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" id="city2" onClick="nsEvents.openCity2Event">
@@ -23,7 +23,7 @@
 
 		</View>
 		<View id="vwBottomView">
-			<!-- <ImageView id="ivLogo"></ImageView> -->
+			<ImageView id="ivLogo"></ImageView>
 		</View>
 	</View>
 </Alloy>

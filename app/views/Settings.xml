@@ -1,0 +1,7 @@
+<Alloy>
+	<View class="container vertical_layout">
+
+		<!-- <Label id="name" class="knowYourProduct padding_top"></Label> -->
+		<Label id="email" class="padding_top"></Label>
+	</View>
+</Alloy>
