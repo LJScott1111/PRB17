@@ -62,7 +62,7 @@ FONTS
 	height: Titanium.UI.SIZE,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	backgroundColor: 'transparent',
-	color: '#000000'
+	color: '#ffffff'
 }
 
 ".options_lbl": {

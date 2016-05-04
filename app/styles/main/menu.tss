@@ -1,8 +1,8 @@
 
 ".container": {
-	backgroundColor: '#000000',
 	width: '250dp',
 	layout: 'vertical',
+	contentHeight: 'auto',
 	left: 0,
 	top: '40dp'
 }
@@ -15,5 +15,6 @@
 }
 
 "#menuWrapper": {
-	layout: 'vertical'
+	layout: 'vertical',
+	backgroundColor: '#000000'
 }
