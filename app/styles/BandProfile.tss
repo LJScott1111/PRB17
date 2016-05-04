@@ -25,11 +25,11 @@
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL,
-	backgroundColor: "#cc0000"
+	backgroundImage: '/icons/news.png'
 }
 
 "#lblBandName": {
-	top: 0,
+	top: 5,
 	// bottom: 5,
 	left: 5,
 	right: 5,
