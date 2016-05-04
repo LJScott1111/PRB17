@@ -6,11 +6,11 @@
 	width: Titanium.UI.FILL
 }
 
-"#vwTopYellow": {
+"#vwScheduleHeading": {
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.SIZE,
 	top: 0,
-	backgroundColor: "#cc0000"
+	backgroundImage: '/icons/bands.png'
 }
 
 "#lblYourSchedule": {
