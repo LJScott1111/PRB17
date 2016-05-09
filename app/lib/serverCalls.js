@@ -60,6 +60,26 @@ nsServerCalls.login = function(username, password, onloadCallback, errorCallback
 
 exports.login = nsServerCalls.login;
 
+nsServerCalls.updateUser = function(username, onloadCallback, errorCallback) {
+
+	var promise = Kinvey.User.update({
+		_id : Titanium.App.Properties.getString('userid'),
+		username : username.toLowerCase()
+	});
+	promise.then(function(user) {
+		console.debug("Update success - user ", JSON.stringify(user));
+
+		var thisUser = Kinvey.setActiveUser(user);
+		onloadCallback(thisUser);
+
+	}, function(error) {
+		console.debug("Update error ", error);
+		errorCallback(error);
+	});
+};
+
+exports.updateUser = nsServerCalls.updateUser;
+
 // User Logout
 nsServerCalls.logout = function(onloadCallback, errorCallback) {
 	var user = Kinvey.getActiveUser();

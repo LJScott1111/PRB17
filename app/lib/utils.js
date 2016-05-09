@@ -70,17 +70,15 @@ var locationEnableCheck = function(callback) {
 						action : 'android.settings.LOCATION_SOURCE_SETTINGS'
 					});
 					Ti.Android.currentActivity.startActivity(settingsIntent);
-					Titanium.App.fireEvent('closeApp');
 				} else {
 
 					var settingsURL = Ti.App.iOS.applicationOpenSettingsURL;
 					if (Ti.Platform.canOpenURL(settingsURL)) {
 						Ti.Platform.openURL(settingsURL);
-						Titanium.App.fireEvent('closeApp');
 					}
 				}
 			} else {
-				Titanium.App.fireEvent('closeApp');
+				confirm.hide();
 			}
 		});
 	} else {
@@ -139,9 +137,10 @@ exports.getLocation = function getLocation(callback) {
 
 				// Not authorized
 				console.debug('NOT AUTHORIZED :(');
+				/*
 				var confirm = Titanium.UI.createAlertDialog({
 					title : L("appName"),
-					message : L("userDisabledLocation_err"),
+					message : L("enableLocation_err"),
 					buttonNames : ['OK']
 				});
 
@@ -152,7 +151,8 @@ exports.getLocation = function getLocation(callback) {
 					if (e.index === 0) {
 						confirm.hide();
 					}
-				});
+				});*/
+				
 			} else {
 				console.debug(' AUTHORIZED, authCode = ', authCode);
 				auth = true;
@@ -172,6 +172,7 @@ exports.getLocation = function getLocation(callback) {
 				callback(e.coords);
 			} else if (e.error) {
 				Ti.API.info("Alloy.Globals.getCurrentLocation(): Error in getting current position. - ", e.error);
+				/*
 				var confirm = Titanium.UI.createAlertDialog({
 					title : L("appName"),
 					message : L("locationData_err"),
@@ -184,9 +185,9 @@ exports.getLocation = function getLocation(callback) {
 					console.debug(JSON.stringify(e));
 					if (e.index === 0) {
 						confirm.hide();
-						// Titanium.App.fireEvent('closeApp');
 					}
-				});
+				});*/
+				
 			} else {
 				Ti.API.info("Alloy.Globals.getCurrentLocation(): Success in reading current position - [" + e.coords.latitude + ", " + e.coords.longitude + "].");
 				console.log('GPS RESULTS ', JSON.stringify(e));
@@ -195,6 +196,7 @@ exports.getLocation = function getLocation(callback) {
 					callback(e.coords);
 				} else {
 
+					/*
 					var confirm = Titanium.UI.createAlertDialog({
 						title : L("appName"),
 						message : L("locationData_err"),
@@ -208,7 +210,8 @@ exports.getLocation = function getLocation(callback) {
 						if (e.index === 0) {
 							getLocation(callback);
 						}
-					});
+					});*/
+					
 
 				}
 			}

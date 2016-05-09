@@ -59,6 +59,10 @@
 	
 	<string name="no_schedule_data">press the star next to band name you want to see to create your own custom schedule.</string>
 	
+	<string name="contact_info_1">This app was developed in designed by Buzzplay Mobile with help from the Punk Rock Bowling Digital and Design team.</string>
+	<string name="contact_info_2">For feedback please email PRBApp@Buzzplay.com</string>
+	<string name="contact_info_3">www.Buzzplay.com</string>
+	
 	<!-- Schedule -->
 	<string name="all">All</string>
 	<string name="friday">Fri</string>

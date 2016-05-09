@@ -56,7 +56,8 @@
 	width: "90%",
 	borderRadius: 10,
 	font: {
-		fontSize: Alloy.Globals.theme.fonts.size15Fonts
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts,
+		fontWeight: 'bold'
 	}
 }
 
@@ -80,8 +81,8 @@
 }
 
 "#btnLogin": {
-	backgroundColor: "#F3CB87",
-	color: "#000000"
+	backgroundColor: "#DC0000",
+	color: "#ffffff"
 }
 
 "#btnSkip": {
