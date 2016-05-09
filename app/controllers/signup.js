@@ -92,6 +92,7 @@ nsIndex.skipSignUp = function() {
 
 				Alloy.Globals.getAndStoreData();
 				nsIndex.closeWindow();
+				Titanium.App.fireEvent('checkLocationPermissions');
 
 			}, function(error) {
 				alert(L('err_serviceError'));
@@ -100,6 +101,7 @@ nsIndex.skipSignUp = function() {
 
 			Alloy.Globals.getAndStoreData();
 			nsIndex.closeWindow();
+			Titanium.App.fireEvent('checkLocationPermissions');
 		}
 	}, function(error) {
 

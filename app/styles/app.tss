@@ -65,7 +65,7 @@ FONTS
 }
 
 ".options_lbl": {
-	color: '#F3CB87',
+	color: '#F5C787',
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size25Fonts,
 		fontWeight: 'bold'
