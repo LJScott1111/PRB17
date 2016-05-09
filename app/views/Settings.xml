@@ -1,7 +1,16 @@
 <Alloy>
 	<View class="container vertical_layout">
+		<View id="username_view" class="absolute_layout padding_top">
 
-		<!-- <Label id="name" class="knowYourProduct padding_top"></Label> -->
-		<Label id="email" class="padding_top"></Label>
+			<View id="user_info" class="vertical_layout">
+				<View class="absolute_layout" id="edit_email_view">
+					<TextField id="emailField" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_TYPE_EMAIL"></TextField>
+					<Label class="lblClass" text="L('index_tfEmail')" id="lblHint_email"></Label>
+				</View>
+				<Label id="email"></Label>
+			</View>
+			<ImageView id="edit_email_btn" class="padding_right"></ImageView>
+			<ImageView id="save_email_btn" class="padding_right"></ImageView>
+		</View>
 	</View>
 </Alloy>
