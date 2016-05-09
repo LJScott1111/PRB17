@@ -12,5 +12,7 @@
 			<ImageView id="edit_email_btn" class="padding_right"></ImageView>
 			<ImageView id="save_email_btn" class="padding_right"></ImageView>
 		</View>
+		
+		<Label id="contact_info"></Label>
 	</View>
 </Alloy>

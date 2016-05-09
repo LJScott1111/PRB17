@@ -71,6 +71,14 @@ nsSettings.init = function() {
 	console.log(thisUser);
 	$.email.text = thisUser.username;
 	$.save_email_btn.height = 0;
+
+	$.contact_info.text = (L('contact_info_1') + '\n\n' + L('contact_info_2') + '\n\n' + L('contact_info_3'));
+	
+	// Disabling update email option for username = mobile@buzzplay.com
+	if (thisUser._id == '555bb6a87d5a0af11a060588') {
+		$.edit_email_btn.height = 0;
+		$.save_email_btn.height = 0;
+	};
 };
 
 nsSettings.init();

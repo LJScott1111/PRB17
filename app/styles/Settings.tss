@@ -5,12 +5,6 @@
 	width: Titanium.UI.FILL
 }
 
-".lbl_hint_settings": {
-	left: '3dp',
-	top: '3dp',
-	color: '#acacac'
-}
-
 ".tfClass": {
 	// top: 10,
 	backgroundColor: "#000000",
@@ -49,4 +43,14 @@
 	image: '/icons/save.png',
 	height: 0,
 	width: 15
+}
+
+"#contact_info": {
+	color: '#ffffff',
+	zIndex: 99,
+	left: 20,
+	top: 50,
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts
+	}
 }
