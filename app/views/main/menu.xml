@@ -17,7 +17,7 @@
 			<Require id="about" src="misc/menu_button" title="L('about').toUpperCase()" />
 			<Require id="faq" src="misc/menu_button" title="L('faq').toUpperCase()" />
 			<Require id="privacy_policy" src="misc/menu_button" title="L('privacy_policy').toUpperCase()" />
-			<Require id="social" src="misc/menu_button" title="L('social').toUpperCase()" />
+			<Require id="social" src="misc/menu_button" title="L('news_social').toUpperCase()" />
 			<Require id="my_schedule" src="misc/menu_button" title="L('my_schedule').toUpperCase()" />
 		</ScrollView>
 	</View>

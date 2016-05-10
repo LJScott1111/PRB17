@@ -70,31 +70,31 @@ nsBandProfile.markFavourite = function(e) {
 
 nsBandProfile.doSocialActivity = function(e) {
 	console.debug(e.source.id);
-	if (e.source.id === "vwSoundCloud") {
+	if (e.source.id === "ivSoundCloud") {
 
 		Alloy.Globals.openWindow("GenericWebView", {
 			url : nsBandProfile.data.bandDetails.audio_link
 		}, true);
 
-	} else if (e.source.id === "vwYouTube") {
+	} else if (e.source.id === "ivYouTube") {
 
 		Alloy.Globals.openWindow("GenericWebView", {
 			url : nsBandProfile.data.bandDetails.video_link
 		}, true);
 
-	} else if (e.source.id === "vwWebsite") {
+	} else if (e.source.id === "ivWebsite") {
 
 		Alloy.Globals.openWindow("GenericWebView", {
 			url : nsBandProfile.data.bandDetails.site_link
 		}, true);
 
-	} else if (e.source.id === "vwFacebook") {
+	} else if (e.source.id === "ivFacebook") {
 
 		Alloy.Globals.openWindow("GenericWebView", {
 			url : nsBandProfile.data.bandDetails.fb_link
 		}, true);
 
-	} else if (e.source.id === "vwTwitter") {
+	} else if (e.source.id === "ivTwitter") {
 
 		Alloy.Globals.openWindow("GenericWebView", {
 			url : nsBandProfile.data.bandDetails.tw_link
