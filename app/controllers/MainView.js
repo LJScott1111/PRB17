@@ -6,25 +6,28 @@ nsLanding.serviceCalls = require("serverCalls");
 
 nsLanding.get_next_show = function() {
 
-	// Find out earliest show
-	var appdata = Titanium.App.Properties.getObject('appdata');
+	console.log('Alloy.Globals.EVENTS ', JSON.stringify(Alloy.Globals.EVENTS));
+	var today = Date.now();
+	// var today = new Date('2016-05-27T00:00:00').getTime(); // to remove later - it is for testing different scenarios 
+	var location = '';
 
-	var min = Infinity,
-	    max = -Infinity,
-	    x,
-	    location = '';
-	for (x in appdata.shows) {
-		// console.log('LOCATIONS --- >', appdata.shows[x].location);
-		if (appdata.shows[x].start_time < min) {
-			// console.error('LOCATIONS --- >', appdata.shows[x]);
-			min = appdata.shows[x].start_time;
-			if (appdata.shows[x].location) {
-				location = appdata.shows[x].location;
-			} else {
-				location = '';
-			}
+	console.log('TODAY ', today);
+
+	for (i in Alloy.Globals.EVENTS) {
+
+		if (today <= Alloy.Globals.EVENTS[i].start || today <= Alloy.Globals.EVENTS[i].end) {
+
+			console.log('IF - ', Alloy.Globals.EVENTS[i].city);
+			location = Alloy.Globals.EVENTS[i].city;
+			break;
 		}
+
+		if (location == '') {
+			location = Alloy.Globals.EVENTS[2].city;
+		};
 	}
+
+	console.log('LOCATION - ', location);
 
 	// console.log('CURRENT PAGE ', Alloy.Globals.pageflow.getCurrentPage());
 
@@ -32,7 +35,7 @@ nsLanding.get_next_show = function() {
 		color : '#F3CB87',
 		font : {
 			fontSize : Alloy.Globals.theme.fonts.size15Fonts,
-			fontFamily: "KnowYourProduct"
+			fontFamily : "KnowYourProduct"
 		},
 		width : Titanium.UI.SIZE
 	});
@@ -68,7 +71,7 @@ nsLanding.getBands = function() {
 			if (fetchedData) {
 
 				Alloy.Globals.openWindow('BandList', {
-					city: $.args.city
+					city : $.args.city
 				}, true);
 				Alloy.Globals.loading.hide();
 			} else {
@@ -81,7 +84,7 @@ nsLanding.getBands = function() {
 	} else {
 		console.log('Opening bands');
 		Alloy.Globals.openWindow('BandList', {
-			city: $.args.city
+			city : $.args.city
 		}, true);
 	}
 };
@@ -89,7 +92,7 @@ nsLanding.getBands = function() {
 nsLanding.getEvents = function() {
 
 	Alloy.Globals.openWindow('Events', {
-		secondary: $.args.secondary
+		secondary : $.args.secondary
 	}, true);
 };
 
@@ -147,7 +150,7 @@ nsLanding.getVenues = function() {
 			if (fetchedData) {
 
 				Alloy.Globals.openWindow('VenueList', {
-					city: $.args.city
+					city : $.args.city
 				}, true);
 
 				Alloy.Globals.loading.hide();
@@ -159,7 +162,7 @@ nsLanding.getVenues = function() {
 		});
 	} else {
 		Alloy.Globals.openWindow('VenueList', {
-			city: $.args.city
+			city : $.args.city
 		}, true);
 	}
 };

@@ -75,6 +75,20 @@ Alloy.Globals.loading = Alloy.createWidget("nl.fokkezb.loading");
 
 Alloy.Globals.CITIES = ['lasvegas', 'denver', 'asburypark'];
 
+Alloy.Globals.EVENTS = [{
+	city : 'lasvegas',
+	start : 1464220800000, // "2016-05-26T00:00:00",
+	end : 1464652799000, //"2016-05-30T23:59:59"
+}, {
+	city : 'denver',
+	start : 1464825600000, // "2016-06-02T00:00:00",
+	end : 1465084799000, // "2016-06-04T23:59:59"
+}, {
+	city : 'asburypark',
+	start : 1465516800000, //"2016-06-10T00:00:00",
+	end : 1465775999000, //"2016-06-12T23:59:59"
+}];
+
 // iOS NavMenu
 Alloy.Globals.navMenu = null;
 
