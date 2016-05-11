@@ -6,36 +6,30 @@ nsLanding.serviceCalls = require("serverCalls");
 
 nsLanding.get_next_show = function() {
 
-	// Find out earliest show
-	var appdata = Titanium.App.Properties.getObject('appdata');
+	console.log('Alloy.Globals.EVENTS ', JSON.stringify(Alloy.Globals.EVENTS));
+	var today = Date.now();
+	// var today = new Date('2016-05-27T00:00:00').getTime(); // to remove later - it is for testing different scenarios 
+	var location = '';
 
-	var min = Infinity,
-	    max = -Infinity,
-	    x,
-	    location = '';
-	for (x in appdata.shows) {
-		// console.log('LOCATIONS --- >', appdata.shows[x].location);
-		if (appdata.shows[x].start_time < min) {
-			// console.error('LOCATIONS --- >', appdata.shows[x]);
-			min = appdata.shows[x].start_time;
-			if (appdata.shows[x].location) {
-				location = appdata.shows[x].location;
-			} else {
-				location = '';
-			}
+	console.log('TODAY ', today);
+
+	for (i in Alloy.Globals.EVENTS) {
+
+		if (today <= Alloy.Globals.EVENTS[i].start || today <= Alloy.Globals.EVENTS[i].end) {
+
+			console.log('IF - ', Alloy.Globals.EVENTS[i].city);
+			location = Alloy.Globals.EVENTS[i].city;
+			break;
 		}
+
+		if (location == '') {
+			location = Alloy.Globals.EVENTS[2].city;
+		};
 	}
 
-	// console.log('CURRENT PAGE ', Alloy.Globals.pageflow.getCurrentPage());
-
-	Alloy.Globals.pageflow.getCurrentPage().setNavTitle(L(location).toUpperCase(), {
-		color : '#F3CB87',
-		font : {
-			fontSize : Alloy.Globals.theme.fonts.size15Fonts,
-			fontFamily: "KnowYourProduct"
-		},
-		width : Titanium.UI.SIZE
-	});
+	console.log('LOCATION - ', location);
+	
+	$.title.text = L(location);
 
 	Alloy.Globals.nextEventCity = location;
 	$.args.city = location;
@@ -68,8 +62,8 @@ nsLanding.getBands = function() {
 			if (fetchedData) {
 
 				Alloy.Globals.openWindow('BandList', {
-					city: $.args.city
-				}, true);
+					city : $.args.city
+				}, true, null, 'misc/right_logo');
 				Alloy.Globals.loading.hide();
 			} else {
 				console.debug("All data did not get downloaded!!!");
@@ -81,16 +75,17 @@ nsLanding.getBands = function() {
 	} else {
 		console.log('Opening bands');
 		Alloy.Globals.openWindow('BandList', {
-			city: $.args.city
-		}, true);
+			city : $.args.city
+		}, true, null, 'misc/right_logo');
 	}
 };
 
 nsLanding.getEvents = function() {
 
 	Alloy.Globals.openWindow('Events', {
-		secondary: $.args.secondary
-	}, true);
+		secondary : $.args.secondary,
+		city : $.args.city
+	}, true, null, 'misc/right_logo');
 };
 
 nsLanding.getSchedule = function() {
@@ -107,7 +102,7 @@ nsLanding.getSchedule = function() {
 
 					console.debug(JSON.stringify(schedule));
 
-					Alloy.Globals.openWindow('UserSchedule', schedule, true);
+					Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/right_logo');
 
 					Alloy.Globals.loading.hide();
 
@@ -126,7 +121,7 @@ nsLanding.getSchedule = function() {
 		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
 
 			console.debug(JSON.stringify(schedule));
-			Alloy.Globals.openWindow('UserSchedule', schedule, true);
+			Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/right_logo');
 			Alloy.Globals.loading.hide();
 
 		}, function(error) {
@@ -147,8 +142,8 @@ nsLanding.getVenues = function() {
 			if (fetchedData) {
 
 				Alloy.Globals.openWindow('VenueList', {
-					city: $.args.city
-				}, true);
+					city : $.args.city
+				}, true, null, 'misc/right_logo');
 
 				Alloy.Globals.loading.hide();
 			} else {
@@ -159,8 +154,8 @@ nsLanding.getVenues = function() {
 		});
 	} else {
 		Alloy.Globals.openWindow('VenueList', {
-			city: $.args.city
-		}, true);
+			city : $.args.city
+		}, true, null, 'misc/right_logo');
 	}
 };
 
@@ -168,14 +163,14 @@ nsLanding.getFood = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/food-vendors/"
-	}, true);
+	}, true, null, 'misc/right_logo');
 };
 
 nsLanding.getNews = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "/twitter.html"
-	}, true);
+	}, true, null, 'misc/right_logo');
 };
 
 nsLanding.checkLocationPermissions = function() {
@@ -202,6 +197,7 @@ nsLanding.init = function() {
 	if (!$.args.city) {
 		Titanium.App.addEventListener('get_next_show', nsLanding.get_next_show);
 	} else {
+		$.title.text = L($.args.city);
 		return;
 	}
 

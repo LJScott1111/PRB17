@@ -75,6 +75,42 @@ Alloy.Globals.loading = Alloy.createWidget("nl.fokkezb.loading");
 
 Alloy.Globals.CITIES = ['lasvegas', 'denver', 'asburypark'];
 
+Alloy.Globals.EVENTS = [{
+	city : 'lasvegas',
+	start : 1464220800000, // "2016-05-26T00:00:00",
+	end : 1464652799000, //"2016-05-30T23:59:59"
+}, {
+	city : 'denver',
+	start : 1464825600000, // "2016-06-02T00:00:00",
+	end : 1465084799000, // "2016-06-04T23:59:59"
+}, {
+	city : 'asburypark',
+	start : 1465516800000, //"2016-06-10T00:00:00",
+	end : 1465775999000, //"2016-06-12T23:59:59"
+}];
+
+Alloy.Globals.SPONSORS = [{image:'sourpuss.png',link:'http://sourpussclothing.com/'},{image:'new_noise.png',link:'http://newnoisemagazine.com/'},{image:'pabst.png',link:'http://pabstblueribbon.com/'},{image:'converse.png',link:'http://www.converse.com/us'},{image:'angry_young.png',link:'http://www.angryyoungandpoor.com/store/pc/home.asp'},{image:'screaming.png',link:'http://www.screamingimages.net/Welcome/'},{image:'asg.png',link:'http://artistseriesguitar.com/'},{image:'punknews.png',link:'http://www.punknews.org'},{image:'inked.png',link:'http://www.inkedmag.com/'},{image:'misfit_island.png',link:'http://misfitislandstudios.com/'},{image:'juxtapoz.png',link:'http://www.juxtapoz.com/'},{image:'fireball.png',link:'http://fireballwhisky.com/'},{image:'lethal_amounts.png',link:'http://www.lethalamounts.com/'},{image:'felony.png',link:'https://www.facebook.com/felonyrecords/'},{image:'matchete.png',link:'http://www.machetemfg.com/'},{image:'american.png',link:''},{image:'thehub.png',link:'http://hublbc.com/'},{image:'posers.png',link:'http://www.weareposers.com/'},{image:'rocksoff.png',link:'https://www.rocksoff.com/'},{image:'thrasher.png',link:''}];
+Alloy.Globals.sponsers_rr = [];
+
+
+// Selecting array element in round robin manner
+Alloy.Globals.getSponsor = function() {
+
+	if (Alloy.Globals.sponsers_rr.length == 0) {
+		Alloy.Globals.sponsers_rr = JSON.parse(JSON.stringify(Alloy.Globals.SPONSORS));
+	};
+
+	// get a random array element from
+	var random = Math.floor(Math.random() * Alloy.Globals.sponsers_rr.length);
+
+	var randomObj = Alloy.Globals.sponsers_rr[random];
+	console.log('RANDOM ELEMENT ', randomObj);
+
+	Alloy.Globals.sponsers_rr.splice(random, 1);
+	return randomObj;
+}; 
+
+
 // iOS NavMenu
 Alloy.Globals.navMenu = null;
 
@@ -439,7 +475,7 @@ if (OS_ANDROID) {
 }
 
 // Open a controller
-Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text) {
+Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, center, rightLogo) {
 
 	if (Alloy.Globals.pageflow.getCurrentPage() == null || newOne === true) {
 
@@ -457,8 +493,10 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text) {
 			navBar : {
 				backgroundColor : '#000000',
 				left : 'misc/openMenu',
-				right : 'misc/right_logo',
+				// right : 'misc/right_logo',
+				right: rightLogo,
 				title : title_text,
+				center: center,
 				titleOptions : {
 					color : '#F3CB87',
 					font : {
@@ -489,8 +527,10 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text) {
 			navBar : {
 				backgroundColor : '#000000',
 				left : 'misc/openMenu',
-				right : 'misc/right_logo',
+				// right : 'misc/right_logo',
+				right: rightLogo,
 				title : title_text,
+				center: center,
 				titleOptions : {
 					color : '#F3CB87',
 					font : {
