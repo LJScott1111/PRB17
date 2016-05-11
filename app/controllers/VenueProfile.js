@@ -159,55 +159,55 @@ nsVenueProfile.getList = function(source) {
 
 	if (day === "friday") {
 		$.vwDay1.selected = true;
-		$.vwDay1.backgroundColor = "#c0c0c0";
+		// $.vwDay1.backgroundColor = "#c0c0c0";
 
 		$.vwDay2.selected = false;
-		$.vwDay2.backgroundColor = "#ffffff";
+		// $.vwDay2.backgroundColor = "#ffffff";
 
 		$.vwDay3.selected = false;
-		$.vwDay3.backgroundColor = "#ffffff";
+		// $.vwDay3.backgroundColor = "#ffffff";
 
 		$.vwDay4.selected = false;
-		$.vwDay4.backgroundColor = "#ffffff";
+		// $.vwDay4.backgroundColor = "#ffffff";
 
 	} else if (day === "saturday") {
 		$.vwDay1.selected = false;
-		$.vwDay1.backgroundColor = "#ffffff";
+		// $.vwDay1.backgroundColor = "#ffffff";
 
 		$.vwDay2.selected = true;
-		$.vwDay2.backgroundColor = "#c0c0c0";
+		// $.vwDay2.backgroundColor = "#c0c0c0";
 
 		$.vwDay3.selected = false;
-		$.vwDay3.backgroundColor = "#ffffff";
+		// $.vwDay3.backgroundColor = "#ffffff";
 
 		$.vwDay4.selected = false;
-		$.vwDay4.backgroundColor = "#ffffff";
+		// $.vwDay4.backgroundColor = "#ffffff";
 
 	} else if (day === "sunday") {
 		$.vwDay1.selected = false;
-		$.vwDay1.backgroundColor = "#ffffff";
+		// $.vwDay1.backgroundColor = "#ffffff";
 
 		$.vwDay2.selected = false;
-		$.vwDay2.backgroundColor = "#ffffff";
+		// $.vwDay2.backgroundColor = "#ffffff";
 
 		$.vwDay3.selected = true;
-		$.vwDay3.backgroundColor = "#c0c0c0";
+		// $.vwDay3.backgroundColor = "#c0c0c0";
 
 		$.vwDay4.selected = false;
-		$.vwDay4.backgroundColor = "#ffffff";
+		// $.vwDay4.backgroundColor = "#ffffff";
 
 	} else if (day === "monday") {
 		$.vwDay1.selected = false;
-		$.vwDay1.backgroundColor = "#ffffff";
+		// $.vwDay1.backgroundColor = "#ffffff";
 
 		$.vwDay2.selected = false;
-		$.vwDay2.backgroundColor = "#ffffff";
+		// $.vwDay2.backgroundColor = "#ffffff";
 
 		$.vwDay3.selected = false;
-		$.vwDay3.backgroundColor = "#ffffff";
+		// $.vwDay3.backgroundColor = "#ffffff";
 
 		$.vwDay4.selected = true;
-		$.vwDay4.backgroundColor = "#c0c0c0";
+		// $.vwDay4.backgroundColor = "#c0c0c0";
 	}
 
 	// Get list

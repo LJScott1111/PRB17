@@ -113,8 +113,8 @@
 }
 
 ".dayClass": {
-	top: 5,
-	bottom: 5,
+	top: 0,
+	// bottom: 5,
 	height: Titanium.UI.SIZE,
 	borderRadius: 5,
 	borderColor: "#000000"
@@ -126,8 +126,8 @@
 }
 
 ".lblDayClass": {
-	top: 2,
-	bottom: 2,
+	// top: 2,
+	// bottom: 2,
 	height: Titanium.UI.SIZE,
 	touchEnabled: false,
 	color: "#dc0000",
