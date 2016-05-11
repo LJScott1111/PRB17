@@ -22,8 +22,6 @@
 			</View>
 
 		</View>
-		<View id="vwBottomView">
-			<ImageView id="ivLogo"></ImageView>
-		</View>
+		<Require id="sponsor" src="misc/sponsorAd" />
 	</View>
 </Alloy>

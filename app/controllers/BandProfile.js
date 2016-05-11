@@ -149,11 +149,7 @@ nsBandProfile.init = function() {
 		$.lblMoreInfo.setText(nsBandProfile.data.bandDetails.description || "");
 	}
 
-	if (Titanium.Platform.osname === "android") {
-		$.svMain.setHeight(Titanium.UI.SIZE);
-	} else {
-		$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar);
-	}
+	$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar - Alloy.Globals.theme.sizes.landingOptionHeight);
 };
 
 nsBandProfile.init();

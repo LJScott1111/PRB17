@@ -18,19 +18,6 @@
 	zIndex: 99
 }
 
-"#vwBottomView": {
-	// top: 0,
-	bottom: 0,
-	height: Titanium.UI.SIZE,
-	width: Titanium.UI.FILL
-}
-
-"#ivLogo": {
-	bottom: 20,
-	width: 120,
-	image: "/icons/sourpuss.png"
-}
-
 "#movies_view": {
 	backgroundImage: '/icons/bands.png'
 }

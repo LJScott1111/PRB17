@@ -2,7 +2,7 @@
 "#vwMain": {
 	backgroundColor: "#000000",
 	top: 0,
-	layout: "vertical",
+	// layout: "vertical",
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL
 }
@@ -12,7 +12,8 @@
 	layout: "vertical",
 	scrollType: "vertical",
 	showVerticalScrollIndicator: true,
-	contentWidth: "100%"
+	contentWidth: "100%",
+	backgroundColor: "#000000"
 }
 
 "#ivVenueImage": {

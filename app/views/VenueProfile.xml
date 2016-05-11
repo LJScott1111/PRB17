@@ -28,5 +28,6 @@
 				<View id="vwBandSchedule"></View>
 			</View>
 		</ScrollView>
+		<Require id="sponsor" src="misc/sponsorAd" />
 	</View>
 </Alloy>
