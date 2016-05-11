@@ -9,6 +9,6 @@ if (sponsor.link != '') {
 	$.vwBottomView.addEventListener('click', function() {
 		Alloy.Globals.openWindow("GenericWebView", {
 			url : sponsor.link
-		}, true);
+		}, true, null, 'misc/right_logo');
 	});
 };

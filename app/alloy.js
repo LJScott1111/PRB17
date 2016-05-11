@@ -475,7 +475,7 @@ if (OS_ANDROID) {
 }
 
 // Open a controller
-Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text) {
+Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, center, rightLogo) {
 
 	if (Alloy.Globals.pageflow.getCurrentPage() == null || newOne === true) {
 
@@ -493,8 +493,10 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text) {
 			navBar : {
 				backgroundColor : '#000000',
 				left : 'misc/openMenu',
-				right : 'misc/right_logo',
+				// right : 'misc/right_logo',
+				right: rightLogo,
 				title : title_text,
+				center: center,
 				titleOptions : {
 					color : '#F3CB87',
 					font : {
@@ -525,8 +527,10 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text) {
 			navBar : {
 				backgroundColor : '#000000',
 				left : 'misc/openMenu',
-				right : 'misc/right_logo',
+				// right : 'misc/right_logo',
+				right: rightLogo,
 				title : title_text,
+				center: center,
 				titleOptions : {
 					color : '#F3CB87',
 					font : {

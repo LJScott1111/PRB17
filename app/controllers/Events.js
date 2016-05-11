@@ -46,51 +46,51 @@ nsEvents.getMovies = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "http://www.punkrockbowling.com/pool-parties/"
-	}, true);
+	}, true, null, 'misc/right_logo');
 };
 
 nsEvents.getBowling = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/prborder/bowling"
-	}, true);
+	}, true, null, 'misc/right_logo');
 };
 
 nsEvents.getPoker = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/poker/"
-	}, true);
+	}, true, null, 'misc/right_logo');
 };
 
 nsEvents.getArt = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://www.punkrockbowling.com/art-exhibit/"
-	}, true);
+	}, true, null, 'misc/right_logo');
 };
 
 nsEvents.openCity2Event = function() {
 
 	Alloy.Globals.openWindow('MainView', {
 		city : cities[0],
-		secondary: true
-	}, true, L(cities[0]).toUpperCase());
+		secondary : true
+	}, true, L(cities[0]).toUpperCase(), null, 'misc/right_logo');
 };
 
 nsEvents.openCity3Event = function() {
 
 	Alloy.Globals.openWindow('MainView', {
 		city : cities[1],
-		secondary: true
-	}, true, L(cities[1]).toUpperCase());
+		secondary : true
+	}, true, L(cities[1]).toUpperCase(), null, 'misc/right_logo');
 };
 
 nsEvents.init = function() {
 	// Alloy.Globals.windowStack.push($.winEvents); : TODO Loading View
-	
+
 	if ($.args.secondary) {
-		
+
 		$.city2.height = 0;
 		$.city3.height = 0;
 		return;

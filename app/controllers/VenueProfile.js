@@ -54,7 +54,7 @@ nsVenueProfile.createList = function(shows) {
 
 					Alloy.Globals.openWindow("BandProfile", {
 						"id" : e.row.bandDetails._id
-					}, true);
+					}, true, null, 'misc/right_logo');
 
 				});
 
@@ -136,7 +136,7 @@ nsVenueProfile.createList = function(shows) {
 		var newTable = Titanium.UI.createTableView({
 			data : tabledata,
 			top : 0,
-			backgroundColor: "#000000"
+			backgroundColor : "#000000"
 		});
 		$.vwBandSchedule.add(newTable);
 		$.svMain.setContentHeight(newTable.height + $.ivVenueImage.height + $.vwVenueInfo.height);

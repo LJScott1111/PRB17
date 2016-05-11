@@ -5,13 +5,13 @@ nsMenu.serviceCalls = require("serverCalls");
 $.settings.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow('Settings', {}, true);
+	Alloy.Globals.openWindow('Settings', {}, true, null, 'misc/right_logo');
 });
 
 $.lineup.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow('Lineup', {}, true);
+	Alloy.Globals.openWindow('Lineup', {}, true, null, 'misc/right_logo');
 });
 
 $.venues.button.addEventListener('click', function() {
@@ -19,7 +19,7 @@ $.venues.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('VenueList', {
 		city : Alloy.Globals.nextEventCity
-	}, true);
+	}, true, null, 'misc/right_logo');
 });
 
 $.movies.button.addEventListener('click', function() {
@@ -63,7 +63,7 @@ $.sponsers.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://punkrockbowling.com/pages/sponsor-page"
-	}, true);
+	}, true, null, 'misc/right_logo');
 });
 
 $.info.button.addEventListener('click', function() {
@@ -71,7 +71,7 @@ $.info.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://punkrockbowling.com/blogs/news"
-	}, true);
+	}, true, null, 'misc/right_logo');
 });
 
 $.about.button.addEventListener('click', function() {
@@ -79,7 +79,7 @@ $.about.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://punkrockbowling.com/pages/about-us"
-	}, true);
+	}, true, null, 'misc/right_logo');
 });
 
 $.faq.button.addEventListener('click', function() {
@@ -87,7 +87,7 @@ $.faq.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://punkrockbowling.com/pages/about-us"
-	}, true);
+	}, true, null, 'misc/right_logo');
 });
 
 $.privacy_policy.button.addEventListener('click', function() {
@@ -95,7 +95,7 @@ $.privacy_policy.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://punkrockbowling.com/pages/privacy-policy"
-	}, true);
+	}, true, null, 'misc/right_logo');
 });
 
 $.social.button.addEventListener('click', function() {
@@ -103,7 +103,7 @@ $.social.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://punkrockbowling.com/blogs/news"
-	}, true);
+	}, true, null, 'misc/right_logo');
 });
 
 $.my_schedule.button.addEventListener('click', function() {
@@ -113,7 +113,7 @@ $.my_schedule.button.addEventListener('click', function() {
 	var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
 
 		console.debug(JSON.stringify(schedule));
-		Alloy.Globals.openWindow('UserSchedule', schedule, true);
+		Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/right_logo');
 		Alloy.Globals.loading.hide();
 
 	}, function(error) {

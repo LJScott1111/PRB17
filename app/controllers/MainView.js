@@ -72,7 +72,7 @@ nsLanding.getBands = function() {
 
 				Alloy.Globals.openWindow('BandList', {
 					city : $.args.city
-				}, true);
+				}, true, null, 'misc/right_logo');
 				Alloy.Globals.loading.hide();
 			} else {
 				console.debug("All data did not get downloaded!!!");
@@ -85,7 +85,7 @@ nsLanding.getBands = function() {
 		console.log('Opening bands');
 		Alloy.Globals.openWindow('BandList', {
 			city : $.args.city
-		}, true);
+		}, true, null, 'misc/right_logo');
 	}
 };
 
@@ -93,7 +93,7 @@ nsLanding.getEvents = function() {
 
 	Alloy.Globals.openWindow('Events', {
 		secondary : $.args.secondary
-	}, true);
+	}, true, null, 'misc/right_logo');
 };
 
 nsLanding.getSchedule = function() {
@@ -110,7 +110,7 @@ nsLanding.getSchedule = function() {
 
 					console.debug(JSON.stringify(schedule));
 
-					Alloy.Globals.openWindow('UserSchedule', schedule, true);
+					Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/right_logo');
 
 					Alloy.Globals.loading.hide();
 
@@ -129,7 +129,7 @@ nsLanding.getSchedule = function() {
 		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
 
 			console.debug(JSON.stringify(schedule));
-			Alloy.Globals.openWindow('UserSchedule', schedule, true);
+			Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/right_logo');
 			Alloy.Globals.loading.hide();
 
 		}, function(error) {
@@ -151,7 +151,7 @@ nsLanding.getVenues = function() {
 
 				Alloy.Globals.openWindow('VenueList', {
 					city : $.args.city
-				}, true);
+				}, true, null, 'misc/right_logo');
 
 				Alloy.Globals.loading.hide();
 			} else {
@@ -163,7 +163,7 @@ nsLanding.getVenues = function() {
 	} else {
 		Alloy.Globals.openWindow('VenueList', {
 			city : $.args.city
-		}, true);
+		}, true, null, 'misc/right_logo');
 	}
 };
 
@@ -171,14 +171,14 @@ nsLanding.getFood = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/food-vendors/"
-	}, true);
+	}, true, null, 'misc/right_logo');
 };
 
 nsLanding.getNews = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "/twitter.html"
-	}, true);
+	}, true, null, 'misc/right_logo');
 };
 
 nsLanding.checkLocationPermissions = function() {

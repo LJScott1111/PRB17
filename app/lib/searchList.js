@@ -330,13 +330,13 @@ nsSearchList.createList = function(tblData) {
 
 						Alloy.Globals.openWindow("BandProfile", {
 							"id" : tblData[e.source.id]._id
-						}, true);
+						}, true, null, 'misc/right_logo');
 
 					} else if (nsSearchList.type === "VenueList") {
 
 						Alloy.Globals.openWindow("VenueProfile", {
 							"id" : tblData[e.source.id]._id
-						}, true);
+						}, true, null, 'misc/right_logo');
 
 					}
 				}
