@@ -135,7 +135,8 @@ nsVenueProfile.createList = function(shows) {
 
 		var newTable = Titanium.UI.createTableView({
 			data : tabledata,
-			top : 0
+			top : 0,
+			backgroundColor: "#000000"
 		});
 		$.vwBandSchedule.add(newTable);
 		$.svMain.setContentHeight(newTable.height + $.ivVenueImage.height + $.vwVenueInfo.height);

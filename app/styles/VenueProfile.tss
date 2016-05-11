@@ -26,7 +26,7 @@
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL,
-	backgroundColor: "#cc0000"
+	backgroundImage: '/icons/news.png'
 }
 
 "#lblVenueName": {
@@ -113,10 +113,10 @@
 }
 
 ".dayClass": {
-	top: 2,
-	bottom: 2,
+	top: 5,
+	bottom: 5,
 	height: Titanium.UI.SIZE,
-	borderRadius: 10,
+	borderRadius: 5,
 	borderColor: "#000000"
 }
 
@@ -126,12 +126,13 @@
 }
 
 ".lblDayClass": {
-	top: 5,
-	bottom: 5,
+	top: 2,
+	bottom: 2,
 	height: Titanium.UI.SIZE,
 	touchEnabled: false,
-	color: "#000000",
+	color: "#dc0000",
 	font: {
-		fontSize: Alloy.Globals.theme.fonts.size15Fonts
+		fontSize: Alloy.Globals.theme.fonts.size20Fonts,
+		fontFamily: "KnowYourProduct"
 	}
 }
