@@ -6,8 +6,9 @@
 ".com.jolicode.pageflow.navBar.center": {
     backgroundColor: 'transparent',
     height: Ti.UI.FILL,
-    left: 50,
-    right: 50
+    width: Titanium.UI.SIZE
+    // left: 50,
+    // right: 50
 },
 ".com.jolicode.pageflow.navBar.left": {
     backgroundColor: 'transparent',

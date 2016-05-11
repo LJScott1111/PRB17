@@ -1,0 +1,12 @@
+
+"#vwBottomView": {
+	bottom: 0,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+"#ivSponsorAd": {
+	bottom: 20,
+	width: 120,
+	touchEnabled: false
+}

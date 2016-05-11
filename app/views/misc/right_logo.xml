@@ -1,4 +1,3 @@
 <Alloy>
-	<View id="logo" >
-	</View>
+	<View id="logo"></View>
 </Alloy>

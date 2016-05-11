@@ -139,9 +139,7 @@
 	bottom: 5,
 	left: 30,
 	height: 25,
-	width: 25,
-	// backgroundColor: "#000000",
-	touchEnabled: false
+	width: 25
 }
 
 "#ivSoundCloud": {

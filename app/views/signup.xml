@@ -20,10 +20,6 @@
 				<!-- <Label id="lblOr" text="L('index_lblOr')"></Label>
 				<Button id="btnFbConnect" class="btnClass" title="L('index_lblFbConnect')" onClick="nsIndex.connectToFb"></Button> -->
 			</View>
-			<View id="vwBottomView">
-				<!-- <ImageView id="ivPoker"></ImageView> 
-				<ImageView id="ivLogo"></ImageView> -->
-			</View>
 		</View>
 	</Window>
 </Alloy>

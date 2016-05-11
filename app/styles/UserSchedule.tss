@@ -71,14 +71,14 @@
 }
 
 "#lblNoSchedule": {
-	top: 100,
+	top: 20,
 	left: 20,
 	right: 20,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	color: "#ffffff",
+	color: "#F5C787",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size25Fonts,
-		fontWeight: "bold"
+		fontFamily: "KnowYourProduct"
 	}
 }
 
@@ -101,19 +101,7 @@
 "#ivStar": {
 	top: 30,
 	right: 5,
-	height: 80,
+	height: 60,
 	width: Titanium.UI.SIZE,
-	image: "/icons/star_yellow.png"
-}
-
-"#vwBottomView": {
-	bottom: 0,
-	height: Titanium.UI.SIZE,
-	width: Titanium.UI.FILL
-}
-
-"#ivLogo": {
-	bottom: 20,
-	width: 120,
-	image: "/icons/sourpuss.png"
+	image: "/icons/star_red.png"
 }

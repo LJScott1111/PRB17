@@ -30,7 +30,7 @@ nsVenueList.getShowsDataForCity = function() {
 	console.error('venuelist === ', JSON.stringify(venuelist));
 
 	var searchList = require("searchList");
-	var list = searchList.init("venuelist", {
+	var list = searchList.init("VenueList", {
 		list : venuelist,
 		currentCityData : currentCityData
 	}, $.args.city);

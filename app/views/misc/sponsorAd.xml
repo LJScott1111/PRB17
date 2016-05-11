@@ -1,0 +1,5 @@
+<Alloy>
+	<View id="vwBottomView">
+		<ImageView id="ivSponsorAd"></ImageView>
+	</View>
+</Alloy>
