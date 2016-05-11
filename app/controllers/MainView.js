@@ -28,17 +28,8 @@ nsLanding.get_next_show = function() {
 	}
 
 	console.log('LOCATION - ', location);
-
-	// console.log('CURRENT PAGE ', Alloy.Globals.pageflow.getCurrentPage());
-
-	Alloy.Globals.pageflow.getCurrentPage().setNavTitle(L(location).toUpperCase(), {
-		color : '#F3CB87',
-		font : {
-			fontSize : Alloy.Globals.theme.fonts.size15Fonts,
-			fontFamily : "KnowYourProduct"
-		},
-		width : Titanium.UI.SIZE
-	});
+	
+	$.title.text = L(location);
 
 	Alloy.Globals.nextEventCity = location;
 	$.args.city = location;
@@ -92,7 +83,8 @@ nsLanding.getBands = function() {
 nsLanding.getEvents = function() {
 
 	Alloy.Globals.openWindow('Events', {
-		secondary : $.args.secondary
+		secondary : $.args.secondary,
+		city : $.args.city
 	}, true, null, 'misc/right_logo');
 };
 
@@ -205,6 +197,7 @@ nsLanding.init = function() {
 	if (!$.args.city) {
 		Titanium.App.addEventListener('get_next_show', nsLanding.get_next_show);
 	} else {
+		$.title.text = L($.args.city);
 		return;
 	}
 

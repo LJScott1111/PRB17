@@ -75,7 +75,7 @@ nsEvents.openCity2Event = function() {
 	Alloy.Globals.openWindow('MainView', {
 		city : cities[0],
 		secondary : true
-	}, true, L(cities[0]).toUpperCase(), null, 'misc/right_logo');
+	}, true, null, 'misc/right_logo');
 };
 
 nsEvents.openCity3Event = function() {
@@ -83,12 +83,14 @@ nsEvents.openCity3Event = function() {
 	Alloy.Globals.openWindow('MainView', {
 		city : cities[1],
 		secondary : true
-	}, true, L(cities[1]).toUpperCase(), null, 'misc/right_logo');
+	}, true, null, 'misc/right_logo');
 };
 
 nsEvents.init = function() {
 	// Alloy.Globals.windowStack.push($.winEvents); : TODO Loading View
 
+	$.title.text = L($.args.city);
+	
 	if ($.args.secondary) {
 
 		$.city2.height = 0;

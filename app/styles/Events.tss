@@ -18,6 +18,14 @@
 	zIndex: 99
 }
 
+"#title": {
+	top: 0,
+	color: "#F3CB87",
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+}
+
 "#movies_view": {
 	backgroundImage: '/icons/bands.png'
 }
