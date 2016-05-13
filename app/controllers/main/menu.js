@@ -105,8 +105,14 @@ $.privacy_policy.button.addEventListener('click', function() {
 $.social.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/blogs/news"
+	// Alloy.Globals.openWindow("GenericWebView", {
+		// url : "http://punkrockbowling.com/blogs/news"
+	// }, true, null, 'misc/right_logo');
+
+	Alloy.Globals.openWindow('NewsAndSocial', {
+		twitter_url : "/twitter.html",
+		fb_url : "",
+		insta_url : ""
 	}, true, null, 'misc/right_logo');
 });
 
