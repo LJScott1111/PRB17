@@ -24,6 +24,33 @@
 	zIndex: 99
 }
 
+"#indicatorView": {
+	height: 0,
+	width: '80%',
+	visible: false,
+	backgroundColor: '#000',
+	borderColor: '#ffffff',
+	borderRadius: 10,
+	borderWidth: 1
+}
+
+"#activityIndicator": {
+	color : 'white',
+	top: 10,
+	opacity : 1,
+	style: Titanium.UI.ActivityIndicatorStyle.BIG,
+	height: 'auto',
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts
+	}
+}
+
+"#user_exists_msg": {
+	top: 50,
+	bottom: 10,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
+
 "#btnFbConnect": {
 	color: "#ffffff",
 	backgroundColor: "#4BA5FF"

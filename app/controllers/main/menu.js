@@ -49,7 +49,11 @@ $.art.button.addEventListener('click', function() {
 $.map.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	// TODO: Add info
+	// TODO: Show it city-wise
+	
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "http://cdn.shopify.com/s/files/1/0809/7981/files/Punk-Rock-Bowling-map_grande_grande.jpg?9976921872633462755"
+	}, true, null, 'misc/right_logo');
 });
 
 $.food.button.addEventListener('click', function() {
@@ -86,7 +90,7 @@ $.faq.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/about-us"
+		url : "http://punkrockbowling.com/pages/faqs"
 	}, true, null, 'misc/right_logo');
 });
 

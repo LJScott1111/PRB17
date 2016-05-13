@@ -23,6 +23,7 @@ nsServerCalls.signup = function(username, password, onloadCallback, errorCallbac
 		if (Kinvey.Error.USER_ALREADY_EXISTS) {
 
 			console.error('Kinvey.Error.USER_ALREADY_EXISTS');
+			Titanium.App.fireEvent('user_exists');
 			nsServerCalls.login(username, password, onloadCallback, errorCallback);
 		} else {
 

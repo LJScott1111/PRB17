@@ -22,6 +22,24 @@ nsIndex.closeWindow = function() {
 	$.winIndex.close();
 };
 
+nsIndex.user_exists = function(){
+
+	$.activityIndicator.show();
+	$.indicatorView.height = Titanium.UI.SIZE;
+	$.indicatorView.visible = true;
+
+	setTimeout(function(){
+		$.activityIndicator.hide();
+		$.indicatorView.height = 0;
+		$.indicatorView.visible = false;
+	}, 3000);
+
+	Titanium.App.removeEventListener('user_exists', nsIndex.user_exists);
+};
+
+Titanium.App.addEventListener('user_exists', nsIndex.user_exists);
+
+
 nsIndex.validateEmail = function() {
 	var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
@@ -186,7 +204,7 @@ nsIndex.login = function() {
 				alert(L('err_loginDetails'));
 			});
 		} else {
-			nsLogin.loginServiceCall();
+			nsIndex.loginServiceCall();
 		}
 
 	} else {
