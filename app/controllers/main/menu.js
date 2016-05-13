@@ -65,9 +65,7 @@ $.food.button.addEventListener('click', function() {
 $.sponsers.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/sponsor-page"
-	}, true, null, 'misc/right_logo');
+	Alloy.Globals.openWindow("Sponsors", {}, true, null, 'misc/right_logo');
 });
 
 $.info.button.addEventListener('click', function() {
