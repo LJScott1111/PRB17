@@ -306,13 +306,7 @@ nsVenueProfile.init = function() {
 	$.vwDay4.setWidth(vwDaysWidth);
 	$.vwDay4.setRight(2);
 
-	/*
-	if (Titanium.Platform.osname === "android") {
-		$.svMain.setHeight(Alloy.Globals.platformHeight);
-	} else {
-		$.svMain.setHeight(Alloy.Globals.platformHeight);
-	}*/
-	$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar - Alloy.Globals.theme.sizes.landingOptionHeight);
+	$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar - 2 * Alloy.Globals.theme.sizes.landingOptionHeight);
 
 	// Event listeners for show views
 	$.vwDay1.addEventListener('click', function(e) {

@@ -149,7 +149,7 @@ nsBandProfile.init = function() {
 		$.lblMoreInfo.setText(nsBandProfile.data.bandDetails.description || "");
 	}
 
-	$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar - Alloy.Globals.theme.sizes.landingOptionHeight);
+	$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar - 1.6 * Alloy.Globals.theme.sizes.landingOptionHeight);
 };
 
 nsBandProfile.init();
