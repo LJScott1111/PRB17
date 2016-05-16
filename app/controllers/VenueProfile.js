@@ -258,7 +258,7 @@ nsVenueProfile.init = function() {
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
 
-		if (appdata.details[i].venueDetails._id === nsVenueProfile.args.id) {
+		if (appdata.details[i].venueDetails && appdata.details[i].venueDetails._id === nsVenueProfile.args.id) {
 			nsVenueProfile.data = JSON.parse(JSON.stringify(appdata.details[i]));
 			break;
 		}
@@ -306,11 +306,13 @@ nsVenueProfile.init = function() {
 	$.vwDay4.setWidth(vwDaysWidth);
 	$.vwDay4.setRight(2);
 
+	/*
 	if (Titanium.Platform.osname === "android") {
 		$.svMain.setHeight(Alloy.Globals.platformHeight);
 	} else {
 		$.svMain.setHeight(Alloy.Globals.platformHeight);
-	}
+	}*/
+	$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar - Alloy.Globals.theme.sizes.landingOptionHeight);
 
 	// Event listeners for show views
 	$.vwDay1.addEventListener('click', function(e) {
