@@ -106,7 +106,8 @@
 
 "#ivFavouriteStar": {
 	height: 40,
-	width: 40
+	width: 40,
+	image: Alloy.Globals.theme.icons.star_off
 }
 
 "#lblAddBand": {

@@ -271,11 +271,29 @@ nsSearchList.createHeader = function() {
 
 nsSearchList.createList = function(tblData) {
 
+	var userSchedule = Ti.App.Properties.getList('userSchedule');
+
 	if (nsSearchList.type === "BandList") {
 
 		if (nsSearchList.selectedTab !== null) {
 			nsSearchList.selectedTab.selected = true;
 			nsSearchList.selectedTab.backgroundColor = "#c0c0c0";
+		}
+
+		for (var j in tblData) {
+			for (var i in userSchedule) {
+				if (userSchedule[i].band_id == tblData[j]._id) {
+					tblData[j].selected = true;
+				}
+			}
+		}
+	} else {
+		for (var j in tblData) {
+			for (var i in userSchedule) {
+				if (userSchedule[i].venue_id == tblData[j]._id) {
+					tblData[j].selected = true;
+				}
+			}
 		}
 	}
 
@@ -388,17 +406,15 @@ nsSearchList.createList = function(tblData) {
 				width : 30,
 				id : "ivFavouriteStar",
 				index : i,
-				selected : false,
-				image : Alloy.Globals.theme.icons.star
+				selected : tblData[i].selected,
+				// image : Alloy.Globals.theme.icons.star
 			});
 
-			/*
 			if (!ivFavouriteStar.selected) {
 				ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
 			} else {
 				ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
-			}*/
-			
+			}
 
 			ivFavouriteStar.addEventListener('click', function(e) {
 

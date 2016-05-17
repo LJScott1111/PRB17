@@ -280,9 +280,23 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 			}
 		}
 	}
+
+	var appdata = Titanium.App.Properties.getObject('appdata');
+	var band_id = '', venue_id = '';
+	for(var j in appdata.shows){
+		if (appdata.shows[j]._id == show_id) {
+			appdata.shows[j].selected = true;
+			band_id = appdata.shows[j].band_id;
+			venue_id = appdata.shows[j].venue_id;
+			break;
+		}
+	}
+	Titanium.App.Properties.setObject('appdata', appdata);
 	
 	userSchedule.push({
-		show_id : show_id
+		show_id : show_id,
+		band_id : band_id,
+		venue_id : venue_id
 	});
 	
 	Ti.App.Properties.setList('userSchedule', userSchedule);
@@ -326,12 +340,14 @@ nsServerCalls.deleteUserSchedule = function(show_id, onloadCallback, errorCallba
 			if (userSchedule[i].show_id == show_id) {
 				
 				userSchedule.splice(i, 1);
+				console.log('ENTRY DELETED');
+				break;
 			}
 		}
 	}
 	
 	Ti.App.Properties.setList('userSchedule', userSchedule);
-
+	onloadCallback();
 };
 
 exports.deleteUserSchedule = nsServerCalls.deleteUserSchedule;

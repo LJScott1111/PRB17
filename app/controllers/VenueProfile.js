@@ -31,6 +31,18 @@ nsVenueProfile.isShowDuplicate = function(showDetails, allShows) {
 };
 
 nsVenueProfile.createList = function(shows) {
+
+	var userSchedule = Ti.App.Properties.getList('userSchedule');
+	for (var j in shows) {
+		if (shows[j].bandDetails !== undefined) {
+			for (var i in userSchedule) {
+				if (userSchedule[i].band_id == shows[j].bandDetails._id) {
+					shows[j].bandDetails.selected = true;
+				}
+			}
+		}
+	}
+
 	$.vwBandSchedule.removeAllChildren();
 	var len = shows.length;
 	if (len > 0) {
@@ -108,7 +120,7 @@ nsVenueProfile.createList = function(shows) {
 					height : 40,
 					width : 40,
 					id : "ivFavouriteStar",
-					selected : false
+					selected : shows[i].bandDetails.selected
 				});
 
 				if (!ivFavouriteStar.selected) {
