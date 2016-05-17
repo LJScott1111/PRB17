@@ -486,6 +486,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, c
 			controller : controller,
 			backButton : {
 				image : '/icons/back.png',
+				tintColor: '#dc0000',
 				width : '35dp',
 				height : '35dp',
 				left : 0,
