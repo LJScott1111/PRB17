@@ -21,5 +21,9 @@
 				<Button id="btnFbConnect" class="btnClass" title="L('index_lblFbConnect')" onClick="nsIndex.connectToFb"></Button> -->
 			</View>
 		</View>
+		<View id="indicatorView" class="absolute_layout">
+			<ActivityIndicator id="activityIndicator"></ActivityIndicator>
+			<Label id="user_exists_msg" text="L('user_exists_msg')"></Label>
+		</View>
 	</Window>
 </Alloy>

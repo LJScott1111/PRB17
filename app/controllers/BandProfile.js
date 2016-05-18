@@ -10,10 +10,12 @@ nsBandProfile.getSettings = function() {
 };
 
 nsBandProfile.markFavourite = function(e) {
+	var show_id = nsBandProfile.data.showDetails._id;
 	if (!e.source.selected && (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null)) {
 		console.log('MARK favorite');
-		var show_id = nsBandProfile.data.showDetails._id;
+		
 		var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
+			e.source.selected = !e.source.selected;
 			e.source.setImage(Alloy.Globals.theme.icons.star);
 
 			var MS_PER_MINUTE = 60000;
@@ -63,9 +65,15 @@ nsBandProfile.markFavourite = function(e) {
 		}, function(error) {
 			alert(L('err_serviceError'));
 		});
+	} else {
+		nsBandProfile.serverCalls.deleteUserSchedule(show_id, function() {
+
+			e.source.setImage(Alloy.Globals.theme.icons.star_off);
+			e.source.selected = !e.source.selected;
+		});
 	}
 
-	e.source.selected = !e.source.selected;
+	
 };
 
 nsBandProfile.doSocialActivity = function(e) {
@@ -136,7 +144,14 @@ nsBandProfile.init = function() {
 
 	console.log('bandprodata:' + JSON.stringify(nsBandProfile.data));
 
-	$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
+	var userSchedule = Ti.App.Properties.getList('userSchedule');
+	for (var i in userSchedule) {
+		if (userSchedule[i].band_id == nsBandProfile.data.bandDetails._id) {
+			$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
+			$.ivFavouriteStar.selected = true;
+			break;
+		}
+	}
 
 	if (nsBandProfile.data !== null && nsBandProfile.data !== undefined) {
 		var datetime = (nsBandProfile.data.showDetails !== null && nsBandProfile.data.showDetails !== undefined) ? Alloy.Globals.getFormattedDate(nsBandProfile.data.showDetails.start_time) : "";
@@ -149,7 +164,7 @@ nsBandProfile.init = function() {
 		$.lblMoreInfo.setText(nsBandProfile.data.bandDetails.description || "");
 	}
 
-	$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar - Alloy.Globals.theme.sizes.landingOptionHeight);
+	$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar - 1.6 * Alloy.Globals.theme.sizes.landingOptionHeight);
 };
 
 nsBandProfile.init();

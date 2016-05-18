@@ -11,7 +11,7 @@ nsVenueList.getShowsDataForCity = function() {
 	var currentCityData = [];
 	for (i in appdata.details) {
 
-		if (appdata.details[i].venueDetails.location === $.args.city) {
+		if (appdata.details[i].venueDetails && appdata.details[i].venueDetails.location === $.args.city) {
 			currentCityData.push({
 				showDetails : appdata.details[i].showDetails,
 				bandDetails : appdata.details[i].bandDetails,

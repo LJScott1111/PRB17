@@ -49,7 +49,7 @@ nsSearchList.createHeader = function() {
 		height : Titanium.UI.SIZE,
 		borderRadius : 5,
 		borderColor : "#000000",
-		backgroundColor: "#ffffff",
+		backgroundColor : "#ffffff",
 		width : viewWidth,
 		day : "all"
 	});
@@ -63,7 +63,7 @@ nsSearchList.createHeader = function() {
 		text : L('all'),
 		font : {
 			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
-			fontFamily: "KnowYourProduct"
+			fontFamily : "KnowYourProduct"
 		}
 	});
 
@@ -88,7 +88,7 @@ nsSearchList.createHeader = function() {
 		height : Titanium.UI.SIZE,
 		borderRadius : 5,
 		borderColor : "#000000",
-		backgroundColor: "#ffffff",
+		backgroundColor : "#ffffff",
 		width : viewWidth,
 		day : "friday",
 		selected : false
@@ -101,9 +101,9 @@ nsSearchList.createHeader = function() {
 		touchEnabled : false,
 		color : "#000000",
 		text : L('friday'),
-		font: {
-			fontSize: Alloy.Globals.theme.fonts.size20Fonts,
-			fontFamily: "KnowYourProduct"
+		font : {
+			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+			fontFamily : "KnowYourProduct"
 		}
 	});
 
@@ -130,7 +130,7 @@ nsSearchList.createHeader = function() {
 		height : Titanium.UI.SIZE,
 		borderRadius : 5,
 		borderColor : "#000000",
-		backgroundColor: "#ffffff",
+		backgroundColor : "#ffffff",
 		width : viewWidth,
 		day : "saturday",
 		selected : false
@@ -145,7 +145,7 @@ nsSearchList.createHeader = function() {
 		text : L('saturday'),
 		font : {
 			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
-			fontFamily: "KnowYourProduct"
+			fontFamily : "KnowYourProduct"
 		}
 	});
 
@@ -172,7 +172,7 @@ nsSearchList.createHeader = function() {
 		height : Titanium.UI.SIZE,
 		borderRadius : 5,
 		borderColor : "#000000",
-		backgroundColor: "#ffffff",
+		backgroundColor : "#ffffff",
 		width : viewWidth,
 		day : "sunday",
 		selected : false
@@ -187,7 +187,7 @@ nsSearchList.createHeader = function() {
 		text : L('sunday'),
 		font : {
 			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
-			fontFamily: "KnowYourProduct"
+			fontFamily : "KnowYourProduct"
 		}
 	});
 
@@ -214,7 +214,7 @@ nsSearchList.createHeader = function() {
 		height : Titanium.UI.SIZE,
 		borderRadius : 5,
 		borderColor : "#000000",
-		backgroundColor: "#ffffff",
+		backgroundColor : "#ffffff",
 		selected : false,
 		width : viewWidth,
 		day : "monday"
@@ -229,7 +229,7 @@ nsSearchList.createHeader = function() {
 		text : L('monday'),
 		font : {
 			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
-			fontFamily: "KnowYourProduct"
+			fontFamily : "KnowYourProduct"
 		}
 	});
 
@@ -271,11 +271,29 @@ nsSearchList.createHeader = function() {
 
 nsSearchList.createList = function(tblData) {
 
+	var userSchedule = Ti.App.Properties.getList('userSchedule');
+
 	if (nsSearchList.type === "BandList") {
 
 		if (nsSearchList.selectedTab !== null) {
 			nsSearchList.selectedTab.selected = true;
 			nsSearchList.selectedTab.backgroundColor = "#c0c0c0";
+		}
+
+		for (var j in tblData) {
+			for (var i in userSchedule) {
+				if (userSchedule[i].band_id == tblData[j]._id) {
+					tblData[j].selected = true;
+				}
+			}
+		}
+	} else {
+		for (var j in tblData) {
+			for (var i in userSchedule) {
+				if (userSchedule[i].venue_id == tblData[j]._id) {
+					tblData[j].selected = true;
+				}
+			}
 		}
 	}
 
@@ -356,9 +374,15 @@ nsSearchList.createList = function(tblData) {
 				width : Alloy.Globals.platformWidth * 0.25,
 				height : Alloy.Globals.platformHeight * 0.088,
 				borderColor : "#000000",
-				image : tblData[i].image_link,
+				// image : tblData[i].image_link,
 				touchEnabled : false
 			});
+
+			var imagelink = tblData[i].image_link;
+
+			if (tblData[i].image_link && (imagelink.indexOf('.png') > -1 || imagelink.indexOf('.jpg') > -1 || imagelink.indexOf('.jpeg') > -1 )) {
+				ivImage.image = imagelink;
+			}
 
 			vwRowView.add(ivImage);
 
@@ -382,17 +406,15 @@ nsSearchList.createList = function(tblData) {
 				width : 30,
 				id : "ivFavouriteStar",
 				index : i,
-				selected : false,
-				image: Alloy.Globals.theme.icons.star
+				selected : tblData[i].selected,
+				// image : Alloy.Globals.theme.icons.star
 			});
 
-			/*
 			if (!ivFavouriteStar.selected) {
 				ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
 			} else {
 				ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
-			}*/
-			
+			}
 
 			ivFavouriteStar.addEventListener('click', function(e) {
 

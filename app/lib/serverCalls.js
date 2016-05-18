@@ -23,6 +23,7 @@ nsServerCalls.signup = function(username, password, onloadCallback, errorCallbac
 		if (Kinvey.Error.USER_ALREADY_EXISTS) {
 
 			console.error('Kinvey.Error.USER_ALREADY_EXISTS');
+			Titanium.App.fireEvent('user_exists');
 			nsServerCalls.login(username, password, onloadCallback, errorCallback);
 		} else {
 
@@ -279,13 +280,53 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 			}
 		}
 	}
+
+	var appdata = Titanium.App.Properties.getObject('appdata');
+	var band_id = '', venue_id = '', start_time = '';
+	for(var j in appdata.shows){
+		if (appdata.shows[j]._id == show_id) {
+			appdata.shows[j].selected = true;
+			band_id = appdata.shows[j].band_id;
+			venue_id = appdata.shows[j].venue_id;
+			start_time = appdata.shows[j].start_time;
+			break;
+		}
+	}
 	
-	userSchedule.push({
-		show_id : show_id
-	});
+	for (var i in userSchedule) {
+
+		if (userSchedule[i].start_time == start_time) {
+			
+			var dialogBox = Titanium.UI.createAlertDialog({
+				title: L('appName'),
+				message: L('overlap_time'),
+				buttonNames: ['Continue', 'Cancel']
+			});
+			
+			dialogBox.show();
+			
+			dialogBox.addEventListener('click', function(e){
+				if (e.index == 1) {
+					return;	
+				} else {
+					
+					Titanium.App.Properties.setObject('appdata', appdata);
 	
-	Ti.App.Properties.setList('userSchedule', userSchedule);
-	onloadCallback();
+					userSchedule.push({
+						show_id : show_id,
+						band_id : band_id,
+						venue_id : venue_id,
+						start_time : start_time
+					});
+					
+					Ti.App.Properties.setList('userSchedule', userSchedule);
+					onloadCallback();
+				}
+				dialogBox.hide();
+			});
+			break;
+		}
+	}
 };
 
 exports.saveUserSchedule = nsServerCalls.saveUserSchedule;
@@ -325,12 +366,14 @@ nsServerCalls.deleteUserSchedule = function(show_id, onloadCallback, errorCallba
 			if (userSchedule[i].show_id == show_id) {
 				
 				userSchedule.splice(i, 1);
+				console.log('ENTRY DELETED');
+				break;
 			}
 		}
 	}
 	
 	Ti.App.Properties.setList('userSchedule', userSchedule);
-
+	onloadCallback();
 };
 
 exports.deleteUserSchedule = nsServerCalls.deleteUserSchedule;

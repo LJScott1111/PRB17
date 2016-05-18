@@ -1,0 +1,13 @@
+
+".container": {
+	top: 0,
+	contentWidth : '100%',
+	contentHeight : 'auto',
+	backgroundColor: '#000',
+	scrollType: 'vertical',
+	bottom: 40
+}
+
+".sponsors": {
+	top: 20
+}
