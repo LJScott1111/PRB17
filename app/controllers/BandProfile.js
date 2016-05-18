@@ -15,6 +15,7 @@ nsBandProfile.markFavourite = function(e) {
 		console.log('MARK favorite');
 		
 		var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
+			e.source.selected = !e.source.selected;
 			e.source.setImage(Alloy.Globals.theme.icons.star);
 
 			var MS_PER_MINUTE = 60000;
@@ -64,7 +65,6 @@ nsBandProfile.markFavourite = function(e) {
 		}, function(error) {
 			alert(L('err_serviceError'));
 		});
-		e.source.selected = !e.source.selected;
 	} else {
 		nsBandProfile.serverCalls.deleteUserSchedule(show_id, function() {
 
