@@ -1,0 +1,43 @@
+
+"#vwMain": {
+	top: 0,
+	backgroundColor: "#000000",
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	bottom: 20
+}
+
+"#wvGenericWebView": {
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	top: 0
+}
+
+"#separator": {
+	backgroundColor: '#000000',
+	height: 15,
+	width: Titanium.UI.FILL
+}
+
+"#fb": {
+	image: '/icons/fb_icon.png'
+}
+
+"#twitter": {
+	image: '/icons/twitter_icon.png'
+}
+
+"#insta": {
+	image: '/icons/insta_icon.png'
+}
+
+".icon_class": {
+	height: 40,
+	width: 40,
+	touchEnabled: false
+}
+
+".icon_view": {
+	borderColor: '#000',
+	borderWidth: 1
+}

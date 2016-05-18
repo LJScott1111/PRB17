@@ -6,9 +6,5 @@ _.each(properties.properties, function(value, key) {
 
 $.button.title = properties.properties.title || L('back');
 $.button.addEventListener('click', properties.properties.callback || function(e) {
-	if (Alloy.Globals.trackFlow) {
-		console.error('DISCONNECTING SOCKET');
-		Titanium.App.fireEvent('disconnect_socket');
-	};
     properties.pageflow.back();
 });

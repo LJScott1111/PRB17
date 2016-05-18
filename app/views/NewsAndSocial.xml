@@ -1,0 +1,18 @@
+<Alloy>
+	<View id="vwMain" class="vertical_layout">
+
+		<View class="horizontal_layout" backgroundColor="#fff">
+			<View class="absolute_layout icon_view" id="fb_view">
+				<ImageView id="fb" class="icon_class"></ImageView>
+			</View>
+			<View class="absolute_layout icon_view" id="twitter_view">
+				<ImageView id="twitter" class="icon_class"></ImageView>
+			</View>
+			<View class="absolute_layout icon_view" id="insta_view">
+				<ImageView id="insta" class="icon_class"></ImageView>
+			</View>
+		</View>
+		<View id="separator"></View>
+		<WebView id="wvWebView"></WebView>
+	</View>
+</Alloy>

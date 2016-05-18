@@ -31,6 +31,18 @@ nsVenueProfile.isShowDuplicate = function(showDetails, allShows) {
 };
 
 nsVenueProfile.createList = function(shows) {
+
+	var userSchedule = Ti.App.Properties.getList('userSchedule');
+	for (var j in shows) {
+		if (shows[j].bandDetails !== undefined) {
+			for (var i in userSchedule) {
+				if (userSchedule[i].band_id == shows[j].bandDetails._id) {
+					shows[j].bandDetails.selected = true;
+				}
+			}
+		}
+	}
+
 	$.vwBandSchedule.removeAllChildren();
 	var len = shows.length;
 	if (len > 0) {
@@ -108,7 +120,7 @@ nsVenueProfile.createList = function(shows) {
 					height : 40,
 					width : 40,
 					id : "ivFavouriteStar",
-					selected : false
+					selected : shows[i].bandDetails.selected
 				});
 
 				if (!ivFavouriteStar.selected) {
@@ -258,7 +270,7 @@ nsVenueProfile.init = function() {
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
 
-		if (appdata.details[i].venueDetails._id === nsVenueProfile.args.id) {
+		if (appdata.details[i].venueDetails && appdata.details[i].venueDetails._id === nsVenueProfile.args.id) {
 			nsVenueProfile.data = JSON.parse(JSON.stringify(appdata.details[i]));
 			break;
 		}
@@ -306,11 +318,7 @@ nsVenueProfile.init = function() {
 	$.vwDay4.setWidth(vwDaysWidth);
 	$.vwDay4.setRight(2);
 
-	if (Titanium.Platform.osname === "android") {
-		$.svMain.setHeight(Alloy.Globals.platformHeight);
-	} else {
-		$.svMain.setHeight(Alloy.Globals.platformHeight);
-	}
+	$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar - 2 * Alloy.Globals.theme.sizes.landingOptionHeight);
 
 	// Event listeners for show views
 	$.vwDay1.addEventListener('click', function(e) {

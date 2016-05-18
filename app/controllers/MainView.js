@@ -8,7 +8,7 @@ nsLanding.get_next_show = function() {
 
 	console.log('Alloy.Globals.EVENTS ', JSON.stringify(Alloy.Globals.EVENTS));
 	var today = Date.now();
-	// var today = new Date('2016-05-27T00:00:00').getTime(); // to remove later - it is for testing different scenarios 
+	// var today = new Date('2016-05-27T00:00:00').getTime(); // to remove later - it is for testing different scenarios
 	var location = '';
 
 	console.log('TODAY ', today);
@@ -28,7 +28,7 @@ nsLanding.get_next_show = function() {
 	}
 
 	console.log('LOCATION - ', location);
-	
+
 	$.title.text = L(location);
 
 	Alloy.Globals.nextEventCity = location;
@@ -168,8 +168,14 @@ nsLanding.getFood = function() {
 
 nsLanding.getNews = function() {
 
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "/twitter.html"
+	// Alloy.Globals.openWindow('GenericWebView', {
+	// url : "/twitter.html"
+	// }, true, null, 'misc/right_logo');
+
+	Alloy.Globals.openWindow('NewsAndSocial', {
+		twitter_url : "/twitter.html",
+		fb_url : "",
+		insta_url : ""
 	}, true, null, 'misc/right_logo');
 };
 

@@ -62,10 +62,6 @@
 	left: 120
 }
 
-"#lblNews": {
-	left: 60
-}
-
 "#lblFood": {
 	right: 60
 }
