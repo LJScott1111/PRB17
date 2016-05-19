@@ -157,7 +157,9 @@ nsBandProfile.init = function() {
 		var datetime = (nsBandProfile.data.showDetails !== null && nsBandProfile.data.showDetails !== undefined) ? Alloy.Globals.getFormattedDate(nsBandProfile.data.showDetails.start_time) : "";
 
 		$.lblBandName.setText(nsBandProfile.data.bandDetails.name || "");
-		$.ivBandImage.setImage(nsBandProfile.data.bandDetails.image_link.replace(/(\r\n|\n|\r)/gm,"") || "");
+		// Here we clean up the incoming band image_url data, and set a placeholder image if it is not set.
+		var band_image_url = 
+		$.ivBandImage.setImage(nsBandProfile.data.bandDetails.image_link.replace(/(\r\n|\n|\r)/gm,"") || "http://cdn.shopify.com/s/files/1/0809/7981/t/9/assets/logo.png?675478883972280314");
 		$.lblDay.setText(datetime[0] || "");
 		$.lblTime.setText(datetime[1] || "");
 		$.lblVenue.setText((nsBandProfile.data.venueDetails !== undefined && nsBandProfile.data.venueDetails !== null) ? nsBandProfile.data.venueDetails.name : "");
