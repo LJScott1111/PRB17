@@ -268,13 +268,13 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 	//});
 
 	var userSchedule = Ti.App.Properties.getList('userSchedule', []);
-	
+
 	if (userSchedule.length != 0) {
-		
+
 		for (var i in userSchedule) {
-			
+
 			if (userSchedule[i].show_id == show_id) {
-				
+
 				alert('You already added this show.');
 				return;
 			}
@@ -282,8 +282,11 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 	}
 
 	var appdata = Titanium.App.Properties.getObject('appdata');
-	var band_id = '', venue_id = '', start_time = '';
-	for(var j in appdata.shows){
+	var band_id = '',
+	    venue_id = '',
+	    start_time = '',
+	    isShowExists = false;
+	for (var j in appdata.shows) {
 		if (appdata.shows[j]._id == show_id) {
 			appdata.shows[j].selected = true;
 			band_id = appdata.shows[j].band_id;
@@ -292,41 +295,60 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 			break;
 		}
 	}
-	
+
 	for (var i in userSchedule) {
 
 		if (userSchedule[i].start_time == start_time) {
-			
-			var dialogBox = Titanium.UI.createAlertDialog({
-				title: L('appName'),
-				message: L('overlap_time'),
-				buttonNames: ['Continue', 'Cancel']
-			});
-			
-			dialogBox.show();
-			
-			dialogBox.addEventListener('click', function(e){
-				if (e.index == 1) {
-					return;	
-				} else {
-					
-					Titanium.App.Properties.setObject('appdata', appdata);
-	
-					userSchedule.push({
-						show_id : show_id,
-						band_id : band_id,
-						venue_id : venue_id,
-						start_time : start_time
-					});
-					
-					Ti.App.Properties.setList('userSchedule', userSchedule);
-					onloadCallback();
-				}
-				dialogBox.hide();
-			});
+
+			isShowExists = true;
 			break;
 		}
 	}
+
+	if (isShowExists) {
+
+		var dialogBox = Titanium.UI.createAlertDialog({
+			title : L('appName'),
+			message : L('overlap_time'),
+			buttonNames : ['Continue', 'Cancel']
+		});
+
+		dialogBox.show();
+
+		dialogBox.addEventListener('click', function(e) {
+			if (e.index == 1) {
+				return;
+			} else {
+
+				Titanium.App.Properties.setObject('appdata', appdata);
+
+				userSchedule.push({
+					show_id : show_id,
+					band_id : band_id,
+					venue_id : venue_id,
+					start_time : start_time
+				});
+
+				Ti.App.Properties.setList('userSchedule', userSchedule);
+				onloadCallback();
+			}
+			dialogBox.hide();
+		});
+	} else {
+
+		Titanium.App.Properties.setObject('appdata', appdata);
+
+		userSchedule.push({
+			show_id : show_id,
+			band_id : band_id,
+			venue_id : venue_id,
+			start_time : start_time
+		});
+
+		Ti.App.Properties.setList('userSchedule', userSchedule);
+		onloadCallback();
+	}
+
 };
 
 exports.saveUserSchedule = nsServerCalls.saveUserSchedule;
