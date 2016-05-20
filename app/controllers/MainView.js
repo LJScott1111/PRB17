@@ -38,12 +38,6 @@ nsLanding.get_next_show = function() {
 	Titanium.App.removeEventListener('get_next_show', nsLanding.get_next_show);
 };
 
-// Titanium.App.addEventListener('get_next_show', nsLanding.get_next_show);
-
-nsLanding.getSettings = function() {
-	// Alloy.Globals.getSettings($.winLanding); TODO: remove later
-};
-
 nsLanding.getMenu = function() {
 	console.log('getMenu');
 	Titanium.App.fireEvent('toggleMenu');

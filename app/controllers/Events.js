@@ -2,10 +2,6 @@ var nsEvents = {};
 nsEvents.serviceCalls = require("serverCalls");
 var cities = JSON.parse(JSON.stringify(Alloy.Globals.CITIES));
 
-nsEvents.getSettings = function() {
-	// Alloy.Globals.getSettings($.winEvents);
-};
-
 /*
 nsEvents.getMusic = function() {
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
@@ -87,7 +83,6 @@ nsEvents.openCity3Event = function() {
 };
 
 nsEvents.init = function() {
-	// Alloy.Globals.windowStack.push($.winEvents); : TODO Loading View
 
 	$.title.text = L($.args.city).toUpperCase();
 	

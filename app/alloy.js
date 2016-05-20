@@ -68,8 +68,6 @@ Alloy.Globals.askToNotify = function() {
 // To debug Kinvey
 //KINVEY_DEBUG = true;
 
-// To close the index screen after login
-Alloy.Globals.windowStack = []; // TODO: remove this and related code
 // Loading indicator
 Alloy.Globals.loading = Alloy.createWidget("nl.fokkezb.loading");
 
@@ -329,130 +327,6 @@ Alloy.Globals.getFormattedDate = function(timestamp) {
 	console.debug(JSON.stringify(dateString));
 	return dateString;
 };
-/*
-
-Alloy.Globals.getSettings = function(currentWin) {
-	console.debug(Titanium.App.Properties.getString('userid'));
-	var userid = Titanium.App.Properties.getString('userid');
-	var child = currentWin.getChildren();
-
-	for (var i = 0,
-	    len = child.length; i < len; i++) {
-		if (child[i].id === "vwOptionFullView") {
-			currentWin.remove(child[i]);
-			return;
-		}
-	}
-
-	var vwOptionFullView = Titanium.UI.createView({
-		height : Titanium.UI.FILL,
-		top : (Titanium.Platform.osname === "android" || currentWin.id === "winIndex") ? Alloy.Globals.theme.sizes.headerbar : 0,
-		width : Titanium.UI.FILL,
-		id : "vwOptionFullView",
-		layout : "vertical",
-		zIndex : 999
-	});
-
-	for (var i = 0; i < 4; i++) {
-		var vwOption = Titanium.UI.createView({
-			top : 0,
-			right : 10,
-			height : Titanium.UI.SIZE,
-			width : "25%",
-			backgroundColor : "#000000",
-			layout : "vertical",
-			borderColor : "#ffffff",
-			id : "vwOption_" + i
-		});
-
-		var lblLoginActivity = Titanium.UI.createLabel({
-			top : 10,
-			bottom : 10,
-			height : Titanium.UI.SIZE,
-			color : "#ffffff",
-			textAlign : Titanium.UI.TEXT_ALIGNMENT_CENTER,
-			touchEnabled : false,
-			font : {
-				fontSize : Alloy.Globals.theme.fonts.size15Fonts
-			}
-		});
-
-		if (i === 0) {
-			lblLoginActivity.setText(L('settings_map'));
-		} else if (i === 1) {
-			lblLoginActivity.setText(L('settings_sponsors'));
-		} else if (i === 2) {
-			lblLoginActivity.setText(L('settings_privacy'));
-		} else if (i === 3) {
-			lblLoginActivity.setText(L('settings_faq'));
-		}
-
-		vwOption.add(lblLoginActivity);
-		vwOptionFullView.add(vwOption);
-	}
-	vwOptionFullView.addEventListener('click', function(e) {
-		console.debug(currentWin.id);
-		console.log("e.source.id .. ", e.source.id);
-
-		if (e.source.id === "vwOption_0") {
-			if (currentWin.id === "winIndex") {
-				// console.log("Alloy.Globals.windowStack.length - 1 ", Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].id);
-				Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].close();
-				Alloy.Globals.windowStack.pop();
-			}
-
-			Alloy.Globals.openWindow("GenericWebView", {
-				url : "https://www.punkrockbowling.com/wp-content/uploads/2013/11/Punk-Rock-Bowling-map.jpg"
-			}, true);
-
-			currentWin.remove(vwOptionFullView);
-
-		} else if (e.source.id === "vwOption_1") {
-			if (currentWin.id === "winIndex") {
-				// console.log("Alloy.Globals.windowStack.length - 1 ", Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].id);
-				Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].close();
-				Alloy.Globals.windowStack.pop();
-			}
-
-			Alloy.Globals.openWindow("GenericWebView", {
-				url : "http://punkrockbowling.com/sponsors-vendors/"
-			}, true);
-
-			currentWin.remove(vwOptionFullView);
-
-		} else if (e.source.id === "vwOption_2") {
-			if (currentWin.id === "winIndex") {
-				console.log("Alloy.Globals.windowStack.length - 1 ", Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].id);
-				Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].close();
-				Alloy.Globals.windowStack.pop();
-			}
-
-			Alloy.Globals.openWindow("GenericWebView", {
-				url : "http://www.punkrockbowling.com/our-privacy-policy/"
-			}, true);
-
-			currentWin.remove(vwOptionFullView);
-
-		} else if (e.source.id === "vwOption_3") {
-			if (currentWin.id === "winIndex") {
-				console.log("Alloy.Globals.windowStack.length - 1 ", Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].id);
-				Alloy.Globals.windowStack[Alloy.Globals.windowStack.length - 1].close();
-				Alloy.Globals.windowStack.pop();
-			}
-
-			Alloy.Globals.openWindow("GenericWebView", {
-				url : "http://www.punkrockbowling.com/faq/"
-			}, true);
-
-			currentWin.remove(vwOptionFullView);
-
-		} else {
-			currentWin.remove(vwOptionFullView);
-		}
-	});
-	currentWin.add(vwOptionFullView);
-};
-*/
 
 // Application data for storing combined details
 Alloy.Globals.appData = {

@@ -1,9 +1,5 @@
 var nsBandList = {};
 
-nsBandList.getSettings = function() {
-	// Alloy.Globals.getSettings($.winBandList);
-};
-
 nsBandList.getShowsDataForCity = function() {
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});

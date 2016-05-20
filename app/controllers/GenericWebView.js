@@ -1,18 +1,6 @@
 var nsGenericWebView = {};
 nsGenericWebView.args = arguments[0];
 
-nsGenericWebView.closeWindow = function() {
-
-	if (Alloy.Globals.isSignupWindow) {
-		Alloy.createController("signup").getView().open();
-		// TODO: check again
-	}
-};
-
-nsGenericWebView.getSettings = function() {
-	// Alloy.Globals.getSettings($.winGenericWebView);
-};
-
 nsGenericWebView.init = function() {
 
 	if (nsGenericWebView.args.map) {

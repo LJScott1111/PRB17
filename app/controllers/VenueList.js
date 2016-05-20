@@ -1,9 +1,5 @@
 var nsVenueList = {};
 
-nsVenueList.getSettings = function() {
-	// Alloy.Globals.getSettings($.winVenueList);
-};
-
 nsVenueList.getShowsDataForCity = function() {
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
