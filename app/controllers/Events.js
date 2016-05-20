@@ -52,21 +52,21 @@ nsEvents.getMovies = function() {
 nsEvents.getBowling = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/prborder/bowling"
+		url : "http://punkrockbowling.com/pages/bowling-1"
 	}, true, null, 'misc/right_logo');
 };
 
 nsEvents.getPoker = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/poker/"
+		url : "http://punkrockbowling.com/pages/poker-tournament"
 	}, true, null, 'misc/right_logo');
 };
 
 nsEvents.getArt = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://www.punkrockbowling.com/art-exhibit/"
+		url : "http://punkrockbowling.com/pages/misfit-island-lethal-amounts-juxtapoz-asg-present"
 	}, true, null, 'misc/right_logo');
 };
 

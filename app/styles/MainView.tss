@@ -5,7 +5,7 @@
 
 "#title": {
 	top: 0,
-	color: "#F3CB87",
+	color: "#f9ddb7",
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.SIZE,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
