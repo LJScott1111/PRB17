@@ -29,7 +29,7 @@ nsLanding.get_next_show = function() {
 
 	console.log('LOCATION - ', location);
 
-	$.title.text = L(location);
+	$.title.text = L(location).toUpperCase();
 
 	Alloy.Globals.nextEventCity = location;
 	$.args.city = location;

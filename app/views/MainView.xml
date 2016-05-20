@@ -2,7 +2,7 @@
 	<View id="vwMain">
 		<View id="vwTopOptions">
 
-			<Label id="title" class="knowYourProduct" />
+			<Label id="title" class="frizQuaT" />
 			
 			<View id="bands_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getBands">
 				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblBands" text="L('bands').toUpperCase()"></Label>

@@ -89,7 +89,7 @@ nsEvents.openCity3Event = function() {
 nsEvents.init = function() {
 	// Alloy.Globals.windowStack.push($.winEvents); : TODO Loading View
 
-	$.title.text = L($.args.city);
+	$.title.text = L($.args.city).toUpperCase();
 	
 	if ($.args.secondary) {
 

@@ -50,6 +50,14 @@ LAYOUTS
 FONTS
 */
 
+".frizQuaT": {
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts,
+		fontFamily: "FrizQuaT-Regu",
+		fontWeight: 'bold'
+	}
+}
+
 ".knowYourProduct": {
 	font: {
 		fontFamily: "KnowYourProduct"
