@@ -45,7 +45,7 @@ nsEvents.getMusic = function() {
 nsEvents.getMovies = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://www.punkrockbowling.com/pool-parties/"
+		url : "http://punkrockbowling.com/pages/pool-parties"
 	}, true, null, 'misc/right_logo');
 };
 

@@ -10,7 +10,7 @@
 	<string name="index_tfEmail">  Email</string>
 	<string name="index_tfPassword">  Password</string>
 	<string name="index_lblGetIt">Login</string>
-	<string name="login_message_1">Log In to receive special offers</string>
+	<string name="login_message_1">Sign up and Log In to receive special offers</string>
 	<string name="login_message_2">from our sponsers.</string>
 	<string name="index_lblSkip">Skip</string>
 	
@@ -25,11 +25,11 @@
 	<string name="schedule">Schedule</string>
 	<string name="venues">Venues</string>
 	<string name="vendors">Vendors</string>
-	<string name="food">Food</string>
+	<string name="food">Food and Vendors</string>
 	<string name="news">News</string>
 	
 	<!-- Events screen -->
-	<string name="movies">Movies</string>
+	<string name="movies">Pool Parties</string>
 	<string name="bowling">Bowling</string>
 	<string name="poker">Poker</string>
 	<string name="art">Art</string>
@@ -85,8 +85,8 @@
 	<string name="settings_privacy">Privacy Policy</string>
 	<string name="faq">FAQ</string>
 	<string name="settings">Settings</string>
-	<string name="lineup">Lineup</string>
-	<string name="map">Map</string>
+	<string name="lineup">Festival Lineup</string>
+	<string name="map">Map and Venues</string>
 	<string name="sponsers">Sponsers</string>
 	<string name="info">Info</string>
 	<string name="news_social">News and Social</string>
@@ -97,6 +97,7 @@
 	<string name="profile">Profile</string>
 	<string name="my_schedule">My Schedule</string>
 	<string name="my_passes">My Passes</string>
+	<string name="buy_tickets">Buy Tickets</string>
 	<string name="log_out">Logout</string>
 
 </resources>

@@ -8,6 +8,14 @@ $.settings.button.addEventListener('click', function() {
 	Alloy.Globals.openWindow('Settings', {}, true, null, 'misc/right_logo');
 });
 
+$.buy_tickets.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "https://punkrockbowling.queueapp.com"
+	}, true, null, 'misc/right_logo');
+});
+
 $.lineup.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
@@ -22,28 +30,28 @@ $.venues.button.addEventListener('click', function() {
 	}, true, null, 'misc/right_logo');
 });
 
-$.movies.button.addEventListener('click', function() {
-
-	Ti.App.fireEvent('toggleMenu');
-	// TODO: Add info
-});
-
 $.bowling.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	// TODO: Add info
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "http://punkrockbowling.com/pages/bowling-1"
+	}, true, null, 'misc/right_logo');
 });
 
 $.poker.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	// TODO: Add info
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "http://punkrockbowling.com/pages/poker-tournament"
+	}, true, null, 'misc/right_logo');
 });
 
 $.art.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	// TODO: Add info
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "http://punkrockbowling.com/pages/misfit-island-lethal-amounts-juxtapoz-asg-present"
+	}, true, null, 'misc/right_logo');
 });
 
 $.map.button.addEventListener('click', function() {
@@ -59,7 +67,9 @@ $.map.button.addEventListener('click', function() {
 $.food.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	// TODO: Add info
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "http://punkrockbowling.com/pages/food-and-vendors"
+	}, true, null, 'misc/right_logo');
 });
 
 $.sponsers.button.addEventListener('click', function() {
@@ -68,6 +78,7 @@ $.sponsers.button.addEventListener('click', function() {
 	Alloy.Globals.openWindow("Sponsors", {}, true, null, 'misc/right_logo');
 });
 
+/*
 $.info.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
@@ -75,6 +86,7 @@ $.info.button.addEventListener('click', function() {
 		url : "http://punkrockbowling.com/blogs/news"
 	}, true, null, 'misc/right_logo');
 });
+*/
 
 $.about.button.addEventListener('click', function() {
 
@@ -100,7 +112,7 @@ $.privacy_policy.button.addEventListener('click', function() {
 	}, true, null, 'misc/right_logo');
 });
 
-$.social.button.addEventListener('click', function() {
+$.info.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('NewsAndSocial', {

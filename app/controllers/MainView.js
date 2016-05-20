@@ -133,6 +133,12 @@ nsLanding.getSchedule = function() {
 };
 
 nsLanding.getVenues = function() {
+
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.queueapp.com/events/16785"
+	}, true, null, 'misc/right_logo');
+	
+	/*
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
 	if (appdata.details.length === 0) {
@@ -156,7 +162,8 @@ nsLanding.getVenues = function() {
 		Alloy.Globals.openWindow('VenueList', {
 			city : $.args.city
 		}, true, null, 'misc/right_logo');
-	}
+	}*/
+	
 };
 
 nsLanding.getFood = function() {
