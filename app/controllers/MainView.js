@@ -168,14 +168,17 @@ nsLanding.getFood = function() {
 
 nsLanding.getNews = function() {
 
-	// Alloy.Globals.openWindow('GenericWebView', {
-	// url : "/twitter.html"
-	// }, true, null, 'misc/right_logo');
-
 	Alloy.Globals.openWindow('NewsAndSocial', {
-		twitter_url : "/twitter.html",
-		fb_url : "",
-		insta_url : ""
+		prb : {
+			twitter_url : "https://twitter.com/punkrockbowling",
+			fb_url : "https://www.facebook.com/Punk-Rock-Bowling-and-Music-Festival-288077407910557/",
+			insta_url : "https://www.instagram.com/punkrockbowling/"
+		},
+		sourpuss: {
+			twitter_url : "https://twitter.com/SourpussBrand",
+			fb_url : "https://www.facebook.com/Sourpussclothing",
+			insta_url : "https://www.instagram.com/sourpussclothing/"
+		}
 	}, true, null, 'misc/right_logo');
 };
 

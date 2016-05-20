@@ -3,7 +3,7 @@ var args = $.args;
 
 // var sponsor = Alloy.Globals.getSponsor();
 
-$.ivSponsorAd.image = '/icons/sourpuss_red.png';
+$.ivSponsorAd.image = '/icons/sourpuss_banner.png';
 
 // if (sponsor.link != '') {
 $.vwBottomView.addEventListener('click', function() {

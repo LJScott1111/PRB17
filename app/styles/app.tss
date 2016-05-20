@@ -24,7 +24,8 @@ LAYOUTS
 
 ".vertical_layout": {
 	layout: 'vertical',
-	height: Titanium.UI.SIZE
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
 }
 
 ".horizontal_layout": {

@@ -185,6 +185,7 @@ Alloy.Globals.theme = {
 	},
 	"fonts" : {
 		"size10Fonts" : Alloy.Globals.platformHeight * 0.0176,
+		"size13Fonts" : Alloy.Globals.platformHeight * 0.0228,
 		"size15Fonts" : Alloy.Globals.platformHeight * 0.0264,
 		"size20Fonts" : Alloy.Globals.platformHeight * 0.0352,
 		"size25Fonts" : Alloy.Globals.platformHeight * 0.044,

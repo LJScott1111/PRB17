@@ -73,6 +73,10 @@
 	<string name="sunday">Sun</string>
 	<string name="monday">Mon</string>
 	
+	<string name="facebook">Facebook</string>
+	<string name="twitter">Twitter</string>
+	<string name="instagram">Instagram</string>
+	
 	<!-- Settings Menu -->
 	<string name="settings_login">Login</string>
 	<string name="settings_logout">Logout</string>
