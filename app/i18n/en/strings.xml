@@ -93,5 +93,6 @@
 	<string name="profile">Profile</string>
 	<string name="my_schedule">My Schedule</string>
 	<string name="my_passes">My Passes</string>
+	<string name="log_out">Logout</string>
 
 </resources>

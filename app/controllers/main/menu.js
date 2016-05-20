@@ -129,3 +129,19 @@ $.my_schedule.button.addEventListener('click', function() {
 		Alloy.Globals.loading.hide();
 	});
 });
+
+$.log_out.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.loading.show();
+	var logout = new nsMenu.serviceCalls.logout(function() {
+
+		Alloy.Globals.loading.hide();
+		var signupWindow = Alloy.createController("signup").getView();
+		signupWindow.open();
+
+	}, function(error) {
+		alert(L('err_fetchingDetails'));
+		Alloy.Globals.loading.hide();
+	});
+});

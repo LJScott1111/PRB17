@@ -19,6 +19,7 @@
 			<Require id="privacy_policy" src="misc/menu_button" title="L('privacy_policy').toUpperCase()" />
 			<Require id="social" src="misc/menu_button" title="L('news_social').toUpperCase()" />
 			<Require id="my_schedule" src="misc/menu_button" title="L('my_schedule').toUpperCase()" />
+			<Require id="log_out" src="misc/menu_button" title="L('log_out').toUpperCase()" />
 		</ScrollView>
 	</View>
 </Alloy>
