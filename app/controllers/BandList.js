@@ -11,7 +11,7 @@ nsBandList.getShowsDataForCity = function() {
 	var currentCityData = [];
 	for (i in appdata.details) {
 
-		if (appdata.details[i].showDetails.location === $.args.city && appdata.details[i].bandDetails) {
+		if (appdata.details[i].showDetails.location.replace(" ", "") === $.args.city && appdata.details[i].bandDetails) {
 			currentCityData.push({
 				showDetails : appdata.details[i].showDetails,
 				bandDetails : appdata.details[i].bandDetails,
