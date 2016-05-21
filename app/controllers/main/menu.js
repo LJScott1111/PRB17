@@ -57,10 +57,9 @@ $.art.button.addEventListener('click', function() {
 $.map.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	// TODO: Show it city-wise
 	
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://cdn.shopify.com/s/files/1/0809/7981/files/Punk-Rock-Bowling-map_grande_grande.jpg?9976921872633462755"
+		url : "prb_map_2016.png"
 	}, true, null, 'misc/right_logo');
 });
 
