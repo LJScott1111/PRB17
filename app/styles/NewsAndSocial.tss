@@ -13,31 +13,49 @@
 	top: 0
 }
 
-"#separator": {
-	backgroundColor: '#000000',
-	height: 15,
+"#prb_view": {
+	left: 0,
+	height: Titanium.UI.SIZE
+}
+
+"#prb": {
+	height: '60dp',
+	image: '/icons/prb_icon.png'
+}
+
+"#sourpuss_view": {
+	right: 0,
+	height: Titanium.UI.SIZE
+}
+
+"#sourpuss": {
+	height: '60dp',
+	image: '/icons/sourpuss_red.png'
+}
+
+".logo_view": {
+	height: '60dp',
 	width: Titanium.UI.FILL
 }
 
-"#fb": {
-	image: '/icons/fb_icon.png'
+".vertical_separator": {
+	height: Titanium.UI.FILL,
+	width: '1dp',
+	backgroundColor: '#dc0000'
 }
 
-"#twitter": {
-	image: '/icons/twitter_icon.png'
+".underline": {
+	height: '1dp',
+	backgroundColor: '#dbdbd8',
+	bottom: '5dp',
+	visible: false
 }
 
-"#insta": {
-	image: '/icons/insta_icon.png'
-}
-
-".icon_class": {
-	height: 40,
-	width: 40,
-	touchEnabled: false
-}
-
-".icon_view": {
-	borderColor: '#000',
-	borderWidth: 1
+".social_labels": {
+	color: '#dbdbd8',
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE,
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size13Fonts
+	}
 }

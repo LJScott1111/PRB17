@@ -1,9 +1,5 @@
 var nsBandList = {};
 
-nsBandList.getSettings = function() {
-	// Alloy.Globals.getSettings($.winBandList);
-};
-
 nsBandList.getShowsDataForCity = function() {
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
@@ -11,7 +7,7 @@ nsBandList.getShowsDataForCity = function() {
 	var currentCityData = [];
 	for (i in appdata.details) {
 
-		if (appdata.details[i].showDetails.location === $.args.city && appdata.details[i].bandDetails) {
+		if (appdata.details[i].showDetails.location.replace(" ", "") === $.args.city && appdata.details[i].bandDetails) {
 			currentCityData.push({
 				showDetails : appdata.details[i].showDetails,
 				bandDetails : appdata.details[i].bandDetails,
@@ -25,7 +21,7 @@ nsBandList.getShowsDataForCity = function() {
 	var searchList = require("searchList");
 	var list = searchList.init("BandList", {list: bandlist, currentCityData: currentCityData}, $.args.city);
 	console.debug(JSON.stringify(list));
-	$.vwMain.add(list);
+	$.list_view.add(list);
 	Alloy.Globals.loading.hide();
 };
 

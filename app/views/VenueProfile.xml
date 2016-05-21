@@ -28,6 +28,6 @@
 				<View id="vwBandSchedule"></View>
 			</View>
 		</ScrollView>
-		<Require id="sponsor" src="misc/sponsorAd" />
+		<Require id="sponsor" src="misc/sponsorAd" image="/icons/sourpuss_banner.png" url="http://sourpussclothing.com/" />
 	</View>
 </Alloy>
