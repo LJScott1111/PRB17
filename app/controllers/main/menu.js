@@ -33,24 +33,30 @@ $.venues.button.addEventListener('click', function() {
 $.bowling.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/bowling-1"
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://punkrockbowling.com/pages/bowling-1",
+		image: "/icons/Banner_Pins.jpg",
+		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
 	}, true, null, 'misc/right_logo');
 });
 
 $.poker.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/poker-tournament"
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://punkrockbowling.com/pages/poker-tournament",
+		image: "/icons/Banner_Babies.jpg",
+		banner_url: "http://www.sourpussclothing.com/kids.html"
 	}, true, null, 'misc/right_logo');
 });
 
 $.art.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/misfit-island-lethal-amounts-juxtapoz-asg-present"
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://www.sourpussclothing.com/gals/beauty-supplies/hair-products.html",
+		image: "/icons/Banner_Hair_Dye.jpg",
+		banner_url: "http://www.sourpussclothing.com/kids.html"
 	}, true, null, 'misc/right_logo');
 });
 
@@ -66,8 +72,10 @@ $.map.button.addEventListener('click', function() {
 $.food.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/food-and-vendors"
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://punkrockbowling.com/pages/food-and-vendors",
+		image: "/icons/Banner_Flasks.jpg",
+		banner_url: "http://www.sourpussclothing.com/catalogsearch/result/?q=flask"
 	}, true, null, 'misc/right_logo');
 });
 

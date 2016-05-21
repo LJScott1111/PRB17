@@ -592,9 +592,10 @@ nsSearchList.init = function(type, data) {
 
 	nsSearchList.vwSearchView = Titanium.UI.createView({
 		layout : "vertical",
-		height : "100%",
+		height : Titanium.UI.FILL,
 		width : Titanium.UI.FILL,
 		top : 0,
+		bottom: '60dp',
 		backgroundColor : "#000000"
 	});
 

@@ -163,7 +163,9 @@ nsLanding.getVenues = function() {
 nsLanding.getFood = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/food-vendors/"
+		url : "http://punkrockbowling.com/pages/food-and-vendors",
+		image: "/icons/Banner_Flasks.jpg",
+		banner_url: "http://www.sourpussclothing.com/catalogsearch/result/?q=flask"
 	}, true, null, 'misc/right_logo');
 };
 

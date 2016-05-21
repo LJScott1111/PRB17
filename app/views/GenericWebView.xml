@@ -1,5 +1,6 @@
 <Alloy>
 	<View id="vwMain">
 		<WebView id="wvGenericWebView"></WebView>
+		<Require id="sponsor" src="misc/sponsorAd"/>
 	</View>
 </Alloy>
