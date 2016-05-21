@@ -2,16 +2,9 @@
 var args = $.args;
 // var sponsor = Alloy.Globals.getSponsor();
 
-if (!$.args.image && !$.args.url) {
-	$.args = {
-		image : "/icons/sourpuss_banner.png",
-		url : "http://sourpussclothing.com/"
-	};
-};
-
 $.ivSponsorAd.image = $.args.image;
 
-if ($.args.url || $.args.banner_url) {
+if ($.args.url != '' || $.args.banner_url) {
 	$.vwBottomView.addEventListener('click', function() {
 		Alloy.Globals.openWindow("GenericWebView", {
 			url : $.args.url
