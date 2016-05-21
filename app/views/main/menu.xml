@@ -9,6 +9,7 @@
 			<Require id="venues" src="misc/menu_button" title="L('venues').toUpperCase()" />
 			<Require id="bowling" src="misc/menu_button" title="L('bowling').toUpperCase()" />
 			<Require id="poker" src="misc/menu_button" title="L('poker').toUpperCase()" />
+			<Require id="poolparty" src="misc/menu_button" title="L('poolparty').toUpperCase()" />
 			<Require id="art" src="misc/menu_button" title="L('art').toUpperCase()" />
 			<Require id="map" src="misc/menu_button" title="L('map').toUpperCase()" />
 			<Require id="food" src="misc/menu_button" title="L('food').toUpperCase()" />

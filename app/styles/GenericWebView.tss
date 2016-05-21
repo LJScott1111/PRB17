@@ -9,5 +9,6 @@
 "#wvGenericWebView": {
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL,
-	top: 0
+	top: 0,
+	backgroundColor:'#000000'
 }

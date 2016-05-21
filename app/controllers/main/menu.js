@@ -54,7 +54,7 @@ $.art.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://www.sourpussclothing.com/gals/beauty-supplies/hair-products.html",
+		url : "http://punkrockbowling.com/pages/misfit-island-lethal-amounts-juxtapoz-asg-present",
 		image: "/icons/Banner_Hair_Dye.jpg",
 		banner_url: "http://www.sourpussclothing.com/kids.html"
 	}, true, null, 'misc/right_logo');
@@ -66,6 +66,15 @@ $.map.button.addEventListener('click', function() {
 	
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "prb_map_2016.png"
+	}, true, null, 'misc/right_logo');
+});
+
+$.poolparty.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+	
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "http://punkrockbowling.com/pages/pool-parties"
 	}, true, null, 'misc/right_logo');
 });
 
