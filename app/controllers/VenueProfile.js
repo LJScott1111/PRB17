@@ -3,10 +3,6 @@ var nsVenueProfile = {};
 nsVenueProfile.args = arguments[0];
 nsVenueProfile.momentjs = require('moment');
 
-nsVenueProfile.getSettings = function() {
-	// Alloy.Globals.getSettings($.winVenueProfile);
-};
-
 nsVenueProfile.getDay = function(timestamp, type) {
 	var dateObj = nsVenueProfile.momentjs(timestamp * 1000);
 

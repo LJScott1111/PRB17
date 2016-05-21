@@ -1,3 +1,6 @@
 <Alloy>
-	<View id="vwMain"></View>
+	<View id="vwMain">
+		<View id="list_view" class="vertical_layout padding_top"></View>
+		<Require id="sponsor" src="misc/sponsorAd" image="/icons/Banner_Descendents.jpg" url="http://www.sourpussclothing.com/catalogsearch/result/?q=descendents" />
+	</View>
 </Alloy>

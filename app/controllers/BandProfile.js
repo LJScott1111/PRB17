@@ -5,10 +5,6 @@ nsBandProfile.data = null;
 
 nsBandProfile.serverCalls = require('serverCalls');
 
-nsBandProfile.getSettings = function() {
-	// Alloy.Globals.getSettings($.winBandProfile);
-};
-
 nsBandProfile.markFavourite = function(e) {
 	var show_id = nsBandProfile.data.showDetails._id;
 	if (!e.source.selected && (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null)) {
@@ -113,7 +109,6 @@ nsBandProfile.doSocialActivity = function(e) {
 
 nsBandProfile.init = function() {
 	console.log('INIT Band Profile');
-	// Alloy.Globals.windowStack.push($.winBandProfile);
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	for (var i = 0,

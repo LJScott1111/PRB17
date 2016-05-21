@@ -29,19 +29,13 @@ nsLanding.get_next_show = function() {
 
 	console.log('LOCATION - ', location);
 
-	$.title.text = L(location);
+	$.title.text = L(location).toUpperCase();
 
 	Alloy.Globals.nextEventCity = location;
 	$.args.city = location;
 
 	console.error('NEXT SHOW ', location);
 	Titanium.App.removeEventListener('get_next_show', nsLanding.get_next_show);
-};
-
-// Titanium.App.addEventListener('get_next_show', nsLanding.get_next_show);
-
-nsLanding.getSettings = function() {
-	// Alloy.Globals.getSettings($.winLanding); TODO: remove later
 };
 
 nsLanding.getMenu = function() {
@@ -133,6 +127,12 @@ nsLanding.getSchedule = function() {
 };
 
 nsLanding.getVenues = function() {
+
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.queueapp.com/events/16785"
+	}, true, null, 'misc/right_logo');
+	
+	/*
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
 	if (appdata.details.length === 0) {
@@ -156,26 +156,32 @@ nsLanding.getVenues = function() {
 		Alloy.Globals.openWindow('VenueList', {
 			city : $.args.city
 		}, true, null, 'misc/right_logo');
-	}
+	}*/
+	
 };
 
 nsLanding.getFood = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/food-vendors/"
+		url : "http://punkrockbowling.com/pages/food-and-vendors",
+		image: "/icons/Banner_Flasks.jpg",
+		banner_url: "http://www.sourpussclothing.com/catalogsearch/result/?q=flask"
 	}, true, null, 'misc/right_logo');
 };
 
 nsLanding.getNews = function() {
 
-	// Alloy.Globals.openWindow('GenericWebView', {
-	// url : "/twitter.html"
-	// }, true, null, 'misc/right_logo');
-
 	Alloy.Globals.openWindow('NewsAndSocial', {
-		twitter_url : "/twitter.html",
-		fb_url : "",
-		insta_url : ""
+		prb : {
+			twitter_url : "https://twitter.com/punkrockbowling",
+			fb_url : "https://www.facebook.com/Punk-Rock-Bowling-and-Music-Festival-288077407910557/",
+			insta_url : "https://www.instagram.com/punkrockbowling/"
+		},
+		sourpuss: {
+			twitter_url : "https://twitter.com/SourpussBrand",
+			fb_url : "https://www.facebook.com/Sourpussclothing",
+			insta_url : "https://www.instagram.com/sourpussclothing/"
+		}
 	}, true, null, 'misc/right_logo');
 };
 
@@ -203,7 +209,7 @@ nsLanding.init = function() {
 	if (!$.args.city) {
 		Titanium.App.addEventListener('get_next_show', nsLanding.get_next_show);
 	} else {
-		$.title.text = L($.args.city);
+		$.title.text = L($.args.city).toUpperCase();
 		return;
 	}
 

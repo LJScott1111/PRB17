@@ -24,7 +24,8 @@ LAYOUTS
 
 ".vertical_layout": {
 	layout: 'vertical',
-	height: Titanium.UI.SIZE
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
 }
 
 ".horizontal_layout": {
@@ -50,6 +51,14 @@ LAYOUTS
 FONTS
 */
 
+".frizQuaT": {
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts,
+		fontFamily: "FrizQuaT-Regu",
+		fontWeight: 'bold'
+	}
+}
+
 ".knowYourProduct": {
 	font: {
 		fontFamily: "KnowYourProduct"
@@ -65,7 +74,7 @@ FONTS
 }
 
 ".options_lbl": {
-	color: '#F5C787',
+	color: '#f9ddb7',
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size25Fonts,
 		fontWeight: 'bold'

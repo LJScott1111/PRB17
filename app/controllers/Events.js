@@ -2,10 +2,6 @@ var nsEvents = {};
 nsEvents.serviceCalls = require("serverCalls");
 var cities = JSON.parse(JSON.stringify(Alloy.Globals.CITIES));
 
-nsEvents.getSettings = function() {
-	// Alloy.Globals.getSettings($.winEvents);
-};
-
 /*
 nsEvents.getMusic = function() {
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
@@ -45,28 +41,36 @@ nsEvents.getMusic = function() {
 nsEvents.getMovies = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://www.punkrockbowling.com/pool-parties/"
+		url : "http://punkrockbowling.com/pages/pool-parties",
+		image: "/icons/Banner_Swimsuits.jpg",
+		banner_url: "http://www.sourpussclothing.com/gals/swimwear.html"
 	}, true, null, 'misc/right_logo');
 };
 
 nsEvents.getBowling = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/prborder/bowling"
+		url : "http://punkrockbowling.com/pages/bowling-1",
+		image: "/icons/Banner_Pins.jpg",
+		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
 	}, true, null, 'misc/right_logo');
 };
 
 nsEvents.getPoker = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/poker/"
+		url : "http://punkrockbowling.com/pages/poker-tournament",
+		image: "/icons/Banner_Babies.jpg",
+		banner_url: "http://www.sourpussclothing.com/kids.html"
 	}, true, null, 'misc/right_logo');
 };
 
 nsEvents.getArt = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://www.punkrockbowling.com/art-exhibit/"
+		url : "http://www.sourpussclothing.com/gals/beauty-supplies/hair-products.html",
+		image: "/icons/Banner_Hair_Dye.jpg",
+		banner_url: "http://www.sourpussclothing.com/kids.html"
 	}, true, null, 'misc/right_logo');
 };
 
@@ -87,9 +91,8 @@ nsEvents.openCity3Event = function() {
 };
 
 nsEvents.init = function() {
-	// Alloy.Globals.windowStack.push($.winEvents); : TODO Loading View
 
-	$.title.text = L($.args.city);
+	$.title.text = L($.args.city).toUpperCase();
 	
 	if ($.args.secondary) {
 

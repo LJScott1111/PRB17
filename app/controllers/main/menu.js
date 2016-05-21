@@ -8,6 +8,14 @@ $.settings.button.addEventListener('click', function() {
 	Alloy.Globals.openWindow('Settings', {}, true, null, 'misc/right_logo');
 });
 
+$.buy_tickets.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "https://punkrockbowling.queueapp.com"
+	}, true, null, 'misc/right_logo');
+});
+
 $.lineup.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
@@ -22,44 +30,53 @@ $.venues.button.addEventListener('click', function() {
 	}, true, null, 'misc/right_logo');
 });
 
-$.movies.button.addEventListener('click', function() {
-
-	Ti.App.fireEvent('toggleMenu');
-	// TODO: Add info
-});
-
 $.bowling.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	// TODO: Add info
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://punkrockbowling.com/pages/bowling-1",
+		image: "/icons/Banner_Pins.jpg",
+		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
+	}, true, null, 'misc/right_logo');
 });
 
 $.poker.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	// TODO: Add info
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://punkrockbowling.com/pages/poker-tournament",
+		image: "/icons/Banner_Babies.jpg",
+		banner_url: "http://www.sourpussclothing.com/kids.html"
+	}, true, null, 'misc/right_logo');
 });
 
 $.art.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	// TODO: Add info
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://www.sourpussclothing.com/gals/beauty-supplies/hair-products.html",
+		image: "/icons/Banner_Hair_Dye.jpg",
+		banner_url: "http://www.sourpussclothing.com/kids.html"
+	}, true, null, 'misc/right_logo');
 });
 
 $.map.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	// TODO: Show it city-wise
 	
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://cdn.shopify.com/s/files/1/0809/7981/files/Punk-Rock-Bowling-map_grande_grande.jpg?9976921872633462755"
+		url : "prb_map_2016.png"
 	}, true, null, 'misc/right_logo');
 });
 
 $.food.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	// TODO: Add info
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://punkrockbowling.com/pages/food-and-vendors",
+		image: "/icons/Banner_Flasks.jpg",
+		banner_url: "http://www.sourpussclothing.com/catalogsearch/result/?q=flask"
+	}, true, null, 'misc/right_logo');
 });
 
 $.sponsers.button.addEventListener('click', function() {
@@ -68,6 +85,7 @@ $.sponsers.button.addEventListener('click', function() {
 	Alloy.Globals.openWindow("Sponsors", {}, true, null, 'misc/right_logo');
 });
 
+/*
 $.info.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
@@ -75,6 +93,7 @@ $.info.button.addEventListener('click', function() {
 		url : "http://punkrockbowling.com/blogs/news"
 	}, true, null, 'misc/right_logo');
 });
+*/
 
 $.about.button.addEventListener('click', function() {
 
@@ -100,17 +119,20 @@ $.privacy_policy.button.addEventListener('click', function() {
 	}, true, null, 'misc/right_logo');
 });
 
-$.social.button.addEventListener('click', function() {
+$.info.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	// Alloy.Globals.openWindow("GenericWebView", {
-		// url : "http://punkrockbowling.com/blogs/news"
-	// }, true, null, 'misc/right_logo');
-
 	Alloy.Globals.openWindow('NewsAndSocial', {
-		twitter_url : "/twitter.html",
-		fb_url : "",
-		insta_url : ""
+		prb : {
+			twitter_url : "https://twitter.com/punkrockbowling",
+			fb_url : "https://www.facebook.com/Punk-Rock-Bowling-and-Music-Festival-288077407910557/",
+			insta_url : "https://www.instagram.com/punkrockbowling/"
+		},
+		sourpuss: {
+			twitter_url : "https://twitter.com/SourpussBrand",
+			fb_url : "https://www.facebook.com/Sourpussclothing",
+			insta_url : "https://www.instagram.com/sourpussclothing/"
+		}
 	}, true, null, 'misc/right_logo');
 });
 
@@ -123,6 +145,22 @@ $.my_schedule.button.addEventListener('click', function() {
 		console.debug(JSON.stringify(schedule));
 		Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/right_logo');
 		Alloy.Globals.loading.hide();
+
+	}, function(error) {
+		alert(L('err_fetchingDetails'));
+		Alloy.Globals.loading.hide();
+	});
+});
+
+$.log_out.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.loading.show();
+	var logout = new nsMenu.serviceCalls.logout(function() {
+
+		Alloy.Globals.loading.hide();
+		var signupWindow = Alloy.createController("signup").getView();
+		signupWindow.open();
 
 	}, function(error) {
 		alert(L('err_fetchingDetails'));

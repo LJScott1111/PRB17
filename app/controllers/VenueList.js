@@ -1,9 +1,5 @@
 var nsVenueList = {};
 
-nsVenueList.getSettings = function() {
-	// Alloy.Globals.getSettings($.winVenueList);
-};
-
 nsVenueList.getShowsDataForCity = function() {
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
@@ -11,7 +7,7 @@ nsVenueList.getShowsDataForCity = function() {
 	var currentCityData = [];
 	for (i in appdata.details) {
 
-		if (appdata.details[i].venueDetails && appdata.details[i].venueDetails.location === $.args.city) {
+		if (appdata.details[i].venueDetails && appdata.details[i].venueDetails.location.replace(" ", "") === $.args.city) {
 			currentCityData.push({
 				showDetails : appdata.details[i].showDetails,
 				bandDetails : appdata.details[i].bandDetails,
@@ -35,7 +31,7 @@ nsVenueList.getShowsDataForCity = function() {
 		currentCityData : currentCityData
 	}, $.args.city);
 	console.debug(JSON.stringify(list));
-	$.vwMain.add(list);
+	$.list_view.add(list);
 	Alloy.Globals.loading.hide();
 };
 

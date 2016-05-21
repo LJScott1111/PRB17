@@ -4,10 +4,6 @@ nsUserSchedule.serviceCalls = require("serverCalls");
 
 nsUserSchedule.momentjs = require('moment');
 
-nsUserSchedule.getSettings = function() {
-	// Alloy.Globals.getSettings($.winUserSchedule);
-};
-
 nsUserSchedule.getDay = function(timestamp, type) {
 	var dateObj = nsUserSchedule.momentjs(timestamp * 1000);
 
