@@ -1,5 +1,5 @@
 <Alloy>
-	<View id="vwMain">
+	<View id="vwMain" backgroundImage='icons/distress_bg.png'>
 		<ImageView id="ivClose" onClick="nsLogin.closeWindow"></ImageView>
 		<View id="vwTopLogin">
 			<TextField id="tfEmail" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_TYPE_EMAIL"></TextField>

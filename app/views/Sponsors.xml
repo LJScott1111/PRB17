@@ -1,5 +1,5 @@
 <Alloy>
-	<ScrollView id="svMain" class="container vertical_layout">
+	<ScrollView id="svMain" class="container vertical_layout" backgroundImage='icons/distress_bg.png'>
 
 		<ImageView id="sourpuss" class="sponsors" image="/icons/sourpuss.png" url="http://sourpussclothing.com/" onClick="nsSponsors.clickedImage"></ImageView>
 		<ImageView id="new_noise" class="sponsors" image="/icons/new_noise.png" url="http://newnoisemagazine.com/" onClick="nsSponsors.clickedImage"></ImageView>

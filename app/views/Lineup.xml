@@ -1,5 +1,5 @@
 <Alloy>
-	<View class="container vertical_layout">
+	<View class="container vertical_layout" backgroundImage='icons/distress_bg.png'>
 		<View id="lasvegas" class="absolute_layout options_view padding_top">
 			<Label class="options_lbl knowYourProduct touch_false" id="lblBands" text="L('lasvegas').toUpperCase()"></Label>
 		</View>

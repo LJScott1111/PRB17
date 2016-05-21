@@ -1,5 +1,5 @@
 <Alloy>
-	<View id="vwMain" class="vertical_layout">
+	<View id="vwMain" class="vertical_layout" backgroundImage='icons/distress_bg.png'>
 
 		<View class="vertical_layout" backgroundColor="#000">
 			<View class="logo_view padding_bottom">

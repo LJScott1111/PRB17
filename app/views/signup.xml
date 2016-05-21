@@ -1,7 +1,7 @@
 <Alloy>
 	<Window id="winIndex">
 		<!-- <Require src="header" screenId="winIndex" onSettings="nsIndex.getSettings"></Require> -->
-		<View id="vwMain">
+		<View id="vwMain" backgroundImage='icons/distress_bg.png'>
 			<View id="vwTopLogin">
 
 				<Label id="login_message" class="padding_bottom"></Label>

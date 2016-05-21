@@ -1,5 +1,5 @@
 <Alloy>
-	<View id="vwMain">
+	<View id="vwMain" backgroundImage='icons/distress_bg.png'>
 		<View id="vwTopOptions">
 
 			<Label id="title" class="frizQuaT" />

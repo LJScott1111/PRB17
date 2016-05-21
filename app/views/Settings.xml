@@ -1,5 +1,5 @@
 <Alloy>
-	<View class="container vertical_layout">
+	<View class="container vertical_layout" backgroundImage='icons/distress_bg.png'>
 		<View id="username_view" class="absolute_layout padding_top">
 
 			<View id="user_info" class="vertical_layout">
