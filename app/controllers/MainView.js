@@ -209,7 +209,7 @@ nsLanding.init = function() {
 	if (!$.args.city) {
 		Titanium.App.addEventListener('get_next_show', nsLanding.get_next_show);
 	} else {
-		$.title.text = L($.args.city);
+		$.title.text = L($.args.city).toUpperCase();
 		return;
 	}
 
