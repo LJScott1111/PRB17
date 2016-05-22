@@ -12,7 +12,7 @@ $.buy_tickets.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "https://punkrockbowling.queueapp.com"
+		url : "https://punkrockbowling.queueapp.com/events/16785"
 	}, true, null, 'misc/right_logo');
 });
 

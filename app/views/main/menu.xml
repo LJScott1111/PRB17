@@ -3,7 +3,6 @@
 		<View id="iosHeader" platform="ios" />
 		<ScrollView class="container padding_bottom">
 
-			<Require id="settings" src="misc/menu_button" title="L('settings').toUpperCase()" />
 			<Require id="buy_tickets" src="misc/menu_button" title="L('buy_tickets').toUpperCase()" />
 			<Require id="lineup" src="misc/menu_button" title="L('lineup').toUpperCase()" />
 			<Require id="venues" src="misc/menu_button" title="L('venues').toUpperCase()" />
@@ -21,6 +20,7 @@
 			<!-- <Require id="social" src="misc/menu_button" title="L('social').toUpperCase()" /> -->
 			<Require id="my_schedule" src="misc/menu_button" title="L('my_schedule').toUpperCase()" />
 			<Require id="log_out" src="misc/menu_button" title="L('log_out').toUpperCase()" />
+			<Require id="settings" src="misc/menu_button" title="L('settings').toUpperCase()" />
 		</ScrollView>
 	</View>
 </Alloy>
