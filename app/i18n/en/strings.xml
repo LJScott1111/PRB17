@@ -44,7 +44,7 @@
 	<string name="bandProfile_lblTwitter">Twitter</string> 
 	<string name="bandProfile_lblAddBand">ADD</string>
 	
-	<string name="err_serviceError">Some error occurred. Please try again.</string>
+	<string name="err_serviceError">Some error occurred. Please check your internet connection.</string>
 	<string name="err_fetchingDetails">Some error occured while fetching the details. Please try again</string>
 	<string name="err_login">Some error occurred while login. Please try again.</string>
 	<string name="err_loginDetails">Please enter correct details.</string>
