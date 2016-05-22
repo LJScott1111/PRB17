@@ -94,16 +94,6 @@ $.sponsers.button.addEventListener('click', function() {
 	Alloy.Globals.openWindow("Sponsors", {}, true, null, 'misc/right_logo');
 });
 
-/*
-$.info.button.addEventListener('click', function() {
-
-	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/blogs/news"
-	}, true, null, 'misc/right_logo');
-});
-*/
-
 $.about.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
@@ -159,6 +149,11 @@ $.my_schedule.button.addEventListener('click', function() {
 		alert(L('err_fetchingDetails'));
 		Alloy.Globals.loading.hide();
 	});
+});
+
+$.profile.button.addEventListener('click', function(){
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('Profile', {}, true, null, 'misc/right_logo');
 });
 
 $.log_out.button.addEventListener('click', function() {
