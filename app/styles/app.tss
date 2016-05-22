@@ -54,8 +54,7 @@ FONTS
 ".frizQuaT": {
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size15Fonts,
-		fontFamily: "FrizQuaT-Regu",
-		fontWeight: 'bold'
+		fontFamily: "FrizQua-Bold"
 	}
 }
 

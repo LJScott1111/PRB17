@@ -240,8 +240,6 @@ nsIndex.init = function() {
 	nsIndex.showHideHint($.lblHint_email, $.emailField);
 	nsIndex.showHideHint($.lblHint_pass, $.passwordField);
 
-	$.login_message.text = (L('login_message_1')+'\n'+L('login_message_2'));
-
 	console.debug("Hello Signup");
 
 	if (Titanium.Platform.osname !== "android") {

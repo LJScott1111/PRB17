@@ -10,8 +10,7 @@
 	<string name="index_tfEmail">  Email</string>
 	<string name="index_tfPassword">  Password</string>
 	<string name="index_lblGetIt">Login</string>
-	<string name="login_message_1">Sign up and Log In to receive special offers</string>
-	<string name="login_message_2">from our sponsers.</string>
+	<string name="login_message">Sign up and Log In to receive special offers and discounts from Punk Rock Bowling and Sourpuss.</string>
 	<string name="index_lblSkip">Skip</string>
 	
 	<!-- Login -->
@@ -45,7 +44,7 @@
 	<string name="bandProfile_lblTwitter">Twitter</string> 
 	<string name="bandProfile_lblAddBand">ADD</string>
 	
-	<string name="err_serviceError">Some error occurred. Please try again.</string>
+	<string name="err_serviceError">Some error occurred. Please check your internet connection.</string>
 	<string name="err_fetchingDetails">Some error occured while fetching the details. Please try again</string>
 	<string name="err_login">Some error occurred while login. Please try again.</string>
 	<string name="err_loginDetails">Please enter correct details.</string>
@@ -84,10 +83,10 @@
 	<string name="settings_sponsors">Sponsors / Vendors</string>
 	<string name="settings_privacy">Privacy Policy</string>
 	<string name="faq">FAQ</string>
-	<string name="settings">Settings</string>
+	<string name="settings">Contact</string>
 	<string name="lineup">Festival Lineup</string>
 	<string name="map">Map</string>
-	<string name="poolparty">Pool Party</string>
+	<string name="poolparty">Pool Parties</string>
 	<string name="sponsers">Sponsers</string>
 	<string name="info">Info</string>
 	<string name="news_social">News and Social</string>

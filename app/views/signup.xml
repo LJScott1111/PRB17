@@ -4,7 +4,7 @@
 		<View id="vwMain" backgroundImage='icons/distress_bg.png'>
 			<View id="vwTopLogin">
 
-				<Label id="login_message" class="padding_bottom"></Label>
+				<Label id="login_message" text="L('login_message')" class="padding_bottom"></Label>
 				<View class="absolute_layout padding_top">
 					<TextField id="emailField" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_TYPE_EMAIL"></TextField>
 					<Label class="lblClass" text="L('index_tfEmail')" id="lblHint_email"></Label>

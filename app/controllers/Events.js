@@ -68,7 +68,7 @@ nsEvents.getPoker = function() {
 nsEvents.getArt = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://www.sourpussclothing.com/gals/beauty-supplies/hair-products.html",
+		url : "http://punkrockbowling.com/pages/misfit-island-lethal-amounts-juxtapoz-asg-present",
 		image: "/icons/Banner_Hair_Dye.jpg",
 		banner_url: "http://www.sourpussclothing.com/kids.html"
 	}, true, null, 'misc/right_logo');

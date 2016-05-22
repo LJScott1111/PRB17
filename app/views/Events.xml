@@ -4,16 +4,16 @@
 
 			<Label id="title" class="frizQuaT" />
 			<View id="movies_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getMovies">
-				<Label class="options_lbl knowYourProduct touch_false" text="L('movies').toUpperCase()"></Label>
+				<Label id="pool_party" class="options_lbl knowYourProduct touch_false" text="L('movies').toUpperCase()"></Label>
 			</View>
 			<View id="bowling_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getBowling">
-				<Label class="options_lbl knowYourProduct touch_false" text="L('bowling').toUpperCase()"></Label>
+				<Label id="bowling" class="options_lbl knowYourProduct touch_false" text="L('bowling').toUpperCase()"></Label>
 			</View>
 			<View id="poker_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getPoker">
-				<Label class="options_lbl knowYourProduct touch_false" text="L('poker').toUpperCase()"></Label>
+				<Label id="poker" class="options_lbl knowYourProduct touch_false" text="L('poker').toUpperCase()"></Label>
 			</View>
 			<View id="art_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getArt">
-				<Label class="options_lbl knowYourProduct touch_false" text="L('art').toUpperCase()"></Label>
+				<Label id="art" class="options_lbl knowYourProduct touch_false" text="L('art').toUpperCase()"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" id="city2" onClick="nsEvents.openCity2Event">
 				<Label class="options_lbl knowYourProduct touch_false" id="lblCity2" text="City2"></Label>

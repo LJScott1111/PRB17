@@ -49,3 +49,21 @@
 "#city3": {
 	backgroundImage: '/icons/food.png'
 }
+
+"#bowling": {
+	right: 60
+}
+
+"#art": {
+	right: 50
+}
+
+"#poker": {
+	left: 70
+}
+
+"#lblCity2": {
+	left: 70
+}
+
+
