@@ -38,6 +38,14 @@ nsEvents.getMusic = function() {
 };
 */
 
+nsEvents.getDaily = function() {
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://punkrockbowling.com/pages/las-vegas-line-up",
+		image: "/icons/Banner_Pins.jpg",
+		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
+	}, true, null, 'misc/right_logo');
+};
+
 nsEvents.getMovies = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {

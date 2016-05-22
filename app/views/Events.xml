@@ -3,6 +3,11 @@
 		<View id="vwTopOptions">
 
 			<Label id="title" class="frizQuaT" />
+			
+			<View id="daily_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getDaily">
+				<Label id="pool_party" class="options_lbl knowYourProduct touch_false" text="L('daily').toUpperCase()"></Label>
+			</View>
+			
 			<View id="movies_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getMovies">
 				<Label id="pool_party" class="options_lbl knowYourProduct touch_false" text="L('movies').toUpperCase()"></Label>
 			</View>

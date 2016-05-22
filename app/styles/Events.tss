@@ -42,6 +42,10 @@
 	backgroundImage: '/icons/venues.png'
 }
 
+"#daily_view": {
+	backgroundImage: '/icons/schedule.png'
+}
+
 "#city2": {
 	backgroundImage: '/icons/news.png'
 }

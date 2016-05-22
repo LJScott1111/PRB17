@@ -20,7 +20,7 @@
 	
 	<!-- Main screen -->
 	<string name="bands">Bands</string>
-	<string name="events">Events</string>
+	<string name="events">Lineup</string>
 	<string name="schedule">Schedule</string>
 	<string name="venues">Venues</string>
 	<string name="vendors">Vendors</string>
@@ -28,6 +28,7 @@
 	<string name="news">News</string>
 	
 	<!-- Events screen -->
+	<string name="daily">Daily Schedule</string>
 	<string name="movies">Pool Parties</string>
 	<string name="bowling">Bowling</string>
 	<string name="poker">Poker</string>
@@ -80,7 +81,7 @@
 	<string name="settings_login">Login</string>
 	<string name="settings_logout">Logout</string>
 	<string name="settings_map">Map</string>
-	<string name="settings_sponsors">Sponsors / Vendors</string>
+	<string name="settings_sponsors">Sponsors and Vendors</string>
 	<string name="settings_privacy">Privacy Policy</string>
 	<string name="faq">FAQ</string>
 	<string name="settings">Contact</string>
@@ -89,7 +90,7 @@
 	<string name="poolparty">Pool Parties</string>
 	<string name="sponsers">Sponsers</string>
 	<string name="info">Info</string>
-	<string name="news_social">News and Social</string>
+	<string name="news_social">News &amp; Social</string>
 	<string name="about">About</string>
 	<string name="privacy_policy">Privacy Policy</string>
 	<string name="messages">messages</string>

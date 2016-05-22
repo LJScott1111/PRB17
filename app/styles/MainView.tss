@@ -51,13 +51,17 @@
 }
 
 "#lblBands": {
-	left: 60
+	left: 50
 }
 
 "#lblSchedule": {
-	left: 50
+	left: 90
 }
 
 "#lblVenues": {
 	left: 120
+}
+
+"#lblNews": {
+	left: 30
 }
