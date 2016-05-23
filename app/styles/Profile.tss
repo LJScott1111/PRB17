@@ -50,6 +50,7 @@
 	left: 20,
 	top: 50,
 	height: 0,
+	visible: false,
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size15Fonts
 	}

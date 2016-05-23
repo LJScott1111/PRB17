@@ -77,8 +77,8 @@ nsProfile.init = function() {
 		$.edit_email_btn.height = 0;
 		$.save_email_btn.height = 0;
 		$.username_view.height = 0;
-	} else {
 		$.no_email_message.height = Titanium.UI.SIZE;
+		$.no_email_message.visible = true;
 	}
 };
 
