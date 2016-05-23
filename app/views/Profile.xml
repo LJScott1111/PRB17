@@ -12,6 +12,6 @@
 			<ImageView id="edit_email_btn" class="padding_right"></ImageView>
 			<ImageView id="save_email_btn" class="padding_right"></ImageView>
 		</View>
-		
+		<Label id="no_email_message" text="L('no_email_message')"></Label>
 	</View>
 </Alloy>

@@ -95,8 +95,8 @@ nsIndex.skipSignUp = function() {
 
 			var Kinvey = Alloy.Globals.Kinvey;
 			var promise2 = Kinvey.User.login({
-				username : 'mobile@buzzplay.com',
-				password : 'prb%2015'
+				username : 'defaultuserlogin@buzzplay.com',
+				password : 'prb%2016'
 			});
 			promise2.then(function(user) {
 				console.debug("Login success - user ", JSON.stringify(user));
