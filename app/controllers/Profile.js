@@ -72,11 +72,14 @@ nsProfile.init = function() {
 	$.email.text = thisUser.username;
 	$.save_email_btn.height = 0;
 
-	// Disabling update email option for username = mobile@buzzplay.com
-	if (thisUser._id == '555bb6a87d5a0af11a060588') {
+	// Disabling update email option for username = defaultuserlogin@buzzplay.com
+	if (thisUser._id == '57426f4751ffd5bb03b001c3') {
 		$.edit_email_btn.height = 0;
 		$.save_email_btn.height = 0;
-	};
+		$.username_view.height = 0;
+	} else {
+		$.no_email_message.height = Titanium.UI.SIZE;
+	}
 };
 
 nsProfile.init();

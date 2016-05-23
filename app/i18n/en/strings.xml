@@ -17,6 +17,7 @@
 	<string name="login_lblFbConnect">Login with Facebook</string>
 	<string name="login_lbllogin">Login</string>
 	<string name="login_tfPassword">Password</string>
+	<string name="no_email_message">You can only edit profile after logging in.</string>
 	
 	<!-- Main screen -->
 	<string name="bands">Bands</string>
