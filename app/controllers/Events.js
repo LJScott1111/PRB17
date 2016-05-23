@@ -46,6 +46,14 @@ nsEvents.getDaily = function() {
 	}, true, null, 'misc/right_logo');
 };
 
+nsEvents.getClubShows = function() {
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://punkrockbowling.com/collections/prb-las-vegas-club-shows",
+		image: "/icons/Banner_Pins.jpg",
+		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
+	}, true, null, 'misc/right_logo');
+};
+
 nsEvents.getMovies = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
@@ -101,14 +109,15 @@ nsEvents.openCity3Event = function() {
 nsEvents.init = function() {
 
 	$.title.text = L($.args.city).toUpperCase();
-	
+	/*
 	if ($.args.secondary) {
 
 		$.city2.height = 0;
 		$.city3.height = 0;
 		return;
 	};
-
+	*/
+	
 	for (i in cities) {
 		if (Alloy.Globals.nextEventCity == cities[i]) {
 			cities.splice(i, 1);
@@ -118,8 +127,8 @@ nsEvents.init = function() {
 
 	console.log(cities);
 
-	$.lblCity2.text = L(cities[0]).toUpperCase();
-	$.lblCity3.text = L(cities[1]).toUpperCase();
+	// $.lblCity2.text = L(cities[0]).toUpperCase();
+	// $.lblCity3.text = L(cities[1]).toUpperCase();
 };
 
 nsEvents.init();

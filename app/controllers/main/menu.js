@@ -22,6 +22,15 @@ $.lineup.button.addEventListener('click', function() {
 	Alloy.Globals.openWindow('Lineup', {}, true, null, 'misc/right_logo');
 });
 
+$.fest_events.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('Events', {
+		// secondary : $.args.secondary,
+		city : Alloy.Globals.nextEventCity
+	}, true, null, 'misc/right_logo');
+});
+
 $.venues.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
@@ -132,6 +141,20 @@ $.info.button.addEventListener('click', function() {
 			fb_url : "https://www.facebook.com/Sourpussclothing",
 			insta_url : "https://www.instagram.com/sourpussclothing/"
 		}
+	}, true, null, 'misc/right_logo');
+});
+
+$.denver.button.addEventListener('click', function() {
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "http://punkrockbowling.com/pages/prb-denver-june-2-4-2016"
+	}, true, null, 'misc/right_logo');
+});
+
+$.asburypark.button.addEventListener('click', function() {
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "http://punkrockbowling.com/pages/asbury-park-lineup"
 	}, true, null, 'misc/right_logo');
 });
 

@@ -46,6 +46,10 @@
 	backgroundImage: '/icons/schedule.png'
 }
 
+"#club_shows_view": {
+	backgroundImage: '/icons/events.png'
+}
+
 "#city2": {
 	backgroundImage: '/icons/news.png'
 }
@@ -66,8 +70,10 @@
 	left: 70
 }
 
+"#club_shows": {
+	right: 20
+}
+
 "#lblCity2": {
 	left: 70
 }
-
-
