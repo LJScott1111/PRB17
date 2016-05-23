@@ -9,7 +9,7 @@ $.lasvegas.addEventListener('click', function() {
 
 $.denver.addEventListener('click', function() {
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/denver-lineup"
+		url : "http://punkrockbowling.com/pages/prb-denver-june-2-4-2016"
 	}, true, null, 'misc/right_logo');
 });
 

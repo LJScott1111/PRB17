@@ -21,7 +21,7 @@
 	
 	<!-- Main screen -->
 	<string name="bands">Bands</string>
-	<string name="events">Lineup</string>
+	<string name="events">Events</string>
 	<string name="schedule">Schedule</string>
 	<string name="venues">Venues</string>
 	<string name="vendors">Vendors</string>
@@ -37,6 +37,7 @@
 	<string name="lasvegas">Las Vegas</string>
 	<string name="denver">Denver</string>
 	<string name="asburypark">Asbury park</string>
+	<string name="club_shows">Club Shows</string>
 	
 	<!-- Band Profile -->
 	<string name="bandProfile_lblSoundCloud">Listen</string>
@@ -87,11 +88,12 @@
 	<string name="faq">FAQ</string>
 	<string name="settings">Contact</string>
 	<string name="lineup">Festival Lineup</string>
+	<string name="fest_events">Festival Events</string>
 	<string name="map">Map</string>
 	<string name="poolparty">Pool Parties</string>
-	<string name="sponsers">Sponsers</string>
+	<string name="sponsers">Sponsors</string>
 	<string name="info">Info</string>
-	<string name="news_social">News &amp; Social</string>
+	<string name="news_social">News and Social</string>
 	<string name="about">About</string>
 	<string name="privacy_policy">Privacy Policy</string>
 	<string name="messages">messages</string>

@@ -5,7 +5,11 @@
 			<Label id="title" class="frizQuaT" />
 			
 			<View id="daily_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getDaily">
-				<Label id="pool_party" class="options_lbl knowYourProduct touch_false" text="L('daily').toUpperCase()"></Label>
+				<Label id="lineup" class="options_lbl knowYourProduct touch_false" text="L('lineup').toUpperCase()"></Label>
+			</View>
+			
+			<View id="club_shows_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getClubShows">
+				<Label id="club_shows" class="options_lbl knowYourProduct touch_false" text="L('club_shows').toUpperCase()"></Label>
 			</View>
 			
 			<View id="movies_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getMovies">
@@ -20,12 +24,12 @@
 			<View id="art_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getArt">
 				<Label id="art" class="options_lbl knowYourProduct touch_false" text="L('art').toUpperCase()"></Label>
 			</View>
-			<View class="absolute_layout options_view padding_top" id="city2" onClick="nsEvents.openCity2Event">
+			<!-- <View class="absolute_layout options_view padding_top" id="city2" onClick="nsEvents.openCity2Event">
 				<Label class="options_lbl knowYourProduct touch_false" id="lblCity2" text="City2"></Label>
 			</View>
 			<View class="absolute_layout options_view padding_top" id="city3" onClick="nsEvents.openCity3Event">
 				<Label class="options_lbl knowYourProduct touch_false" id="lblCity3" text="City3"></Label>
-			</View>
+			</View> -->
 
 		</View>
 		<Require id="sponsor" src="misc/sponsorAd" image="/icons/sourpuss_banner.png" url="http://sourpussclothing.com/" />

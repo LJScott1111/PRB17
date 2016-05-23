@@ -126,12 +126,14 @@ nsLanding.getSchedule = function() {
 
 };
 
-nsLanding.getVenues = function() {
-
+nsLanding.buyTickets = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.queueapp.com/events/16785"
 	}, true, null, 'misc/right_logo');
-	
+};
+
+nsLanding.getVenues = function() {
+
 	/*
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
@@ -157,15 +159,16 @@ nsLanding.getVenues = function() {
 			city : $.args.city
 		}, true, null, 'misc/right_logo');
 	}*/
-	
+
+
 };
 
 nsLanding.getFood = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "http://punkrockbowling.com/pages/food-and-vendors",
-		image: "/icons/Banner_Flasks.jpg",
-		banner_url: "http://www.sourpussclothing.com/catalogsearch/result/?q=flask"
+		image : "/icons/Banner_Flasks.jpg",
+		banner_url : "http://www.sourpussclothing.com/catalogsearch/result/?q=flask"
 	}, true, null, 'misc/right_logo');
 };
 
@@ -177,7 +180,7 @@ nsLanding.getNews = function() {
 			fb_url : "https://www.facebook.com/Punk-Rock-Bowling-and-Music-Festival-288077407910557/",
 			insta_url : "https://www.instagram.com/punkrockbowling/"
 		},
-		sourpuss: {
+		sourpuss : {
 			twitter_url : "https://twitter.com/SourpussBrand",
 			fb_url : "https://www.facebook.com/Sourpussclothing",
 			insta_url : "https://www.instagram.com/sourpussclothing/"

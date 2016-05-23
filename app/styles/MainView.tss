@@ -8,7 +8,7 @@
 	color: "#f9ddb7",
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.SIZE,
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 
 "#vwMain": {
@@ -48,6 +48,23 @@
 
 "#food_view": {
 	backgroundImage: '/icons/food.png'
+}
+
+"#buy_tickets_view": {
+	backgroundImage: '/icons/buy_tickets.png',
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	bottom: 80,
+	top: 0
+}
+
+"#lblBuyTickets": {
+	top: 10,
+	right: 30,
+	color: '#fff',
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size25Fonts
+	}
 }
 
 "#lblBands": {
