@@ -44,3 +44,14 @@
 	height: 0,
 	width: 15
 }
+
+"#no_email_message": {
+	color: '#ffffff',
+	left: 20,
+	top: 50,
+	height: 0,
+	visible: false,
+	font: {
+		fontSize: Alloy.Globals.theme.fonts.size15Fonts
+	}
+}
