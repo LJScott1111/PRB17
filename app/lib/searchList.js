@@ -417,16 +417,14 @@ nsSearchList.createList = function(tblData) {
 				} else {
 					ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
 				}
+/*
 
 				ivFavouriteStar.addEventListener('click', function(e) {
 
-					console.error('FAV ICON CLICKED ');
 					var data_id = (Titanium.Platform.osname === "android") ? tblData[e.source.index]._id : tblData[e.row.id]._id;
 
 					for (i in nsSearchList.currentCityData) {
 						
-						console.error('nsSearchList.currentCityData ', JSON.stringify(nsSearchList.currentCityData[i]));
-
 						if (nsSearchList.type === "BandList") {
 							if (nsSearchList.currentCityData[i].showDetails.band_id === data_id) {
 								var show_id = nsSearchList.currentCityData[i].showDetails._id;
@@ -435,7 +433,6 @@ nsSearchList.createList = function(tblData) {
 
 									var MS_PER_MINUTE = 60000;
 									var startDate = new Date((nsSearchList.currentCityData[i].showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
-									console.error("START DATE ", startDate);
 
 									// Schedule notifications for IOS
 									if (Titanium.Platform.osname !== "android") {
@@ -541,6 +538,7 @@ nsSearchList.createList = function(tblData) {
 
 					e.source.selected = !e.source.selected;
 				});
+*/
 
 				vwRowView.add(ivFavouriteStar);
 			}
