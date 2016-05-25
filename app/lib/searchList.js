@@ -571,16 +571,6 @@ nsSearchList.createList = function(tblData) {
 
 		} else if (nsSearchList.type === "VenueList") {
 
-			if (tblData[e.source.id]._id == '555638d337125e821100e8a1') {
-				
-				Alloy.Globals.openWindow('GenericWebView', {
-					url : "http://punkrockbowling.com/pages/las-vegas-line-up",
-					image: "/icons/Banner_Pins.jpg",
-					banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
-				}, true, null, 'misc/right_logo');
-				return;
-			}
-			
 			Alloy.Globals.openWindow("VenueProfile", {
 				"id" : tblData[e.source.id]._id
 			}, true, null, 'misc/right_logo');
