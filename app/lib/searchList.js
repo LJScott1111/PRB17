@@ -9,6 +9,7 @@ nsSearchList.vwAll = null;
 
 nsSearchList.serverCalls = require('serverCalls');
 nsSearchList.momentjs = require('moment');
+nsSearchList.remoteImageView = require('createRemoteImageView');
 
 nsSearchList.getList = function(day) {
 	// Get list
@@ -272,6 +273,8 @@ nsSearchList.createHeader = function() {
 nsSearchList.createList = function(tblData) {
 
 	var userSchedule = Ti.App.Properties.getList('userSchedule');
+	var imageW = Alloy.Globals.platformWidth * 0.25;
+	var imageH = Alloy.Globals.platformHeight * 0.088;
 
 	if (nsSearchList.type === "BandList") {
 
@@ -368,24 +371,41 @@ nsSearchList.createList = function(tblData) {
 				touchEnabled : false
 			});
 
-			var ivImage = Titanium.UI.createImageView({
-				left : 10,
-				top : 5,
-				bottom : 5,
-				width : Alloy.Globals.platformWidth * 0.25,
-				height : Alloy.Globals.platformHeight * 0.088,
-				borderColor : "#000000",
-				// image : tblData[i].image_link,
-				touchEnabled : false
-			});
+			if (OS_IOS) {
 
-			var imagelink = tblData[i].image_link;
+				var ivImage = Titanium.UI.createImageView({
+					left : 10,
+					top : 5,
+					bottom : 5,
+					width : imageW,
+					height : imageH,
+					borderColor : "#000000",
+					// image : tblData[i].image_link,
+					touchEnabled : false
+				});
 
-			if (tblData[i].image_link && (imagelink.indexOf('.png') > -1 || imagelink.indexOf('.jpg') > -1 || imagelink.indexOf('.jpeg') > -1 )) {
-				ivImage.image = imagelink;
+				var imagelink = tblData[i].image_link;
+
+				if (tblData[i].image_link && (imagelink.indexOf('.png') > -1 || imagelink.indexOf('.jpg') > -1 || imagelink.indexOf('.jpeg') > -1 )) {
+					ivImage.image = imagelink;
+				}
+
+				vwRowView.add(ivImage);
+			} else {
+
+				var imagelink = tblData[i].image_link;
+				var remoteImage = nsSearchList.remoteImageView.createRemoteImageView({
+					image : (tblData[i].image_link && (imagelink.indexOf('.png') > -1 || imagelink.indexOf('.jpg') > -1 || imagelink.indexOf('.jpeg') > -1 )) ? imagelink : '',
+					defaultImage : '/icons/logo.png', // default images are also handled
+					hires : true,
+					width : imageW,
+					height : imageH,
+					left : 10,
+					top : 5,
+					bottom : 5,
+				});
+				vwRowView.add(remoteImage);
 			}
-
-			vwRowView.add(ivImage);
 
 			var lblName = Titanium.UI.createLabel({
 				left : Alloy.Globals.platformWidth * 0.30,
