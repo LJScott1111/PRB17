@@ -59,7 +59,9 @@ if ( !Ti.App.hasRemoteImageViewListener ) {
 	
 		// create http client to download the image
 		var xhr = Ti.Network.createHTTPClient();
-		xhr.setTimeout(Ti.App.requestTimeout);
+		
+		xhr.setTimeout(20000);
+
 		// … and assign the local image after successful download		
 		xhr.onload = function() {
 			if (xhr.status == 200) {

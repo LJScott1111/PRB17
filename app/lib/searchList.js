@@ -344,26 +344,6 @@ nsSearchList.createList = function(tblData) {
 				top : 0
 			});
 
-			row.addEventListener('click', function(e) {
-				var data = null;
-				console.log(e.source, " ", e.source.id);
-				if (e.source.id !== "ivFavouriteStar") {
-					if (nsSearchList.type === "BandList") {
-
-						Alloy.Globals.openWindow("BandProfile", {
-							"id" : tblData[e.source.id]._id
-						}, true, null, 'misc/right_logo');
-
-					} else if (nsSearchList.type === "VenueList") {
-
-						Alloy.Globals.openWindow("VenueProfile", {
-							"id" : tblData[e.source.id]._id
-						}, true, null, 'misc/right_logo');
-
-					}
-				}
-			});
-
 			var vwRowView = Titanium.UI.createView({
 				height : Titanium.UI.SIZE,
 				width : Titanium.UI.FILL,
@@ -577,6 +557,24 @@ nsSearchList.createList = function(tblData) {
 		searchHidden : true,
 		backgroundColor : "#000000",
 		// headerView : nsSearchList.createHeader()
+	});
+
+	nsSearchList.table.addEventListener('click', function(e) {
+		var data = null;
+		// console.log(e.source, " ", e.source.id);
+		if (nsSearchList.type === "BandList") {
+
+			Alloy.Globals.openWindow("BandProfile", {
+				"id" : tblData[e.source.id]._id
+			}, true, null, 'misc/right_logo');
+
+		} else if (nsSearchList.type === "VenueList") {
+
+			Alloy.Globals.openWindow("VenueProfile", {
+				"id" : tblData[e.source.id]._id
+			}, true, null, 'misc/right_logo');
+
+		}
 	});
 
 	if (nsSearchList.type === "BandList") {
