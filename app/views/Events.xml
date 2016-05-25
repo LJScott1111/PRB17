@@ -4,8 +4,11 @@
 
 			<Label id="title" class="frizQuaT" />
 			
-			<View id="daily_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getDaily">
+			<!-- <View id="daily_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getDaily">
 				<Label id="lineup" class="options_lbl knowYourProduct touch_false" text="L('lineup').toUpperCase()"></Label>
+			</View> -->
+			<View id="bands_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getBands">
+				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblBands" text="L('bands').toUpperCase()"></Label>
 			</View>
 			
 			<View id="club_shows_view" class="absolute_layout options_view padding_top" onClick="nsEvents.getClubShows">
