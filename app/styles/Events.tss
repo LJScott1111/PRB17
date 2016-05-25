@@ -26,6 +26,10 @@
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
 }
 
+"#bands_view": {
+	backgroundImage: '/icons/bands.png'
+}
+
 "#movies_view": {
 	backgroundImage: '/icons/bands.png'
 }

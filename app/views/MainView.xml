@@ -3,8 +3,11 @@
 		<View id="vwTopOptions">
 
 			<Label id="title" class="frizQuaT" />
-			<View id="bands_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getBands">
+			<!-- <View id="bands_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getBands">
 				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblBands" text="L('bands').toUpperCase()"></Label>
+			</View> -->
+			<View id="lineup_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getLineup">
+				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblLineup" text="L('lineup').toUpperCase()"></Label>
 			</View>
 			<View id="events_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getEvents">
 				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblEvents" text="L('events').toUpperCase()"></Label>

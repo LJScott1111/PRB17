@@ -74,6 +74,14 @@ nsLanding.getBands = function() {
 	}
 };
 
+nsLanding.getLineup = function(){
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://punkrockbowling.com/pages/las-vegas-line-up",
+		image: "/icons/Banner_Pins.jpg",
+		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
+	}, true, null, 'misc/right_logo');
+};
+
 nsLanding.getEvents = function() {
 
 	Alloy.Globals.openWindow('Events', {
