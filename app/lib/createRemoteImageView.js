@@ -43,7 +43,7 @@
  * Titamium.UI.createRemoteImageView
  * points to createRemoteImageView
  */
-Ti.UI.createRemoteImageView = Titanium.UI.createRemoteImageView = createRemoteImageView;
+// Ti.UI.createRemoteImageView = Titanium.UI.createRemoteImageView = createRemoteImageView;
 
 
 /**
