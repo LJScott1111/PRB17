@@ -74,12 +74,31 @@ nsLanding.getBands = function() {
 	}
 };
 
+nsLanding.openLineup = function(){
+
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	for (i in appdata.venues) {
+		if (appdata.venues[i].name.toLowerCase().trim() === 'festival lineup') {
+			
+			Alloy.Globals.openWindow("VenueProfile", {
+				"id" : appdata.venues[i]._id
+			}, true, null, 'misc/right_logo');
+			break;
+		}
+	}
+};
+
 nsLanding.getLineup = function(){
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/pages/las-vegas-line-up",
-		image: "/icons/Banner_Pins.jpg",
-		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
-	}, true, null, 'misc/right_logo');
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
+
+	if (appdata.venues) {
+
+		nsLanding.openLineup();
+	} else {
+		Alloy.Globals.getAndStoreData(function(data) {
+			nsLanding.openLineup();
+		});
+	}
 };
 
 nsLanding.getEvents = function() {
