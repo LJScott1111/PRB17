@@ -37,6 +37,7 @@ nsEvents.getMusic = function() {
 	}
 };
 */
+/*
 
 nsEvents.getDaily = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
@@ -44,6 +45,37 @@ nsEvents.getDaily = function() {
 		image: "/icons/Banner_Pins.jpg",
 		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
 	}, true, null, 'misc/right_logo');
+};
+*/
+
+nsEvents.getBands = function(){
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
+
+	console.debug("Alloy.Globals.bands emply ", JSON.stringify(appdata.bands));
+
+	if (appdata.details.length === 0) {
+		Alloy.Globals.loading.show();
+		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+			console.debug("fetchedData ", fetchedData);
+			if (fetchedData) {
+
+				Alloy.Globals.openWindow('BandList', {
+					city : $.args.city
+				}, true, null, 'misc/right_logo');
+				Alloy.Globals.loading.hide();
+			} else {
+				console.debug("All data did not get downloaded!!!");
+				alert(L('err_fetchingDetails'));
+			}
+			Alloy.Globals.loading.hide();
+		});
+
+	} else {
+		console.log('Opening bands');
+		Alloy.Globals.openWindow('BandList', {
+			city : $.args.city
+		}, true, null, 'misc/right_logo');
+	}
 };
 
 nsEvents.getClubShows = function() {
