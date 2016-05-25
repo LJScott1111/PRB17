@@ -380,6 +380,7 @@ nsSearchList.createList = function(tblData) {
 					hires : true,
 					width : imageW,
 					height : imageH,
+					touchEnabled: false,
 					left : 10,
 					top : 5,
 					bottom : 5,
