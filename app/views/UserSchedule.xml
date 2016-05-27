@@ -29,6 +29,6 @@
 				<ImageView id="ivStar"></ImageView>
 			</View>
 		</View>
-		<Require id="sponsor" src="misc/sponsorAd" image="/icons/Banner_Fred_Perry.jpg" url="http://www.sourpussclothing.com/brands/fred-perry" />
+		<Require id="sponsor" src="misc/sponsorAd" />
 	</View>
 </Alloy>
