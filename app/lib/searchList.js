@@ -587,12 +587,11 @@ nsSearchList.createList = function(tblData) {
 
 	if (nsSearchList.type === "BandList") {
 		nsSearchList.table.setSearch(sbSearchBar);
+		nsSearchList.table.index = index;
 	}
-	nsSearchList.table.index = index;
 
 	nsSearchList.vwSearchView.add(nsSearchList.table);
 	return nsSearchList.vwSearchView;
-
 };
 
 nsSearchList.init = function(type, data) {
