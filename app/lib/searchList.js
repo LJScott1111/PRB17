@@ -436,10 +436,13 @@ nsSearchList.createList = function(tblData) {
 		bottom : 20,
 		filterAttribute : 'filter',
 		filterCaseInsensitive : true,
-		searchHidden : true,
-		backgroundColor : "#000000",
-		// headerView : nsSearchList.createHeader()
+		// searchHidden : true,
+		backgroundColor : "#000000"
 	});
+	
+	if (nsSearchList.type === "BandList") {
+		nsSearchList.table.searchHidden = true;
+	}
 
 	nsSearchList.table.addEventListener('click', function(e) {
 		var data = null;
