@@ -16,21 +16,28 @@ nsSearchList.getList = function(day) {
 	console.debug("day ", day);
 
 	var dayOfShow = "";
-
-	var bands = [];
+	var listToShow = [];
+	var lookup = {};
 
 	for (i in nsSearchList.currentCityData) {
 		dayOfShow = nsSearchList.momentjs(nsSearchList.currentCityData[i].showDetails.start_time * 1000).format('dddd').toLowerCase().trim();
 
 		console.debug("dayOfShow ", dayOfShow);
 
-		if (day === dayOfShow) {
-			bands.push(nsSearchList.currentCityData[i].bandDetails);
+		if (nsSearchList.type === "BandList" && day === dayOfShow) {
+			listToShow.push(nsSearchList.currentCityData[i].bandDetails);
+		} else if (nsSearchList.type === "VenueList" && day === dayOfShow) {
+			var venue = nsSearchList.currentCityData[i].venueDetails._id;
+
+			if (!( venue in lookup)) {
+				lookup[venue] = 1;
+				listToShow.push(nsSearchList.currentCityData[i].venueDetails);
+			}
 		}
 	}
-	bands.sort(Alloy.Globals.sortArray('name'));
-	console.log("JSON.stringify(bands) ", JSON.stringify(bands));
-	return bands;
+	listToShow.sort(Alloy.Globals.sortArray('name'));
+	console.log("JSON.stringify(listToShow) ", JSON.stringify(listToShow));
+	return listToShow;
 };
 
 nsSearchList.createHeader = function() {
@@ -282,7 +289,9 @@ nsSearchList.createList = function(tblData) {
 			nsSearchList.selectedTab.selected = true;
 			nsSearchList.selectedTab.backgroundColor = "#c0c0c0";
 		}
+		/*
 
+		 
 		for (var j in tblData) {
 			for (var i in userSchedule) {
 				if (userSchedule[i].band_id == tblData[j]._id) {
@@ -290,6 +299,8 @@ nsSearchList.createList = function(tblData) {
 				}
 			}
 		}
+
+		*/
 
 		var sbSearchBar = Titanium.UI.createSearchBar({
 			barColor : '#000000',
@@ -303,7 +314,10 @@ nsSearchList.createList = function(tblData) {
 
 		nsSearchList.vwSearchView.add(sbSearchBar);
 
-	} else {
+	}
+	/*
+	else {
+
 		for (var j in tblData) {
 			for (var i in userSchedule) {
 				if (userSchedule[i].venue_id == tblData[j]._id) {
@@ -312,6 +326,7 @@ nsSearchList.createList = function(tblData) {
 			}
 		}
 	}
+	*/
 
 	var currHeader = "A";
 	var sectionArr = [];
@@ -380,7 +395,7 @@ nsSearchList.createList = function(tblData) {
 					hires : true,
 					width : imageW,
 					height : imageH,
-					touchEnabled: false,
+					touchEnabled : false,
 					left : 10,
 					top : 5,
 					bottom : 5,
@@ -394,13 +409,14 @@ nsSearchList.createList = function(tblData) {
 				color : "#ffffff",
 				height : Titanium.UI.SIZE,
 				touchEnabled : false,
-				width : "50%",
+				width : "62%",
 				font : {
 					fontSize : Alloy.Globals.theme.fonts.size20Fonts
 				}
 			});
 
 			vwRowView.add(lblName);
+/*
 
 			if (nsSearchList.type === "BandList") {
 				var ivFavouriteStar = Titanium.UI.createImageView({
@@ -418,131 +434,11 @@ nsSearchList.createList = function(tblData) {
 				} else {
 					ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
 				}
-/*
-
-				ivFavouriteStar.addEventListener('click', function(e) {
-
-					var data_id = (Titanium.Platform.osname === "android") ? tblData[e.source.index]._id : tblData[e.row.id]._id;
-
-					for (i in nsSearchList.currentCityData) {
-						
-						if (nsSearchList.type === "BandList") {
-							if (nsSearchList.currentCityData[i].showDetails.band_id === data_id) {
-								var show_id = nsSearchList.currentCityData[i].showDetails._id;
-								var addShow = new nsSearchList.serverCalls.saveUserSchedule(show_id, function(response) {
-									e.source.setImage(Alloy.Globals.theme.icons.star);
-
-									var MS_PER_MINUTE = 60000;
-									var startDate = new Date((nsSearchList.currentCityData[i].showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
-
-									// Schedule notifications for IOS
-									if (Titanium.Platform.osname !== "android") {
-
-										var notification = Ti.App.iOS.scheduleLocalNotification({
-											alertBody : nsSearchList.currentCityData[i].bandDetails.name + "\n" + nsSearchList.currentCityData[i].venueDetails.name + "\n" + startDate,
-											badge : 1,
-											date : startDate,
-										});
-
-										Ti.App.iOS.addEventListener('notification', function(e) {
-
-											Ti.API.info('background event received = ' + notification);
-
-											// Reset the badge value
-											if (e.badge > 0) {
-												Ti.App.iOS.scheduleLocalNotification({
-													date : new Date(new Date().getTime()),
-													badge : -1
-												});
-											}
-										});
-									} else {
-										// Create an intent using the JavaScript service file
-										var intent = Ti.Android.createServiceIntent({
-											url : 'android_notifications.js'
-										});
-										// Set the interval to run the service;
-										intent.putExtra('interval', 1000);
-										// Send extra data to the service;
-										intent.putExtra('timestamp', startDate);
-
-										intent.putExtra('band', nsSearchList.currentCityData[i].bandDetails.name);
-										intent.putExtra('message', nsSearchList.currentCityData[i].venueDetails.name + "\n" + startDate);
-
-										// Start the service
-										Ti.Android.startService(intent);
-									}
-
-								}, function(error) {
-									alert(L('err_serviceError'));
-								});
-
-								break;
-							}
-						} else {
-							if (nsSearchList.currentCityData[i].showDetails.venue_id === data_id) {
-								var show_id = nsSearchList.currentCityData[i].showDetails._id;
-								var addShow = new nsSearchList.serverCalls.saveUserSchedule(show_id, function(response) {
-									e.source.setImage(Alloy.Globals.theme.icons.star);
-
-									var MS_PER_MINUTE = 60000;
-									var startDate = new Date((nsSearchList.currentCityData[i].showDetails.start_time * 1000) - 10 * MS_PER_MINUTE);
-									console.log("startDate ", startDate);
-
-									// Schedule notifications for IOS
-									if (Titanium.Platform.osname !== "android") {
-
-										var notification = Ti.App.iOS.scheduleLocalNotification({
-											alertBody : nsSearchList.currentCityData[i].bandDetails.name + "\n" + nsSearchList.currentCityData[i].venueDetails.name + "\n" + startDate,
-											badge : 1,
-											date : startDate,
-										});
-
-										Ti.App.iOS.addEventListener('notification', function(e) {
-
-											Ti.API.info('background event received = ' + notification);
-
-											// Reset the badge value
-											if (e.badge > 0) {
-												Ti.App.iOS.scheduleLocalNotification({
-													date : new Date(new Date().getTime()),
-													badge : -1
-												});
-											}
-										});
-									} else {
-										// Create an intent using the JavaScript service file
-										var intent = Ti.Android.createServiceIntent({
-											url : 'android_notifications.js'
-										});
-										// Set the interval to run the service;
-										intent.putExtra('interval', 1000);
-										// Send extra data to the service;
-										intent.putExtra('timestamp', startDate);
-
-										intent.putExtra('band', nsSearchList.currentCityData[i].bandDetails.name);
-										intent.putExtra('message', nsSearchList.currentCityData[i].venueDetails.name + "\n" + startDate);
-
-										// Start the service
-										Ti.Android.startService(intent);
-									}
-
-								}, function(error) {
-									alert(L('err_serviceError'));
-								});
-
-								break;
-							}
-						}
-
-					}
-
-					e.source.selected = !e.source.selected;
-				});
-*/
 
 				vwRowView.add(ivFavouriteStar);
 			}
+			*/
+
 			row.add(vwRowView);
 
 			currSection.add(row);
@@ -555,10 +451,13 @@ nsSearchList.createList = function(tblData) {
 		bottom : 20,
 		filterAttribute : 'filter',
 		filterCaseInsensitive : true,
-		searchHidden : true,
-		backgroundColor : "#000000",
-		// headerView : nsSearchList.createHeader()
+		// searchHidden : true,
+		backgroundColor : "#000000"
 	});
+
+	if (nsSearchList.type === "BandList") {
+		nsSearchList.table.searchHidden = true;
+	}
 
 	nsSearchList.table.addEventListener('click', function(e) {
 		var data = null;
@@ -578,21 +477,17 @@ nsSearchList.createList = function(tblData) {
 		}
 	});
 
-	if (nsSearchList.type === "BandList") {
-		//nsSearchList.table.headerView = nsSearchList.createHeader();
-		nsSearchList.vwSearchView.add(nsSearchList.createHeader());
-	}
+	nsSearchList.vwSearchView.add(nsSearchList.createHeader());
 
 	nsSearchList.table.setData(sectionArr);
 
 	if (nsSearchList.type === "BandList") {
 		nsSearchList.table.setSearch(sbSearchBar);
+		nsSearchList.table.index = index;
 	}
-	nsSearchList.table.index = index;
 
 	nsSearchList.vwSearchView.add(nsSearchList.table);
 	return nsSearchList.vwSearchView;
-
 };
 
 nsSearchList.init = function(type, data) {
@@ -612,7 +507,7 @@ nsSearchList.init = function(type, data) {
 		height : Titanium.UI.FILL,
 		width : Titanium.UI.FILL,
 		top : 0,
-		bottom: '60dp',
+		bottom : '60dp',
 		backgroundColor : "#000000"
 	});
 

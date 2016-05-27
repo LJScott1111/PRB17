@@ -35,6 +35,6 @@
 			</View> -->
 
 		</View>
-		<Require id="sponsor" src="misc/sponsorAd" image="/icons/sourpuss_banner.png" url="http://sourpussclothing.com/" />
+		<Require id="sponsor" src="misc/sponsorAd" />
 	</View>
 </Alloy>

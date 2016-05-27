@@ -354,6 +354,21 @@ nsUserSchedule.createDataForLayout = function(data) {
 	$.vwBandSchedule.removeAllChildren();
 
 	if (data.length == 0) {
+
+		var lblNoShows = Titanium.UI.createLabel({
+			top : 20,
+			left : 20,
+			right : 20,
+			text : L('no_show_selected_for_this_day'),
+			textAlign : Titanium.UI.TEXT_ALIGNMENT_CENTER,
+			color : "#F5C787",
+			font : {
+				fontSize : Alloy.Globals.theme.fonts.size15Fonts,
+				fontFamily : "KnowYourProduct"
+			}
+		}); 
+
+		$.vwBandSchedule.add(lblNoShows);
 		return;
 	}
 	var dataToCreateSchedule = {
