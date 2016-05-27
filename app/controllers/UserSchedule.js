@@ -197,15 +197,16 @@ nsUserSchedule.createLayout = function(data) {
 
 		for (i in data.timeframe.timeArray) {
 			console.log('----> ', data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
+			var block = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]);
 			if (data.timeframe.timeArray[i].id == Math.floor(startTime) && Math.floor(startTime) == Math.ceil(startTime)) {
 				console.log('INDEX ', data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]));
-				var block = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]) * 2 + 1;
+				block = block * 2 + 1;
 				console.log('In odd BLOCK ', block);
 				// console.log('----> ',data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
 				left = timeBoxWidth * block + 5 * block;
 				break;
-			} else if (data.timeframe.timeArray[i].id == Math.ceil(startTime) && Math.floor(startTime) != Math.ceil(startTime)) {
-				var block = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]) * 2;
+			} else if (data.timeframe.timeArray[i].id == Math.ceil(startTime) && Math.floor(startTime) != Math.ceil(startTime) || data.timeframe.timeArray[i].id == Math.floor(startTime) && Math.floor(startTime) != Math.ceil(startTime) && Math.floor(startTime) ==  Math.round(startTime)) {
+				block = block * 2;
 				console.log('INDEX ', data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]));
 				console.log('In even BLOCK ', block);
 				// console.log('----> ',data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
