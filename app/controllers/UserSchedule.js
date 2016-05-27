@@ -185,7 +185,7 @@ nsUserSchedule.createLayout = function(data) {
 	};
 
 	// Small box of band details --- starts from here
-	this.createBandBox = function(bName, bImage, showTime) {
+	this.createBandBox = function(bName, bImage, showTime, bandId) {
 
 		var left = venueNameViewWidth;
 		console.log('bName = ', bName, ' ', bImage, ' ', showTime);
@@ -197,15 +197,16 @@ nsUserSchedule.createLayout = function(data) {
 
 		for (i in data.timeframe.timeArray) {
 			console.log('----> ', data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
+			var block = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]);
 			if (data.timeframe.timeArray[i].id == Math.floor(startTime) && Math.floor(startTime) == Math.ceil(startTime)) {
 				console.log('INDEX ', data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]));
-				var block = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]) * 2 + 1;
+				block = block * 2 + 1;
 				console.log('In odd BLOCK ', block);
 				// console.log('----> ',data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
 				left = timeBoxWidth * block + 5 * block;
 				break;
-			} else if (data.timeframe.timeArray[i].id == Math.ceil(startTime) && Math.floor(startTime) != Math.ceil(startTime)) {
-				var block = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]) * 2;
+			} else if (data.timeframe.timeArray[i].id == Math.ceil(startTime) && Math.floor(startTime) != Math.ceil(startTime) || data.timeframe.timeArray[i].id == Math.floor(startTime) && Math.floor(startTime) != Math.ceil(startTime) && Math.floor(startTime) ==  Math.round(startTime)) {
+				block = block * 2;
 				console.log('INDEX ', data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]));
 				console.log('In even BLOCK ', block);
 				// console.log('----> ',data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
@@ -223,7 +224,14 @@ nsUserSchedule.createLayout = function(data) {
 			horizontalWrap : false,
 			backgroundColor : '#ffffff',
 			borderRadius : 3,
-			left : left
+			left : left,
+			bandId : bandId
+		});
+
+		bandBoxView.addEventListener('click', function(e){
+			Alloy.Globals.openWindow("BandProfile", {
+				"id" : e.source.bandId
+			}, true, null, 'misc/right_logo');
 		});
 
 		var bandImage = Titanium.UI.createImageView({
@@ -232,7 +240,8 @@ nsUserSchedule.createLayout = function(data) {
 			width : bandBoxHeight,
 			borderColor : '#000000',
 			borderWidth : 1,
-			image : bImage
+			image : bImage,
+			touchEnabled : false
 		});
 
 		var bandName = Titanium.UI.createLabel({
@@ -243,6 +252,7 @@ nsUserSchedule.createLayout = function(data) {
 			text : bName,
 			ellipsize : true,
 			horizontalWrap : true,
+			touchEnabled : false,
 			wordWrap : true,
 			textAlign : Titanium.UI.TEXT_ALIGNMENT_CENTER,
 			color : '#000000',
@@ -298,7 +308,7 @@ nsUserSchedule.createLayout = function(data) {
 
 		for (i in venue.shows) {
 			// console.error('venue.show = ', venue.shows[i]);
-			bandBoxContainer.add(this.createBandBox(venue.shows[i].band.name, venue.shows[i].band.image_link, venue.shows[i].show.start_time));
+			bandBoxContainer.add(this.createBandBox(venue.shows[i].band.name, venue.shows[i].band.image_link, venue.shows[i].show.start_time, venue.shows[i].band._id));
 		}
 		return bandBoxContainer;
 	};
