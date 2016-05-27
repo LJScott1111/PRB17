@@ -126,7 +126,7 @@ nsUserSchedule.createLayout = function(data) {
 	var bandBoxContainerHeight = Alloy.Globals.platformHeight * 0.088;
 	var venueNameViewWidth = Alloy.Globals.platformWidth * 0.1875;
 
-	var timeBoxWidth = Alloy.Globals.platformWidth * 0.3434 / 2;
+	var timeBoxWidth = bandBoxWidth / 4;
 
 	console.log('---------- nsUserSchedule.createLayout ---------');
 
@@ -135,8 +135,7 @@ nsUserSchedule.createLayout = function(data) {
 		var timeBoxView = Titanium.UI.createView({
 			layout : 'horizontal',
 			height : bandBoxHeight,
-			width : bandBoxWidth,
-			left : 5
+			width : bandBoxWidth
 		});
 
 		var timeLabel = Titanium.UI.createLabel({
@@ -169,6 +168,7 @@ nsUserSchedule.createLayout = function(data) {
 
 		var placeholder = Titanium.UI.createView({
 			left : venueNameViewWidth,
+			right : 5,
 			height : Titanium.UI.FILL,
 			width : 1,
 			backgroundColor : '#F3CB87'
@@ -177,7 +177,6 @@ nsUserSchedule.createLayout = function(data) {
 		timeframeContainer.add(placeholder);
 
 		for (i in data.timeframe.timeArray) {
-			// console.error('data.timeArray ', data.timeframe.timeArray[i]);
 			timeframeContainer.add(this.createTimeFrameBox(data.timeframe.timeArray[i]));
 		}
 
@@ -187,7 +186,7 @@ nsUserSchedule.createLayout = function(data) {
 	// Small box of band details --- starts from here
 	this.createBandBox = function(bName, bImage, showTime, bandId) {
 
-		var left = venueNameViewWidth;
+		var left = venueNameViewWidth + 5;
 		console.log('bName = ', bName, ' ', bImage, ' ', showTime);
 
 		var startTime = nsUserSchedule.momentjs(showTime * 1000).format('H.mm');
@@ -197,25 +196,37 @@ nsUserSchedule.createLayout = function(data) {
 
 		for (i in data.timeframe.timeArray) {
 			console.log('----> ', data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
-			var block = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]);
-			if (data.timeframe.timeArray[i].id == Math.floor(startTime) && Math.floor(startTime) == Math.ceil(startTime)) {
-				console.log('INDEX ', data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]));
-				block = block * 2 + 1;
-				console.log('In odd BLOCK ', block);
-				// console.log('----> ',data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
-				left = timeBoxWidth * block + 5 * block;
-				break;
-			} else if (data.timeframe.timeArray[i].id == Math.ceil(startTime) && Math.floor(startTime) != Math.ceil(startTime) || data.timeframe.timeArray[i].id == Math.floor(startTime) && Math.floor(startTime) != Math.ceil(startTime) && Math.floor(startTime) ==  Math.round(startTime)) {
-				block = block * 2;
-				console.log('INDEX ', data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]));
-				console.log('In even BLOCK ', block);
-				// console.log('----> ',data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
-				left = (block == 0) ? left + 5 : timeBoxWidth * block + 5 * block;
-				break;
+			var block = 0;
+
+			var splitedTime = startTime.split('.')[1];
+			var mainTimeBlock = startTime.split('.')[0];
+			var index = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]);
+
+			if (data.timeframe.timeArray[i].id == mainTimeBlock) {
+
+				if (splitedTime >= 0 && splitedTime <= 14) {
+
+					block = 0;
+					left = left + block * timeBoxWidth + index * bandBoxWidth;
+					break;
+				} else if (splitedTime >= 15 && splitedTime <= 29) {
+
+					block = 1;
+					left = left + block * timeBoxWidth + index * bandBoxWidth;
+					break;
+				} else if (splitedTime >= 30 && splitedTime <= 44) {
+
+					block = 2;
+					left = left + block * timeBoxWidth + index * bandBoxWidth;
+					break;
+				} else {
+
+					block = 3;
+					left = left + block * timeBoxWidth + index * bandBoxWidth;
+					break;
+				}
 			}
 		}
-
-		console.log('left ', left);
 
 		var bandBoxView = Titanium.UI.createView({
 			layout : 'horizontal',
@@ -228,7 +239,7 @@ nsUserSchedule.createLayout = function(data) {
 			bandId : bandId
 		});
 
-		bandBoxView.addEventListener('click', function(e){
+		bandBoxView.addEventListener('click', function(e) {
 			Alloy.Globals.openWindow("BandProfile", {
 				"id" : e.source.bandId
 			}, true, null, 'misc/right_logo');
@@ -340,7 +351,7 @@ nsUserSchedule.createLayout = function(data) {
 			contentHeight : Ti.UI.SIZE,
 			contentWidth : Ti.UI.SIZE,
 			top : 0,
-			left: 0,
+			left : 0,
 		});
 
 		for (i in data.showsGroupedByVenue) {
@@ -376,7 +387,7 @@ nsUserSchedule.createDataForLayout = function(data) {
 				fontSize : Alloy.Globals.theme.fonts.size15Fonts,
 				fontFamily : "KnowYourProduct"
 			}
-		}); 
+		});
 
 		$.vwBandSchedule.add(lblNoShows);
 		return;
@@ -417,9 +428,8 @@ nsUserSchedule.createDataForLayout = function(data) {
 	console.log('min = ', new Date(min * 1000), ' max = ', new Date(max * 1000), ' difference ', new Date(max * 1000).getHours() - new Date(min * 1000).getHours());
 
 	var minMaxDifference = (new Date(max * 1000).getHours() - new Date(min * 1000).getHours()) + 1;
-	// numberOfDateBlocks = 2 blocks for 1 hour => Example 12:00hours = block for 12:00 and 12:30 + 2 blocks for the last hour
-	var numberOfDateBlocks = (new Date(max * 1000).getHours() - new Date(min * 1000).getHours()) * 2 + 2;
-	console.log('numberOfDateBlocks = ', numberOfDateBlocks, ' minMaxDifference = ', minMaxDifference);
+	// numberOfDateBlocks = 4 blocks for 1 hour => Example 12:00hours = block for 12:00, 12:15, 12:30 and 12:45 + 4 blocks for the last hour
+	var numberOfDateBlocks = (new Date(max * 1000).getHours() - new Date(min * 1000).getHours()) * 4 + 4;
 
 	dataToCreateSchedule.timeframe.numberOfBlocks = numberOfDateBlocks;
 
@@ -443,19 +453,24 @@ nsUserSchedule.createDataForLayout = function(data) {
 	dataToCreateSchedule.timeframe.timeArray = JSON.parse(JSON.stringify(timeArray));
 
 	console.log('startTime ', startTime);
-	console.log('hours for the day -> timeArray = ', timeArray);
+	console.log('hours for the day -> timeArray = ', JSON.stringify(timeArray));
 	// console.log('hours array length ', hours.length);
 
 	// Make time data for shows (12pm, 12:30pm, 1pm, 1:30pm ... so on)
+	/*
+	
 	var timeDataForShows = [];
 	for (i in timeArray) {
 		timeDataForShows.push(timeArray[i].value + timeArray[i].unit);
+		timeDataForShows.push(timeArray[i].value + ':15' + timeArray[i].unit);
 		timeDataForShows.push(timeArray[i].value + ':30' + timeArray[i].unit);
+		timeDataForShows.push(timeArray[i].value + ':45' + timeArray[i].unit);
 	}
 	// console.log('timeDataForShows ', timeDataForShows);
 
 	dataToCreateSchedule.timeframe.timeDataForShows = JSON.parse(JSON.stringify(timeDataForShows));
-
+	*/
+	
 	///------------- End of time data here ---------------------------
 
 	// Get unique venue details for selected day
