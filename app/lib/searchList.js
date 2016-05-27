@@ -16,21 +16,28 @@ nsSearchList.getList = function(day) {
 	console.debug("day ", day);
 
 	var dayOfShow = "";
-
-	var bands = [];
+	var listToShow = [];
+	var lookup = {};
 
 	for (i in nsSearchList.currentCityData) {
 		dayOfShow = nsSearchList.momentjs(nsSearchList.currentCityData[i].showDetails.start_time * 1000).format('dddd').toLowerCase().trim();
 
 		console.debug("dayOfShow ", dayOfShow);
 
-		if (day === dayOfShow) {
-			bands.push(nsSearchList.currentCityData[i].bandDetails);
+		if (nsSearchList.type === "BandList" && day === dayOfShow) {
+			listToShow.push(nsSearchList.currentCityData[i].bandDetails);
+		} else if (nsSearchList.type === "VenueList" && day === dayOfShow) {
+			var venue = nsSearchList.currentCityData[i].venueDetails._id;
+
+			if (!( venue in lookup)) {
+				lookup[venue] = 1;
+				listToShow.push(nsSearchList.currentCityData[i].venueDetails);
+			}
 		}
 	}
-	bands.sort(Alloy.Globals.sortArray('name'));
-	console.log("JSON.stringify(bands) ", JSON.stringify(bands));
-	return bands;
+	listToShow.sort(Alloy.Globals.sortArray('name'));
+	console.log("JSON.stringify(listToShow) ", JSON.stringify(listToShow));
+	return listToShow;
 };
 
 nsSearchList.createHeader = function() {
@@ -282,7 +289,9 @@ nsSearchList.createList = function(tblData) {
 			nsSearchList.selectedTab.selected = true;
 			nsSearchList.selectedTab.backgroundColor = "#c0c0c0";
 		}
+		/*
 
+		 
 		for (var j in tblData) {
 			for (var i in userSchedule) {
 				if (userSchedule[i].band_id == tblData[j]._id) {
@@ -290,6 +299,8 @@ nsSearchList.createList = function(tblData) {
 				}
 			}
 		}
+
+		*/
 
 		var sbSearchBar = Titanium.UI.createSearchBar({
 			barColor : '#000000',
@@ -303,7 +314,10 @@ nsSearchList.createList = function(tblData) {
 
 		nsSearchList.vwSearchView.add(sbSearchBar);
 
-	} else {
+	}
+	/*
+	else {
+
 		for (var j in tblData) {
 			for (var i in userSchedule) {
 				if (userSchedule[i].venue_id == tblData[j]._id) {
@@ -312,6 +326,7 @@ nsSearchList.createList = function(tblData) {
 			}
 		}
 	}
+	*/
 
 	var currHeader = "A";
 	var sectionArr = [];
@@ -380,7 +395,7 @@ nsSearchList.createList = function(tblData) {
 					hires : true,
 					width : imageW,
 					height : imageH,
-					touchEnabled: false,
+					touchEnabled : false,
 					left : 10,
 					top : 5,
 					bottom : 5,
@@ -439,7 +454,7 @@ nsSearchList.createList = function(tblData) {
 		// searchHidden : true,
 		backgroundColor : "#000000"
 	});
-	
+
 	if (nsSearchList.type === "BandList") {
 		nsSearchList.table.searchHidden = true;
 	}
@@ -462,10 +477,7 @@ nsSearchList.createList = function(tblData) {
 		}
 	});
 
-	if (nsSearchList.type === "BandList") {
-		//nsSearchList.table.headerView = nsSearchList.createHeader();
-		nsSearchList.vwSearchView.add(nsSearchList.createHeader());
-	}
+	nsSearchList.vwSearchView.add(nsSearchList.createHeader());
 
 	nsSearchList.table.setData(sectionArr);
 
@@ -495,7 +507,7 @@ nsSearchList.init = function(type, data) {
 		height : Titanium.UI.FILL,
 		width : Titanium.UI.FILL,
 		top : 0,
-		bottom: '60dp',
+		bottom : '60dp',
 		backgroundColor : "#000000"
 	});
 
