@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.interfuel.festfuel</id>
     <name>Punk Rock Bowling Mobile</name>
-    <version>2.2.3</version>
+    <version>2.2.10</version>
     <publisher>Buzzplay</publisher>
     <url>http://punkrockbowling.com</url>
     <description>Punk Rock Bowling mobile</description>
@@ -68,6 +68,10 @@
                 <false/>
                 <key>UIStatusBarStyle</key>
                 <string>UIStatusBarStyleLightContent</string>
+                <key>UIBackgroundModes</key>
+                <array>
+                    <string>remote-notification</string>
+                </array>
             </dict>
         </plist>
     </ios>
@@ -105,6 +109,8 @@
     <modules>
         <module platform="android">facebook</module>
         <module platform="iphone">facebook</module>
+        <module platform="iphone">com.urbanairship</module>
+        <module platform="android">com.urbanairship</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>
@@ -116,4 +122,17 @@
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
+    <!-- Urban Airship -->
+    <!-- Production credentials -->
+    <property name="com.urbanairship.production_app_key" type="string">WQdRCxouQXGLec8TYVJPfw</property>
+    <property name="com.urbanairship.production_app_secret" type="string">9SVsRprLRye0NXw06xEfNQ</property>
+    <!-- Development credentials -->
+    <property name="com.urbanairship.development_app_key" type="string">WQdRCxouQXGLec8TYVJPfw</property>
+    <property name="com.urbanairship.development_app_secret" type="string">9SVsRprLRye0NXw06xEfNQ</property>
+    <!-- Selects between production vs development credentials -->
+    <property name="com.urbanairship.in_production" type="bool">false</property>
+    <!-- Android -->
+    <property name="com.urbanairship.gcm_sender" type="String">396923721876</property>
+    <property name="com.urbanairship.notification_icon" type="string">appicon.png</property>
+    <property name="com.urbanairship.notification_accent_color" type="string">#ff0000</property>
 </ti:app>

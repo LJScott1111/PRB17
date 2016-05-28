@@ -190,6 +190,7 @@ nsUserSchedule.createLayout = function(data) {
 		console.log('bName = ', bName, ' ', bImage, ' ', showTime);
 
 		var startTime = nsUserSchedule.momentjs(showTime * 1000).format('H.mm');
+		var displayableStartTime = nsUserSchedule.momentjs(showTime * 1000).format('h:mm a');
 
 		console.log('data.timeArray ', JSON.stringify(data.timeframe.timeArray));
 		console.log('timeframe startTime ', startTime);
@@ -200,6 +201,7 @@ nsUserSchedule.createLayout = function(data) {
 
 			var splitedTime = startTime.split('.')[1];
 			var mainTimeBlock = startTime.split('.')[0];
+			console.log('MainTimeBlock',mainTimeBlock,index);
 			var index = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]);
 
 			if (data.timeframe.timeArray[i].id == mainTimeBlock) {
@@ -208,34 +210,42 @@ nsUserSchedule.createLayout = function(data) {
 
 					block = 0;
 					left = left + block * timeBoxWidth + index * bandBoxWidth;
-					break;
+					//break;
 				} else if (splitedTime >= 15 && splitedTime <= 29) {
 
 					block = 1;
 					left = left + block * timeBoxWidth + index * bandBoxWidth;
-					break;
+					//break;
 				} else if (splitedTime >= 30 && splitedTime <= 44) {
 
 					block = 2;
 					left = left + block * timeBoxWidth + index * bandBoxWidth;
-					break;
+					//break;
 				} else {
 
 					block = 3;
 					left = left + block * timeBoxWidth + index * bandBoxWidth;
-					break;
+					//break;
 				}
 			}
+			console.log('LEFT:',left);
 		}
+		
+		//var randomColor = (Math.floor((Math.random()*222)+33).toString(16))+(Math.floor((Math.random()*22‌​2)+33).toString(16))+(Math.floor((Math.random()*222)+33).toString(16));
+		//var randomRed = Math.floor((Math.random()*222)+33).toString(16);
+		//var randomGreen = Math.floor((Math.random()*222)+33).toString(16);
+		//var randomBlue = Math.floor((Math.random()*222)+33).toString(16);
+		//var randomColor = '#' + randomRed + randomGreen + randomBlue;
 
 		var bandBoxView = Titanium.UI.createView({
-			layout : 'horizontal',
+			layout : 'vertical',
 			height : bandBoxHeight,
 			width : bandBoxWidth,
 			horizontalWrap : false,
 			backgroundColor : '#ffffff',
 			borderRadius : 3,
 			left : left,
+			top: 0,
 			bandId : bandId
 		});
 
@@ -256,24 +266,43 @@ nsUserSchedule.createLayout = function(data) {
 		});
 
 		var bandName = Titanium.UI.createLabel({
-			left : 3,
-			right : 2,
-			height : Titanium.UI.SIZE,
+			left : 5,
+			top: 5,
+			//height : Titanium.UI.SIZE,
 			width : Titanium.UI.FILL,
 			text : bName,
 			ellipsize : true,
 			horizontalWrap : true,
 			touchEnabled : false,
 			wordWrap : true,
-			textAlign : Titanium.UI.TEXT_ALIGNMENT_CENTER,
+			textAlign : Titanium.UI.TEXT_ALIGNMENT_LEFT,
 			color : '#000000',
 			font : {
-				fontSize : Alloy.Globals.theme.fonts.size10Fonts
+				fontSize : Alloy.Globals.theme.fonts.size10Fonts,
+				fontWeight:'bold'
+			}
+		});
+		
+		var bandStartTime = Titanium.UI.createLabel({
+			left: 5,
+			//height : Titanium.UI.SIZE,
+			width : Titanium.UI.FILL,
+			text : displayableStartTime,
+			ellipsize : true,
+			horizontalWrap : true,
+			touchEnabled : false,
+			wordWrap : true,
+			textAlign : Titanium.UI.TEXT_ALIGNMENT_LEFT,
+			color : '#FF0000',
+			font : {
+				fontSize : Alloy.Globals.theme.fonts.size10Fonts,
+				fontWeight: 'bold'
 			}
 		});
 
-		bandBoxView.add(bandImage);
+		//bandBoxView.add(bandImage);
 		bandBoxView.add(bandName);
+		bandBoxView.add(bandStartTime);
 		return bandBoxView;
 	};
 	// Small box of band details --- ends here
@@ -397,11 +426,12 @@ nsUserSchedule.createDataForLayout = function(data) {
 	};
 
 	// Hours array by default
-	var hours = [{id:'0',value:'12',unit:'am'},{id:1,value:'1',unit:'am'},{id:2,value:'2',unit:'am'},{id:3,value:'3',unit:'am'},{id:4,value:'4',unit:'am'},{id:5,value:'5',unit:'am'},{id:6,value:'6',unit:'am'},{id:7,value:'7',unit:'am'},{id:8,value:'8',unit:'am'},{id:9,value:'9',unit:'am'},{id:10,value:'10',unit:'am'},{id:11,value:'11',unit:'am'},{id:12,value:'12',unit:'pm'},{id:13,value:'1',unit:'pm'},{id:14,value:'2',unit:'pm'},{id:15,value:'3',unit:'pm'},{id:16,value:'4',unit:'pm'},{id:17,value:'5',unit:'pm'},{id:18,value:'6',unit:'pm'},{id:19,value:'7',unit:'pm'},{id:20,value:'8',unit:'pm'},{id:21,value:'9',unit:'pm'},{id:22,value:'10',unit:'pm'},{id:23,value:'11',unit:'pm'}];
+	var hours = [{id:12,value:'12',unit:'pm'},{id:13,value:'1',unit:'pm'},{id:14,value:'2',unit:'pm'},{id:15,value:'3',unit:'pm'},{id:16,value:'4',unit:'pm'},{id:17,value:'5',unit:'pm'},{id:18,value:'6',unit:'pm'},{id:19,value:'7',unit:'pm'},{id:20,value:'8',unit:'pm'},{id:21,value:'9',unit:'pm'},{id:22,value:'10',unit:'pm'},{id:23,value:'11',unit:'pm'},{id:'0',value:'12',unit:'am'},{id:1,value:'1',unit:'am'},{id:2,value:'2',unit:'am'},{id:3,value:'3',unit:'am'},{id:4,value:'4',unit:'am'},{id:5,value:'5',unit:'am'},{id:6,value:'6',unit:'am'},{id:7,value:'7',unit:'am'},{id:8,value:'8',unit:'am'},{id:9,value:'9',unit:'am'},{id:10,value:'10',unit:'am'},{id:11,value:'11',unit:'am'}];
 
 	// Get the min and max time of shows from the data set
 	var min = data[0].showDetails.start_time,
 	    max = data[0].showDetails.start_time;
+	    console.log('MINMAX',min,max);
 
 	var minIndex = 0,
 	    maxIndex = 0;
@@ -440,11 +470,11 @@ nsUserSchedule.createDataForLayout = function(data) {
 
 	// Create array to pass in time layout = value of DateBlocks
 	var startTime = {};
-	var timeArray = [];
+	var timeArray = hours;
 	for (i in hours) {
 		if (hours[i].id == min) {
 			startTime = hours[i];
-			timeArray = hours.splice(i, minMaxDifference + 1);
+			//timeArray = hours.splice(i, minMaxDifference + 1);
 			break;
 		}
 	}

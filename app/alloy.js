@@ -1,5 +1,13 @@
 // Kinvey credentials
 var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.3.1');
+var UrbanAirship = require('com.urbanairship');
+var channelId = UrbanAirship.channelId;
+UrbanAirship.userNotificationsEnabled = true;
+UrbanAirship.addEventListener(UrbanAirship.EVENT_PUSH_RECEIVED, function(e) {
+    Ti.API.info('Push received' + e.message);
+    alert(e.message);
+});
+
 Alloy.Globals.checkUser = function(callback, errorCallback) {
 	var promise = Kinvey.init({
 		appKey : 'kid_b1vnajEDkl',
