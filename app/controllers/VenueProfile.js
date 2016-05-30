@@ -111,31 +111,6 @@ nsVenueProfile.createList = function(shows) {
 
 				vwRowView.add(lblTime);
 
-				var ivFavouriteStar = Titanium.UI.createImageView({
-					right : 0,
-					height : 40,
-					width : 40,
-					id : "ivFavouriteStar",
-					selected : shows[i].bandDetails.selected
-				});
-
-				if (!ivFavouriteStar.selected) {
-					ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
-				} else {
-					ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
-				}
-
-				ivFavouriteStar.addEventListener('click', function(e) {
-					if (!e.source.selected) {
-						e.source.setImage(Alloy.Globals.theme.icons.star);
-					} else {
-						e.source.setImage(Alloy.Globals.theme.icons.star_off);
-					}
-					e.source.selected = !e.source.selected;
-				});
-
-				vwRowView.add(ivFavouriteStar);
-
 				row.add(vwRowView);
 				tabledata.push(row);
 			}
