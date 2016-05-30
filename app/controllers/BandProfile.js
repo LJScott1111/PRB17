@@ -15,16 +15,15 @@ nsBandProfile.markFavourite = function(e) {
 			e.source.setImage(Alloy.Globals.theme.icons.star);
 
 			var MS_PER_MINUTE = 60000;
-			var startDate = (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null) ? new Date((nsBandProfile.data.showDetails.start_time * 1000) - 10 * MS_PER_MINUTE) : "";
-			console.log("startDate ", startDate);
-
+			var startDate = (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null) ? Alloy.Globals.getFormattedDate((nsBandProfile.data.showDetails.start_time) - 10 * 60) : "";
 			var venueName = (nsBandProfile.data.venueDetails !== undefined && nsBandProfile.data.venueDetails !== null) ? nsBandProfile.data.venueDetails.name : "";
+			var notificationTime = (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null) ? new Date((nsBandProfile.data.showDetails.start_time * 1000) - 10 * MS_PER_MINUTE) : "";
 
 			if (Titanium.Platform.osname !== "android") {
 				var notification = Ti.App.iOS.scheduleLocalNotification({
-					alertBody : nsBandProfile.data.bandDetails.name + "\n" + venueName + "\n" + startDate,
+					alertBody : nsBandProfile.data.bandDetails.name + "\n" + venueName + "\n" + startDate[1],
 					badge : 1,
-					date : startDate,
+					date : notificationTime
 				});
 
 				Ti.App.iOS.addEventListener('notification', function(e) {
@@ -49,10 +48,10 @@ nsBandProfile.markFavourite = function(e) {
 				// Set the interval to run the service;
 				intent.putExtra('interval', 1000);
 				// Send extra data to the service;
-				intent.putExtra('timestamp', startDate);
+				intent.putExtra('timestamp', notificationTime);
 
 				intent.putExtra('band', nsBandProfile.data.bandDetails.name);
-				intent.putExtra('message', venueName + "\n" + startDate);
+				intent.putExtra('message', venueName + "\n" + startDate[1]);
 
 				// Start the service
 				Ti.Android.startService(intent);
