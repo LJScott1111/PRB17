@@ -477,7 +477,9 @@ nsSearchList.createList = function(tblData) {
 		}
 	});
 
-	nsSearchList.vwSearchView.add(nsSearchList.createHeader());
+	if (nsSearchList.type === "BandList") {
+		nsSearchList.vwSearchView.add(nsSearchList.createHeader());
+	}
 
 	nsSearchList.table.setData(sectionArr);
 
