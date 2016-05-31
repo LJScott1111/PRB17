@@ -1,12 +1,39 @@
 // Kinvey credentials
-var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.3.1');
-var UrbanAirship = require('com.urbanairship');
-var channelId = UrbanAirship.channelId;
-UrbanAirship.userNotificationsEnabled = true;
-UrbanAirship.addEventListener(UrbanAirship.EVENT_PUSH_RECEIVED, function(e) {
-    Ti.API.info('Push received' + e.message);
-    alert(e.message);
-});
+var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.6.10');
+//var UrbanAirship = require('com.urbanairship');
+//var channelId = UrbanAirship.channelId;
+//UrbanAirship.userNotificationsEnabled = true;
+/*UrbanAirship.addEventListener(UrbanAirship.EVENT_PUSH_RECEIVED, function(e) {
+ Ti.API.info('Push received' + e.message);
+ alert(e.message);
+ });*/
+
+var deviceToken = null;
+
+// Process incoming push notifications
+function receivedPushNotification(e) {
+	alert('Received push: ' + JSON.stringify(e));
+}
+
+// Save the device token for subsequent API calls
+function deviceTokenSuccess(e) {
+	if (Kinvey.getActiveUser() == null) {
+		// Error: there must be a logged-in user.
+	} else {
+		Kinvey.Push.register(e.deviceToken).then(function() {
+			// Successfully registered device with Kinvey.
+			console.log('Registered for Kinvey push');
+		}, function(error) {
+			// Error registering device with Kinvey.
+			console.log('Error registering device', error);
+			alert(error.message);
+		});
+	}
+};
+
+function deviceTokenError(e) {
+	alert('Failed to register for push notifications! ' + e.error);
+};
 
 Alloy.Globals.checkUser = function(callback, errorCallback) {
 	var promise = Kinvey.init({
@@ -15,6 +42,7 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 	});
 
 	promise.then(function(user) {
+		Alloy.Globals.setupPushNotifications();
 		
 		// If user is logged in using default user, the app will ask her login on every app load
 		console.log('CHECK USER = ', Titanium.App.Properties.getString('defaultUser'));
@@ -23,34 +51,35 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 			return;
 		}
 
-		if (!user) { // For testing!
+		if (!user) {// For testing!
 			/*
-			var promise2 = Kinvey.User.login({
-				username : 'mobile@buzzplay.com',
-				password : 'prb%2015'
-			});
-			promise2.then(function(user) {
-				console.debug("Login success - user ", JSON.stringify(user));
-				//Titanium.App.Properties.removeProperty('appdata');
-				Titanium.App.Properties.setString('userid', user._id);
+			 var promise2 = Kinvey.User.login({
+			 username : 'mobile@buzzplay.com',
+			 password : 'prb%2015'
+			 });
+			 promise2.then(function(user) {
+			 console.debug("Login success - user ", JSON.stringify(user));
+			 //Titanium.App.Properties.removeProperty('appdata');
+			 Titanium.App.Properties.setString('userid', user._id);
 
-				var thisUser = Kinvey.setActiveUser(user);
-				console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
+			 var thisUser = Kinvey.setActiveUser(user);
+			 console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
 
-				Alloy.Globals.getAndStoreData();
-				callback(thisUser);
+			 Alloy.Globals.getAndStoreData();
+			 callback(thisUser);
 
-			}, function(error) {
-				//Titanium.App.Properties.removeProperty('appdata');
-				console.debug("Login error ", error);
-				errorCallback(error);
-			}); */
+			 }, function(error) {
+			 //Titanium.App.Properties.removeProperty('appdata');
+			 console.debug("Login error ", error);
+			 errorCallback(error);
+			 }); */
 			callback(user);
 
 		} else {
 
 			var thisUser = Kinvey.getActiveUser();
 			Alloy.Globals.getAndStoreData();
+
 			callback(thisUser);
 		}
 
@@ -95,8 +124,31 @@ Alloy.Globals.EVENTS = [{
 	end : 1465775999000, //"2016-06-12T23:59:59"
 }];
 
-
-Alloy.Globals.SPONSORS = [{image:'sourpuss_banner.png',link:'http://www.sourpussclothing.com/'},{image:'Banner_Descendents.jpg',link:'http://www.sourpussclothing.com/catalogsearch/result/?q=descendents'},{image:'Banner_Fred_Perry.jpg',link:'http://www.sourpussclothing.com/brands/fred-perry'},{image:'Banner_Swimsuits.jpg',link:'http://www.sourpussclothing.com/gals/swimwear.html'},{image:'Banner_Pins.jpg',link:'http://www.sourpussclothing.com/housewares/patches-pins.html'},{image:'Banner_Babies.jpg',link:'http://www.sourpussclothing.com/kids.html'},{image:'Banner_Flasks.jpg',link:'http://www.sourpussclothing.com/catalogsearch/result/?q=flask'},{image:'Banner_Hair_Dye.jpg',link:'http://www.sourpussclothing.com/gals/beauty-supplies/hair-products.html'}];
+Alloy.Globals.SPONSORS = [{
+	image : 'sourpuss_banner.png',
+	link : 'http://www.sourpussclothing.com/'
+}, {
+	image : 'Banner_Descendents.jpg',
+	link : 'http://www.sourpussclothing.com/catalogsearch/result/?q=descendents'
+}, {
+	image : 'Banner_Fred_Perry.jpg',
+	link : 'http://www.sourpussclothing.com/brands/fred-perry'
+}, {
+	image : 'Banner_Swimsuits.jpg',
+	link : 'http://www.sourpussclothing.com/gals/swimwear.html'
+}, {
+	image : 'Banner_Pins.jpg',
+	link : 'http://www.sourpussclothing.com/housewares/patches-pins.html'
+}, {
+	image : 'Banner_Babies.jpg',
+	link : 'http://www.sourpussclothing.com/kids.html'
+}, {
+	image : 'Banner_Flasks.jpg',
+	link : 'http://www.sourpussclothing.com/catalogsearch/result/?q=flask'
+}, {
+	image : 'Banner_Hair_Dye.jpg',
+	link : 'http://www.sourpussclothing.com/gals/beauty-supplies/hair-products.html'
+}];
 Alloy.Globals.sponsers_rr = [];
 
 // Selecting array element in round robin manner
@@ -114,8 +166,7 @@ Alloy.Globals.getSponsor = function() {
 
 	Alloy.Globals.sponsers_rr.splice(random, 1);
 	return randomObj;
-}; 
-
+};
 
 // iOS NavMenu
 Alloy.Globals.navMenu = null;
@@ -174,6 +225,50 @@ Alloy.Globals.sortArray = function(prop) {
 	};
 };
 
+// Function to register for push notifications.
+Alloy.Globals.setupPushNotifications = function() {
+	if (Ti.Platform.name === 'iPhone OS') {
+		if (parseInt(Ti.Platform.version.split(".")[0]) >= 8) {
+			// Wait for user settings to be registered before registering for push notifications
+			Ti.App.iOS.addEventListener('usernotificationsettings', function registerForPush() {
+				// Remove event listener once registered for push notifications
+				console.log('UserNotificationSEttings');
+				Ti.App.iOS.removeEventListener('usernotificationsettings', registerForPush);
+				Ti.Network.registerForPushNotifications({
+					success : deviceTokenSuccess,
+					error : deviceTokenError,
+					callback : receivedPushNotification
+				});
+			});
+			// Register notification types to use
+			Ti.App.iOS.registerUserNotificationSettings({
+				types : [Ti.App.iOS.USER_NOTIFICATION_TYPE_ALERT, Ti.App.iOS.USER_NOTIFICATION_TYPE_SOUND, Ti.App.iOS.USER_NOTIFICATION_TYPE_BADGE]
+			});
+		}
+		// For iOS7 and earlier
+		else {
+			Ti.Network.registerForPushNotifications({
+				// Specifies which notifications to receive
+				types : [Ti.Network.NOTIFICATION_TYPE_BADGE, Ti.Network.NOTIFICATION_TYPE_ALERT, Ti.Network.NOTIFICATION_TYPE_SOUND],
+				success : deviceTokenSuccess,
+				error : deviceTokenError,
+				callback : receivedPushNotification
+			});
+		}
+	} else if (Ti.Platform.name === 'android') {
+		// Initialize the module
+		var CloudPush = require('ti.cloudpush');
+		CloudPush.retrieveDeviceToken({
+			success : deviceTokenSuccess,
+			error : deviceTokenError
+		});
+		// Process incoming push notifications
+		CloudPush.addEventListener('callback', function(e) {
+			receivedPushNotification(e);
+		});
+	}
+};
+
 // App theme values
 Alloy.Globals.theme = {
 	"icons" : {
@@ -206,7 +301,7 @@ Alloy.Globals.hasVenuesData = false;
 Alloy.Globals.hasShowsData = false;
 
 Alloy.Globals.getAndStoreData = function(callback) {
-	
+
 	Alloy.Globals.loading.show();
 
 	var count = 0,
@@ -267,27 +362,27 @@ Alloy.Globals.combinedDetails = function() {
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	var combinedData = [];
-	
+
 	/*for (var i = 0,bandLen = appdata.bands.length; i < bandLen; i++) {
-		var bandProfile = {};
-		bandProfile.bandDetails = appdata.bands[i];
+	 var bandProfile = {};
+	 bandProfile.bandDetails = appdata.bands[i];
 
-		for (var j = 0,showLen = appdata.shows.length; j < showLen; j++) {
+	 for (var j = 0,showLen = appdata.shows.length; j < showLen; j++) {
 
-			if (appdata.shows[j].band_id === bandProfile.bandDetails._id) {
-				bandProfile.showDetails = JSON.parse(JSON.stringify(appdata.shows[j]));
-				// } else {
-				// continue;
+	 if (appdata.shows[j].band_id === bandProfile.bandDetails._id) {
+	 bandProfile.showDetails = JSON.parse(JSON.stringify(appdata.shows[j]));
+	 // } else {
+	 // continue;
 
-				for (var k = 0,venueLen = appdata.venues.length; k < venueLen; k++) {
-					if (bandProfile.showDetails.venue_id === appdata.venues[k]._id) {
-						bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
-						combinedData.push(bandProfile);
-					}
-				}
-			}
-		}
-	}*/
+	 for (var k = 0,venueLen = appdata.venues.length; k < venueLen; k++) {
+	 if (bandProfile.showDetails.venue_id === appdata.venues[k]._id) {
+	 bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
+	 combinedData.push(bandProfile);
+	 }
+	 }
+	 }
+	 }
+	 }*/
 
 	for (var j = 0,
 	    showLen = appdata.shows.length; j < showLen; j++) {
@@ -367,7 +462,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, c
 			controller : controller,
 			backButton : {
 				image : '/icons/back.png',
-				tintColor: '#dc0000',
+				tintColor : '#dc0000',
 				width : '35dp',
 				height : '35dp',
 				left : 0,
@@ -378,14 +473,14 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, c
 				backgroundColor : '#000000',
 				left : 'misc/openMenu',
 				// right : 'misc/right_logo',
-				right: rightLogo,
+				right : rightLogo,
 				title : title_text,
-				center: center,
+				center : center,
 				titleOptions : {
 					color : '#F3CB87',
 					font : {
 						fontSize : Alloy.Globals.theme.fonts.size15Fonts,
-						fontFamily: "KnowYourProduct"
+						fontFamily : "KnowYourProduct"
 					},
 					width : Titanium.UI.SIZE
 				}
@@ -412,14 +507,14 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, c
 				backgroundColor : '#000000',
 				left : 'misc/openMenu',
 				// right : 'misc/right_logo',
-				right: rightLogo,
+				right : rightLogo,
 				title : title_text,
-				center: center,
+				center : center,
 				titleOptions : {
 					color : '#F3CB87',
 					font : {
 						fontSize : Alloy.Globals.theme.fonts.size15Fonts,
-						fontFamily: "KnowYourProduct"
+						fontFamily : "KnowYourProduct"
 					},
 					width : Titanium.UI.SIZE
 				}
