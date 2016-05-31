@@ -110,6 +110,8 @@
         <module platform="android">facebook</module>
         <module platform="iphone">facebook</module>
         <module platform="android">ti.cloudpush</module>
+        <module platform="iphone">com.urbanairship</module>
+        <module platform="android">com.urbanairship</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>

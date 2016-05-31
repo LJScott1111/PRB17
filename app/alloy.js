@@ -1,12 +1,12 @@
 // Kinvey credentials
 var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.6.10');
-//var UrbanAirship = require('com.urbanairship');
-//var channelId = UrbanAirship.channelId;
-//UrbanAirship.userNotificationsEnabled = true;
-/*UrbanAirship.addEventListener(UrbanAirship.EVENT_PUSH_RECEIVED, function(e) {
- Ti.API.info('Push received' + e.message);
- alert(e.message);
- });*/
+var UrbanAirship = require('com.urbanairship');
+var channelId = UrbanAirship.channelId;
+UrbanAirship.userNotificationsEnabled = true;
+UrbanAirship.addEventListener(UrbanAirship.EVENT_PUSH_RECEIVED, function(e) {
+	Ti.API.info('Push received' + e.message);
+	alert(e.message);
+});
 
 var deviceToken = null;
 
@@ -43,7 +43,7 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 
 	promise.then(function(user) {
 		Alloy.Globals.setupPushNotifications();
-		
+
 		// If user is logged in using default user, the app will ask her login on every app load
 		console.log('CHECK USER = ', Titanium.App.Properties.getString('defaultUser'));
 		if (Titanium.App.Properties.getString('defaultUser') == true) {
