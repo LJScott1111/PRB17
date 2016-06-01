@@ -33,6 +33,13 @@ nsLanding.get_next_show = function() {
 
 	Alloy.Globals.nextEventCity = location;
 	$.args.city = location;
+	
+	if (Alloy.Globals.nextEventCity == 'denver') {
+		// Hide menus from menu screen
+		$.events_view.height = 0;
+		$.events_view.top = 0;
+		Titanium.App.fireEvent('hideOptions');
+	}
 
 	console.error('NEXT SHOW ', location);
 	Titanium.App.removeEventListener('get_next_show', nsLanding.get_next_show);

@@ -2,6 +2,11 @@ var args = arguments[0] || {};
 var nsMenu = {};
 nsMenu.serviceCalls = require("serverCalls");
 
+Titanium.App.addEventListener('hideOptions', function(){
+	$.subWrapper1.height = 0;
+	$.subWrapper2.height = 0;
+});
+
 $.settings.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
