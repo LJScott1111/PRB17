@@ -142,69 +142,87 @@ nsVenueProfile.getList = function(source) {
 
 	if (day === "thursday") {
 		$.vwDay0.selected = true;
+		$.vwDay0.backgroundColor = "#fff";
+
 		$.vwDay1.selected = false;
+		$.vwDay1.backgroundColor = "#000";
+
 		$.vwDay2.selected = false;
+		$.vwDay2.backgroundColor = "#000";
+
 		$.vwDay3.selected = false;
+		$.vwDay3.backgroundColor = "#000";
+
 		$.vwDay4.selected = false;
+		$.vwDay4.backgroundColor = "#000";
+
 	} else if (day === "friday") {
 
 		$.vwDay0.selected = false;
+		$.vwDay0.backgroundColor = "#000";
+
 		$.vwDay1.selected = true;
-		// $.vwDay1.backgroundColor = "#c0c0c0";
+		$.vwDay1.backgroundColor = "#fff";
 
 		$.vwDay2.selected = false;
-		// $.vwDay2.backgroundColor = "#ffffff";
+		$.vwDay2.backgroundColor = "#000";
 
 		$.vwDay3.selected = false;
-		// $.vwDay3.backgroundColor = "#ffffff";
+		$.vwDay3.backgroundColor = "#000";
 
 		$.vwDay4.selected = false;
-		// $.vwDay4.backgroundColor = "#ffffff";
+		$.vwDay4.backgroundColor = "#000";
 
 	} else if (day === "saturday") {
 
 		$.vwDay0.selected = false;
+		$.vwDay0.backgroundColor = "#000";
+
 		$.vwDay1.selected = false;
-		// $.vwDay1.backgroundColor = "#ffffff";
+		$.vwDay1.backgroundColor = "#000";
 
 		$.vwDay2.selected = true;
-		// $.vwDay2.backgroundColor = "#c0c0c0";
+		$.vwDay2.backgroundColor = "#fff";
 
 		$.vwDay3.selected = false;
-		// $.vwDay3.backgroundColor = "#ffffff";
+		$.vwDay3.backgroundColor = "#000";
 
 		$.vwDay4.selected = false;
-		// $.vwDay4.backgroundColor = "#ffffff";
+		$.vwDay4.backgroundColor = "#000";
 
 	} else if (day === "sunday") {
 
 		$.vwDay0.selected = false;
+		$.vwDay0.backgroundColor = "#000";
+
 		$.vwDay1.selected = false;
-		// $.vwDay1.backgroundColor = "#ffffff";
+		$.vwDay1.backgroundColor = "#000";
 
 		$.vwDay2.selected = false;
-		// $.vwDay2.backgroundColor = "#ffffff";
+		$.vwDay2.backgroundColor = "#000";
 
 		$.vwDay3.selected = true;
-		// $.vwDay3.backgroundColor = "#c0c0c0";
+		$.vwDay3.backgroundColor = "#fff";
 
 		$.vwDay4.selected = false;
-		// $.vwDay4.backgroundColor = "#ffffff";
+		$.vwDay4.backgroundColor = "#000";
 
 	} else if (day === "monday") {
 
 		$.vwDay0.selected = false;
+		$.vwDay0.backgroundColor = "#000";
+
 		$.vwDay1.selected = false;
-		// $.vwDay1.backgroundColor = "#ffffff";
+		$.vwDay1.backgroundColor = "#000";
 
 		$.vwDay2.selected = false;
-		// $.vwDay2.backgroundColor = "#ffffff";
+		$.vwDay2.backgroundColor = "#000";
 
 		$.vwDay3.selected = false;
-		// $.vwDay3.backgroundColor = "#ffffff";
+		$.vwDay3.backgroundColor = "#000";
 
 		$.vwDay4.selected = true;
-		// $.vwDay4.backgroundColor = "#c0c0c0";
+		$.vwDay4.backgroundColor = "#fff";
 	}
 
 	// Get list
