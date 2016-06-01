@@ -107,7 +107,7 @@
 
 ".vwDaysClass": {
 	top: 0,
-	// layout: "horizontl",
+	layout: "horizontal",
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE
 }

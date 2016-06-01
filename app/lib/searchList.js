@@ -48,7 +48,7 @@ nsSearchList.createHeader = function() {
 		top : 5
 	});
 
-	var viewWidth = Alloy.Globals.platformWidth / 5.3;
+	var viewWidth = Alloy.Globals.platformWidth / 6.3;
 
 	nsSearchList.vwAll = Titanium.UI.createView({
 		top : 5,
@@ -70,7 +70,7 @@ nsSearchList.createHeader = function() {
 		color : "#000000",
 		text : L('all'),
 		font : {
-			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+			fontSize : Alloy.Globals.theme.fonts.size15Fonts,
 			fontFamily : "KnowYourProduct"
 		}
 	});
@@ -88,6 +88,48 @@ nsSearchList.createHeader = function() {
 
 	nsSearchList.vwAll.add(lblAll);
 	header.add(nsSearchList.vwAll);
+
+	var vwThurs = Titanium.UI.createView({
+		top : 5,
+		left : 2,
+		bottom : 5,
+		height : Titanium.UI.SIZE,
+		borderRadius : 5,
+		borderColor : "#000000",
+		backgroundColor : "#ffffff",
+		width : viewWidth,
+		day : "thursday",
+		selected : false
+	});
+
+	var lblThurs = Titanium.UI.createLabel({
+		top : 2,
+		bottom : 2,
+		height : Titanium.UI.SIZE,
+		touchEnabled : false,
+		color : "#000000",
+		text : L('thursday'),
+		font : {
+			fontSize : Alloy.Globals.theme.fonts.size15Fonts,
+			fontFamily : "KnowYourProduct"
+		}
+	});
+
+	vwThurs.addEventListener('click', function(e) {
+		console.log("e.source ", e.source.day);
+		nsSearchList.selectedTab = e.source.day;
+		if (!vwThurs.selected) {
+			var bands = nsSearchList.getList(e.source.day);
+
+			nsSearchList.vwSearchView.removeAllChildren();
+
+			var vwList = nsSearchList.createList(bands);
+			return vwList;
+		}
+	});
+
+	vwThurs.add(lblThurs);
+	header.add(vwThurs);
 
 	var vwFriday = Titanium.UI.createView({
 		top : 5,
@@ -110,7 +152,7 @@ nsSearchList.createHeader = function() {
 		color : "#000000",
 		text : L('friday'),
 		font : {
-			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+			fontSize : Alloy.Globals.theme.fonts.size15Fonts,
 			fontFamily : "KnowYourProduct"
 		}
 	});
@@ -152,7 +194,7 @@ nsSearchList.createHeader = function() {
 		color : "#000000",
 		text : L('saturday'),
 		font : {
-			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+			fontSize : Alloy.Globals.theme.fonts.size15Fonts,
 			fontFamily : "KnowYourProduct"
 		}
 	});
@@ -194,7 +236,7 @@ nsSearchList.createHeader = function() {
 		color : "#000000",
 		text : L('sunday'),
 		font : {
-			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+			fontSize : Alloy.Globals.theme.fonts.size15Fonts,
 			fontFamily : "KnowYourProduct"
 		}
 	});
@@ -236,7 +278,7 @@ nsSearchList.createHeader = function() {
 		color : "#000000",
 		text : L('monday'),
 		font : {
-			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+			fontSize : Alloy.Globals.theme.fonts.size15Fonts,
 			fontFamily : "KnowYourProduct"
 		}
 	});
@@ -257,7 +299,10 @@ nsSearchList.createHeader = function() {
 	vwMonday.add(lblMonday);
 	header.add(vwMonday);
 
-	if (nsSearchList.selectedTab === "friday") {
+	if (nsSearchList.selectedTab === "thursday") {
+		vwThurs.selected = true;
+		vwThurs.backgroundColor = "#c0c0c0";
+	} else if (nsSearchList.selectedTab === "friday") {
 		vwFriday.selected = true;
 		vwFriday.backgroundColor = "#c0c0c0";
 	} else if (nsSearchList.selectedTab === "saturday") {
