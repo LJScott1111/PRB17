@@ -33,6 +33,11 @@ nsLanding.get_next_show = function() {
 
 	Alloy.Globals.nextEventCity = location;
 	$.args.city = location;
+	
+	if (Alloy.Globals.nextEventCity == 'denver') {
+		// Hide menus from menu screen
+		Titanium.App.fireEvent('hideOptions');
+	}
 
 	console.error('NEXT SHOW ', location);
 	Titanium.App.removeEventListener('get_next_show', nsLanding.get_next_show);
@@ -155,7 +160,7 @@ nsLanding.getSchedule = function() {
 
 nsLanding.buyTickets = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.queueapp.com/events/16785"
+		url : "https://www.ticketfly.com/venue/5289-summit-music-hall/"
 	}, true, null, 'misc/right_logo');
 };
 
