@@ -376,7 +376,6 @@ nsSearchList.createList = function(tblData) {
 	var currHeader = "A";
 	var sectionArr = [];
 	var index = [];
-	console.debug("tblData[i] ", JSON.stringify(tblData[i]));
 	for (var i = 0,
 	    lastL,
 	    l,
@@ -386,7 +385,7 @@ nsSearchList.createList = function(tblData) {
 		if (tblData[i] !== undefined) {
 			l = tblData[i].name.substr(0, 1);
 
-			if (lastL != l) {
+			if (nsSearchList.type === "BandList" && lastL != l) {
 				index.push({
 					title : l,
 					index : i
@@ -486,8 +485,12 @@ nsSearchList.createList = function(tblData) {
 
 			row.add(vwRowView);
 
-			currSection.add(row);
-			lastL = l;
+			if (nsSearchList.type === "BandList") {
+				currSection.add(row);
+				lastL = l;
+			} else {
+				sectionArr.push(row);
+			}
 		}
 	}
 
