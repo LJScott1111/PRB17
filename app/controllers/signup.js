@@ -106,7 +106,7 @@ nsIndex.skipSignUp = function() {
 				var thisUser = Kinvey.setActiveUser(user);
 				console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
 
-				Alloy.Globals.setupPushNotifications();
+				//Alloy.Globals.setupPushNotifications();
 
 				Titanium.App.Properties.setString('defaultUser', true);
 

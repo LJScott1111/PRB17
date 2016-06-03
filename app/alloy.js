@@ -2,11 +2,13 @@
 var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.6.10');
 var UrbanAirship = require('com.urbanairship');
 var channelId = UrbanAirship.channelId;
+console.log('UA ChannelID:',channelId);
 UrbanAirship.userNotificationsEnabled = true;
 UrbanAirship.addEventListener(UrbanAirship.EVENT_PUSH_RECEIVED, function(e) {
 	Ti.API.info('Push received' + e.message);
 	alert(e.message);
 });
+Titanium.UI.iPhone.appBadge = 0;
 
 var deviceToken = null;
 
@@ -42,7 +44,7 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 	});
 
 	promise.then(function(user) {
-		Alloy.Globals.setupPushNotifications();
+		//Alloy.Globals.setupPushNotifications();
 
 		// If user is logged in using default user, the app will ask her login on every app load
 		console.log('CHECK USER = ', Titanium.App.Properties.getString('defaultUser'));

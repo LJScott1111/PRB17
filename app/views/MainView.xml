@@ -18,9 +18,9 @@
 			<View id="news_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getNews">
 				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblNews" text="NEWS / SOCIAL"></Label>
 			</View>
-			<View id="food_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getFood">
+			<!-- <View id="food_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getFood">
 				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblFood" text="L('food').toUpperCase()"></Label>
-			</View>
+			</View> -->
 
 			<!-- <View id="venues_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getVenues">
 				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblVenues" text="L('buy_tickets').toUpperCase()"></Label>
