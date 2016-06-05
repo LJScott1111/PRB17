@@ -10,9 +10,9 @@
 			</View>
 			<View id="vwBandDetails">
 				<View id="vwDays" class="vwDaysClass">
-					<View id="vwDay0" class = "dayClass" day="thursday" >
+					<!-- <View id="vwDay0" class = "dayClass" day="thursday" >
 						<Label id="lblDay0" class="lblDayClass" text="L('thursday')"></Label>
-					</View>
+					</View> -->
 					<View id="vwDay1" class = "dayClass" day="friday" >
 						<Label id="lblDay1" class="lblDayClass" text="L('friday')"></Label>
 					</View>
@@ -24,9 +24,9 @@
 						<Label id="lblDay3" class="lblDayClass" text="L('sunday')"></Label>
 					</View>
 					<!-- </View> -->
-					<View id="vwDay4" class = "dayClass" day="monday" >
+					<!-- <View id="vwDay4" class = "dayClass" day="monday" >
 						<Label id="lblDay4" class="lblDayClass" text="L('monday')"></Label>
-					</View>
+					</View> -->
 				</View>
 				<View id="vwBandSchedule"></View>
 			</View>
