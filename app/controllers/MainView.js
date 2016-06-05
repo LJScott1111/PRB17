@@ -34,7 +34,7 @@ nsLanding.get_next_show = function() {
 	Alloy.Globals.nextEventCity = location;
 	$.args.city = location;
 	
-	if (Alloy.Globals.nextEventCity == 'denver') {
+	if (Alloy.Globals.nextEventCity == 'asburypark') {
 		// Hide menus from menu screen
 		Titanium.App.fireEvent('hideOptions');
 	}
@@ -160,7 +160,7 @@ nsLanding.getSchedule = function() {
 
 nsLanding.buyTickets = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://www.ticketfly.com/venue/5289-summit-music-hall/"
+		url : "https://punkrockbowling.queueapp.com/events/17187"
 	}, true, null, 'misc/right_logo');
 };
 
