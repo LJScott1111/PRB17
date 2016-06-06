@@ -17,7 +17,7 @@ $.buy_tickets.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "https://www.ticketfly.com/venue/5289-summit-music-hall/"
+		url : "https://punkrockbowling.queueapp.com/events/17187"
 	}, true, null, 'misc/right_logo');
 });
 
@@ -48,7 +48,7 @@ $.bowling.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/pages/bowling-1",
+		url : "http://punkrockbowling.com/collections/prb-asbury-park-club-shows",
 		image: "/icons/Banner_Pins.jpg",
 		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
 	}, true, null, 'misc/right_logo');
@@ -120,7 +120,7 @@ $.faq.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/faqs"
+		url : "http://punkrockbowling.com/pages/faqs-asbury-park-nj"
 	}, true, null, 'misc/right_logo');
 });
 

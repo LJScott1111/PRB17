@@ -80,7 +80,7 @@ nsEvents.getBands = function(){
 
 nsEvents.getClubShows = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/collections/prb-las-vegas-club-shows",
+		url : "http://punkrockbowling.com/collections/prb-asbury-park-club-shows",
 		image: "/icons/Banner_Pins.jpg",
 		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
 	}, true, null, 'misc/right_logo');
@@ -98,7 +98,7 @@ nsEvents.getMovies = function() {
 nsEvents.getBowling = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/pages/bowling-1",
+		url : "http://punkrockbowling.com/collections/prb-asbury-park-club-shows",
 		image: "/icons/Banner_Pins.jpg",
 		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
 	}, true, null, 'misc/right_logo');

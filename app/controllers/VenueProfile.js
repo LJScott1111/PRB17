@@ -139,7 +139,7 @@ nsVenueProfile.getList = function(source) {
 
 	//UI changes
 	var day = source.day.toLowerCase().trim();
-
+	/*
 	if (day === "thursday") {
 		$.vwDay0.selected = true;
 		$.vwDay0.backgroundColor = "#fff";
@@ -156,10 +156,13 @@ nsVenueProfile.getList = function(source) {
 		$.vwDay4.selected = false;
 		$.vwDay4.backgroundColor = "#000";
 
-	} else if (day === "friday") {
+	} 
+	*/
+	
+	if (day === "friday") {
 
-		$.vwDay0.selected = false;
-		$.vwDay0.backgroundColor = "#000";
+		// $.vwDay0.selected = false;
+		// $.vwDay0.backgroundColor = "#000";
 
 		$.vwDay1.selected = true;
 		$.vwDay1.backgroundColor = "#fff";
@@ -170,13 +173,13 @@ nsVenueProfile.getList = function(source) {
 		$.vwDay3.selected = false;
 		$.vwDay3.backgroundColor = "#000";
 
-		$.vwDay4.selected = false;
-		$.vwDay4.backgroundColor = "#000";
+		// $.vwDay4.selected = false;
+		// $.vwDay4.backgroundColor = "#000";
 
 	} else if (day === "saturday") {
 
-		$.vwDay0.selected = false;
-		$.vwDay0.backgroundColor = "#000";
+		// $.vwDay0.selected = false;
+		// $.vwDay0.backgroundColor = "#000";
 
 		$.vwDay1.selected = false;
 		$.vwDay1.backgroundColor = "#000";
@@ -187,13 +190,13 @@ nsVenueProfile.getList = function(source) {
 		$.vwDay3.selected = false;
 		$.vwDay3.backgroundColor = "#000";
 
-		$.vwDay4.selected = false;
-		$.vwDay4.backgroundColor = "#000";
+		// $.vwDay4.selected = false;
+		// $.vwDay4.backgroundColor = "#000";
 
 	} else if (day === "sunday") {
 
-		$.vwDay0.selected = false;
-		$.vwDay0.backgroundColor = "#000";
+		// $.vwDay0.selected = false;
+		// $.vwDay0.backgroundColor = "#000";
 
 		$.vwDay1.selected = false;
 		$.vwDay1.backgroundColor = "#000";
@@ -204,10 +207,13 @@ nsVenueProfile.getList = function(source) {
 		$.vwDay3.selected = true;
 		$.vwDay3.backgroundColor = "#fff";
 
-		$.vwDay4.selected = false;
-		$.vwDay4.backgroundColor = "#000";
+		// $.vwDay4.selected = false;
+		// $.vwDay4.backgroundColor = "#000";
 
-	} else if (day === "monday") {
+	}
+	/*
+	
+	else if (day === "monday") {
 
 		$.vwDay0.selected = false;
 		$.vwDay0.backgroundColor = "#000";
@@ -224,7 +230,8 @@ nsVenueProfile.getList = function(source) {
 		$.vwDay4.selected = true;
 		$.vwDay4.backgroundColor = "#fff";
 	}
-
+	*/
+	
 	// Get list
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	console.log('FULL:' + JSON.stringify(appdata));
@@ -308,9 +315,9 @@ nsVenueProfile.init = function() {
 	// Setting width of days
 	// $.vwDays2.setWidth(Alloy.Globals.platformWidth / 2);
 
-	var vwDaysWidth = Alloy.Globals.platformWidth / 5.3;
-	$.vwDay0.setWidth(vwDaysWidth);
-	$.vwDay0.setLeft(2);
+	var vwDaysWidth = Alloy.Globals.platformWidth / 3.3;
+	// $.vwDay0.setWidth(vwDaysWidth);
+	// $.vwDay0.setLeft(2);
 
 	$.vwDay1.setWidth(vwDaysWidth);
 	$.vwDay1.setLeft(2);
@@ -321,16 +328,18 @@ nsVenueProfile.init = function() {
 	$.vwDay3.setWidth(vwDaysWidth);
 	$.vwDay3.setRight(2);
 
-	$.vwDay4.setWidth(vwDaysWidth);
-	$.vwDay4.setRight(2);
+	// $.vwDay4.setWidth(vwDaysWidth);
+	// $.vwDay4.setRight(2);
 
 	$.svMain.setHeight(Alloy.Globals.platformHeight - Alloy.Globals.theme.sizes.headerbar - 2 * Alloy.Globals.theme.sizes.landingOptionHeight);
 
 	// Event listeners for show views
+	/*
 	$.vwDay0.addEventListener('click', function(e) {
 		nsVenueProfile.getList(e.source);
 	});
-
+	*/
+	
 	$.vwDay1.addEventListener('click', function(e) {
 		nsVenueProfile.getList(e.source);
 	});
@@ -343,11 +352,13 @@ nsVenueProfile.init = function() {
 		nsVenueProfile.getList(e.source);
 	});
 
+/*
 	$.vwDay4.addEventListener('click', function(e) {
 		nsVenueProfile.getList(e.source);
 	});
+*/
 
-	nsVenueProfile.getList($.vwDay0);
+	nsVenueProfile.getList($.vwDay1);
 };
 
 nsVenueProfile.init();
