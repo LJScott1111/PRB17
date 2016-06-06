@@ -106,6 +106,14 @@ nsLanding.getLineup = function(){
 	}
 };
 
+nsLanding.getClubShows = function() {
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://punkrockbowling.com/collections/prb-asbury-park-club-shows",
+		image: "/icons/Banner_Pins.jpg",
+		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
+	}, true, null, 'misc/right_logo');
+};
+
 nsLanding.getEvents = function() {
 
 	Alloy.Globals.openWindow('Events', {
@@ -160,7 +168,7 @@ nsLanding.getSchedule = function() {
 
 nsLanding.buyTickets = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.queueapp.com/events/17187"
+		url : "http://punkrockbowling.com/collections/prb-asbury-park-club-shows"
 	}, true, null, 'misc/right_logo');
 };
 

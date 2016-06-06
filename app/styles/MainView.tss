@@ -34,6 +34,14 @@
 	backgroundImage: '/icons/events.png'
 }
 
+"#club_shows_view": {
+	backgroundImage: '/icons/events.png'
+}
+
+"#bands_view": {
+	backgroundImage: '/icons/bands.png'
+}
+
 "#schedule_view": {
 	backgroundImage: '/icons/schedule.png'
 }
