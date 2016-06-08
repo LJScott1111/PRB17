@@ -48,7 +48,7 @@ $.bowling.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/collections/prb-asbury-park-club-shows",
+		url : "http://punkrockbowling.com/pages/asbury-park-bowling",
 		image: "/icons/Banner_Pins.jpg",
 		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
 	}, true, null, 'misc/right_logo');

@@ -168,7 +168,7 @@ nsLanding.getSchedule = function() {
 
 nsLanding.buyTickets = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/collections/prb-asbury-park-club-shows"
+		url : "https://punkrockbowling.queueapp.com/events/17187"
 	}, true, null, 'misc/right_logo');
 };
 
