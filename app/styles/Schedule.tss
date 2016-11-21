@@ -1,0 +1,58 @@
+
+"#vwMain": {
+	top: 0,
+	backgroundColor: '#000000',
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+}
+
+"#mainContent": {
+	top: 0,
+	bottom: '70dp'
+}
+
+".options_bottom_view": {
+	bottom: '20dp',
+	height: '50dp',
+	width: Titanium.UI.FILL
+}
+
+".options": {
+	width: '33.33%'
+}
+
+"#my_schedule": {
+	left: 0
+}
+
+"#schedule": {
+	right: 0
+}
+
+".option_icon_lbl": {
+	color: '#c0c0c0',
+	font: {
+		fontFamily: "FontAwesome",
+		fontSize: '15dp'
+	}
+}
+
+".option_text_lbl": {
+	color: '#c0c0c0',
+	font: {
+		fontSize: '12dp'
+	}
+}
+
+"#my_schedule_icon": {
+	text: '\uf055'
+}
+
+"#line_up_icon": {
+	text: '\uf03a'
+}
+
+"#schedule_icon": {
+	text: '\uf271'
+}
+

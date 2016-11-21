@@ -75,8 +75,7 @@ nsEvents.getBands = function(){
 		Alloy.Globals.openWindow('BandList', {
 			city : $.args.city
 		}, true, null, 'misc/center_logo');
-	}*/
-
+	}
 };
 
 nsEvents.getClubShows = function() {

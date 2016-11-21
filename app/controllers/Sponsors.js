@@ -8,7 +8,7 @@ nsSponsors.clickedImage = function(e) {
 	if (e.source.url !== "") {
 		Alloy.Globals.openWindow("GenericWebView", {
 			url : e.source.url
-		}, true, null, 'misc/right_logo');
+		}, true, null, 'misc/center_logo');
 	}
 };
 

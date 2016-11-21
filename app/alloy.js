@@ -114,8 +114,8 @@ Alloy.Globals.CITIES = ['lasvegas', 'denver', 'asburypark'];
 
 Alloy.Globals.EVENTS = [{
 	city : 'lasvegas',
-	start : 1464220800000, // "2016-05-26T00:00:00",
-	end : 1464652799000, //"2016-05-30T23:59:59"
+	start : 1495148400000, // "2016-05-26T00:00:00",
+	end : 1495355400000, //"2016-05-30T23:59:59"
 }, {
 	city : 'denver',
 	start : 1464825600000, // "2016-06-02T00:00:00",

@@ -137,7 +137,11 @@ nsLanding.getSchedule = function() {
 
 					console.debug(JSON.stringify(schedule));
 
-					Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/right_logo');
+					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+					Alloy.Globals.openWindow('Schedule', {
+						city : $.args.city,
+						schedule : schedule
+					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
 
 					Alloy.Globals.loading.hide();
 

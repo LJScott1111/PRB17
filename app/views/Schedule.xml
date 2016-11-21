@@ -1,0 +1,25 @@
+<Alloy>
+	<View id="vwMain">
+		<View id="mainContent"></View>
+		<View id="tabbed_options" class="options_bottom_view">
+			<View id="my_schedule" class="options">
+				<View class="vertical_layout touch_false">
+					<Label id="my_schedule_icon" class="option_icon_lbl"></Label>
+					<Label id="my_schedule_text" class="option_text_lbl" text="L('my_schedule')"></Label>
+				</View>
+			</View>
+			<View id="line_up" class="options">
+				<View class="vertical_layout touch_false">
+					<Label id="line_up_icon" class="option_icon_lbl"></Label>
+					<Label id="line_up_text" class="option_text_lbl" text="L('lineup')"></Label>
+				</View>
+			</View>
+			<View id="schedule" class="options">
+				<View class="vertical_layout touch_false">
+					<Label id="schedule_icon" class="option_icon_lbl"></Label>
+					<Label id="schedule_text" class="option_text_lbl" text="L('schedule')"></Label>
+				</View>
+			</View>
+		</View>
+	</View>
+</Alloy>

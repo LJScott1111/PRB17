@@ -1,0 +1,16 @@
+<Alloy>
+	<View id="vwMainList">
+		<View class="options_parent_view">
+			<View id="when_view" class="options">
+				<Label id="when_lbl" class="option_lbl" text="L('when_lbl')"></Label>
+				<View id="when_selected" class="selected"></View>
+			</View>
+			<!-- <View class="vertical_separator"></View> -->
+			<View id="where_view" class="options">
+				<Label id="where_lbl" class="option_lbl" text="L('where_lbl')"></Label>
+				<View id="where_selected" class="selected"></View>
+			</View>
+		</View>
+		<View id="show_list"></View>
+	</View>
+</Alloy>
