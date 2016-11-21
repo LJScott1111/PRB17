@@ -252,7 +252,7 @@ nsUserSchedule.createLayout = function(data) {
 		bandBoxView.addEventListener('click', function(e) {
 			Alloy.Globals.openWindow("BandProfile", {
 				"id" : e.source.bandId
-			}, true, null, 'misc/right_logo');
+			}, true, null, 'misc/center_logo');
 		});
 
 		var bandImage = Titanium.UI.createImageView({

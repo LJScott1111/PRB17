@@ -10,7 +10,7 @@ Titanium.App.addEventListener('hideOptions', function(){
 $.settings.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow('Settings', {}, true, null, 'misc/right_logo');
+	Alloy.Globals.openWindow('Settings', {}, true, null, 'misc/center_logo');
 });
 
 $.buy_tickets.button.addEventListener('click', function() {
@@ -18,13 +18,13 @@ $.buy_tickets.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "https://punkrockbowling.queueapp.com/events/17187"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.lineup.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow('Lineup', {}, true, null, 'misc/right_logo');
+	Alloy.Globals.openWindow('Lineup', {}, true, null, 'misc/center_logo');
 });
 
 $.fest_events.button.addEventListener('click', function() {
@@ -33,7 +33,7 @@ $.fest_events.button.addEventListener('click', function() {
 	Alloy.Globals.openWindow('Events', {
 		// secondary : $.args.secondary,
 		city : Alloy.Globals.nextEventCity
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.venues.button.addEventListener('click', function() {
@@ -41,7 +41,7 @@ $.venues.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('VenueList', {
 		city : Alloy.Globals.nextEventCity
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.bowling.button.addEventListener('click', function() {
@@ -51,7 +51,7 @@ $.bowling.button.addEventListener('click', function() {
 		url : "http://punkrockbowling.com/pages/asbury-park-bowling",
 		image: "/icons/Banner_Pins.jpg",
 		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.poker.button.addEventListener('click', function() {
@@ -61,7 +61,7 @@ $.poker.button.addEventListener('click', function() {
 		url : "http://punkrockbowling.com/pages/poker-tournament",
 		image: "/icons/Banner_Babies.jpg",
 		banner_url: "http://www.sourpussclothing.com/kids.html"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.art.button.addEventListener('click', function() {
@@ -71,7 +71,7 @@ $.art.button.addEventListener('click', function() {
 		url : "http://punkrockbowling.com/pages/misfit-island-lethal-amounts-juxtapoz-asg-present",
 		image: "/icons/Banner_Hair_Dye.jpg",
 		banner_url: "http://www.sourpussclothing.com/gals/beauty-supplies/hair-products.html"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.map.button.addEventListener('click', function() {
@@ -80,7 +80,7 @@ $.map.button.addEventListener('click', function() {
 	
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "prb_map_2016.png"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.poolparty.button.addEventListener('click', function() {
@@ -89,7 +89,7 @@ $.poolparty.button.addEventListener('click', function() {
 	
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://punkrockbowling.com/pages/pool-parties"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.food.button.addEventListener('click', function() {
@@ -99,13 +99,13 @@ $.food.button.addEventListener('click', function() {
 		url : "http://punkrockbowling.com/pages/food-and-vendors",
 		image: "/icons/Banner_Flasks.jpg",
 		banner_url: "http://www.sourpussclothing.com/catalogsearch/result/?q=flask"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.sponsers.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow("Sponsors", {}, true, null, 'misc/right_logo');
+	Alloy.Globals.openWindow("Sponsors", {}, true, null, 'misc/center_logo');
 });
 
 $.about.button.addEventListener('click', function() {
@@ -113,7 +113,7 @@ $.about.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://punkrockbowling.com/pages/about-us"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.faq.button.addEventListener('click', function() {
@@ -121,7 +121,7 @@ $.faq.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://punkrockbowling.com/pages/faqs-asbury-park-nj"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.privacy_policy.button.addEventListener('click', function() {
@@ -129,7 +129,7 @@ $.privacy_policy.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://punkrockbowling.com/pages/privacy-policy"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.info.button.addEventListener('click', function() {
@@ -146,21 +146,21 @@ $.info.button.addEventListener('click', function() {
 			fb_url : "https://www.facebook.com/Sourpussclothing",
 			insta_url : "https://www.instagram.com/sourpussclothing/"
 		}
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.denver.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://punkrockbowling.com/pages/prb-denver-june-2-4-2016"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.asburypark.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://punkrockbowling.com/pages/asbury-park-lineup"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 });
 
 $.my_schedule.button.addEventListener('click', function() {
@@ -170,7 +170,7 @@ $.my_schedule.button.addEventListener('click', function() {
 	var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
 
 		console.debug(JSON.stringify(schedule));
-		Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/right_logo');
+		Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 		Alloy.Globals.loading.hide();
 
 	}, function(error) {
@@ -181,7 +181,7 @@ $.my_schedule.button.addEventListener('click', function() {
 
 $.profile.button.addEventListener('click', function(){
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow('Profile', {}, true, null, 'misc/right_logo');
+	Alloy.Globals.openWindow('Profile', {}, true, null, 'misc/center_logo');
 });
 
 $.log_out.button.addEventListener('click', function() {

@@ -1,0 +1,10 @@
+
+"#logo": {
+	text: '\uf00a',
+	right: '10dp',
+	color: '#fff',
+	font: {
+		fontFamily: "FontAwesome",
+		fontSize: '25dp'
+	}
+}

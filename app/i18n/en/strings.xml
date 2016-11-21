@@ -105,5 +105,9 @@
 	<string name="my_passes">My Passes</string>
 	<string name="buy_tickets">Buy Tickets</string>
 	<string name="log_out">Logout</string>
+	<string name="lineup">Line up</string>
+	
+	<string name="when_lbl">When</string>
+	<string name="where_lbl">Where</string>
 
 </resources>

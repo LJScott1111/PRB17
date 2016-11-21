@@ -18,10 +18,11 @@
     <!-- Lego ID -->
     <!--<guid>95040078-7551-4c2f-9111-73101a77574c</guid>-->
     <!-- Shraddha ID -->
-    <!---><guid>f42c4aa0-d86c-45b9-9555-894da7d93b77</guid>-->
+    <guid>912d6693-d5c6-4084-9134-ded88d697d9d</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="ti.facebook.appid">993161744029602</property>
     <ios>
+        <team-id>RM2A9K7S83</team-id>
         <plist>
             <dict>
                 <key>CFBundleURLTypes</key>
@@ -65,6 +66,8 @@
                 <key>UIPrerenderedIcon</key>
                 <false/>
                 <key>UIStatusBarHidden</key>
+                <false/>
+                <key>ITSAppUsesNonExemptEncryption</key>
                 <false/>
                 <key>UIStatusBarStyle</key>
                 <string>UIStatusBarStyleLightContent</string>
@@ -119,7 +122,7 @@
         <target device="iphone">true</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>5.3.0.GA</sdk-version>
+    <sdk-version>6.0.0.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>

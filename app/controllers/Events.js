@@ -44,7 +44,7 @@ nsEvents.getDaily = function() {
 		url : "http://punkrockbowling.com/pages/las-vegas-line-up",
 		image: "/icons/Banner_Pins.jpg",
 		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 };
 */
 
@@ -61,7 +61,7 @@ nsEvents.getBands = function(){
 
 				Alloy.Globals.openWindow('BandList', {
 					city : $.args.city
-				}, true, null, 'misc/right_logo');
+				}, true, null, 'misc/center_logo');
 				Alloy.Globals.loading.hide();
 			} else {
 				console.debug("All data did not get downloaded!!!");
@@ -74,8 +74,9 @@ nsEvents.getBands = function(){
 		console.log('Opening bands');
 		Alloy.Globals.openWindow('BandList', {
 			city : $.args.city
-		}, true, null, 'misc/right_logo');
-	}
+		}, true, null, 'misc/center_logo');
+	}*/
+
 };
 
 nsEvents.getClubShows = function() {
@@ -83,7 +84,7 @@ nsEvents.getClubShows = function() {
 		url : "http://punkrockbowling.com/collections/prb-asbury-park-club-shows",
 		image: "/icons/Banner_Pins.jpg",
 		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 };
 
 nsEvents.getMovies = function() {
@@ -92,7 +93,7 @@ nsEvents.getMovies = function() {
 		url : "http://punkrockbowling.com/pages/pool-parties",
 		image: "/icons/Banner_Swimsuits.jpg",
 		banner_url: "http://www.sourpussclothing.com/gals/swimwear.html"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 };
 
 nsEvents.getBowling = function() {
@@ -101,7 +102,7 @@ nsEvents.getBowling = function() {
 		url : "http://punkrockbowling.com/collections/prb-asbury-park-club-shows",
 		image: "/icons/Banner_Pins.jpg",
 		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 };
 
 nsEvents.getPoker = function() {
@@ -110,7 +111,7 @@ nsEvents.getPoker = function() {
 		url : "http://punkrockbowling.com/pages/poker-tournament",
 		image: "/icons/Banner_Babies.jpg",
 		banner_url: "http://www.sourpussclothing.com/kids.html"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 };
 
 nsEvents.getArt = function() {
@@ -119,7 +120,7 @@ nsEvents.getArt = function() {
 		url : "http://punkrockbowling.com/pages/misfit-island-lethal-amounts-juxtapoz-asg-present",
 		image: "/icons/Banner_Hair_Dye.jpg",
 		banner_url: "http://www.sourpussclothing.com/kids.html"
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 };
 
 nsEvents.openCity2Event = function() {
@@ -127,7 +128,7 @@ nsEvents.openCity2Event = function() {
 	Alloy.Globals.openWindow('MainView', {
 		city : cities[0],
 		secondary : true
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 };
 
 nsEvents.openCity3Event = function() {
@@ -135,7 +136,7 @@ nsEvents.openCity3Event = function() {
 	Alloy.Globals.openWindow('MainView', {
 		city : cities[1],
 		secondary : true
-	}, true, null, 'misc/right_logo');
+	}, true, null, 'misc/center_logo');
 };
 
 nsEvents.init = function() {

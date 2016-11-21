@@ -506,7 +506,7 @@ nsSearchList.createList = function(tblData) {
 
 	nsSearchList.table = Ti.UI.createTableView({
 		top : 0,
-		bottom : 20,
+		// bottom : 20,
 		filterAttribute : 'filter',
 		filterCaseInsensitive : true,
 		// searchHidden : true,
@@ -524,13 +524,13 @@ nsSearchList.createList = function(tblData) {
 
 			Alloy.Globals.openWindow("BandProfile", {
 				"id" : tblData[e.source.id]._id
-			}, true, null, 'misc/right_logo');
+			}, true, null, 'misc/center_logo');
 
 		} else if (nsSearchList.type === "VenueList") {
 
 			Alloy.Globals.openWindow("VenueProfile", {
 				"id" : tblData[e.source.id]._id
-			}, true, null, 'misc/right_logo');
+			}, true, null, 'misc/center_logo');
 
 		}
 	});
@@ -567,7 +567,7 @@ nsSearchList.init = function(type, data) {
 		height : Titanium.UI.FILL,
 		width : Titanium.UI.FILL,
 		top : 0,
-		bottom : '60dp',
+		bottom : '0dp',
 		backgroundColor : "#000000"
 	});
 

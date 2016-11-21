@@ -62,7 +62,7 @@ nsVenueProfile.createList = function(shows) {
 
 					Alloy.Globals.openWindow("BandProfile", {
 						"id" : e.row.bandDetails._id
-					}, true, null, 'misc/right_logo');
+					}, true, null, 'misc/center_logo');
 
 				});
 
