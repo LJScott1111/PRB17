@@ -9,7 +9,7 @@ nsSchedule.propGrey = {
 };
 
 Titanium.App.addEventListener('changeInScheduleScreen', function(action) {
-	
+
 });
 
 $.my_schedule.addEventListener('click', function() {
@@ -56,6 +56,13 @@ $.schedule.addEventListener('click', function() {
 
 	$.schedule_icon.applyProperties(nsSchedule.propRed);
 	$.schedule_text.applyProperties(nsSchedule.propRed);
+
+	var eventListByDay = Alloy.createController('EventListByDay', {
+		city : $.args.city,
+		schedule : $.args.schedule
+	}).getView();
+
+	$.mainContent.add(eventListByDay);
 });
 
 nsSchedule.init = function() {
