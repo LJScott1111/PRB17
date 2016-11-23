@@ -285,14 +285,26 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 	var band_id = '',
 	    venue_id = '',
 	    start_time = '',
-	    isShowExists = false;
+	    isShowExists = false,
+	    showDetails = '',
+	    bandDetails = '',
+	    venueDetails = '';
 	for (var j in appdata.shows) {
 		if (appdata.shows[j]._id == show_id) {
 			appdata.shows[j].selected = true;
 			band_id = appdata.shows[j].band_id;
 			venue_id = appdata.shows[j].venue_id;
 			start_time = appdata.shows[j].start_time;
-			break;
+			for (var k in appdata.details) {
+				if (appdata.details[k].showDetails._id == show_id) {
+					console.log('appdata.details[k].showDetails._id ', appdata.details[k].showDetails._id, show_id);
+					showDetails = appdata.details[k].showDetails,
+					bandDetails = appdata.details[k].bandDetails,
+					venueDetails = appdata.details[k].venueDetails;
+					break;
+				};
+			}
+
 		}
 	}
 
@@ -326,6 +338,9 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 					show_id : show_id,
 					band_id : band_id,
 					venue_id : venue_id,
+					showDetails : showDetails,
+					bandDetails : bandDetails,
+					venueDetails : venueDetails,
 					start_time : start_time
 				});
 
@@ -342,6 +357,10 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 			show_id : show_id,
 			band_id : band_id,
 			venue_id : venue_id,
+			showDetails : showDetails,
+			bandDetails : bandDetails,
+			venueDetails : venueDetails,
+
 			start_time : start_time
 		});
 
@@ -358,42 +377,42 @@ nsServerCalls.deleteUserSchedule = function(show_id, onloadCallback, errorCallba
 
 	/*var query = new Kinvey.Query();
 
-	query.equalTo('user_id', Titanium.App.Properties.getString('userid'));
-	query.equalTo('show_id', show_id);
+	 query.equalTo('user_id', Titanium.App.Properties.getString('userid'));
+	 query.equalTo('show_id', show_id);
 
-	var promise = Kinvey.DataStore.find('user-schedules', query);
-	promise.then(function(entities) {
+	 var promise = Kinvey.DataStore.find('user-schedules', query);
+	 promise.then(function(entities) {
 
-		if (entities.length != 0) {
+	 if (entities.length != 0) {
 
-			for (var i in entities) {
+	 for (var i in entities) {
 
-				var promise = Kinvey.DataStore.destroy('user-schedules', entities[i]._id);
-				promise.then(function() {
-					
-					onloadCallback();
-				}, function(error) {
-				});
-			}
-		}
-	}, function(error) {
-	});
-	*/
+	 var promise = Kinvey.DataStore.destroy('user-schedules', entities[i]._id);
+	 promise.then(function() {
+
+	 onloadCallback();
+	 }, function(error) {
+	 });
+	 }
+	 }
+	 }, function(error) {
+	 });
+	 */
 	var userSchedule = Ti.App.Properties.getList('userSchedule', []);
-	
+
 	if (userSchedule.length != 0) {
-		
+
 		for (var i in userSchedule) {
-			
+
 			if (userSchedule[i].show_id == show_id) {
-				
+
 				userSchedule.splice(i, 1);
 				console.log('ENTRY DELETED');
 				break;
 			}
 		}
 	}
-	
+
 	Ti.App.Properties.setList('userSchedule', userSchedule);
 	onloadCallback();
 };

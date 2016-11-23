@@ -61,7 +61,6 @@ nsEventList.showVenueList = function() {
 	    today = new Date(1495148400000);
 	for (i in appdata.details) {
 		show_date = new Date(appdata.details[i].showDetails.start_time * 1000);
-		console.error('--- ', show_date.toDateString(), today.toDateString());
 
 		if (show_date.toDateString() == today.toDateString() && appdata.details[i].venueDetails && appdata.details[i].venueDetails.location.replace(" ", "") === $.args.city) {
 			currentCityData.push({
@@ -69,13 +68,7 @@ nsEventList.showVenueList = function() {
 				bandDetails : appdata.details[i].bandDetails,
 				venueDetails : appdata.details[i].venueDetails
 			});
-			// console.log(JSON.stringify(appdata.details[i].venueDetails));
-		}
-	}
-
-	for (i in appdata.venues) {
-		if (appdata.venues[i].location === $.args.city) {
-			venuelist.push(appdata.venues[i]);
+			venuelist.push(appdata.details[i].venueDetails);
 		}
 	}
 
