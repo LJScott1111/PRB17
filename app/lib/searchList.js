@@ -88,50 +88,50 @@ nsSearchList.createHeader = function() {
 
 	nsSearchList.vwAll.add(lblAll);
 	header.add(nsSearchList.vwAll);
-/*
-	
-	var vwThurs = Titanium.UI.createView({
-		top : 5,
-		left : 2,
-		bottom : 5,
-		height : Titanium.UI.SIZE,
-		borderRadius : 5,
-		borderColor : "#000000",
-		backgroundColor : "#ffffff",
-		width : viewWidth,
-		day : "thursday",
-		selected : false
-	});
+	/*
 
-	var lblThurs = Titanium.UI.createLabel({
-		top : 2,
-		bottom : 2,
-		height : Titanium.UI.SIZE,
-		touchEnabled : false,
-		color : "#000000",
-		text : L('thursday'),
-		font : {
-			fontSize : Alloy.Globals.theme.fonts.size15Fonts,
-			fontFamily : "KnowYourProduct"
-		}
-	});
+	 var vwThurs = Titanium.UI.createView({
+	 top : 5,
+	 left : 2,
+	 bottom : 5,
+	 height : Titanium.UI.SIZE,
+	 borderRadius : 5,
+	 borderColor : "#000000",
+	 backgroundColor : "#ffffff",
+	 width : viewWidth,
+	 day : "thursday",
+	 selected : false
+	 });
 
-	vwThurs.addEventListener('click', function(e) {
-		console.log("e.source ", e.source.day);
-		nsSearchList.selectedTab = e.source.day;
-		if (!vwThurs.selected) {
-			var bands = nsSearchList.getList(e.source.day);
+	 var lblThurs = Titanium.UI.createLabel({
+	 top : 2,
+	 bottom : 2,
+	 height : Titanium.UI.SIZE,
+	 touchEnabled : false,
+	 color : "#000000",
+	 text : L('thursday'),
+	 font : {
+	 fontSize : Alloy.Globals.theme.fonts.size15Fonts,
+	 fontFamily : "KnowYourProduct"
+	 }
+	 });
 
-			nsSearchList.vwSearchView.removeAllChildren();
+	 vwThurs.addEventListener('click', function(e) {
+	 console.log("e.source ", e.source.day);
+	 nsSearchList.selectedTab = e.source.day;
+	 if (!vwThurs.selected) {
+	 var bands = nsSearchList.getList(e.source.day);
 
-			var vwList = nsSearchList.createList(bands);
-			return vwList;
-		}
-	});
+	 nsSearchList.vwSearchView.removeAllChildren();
 
-	vwThurs.add(lblThurs);
-	header.add(vwThurs);
-*/
+	 var vwList = nsSearchList.createList(bands);
+	 return vwList;
+	 }
+	 });
+
+	 vwThurs.add(lblThurs);
+	 header.add(vwThurs);
+	 */
 
 	var vwFriday = Titanium.UI.createView({
 		top : 5,
@@ -259,55 +259,55 @@ nsSearchList.createHeader = function() {
 	vwSunday.add(lblSunday);
 	header.add(vwSunday);
 	/*
-	
-		var vwMonday = Titanium.UI.createView({
-			top : 5,
-			left : 2,
-			bottom : 5,
-			height : Titanium.UI.SIZE,
-			borderRadius : 5,
-			borderColor : "#000000",
-			backgroundColor : "#ffffff",
-			selected : false,
-			width : viewWidth,
-			day : "monday"
-		});
-	
-		var lblMonday = Titanium.UI.createLabel({
-			top : 2,
-			bottom : 2,
-			height : Titanium.UI.SIZE,
-			touchEnabled : false,
-			color : "#000000",
-			text : L('monday'),
-			font : {
-				fontSize : Alloy.Globals.theme.fonts.size15Fonts,
-				fontFamily : "KnowYourProduct"
-			}
-		});
-	
-		vwMonday.addEventListener('click', function(e) {
-			console.log("e.source ", e.source.day);
-			nsSearchList.selectedTab = e.source.day;
-			if (!vwMonday.selected) {
-				var bands = nsSearchList.getList(e.source.day);
-	
-				nsSearchList.vwSearchView.removeAllChildren();
-	
-				var vwList = nsSearchList.createList(bands);
-				return vwList;
-			}
-		});
-	
-		vwMonday.add(lblMonday);
-		header.add(vwMonday);
-	
-	if (nsSearchList.selectedTab === "thursday") {
-		vwThurs.selected = true;
-		vwThurs.backgroundColor = "#c0c0c0";
-	} else 
-	*/
-	
+
+	 var vwMonday = Titanium.UI.createView({
+	 top : 5,
+	 left : 2,
+	 bottom : 5,
+	 height : Titanium.UI.SIZE,
+	 borderRadius : 5,
+	 borderColor : "#000000",
+	 backgroundColor : "#ffffff",
+	 selected : false,
+	 width : viewWidth,
+	 day : "monday"
+	 });
+
+	 var lblMonday = Titanium.UI.createLabel({
+	 top : 2,
+	 bottom : 2,
+	 height : Titanium.UI.SIZE,
+	 touchEnabled : false,
+	 color : "#000000",
+	 text : L('monday'),
+	 font : {
+	 fontSize : Alloy.Globals.theme.fonts.size15Fonts,
+	 fontFamily : "KnowYourProduct"
+	 }
+	 });
+
+	 vwMonday.addEventListener('click', function(e) {
+	 console.log("e.source ", e.source.day);
+	 nsSearchList.selectedTab = e.source.day;
+	 if (!vwMonday.selected) {
+	 var bands = nsSearchList.getList(e.source.day);
+
+	 nsSearchList.vwSearchView.removeAllChildren();
+
+	 var vwList = nsSearchList.createList(bands);
+	 return vwList;
+	 }
+	 });
+
+	 vwMonday.add(lblMonday);
+	 header.add(vwMonday);
+
+	 if (nsSearchList.selectedTab === "thursday") {
+	 vwThurs.selected = true;
+	 vwThurs.backgroundColor = "#c0c0c0";
+	 } else
+	 */
+
 	if (nsSearchList.selectedTab === "friday") {
 		vwFriday.selected = true;
 		vwFriday.backgroundColor = "#c0c0c0";
@@ -323,11 +323,11 @@ nsSearchList.createHeader = function() {
 	}
 
 	/*
-	
-	else if (nsSearchList.selectedTab === "monday") {
-		vwMonday.selected = true;
-		vwMonday.backgroundColor = "#c0c0c0";
-	}*/
+
+	 else if (nsSearchList.selectedTab === "monday") {
+	 vwMonday.selected = true;
+	 vwMonday.backgroundColor = "#c0c0c0";
+	 }*/
 
 	return header;
 };
@@ -346,16 +346,15 @@ nsSearchList.createList = function(tblData) {
 		}
 		/*
 
-		 
-		for (var j in tblData) {
-			for (var i in userSchedule) {
-				if (userSchedule[i].band_id == tblData[j]._id) {
-					tblData[j].selected = true;
-				}
-			}
-		}
+		 for (var j in tblData) {
+		 for (var i in userSchedule) {
+		 if (userSchedule[i].band_id == tblData[j]._id) {
+		 tblData[j].selected = true;
+		 }
+		 }
+		 }
 
-		*/
+		 */
 
 		var sbSearchBar = Titanium.UI.createSearchBar({
 			barColor : '#000000',
@@ -373,17 +372,26 @@ nsSearchList.createList = function(tblData) {
 	/*
 	else {
 
-		for (var j in tblData) {
-			for (var i in userSchedule) {
-				if (userSchedule[i].venue_id == tblData[j]._id) {
-					tblData[j].selected = true;
-				}
-			}
-		}
+	for (var j in tblData) {
+	for (var i in userSchedule) {
+	if (userSchedule[i].venue_id == tblData[j]._id) {
+	tblData[j].selected = true;
+	}
+	}
+	}
 	}
 	*/
 
-	var currHeader = "A";
+	// var currHeader = "12";
+	if (nsSearchList.listType == 'time') {
+		tblData.sort(Alloy.Globals.sortArray('start_time'));
+		// for (var i in tblData) {
+			// console.log('tblData', JSON.stringify(tblData));
+			// console.log('tblData[i].start_time ', tblData[i].start_time);
+			// console.error('tblData.start_time ', new Date(tblData[i].start_time * 1000).toISOString());
+		// }
+	};
+
 	var sectionArr = [];
 	var index = [];
 	for (var i = 0,
@@ -393,7 +401,8 @@ nsSearchList.createList = function(tblData) {
 	    len = tblData.length; i < len; i++) {
 
 		if (tblData[i] !== undefined) {
-			l = tblData[i].name.substr(0, 1);
+			console.error('new Date(tblData[i].start_time).toTimeString() ',new Date(tblData[i].start_time*1000).toTimeString());
+			l = (nsSearchList.listType == 'time') ? new Date(tblData[i].start_time * 1000).toTimeString().substr(0, 5) : tblData[i].name.substr(0, 1);
 
 			if (nsSearchList.type === "BandList" && lastL != l) {
 				index.push({
@@ -470,28 +479,28 @@ nsSearchList.createList = function(tblData) {
 			});
 
 			vwRowView.add(lblName);
-/*
+			/*
 
-			if (nsSearchList.type === "BandList") {
-				var ivFavouriteStar = Titanium.UI.createImageView({
-					right : 5,
-					height : 30,
-					width : 30,
-					id : "ivFavouriteStar",
-					index : i,
-					selected : tblData[i].selected,
-					// image : Alloy.Globals.theme.icons.star
-				});
+			 if (nsSearchList.type === "BandList") {
+			 var ivFavouriteStar = Titanium.UI.createImageView({
+			 right : 5,
+			 height : 30,
+			 width : 30,
+			 id : "ivFavouriteStar",
+			 index : i,
+			 selected : tblData[i].selected,
+			 // image : Alloy.Globals.theme.icons.star
+			 });
 
-				if (!ivFavouriteStar.selected) {
-					ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
-				} else {
-					ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
-				}
+			 if (!ivFavouriteStar.selected) {
+			 ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star_off);
+			 } else {
+			 ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
+			 }
 
-				vwRowView.add(ivFavouriteStar);
-			}
-			*/
+			 vwRowView.add(ivFavouriteStar);
+			 }
+			 */
 
 			row.add(vwRowView);
 
@@ -554,6 +563,8 @@ nsSearchList.init = function(type, data) {
 	nsSearchList.selectedTab = null;
 	nsSearchList.type = type;
 	nsSearchList.data = JSON.parse(JSON.stringify(data.list));
+	nsSearchList.listType = data.listType;
+	console.error(nsSearchList.listType);
 	nsSearchList.currentCityData = JSON.parse(JSON.stringify(data.currentCityData));
 
 	nsSearchList.data.sort(Alloy.Globals.sortArray('name'));
@@ -570,6 +581,7 @@ nsSearchList.init = function(type, data) {
 		bottom : '0dp',
 		backgroundColor : "#000000"
 	});
+	console.error('nsSearchList.data =====>  ', JSON.stringify(nsSearchList.data));
 
 	var vwList = nsSearchList.createList(nsSearchList.data);
 	return vwList;

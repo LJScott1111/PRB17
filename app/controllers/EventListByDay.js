@@ -28,7 +28,7 @@ nsEventList.showBandList = function() {
 
 	for (i in appdata.details) {
 		show_date = new Date(appdata.details[i].showDetails.start_time * 1000);
-		console.log('--- ', show_date.toDateString(), today.toDateString());
+		// console.log('--- ', show_date.toDateString(), today.toDateString());
 
 		// console.log(appdata.details[i].showDetails.location.toLowerCase(), $.args.city);
 		if (show_date.toDateString() == today.toDateString() && appdata.details[i].showDetails.location.toLowerCase().replace(" ", "") === $.args.city && appdata.details[i].bandDetails) {
@@ -37,6 +37,7 @@ nsEventList.showBandList = function() {
 				bandDetails : appdata.details[i].bandDetails,
 				venueDetails : appdata.details[i].venueDetails
 			});
+			appdata.details[i].bandDetails.start_time = appdata.details[i].showDetails.start_time;
 			bandlist.push(appdata.details[i].bandDetails);
 		}
 	}
@@ -45,7 +46,8 @@ nsEventList.showBandList = function() {
 	var searchList = require("searchList");
 	var list = searchList.init("BandList", {
 		list : bandlist,
-		currentCityData : currentCityData
+		currentCityData : currentCityData,
+		listType: 'time'
 	}, $.args.city);
 	console.debug(JSON.stringify(list));
 	Alloy.Globals.loading.hide();
