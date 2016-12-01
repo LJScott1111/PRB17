@@ -5,7 +5,8 @@
 
 "#title": {
 	top: 0,
-	color: "#f9ddb7",
+	// color: "#f9ddb7",
+	color: '#000',
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.SIZE,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
@@ -43,7 +44,7 @@
 }
 
 "#schedule_view": {
-	backgroundImage: '/icons/schedule.png'
+	backgroundImage: '/icons/news.png'
 }
 
 "#venues_view": {
@@ -59,17 +60,17 @@
 }
 
 "#buy_tickets_view": {
-	backgroundImage: '/icons/buy_tickets.png',
-	width: Titanium.UI.FILL,
-	height: Titanium.UI.FILL,
-	bottom: 80,
-	top: 0
+	backgroundImage: '/icons/venues.png',
+	// width: Titanium.UI.FILL,
+	// height: Titanium.UI.FILL,
+	// bottom: 80,
+	// top: 0
 }
 
 "#lblBuyTickets": {
 	top: 10,
-	right: 30,
-	color: '#fff',
+	right: 10,
+	// color: '#fff',
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size25Fonts
 	}
@@ -88,5 +89,13 @@
 }
 
 "#lblNews": {
-	left: 30
+	right: 30
+}
+
+".character": {
+	image: '/icons/character.png',
+	bottom: '-30dp',
+	zIndex: 99,
+	left: '-60dp',
+	touchEnabled: false
 }

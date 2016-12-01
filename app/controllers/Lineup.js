@@ -3,18 +3,18 @@ var args = $.args;
 
 $.lasvegas.addEventListener('click', function() {
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/las-vegas-line-up"
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 });
 
 $.denver.addEventListener('click', function() {
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/prb-denver-june-2-4-2016"
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 });
 
 $.asburypark.addEventListener('click', function() {
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/asbury-park-lineup"
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 });

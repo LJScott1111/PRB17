@@ -109,7 +109,7 @@
 }
 
 "#btnLogin": {
-	backgroundColor: "#DC0000",
+	backgroundColor: "#FEDE00",
 	color: "#ffffff"
 }
 

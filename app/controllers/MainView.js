@@ -108,9 +108,9 @@ nsLanding.getLineup = function() {
 
 nsLanding.getClubShows = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/collections/prb-asbury-park-club-shows",
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
 		image : "/icons/Banner_Pins.jpg",
-		banner_url : "http://www.sourpussclothing.com/housewares/patches-pins.html"
+		banner_url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 };
 
@@ -177,7 +177,7 @@ nsLanding.getSchedule = function() {
 
 nsLanding.buyTickets = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.queueapp.com/events/17187"
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 };
 
@@ -214,14 +214,19 @@ nsLanding.getVenues = function() {
 nsLanding.getFood = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/pages/food-and-vendors",
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
 		image : "/icons/Banner_Flasks.jpg",
-		banner_url : "http://www.sourpussclothing.com/catalogsearch/result/?q=flask"
+		banner_url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 };
 
 nsLanding.getNews = function() {
 
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
+	}, true, null, 'misc/center_logo');
+	
+	/*
 	Alloy.Globals.openWindow('NewsAndSocial', {
 		prb : {
 			twitter_url : "https://twitter.com/punkrockbowling",
@@ -233,7 +238,8 @@ nsLanding.getNews = function() {
 			fb_url : "https://www.facebook.com/Sourpussclothing",
 			insta_url : "https://www.instagram.com/sourpussclothing/"
 		}
-	}, true, null, 'misc/center_logo');
+	}, true, null, 'misc/center_logo');*/
+	
 };
 
 nsLanding.checkLocationPermissions = function() {

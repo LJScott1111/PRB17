@@ -41,9 +41,9 @@ nsEvents.getMusic = function() {
 
 nsEvents.getDaily = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/pages/las-vegas-line-up",
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
 		image: "/icons/Banner_Pins.jpg",
-		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
+		banner_url: "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 };
 */
@@ -80,45 +80,45 @@ nsEvents.getBands = function(){
 
 nsEvents.getClubShows = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/collections/prb-asbury-park-club-shows",
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
 		image: "/icons/Banner_Pins.jpg",
-		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
+		banner_url: "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 };
 
 nsEvents.getMovies = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/pages/pool-parties",
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
 		image: "/icons/Banner_Swimsuits.jpg",
-		banner_url: "http://www.sourpussclothing.com/gals/swimwear.html"
+		banner_url: "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 };
 
 nsEvents.getBowling = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/collections/prb-asbury-park-club-shows",
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
 		image: "/icons/Banner_Pins.jpg",
-		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
+		banner_url: "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 };
 
 nsEvents.getPoker = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/pages/poker-tournament",
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
 		image: "/icons/Banner_Babies.jpg",
-		banner_url: "http://www.sourpussclothing.com/kids.html"
+		banner_url: "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 };
 
 nsEvents.getArt = function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/pages/misfit-island-lethal-amounts-juxtapoz-asg-present",
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
 		image: "/icons/Banner_Hair_Dye.jpg",
-		banner_url: "http://www.sourpussclothing.com/kids.html"
+		banner_url: "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 };
 

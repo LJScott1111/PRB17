@@ -2,7 +2,8 @@
 "#vwBottomView": {
 	bottom: 0,
 	height: Titanium.UI.SIZE,
-	width: Titanium.UI.FILL
+	width: Titanium.UI.FILL,
+	zIndex: 999
 }
 
 "#ivSponsorAd": {

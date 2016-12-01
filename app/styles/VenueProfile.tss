@@ -130,7 +130,7 @@
 	// bottom: 2,
 	height: Titanium.UI.SIZE,
 	touchEnabled: false,
-	color: "#dc0000",
+	color: "#FEDE00",
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size20Fonts,
 		fontFamily: "KnowYourProduct"

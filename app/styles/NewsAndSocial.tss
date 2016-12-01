@@ -41,7 +41,7 @@
 ".vertical_separator": {
 	height: Titanium.UI.FILL,
 	width: '1dp',
-	backgroundColor: '#dc0000'
+	backgroundColor: '#FEDE00'
 }
 
 ".underline": {

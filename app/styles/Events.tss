@@ -39,7 +39,7 @@
 }
 
 "#poker_view": {
-	backgroundImage: '/icons/schedule.png'
+	backgroundImage: '/icons/news.png'
 }
 
 "#art_view": {
@@ -47,7 +47,7 @@
 }
 
 "#daily_view": {
-	backgroundImage: '/icons/schedule.png'
+	backgroundImage: '/icons/news.png'
 }
 
 "#club_shows_view": {

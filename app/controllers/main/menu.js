@@ -17,7 +17,7 @@ $.buy_tickets.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "https://punkrockbowling.queueapp.com/events/17187"
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 });
 
@@ -48,9 +48,9 @@ $.bowling.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/pages/asbury-park-bowling",
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
 		image: "/icons/Banner_Pins.jpg",
-		banner_url: "http://www.sourpussclothing.com/housewares/patches-pins.html"
+		banner_url: "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 });
 
@@ -58,9 +58,9 @@ $.poker.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/pages/poker-tournament",
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
 		image: "/icons/Banner_Babies.jpg",
-		banner_url: "http://www.sourpussclothing.com/kids.html"
+		banner_url: "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 });
 
@@ -68,9 +68,9 @@ $.art.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/pages/misfit-island-lethal-amounts-juxtapoz-asg-present",
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
 		image: "/icons/Banner_Hair_Dye.jpg",
-		banner_url: "http://www.sourpussclothing.com/gals/beauty-supplies/hair-products.html"
+		banner_url: "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 });
 
@@ -88,7 +88,7 @@ $.poolparty.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/pool-parties"
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 });
 
@@ -96,9 +96,9 @@ $.food.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://punkrockbowling.com/pages/food-and-vendors",
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
 		image: "/icons/Banner_Flasks.jpg",
-		banner_url: "http://www.sourpussclothing.com/catalogsearch/result/?q=flask"
+		banner_url: "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 });
 
@@ -120,7 +120,7 @@ $.faq.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/faqs-asbury-park-nj"
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 });
 
@@ -152,14 +152,14 @@ $.info.button.addEventListener('click', function() {
 $.denver.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/prb-denver-june-2-4-2016"
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 });
 
 $.asburypark.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://punkrockbowling.com/pages/asbury-park-lineup"
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
 });
 
