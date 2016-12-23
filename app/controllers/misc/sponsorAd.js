@@ -1,6 +1,8 @@
 if ($.args.image) {
 	$.ivSponsorAd.image = $.args.image;
-};
+} else {
+	$.ivSponsorAd.image = '/icons/merch_shop_ad.png'; // May need to remove later. Please check the differneces between these two commits.
+}
 
 if ($.args.url || $.args.banner_url) {
 	$.vwBottomView.addEventListener('click', function() {
@@ -9,13 +11,15 @@ if ($.args.url || $.args.banner_url) {
 		}, true, null, 'misc/center_logo');
 	});
 } else {
+	/*
 	var sponsor = Alloy.Globals.getSponsor();
-	$.ivSponsorAd.image = '/icons/' + sponsor.image;
-	$.vwBottomView.addEventListener('click', function() {
-		Alloy.Globals.openWindow("GenericWebView", {
-			url : sponsor.link
-		}, true);
-	});
+		$.ivSponsorAd.image = '/icons/' + sponsor.image;
+		$.vwBottomView.addEventListener('click', function() {
+			Alloy.Globals.openWindow("GenericWebView", {
+				url : sponsor.link
+			}, true);
+		});*/
+	
 }
 
 Titanium.App.addEventListener('updateSponsor', function(args) {

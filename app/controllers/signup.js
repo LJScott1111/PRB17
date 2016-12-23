@@ -128,6 +128,7 @@ nsIndex.skipSignUp = function() {
 		alert(L('err_serviceError'));
 	});
 };
+/*
 
 nsIndex.connectToFb = function() {
 	var accessToken = "";
@@ -157,6 +158,7 @@ nsIndex.connectToFb = function() {
 	}
 
 };
+*/
 
 nsIndex.loginServiceCall = function() {
 

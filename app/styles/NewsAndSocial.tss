@@ -14,8 +14,9 @@
 }
 
 "#prb_view": {
-	left: 0,
-	height: Titanium.UI.SIZE
+	// left: '10dp',
+	height: Titanium.UI.SIZE,
+	width: '70dp'
 }
 
 "#prb": {
@@ -24,13 +25,24 @@
 }
 
 "#sourpuss_view": {
-	right: 0,
-	height: Titanium.UI.SIZE
+	// right: 0,
+	height: Titanium.UI.SIZE,
+	width: '40%'
 }
 
 "#sourpuss": {
 	height: '60dp',
 	image: '/icons/sourpuss_red.png'
+}
+
+"#hard_times_view": {
+	// right: 0,
+	height: Titanium.UI.SIZE
+}
+
+"#hard_times": {
+	height: '60dp',
+	image: '/icons/thtlogo.png'
 }
 
 ".logo_view": {
@@ -41,7 +53,7 @@
 ".vertical_separator": {
 	height: Titanium.UI.FILL,
 	width: '1dp',
-	backgroundColor: '#FEDE00'
+	backgroundColor: '#CC0000'
 }
 
 ".underline": {

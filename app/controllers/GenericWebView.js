@@ -4,10 +4,17 @@ nsGenericWebView.init = function() {
 
 	$.wvGenericWebView.setUrl($.args.url);
 
-	if ($.args.image && $.args.banner_url) {
+	// 	&& $.args.banner_url
+	if ($.args.image) {
 		Titanium.App.fireEvent('updateSponsor', {
 			image : $.args.image,
-			url : $.args.banner_url
+			// url : $.args.banner_url
+		});
+		$.sponsor.ivSponsorAd.image = $.args.image;
+	} else {
+		Titanium.App.fireEvent('updateSponsor', {
+			image : '/icons/merch_shop_ad.png',
+			url : ''
 		});
 		$.sponsor.ivSponsorAd.image = $.args.image;
 	}

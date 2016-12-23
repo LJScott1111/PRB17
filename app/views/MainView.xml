@@ -1,27 +1,29 @@
 <Alloy>
-	<View id="vwMain" backgroundImage='icons/bg_yellow.png'>
+	<View id="vwMain" backgroundImage='/icons/bg_yellow.png'>
 		<View id="vwTopOptions">
 
-			<Label id="title" class="frizQuaT" />
-			<View id="lineup_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule">
+			<Label id="title" class="frizQuaT" visible="false"/>
+			
+			<View class="absolute_layout">
+				<ImageView id="mainview_text"></ImageView>
+			</View>
+			
+			<!-- <View id="lineup_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule" height="0">
 				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblLineup" text="L('lineup').toUpperCase()"></Label>
 			</View>
-			<View id="club_shows_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule">
+			<View id="club_shows_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule" height="0">
 				<Label id="club_shows" class="options_lbl knowYourProduct touch_false" text="L('club_shows').toUpperCase()"></Label>
 			</View>
-			<View id="bands_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule">
+			<View id="bands_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule" height="0">
 				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblBands" text="L('bands').toUpperCase()"></Label>
-			</View>
+			</View> -->
 			
 			<!-- <View id="events_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getEvents">
 				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblEvents" text="L('events').toUpperCase()"></Label>
 			</View> -->
-			<View id="schedule_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule">
+			<!-- <View id="schedule_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule" height="0">
 				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblSchedule" text="L('my_schedule').toUpperCase()"></Label>
-			</View>
-			<View id="news_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getNews">
-				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblNews" text="L('prb_shop').toUpperCase()"></Label>
-			</View>
+			</View> -->
 			<!-- <View id="food_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getFood">
 				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblFood" text="L('food').toUpperCase()"></Label>
 			</View> -->
@@ -34,12 +36,19 @@
 				<Label class="options_lbl lbl_settings knowYourProduct" id="lblBuyTickets" text="L('buy_tickets').toUpperCase()" onClick="nsLanding.buyTickets" ></Label>
 			</View> -->
 			
-			<View id="buy_tickets_view" class="absolute_layout options_view padding_top" onClick="nsLanding.buyTickets">
+			<View id="buy_tickets_view" class="absolute_layout options_view" onClick="nsLanding.buyTickets">
 				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblBuyTickets" text="L('buy_tickets').toUpperCase()"></Label>
 			</View>
-
+			
+			<View id="news_view" class="absolute_layout options_view" onClick="nsLanding.getNews">
+				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblNews" text="L('prb_shop').toUpperCase()"></Label>
+			</View>
+			
+			<View id="hotels_view" class="absolute_layout options_view" onClick="nsLanding.getHotels">
+				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblHotels" text="L('hotels').toUpperCase()"></Label>
+			</View>
 		</View>
 		<ImageView class="character"></ImageView>
-		<Require id="sponsor" src="misc/sponsorAd" image="/icons/sourpuss_banner.png" url="http://sourpussclothing.com/" />
+		<Require id="sponsor" src="misc/sponsorAd" image="/icons/tickets_ad.png" url="" banner_url="" />
 	</View>
 </Alloy>

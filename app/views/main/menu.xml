@@ -5,7 +5,9 @@
 
 			<Require id="buy_tickets" src="misc/menu_button" title="L('buy_tickets').toUpperCase()" />
 			<Require id="lineup" src="misc/menu_button" title="L('lineup').toUpperCase()" />
-			<Require id="venues" src="misc/menu_button" title="L('venues').toUpperCase()" />
+			<Require id="hotels" src="misc/menu_button" title="L('hotels').toUpperCase()" />
+			<Require id="prb_shop" src="misc/menu_button" title="L('prb_shop').toUpperCase()" />
+			<!-- <Require id="venues" src="misc/menu_button" title="L('venues').toUpperCase()" />
 			<Require id="bowling" src="misc/menu_button" title="L('bowling').toUpperCase()" />
 			<View id="subWrapper1" class="vertical_layout">
 				<Require id="fest_events" src="misc/menu_button" title="L('fest_events').toUpperCase()" />
@@ -18,17 +20,17 @@
 				<Require id="denver" src="misc/menu_button" title="L('denver').toUpperCase()" />
 			</View>
 			<Require id="food" src="misc/menu_button" title="L('food').toUpperCase()" />
-			<Require id="sponsers" src="misc/menu_button" title="L('sponsers').toUpperCase()" />
+			<Require id="sponsers" src="misc/menu_button" title="L('sponsers').toUpperCase()" /> -->
 			<Require id="info" src="misc/menu_button" title="L('news_social').toUpperCase()" />
-			<Require id="asburypark" src="misc/menu_button" title="L('asburypark').toUpperCase()" />
-			<Require id="about" src="misc/menu_button" title="L('about').toUpperCase()" />
+			<!-- <Require id="asburypark" src="misc/menu_button" title="L('asburypark').toUpperCase()" />
+			<Require id="about" src="misc/menu_button" title="L('about').toUpperCase()" /> -->
 			<Require id="faq" src="misc/menu_button" title="L('faq').toUpperCase()" />
 			<Require id="privacy_policy" src="misc/menu_button" title="L('privacy_policy').toUpperCase()" />
 			<!-- <Require id="social" src="misc/menu_button" title="L('social').toUpperCase()" /> -->
-			<Require id="my_schedule" src="misc/menu_button" title="L('my_schedule').toUpperCase()" />
-			<Require id="profile" src="misc/menu_button" title="L('profile').toUpperCase()" />
+			<!-- <Require id="my_schedule" src="misc/menu_button" title="L('my_schedule').toUpperCase()" />
+			<Require id="profile" src="misc/menu_button" title="L('profile').toUpperCase()" /> -->
 			<Require id="log_out" src="misc/menu_button" title="L('log_out').toUpperCase()" />
-			<Require id="settings" src="misc/menu_button" title="L('settings').toUpperCase()" />
+			<!-- <Require id="settings" src="misc/menu_button" title="L('settings').toUpperCase()" /> -->
 		</ScrollView>
 	</View>
 </Alloy>

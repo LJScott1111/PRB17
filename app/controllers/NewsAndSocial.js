@@ -30,6 +30,12 @@ $.sourpuss_view.addEventListener('click', function() {
 	nsNewsAndSocial.resetLinks();
 });
 
+$.hard_times_view.addEventListener('click', function() {
+
+	nsNewsAndSocial.social_links = JSON.parse(JSON.stringify($.args.hard_times));
+	nsNewsAndSocial.resetLinks();
+});
+
 $.fb_view.addEventListener('click', function() {
 	$.wvWebView.setUrl(nsNewsAndSocial.social_links.fb_url);
 	$.twitter_underline.visible = false;
@@ -56,10 +62,10 @@ nsNewsAndSocial.init = function() {
 	nsNewsAndSocial.social_links = JSON.parse(JSON.stringify($.args.prb));
 	nsNewsAndSocial.resetLinks();
 
-	var view_width = Alloy.Globals.platformWidth / 2.1;
-
-	$.prb_view.width = view_width;
-	$.sourpuss_view.width = view_width;
+	// var view_width = Alloy.Globals.platformWidth / 2.1;
+// 
+	// $.prb_view.width = view_width;
+	// $.sourpuss_view.width = view_width;
 
 	$.vwMain.addEventListener('postlayout', nsNewsAndSocial.postLayout);
 

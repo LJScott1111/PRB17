@@ -175,9 +175,18 @@ nsLanding.getSchedule = function() {
 
 };
 
+nsLanding.getHotels = function() {
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.com/pages/golden-nugget-hotel",
+		image : '/icons/merch_shop_ad.png'
+	}, true, null, 'misc/center_logo');
+};
+
 nsLanding.buyTickets = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
+		url : "https://punkrockbowling.com/pages/prb-17-ticket-prices",
+		image : "/icons/hotel_ad.png",
+		banner_url : ''
 	}, true, null, 'misc/center_logo');
 };
 
@@ -225,21 +234,21 @@ nsLanding.getNews = function() {
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
 	}, true, null, 'misc/center_logo');
-	
+
 	/*
-	Alloy.Globals.openWindow('NewsAndSocial', {
-		prb : {
-			twitter_url : "https://twitter.com/punkrockbowling",
-			fb_url : "https://www.facebook.com/Punk-Rock-Bowling-and-Music-Festival-288077407910557/",
-			insta_url : "https://www.instagram.com/punkrockbowling/"
-		},
-		sourpuss : {
-			twitter_url : "https://twitter.com/SourpussBrand",
-			fb_url : "https://www.facebook.com/Sourpussclothing",
-			insta_url : "https://www.instagram.com/sourpussclothing/"
-		}
-	}, true, null, 'misc/center_logo');*/
-	
+	 Alloy.Globals.openWindow('NewsAndSocial', {
+	 prb : {
+	 twitter_url : "https://twitter.com/punkrockbowling",
+	 fb_url : "https://www.facebook.com/Punk-Rock-Bowling-and-Music-Festival-288077407910557/",
+	 insta_url : "https://www.instagram.com/punkrockbowling/"
+	 },
+	 sourpuss : {
+	 twitter_url : "https://twitter.com/SourpussBrand",
+	 fb_url : "https://www.facebook.com/Sourpussclothing",
+	 insta_url : "https://www.instagram.com/sourpussclothing/"
+	 }
+	 }, true, null, 'misc/center_logo');*/
+
 };
 
 nsLanding.checkLocationPermissions = function() {

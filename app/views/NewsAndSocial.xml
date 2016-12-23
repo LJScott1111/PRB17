@@ -2,15 +2,20 @@
 	<View id="vwMain" class="vertical_layout" backgroundImage='icons/distress_bg.png'>
 
 		<View class="vertical_layout" backgroundColor="#000">
-			<View class="logo_view padding_bottom">
+			<View class="logo_view padding_bottom horizontal_layout">
 
+				<View id="sourpuss_view">
+					<ImageView id="sourpuss" class="touch_false"></ImageView>
+				</View>
+				<View class="vertical_separator padding_top"></View>
 				<View id="prb_view">
 					<ImageView id="prb" class="touch_false"></ImageView>
 				</View>
 				<View class="vertical_separator padding_top"></View>
-				<View id="sourpuss_view">
-					<ImageView id="sourpuss" class="touch_false"></ImageView>
+				<View id="hard_times_view">
+					<ImageView id="hard_times" class="touch_false"></ImageView>
 				</View>
+				
 			</View>
 		</View>
 		<View class="absolute_layout" backgroundColor="#1A1A1A">

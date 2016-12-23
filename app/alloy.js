@@ -439,9 +439,11 @@ Alloy.Globals.appData = {
 	"venues" : []
 };
 
+/*
 Alloy.Globals.Facebook = require('facebook');
 Alloy.Globals.Facebook.appid = Alloy.Globals.fbAppID();
 Alloy.Globals.Facebook.permissions = ['email'];
+*/
 
 // Pageflow
 Alloy.Globals.jolicode = {};
@@ -464,15 +466,16 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, c
 			controller : controller,
 			backButton : {
 				image : '/icons/back.png',
-				tintColor : '#dc0000',
+				tintColor : 'transparent',
 				width : '35dp',
 				height : '35dp',
 				left : 0,
-				backgroundColor : '#000000',
+				// backgroundColor : '#000000',
 				hidden : newOne === true ? false : true
 			},
 			navBar : {
-				backgroundColor : '#000000',
+				// backgroundColor : '#000000',
+				backgroundImage: '/icons/header_bg.png',
 				left : 'misc/openMenu',
 				// right : 'misc/right_logo',
 				right : rightLogo,
