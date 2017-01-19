@@ -18,20 +18,28 @@ $.where_view.addEventListener('click', function() {
 	nsEventList.showVenueList();
 });
 
+nsEventList.getDay = function(timestamp, type) {
+	var dateObj = nsGridSchedule.momentjs(timestamp * 1000);
+
+	if (type === "day") {
+		return dateObj.format('dddd');
+	} else {
+		return dateObj.format('h:m a');
+	}
+};
+
 nsEventList.showBandList = function() {
 	$.show_list.removeAllChildren();
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	var bandlist = [];
 	var currentCityData = [];
 	var show_date = '',
-	    today = new Date(1495148400000);
+	    today = new Date();
+	// TODO: remove: This is for testing -1495148400000
 
 	for (i in appdata.details) {
 		show_date = new Date(appdata.details[i].showDetails.start_time * 1000);
-		// console.log('--- ', show_date.toDateString(), today.toDateString());
-
-		// console.log(appdata.details[i].showDetails.location.toLowerCase(), $.args.city);
-		if (show_date.toDateString() == today.toDateString() && appdata.details[i].showDetails.location.toLowerCase().replace(" ", "") === $.args.city && appdata.details[i].bandDetails) {
+		if (appdata.details[i].showDetails.location.toLowerCase().replace(" ", "") === $.args.city && appdata.details[i].bandDetails) {
 			currentCityData.push({
 				showDetails : appdata.details[i].showDetails,
 				bandDetails : appdata.details[i].bandDetails,
@@ -47,7 +55,8 @@ nsEventList.showBandList = function() {
 	var list = searchList.init("BandList", {
 		list : bandlist,
 		currentCityData : currentCityData,
-		listType: 'time'
+		listType : 'time',
+		screen : 'schedule'
 	}, $.args.city);
 	console.debug(JSON.stringify(list));
 	Alloy.Globals.loading.hide();
@@ -60,11 +69,12 @@ nsEventList.showVenueList = function() {
 	var venuelist = [];
 	var currentCityData = [];
 	var show_date = '',
-	    today = new Date(1495148400000);
+	    today = new Date();
+	// TODO: remove: This is for testing - 1495148400000 - show_date.toDateString() == today.toDateString() &&
 	for (i in appdata.details) {
 		show_date = new Date(appdata.details[i].showDetails.start_time * 1000);
 
-		if (show_date.toDateString() == today.toDateString() && appdata.details[i].venueDetails && appdata.details[i].venueDetails.location.replace(" ", "") === $.args.city) {
+		if (appdata.details[i].venueDetails && appdata.details[i].venueDetails.location.replace(" ", "") === $.args.city) {
 			currentCityData.push({
 				showDetails : appdata.details[i].showDetails,
 				bandDetails : appdata.details[i].bandDetails,
@@ -79,7 +89,8 @@ nsEventList.showVenueList = function() {
 	var searchList = require("searchList");
 	var list = searchList.init("VenueList", {
 		list : venuelist,
-		currentCityData : currentCityData
+		currentCityData : currentCityData,
+		screen : 'schedule'
 	}, $.args.city);
 	console.debug(JSON.stringify(list));
 	$.show_list.add(list);

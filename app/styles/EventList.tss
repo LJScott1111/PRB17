@@ -49,8 +49,3 @@
 "#when_lbl": {
 	color: '#cc0000'
 }
-
-"#show_list": {
-	top: '50dp',
-	bottom: 0
-}

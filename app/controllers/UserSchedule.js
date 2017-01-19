@@ -1,11 +1,9 @@
-var nsUserSchedule = {};
-nsUserSchedule.args = arguments[0];
-nsUserSchedule.serviceCalls = require("serverCalls");
+var nsGridSchedule = {};
+nsGridSchedule.args = [];
+nsGridSchedule.momentjs = require('moment');
 
-nsUserSchedule.momentjs = require('moment');
-
-nsUserSchedule.getDay = function(timestamp, type) {
-	var dateObj = nsUserSchedule.momentjs(timestamp * 1000);
+nsGridSchedule.getDay = function(timestamp, type) {
+	var dateObj = nsGridSchedule.momentjs(timestamp * 1000);
 
 	if (type === "day") {
 		return dateObj.format('dddd');
@@ -14,109 +12,7 @@ nsUserSchedule.getDay = function(timestamp, type) {
 	}
 };
 
-nsUserSchedule.createList = function(shows) {
-	$.vwBandSchedule.removeAllChildren();
-	var len = shows.length;
-	if (len > 0) {
-		var tabledata = [];
-
-		for (var i = 0; i < len; i++) {
-
-			var time = nsUserSchedule.getDay(shows[i].showDetails.start_time, "time");
-
-			var row = Titanium.UI.createTableViewRow({
-				top : 10,
-				height : Titanium.UI.SIZE,
-				width : Titanium.UI.SIZE,
-				rowIndex : i,
-				rawData : shows[i]
-			});
-
-			var vwRowView = Titanium.UI.createView({
-				height : Titanium.UI.SIZE,
-				width : Titanium.UI.FILL,
-				top : 0
-			});
-
-			var ivImage = Titanium.UI.createImageView({
-				left : 10,
-				top : 5,
-				bottom : 5,
-				width : Alloy.Globals.platformWidth * 0.25,
-				height : Alloy.Globals.platformHeight * 0.088,
-				borderColor : "#000000",
-				image : shows[i].bandDetails.image_link
-			});
-
-			vwRowView.add(ivImage);
-
-			var lblName = Titanium.UI.createLabel({
-				left : Alloy.Globals.platformWidth * 0.30,
-				text : shows[i].bandDetails.name,
-				height : Titanium.UI.SIZE,
-				width : "50%",
-				color : "#000000",
-				font : {
-					fontSize : Alloy.Globals.theme.fonts.size20Fonts
-				}
-			});
-
-			vwRowView.add(lblName);
-
-			var lblTime = Titanium.UI.createLabel({
-				right : 5,
-				text : time + "\n" + shows[i].venueDetails.name,
-				color : "#000000",
-				height : Titanium.UI.SIZE,
-				width : "30%",
-				textAlign : Titanium.UI.TEXT_ALIGNMENT_CENTER,
-				font : {
-					fontSize : Alloy.Globals.theme.fonts.size15Fonts,
-					fontWeight : "bold"
-				}
-			});
-
-			vwRowView.add(lblTime);
-
-			row.add(vwRowView);
-			tabledata.push(row);
-		}
-
-		var tableView = Titanium.UI.createTableView({
-			data : tabledata,
-			top : 0,
-			editable : true
-		});
-
-		tableView.addEventListener('delete', function(e) {
-
-			nsUserSchedule.serviceCalls.deleteUserSchedule(e.row.rawData.showDetails._id, function() {
-
-				Alloy.Globals.getAndStoreData(function() {
-
-					nsUserSchedule.serviceCalls.getUserSchedule(function(result) {
-
-						nsUserSchedule.args = result;
-						nsUserSchedule.getList(nsUserSchedule.currentDay);
-					});
-				});
-			});
-		});
-
-		$.vwBandSchedule.add(tableView);
-
-	} else {
-		var lblNoShows = Titanium.UI.createLabel({
-			text : "No shows"
-		});
-
-		$.vwBandSchedule.add(lblNoShows);
-	}
-};
-
-nsUserSchedule.currentDay = null;
-
-nsUserSchedule.createLayout = function(data) {
+nsGridSchedule.createLayout = function(data) {
 
 	console.log('dataToCreateSchedule = ', JSON.stringify(data));
 
@@ -128,7 +24,7 @@ nsUserSchedule.createLayout = function(data) {
 
 	var timeBoxWidth = bandBoxWidth / 4;
 
-	console.log('---------- nsUserSchedule.createLayout ---------');
+	console.log('---------- nsGridSchedule.createLayout ---------');
 
 	this.createTimeFrameBox = function(time) {
 
@@ -176,6 +72,8 @@ nsUserSchedule.createLayout = function(data) {
 
 		timeframeContainer.add(placeholder);
 
+		console.error('data.timeframe.timeArray ', JSON.stringify(data.timeframe.timeArray));
+
 		for (i in data.timeframe.timeArray) {
 			timeframeContainer.add(this.createTimeFrameBox(data.timeframe.timeArray[i]));
 		}
@@ -189,8 +87,8 @@ nsUserSchedule.createLayout = function(data) {
 		var left = venueNameViewWidth + 5;
 		console.log('bName = ', bName, ' ', bImage, ' ', showTime);
 
-		var startTime = nsUserSchedule.momentjs(showTime * 1000).format('H.mm');
-		var displayableStartTime = nsUserSchedule.momentjs(showTime * 1000).format('h:mm a');
+		var startTime = nsGridSchedule.momentjs(showTime * 1000).format('H.mm');
+		var displayableStartTime = nsGridSchedule.momentjs(showTime * 1000).format('h:mm a');
 
 		console.log('data.timeArray ', JSON.stringify(data.timeframe.timeArray));
 		console.log('timeframe startTime ', startTime);
@@ -201,7 +99,7 @@ nsUserSchedule.createLayout = function(data) {
 
 			var splitedTime = startTime.split('.')[1];
 			var mainTimeBlock = startTime.split('.')[0];
-			console.log('MainTimeBlock',mainTimeBlock,index);
+			console.log('MainTimeBlock', mainTimeBlock, index);
 			var index = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]);
 
 			if (data.timeframe.timeArray[i].id == mainTimeBlock) {
@@ -228,14 +126,8 @@ nsUserSchedule.createLayout = function(data) {
 					//break;
 				}
 			}
-			console.log('LEFT:',left);
+			console.log('LEFT:', left);
 		}
-		
-		//var randomColor = (Math.floor((Math.random()*222)+33).toString(16))+(Math.floor((Math.random()*22‌​2)+33).toString(16))+(Math.floor((Math.random()*222)+33).toString(16));
-		//var randomRed = Math.floor((Math.random()*222)+33).toString(16);
-		//var randomGreen = Math.floor((Math.random()*222)+33).toString(16);
-		//var randomBlue = Math.floor((Math.random()*222)+33).toString(16);
-		//var randomColor = '#' + randomRed + randomGreen + randomBlue;
 
 		var bandBoxView = Titanium.UI.createView({
 			layout : 'vertical',
@@ -245,7 +137,7 @@ nsUserSchedule.createLayout = function(data) {
 			backgroundColor : '#ffffff',
 			borderRadius : 3,
 			left : left,
-			top: 0,
+			top : 0,
 			bandId : bandId
 		});
 
@@ -267,8 +159,7 @@ nsUserSchedule.createLayout = function(data) {
 
 		var bandName = Titanium.UI.createLabel({
 			left : 5,
-			top: 5,
-			//height : Titanium.UI.SIZE,
+			top : 5,
 			width : Titanium.UI.FILL,
 			text : bName,
 			ellipsize : true,
@@ -279,13 +170,12 @@ nsUserSchedule.createLayout = function(data) {
 			color : '#000000',
 			font : {
 				fontSize : Alloy.Globals.theme.fonts.size10Fonts,
-				fontWeight:'bold'
+				fontWeight : 'bold'
 			}
 		});
-		
+
 		var bandStartTime = Titanium.UI.createLabel({
-			left: 5,
-			//height : Titanium.UI.SIZE,
+			left : 5,
 			width : Titanium.UI.FILL,
 			text : displayableStartTime,
 			ellipsize : true,
@@ -296,11 +186,10 @@ nsUserSchedule.createLayout = function(data) {
 			color : '#FF0000',
 			font : {
 				fontSize : Alloy.Globals.theme.fonts.size10Fonts,
-				fontWeight: 'bold'
+				fontWeight : 'bold'
 			}
 		});
 
-		//bandBoxView.add(bandImage);
 		bandBoxView.add(bandName);
 		bandBoxView.add(bandStartTime);
 		return bandBoxView;
@@ -309,8 +198,6 @@ nsUserSchedule.createLayout = function(data) {
 
 	// Container row of bands - starts from here
 	this.createBandBoxContainer = function(venue) {
-
-		// console.log('venue = ', venue);
 
 		var bandBoxContainer = Titanium.UI.createView({
 			width : Titanium.UI.FILL,
@@ -347,7 +234,6 @@ nsUserSchedule.createLayout = function(data) {
 		bandBoxContainer.add(venueNameView);
 
 		for (i in venue.shows) {
-			// console.error('venue.show = ', venue.shows[i]);
 			bandBoxContainer.add(this.createBandBox(venue.shows[i].band.name, venue.shows[i].band.image_link, venue.shows[i].show.start_time, venue.shows[i].band._id));
 		}
 		return bandBoxContainer;
@@ -384,7 +270,6 @@ nsUserSchedule.createLayout = function(data) {
 		});
 
 		for (i in data.showsGroupedByVenue) {
-			// console.error('data.showsGroupedByVenue ', data.showsGroupedByVenue[i]);
 			verticalScrollContainer.add(this.createBandBoxContainer(data.showsGroupedByVenue[i]));
 		}
 
@@ -396,10 +281,10 @@ nsUserSchedule.createLayout = function(data) {
 
 	this.addScheduleUI();
 
-	console.log('---------- End of nsUserSchedule.createLayout ---------');
+	console.log('---------- End of nsGridSchedule.createLayout ---------');
 };
 
-nsUserSchedule.createDataForLayout = function(data) {
+nsGridSchedule.createDataForLayout = function(data) {
 
 	$.vwBandSchedule.removeAllChildren();
 
@@ -409,7 +294,7 @@ nsUserSchedule.createDataForLayout = function(data) {
 			top : 20,
 			left : 20,
 			right : 20,
-			text : L('no_show_selected_for_this_day'),
+			text : ($.args.type != 'eventSchedule') ? L('no_show_selected_for_this_day') : L('no_show_on_this_day'),
 			textAlign : Titanium.UI.TEXT_ALIGNMENT_CENTER,
 			color : "#F5C787",
 			font : {
@@ -421,25 +306,78 @@ nsUserSchedule.createDataForLayout = function(data) {
 		$.vwBandSchedule.add(lblNoShows);
 		return;
 	}
+
 	var dataToCreateSchedule = {
 		timeframe : {}
 	};
 
 	// Hours array by default
-	var hours = [{id:12,value:'12',unit:'pm'},{id:13,value:'1',unit:'pm'},{id:14,value:'2',unit:'pm'},{id:15,value:'3',unit:'pm'},{id:16,value:'4',unit:'pm'},{id:17,value:'5',unit:'pm'},{id:18,value:'6',unit:'pm'},{id:19,value:'7',unit:'pm'},{id:20,value:'8',unit:'pm'},{id:21,value:'9',unit:'pm'},{id:22,value:'10',unit:'pm'},{id:23,value:'11',unit:'pm'},{id:'0',value:'12',unit:'am'},{id:1,value:'1',unit:'am'},{id:2,value:'2',unit:'am'},{id:3,value:'3',unit:'am'},{id:4,value:'4',unit:'am'},{id:5,value:'5',unit:'am'},{id:6,value:'6',unit:'am'},{id:7,value:'7',unit:'am'},{id:8,value:'8',unit:'am'},{id:9,value:'9',unit:'am'},{id:10,value:'10',unit:'am'},{id:11,value:'11',unit:'am'}];
+	// var hours = [{id:'0',value:'12',unit:'am'},{id:1,value:'1',unit:'am'},{id:2,value:'2',unit:'am'},{id:3,value:'3',unit:'am'},{id:4,value:'4',unit:'am'},{id:5,value:'5',unit:'am'},{id:6,value:'6',unit:'am'},{id:7,value:'7',unit:'am'},{id:8,value:'8',unit:'am'},{id:9,value:'9',unit:'am'},{id:10,value:'10',unit:'am'},{id:11,value:'11',unit:'am'},{id:12,value:'12',unit:'pm'},{id:13,value:'1',unit:'pm'},{id:14,value:'2',unit:'pm'},{id:15,value:'3',unit:'pm'},{id:16,value:'4',unit:'pm'},{id:17,value:'5',unit:'pm'},{id:18,value:'6',unit:'pm'},{id:19,value:'7',unit:'pm'},{id:20,value:'8',unit:'pm'},{id:21,value:'9',unit:'pm'},{id:22,value:'10',unit:'pm'},{id:23,value:'11',unit:'pm'}];
+	var hours = [{
+		id : '0',
+		value : '12',
+		unit : 'am'
+	}, {
+		id : 1,
+		value : '1',
+		unit : 'am'
+	}, {
+		id : 2,
+		value : '2',
+		unit : 'am'
+	}, {
+		id : 14,
+		value : '2',
+		unit : 'pm'
+	}, {
+		id : 15,
+		value : '3',
+		unit : 'pm'
+	}, {
+		id : 16,
+		value : '4',
+		unit : 'pm'
+	}, {
+		id : 17,
+		value : '5',
+		unit : 'pm'
+	}, {
+		id : 18,
+		value : '6',
+		unit : 'pm'
+	}, {
+		id : 19,
+		value : '7',
+		unit : 'pm'
+	}, {
+		id : 20,
+		value : '8',
+		unit : 'pm'
+	}, {
+		id : 21,
+		value : '9',
+		unit : 'pm'
+	}, {
+		id : 22,
+		value : '10',
+		unit : 'pm'
+	}, {
+		id : 23,
+		value : '11',
+		unit : 'pm'
+	}];
 
 	// Get the min and max time of shows from the data set
 	var min = data[0].showDetails.start_time,
 	    max = data[0].showDetails.start_time;
-	    console.log('MINMAX',min,max);
+	console.log('MINMAX', min, max);
+	console.error('DATA ', JSON.stringify(data));
 
 	var minIndex = 0,
 	    maxIndex = 0;
 	for (i in data) {
 
 		console.log('DATE = ', new Date(data[i].showDetails.start_time * 1000));
-		// console.log(data[i].showDetails.start_time);
-		// console.log(data[i].showDetails.start_time - min);
 		if (data[i].showDetails.start_time <= min) {
 
 			min = data[i].showDetails.start_time;
@@ -453,9 +391,10 @@ nsUserSchedule.createDataForLayout = function(data) {
 	}
 
 	console.error('minIndex = ', minIndex, '/n maxIndex = ', maxIndex);
-
 	console.log('min = ', Alloy.Globals.getFormattedDate(min), '\n max = ', Alloy.Globals.getFormattedDate(max));
 	console.log('min = ', new Date(min * 1000), ' max = ', new Date(max * 1000), ' difference ', new Date(max * 1000).getHours() - new Date(min * 1000).getHours());
+	console.log('min = ', new Date(min * 1000).toISOString(), '\n max = ', new Date(max * 1000).toISOString());
+	console.error('min = ', new Date(min * 1000).toTimeString(), '\n max = ', new Date(max * 1000).toTimeString());
 
 	var minMaxDifference = (new Date(max * 1000).getHours() - new Date(min * 1000).getHours()) + 1;
 	// numberOfDateBlocks = 4 blocks for 1 hour => Example 12:00hours = block for 12:00, 12:15, 12:30 and 12:45 + 4 blocks for the last hour
@@ -463,54 +402,41 @@ nsUserSchedule.createDataForLayout = function(data) {
 
 	dataToCreateSchedule.timeframe.numberOfBlocks = numberOfDateBlocks;
 
-	min = Math.floor(nsUserSchedule.momentjs(min * 1000).format('H.mm'));
-	max = Math.ceil(nsUserSchedule.momentjs(max * 1000).format('H.mm'));
+	min = Math.floor(nsGridSchedule.momentjs(min * 1000).format('H.mm'));
+	max = Math.ceil(nsGridSchedule.momentjs(max * 1000).format('H.mm'));
 
 	console.log('min = ', min, '\n max = ', max);
 
 	// Create array to pass in time layout = value of DateBlocks
-	var startTime = {};
+	var startTime = {},
+	    endTime = {};
 	var timeArray = hours;
-	for (i in hours) {
+	for (var i in hours) {
 		if (hours[i].id == min) {
+
+			console.error('hours[i].id == min ', hours[i].id, min, i);
 			startTime = hours[i];
-			//timeArray = hours.splice(i, minMaxDifference + 1);
+			timeArray = hours.slice(parseInt(i));
+			console.error('timeArray ---> ', JSON.stringify(timeArray));
+			break;
+		}
+	}
+
+	for (var i in hours) {
+		if (hours[i].id == max) {
+			endTime = hours[i];
+			timeArray = timeArray.splice(0, (parseInt(i) + 1));
 			break;
 		}
 	}
 
 	dataToCreateSchedule.timeframe.startTime = JSON.parse(JSON.stringify(startTime));
+	dataToCreateSchedule.timeframe.endTime = JSON.parse(JSON.stringify(endTime));
 	dataToCreateSchedule.timeframe.timeArray = JSON.parse(JSON.stringify(timeArray));
 
 	console.log('startTime ', startTime);
+	console.log('endTime ', endTime);
 	console.log('hours for the day -> timeArray = ', JSON.stringify(timeArray));
-	// console.log('hours array length ', hours.length);
-
-	// Make time data for shows (12pm, 12:30pm, 1pm, 1:30pm ... so on)
-	/*
-	
-	var timeDataForShows = [];
-	for (i in timeArray) {
-		timeDataForShows.push(timeArray[i].value + timeArray[i].unit);
-		timeDataForShows.push(timeArray[i].value + ':15' + timeArray[i].unit);
-		timeDataForShows.push(timeArray[i].value + ':30' + timeArray[i].unit);
-		timeDataForShows.push(timeArray[i].value + ':45' + timeArray[i].unit);
-	}
-	// console.log('timeDataForShows ', timeDataForShows);
-
-	dataToCreateSchedule.timeframe.timeDataForShows = JSON.parse(JSON.stringify(timeDataForShows));
-	*/
-	
-	///------------- End of time data here ---------------------------
-
-	// Get unique venue details for selected day
-	// ---------- For testing : TODO: remove later------------------
-	// var venue_ids = [];
-	// for (i in data) {
-	// venue_ids.push(data[i].venueDetails._id);
-	// }
-	// console.log('venue_ids ', venue_ids.length, ' ', JSON.stringify(venue_ids));
-	// ---------- For testing : TODO: remove later------------------
 
 	var lookup = {};
 	var showsGroupedByVenue = [];
@@ -521,7 +447,6 @@ nsUserSchedule.createDataForLayout = function(data) {
 
 		if (!( venue in lookup)) {
 			lookup[venue] = 1;
-			// showsGroupedByVenue.push(venue);
 			showsGroupedByVenue.push({
 				venue_id : venue,
 				venueName : item.venueDetails.name,
@@ -529,8 +454,6 @@ nsUserSchedule.createDataForLayout = function(data) {
 			});
 		}
 	}
-
-	// console.log('venue result ', showsGroupedByVenue.length, ' ', JSON.stringify(showsGroupedByVenue));
 
 	// Group the bands/shows by venues
 	for (i in showsGroupedByVenue) {
@@ -548,12 +471,12 @@ nsUserSchedule.createDataForLayout = function(data) {
 	console.log('venue result after ', showsGroupedByVenue.length, ' ', JSON.stringify(showsGroupedByVenue));
 	dataToCreateSchedule.showsGroupedByVenue = JSON.parse(JSON.stringify(showsGroupedByVenue));
 
-	nsUserSchedule.createLayout(dataToCreateSchedule);
+	nsGridSchedule.createLayout(dataToCreateSchedule);
 };
 
-nsUserSchedule.getList = function(source) {
+nsGridSchedule.getList = function(source) {
 
-	nsUserSchedule.currentDay = source;
+	nsGridSchedule.currentDay = source;
 	//UI changes
 	var day = source.day.toLowerCase().trim();
 
@@ -615,59 +538,42 @@ nsUserSchedule.getList = function(source) {
 	console.debug("day ", day);
 
 	// day = "tuesday";
-
-	console.debug("day ", day);
+	// console.debug("day ", day);
 
 	var dayOfShow = "";
-	//nsUserSchedule.momentjs(timestamp * 1000);
-
 	var shows = [];
 
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
 
-		dayOfShow = nsUserSchedule.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
-		// console.debug("dayOfShow ", dayOfShow);
+		dayOfShow = nsGridSchedule.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
 		if (day === dayOfShow) {
 			for (var j = 0,
-			    len2 = nsUserSchedule.args.length; j < len2; j++) {
-
-				// console.log(appdata.details[i].showDetails._id, " ", nsUserSchedule.args[j].show_id);
-
-				if (nsUserSchedule.args[j].show_id === appdata.details[i].showDetails._id) {
+			    len2 = nsGridSchedule.args.length; j < len2; j++) {
+				if (nsGridSchedule.args[j].show_id === appdata.details[i].showDetails._id) {
 					shows.push(appdata.details[i]);
 				}
 			}
 		}
 	}
 	console.log('shows data ', JSON.stringify(shows));
-
-	// var tabledata = [];
-	// nsUserSchedule.createList(shows);
-	nsUserSchedule.createDataForLayout(shows);
+	nsGridSchedule.createDataForLayout(shows);
 };
 
-nsUserSchedule.getShows = function() {
+nsGridSchedule.getShows = function() {
 	var shows = [];
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
 
-		dayOfShow = nsUserSchedule.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
-		// console.debug("dayOfShow ", dayOfShow);
+		dayOfShow = nsGridSchedule.getDay(appdata.details[i].showDetails.start_time, "day").toLowerCase().trim();
 		for (var j = 0,
-		    len2 = nsUserSchedule.args.length; j < len2; j++) {
+		    len2 = nsGridSchedule.args.length; j < len2; j++) {
 
-			// console.log(appdata.details[i].showDetails._id, " ", nsUserSchedule.args[j].show_id);
-
-			if (nsUserSchedule.args[j].show_id === appdata.details[i].showDetails._id) {
-				// console.log(nsUserSchedule.args[j].show_id === appdata.details[i].showDetails._id);
+			if (nsGridSchedule.args[j].show_id === appdata.details[i].showDetails._id) {
 				shows.push(appdata.details[i]);
-				// console.debug(JSON.stringify(shows));
-				// console.debug(i, " ", j);
 			}
 		}
-		// console.log("1", " ", i);
 	}
 
 	console.log("User shows " + shows.length + JSON.stringify(shows));
@@ -675,57 +581,58 @@ nsUserSchedule.getShows = function() {
 	return shows.length;
 };
 
-nsUserSchedule.init = function() {
-	console.debug("User schedule: ", JSON.stringify(nsUserSchedule.args));
+nsGridSchedule.init = function() {
+	nsGridSchedule.args = JSON.parse(JSON.stringify($.args.schedule));
+	console.error('nsGridSchedule grid added nsGridSchedule.args ', JSON.stringify(nsGridSchedule.args));
 
-	var shows = nsUserSchedule.getShows();
+	var shows = nsGridSchedule.getShows();
 	console.debug("SHOWS LENGTH ", shows);
 
-	if (shows > 0) {
+	// if (shows > 0) {
 
-		$.vwNoSchedule.setHeight(0);
-		$.vwNoSchedule.setVisible(false);
+	// $.vwNoSchedule.setHeight(0);
+	// $.vwNoSchedule.setVisible(false);
 
-		// Setting width of days
-		$.vwDays2.setWidth(Alloy.Globals.platformWidth / 2);
+	// Setting width of days
+	$.vwDays2.setWidth(Alloy.Globals.platformWidth / 2);
 
-		var vwDaysWidth = Alloy.Globals.platformWidth / 4.15;
-		$.vwDay1.setWidth(vwDaysWidth);
-		$.vwDay1.setLeft(2);
+	var vwDaysWidth = Alloy.Globals.platformWidth / 4.15;
+	$.vwDay1.setWidth(vwDaysWidth);
+	$.vwDay1.setLeft(2);
 
-		$.vwDay2.setWidth(vwDaysWidth);
-		$.vwDay2.setLeft(2);
+	$.vwDay2.setWidth(vwDaysWidth);
+	$.vwDay2.setLeft(2);
 
-		$.vwDay3.setWidth(vwDaysWidth);
-		$.vwDay3.setRight(2);
+	$.vwDay3.setWidth(vwDaysWidth);
+	$.vwDay3.setRight(2);
 
-		$.vwDay4.setWidth(vwDaysWidth);
-		$.vwDay4.setRight(2);
+	$.vwDay4.setWidth(vwDaysWidth);
+	$.vwDay4.setRight(2);
 
-		// Event listeners for show views
-		$.vwDay1.addEventListener('click', function(e) {
-			nsUserSchedule.getList(e.source);
-		});
+	// Event listeners for show views
+	$.vwDay1.addEventListener('click', function(e) {
+		nsGridSchedule.getList(e.source);
+	});
 
-		$.vwDay2.addEventListener('click', function(e) {
-			nsUserSchedule.getList(e.source);
-		});
+	$.vwDay2.addEventListener('click', function(e) {
+		nsGridSchedule.getList(e.source);
+	});
 
-		$.vwDay3.addEventListener('click', function(e) {
-			nsUserSchedule.getList(e.source);
-		});
+	$.vwDay3.addEventListener('click', function(e) {
+		nsGridSchedule.getList(e.source);
+	});
 
-		$.vwDay4.addEventListener('click', function(e) {
-			nsUserSchedule.getList(e.source);
-		});
+	$.vwDay4.addEventListener('click', function(e) {
+		nsGridSchedule.getList(e.source);
+	});
 
-		nsUserSchedule.getList($.vwDay1);
+	nsGridSchedule.getList($.vwDay1);
 
-	} else {
-		$.lblNoSchedule.setText(L('no_schedule_data'));
-		// $.vwMain.setHeight(0);
-		// $.vwMain.setVisible(false);
-	}
+	// } else {
+	// $.lblNoSchedule.setText(L('no_schedule_data'));
+	// $.vwMain.setHeight(0);
+	// $.vwMain.setVisible(false);
+	// }
 };
 
-nsUserSchedule.init();
+nsGridSchedule.init();

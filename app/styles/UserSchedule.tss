@@ -1,27 +1,9 @@
 
-"#vwMain": {
+"#vwScheduleMain": {
 	top: 0,
 	backgroundColor: "#000000",
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL
-}
-
-"#vwScheduleHeading": {
-	width: Titanium.UI.FILL,
-	height: Titanium.UI.SIZE,
-	top: 0,
-	backgroundImage: '/icons/bands.png'
-}
-
-"#lblYourSchedule": {
-	top: 5,
-	bottom: 5,
-	height: Titanium.UI.SIZE,
-	width: Titanium.UI.SIZE,
-	color: "#F3CB87",
-	font: {
-		fontSize: Alloy.Globals.theme.fonts.size20Fonts
-	}
 }
 
 ".vwDaysClass": {
@@ -60,48 +42,4 @@
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL,
 	borderColor: 'black'
-}
-
-"#vwNoSchedule": {
-	height: Titanium.UI.FILL,
-	width: Titanium.UI.FILL,
-	top: 0,
-	backgroundColor: '#000000',
-	layout: "vertical"
-}
-
-"#lblNoSchedule": {
-	top: 20,
-	left: 20,
-	right: 20,
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	color: "#F5C787",
-	font: {
-		fontSize: Alloy.Globals.theme.fonts.size25Fonts,
-		fontFamily: "KnowYourProduct"
-	}
-}
-
-"#vwImagesNoSchedule": {
-	top: 40,
-	width: Titanium.UI.SIZE,
-	height: Titanium.UI.SIZE,
-	top: 0,
-	layout: "horizontal"
-}
-
-"#ivHand": {
-	// top: 10,
-	left: 5,
-	height: 120,
-	width: Titanium.UI.SIZE,
-	image: "/icons/hand.png"
-}
-
-"#ivStar": {
-	top: 30,
-	right: 5,
-	height: 60,
-	width: Titanium.UI.SIZE,
-	image: "/icons/star_red.png"
 }

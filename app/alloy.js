@@ -457,6 +457,8 @@ if (OS_ANDROID) {
 }
 
 // Open a controller
+Alloy.Globals.rightGridEventListeners = [];
+Alloy.Globals.scheduleEventListeners = [];
 Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, center, rightLogo) {
 
 	if (Alloy.Globals.pageflow.getCurrentPage() == null || newOne === true) {
@@ -466,7 +468,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, c
 			controller : controller,
 			backButton : {
 				image : '/icons/back.png',
-				tintColor : 'transparent',
+				tintColor : 'white',
 				width : '35dp',
 				height : '35dp',
 				left : 0,

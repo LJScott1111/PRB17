@@ -28,7 +28,36 @@ $.buy_tickets.button.addEventListener('click', function() {
 $.lineup.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow('Lineup', {}, true, null, 'misc/center_logo');
+	
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
+
+	console.debug("Alloy.Globals.bands emply ", JSON.stringify(appdata.bands));
+
+	if (appdata.details.length === 0) {
+		Alloy.Globals.loading.show();
+		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+			console.debug("fetchedData ", fetchedData);
+			if (fetchedData) {
+
+				Alloy.Globals.openWindow('BandList', {
+					city : Alloy.Globals.nextEventCity
+				}, true, null, 'misc/center_logo');
+				Alloy.Globals.loading.hide();
+			} else {
+				console.debug("All data did not get downloaded!!!");
+				alert(L('err_fetchingDetails'));
+			}
+			Alloy.Globals.loading.hide();
+		});
+
+	} else {
+		console.log('Opening bands');
+		Alloy.Globals.openWindow('BandList', {
+			city : Alloy.Globals.nextEventCity
+		}, true, null, 'misc/center_logo');
+	}
+	
+	// Alloy.Globals.openWindow('Lineup', {}, true, null, 'misc/center_logo');
 });
 
 $.hotels.button.addEventListener('click', function() {
@@ -196,23 +225,77 @@ $.info.button.addEventListener('click', function() {
  url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
  }, true, null, 'misc/center_logo');
  });
+ 
+ */
 
  $.my_schedule.button.addEventListener('click', function() {
+ 	
+ 	Ti.App.fireEvent('toggleMenu');
+ 	console.error('nsEvents.getSchedule');
+	Alloy.Globals.loading.show();
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
+	if (appdata.details.length === 0) {
+		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+			console.debug("fetchedData ", fetchedData);
+			if (fetchedData) {
+
+				var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
+
+					console.debug(JSON.stringify(schedule));
+
+					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+					Alloy.Globals.openWindow('Schedule', {
+						city : Alloy.Globals.nextEventCity,
+						schedule : schedule
+					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+
+					Alloy.Globals.loading.hide();
+
+				}, function(error) {
+					alert(L('err_fetchingDetails'));
+					Alloy.Globals.loading.hide();
+				});
+
+			} else {
+				console.debug("The data did not get downloaded!!!");
+				alert(L('err_fetchingDetails'));
+				Alloy.Globals.loading.hide();
+			}
+		});
+	} else {
+		var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
+
+			console.debug(JSON.stringify(schedule));
+			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+			Alloy.Globals.openWindow('Schedule', {
+				city : Alloy.Globals.nextEventCity,
+				schedule : schedule
+			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+			Alloy.Globals.loading.hide();
+
+		}, function(error) {
+			alert(L('err_fetchingDetails'));
+			Alloy.Globals.loading.hide();
+		});
+	}
+
+ /*
  Ti.App.fireEvent('toggleMenu');
- Alloy.Globals.loading.show();
- var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
-
- console.debug(JSON.stringify(schedule));
- Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
- Alloy.Globals.loading.hide();
-
- }, function(error) {
- alert(L('err_fetchingDetails'));
- Alloy.Globals.loading.hide();
+  Alloy.Globals.loading.show();
+  var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
+ 
+  console.debug(JSON.stringify(schedule));
+  Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+  Alloy.Globals.loading.hide();
+ 
+  }, function(error) {
+  alert(L('err_fetchingDetails'));
+  Alloy.Globals.loading.hide();
+  });*/
+ 
  });
- });
-
+/*
  $.profile.button.addEventListener('click', function(){
  Ti.App.fireEvent('toggleMenu');
  Alloy.Globals.openWindow('Profile', {}, true, null, 'misc/center_logo');

@@ -1,25 +1,25 @@
 var nsEventList = {};
 
-$.when_view.addEventListener('click', function() {
-
-	$.when_lbl.color = '#cc0000';
-	$.where_lbl.color = '#c0c0c0';
-	$.when_selected.backgroundColor = '#cc0000';
-	$.where_selected.backgroundColor = 'transparent';
-	nsEventList.showBandList();
-});
-
-$.where_view.addEventListener('click', function() {
-
-	$.where_lbl.color = '#cc0000';
-	$.when_lbl.color = '#c0c0c0';
-	$.where_selected.backgroundColor = '#cc0000';
-	$.when_selected.backgroundColor = 'transparent';
-	nsEventList.showVenueList();
-});
+// $.when_view.addEventListener('click', function() {
+//
+// $.when_lbl.color = '#cc0000';
+// $.where_lbl.color = '#c0c0c0';
+// $.when_selected.backgroundColor = '#cc0000';
+// $.where_selected.backgroundColor = 'transparent';
+// nsEventList.showBandList();
+// });
+//
+// $.where_view.addEventListener('click', function() {
+//
+// $.where_lbl.color = '#cc0000';
+// $.when_lbl.color = '#c0c0c0';
+// $.where_selected.backgroundColor = '#cc0000';
+// $.when_selected.backgroundColor = 'transparent';
+// nsEventList.showVenueList();
+// });
 
 nsEventList.showBandList = function() {
-	$.show_list.removeAllChildren();
+	$.vwMainList.removeAllChildren();
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	var bandlist = [];
 	var currentCityData = [];
@@ -40,15 +40,16 @@ nsEventList.showBandList = function() {
 	var searchList = require("searchList");
 	var list = searchList.init("BandList", {
 		list : bandlist,
-		currentCityData : currentCityData
+		currentCityData : currentCityData,
+		screen : 'lineup'
 	}, $.args.city);
 	console.debug(JSON.stringify(list));
 	Alloy.Globals.loading.hide();
-	$.show_list.add(list);
+	$.vwMainList.add(list);
 };
 
 nsEventList.showVenueList = function() {
-	$.show_list.removeAllChildren();
+	$.vwMainList.removeAllChildren();
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	var venuelist = [];
 	var currentCityData = [];
@@ -75,10 +76,11 @@ nsEventList.showVenueList = function() {
 	var searchList = require("searchList");
 	var list = searchList.init("VenueList", {
 		list : venuelist,
-		currentCityData : currentCityData
+		currentCityData : currentCityData,
+		screen : 'lineup'
 	}, $.args.city);
 	console.debug(JSON.stringify(list));
-	$.show_list.add(list);
+	$.vwMainList.add(list);
 	Alloy.Globals.loading.hide();
 };
 

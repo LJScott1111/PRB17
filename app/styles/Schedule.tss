@@ -33,7 +33,7 @@
 	color: '#c0c0c0',
 	font: {
 		fontFamily: "FontAwesome",
-		fontSize: '15dp'
+		fontSize: '18dp'
 	}
 }
 

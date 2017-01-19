@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
+    <guid>912d6693-d5c6-4084-9134-ded88d697d9d</guid>
     <id>com.interfuel.festfuel</id>
     <name>Punk Rock Bowling Mobile</name>
-    <version>2.3.1</version>
+    <version>2.3.4</version>
     <publisher>Buzzplay</publisher>
     <url>http://punkrockbowling.com</url>
     <description>Punk Rock Bowling mobile</description>
@@ -83,7 +84,7 @@
             <service type="interval" url="android_notifications.js"/>
         </services>
         <manifest android:installLocation="preferExternal"
-            android:versionCode="5" android:versionName="5">
+            android:versionCode="8" android:versionName="7.1">
             <uses-permission android:name="android.permission.ACCESS_LOCATION"/>
             <uses-permission android:name="android.permission.ACCESS_GPS"/>
             <uses-permission android:name="android.permission.INTERNET"/>
@@ -122,7 +123,7 @@
         <target device="iphone">true</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>6.0.0.GA</sdk-version>
+    <sdk-version>6.0.1.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
