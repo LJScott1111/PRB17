@@ -19,7 +19,10 @@ nsBandList.getShowsDataForCity = function() {
 	console.error('bandList === ', JSON.stringify(bandlist));
 
 	var searchList = require("searchList");
-	var list = searchList.init("BandList", {list: bandlist, currentCityData: currentCityData}, $.args.city);
+	var list = searchList.init("BandList", {
+		list : bandlist,
+		currentCityData : currentCityData
+	}, $.args.city);
 	console.debug(JSON.stringify(list));
 	Alloy.Globals.loading.hide();
 	$.list_view.add(list);

@@ -138,7 +138,7 @@ nsBandProfile.init = function() {
 
 	console.log('bandprodata:' + JSON.stringify(nsBandProfile.data));
 
-	var userSchedule = Ti.App.Properties.getList('userSchedule');
+	var userSchedule = Ti.App.Properties.getObject('userSchedule');
 	for (var i in userSchedule) {
 		if (userSchedule[i].band_id == nsBandProfile.data.bandDetails._id) {
 			$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);

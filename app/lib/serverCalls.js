@@ -344,7 +344,7 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 					start_time : start_time
 				});
 
-				Ti.App.Properties.setList('userSchedule', userSchedule);
+				Ti.App.Properties.setObject('userSchedule', userSchedule);
 				onloadCallback();
 			}
 			dialogBox.hide();
@@ -364,7 +364,7 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 			start_time : start_time
 		});
 
-		Ti.App.Properties.setList('userSchedule', userSchedule);
+		Ti.App.Properties.setObject('userSchedule', userSchedule);
 		onloadCallback();
 	}
 
@@ -413,7 +413,7 @@ nsServerCalls.deleteUserSchedule = function(show_id, onloadCallback, errorCallba
 		}
 	}
 
-	Ti.App.Properties.setList('userSchedule', userSchedule);
+	Ti.App.Properties.setObject('userSchedule', userSchedule);
 	onloadCallback();
 };
 
