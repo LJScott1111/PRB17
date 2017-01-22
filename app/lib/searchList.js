@@ -43,7 +43,7 @@ nsSearchList.getList = function(day) {
 nsSearchList.createHeader = function() {
 	var header = Ti.UI.createView({
 		height : Titanium.UI.SIZE,
-		width : Titanium.UI.FILL,
+		width : Titanium.UI.SIZE,
 		layout : "horizontal",
 		top : 5
 	});
