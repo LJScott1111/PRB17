@@ -17,13 +17,14 @@
 				</View>
 			</View>
 			<View id="vwSocialActivities">
+				<View class="horizontal_layout width_size">
 
-				<ImageView id="ivSoundCloud" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
-				<ImageView id="ivYouTube" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
-				<ImageView id="ivWebsite" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
-				<ImageView id="ivFacebook" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
-				<ImageView id="ivTwitter" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
-
+					<ImageView id="ivSoundCloud" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
+					<ImageView id="ivYouTube" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
+					<ImageView id="ivWebsite" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
+					<ImageView id="ivFacebook" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
+					<ImageView id="ivTwitter" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
+				</View>
 			</View>
 			<Label id="lblMoreInfo"></Label>
 		</ScrollView>

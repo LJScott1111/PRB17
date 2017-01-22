@@ -125,14 +125,18 @@
 }
 
 "#vwSocialActivities": {
-	top: 0,
+	// top: 0,
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL,
-	layout: "horizontal",
+	layout: "absolute",
 	backgroundColor: '#ffffff',
 	borderColor: '#000000',
 	borderRadius: 10,
 	borderWidth: 1
+}
+
+".width_size": {
+	width: Titanium.UI.SIZE
 }
 
 ".socialIconClass": {
