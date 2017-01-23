@@ -3,49 +3,33 @@
 		<View id="vwTopOptions">
 
 			<Label id="title" class="frizQuaT" visible="false"/>
-			
-			<View class="absolute_layout">
-				<ImageView id="mainview_text"></ImageView>
-			</View>
-			
-			<!-- <View id="lineup_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule" height="0">
-				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblLineup" text="L('lineup').toUpperCase()"></Label>
-			</View>
-			<View id="club_shows_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule" height="0">
-				<Label id="club_shows" class="options_lbl knowYourProduct touch_false" text="L('club_shows').toUpperCase()"></Label>
-			</View>
-			<View id="bands_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule" height="0">
-				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblBands" text="L('bands').toUpperCase()"></Label>
-			</View> -->
-			
-			<!-- <View id="events_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getEvents">
-				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblEvents" text="L('events').toUpperCase()"></Label>
-			</View> -->
-			<!-- <View id="schedule_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getSchedule" height="0">
-				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblSchedule" text="L('my_schedule').toUpperCase()"></Label>
-			</View> -->
-			<!-- <View id="food_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getFood">
-				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblFood" text="L('food').toUpperCase()"></Label>
-			</View> -->
 
-			<!-- <View id="venues_view" class="absolute_layout options_view padding_top" onClick="nsLanding.getVenues">
-				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblVenues" text="L('buy_tickets').toUpperCase()"></Label>
+			<!-- <View class="absolute_layout">
+			<ImageView id="mainview_text"></ImageView>
 			</View> -->
-
-			<!-- <View id="buy_tickets_view" class="absolute_layout" >
-				<Label class="options_lbl lbl_settings knowYourProduct" id="lblBuyTickets" text="L('buy_tickets').toUpperCase()" onClick="nsLanding.buyTickets" ></Label>
-			</View> -->
-			
-			<View id="buy_tickets_view" class="absolute_layout options_view" onClick="nsLanding.buyTickets">
-				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblBuyTickets" text="L('buy_tickets').toUpperCase()"></Label>
-			</View>
-			
-			<View id="news_view" class="absolute_layout options_view" onClick="nsLanding.getNews">
-				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblNews" text="L('prb_shop').toUpperCase()"></Label>
-			</View>
-			
-			<View id="hotels_view" class="absolute_layout options_view" onClick="nsLanding.getHotels">
-				<Label class="options_lbl lbl_settings knowYourProduct touch_false" id="lblHotels" text="L('hotels').toUpperCase()"></Label>
+			<View class="vertical_layout" top="60dp">
+				<View class="option_groups">
+					<View id="lineup_action" class="options_image" width="150dp" backgroundImage="/icons/lineup.png"></View>
+					<View id="club_shows_action" class="options_image" width="140dp" left="10dp" backgroundImage="/icons/club_shows.png"></View>
+				</View>
+				<View class="option_groups">
+					<View id="bands_action" class="options_image" width="100dp" backgroundImage="/icons/bands.png"></View>
+					<View id="my_schedule_action" class="options_image" width="140dp" left="10dp" backgroundImage="/icons/my_schedule.png"></View>
+				</View>
+				<View class="option_groups">
+					<View id="book_hotels_action" class="options_image" width="150dp" backgroundImage="/icons/book_hotels.png"></View>
+					<View id="merch_action" class="options_image" width="90dp" left="10dp" backgroundImage="/icons/merch.png"></View>
+				</View>
+				<View class="option_groups">
+					<View id="news_action" class="options_image" width="150dp" backgroundImage="/icons/news.png"></View>
+					<View id="bowling_action" class="options_image" width="90dp" left="10dp" backgroundImage="/icons/bowling.png"></View>
+				</View>
+				<View class="option_groups">
+					<View id="food_vendors_action" class="options_image" width="150dp" backgroundImage="/icons/food_vendors.png"></View>
+				</View>
+				<View class="option_groups">
+					<View id="buy_tickets_action" class="options_image" width="140dp" backgroundImage="/icons/buy_tickets.png"></View>
+				</View>
 			</View>
 		</View>
 		<ImageView class="character"></ImageView>

@@ -4,7 +4,10 @@
 		<ScrollView class="container padding_bottom">
 
 			<Require id="buy_tickets" src="misc/menu_button" title="L('buy_tickets').toUpperCase()" />
-			<Require id="lineup" src="misc/menu_button" title="L('lineup').toUpperCase()" />
+			<Require id="festival_lineup" src="misc/menu_button" title="L('festival_lineup').toUpperCase()" />
+			<Require id="bands" src="misc/menu_button" title="L('bands').toUpperCase()" />
+			<Require id="club_shows" src="misc/menu_button" title="L('club_shows').toUpperCase()" />
+			<Require id="contests" src="misc/menu_button" title="L('contests').toUpperCase()" />
 			<Require id="hotels" src="misc/menu_button" title="L('hotels').toUpperCase()" />
 			<Require id="prb_shop" src="misc/menu_button" title="L('prb_shop').toUpperCase()" />
 			<!-- <Require id="venues" src="misc/menu_button" title="L('venues').toUpperCase()" />
@@ -18,9 +21,9 @@
 				<Require id="art" src="misc/menu_button" title="L('art').toUpperCase()" />
 				<Require id="map" src="misc/menu_button" title="L('map').toUpperCase()" />
 				<Require id="denver" src="misc/menu_button" title="L('denver').toUpperCase()" />
-			</View>
+			</View> -->
+			<Require id="sponsers" src="misc/menu_button" title="L('sponsers').toUpperCase()" />
 			<Require id="food" src="misc/menu_button" title="L('food').toUpperCase()" />
-			<Require id="sponsers" src="misc/menu_button" title="L('sponsers').toUpperCase()" /> -->
 			<Require id="info" src="misc/menu_button" title="L('news_social').toUpperCase()" />
 			<!-- <Require id="asburypark" src="misc/menu_button" title="L('asburypark').toUpperCase()" />
 			<Require id="about" src="misc/menu_button" title="L('about').toUpperCase()" /> -->

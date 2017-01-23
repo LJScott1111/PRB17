@@ -39,6 +39,7 @@
 	<string name="denver">Denver</string>
 	<string name="asburypark">Asbury park</string>
 	<string name="club_shows">Club Shows</string>
+	<string name="contests">Contests</string>
 	
 	<!-- Band Profile -->
 	<string name="bandProfile_lblSoundCloud">Listen</string>
@@ -93,7 +94,7 @@
 	<string name="settings_privacy">Privacy Policy</string>
 	<string name="faq">FAQ</string>
 	<string name="settings">Contact</string>
-	<string name="lineup">Festival Lineup</string>
+	<string name="festival_lineup">Festival Lineup</string>
 	<string name="fest_events">Festival Events</string>
 	<string name="map">Map</string>
 	<string name="poolparty">Pool Parties</string>

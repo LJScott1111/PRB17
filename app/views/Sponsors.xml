@@ -1,25 +1,13 @@
 <Alloy>
 	<ScrollView id="svMain" class="container vertical_layout" backgroundImage='icons/distress_bg.png'>
 
-		<ImageView id="sourpuss" class="sponsors" image="/icons/sourpuss.png" url="http://sourpussclothing.com/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="new_noise" class="sponsors" image="/icons/new_noise.png" url="http://newnoisemagazine.com/" onClick="nsSponsors.clickedImage"></ImageView>
+		<ImageView id="sourpuss" class="sponsors" image="/icons/sourpuss.png" url="https://www.sourpussclothing.com/" onClick="nsSponsors.clickedImage"></ImageView>
+		<ImageView id="new_noise" class="sponsors" image="/icons/new_noise.png" url="https://newnoisemagazine.com/" onClick="nsSponsors.clickedImage"></ImageView>
 		<ImageView id="pabst" class="sponsors" image="/icons/pabst.png" url="http://pabstblueribbon.com/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="converse" class="sponsors" image="/icons/converse.png" url="http://www.converse.com/us" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="angry_young" class="sponsors" image="/icons/angry_young.png" url="http://www.angryyoungandpoor.com/store/pc/home.asp" onClick="nsSponsors.clickedImage"></ImageView>
 		<ImageView id="screaming" class="sponsors" image="/icons/screaming.png" url="http://www.screamingimages.net/Welcome/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="asg" class="sponsors" image="/icons/asg.png" url="http://artistseriesguitar.com/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="punknews" class="sponsors" image="/icons/punknews.png" url="http://www.punknews.org" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="inked" class="sponsors" image="/icons/fireball.png" url="http://www.inkedmag.com/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="misfit_island" class="sponsors" image="/icons/misfit_island.png" url="http://misfitislandstudios.com/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="juxtapoz" class="sponsors" image="/icons/juxtapoz.png" url="http://www.juxtapoz.com/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="fireball" class="sponsors" image="/icons/fireball.png" url="http://fireballwhisky.com/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="lethal_amounts" class="sponsors" image="/icons/lethal_amounts.png" url="http://www.lethalamounts.com/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="felony" class="sponsors" image="/icons/felony.png" url="https://www.facebook.com/felonyrecords/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="matchete" class="sponsors" image="/icons/matchete.png" url="http://www.machetemfg.com/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="american" class="sponsors" image="/icons/american.png" url="" onClick="nsSponsors.clickedImage" ></ImageView>
-		<ImageView id="thehub" class="sponsors" image="/icons/thehub.png" url="http://hublbc.com/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="posers" class="sponsors" image="/icons/posers.png" url="http://www.weareposers.com/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="rocksoff" class="sponsors" image="/icons/rocksoff.png" url="https://www.rocksoff.com/" onClick="nsSponsors.clickedImage"></ImageView>
-		<ImageView id="thrasher" class="sponsors" image="/icons/thrasher.png" url="" onClick="nsSponsors.clickedImage"></ImageView>
+		<ImageView id="felony" class="sponsors" image="/icons/felony.png" url="https://felonyrecords.bandcamp.com/album/felony-records-punk-rock-bowling-2016" onClick="nsSponsors.clickedImage"></ImageView>
+		<ImageView id="thrasher" class="sponsors" image="/icons/thrasher.png" url="http://www.thrashermagazine.com/" onClick="nsSponsors.clickedImage"></ImageView>
+		<ImageView id="dying_scene" class="sponsors" image="/icons/dying_scene.png" url="http://dyingscene.com/" onClick="nsSponsors.clickedImage"></ImageView>
+		<ImageView id="hard_times" class="sponsors" image="/icons/hard_times.png" url="http://thehardtimes.net/" onClick="nsSponsors.clickedImage"></ImageView>
 	</ScrollView>
 </Alloy>

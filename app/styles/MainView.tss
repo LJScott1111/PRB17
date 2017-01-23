@@ -20,9 +20,8 @@
 }
 
 "#vwTopOptions": {
-	top: 0,
 	layout: "vertical",
-	height: Titanium.UI.SIZE,
+	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL,
 	zIndex: 99,
 	backgroundImage: '/icons/mainview_header_bg.png'
@@ -113,4 +112,14 @@
 	width: '75%',
 	left: '-20dp',
 	touchEnabled: false
+}
+
+".option_groups": {
+	height: '40dp',
+	layout: 'horizontal',
+	width: Titanium.UI.SIZE
+}
+
+".options_image": {
+	top: 0
 }
