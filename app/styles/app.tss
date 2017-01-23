@@ -63,6 +63,12 @@ FONTS
 	}
 }
 
+'.langdon': {
+	font: {
+		fontFamily: "Langdon"
+	}
+}
+
 'Label': {
 	width: Titanium.UI.SIZE,
 	height: Titanium.UI.SIZE,
