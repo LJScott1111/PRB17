@@ -133,6 +133,9 @@ nsSchedule.getEventsByDayForGrid = function() {
 };
 
 $.my_schedule.addEventListener('click', function() {
+	if (Alloy.Globals.currentScreen === 'mySchedule') {
+		return;
+	};
 	$.mainContent.removeAllChildren();
 	Titanium.App.fireEvent('showGridOption');
 	console.log('CALLING FROM MYSCHADULE AE');
@@ -152,6 +155,9 @@ $.my_schedule.addEventListener('click', function() {
 });
 
 $.line_up.addEventListener('click', function() {
+	if (Alloy.Globals.currentScreen === 'line_up') {
+		return;
+	};
 	$.mainContent.removeAllChildren();
 	Titanium.App.fireEvent('hideGridOption');
 	console.log('CALLING FROM LINEUP AE');
@@ -177,6 +183,9 @@ $.line_up.addEventListener('click', function() {
 });
 
 $.schedule.addEventListener('click', function() {
+	if (Alloy.Globals.currentScreen === 'schedule') {
+		return;
+	};
 	$.mainContent.removeAllChildren();
 	Titanium.App.fireEvent('showGridOption');
 	console.log('CALLING FROM SCHADULE AE');
@@ -217,11 +226,17 @@ nsSchedule.init = function() {
 	});
 	console.error('nsSchedule.init CALLED........');
 
-	$.my_schedule_icon.applyProperties(nsSchedule.propRed);
-	$.my_schedule_text.applyProperties(nsSchedule.propRed);
+	$.line_up_icon.applyProperties(nsSchedule.propRed);
+	$.line_up_text.applyProperties(nsSchedule.propRed);
 	console.error('before------------->>>>>> Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
-	Alloy.Globals.currentScreen = 'mySchedule', Alloy.Globals.currentLayout = 'table';
-	nsSchedule.showMySchedule();
+	Alloy.Globals.currentScreen = 'line_up', Alloy.Globals.currentLayout = 'table';
+	var eventList = Alloy.createController('EventList', {
+		city : $.args.city,
+		schedule : $.args.schedule
+	}).getView();
+
+	$.mainContent.add(eventList);
+	nsSchedule.setLayoutToTable();
 
 	console.error('after------------->>>>>> Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
 };

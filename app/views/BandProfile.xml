@@ -4,7 +4,7 @@
 			<ImageView id="ivBandImage"></ImageView>
 			<View id="vwBandInfo">
 				<Label id="lblBandName"></Label>
-				<View id="vwBandSchedule">
+				<!-- <View id="vwBandSchedule">
 					<View id="vwScheduleInfo">
 						<Label id="lblDay"></Label>
 						<Label id="lblTime"></Label>
@@ -14,7 +14,7 @@
 						<ImageView id="ivFavouriteStar" onClick="nsBandProfile.markFavourite"></ImageView>
 						<Label id="lblAddBand" textid="bandProfile_lblAddBand"></Label>
 					</View>
-				</View>
+				</View> -->
 			</View>
 			<View id="vwSocialActivities">
 				<View class="horizontal_layout width_size">
