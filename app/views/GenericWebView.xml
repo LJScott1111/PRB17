@@ -1,5 +1,5 @@
 <Alloy>
-	<View id="vwMain" backgroundImage='icons/distress_bg.png'>
+	<View id="vwMain" backgroundImage='icons/bg_yellow.png'>
 		<WebView id="wvGenericWebView"></WebView>
 		<Require id="sponsor" src="misc/sponsorAd"/>
 	</View>

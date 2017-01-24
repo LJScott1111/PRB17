@@ -9,26 +9,27 @@
 			</View> -->
 			<View class="vertical_layout" top="60dp">
 				<View class="option_groups">
-					<View id="lineup_action" class="options_image" width="150dp" backgroundImage="/icons/lineup.png"></View>
+					<View id="lineup_action" class="options_image" width="160dp" backgroundImage="/icons/lineup.png"></View>
 					<View id="club_shows_action" class="options_image" width="140dp" left="10dp" backgroundImage="/icons/club_shows.png"></View>
 				</View>
 				<View class="option_groups">
 					<View id="bands_action" class="options_image" width="100dp" backgroundImage="/icons/bands.png"></View>
-					<View id="my_schedule_action" class="options_image" width="140dp" left="10dp" backgroundImage="/icons/my_schedule.png"></View>
+					<View id="my_schedule_action" class="options_image" width="150dp" left="10dp" backgroundImage="/icons/my_schedule.png"></View>
 				</View>
 				<View class="option_groups">
-					<View id="book_hotels_action" class="options_image" width="150dp" backgroundImage="/icons/book_hotels.png"></View>
-					<View id="merch_action" class="options_image" width="90dp" left="10dp" backgroundImage="/icons/merch.png"></View>
+					<View id="book_hotels_action" class="options_image" width="160dp" backgroundImage="/icons/book_hotels.png"></View>
+					<View id="merch_action" class="options_image" width="100dp" left="10dp" backgroundImage="/icons/merch.png"></View>
 				</View>
 				<View class="option_groups">
 					<View id="news_action" class="options_image" width="150dp" backgroundImage="/icons/news.png"></View>
-					<View id="bowling_action" class="options_image" width="90dp" left="10dp" backgroundImage="/icons/bowling.png"></View>
+					<View id="bowling_action" class="options_image" width="120dp" left="10dp" backgroundImage="/icons/bowling.png"></View>
 				</View>
 				<View class="option_groups">
-					<View id="food_vendors_action" class="options_image" width="150dp" backgroundImage="/icons/food_vendors.png"></View>
+					<View id="sponsors_action" class="options_image" width="150dp" backgroundImage="/icons/sponsors.png"></View>
+					<View id="food_vendors_action" class="options_image" width="170dp" left="10dp" backgroundImage="/icons/food_vendors.png"></View>
 				</View>
-				<View class="option_groups">
-					<View id="buy_tickets_action" class="options_image" width="140dp" backgroundImage="/icons/buy_tickets.png"></View>
+				<View class="option_groups padding_top">
+					<View id="buy_tickets_action" class="options_image" width="150dp" backgroundImage="/icons/buy_tickets.png"></View>
 				</View>
 			</View>
 		</View>

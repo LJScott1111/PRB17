@@ -49,10 +49,10 @@ nsLanding.getMenu = function() {
 };
 
 $.lineup_action.addEventListener('click', function() {
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://buzzplay.com/PRBapp/ComingSoon.html",
-		// image : '/icons/merch_shop_ad.png',
-		// banner_ : ''
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "fest_lineup.png",
+		image : '/icons/merch_shop_ad.png',
+		banner_url : ''
 	}, true, null, 'misc/center_logo');
 });
 
@@ -202,6 +202,11 @@ $.food_vendors_action.addEventListener('click', function() {
 		// image : '/icons/merch_shop_ad.png',
 		// banner_ : ''
 	}, true, null, 'misc/center_logo');
+});
+
+$.sponsors_action.addEventListener('click', function() {
+
+	Alloy.Globals.openWindow("Sponsors", {}, true, null, 'misc/center_logo');
 });
 
 $.buy_tickets_action.addEventListener('click', function() {

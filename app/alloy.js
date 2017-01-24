@@ -1,8 +1,9 @@
 // Kinvey credentials
 var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.6.10');
 var UrbanAirship = require('com.urbanairship');
+Alloy.Globals.UrbanAirship = UrbanAirship;
 var channelId = UrbanAirship.channelId;
-console.log('UA ChannelID:',channelId);
+console.log('UA ChannelID:', channelId);
 UrbanAirship.userNotificationsEnabled = true;
 UrbanAirship.addEventListener(UrbanAirship.EVENT_PUSH_RECEIVED, function(e) {
 	Ti.API.info('Push received' + e.message);
@@ -477,7 +478,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, c
 			},
 			navBar : {
 				// backgroundColor : '#000000',
-				backgroundImage: '/icons/header_bg.png',
+				backgroundImage : '/icons/header_bg.png',
 				left : 'misc/openMenu',
 				// right : 'misc/right_logo',
 				right : rightLogo,

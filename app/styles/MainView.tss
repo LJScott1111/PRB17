@@ -35,54 +35,12 @@
 	// height: '50%'
 }
 
-"#lineup_view": {
-	backgroundImage: '/icons/bands.png'
-}
-
-"#events_view": {
-	backgroundImage: '/icons/events.png'
-}
-
 "#club_shows_view": {
 	backgroundImage: '/icons/events.png'
 }
 
 "#bands_view": {
 	backgroundImage: '/icons/bands.png'
-}
-
-"#schedule_view": {
-	backgroundImage: '/icons/news.png'
-}
-
-"#venues_view": {
-	backgroundImage: '/icons/venues.png'
-}
-
-"#news_view": {
-	backgroundImage: '/icons/news.png'
-}
-
-"#food_view": {
-	backgroundImage: '/icons/food.png'
-}
-
-"#hotels_view": {
-	backgroundImage: '/icons/food.png',
-	top: '20dp'
-}
-
-"#buy_tickets_view": {
-	backgroundImage: '/icons/venues.png'
-}
-
-"#lblBuyTickets": {
-	top: 10,
-	right: 10,
-	// color: '#fff',
-	font: {
-		fontSize: Alloy.Globals.theme.fonts.size25Fonts
-	}
 }
 
 "#lblBands": {
@@ -93,29 +51,17 @@
 	left: 90
 }
 
-"#lblVenues": {
-	left: 120
-}
-
-"#lblNews": {
-	right: 30
-}
-
-"#lblHotels": {
-	right: 25
-}
-
 ".character": {
 	image: '/icons/character.png',
-	bottom: '47dp',
+	bottom: '70dp',
 	zIndex: 99,
-	width: '75%',
-	left: '-20dp',
+	width: '70%',
+	left: '0dp',
 	touchEnabled: false
 }
 
 ".option_groups": {
-	height: '40dp',
+	height: '45dp',
 	layout: 'horizontal',
 	width: Titanium.UI.SIZE
 }

@@ -29,11 +29,12 @@ $.festival_lineup.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://buzzplay.com/PRBapp/ComingSoon.html",
-		// image : '/icons/merch_shop_ad.png',
-		// banner_ : ''
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "fest_lineup.png",
+		image : '/icons/merch_shop_ad.png',
+		banner_url : ''
 	}, true, null, 'misc/center_logo');
+
 });
 
 $.bands.button.addEventListener('click', function() {
@@ -107,6 +108,24 @@ $.contests.button.addEventListener('click', function() {
 		// banner_ : ''
 	}, true, null, 'misc/center_logo');
 });
+
+$.message_center.button.addEventListener('click', function() {
+
+	// Ref: https://github.com/urbanairship/titanium-module/blob/master/example/app.js
+	var UrbanAirship = Alloy.Globals.UrbanAirship;
+	Ti.App.fireEvent('toggleMenu');
+	UrbanAirship.displayMessageCenter();
+});
+
+$.map.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "prb_map_2016.png"
+	}, true, null, 'misc/center_logo');
+});
+
 /*
  $.fest_events.button.addEventListener('click', function() {
 

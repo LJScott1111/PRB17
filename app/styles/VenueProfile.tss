@@ -26,7 +26,7 @@
 	layout: "vertical",
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL,
-	backgroundImage: '/icons/news.png'
+	backgroundImage: '/icons/black_bg.png'
 }
 
 "#lblVenueName": {
