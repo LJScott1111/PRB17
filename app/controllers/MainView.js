@@ -51,8 +51,55 @@ nsLanding.getMenu = function() {
 $.lineup_action.addEventListener('click', function() {
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "fest_lineup.png",
-		image : '/icons/merch_shop_ad.png',
-		banner_url : ''
+		click : function() {
+			var appdata = Titanium.App.Properties.getObject('appdata', {});
+
+			if (appdata.details.length === 0) {
+				var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+					console.debug("fetchedData ", fetchedData);
+					if (fetchedData) {
+
+						var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+
+							console.debug(JSON.stringify(schedule));
+
+							// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+							Alloy.Globals.openWindow('Schedule', {
+								city : $.args.city,
+								schedule : schedule
+							}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+
+							Alloy.Globals.loading.hide();
+
+						}, function(error) {
+							alert(L('err_fetchingDetails'));
+							Alloy.Globals.loading.hide();
+						});
+
+					} else {
+						console.debug("The data did not get downloaded!!!");
+						alert(L('err_fetchingDetails'));
+						Alloy.Globals.loading.hide();
+					}
+				});
+			} else {
+				var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+
+					console.debug(JSON.stringify(schedule));
+					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+					Alloy.Globals.openWindow('Schedule', {
+						city : $.args.city,
+						schedule : schedule
+					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+					Alloy.Globals.loading.hide();
+
+				}, function(error) {
+					alert(L('err_fetchingDetails'));
+					Alloy.Globals.loading.hide();
+				});
+			}
+		},
+		addBanner : true
 	}, true, null, 'misc/center_logo');
 });
 
@@ -62,43 +109,102 @@ $.club_shows_action.addEventListener('click', function() {
 		url : "http://buzzplay.com/PRBapp/ComingSoon.html",
 		// image : '/icons/merch_shop_ad.png',
 		// banner_ : ''
+		addBanner : true
 	}, true, null, 'misc/center_logo');
 });
 
 $.bands_action.addEventListener('click', function() {
 
+	Alloy.Globals.loading.show();
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
-	console.debug("Alloy.Globals.bands emply ", JSON.stringify(appdata.bands));
-
 	if (appdata.details.length === 0) {
-		Alloy.Globals.loading.show();
 		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 			console.debug("fetchedData ", fetchedData);
 			if (fetchedData) {
 
-				Alloy.Globals.openWindow('BandList', {
-					city : $.args.city
-				}, true, null, 'misc/center_logo');
-				Alloy.Globals.loading.hide();
+				var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+
+					console.debug(JSON.stringify(schedule));
+
+					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+					Alloy.Globals.openWindow('Schedule', {
+						city : $.args.city,
+						schedule : schedule
+					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+
+					Alloy.Globals.loading.hide();
+
+				}, function(error) {
+					alert(L('err_fetchingDetails'));
+					Alloy.Globals.loading.hide();
+				});
+
 			} else {
-				console.debug("All data did not get downloaded!!!");
+				console.debug("The data did not get downloaded!!!");
 				alert(L('err_fetchingDetails'));
+				Alloy.Globals.loading.hide();
 			}
+		});
+	} else {
+		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+
+			console.debug(JSON.stringify(schedule));
+			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+			Alloy.Globals.openWindow('Schedule', {
+				city : $.args.city,
+				schedule : schedule
+			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+			Alloy.Globals.loading.hide();
+
+		}, function(error) {
+			alert(L('err_fetchingDetails'));
 			Alloy.Globals.loading.hide();
 		});
-
-	} else {
-		console.log('Opening bands');
-		Alloy.Globals.openWindow('BandList', {
-			city : $.args.city
-		}, true, null, 'misc/center_logo');
 	}
+
+	/*
+	 var appdata = Titanium.App.Properties.getObject('appdata', {});
+
+	 console.debug("Alloy.Globals.bands emply ", JSON.stringify(appdata.bands));
+
+	 if (appdata.details.length === 0) {
+	 Alloy.Globals.loading.show();
+	 var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+	 console.debug("fetchedData ", fetchedData);
+	 if (fetchedData) {
+
+	 Alloy.Globals.openWindow('BandList', {
+	 city : $.args.city
+	 }, true, null, 'misc/center_logo');
+	 Alloy.Globals.loading.hide();
+	 } else {
+	 console.debug("All data did not get downloaded!!!");
+	 alert(L('err_fetchingDetails'));
+	 }
+	 Alloy.Globals.loading.hide();
+	 });
+
+	 } else {
+	 console.log('Opening bands');
+	 Alloy.Globals.openWindow('BandList', {
+	 city : $.args.city
+	 }, true, null, 'misc/center_logo');
+	 }*/
+
 });
 
 $.my_schedule_action.addEventListener('click', function() {
 
 	console.error('nsEvents.getSchedule');
+
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://buzzplay.com/PRBapp/ComingSoon.html",
+		addBanner : true
+	}, true, null, 'misc/center_logo');
+	return;
+
+	//// TODO: Later
 	Alloy.Globals.loading.show();
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
@@ -152,8 +258,7 @@ $.book_hotels_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/pages/golden-nugget-hotel",
-		image : '/icons/merch_shop_ad.png',
-		// banner_ : ''
+		addBanner : true
 	}, true, null, 'misc/center_logo');
 });
 
@@ -161,8 +266,7 @@ $.merch_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
-		image : '/icons/merch_shop_ad.png',
-		// url : ''
+		addBanner : true
 	}, true, null, 'misc/center_logo');
 });
 
@@ -190,236 +294,98 @@ $.news_action.addEventListener('click', function() {
 $.bowling_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/pages/bowling-1"
-		// image : "/icons/Banner_Pins.jpg",
-		// banner_url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
+		url : "https://punkrockbowling.com/pages/bowling-1",
+		addBanner : true
 	}, true, null, 'misc/center_logo');
 });
 
 $.food_vendors_action.addEventListener('click', function() {
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "http://buzzplay.com/PRBapp/ComingSoon.html",
-		// image : '/icons/merch_shop_ad.png',
-		// banner_ : ''
+		addBanner : true
 	}, true, null, 'misc/center_logo');
 });
 
 $.sponsors_action.addEventListener('click', function() {
 
-	Alloy.Globals.openWindow("Sponsors", {}, true, null, 'misc/center_logo');
+	/*
+	 Alloy.Globals.openWindow("Sponsors", {
+	 addBanner: true
+	 }, true, null, 'misc/center_logo');*/
+
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "http://www.Buzzplay.com/PRBapp/Sponsors.html",
+		// image : '/icons/merch_shop_ad.png',
+	}, true, null, 'misc/center_logo');
 });
 
 $.buy_tickets_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "https://punkrockbowling.com/pages/prb-17-ticket-prices",
-		image : '',
-		banner_url : ''
+		addBanner : false
 	}, true, null, 'misc/center_logo');
 });
 
-nsLanding.getBands = function() {
+/*
 
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
+ nsLanding.openLineup = function() {
 
-	console.debug("Alloy.Globals.bands emply ", JSON.stringify(appdata.bands));
+ var appdata = Titanium.App.Properties.getObject('appdata', {});
+ for (i in appdata.venues) {
+ if (appdata.venues[i].name.toLowerCase().trim() === 'festival lineup') {
 
-	if (appdata.details.length === 0) {
-		Alloy.Globals.loading.show();
-		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
-			console.debug("fetchedData ", fetchedData);
-			if (fetchedData) {
+ Alloy.Globals.openWindow("VenueProfile", {
+ "id" : appdata.venues[i]._id
+ }, true, null, 'misc/center_logo');
+ break;
+ }
+ }
+ };
 
-				Alloy.Globals.openWindow('BandList', {
-					city : $.args.city
-				}, true, null, 'misc/center_logo');
-				Alloy.Globals.loading.hide();
-			} else {
-				console.debug("All data did not get downloaded!!!");
-				alert(L('err_fetchingDetails'));
-			}
-			Alloy.Globals.loading.hide();
-		});
+ nsLanding.getLineup = function() {
+ var appdata = Titanium.App.Properties.getObject('appdata', {});
 
-	} else {
-		console.log('Opening bands');
-		Alloy.Globals.openWindow('BandList', {
-			city : $.args.city
-		}, true, null, 'misc/center_logo');
-	}
-};
+ if (appdata.venues) {
 
-nsLanding.openLineup = function() {
+ nsLanding.openLineup();
+ } else {
+ Alloy.Globals.getAndStoreData(function(data) {
+ nsLanding.openLineup();
+ });
+ }
+ };
 
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
-	for (i in appdata.venues) {
-		if (appdata.venues[i].name.toLowerCase().trim() === 'festival lineup') {
+ nsLanding.getVenues = function() {
 
-			Alloy.Globals.openWindow("VenueProfile", {
-				"id" : appdata.venues[i]._id
-			}, true, null, 'misc/center_logo');
-			break;
-		}
-	}
-};
+ /*
+ var appdata = Titanium.App.Properties.getObject('appdata', {});
 
-nsLanding.getLineup = function() {
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
+ if (appdata.details.length === 0) {
+ Alloy.Globals.loading.show();
+ var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+ console.debug("fetchedData ", fetchedData);
+ if (fetchedData) {
 
-	if (appdata.venues) {
+ Alloy.Globals.openWindow('VenueList', {
+ city : $.args.city
+ }, true, null, 'misc/center_logo');
 
-		nsLanding.openLineup();
-	} else {
-		Alloy.Globals.getAndStoreData(function(data) {
-			nsLanding.openLineup();
-		});
-	}
-};
+ Alloy.Globals.loading.hide();
+ } else {
+ console.debug("All data did not get downloaded!!!");
+ alert(L('err_fetchingDetails'));
+ }
+ Alloy.Globals.loading.hide();
+ });
+ } else {
+ Alloy.Globals.openWindow('VenueList', {
+ city : $.args.city
+ }, true, null, 'misc/center_logo');
+ }
 
-nsLanding.getClubShows = function() {
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
-		image : "/icons/Banner_Pins.jpg",
-		banner_url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
-	}, true, null, 'misc/center_logo');
-};
-
-nsLanding.getEvents = function() {
-
-	Alloy.Globals.openWindow('Events', {
-		secondary : $.args.secondary,
-		city : $.args.city
-	}, true, null, 'misc/center_logo');
-};
-
-nsLanding.getSchedule = function() {
-
-	console.error('nsEvents.getSchedule');
-	Alloy.Globals.loading.show();
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
-
-	if (appdata.details.length === 0) {
-		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
-			console.debug("fetchedData ", fetchedData);
-			if (fetchedData) {
-
-				var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
-
-					console.debug(JSON.stringify(schedule));
-
-					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
-					Alloy.Globals.openWindow('Schedule', {
-						city : $.args.city,
-						schedule : schedule
-					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-
-					Alloy.Globals.loading.hide();
-
-				}, function(error) {
-					alert(L('err_fetchingDetails'));
-					Alloy.Globals.loading.hide();
-				});
-
-			} else {
-				console.debug("The data did not get downloaded!!!");
-				alert(L('err_fetchingDetails'));
-				Alloy.Globals.loading.hide();
-			}
-		});
-	} else {
-		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
-
-			console.debug(JSON.stringify(schedule));
-			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
-			Alloy.Globals.openWindow('Schedule', {
-				city : $.args.city,
-				schedule : schedule
-			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-			Alloy.Globals.loading.hide();
-
-		}, function(error) {
-			alert(L('err_fetchingDetails'));
-			Alloy.Globals.loading.hide();
-		});
-	}
-
-};
-
-nsLanding.getHotels = function() {
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/pages/golden-nugget-hotel",
-		image : '/icons/merch_shop_ad.png'
-	}, true, null, 'misc/center_logo');
-};
-
-nsLanding.buyTickets = function() {
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/pages/prb-17-ticket-prices",
-		image : "/icons/hotel_ad.png",
-		banner_url : ''
-	}, true, null, 'misc/center_logo');
-};
-
-nsLanding.getVenues = function() {
-
-	/*
-	 var appdata = Titanium.App.Properties.getObject('appdata', {});
-
-	 if (appdata.details.length === 0) {
-	 Alloy.Globals.loading.show();
-	 var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
-	 console.debug("fetchedData ", fetchedData);
-	 if (fetchedData) {
-
-	 Alloy.Globals.openWindow('VenueList', {
-	 city : $.args.city
-	 }, true, null, 'misc/center_logo');
-
-	 Alloy.Globals.loading.hide();
-	 } else {
-	 console.debug("All data did not get downloaded!!!");
-	 alert(L('err_fetchingDetails'));
-	 }
-	 Alloy.Globals.loading.hide();
-	 });
-	 } else {
-	 Alloy.Globals.openWindow('VenueList', {
-	 city : $.args.city
-	 }, true, null, 'misc/center_logo');
-	 }*/
-
-};
-
-nsLanding.getFood = function() {
-
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
-		image : "/icons/Banner_Flasks.jpg",
-		banner_url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
-	}, true, null, 'misc/center_logo');
-};
-
-nsLanding.getNews = function() {
-
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch"
-	}, true, null, 'misc/center_logo');
-
-	/*
-	 Alloy.Globals.openWindow('NewsAndSocial', {
-	 prb : {
-	 twitter_url : "https://twitter.com/punkrockbowling",
-	 fb_url : "https://www.facebook.com/Punk-Rock-Bowling-and-Music-Festival-288077407910557/",
-	 insta_url : "https://www.instagram.com/punkrockbowling/"
-	 },
-	 sourpuss : {
-	 twitter_url : "https://twitter.com/SourpussBrand",
-	 fb_url : "https://www.facebook.com/Sourpussclothing",
-	 insta_url : "https://www.instagram.com/sourpussclothing/"
-	 }
-	 }, true, null, 'misc/center_logo');*/
-
-};
+ };
+ */
 
 nsLanding.checkLocationPermissions = function() {
 

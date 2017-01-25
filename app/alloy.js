@@ -83,6 +83,13 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 			var thisUser = Kinvey.getActiveUser();
 			Alloy.Globals.getAndStoreData();
 
+			console.error('getBannerInfogetBannerInfo HJKJHGFGHJKL');
+			var getBannerInfo = new nsIndex.serviceCalls.getBannerInfo(function(response) {
+				console.error('response ', response);
+			}, function(error) {
+				console.error('error ', error);
+			});
+
 			callback(thisUser);
 		}
 
@@ -127,44 +134,30 @@ Alloy.Globals.EVENTS = [{
 	end : 1465775999000, //"2016-06-12T23:59:59"
 }];
 
-Alloy.Globals.SPONSORS = [{
-	image : 'sourpuss_banner.png',
-	link : 'http://www.sourpussclothing.com/'
-}, {
-	image : 'Banner_Descendents.jpg',
-	link : 'http://www.sourpussclothing.com/catalogsearch/result/?q=descendents'
-}, {
-	image : 'Banner_Fred_Perry.jpg',
-	link : 'http://www.sourpussclothing.com/brands/fred-perry'
-}, {
-	image : 'Banner_Swimsuits.jpg',
-	link : 'http://www.sourpussclothing.com/gals/swimwear.html'
-}, {
-	image : 'Banner_Pins.jpg',
-	link : 'http://www.sourpussclothing.com/housewares/patches-pins.html'
-}, {
-	image : 'Banner_Babies.jpg',
-	link : 'http://www.sourpussclothing.com/kids.html'
-}, {
-	image : 'Banner_Flasks.jpg',
-	link : 'http://www.sourpussclothing.com/catalogsearch/result/?q=flask'
-}, {
-	image : 'Banner_Hair_Dye.jpg',
-	link : 'http://www.sourpussclothing.com/gals/beauty-supplies/hair-products.html'
-}];
+Alloy.Globals.SPONSORS = [];
 Alloy.Globals.sponsers_rr = [];
 
 // Selecting array element in round robin manner
 Alloy.Globals.getSponsor = function() {
 
+	// console.error('Alloy.Globals.SPONSORS ', Alloy.Globals.SPONSORS);
+	if (!Alloy.Globals.haveSponsors) {
+		Alloy.Globals.getBanners(function() {
+			Alloy.Globals.getSponsor();
+		});
+		return;
+	}
 	if (Alloy.Globals.sponsers_rr.length == 0) {
 		Alloy.Globals.sponsers_rr = JSON.parse(JSON.stringify(Alloy.Globals.SPONSORS));
 	};
+
+	console.error('Alloy.Globals.sponsers_rr ', Alloy.Globals.sponsers_rr.length, JSON.stringify(Alloy.Globals.sponsers_rr));
 
 	// get a random array element from
 	var random = Math.floor(Math.random() * Alloy.Globals.sponsers_rr.length);
 
 	var randomObj = Alloy.Globals.sponsers_rr[random];
+	Alloy.Globals.randomObj = randomObj;
 	console.log('RANDOM ELEMENT ', randomObj);
 
 	Alloy.Globals.sponsers_rr.splice(random, 1);
@@ -303,13 +296,31 @@ Alloy.Globals.hasBandsData = false;
 Alloy.Globals.hasVenuesData = false;
 Alloy.Globals.hasShowsData = false;
 
+Alloy.Globals.getBanners = function(callback) {
+
+	var serviceCalls = require("serverCalls");
+	console.error('getBannerInfogetBannerInfo HJKJHGFGHJKL');
+	var getBannerInfo = new serviceCalls.getBannerInfo(function(response) {
+		console.error('response ', JSON.stringify(response));
+		Alloy.Globals.SPONSORS = JSON.parse(JSON.stringify(response));
+		Alloy.Globals.haveSponsors = true;
+		Titanium.App.fireEvent('updateBanner');
+		if (callback) {
+			callback();
+		};
+	}, function(error) {
+		console.error('error ', error);
+	});
+};
+
 Alloy.Globals.getAndStoreData = function(callback) {
 
 	Alloy.Globals.loading.show();
+	Alloy.Globals.getBanners();
 
+	var serviceCalls = require("serverCalls");
 	var count = 0,
 	    fails = 0;
-	var serviceCalls = require("serverCalls");
 
 	var getBandList = new serviceCalls.getBandList(function(data) {
 

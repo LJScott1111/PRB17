@@ -35,6 +35,6 @@
 			</View> -->
 
 		</View>
-		<Require id="sponsor" src="misc/sponsorAd" />
+		<Require id="sponsor" src="misc/sponsorAd" addBanner="true" />
 	</View>
 </Alloy>

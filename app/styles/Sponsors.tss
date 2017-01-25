@@ -1,11 +1,11 @@
 
 ".container": {
 	top: 0,
-	contentWidth : '100%',
-	contentHeight : 'auto',
+	contentWidth: '100%',
+	contentHeight: 'auto',
 	backgroundColor: '#000',
 	scrollType: 'vertical',
-	bottom: 40
+	bottom: '100dp'
 }
 
 ".sponsors": {

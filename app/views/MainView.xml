@@ -34,6 +34,7 @@
 			</View>
 		</View>
 		<ImageView class="character"></ImageView>
-		<Require id="sponsor" src="misc/sponsorAd" image="/icons/tickets_ad.png" url="" banner_url="" />
+		<!-- <Require id="sponsor" src="misc/sponsorAd" image="/icons/tickets_ad.png" url="" banner_url="" /> -->
+		<Require id="sponsor" src="misc/sponsorAd" addBanner="true" />
 	</View>
 </Alloy>

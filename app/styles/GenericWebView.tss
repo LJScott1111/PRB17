@@ -11,5 +11,19 @@
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL,
 	top: 0,
-	backgroundColor:'#000000'
+	backgroundColor: '#000000'
+}
+
+"#vwBottomView": {
+	bottom: 0,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	zIndex: 999
+}
+
+"#ivSponsorAd": {
+	bottom: 20,
+	width: Titanium.UI.FILL,
+	height: 60,
+	touchEnabled: false
 }

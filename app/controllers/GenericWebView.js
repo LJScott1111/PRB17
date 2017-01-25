@@ -3,21 +3,25 @@ var nsGenericWebView = {};
 nsGenericWebView.init = function() {
 
 	$.wvGenericWebView.setUrl($.args.url);
+	console.error('FROM WEBVIEW ', $.args);
+	if ($.args.addBanner == false || !$.args.addBanner) {
+		$.vwMain.remove($.vwBottomView);
+		return;
+	};
+	$.ivSponsorAd.image = Alloy.Globals.randomObj.image;
+	$.vwBottomView.addEventListener('click', function() {
+		Alloy.Globals.openWindow("GenericWebView", {
+			source : 'webview',
+			url : Alloy.Globals.randomObj.link,
+			addBanner : false
+		}, true);
+	});
 
-	// 	&& $.args.banner_url
-	if ($.args.image) {
-		Titanium.App.fireEvent('updateSponsor', {
-			image : $.args.image,
-			// url : $.args.banner_url
+	if ($.args.click) {
+		$.wvGenericWebView.addEventListener('click', function() {
+			$.args.click();
 		});
-		$.sponsor.ivSponsorAd.image = $.args.image;
-	} else {
-		Titanium.App.fireEvent('updateSponsor', {
-			image : '/icons/merch_shop_ad.png',
-			url : ''
-		});
-		$.sponsor.ivSponsorAd.image = $.args.image;
-	}
+	};
 };
 
 nsGenericWebView.init();

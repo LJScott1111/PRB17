@@ -418,3 +418,19 @@ nsServerCalls.deleteUserSchedule = function(show_id, onloadCallback, errorCallba
 };
 
 exports.deleteUserSchedule = nsServerCalls.deleteUserSchedule;
+
+nsServerCalls.getBannerInfo = function(onloadCallback, errorCallback) {
+
+	var query = new Kinvey.Query();
+	var promise = Kinvey.DataStore.find('dynamic-content', null);
+	promise.then(function(entities) {
+		console.log("Shows success ", JSON.stringify(entities));
+		onloadCallback(entities);
+
+	}, function(error) {
+		console.debug("Shows Error ", error);
+		errorCallback(error);
+	});
+};
+
+exports.getBannerInfo = nsServerCalls.getBannerInfo;
