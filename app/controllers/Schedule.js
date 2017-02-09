@@ -228,6 +228,7 @@ nsSchedule.init = function() {
 
 	$.line_up_icon.applyProperties(nsSchedule.propRed);
 	$.line_up_text.applyProperties(nsSchedule.propRed);
+	Titanium.App.fireEvent('hideGridOption');
 	console.error('before------------->>>>>> Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
 	Alloy.Globals.currentScreen = 'line_up', Alloy.Globals.currentLayout = 'table';
 	var eventList = Alloy.createController('EventList', {

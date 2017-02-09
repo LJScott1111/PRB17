@@ -27,57 +27,59 @@ $.festival_lineup.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 
-	Alloy.Globals.openWindow("GenericWebView", {
-		url : "fest_lineup.png",
-		click : function() {
-			var appdata = Titanium.App.Properties.getObject('appdata', {});
+	Alloy.Globals.openWindow("FestLineup", {
+		// url : "fest_lineup.png",
+		/*
+		 click : function() {
+		 var appdata = Titanium.App.Properties.getObject('appdata', {});
 
-			if (appdata.details.length === 0) {
-				var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
-					console.debug("fetchedData ", fetchedData);
-					if (fetchedData) {
+		 if (appdata.details.length === 0) {
+		 var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+		 console.debug("fetchedData ", fetchedData);
+		 if (fetchedData) {
 
-						var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
+		 var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
 
-							console.debug(JSON.stringify(schedule));
+		 console.debug(JSON.stringify(schedule));
 
-							// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
-							Alloy.Globals.openWindow('Schedule', {
-								city : Alloy.Globals.nextEventCity,
-								schedule : schedule
-							}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+		 // Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+		 Alloy.Globals.openWindow('Schedule', {
+		 city : Alloy.Globals.nextEventCity,
+		 schedule : schedule
+		 }, true, null, 'misc/center_logo', 'misc/right_logo_grid');
 
-							Alloy.Globals.loading.hide();
+		 Alloy.Globals.loading.hide();
 
-						}, function(error) {
-							alert(L('err_fetchingDetails'));
-							Alloy.Globals.loading.hide();
-						});
+		 }, function(error) {
+		 alert(L('err_fetchingDetails'));
+		 Alloy.Globals.loading.hide();
+		 });
 
-					} else {
-						console.debug("The data did not get downloaded!!!");
-						alert(L('err_fetchingDetails'));
-						Alloy.Globals.loading.hide();
-					}
-				});
-			} else {
-				var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
+		 } else {
+		 console.debug("The data did not get downloaded!!!");
+		 alert(L('err_fetchingDetails'));
+		 Alloy.Globals.loading.hide();
+		 }
+		 });
+		 } else {
+		 var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
 
-					console.debug(JSON.stringify(schedule));
-					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
-					Alloy.Globals.openWindow('Schedule', {
-						city : Alloy.Globals.nextEventCity,
-						schedule : schedule
-					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-					Alloy.Globals.loading.hide();
+		 console.debug(JSON.stringify(schedule));
+		 // Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+		 Alloy.Globals.openWindow('Schedule', {
+		 city : Alloy.Globals.nextEventCity,
+		 schedule : schedule
+		 }, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+		 Alloy.Globals.loading.hide();
 
-				}, function(error) {
-					alert(L('err_fetchingDetails'));
-					Alloy.Globals.loading.hide();
-				});
-			}
-		},
-		addBanner : true
+		 }, function(error) {
+		 alert(L('err_fetchingDetails'));
+		 Alloy.Globals.loading.hide();
+		 });
+		 }
+		 },
+		 addBanner : false*/
+
 	}, true, null, 'misc/center_logo');
 
 });
@@ -217,15 +219,15 @@ $.map.button.addEventListener('click', function() {
 	}, true, null, 'misc/center_logo');
 });
 
+$.venues.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('VenueList', {
+		city : Alloy.Globals.nextEventCity
+	}, true, null, 'misc/center_logo');
+});
+
 /*
-
- $.venues.button.addEventListener('click', function() {
-
- Ti.App.fireEvent('toggleMenu');
- Alloy.Globals.openWindow('VenueList', {
- city : Alloy.Globals.nextEventCity
- }, true, null, 'misc/center_logo');
- });
 
  $.about.button.addEventListener('click', function() {
 

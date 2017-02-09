@@ -1,0 +1,54 @@
+<Alloy>
+	<View id="vwMain" backgroundImage='/icons/fest_lineup.png'>
+		<!-- First part -->
+		<Label id="iggy_pop" text="iggy_pop" class="options_bands" bandid="587cb0cd350958684b6ff765" onClick="nsFestLineup.openBandProfile"></Label>
+		<Label id="my_first_gimme_gimmes" text="my_first_gimme_gimmes" class="options_bands" bandid="5889f07258ea5f741da96645" onClick="nsFestLineup.openBandProfile"></Label>
+		<View class="horizontal_layout view_bands view_3">
+			<Label id="off" text="off" class="options_bands" bandid="5889f072b44102cd08ae75e1" onClick="nsFestLineup.openBandProfile"></Label>
+			<Label id="the_spits" text="the_spits" class="options_bands" bandid="587cb0cd1abe9fc334f7811b" onClick="nsFestLineup.openBandProfile"></Label>
+			<Label id="the_interrupters" text="the_interrupters" class="options_bands" bandid="587cb0cd9758557b5ff19bc4" onClick="nsFestLineup.openBandProfile"></Label>
+		</View>
+		<View class="horizontal_layout view_bands view_4">
+			<Label id="plague_vendor" text="plague_vendor" class="options_bands" bandid="587cb0cd7c9065534d143aad" onClick="nsFestLineup.openBandProfile"></Label>
+			<Label id="drug_church" text="drug_church" class="options_bands" bandid="587cb0cdf0a3cc0230d6ff96" onClick="nsFestLineup.openBandProfile"></Label>
+		</View>
+		<View class="horizontal_layout view_bands view_5">
+			<Label id="mobina_galore" text="mobina_galore" class="options_bands" bandid="5889f07292b681b00588d1d5" onClick="nsFestLineup.openBandProfile"></Label>
+			<Label id="new_trends" text="new_trends" class="options_bands" bandid="5889f07292b681b00588d1d4" onClick="nsFestLineup.openBandProfile"></Label>
+		</View>
+		<!-- Second part -->
+		<Label id="bad_religion" text="bad_religion" class="options_bands" bandid="5889f072b44102cd08ae75e0" onClick="nsFestLineup.openBandProfile"></Label>
+		<View class="horizontal_layout view_bands view_6">
+			<Label id="fidlar" text="fidlar" class="options_bands" bandid="5889f072c4d0cd5d0d0470e7" onClick="nsFestLineup.openBandProfile"></Label>
+			<Label id="choking_victim" text="choking_victim" class="options_bands" bandid="587cb0cdbc0173883715cf45" onClick="nsFestLineup.openBandProfile"></Label>
+		</View>
+		<View class="horizontal_layout view_bands view_7">
+			<Label id="bouncing_souls" text="bouncing_souls" class="options_bands" bandid="587cb0cdadc7354f503e44a5" onClick="nsFestLineup.openBandProfile"></Label>
+			<Label id="the_dickies" text="the_dickies" class="options_bands" bandid="587cb0cd1a9045102e9b094e" onClick="nsFestLineup.openBandProfile"></Label>
+		</View>
+		<View class="horizontal_layout view_bands view_8">
+			<Label id="the_real_mckenzies" text="the_real_mckenzies" class="options_bands" bandid="587cb0cdbc0173883715cf46" onClick="nsFestLineup.openBandProfile"></Label>
+			<Label id="lost_in_society" text="lost_in_society" class="options_bands" bandid="5889f072f04844cb7ecbc94c" onClick="nsFestLineup.openBandProfile"></Label>
+		</View>
+		<View class="horizontal_layout view_bands view_9">
+			<Label id="ten_can_riot" text="ten_can_riot" class="options_bands" bandid="5889f072f04844cb7ecbc94d" onClick="nsFestLineup.openBandProfile"></Label>
+			<Label id="venomous_pinks" text="venomous_pinks" class="options_bands" bandid="5889f072c4d0cd5d0d0470e8" onClick="nsFestLineup.openBandProfile"></Label>
+		</View>
+		<!-- Third part -->
+		<Label id="cock_sparrer" text="cock_sparrer" class="options_bands" bandid="587cb0cd9bf867084e67f1eb" onClick="nsFestLineup.openBandProfile"></Label>
+		<Label id="pennywise" text="pennywise" class="options_bands" bandid="587cb0cd350958684b6ff764" onClick="nsFestLineup.openBandProfile"></Label>
+		<View class="horizontal_layout view_bands view_10">
+			<Label id="the_adicts" text="the_adicts" class="options_bands" bandid="587cb0cd9a5c7346659831fc" onClick="nsFestLineup.openBandProfile"></Label>
+			<Label id="discharge" text="discharge" class="options_bands" bandid="587cb0cdf0a3cc0230d6ff95" onClick="nsFestLineup.openBandProfile"></Label>
+		</View>
+		<View class="horizontal_layout view_bands view_11">
+			<Label id="boozenglory" text="boozenglory" class="options_bands" bandid="587cb0cd9758557b5ff19bc5" onClick="nsFestLineup.openBandProfile"></Label>
+			<Label id="lions_law" text="lions_law" class="options_bands" bandid="587cb0cd65d5676e41359de8" onClick="nsFestLineup.openBandProfile"></Label>
+		</View>
+		<View class="horizontal_layout view_bands view_12">
+			<Label id="wolfpack" text="wolfpack" class="options_bands" bandid="5889f07226aaa5a07f0510c8" onClick="nsFestLineup.openBandProfile"></Label>
+			<Label id="roadside_bombs" text="roadside_bombs" class="options_bands" bandid="5889f07212c3d66e25ba675d" onClick="nsFestLineup.openBandProfile"></Label>
+			<Label id="the_quitters" text="the_quitters" class="options_bands" bandid="5889f07212c3d66e25ba675c" onClick="nsFestLineup.openBandProfile"></Label>
+		</View>
+	</View>
+</Alloy>

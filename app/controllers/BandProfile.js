@@ -9,7 +9,7 @@ nsBandProfile.markFavourite = function(e) {
 	var show_id = nsBandProfile.data.showDetails._id;
 	if (!e.source.selected && (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null)) {
 		console.log('MARK favorite');
-		
+
 		var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
 			e.source.selected = !e.source.selected;
 			e.source.setImage(Alloy.Globals.theme.icons.star);
@@ -68,7 +68,6 @@ nsBandProfile.markFavourite = function(e) {
 		});
 	}
 
-	
 };
 
 nsBandProfile.doSocialActivity = function(e) {
@@ -103,11 +102,16 @@ nsBandProfile.doSocialActivity = function(e) {
 			url : nsBandProfile.data.bandDetails.tw_link
 		}, true, null, 'misc/center_logo');
 
+	} else if (e.source.id === "ivInsta") {
+		Alloy.Globals.openWindow("GenericWebView", {
+			url : nsBandProfile.data.bandDetails.insta_link
+		}, true, null, 'misc/center_logo');
 	}
 };
 
 nsBandProfile.init = function() {
 	console.log('INIT Band Profile');
+	console.error('ID: ', nsBandProfile.args.id);
 
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	for (var i = 0,
@@ -141,8 +145,8 @@ nsBandProfile.init = function() {
 	var userSchedule = Ti.App.Properties.getObject('userSchedule');
 	for (var i in userSchedule) {
 		if (userSchedule[i].band_id == nsBandProfile.data.bandDetails._id) {
-			// $.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
-			// $.ivFavouriteStar.selected = true;
+			$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
+			$.ivFavouriteStar.selected = true;
 			break;
 		}
 	}
@@ -152,11 +156,10 @@ nsBandProfile.init = function() {
 
 		$.lblBandName.setText(nsBandProfile.data.bandDetails.name || "");
 		// Here we clean up the incoming band image_url data, and set a placeholder image if it is not set.
-		var band_image_url = 
-		$.ivBandImage.setImage(nsBandProfile.data.bandDetails.image_link.replace(/(\r\n|\n|\r)/gm,"") || "http://cdn.shopify.com/s/files/1/0809/7981/t/9/assets/logo.png?675478883972280314");
-		// $.lblDay.setText(datetime[0] || "");
-		// $.lblTime.setText(datetime[1] || "");
-		// $.lblVenue.setText((nsBandProfile.data.venueDetails !== undefined && nsBandProfile.data.venueDetails !== null) ? nsBandProfile.data.venueDetails.name : "");
+		var band_image_url = $.ivBandImage.setImage(nsBandProfile.data.bandDetails.image_link.replace(/(\r\n|\n|\r)/gm, "") || "http://cdn.shopify.com/s/files/1/0809/7981/t/9/assets/logo.png?675478883972280314");
+		$.lblDay.setText(datetime[0] || "");
+		$.lblTime.setText(datetime[1] || "");
+		$.lblVenue.setText((nsBandProfile.data.venueDetails !== undefined && nsBandProfile.data.venueDetails !== null) ? nsBandProfile.data.venueDetails.name : "");
 		$.lblMoreInfo.setText(nsBandProfile.data.bandDetails.description || "");
 	}
 

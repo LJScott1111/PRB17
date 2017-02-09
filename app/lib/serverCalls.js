@@ -248,7 +248,7 @@ nsServerCalls.getUserSchedule = function(onloadCallback, errorCallback) {
 	//	errorCallback(error);
 	//});
 
-	onloadCallback(Ti.App.Properties.getList('userSchedule', []));
+	onloadCallback(Ti.App.Properties.getObject('userSchedule', []));
 };
 
 exports.getUserSchedule = nsServerCalls.getUserSchedule;
@@ -267,7 +267,9 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 	//	errorCallback(error);
 	//});
 
-	var userSchedule = Ti.App.Properties.getList('userSchedule', []);
+	console.error('Ti.App.Properties.getObject( -- ', Ti.App.Properties.getObject('userSchedule'));
+	var userSchedule = Ti.App.Properties.getObject('userSchedule', []);
+	console.log('userSchedule( -- ', userSchedule);
 
 	if (userSchedule.length != 0) {
 
@@ -398,7 +400,7 @@ nsServerCalls.deleteUserSchedule = function(show_id, onloadCallback, errorCallba
 	 }, function(error) {
 	 });
 	 */
-	var userSchedule = Ti.App.Properties.getList('userSchedule', []);
+	var userSchedule = Ti.App.Properties.getObject('userSchedule', []);
 
 	if (userSchedule.length != 0) {
 

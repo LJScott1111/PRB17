@@ -142,7 +142,7 @@
 ".socialIconClass": {
 	top: 5,
 	bottom: 5,
-	left: 30,
+	left: 20,
 	height: 25,
 	width: 25
 }
@@ -165,6 +165,10 @@
 
 "#ivTwitter": {
 	image: "/images/twitter_icon.png"
+}
+
+"#ivInsta": {
+	image: "/icons/insta_icon.png"
 }
 
 "#lblMoreInfo": {

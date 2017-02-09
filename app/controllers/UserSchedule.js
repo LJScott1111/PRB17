@@ -14,7 +14,7 @@ nsGridSchedule.getDay = function(timestamp, type) {
 
 nsGridSchedule.createLayout = function(data) {
 
-	console.log('dataToCreateSchedule = ', JSON.stringify(data));
+	// console.log('dataToCreateSchedule = ', JSON.stringify(data));
 
 	var bandBoxHeight = Alloy.Globals.platformHeight * 0.0792;
 	var bandBoxWidth = Alloy.Globals.platformWidth * 0.3434;
@@ -90,16 +90,16 @@ nsGridSchedule.createLayout = function(data) {
 		var startTime = nsGridSchedule.momentjs(showTime * 1000).format('H.mm');
 		var displayableStartTime = nsGridSchedule.momentjs(showTime * 1000).format('h:mm a');
 
-		console.log('data.timeArray ', JSON.stringify(data.timeframe.timeArray));
-		console.log('timeframe startTime ', startTime);
+		// console.log('data.timeArray ', JSON.stringify(data.timeframe.timeArray));
+		// console.log('timeframe startTime ', startTime);
 
 		for (i in data.timeframe.timeArray) {
-			console.log('----> ', data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
+			// console.log('----> ', data.timeframe.timeArray[i].id, ' ', Math.floor(startTime));
 			var block = 0;
 
 			var splitedTime = startTime.split('.')[1];
 			var mainTimeBlock = startTime.split('.')[0];
-			console.log('MainTimeBlock', mainTimeBlock, index);
+			// console.log('MainTimeBlock', mainTimeBlock, index);
 			var index = data.timeframe.timeArray.indexOf(data.timeframe.timeArray[i]);
 
 			if (data.timeframe.timeArray[i].id == mainTimeBlock) {
@@ -126,7 +126,7 @@ nsGridSchedule.createLayout = function(data) {
 					//break;
 				}
 			}
-			console.log('LEFT:', left);
+			// console.log('LEFT:', left);
 		}
 
 		var bandBoxView = Titanium.UI.createView({
@@ -135,9 +135,10 @@ nsGridSchedule.createLayout = function(data) {
 			width : bandBoxWidth,
 			horizontalWrap : false,
 			backgroundColor : '#ffffff',
+			borderColor : '#000',
 			borderRadius : 3,
 			left : left,
-			top : 0,
+			top : 2,
 			bandId : bandId
 		});
 
@@ -199,6 +200,8 @@ nsGridSchedule.createLayout = function(data) {
 	// Container row of bands - starts from here
 	this.createBandBoxContainer = function(venue) {
 
+		console.error('SORT THIS OUT ', JSON.stringify(venue));
+
 		var bandBoxContainer = Titanium.UI.createView({
 			width : Titanium.UI.FILL,
 			height : bandBoxContainerHeight,
@@ -233,7 +236,9 @@ nsGridSchedule.createLayout = function(data) {
 		venueNameView.add(venueName);
 		bandBoxContainer.add(venueNameView);
 
+		venue.shows.sort(Alloy.Globals.sortArray('start_time'));
 		for (i in venue.shows) {
+			console.log(new Date(venue.shows[i].show.start_time * 1000));
 			bandBoxContainer.add(this.createBandBox(venue.shows[i].band.name, venue.shows[i].band.image_link, venue.shows[i].show.start_time, venue.shows[i].band._id));
 		}
 		return bandBoxContainer;
@@ -269,7 +274,11 @@ nsGridSchedule.createLayout = function(data) {
 			left : 0,
 		});
 
+		data.showsGroupedByVenue.sort(Alloy.Globals.sortArray('start_time'));
+
 		for (i in data.showsGroupedByVenue) {
+			console.error('start_time --->>>> ', data.showsGroupedByVenue[i].start_time)
+			console.log('data.showsGroupedByVenue[i] ---->>> ', JSON.stringify(data.showsGroupedByVenue[i]));
 			verticalScrollContainer.add(this.createBandBoxContainer(data.showsGroupedByVenue[i]));
 		}
 
@@ -370,14 +379,14 @@ nsGridSchedule.createDataForLayout = function(data) {
 	// Get the min and max time of shows from the data set
 	var min = data[0].showDetails.start_time,
 	    max = data[0].showDetails.start_time;
-	console.log('MINMAX', min, max);
+	// console.log('MINMAX', min, max);
 	console.error('DATA ', JSON.stringify(data));
 
 	var minIndex = 0,
 	    maxIndex = 0;
 	for (i in data) {
 
-		console.log('DATE = ', new Date(data[i].showDetails.start_time * 1000));
+		// console.log('DATE = ', new Date(data[i].showDetails.start_time * 1000));
 		if (data[i].showDetails.start_time <= min) {
 
 			min = data[i].showDetails.start_time;
@@ -390,11 +399,12 @@ nsGridSchedule.createDataForLayout = function(data) {
 		}
 	}
 
-	console.error('minIndex = ', minIndex, '/n maxIndex = ', maxIndex);
-	console.log('min = ', Alloy.Globals.getFormattedDate(min), '\n max = ', Alloy.Globals.getFormattedDate(max));
-	console.log('min = ', new Date(min * 1000), ' max = ', new Date(max * 1000), ' difference ', new Date(max * 1000).getHours() - new Date(min * 1000).getHours());
-	console.log('min = ', new Date(min * 1000).toISOString(), '\n max = ', new Date(max * 1000).toISOString());
-	console.error('min = ', new Date(min * 1000).toTimeString(), '\n max = ', new Date(max * 1000).toTimeString());
+	/*
+	 console.error('minIndex = ', minIndex, '/n maxIndex = ', maxIndex);
+	 console.log('min = ', Alloy.Globals.getFormattedDate(min), '\n max = ', Alloy.Globals.getFormattedDate(max));
+	 console.log('min = ', new Date(min * 1000), ' max = ', new Date(max * 1000), ' difference ', new Date(max * 1000).getHours() - new Date(min * 1000).getHours());
+	 console.log('min = ', new Date(min * 1000).toISOString(), '\n max = ', new Date(max * 1000).toISOString());
+	 console.error('min = ', new Date(min * 1000).toTimeString(), '\n max = ', new Date(max * 1000).toTimeString());*/
 
 	var minMaxDifference = (new Date(max * 1000).getHours() - new Date(min * 1000).getHours()) + 1;
 	// numberOfDateBlocks = 4 blocks for 1 hour => Example 12:00hours = block for 12:00, 12:15, 12:30 and 12:45 + 4 blocks for the last hour
@@ -405,7 +415,7 @@ nsGridSchedule.createDataForLayout = function(data) {
 	min = Math.floor(nsGridSchedule.momentjs(min * 1000).format('H.mm'));
 	max = Math.ceil(nsGridSchedule.momentjs(max * 1000).format('H.mm'));
 
-	console.log('min = ', min, '\n max = ', max);
+	// console.log('min = ', min, '\n max = ', max);
 
 	// Create array to pass in time layout = value of DateBlocks
 	var startTime = {},
@@ -422,21 +432,21 @@ nsGridSchedule.createDataForLayout = function(data) {
 		}
 	}
 
-	for (var i in hours) {
-		if (hours[i].id == max) {
-			endTime = hours[i];
-			timeArray = timeArray.splice(0, (parseInt(i) + 1));
-			break;
-		}
-	}
+	// for (var i in hours) {
+	// if (hours[i].id == max) {
+	// endTime = hours[i];
+	// timeArray = timeArray.splice(0, (parseInt(i) + 1));
+	// break;
+	// }
+	// }
 
 	dataToCreateSchedule.timeframe.startTime = JSON.parse(JSON.stringify(startTime));
 	dataToCreateSchedule.timeframe.endTime = JSON.parse(JSON.stringify(endTime));
 	dataToCreateSchedule.timeframe.timeArray = JSON.parse(JSON.stringify(timeArray));
 
-	console.log('startTime ', startTime);
-	console.log('endTime ', endTime);
-	console.log('hours for the day -> timeArray = ', JSON.stringify(timeArray));
+	// console.log('startTime ', startTime);
+	// console.log('endTime ', endTime);
+	// console.log('hours for the day -> timeArray = ', JSON.stringify(timeArray));
 
 	var lookup = {};
 	var showsGroupedByVenue = [];
@@ -463,12 +473,14 @@ nsGridSchedule.createDataForLayout = function(data) {
 			if (showsGroupedByVenue[i].venue_id == data[j].venueDetails._id) {
 				showsGroupedByVenue[i].shows.push({
 					show : data[j].showDetails,
-					band : data[j].bandDetails
+					band : data[j].bandDetails,
+					start_time : data[j].showDetails.start_time
 				});
+				// showsGroupedByVenue[i].start_time= data[j].showDetails.start_time;
 			};
 		}
 	}
-	console.log('venue result after ', showsGroupedByVenue.length, ' ', JSON.stringify(showsGroupedByVenue));
+	// console.log('venue result after ', showsGroupedByVenue.length, ' ', JSON.stringify(showsGroupedByVenue));
 	dataToCreateSchedule.showsGroupedByVenue = JSON.parse(JSON.stringify(showsGroupedByVenue));
 
 	nsGridSchedule.createLayout(dataToCreateSchedule);
@@ -556,7 +568,7 @@ nsGridSchedule.getList = function(source) {
 			}
 		}
 	}
-	console.log('shows data ', JSON.stringify(shows));
+	// console.log('shows data ', JSON.stringify(shows));
 	nsGridSchedule.createDataForLayout(shows);
 };
 
@@ -576,7 +588,7 @@ nsGridSchedule.getShows = function() {
 		}
 	}
 
-	console.log("User shows " + shows.length + JSON.stringify(shows));
+	// console.log("User shows " + shows.length + JSON.stringify(shows));
 
 	return shows.length;
 };
@@ -584,6 +596,7 @@ nsGridSchedule.getShows = function() {
 nsGridSchedule.init = function() {
 	nsGridSchedule.args = JSON.parse(JSON.stringify($.args.schedule));
 	console.error('nsGridSchedule grid added nsGridSchedule.args ', JSON.stringify(nsGridSchedule.args));
+	// nsGridSchedule.args.sort(Alloy.Globals.sortArray('start_time'));
 
 	var shows = nsGridSchedule.getShows();
 	console.debug("SHOWS LENGTH ", shows);

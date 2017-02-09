@@ -26,7 +26,7 @@ nsSearchList.getList = function(day) {
 
 		if (nsSearchList.type === "BandList" && day === dayOfShow) {
 			listToShow.push(nsSearchList.currentCityData[i].bandDetails);
-		} else if (nsSearchList.type === "VenueList" && day === dayOfShow) {
+		} else if (nsSearchList.type === "VenueList") {//  && day === dayOfShow
 			var venue = nsSearchList.currentCityData[i].venueDetails._id;
 
 			if (!( venue in lookup)) {
@@ -342,7 +342,7 @@ nsSearchList.createHeader = function() {
 
 nsSearchList.createList = function(tblData) {
 
-	var userSchedule = Ti.App.Properties.getList('userSchedule');
+	var userSchedule = Ti.App.Properties.getObject('userSchedule');
 	var imageW = Alloy.Globals.platformWidth * 0.25;
 	var imageH = Alloy.Globals.platformHeight * 0.088;
 
@@ -363,20 +363,19 @@ nsSearchList.createList = function(tblData) {
 		 }
 
 		 */
-/*
+		/*
 
-		var sbSearchBar = Titanium.UI.createSearchBar({
-			barColor : '#000000',
-			backgroundColor : "#ffffff",
-			showCancel : false,
-			hintText : "Search",
-			height : 43,
-			top : 10,
-			width : "80%",
-		});
+		 var sbSearchBar = Titanium.UI.createSearchBar({
+		 barColor : '#000000',
+		 backgroundColor : "#ffffff",
+		 showCancel : false,
+		 hintText : "Search",
+		 height : 43,
+		 top : 10,
+		 width : "80%",
+		 });
 
-		nsSearchList.vwSearchView.add(sbSearchBar);*/
-
+		 nsSearchList.vwSearchView.add(sbSearchBar);*/
 
 	}
 	/*
@@ -411,8 +410,15 @@ nsSearchList.createList = function(tblData) {
 	    len = tblData.length; i < len; i++) {
 
 		if (tblData[i] !== undefined) {
-			console.error('new Date(tblData[i].start_time * 1000).toTimeString().substr(0, 5) ', new Date(tblData[i].start_time * 1000).toTimeString().substr(0, 5));
-			l = (nsSearchList.listType == 'time') ? new Date(tblData[i].start_time * 1000).toTimeString().substr(0, 5) : tblData[i].name.substr(0, 1);
+			// console.error('new Date(tblData[i].start_time * 1000).toTimeString().substr(0, 5) ', new Date(tblData[i].start_time * 1000).toTimeString().substr(0, 5));
+			// console.error('tblData[i].name.substr(0, 3) ', tblData[i].name.substr(0, 3), tblData[i].name.substr(4, 1));
+			// var abbr = (tblData[i].name.substr(0, 3).toLowerCase() === 'the')? tblData[i].name.substr(4, 1):tblData[i].name.substr(0, 1);
+			// console.error('abbr +++=============', abbr);
+			if (nsSearchList.type === "BandList") {
+				l = (nsSearchList.listType == 'time') ? Alloy.Globals.getFormattedDate(tblData[i].start_time)[1] : tblData[i].focusedName.substr(0, 1);
+			} else {
+				l = (nsSearchList.listType == 'time') ? Alloy.Globals.getFormattedDate(tblData[i].start_time)[1] : tblData[i].name.substr(0, 1);
+			}
 
 			if (nsSearchList.type === "BandList" && lastL != l) {
 				index.push({
@@ -420,23 +426,23 @@ nsSearchList.createList = function(tblData) {
 					index : i
 				});
 				var tableViewSectionHeader = Titanium.UI.createView({
-					width: Titanium.UI.FILL,
-					height: '20dp',
-					backgroundColor: '#868686'
+					width : Titanium.UI.FILL,
+					height : '20dp',
+					backgroundColor : '#868686'
 				});
-				
+
 				var tableViewSectionHeaderTitle = Titanium.UI.createLabel({
-					text: l,
-					left: '20dp',
-					color: '#fff',
-					font: {
-						fontSize: '13dp'
+					text : l,
+					left : '20dp',
+					color : '#fff',
+					font : {
+						fontSize : '13dp'
 					}
 				});
 				tableViewSectionHeader.add(tableViewSectionHeaderTitle);
 				currSection = Ti.UI.createTableViewSection({
 					// headerTitle : l,
-					headerView: tableViewSectionHeader
+					headerView : tableViewSectionHeader
 				});
 				sectionArr.push(currSection);
 			}
@@ -549,7 +555,7 @@ nsSearchList.createList = function(tblData) {
 	});
 
 	// if (nsSearchList.type === "BandList") {
-		// nsSearchList.table.searchHidden = true;
+	// nsSearchList.table.searchHidden = true;
 	// }
 
 	nsSearchList.table.addEventListener('click', function(e) {
@@ -596,8 +602,18 @@ nsSearchList.init = function(type, data) {
 	nsSearchList.currentCityData = JSON.parse(JSON.stringify(data.currentCityData));
 	nsSearchList.screen = data.screen;
 
-	nsSearchList.data.sort(Alloy.Globals.sortArray('name'));
-	console.log("sorted ",nsSearchList.screen, JSON.stringify(nsSearchList.data));
+	if (nsSearchList.type === "BandList") {
+		for (var i in nsSearchList.data) {
+			var focusedName = (nsSearchList.data[i].name.substr(0, 3).toLowerCase() === 'the') ? nsSearchList.data[i].name.substr(4) : nsSearchList.data[i].name;
+			console.error('focusedName +++=============', focusedName);
+			nsSearchList.data[i].focusedName = focusedName;
+		}
+		nsSearchList.data.sort(Alloy.Globals.sortArray('focusedName'));
+	} else {
+		nsSearchList.data.sort(Alloy.Globals.sortArray('name'));
+	}
+
+	console.log("sorted ", nsSearchList.screen, JSON.stringify(nsSearchList.data));
 
 	console.debug("In searchList");
 	console.debug("Data: ", JSON.stringify(nsSearchList.data));
@@ -615,15 +631,16 @@ nsSearchList.init = function(type, data) {
 	if (nsSearchList.screen != 'lineup') {
 		var bands = nsSearchList.getList('friday');
 
-	// nsSearchList.vwSearchView.removeAllChildren();
-	nsSearchList.selectedTab = 'friday';
-	var vwList = nsSearchList.createList(bands);
-	return vwList;
+		// nsSearchList.vwSearchView.removeAllChildren();
+		nsSearchList.selectedTab = 'friday';
+		var vwList = nsSearchList.createList(bands);
+		return vwList;
 
-	} else{
-	
-	var vwList = nsSearchList.createList(nsSearchList.data);
-	return vwList;}
+	} else {
+
+		var vwList = nsSearchList.createList(nsSearchList.data);
+		return vwList;
+	}
 };
 
 exports.init = nsSearchList.init;
