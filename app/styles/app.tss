@@ -17,6 +17,10 @@ PADDINGS
 	bottom: '10dp'
 }
 
+".padding_top_zero": {
+	top: '0dp'
+}
+
 /*
 LAYOUTS
 */

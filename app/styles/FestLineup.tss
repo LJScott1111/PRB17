@@ -4,13 +4,54 @@
 	bottom: 0,
 	// backgroundColor: "#000000",
 	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+}
+
+".lineup_views":{
+	layout: 'vertical',
+	height: Titanium.UI.FILL
+}
+
+".city_options": {
+	top: '0dp',
+	height: '50dp',
 	width: Titanium.UI.FILL,
+	zIndex: 99
+}
+
+".heading_view": {
+	width: '49.5%',
 	layout: 'vertical'
 }
 
+"#lasvegas_view": {
+	left: '0dp'
+}
+
+"#asburypark_view": {
+	right: '0dp'
+}
+
+".heading_lbl": {
+	top: '10dp',
+	color: '#D70C46',
+	font: {
+		fontSize: '25dp',
+		fontWeight: 'bold'
+	}
+}
+
+".underline_view": {
+	height: '5dp',
+	width: Titanium.UI.FILL,
+	backgroundColor: '#D70C46',
+	left: '15dp',
+	right: '15dp',
+	top: '2dp'
+}
+
 ".options_bands": {
-	color: 'transparent',
-	// borderColor: 'black'
+	color: 'transparent'
 }
 
 ".view_bands": {
@@ -22,13 +63,13 @@
 	right: '30dp',
 	// width: '170dp',
 	width: '44%',
-	top: '35dp',
+	// top: '35dp',
 	// height: '48dp'
 	height: '6.5%'
 }
 
 "#my_first_gimme_gimmes": {
-	top: '5dp',
+	// top: '5dp',
 	right: '40dp',
 	// width: '260dp',
 	width: '69%',
@@ -82,10 +123,60 @@
 	right: '40dp'
 }
 
-"#off": {
-	// width: '45dp'
-	// width: '13%'
+".view_13": {
+	// top: '5dp',
+	right: '10dp'
 }
+
+".view_14": {
+	// top: '5dp',
+	right: '10dp'
+}
+
+".view_15": {
+	// top: '5dp',
+	right: '7dp'
+}
+
+".view_16": {
+	// top: '5dp',
+	right: '40dp'
+}
+
+"#the_specials": {
+	right: '10dp'
+}
+
+"#charles_bradley": {
+	top: '3dp',
+	right: '8dp'
+}
+
+"#dillinger_four": {
+	right: '35dp'
+}
+
+"#nofx": {
+	top: '27dp',
+	right: '10dp'
+}
+
+"#buzzcocks": {
+	right: '23dp'
+}
+
+"#lifetime": {
+	right: '60dp'
+}
+
+"#leftover_crack": {
+	right: '40dp'
+}
+
+"#hotblood": {
+	right: '60dp'
+}
+
 
 "#the_spits": {
 	left: '20dp',
@@ -123,7 +214,7 @@
 }
 
 "#bad_religion": {
-	top: '15dp',
+	top: '7dp',
 	// width: '200dp',
 	// height: '40dp',
 	right: '30dp',
@@ -168,7 +259,7 @@
 }
 
 "#cock_sparrer": {
-	top: '25dp',
+	top: '15dp',
 	// width: '200dp',
 	// height: '40dp',
 	width: '54%',

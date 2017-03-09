@@ -23,8 +23,7 @@
 	layout: "vertical",
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL,
-	zIndex: 99,
-	backgroundImage: '/icons/mainview_header_bg.png'
+	zIndex: 99
 }
 
 "#mainview_text": {
@@ -52,7 +51,7 @@
 }
 
 ".character": {
-	image: '/icons/character.png',
+	// image: '/icons/character.png',
 	bottom: '70dp',
 	zIndex: 99,
 	width: '70%',

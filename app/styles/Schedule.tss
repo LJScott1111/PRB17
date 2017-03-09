@@ -7,8 +7,45 @@
 }
 
 "#mainContent": {
-	top: 0,
+	top: '50dp',
 	bottom: '70dp'
+}
+
+".city_options": {
+	top: '0dp',
+	height: '50dp',
+	width: Titanium.UI.FILL
+}
+
+".heading_view": {
+	width: '49.5%',
+	layout: 'vertical'
+}
+
+"#lasvegas_view": {
+	left: '0dp'
+}
+
+"#asburypark_view": {
+	right: '0dp'
+}
+
+".heading_lbl": {
+	top: '10dp',
+	color: '#D70C46',
+	font: {
+		fontSize: '25dp',
+		fontWeight: 'bold'
+	}
+}
+
+".underline_view": {
+	height: '5dp',
+	width: Titanium.UI.FILL,
+	backgroundColor: '#D70C46',
+	left: '15dp',
+	right: '15dp',
+	top: '2dp'
 }
 
 ".options_bottom_view": {

@@ -26,12 +26,12 @@ $.logo.addEventListener('click', function() {
 
 nsRightLogoGrid.init = function() {
 	for (var i = Alloy.Globals.rightGridEventListeners.length - 1; i >= 0; i--) {
-		console.log(Alloy.Globals.rightGridEventListeners[i]);
+		// console.log(Alloy.Globals.rightGridEventListeners[i]);
 		Titanium.App.removeEventListener(Alloy.Globals.rightGridEventListeners[i].name, Alloy.Globals.rightGridEventListeners[i].func);
 		Alloy.Globals.rightGridEventListeners.pop();
 	}
 
-	console.error('Alloy.Globals.rightGridEventListeners BEFORE ', Alloy.Globals.rightGridEventListeners.length, Alloy.Globals.rightGridEventListeners);
+	// console.error('Alloy.Globals.rightGridEventListeners BEFORE ', Alloy.Globals.rightGridEventListeners.length, Alloy.Globals.rightGridEventListeners);
 
 	Titanium.App.addEventListener('hideGridOption', nsRightLogoGrid.hideGridOption);
 	Titanium.App.addEventListener('showGridOption', nsRightLogoGrid.showGridOption);
@@ -55,7 +55,7 @@ nsRightLogoGrid.init = function() {
 		func : nsRightLogoGrid.changeToTable
 	});
 
-	console.error('Alloy.Globals.rightGridEventListeners AFTER ', Alloy.Globals.rightGridEventListeners.length, Alloy.Globals.rightGridEventListeners);
+	// console.error('Alloy.Globals.rightGridEventListeners AFTER ', Alloy.Globals.rightGridEventListeners.length, Alloy.Globals.rightGridEventListeners);
 
 };
 

@@ -30,7 +30,7 @@ nsEventList.getDay = function(timestamp, type) {
 
 nsEventList.showBandList = function() {
 	$.show_list.removeAllChildren();
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	var appdata = $.args.appdata;
 	var bandlist = [];
 	var currentCityData = [];
 	var show_date = '',
@@ -56,7 +56,8 @@ nsEventList.showBandList = function() {
 		list : bandlist,
 		currentCityData : currentCityData,
 		listType : 'time',
-		screen : 'schedule'
+		screen : 'schedule',
+		showsType : $.args.showsType
 	}, $.args.city);
 	console.debug(JSON.stringify(list));
 	Alloy.Globals.loading.hide();

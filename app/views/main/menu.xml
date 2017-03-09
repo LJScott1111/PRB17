@@ -12,11 +12,12 @@
 			<Require id="prb_shop" src="misc/menu_button" title="L('prb_shop').toUpperCase()" />
 			<Require id="map" src="misc/menu_button" title="L('map').toUpperCase()" />
 			<Require id="venues" src="misc/menu_button" title="L('venues').toUpperCase()" />
+			<Require id="poker" src="misc/menu_button" title="L('poker').toUpperCase()" />
 			<!--
 			<Require id="bowling" src="misc/menu_button" title="L('bowling').toUpperCase()" />
 			<View id="subWrapper1" class="vertical_layout">
 			<Require id="fest_events" src="misc/menu_button" title="L('fest_events').toUpperCase()" />
-			<Require id="poker" src="misc/menu_button" title="L('poker').toUpperCase()" />
+
 			<Require id="poolparty" src="misc/menu_button" title="L('poolparty').toUpperCase()" />
 			</View>
 			<View id="subWrapper2" class="vertical_layout">

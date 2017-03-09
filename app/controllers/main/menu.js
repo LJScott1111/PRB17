@@ -101,7 +101,8 @@ $.bands.button.addEventListener('click', function() {
 					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 					Alloy.Globals.openWindow('Schedule', {
 						city : Alloy.Globals.nextEventCity,
-						schedule : schedule
+						schedule : schedule,
+						appdata : Titanium.App.Properties.getObject('appdata', {})
 					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
 
 					Alloy.Globals.loading.hide();
@@ -124,7 +125,8 @@ $.bands.button.addEventListener('click', function() {
 			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 			Alloy.Globals.openWindow('Schedule', {
 				city : Alloy.Globals.nextEventCity,
-				schedule : schedule
+				schedule : schedule,
+				appdata : Titanium.App.Properties.getObject('appdata', {})
 			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
 			Alloy.Globals.loading.hide();
 
@@ -186,10 +188,55 @@ $.prb_shop.button.addEventListener('click', function() {
 $.club_shows.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://buzzplay.com/PRBapp/ComingSoon.html",
-		addBanner : true
-	}, true, null, 'misc/center_logo');
+	var clubdata = Titanium.App.Properties.getObject('clubData', {});
+
+	if (clubdata.details.length === 0) {
+		var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
+
+			console.debug(JSON.stringify(schedule));
+
+			var getClubShows = new nsMenu.serviceCalls.getClubShows(function(clubData) {
+				console.log('response Clubshows clubData ', JSON.stringify(clubData));
+				Alloy.Globals.openWindow('Schedule', {
+					city : Alloy.Globals.nextEventCity,
+					schedule : schedule,
+					appdata : clubData,
+					showsType : 'clubshows'
+				}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+			}, function(error) {
+				console.log('error Clubshows ', JSON.stringify(error));
+			});
+
+		}, function(error) {
+			alert(L('err_fetchingDetails'));
+			Alloy.Globals.loading.hide();
+		});
+	} else {
+
+		var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
+
+			console.debug(JSON.stringify(schedule));
+
+			Alloy.Globals.openWindow('Schedule', {
+				city : Alloy.Globals.nextEventCity,
+				schedule : schedule,
+				appdata : clubdata,
+				showsType : 'clubshows'
+			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+
+		}, function(error) {
+			alert(L('err_fetchingDetails'));
+			Alloy.Globals.loading.hide();
+		});
+	}
+
+	/*
+	 Ti.App.fireEvent('toggleMenu');
+	 Alloy.Globals.openWindow('GenericWebView', {
+	 url : "http://buzzplay.com/PRBapp/ComingSoon.html",
+	 addBanner : true
+	 }, true, null, 'misc/center_logo');*/
+
 });
 
 $.contests.button.addEventListener('click', function() {
@@ -224,6 +271,16 @@ $.venues.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('VenueList', {
 		city : Alloy.Globals.nextEventCity
+	}, true, null, 'misc/center_logo');
+});
+
+$.poker.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "https://punkrockbowling.com/pages/poker-tournament",
+		addBanner : true
 	}, true, null, 'misc/center_logo');
 });
 
@@ -339,7 +396,8 @@ $.my_schedule.button.addEventListener('click', function() {
 					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 					Alloy.Globals.openWindow('Schedule', {
 						city : Alloy.Globals.nextEventCity,
-						schedule : schedule
+						schedule : schedule,
+						appdata : Titanium.App.Properties.getObject('appdata', {})
 					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
 
 					Alloy.Globals.loading.hide();
@@ -362,7 +420,8 @@ $.my_schedule.button.addEventListener('click', function() {
 			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 			Alloy.Globals.openWindow('Schedule', {
 				city : Alloy.Globals.nextEventCity,
-				schedule : schedule
+				schedule : schedule,
+				appdata : Titanium.App.Properties.getObject('appdata', {})
 			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
 			Alloy.Globals.loading.hide();
 

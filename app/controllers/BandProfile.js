@@ -59,7 +59,7 @@ nsBandProfile.markFavourite = function(e) {
 
 		}, function(error) {
 			alert(L('err_serviceError'));
-		});
+		}, $.args.showsType);
 	} else {
 		nsBandProfile.serverCalls.deleteUserSchedule(show_id, function() {
 
@@ -113,7 +113,7 @@ nsBandProfile.init = function() {
 	console.log('INIT Band Profile');
 	console.error('ID: ', nsBandProfile.args.id);
 
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	var appdata = ($.args.showsType == 'clubshows') ? Titanium.App.Properties.getObject('clubData', {}) : Titanium.App.Properties.getObject('appdata', {});
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
 
@@ -123,11 +123,11 @@ nsBandProfile.init = function() {
 		}
 	}
 
-	console.debug("BandProfile id ", JSON.stringify(nsBandProfile.args));
-	console.debug("BandProfile data ", JSON.stringify(nsBandProfile.data));
+	// console.debug("BandProfile id ", JSON.stringify(nsBandProfile.args));
+	// console.debug("BandProfile data ", JSON.stringify(nsBandProfile.data));
 
 	$.ivBandImage.setHeight(Alloy.Globals.platformHeight * 0.30);
-	console.log('showDetails:' + JSON.stringify(nsBandProfile.data));
+	// console.log('showDetails:' + JSON.stringify(nsBandProfile.data));
 
 	if (nsBandProfile.data === null || nsBandProfile.data === undefined) {
 		nsBandProfile.data = {};
@@ -140,7 +140,7 @@ nsBandProfile.init = function() {
 		}
 	}
 
-	console.log('bandprodata:' + JSON.stringify(nsBandProfile.data));
+	// console.log('bandprodata:' + JSON.stringify(nsBandProfile.data));
 
 	var userSchedule = Ti.App.Properties.getObject('userSchedule');
 	for (var i in userSchedule) {

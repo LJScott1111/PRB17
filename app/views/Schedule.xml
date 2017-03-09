@@ -1,5 +1,15 @@
 <Alloy>
 	<View id="vwMain">
+		<View class="city_options">
+			<View id="lasvegas_view" class="heading_view">
+				<Label id="lasvegas" class="heading_lbl langdon" text="L('lasvegas').toUpperCase()"></Label>
+				<View class="underline_view"></View>
+			</View>
+			<View id="asburypark_view" class="heading_view">
+				<Label id="asburypark" class="heading_lbl langdon" text="L('asburypark').toUpperCase()"></Label>
+				<View class="underline_view"></View>
+			</View>
+		</View>
 		<View id="mainContent"></View>
 		<View id="tabbed_options" class="options_bottom_view">
 			<View id="my_schedule" class="options">

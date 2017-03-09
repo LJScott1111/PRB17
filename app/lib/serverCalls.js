@@ -149,7 +149,7 @@ exports.fbLogout = nsServerCalls.fbLogout;
 
 // Get band list
 nsServerCalls.getBandList = function(onloadCallback, errorCallback) {
-	var promise = Kinvey.DataStore.find('bands', null);
+	var promise = Kinvey.DataStore.find('BandsPBR17', null);
 	promise.then(function(entities) {
 		console.debug("Band List success ", JSON.stringify(entities));
 
@@ -209,7 +209,7 @@ exports.getVenueList = nsServerCalls.getVenueList;
 nsServerCalls.getShows = function(onloadCallback, errorCallback) {
 	var query = new Kinvey.Query();
 	query.ascending('start_time');
-	var promise = Kinvey.DataStore.find('shows', null);
+	var promise = Kinvey.DataStore.find('ShowsPRB17', null);
 	promise.then(function(entities) {
 		console.log("Shows success ", JSON.stringify(entities));
 		// Alloy.Globals.shows = JSON.parse(JSON.stringify(entities));
@@ -236,6 +236,89 @@ nsServerCalls.getShows = function(onloadCallback, errorCallback) {
 
 exports.getShows = nsServerCalls.getShows;
 
+nsServerCalls.getClubBands = function(onloadCallback, errorCallback) {
+
+	var query = new Kinvey.Query();
+	query.ascending('start_time');
+	var promise = Kinvey.DataStore.find('ClubBands', null);
+	promise.then(function(entities) {
+		console.log("Bands success ", JSON.stringify(entities));
+
+		onloadCallback(entities);
+
+	}, function(error) {
+		console.debug("Bands Error ", error);
+		errorCallback(error);
+	});
+};
+
+exports.getClubBands = nsServerCalls.getClubBands;
+
+nsServerCalls.getClubShows = function(onloadCallback, errorCallback) {
+
+	var query = new Kinvey.Query();
+	query.ascending('start_time');
+	var promise = Kinvey.DataStore.find('ClubShows', null);
+	var clubData = Titanium.App.Properties.getObject('clubData', {});
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	var combinedData =[];
+
+	var ClubBands = new nsServerCalls.getClubBands(function(resp) {
+		console.log('RESP BANDS ----> ', JSON.stringify(resp));
+		clubData.bands = JSON.parse(JSON.stringify(resp));
+
+		promise.then(function(entities) {
+			console.log("ClubShows success ", JSON.stringify(entities));
+			clubData.shows = JSON.parse(JSON.stringify(entities));
+			clubData.venues = JSON.parse(JSON.stringify(appdata.venues));
+
+			// onloadCallback(entities);
+
+			for (var j = 0,
+			    showLen = entities.length; j < showLen; j++) {
+				var bandProfile = {};
+				bandProfile.showDetails = JSON.parse(JSON.stringify(entities[j]));
+				// Find the matching band
+				for (var i = 0,
+				    bandLen = resp.length; i < bandLen; i++) {
+					if (resp[i]._id == bandProfile.showDetails.band_id) {
+						bandProfile.bandDetails = JSON.parse(JSON.stringify(resp[i]));
+						break;
+					}
+				}
+				// Find the matching venue
+				for (var k = 0,
+				    venueLen = appdata.venues.length; k < venueLen; k++) {
+					if (appdata.venues[k]._id == bandProfile.showDetails.venue_id) {
+						bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
+						break;
+					}
+				}
+				combinedData.push(bandProfile);
+			}
+			clubData.details = JSON.parse(JSON.stringify(combinedData));
+			
+			console.error('clubData --> ', JSON.stringify(clubData));
+			
+			Titanium.App.Properties.setObject('clubData', clubData);;
+			
+			onloadCallback(Titanium.App.Properties.getObject('clubData', {}));
+
+		}, function(error) {
+			console.debug("Shows Error ", error);
+			errorCallback(error);
+		});
+
+	}, function(err) {
+		console.error('ERR BANDS ----> ', JSON.stringify(err));
+
+		// onloadCallback(entities);
+	});
+
+};
+
+exports.getClubShows = nsServerCalls.getClubShows;
+
 // Get user schedule
 // Get user schedule
 nsServerCalls.getUserSchedule = function(onloadCallback, errorCallback) {
@@ -254,7 +337,7 @@ nsServerCalls.getUserSchedule = function(onloadCallback, errorCallback) {
 exports.getUserSchedule = nsServerCalls.getUserSchedule;
 
 //Saving a User schedule
-nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback) {
+nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback, showsType) {
 	//var promise = Kinvey.DataStore.save('user-schedules', {
 	// _id : 'optional-id',
 	//	"user_id" : Titanium.App.Properties.getString('userid'),
@@ -283,7 +366,7 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 		}
 	}
 
-	var appdata = Titanium.App.Properties.getObject('appdata');
+	var appdata = (showsType == 'clubshows') ? Titanium.App.Properties.getObject('clubData', {}) : Titanium.App.Properties.getObject('appdata', {});
 	var band_id = '',
 	    venue_id = '',
 	    start_time = '',

@@ -11,6 +11,8 @@ nsSearchList.serverCalls = require('serverCalls');
 nsSearchList.momentjs = require('moment');
 nsSearchList.remoteImageView = require('createRemoteImageView');
 
+var appdata = {};
+
 nsSearchList.getList = function(day) {
 	// Get list
 	console.debug("day ", day);
@@ -475,10 +477,15 @@ nsSearchList.createList = function(tblData) {
 				});
 
 				var imagelink = tblData[i].image_link;
+				imagelink = imagelink.replace(/ /g, '');
+
+				// console.error('imagelink ', imagelink);
 
 				if (tblData[i].image_link && (imagelink.indexOf('.png') > -1 || imagelink.indexOf('.jpg') > -1 || imagelink.indexOf('.jpeg') > -1 )) {
 					ivImage.image = imagelink;
 				}
+
+				// console.log('imagelink ', tblData[i]._id, imagelink);
 
 				vwRowView.add(ivImage);
 			} else {
@@ -564,7 +571,8 @@ nsSearchList.createList = function(tblData) {
 		if (nsSearchList.type === "BandList") {
 
 			Alloy.Globals.openWindow("BandProfile", {
-				"id" : tblData[e.source.id]._id
+				"id" : tblData[e.source.id]._id,
+				showsType : nsSearchList.showsType
 			}, true, null, 'misc/center_logo');
 
 		} else if (nsSearchList.type === "VenueList") {
@@ -601,11 +609,14 @@ nsSearchList.init = function(type, data) {
 	console.error(nsSearchList.type, nsSearchList.listType, nsSearchList.screen);
 	nsSearchList.currentCityData = JSON.parse(JSON.stringify(data.currentCityData));
 	nsSearchList.screen = data.screen;
+	nsSearchList.showsType = data.showsType;
+
+	console.error('SHOWTYPE ', nsSearchList.showsType);
 
 	if (nsSearchList.type === "BandList") {
 		for (var i in nsSearchList.data) {
 			var focusedName = (nsSearchList.data[i].name.substr(0, 3).toLowerCase() === 'the') ? nsSearchList.data[i].name.substr(4) : nsSearchList.data[i].name;
-			console.error('focusedName +++=============', focusedName);
+			// console.error('focusedName +++=============', focusedName);
 			nsSearchList.data[i].focusedName = focusedName;
 		}
 		nsSearchList.data.sort(Alloy.Globals.sortArray('focusedName'));
@@ -613,10 +624,10 @@ nsSearchList.init = function(type, data) {
 		nsSearchList.data.sort(Alloy.Globals.sortArray('name'));
 	}
 
-	console.log("sorted ", nsSearchList.screen, JSON.stringify(nsSearchList.data));
+	// console.log("sorted ", nsSearchList.screen, JSON.stringify(nsSearchList.data));
 
 	console.debug("In searchList");
-	console.debug("Data: ", JSON.stringify(nsSearchList.data));
+	// console.debug("Data: ", JSON.stringify(nsSearchList.data));
 
 	nsSearchList.vwSearchView = Titanium.UI.createView({
 		layout : "vertical",
@@ -626,9 +637,10 @@ nsSearchList.init = function(type, data) {
 		bottom : '0dp',
 		backgroundColor : "#000000"
 	});
-	console.error('nsSearchList.data =====>  ', JSON.stringify(nsSearchList.data));
+	// console.error('nsSearchList.data =====>  ', JSON.stringify(nsSearchList.data));
 
 	if (nsSearchList.screen != 'lineup') {
+		console.error('nsSearchList.screen != lineup');
 		var bands = nsSearchList.getList('friday');
 
 		// nsSearchList.vwSearchView.removeAllChildren();
@@ -637,6 +649,8 @@ nsSearchList.init = function(type, data) {
 		return vwList;
 
 	} else {
+
+		console.error('ELSE nsSearchList.screen != lineup');
 
 		var vwList = nsSearchList.createList(nsSearchList.data);
 		return vwList;

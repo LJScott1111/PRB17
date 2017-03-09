@@ -1,28 +1,12 @@
 var nsEventList = {};
 
-// $.when_view.addEventListener('click', function() {
-//
-// $.when_lbl.color = '#cc0000';
-// $.where_lbl.color = '#c0c0c0';
-// $.when_selected.backgroundColor = '#cc0000';
-// $.where_selected.backgroundColor = 'transparent';
-// nsEventList.showBandList();
-// });
-//
-// $.where_view.addEventListener('click', function() {
-//
-// $.where_lbl.color = '#cc0000';
-// $.when_lbl.color = '#c0c0c0';
-// $.where_selected.backgroundColor = '#cc0000';
-// $.when_selected.backgroundColor = 'transparent';
-// nsEventList.showVenueList();
-// });
-
 nsEventList.showBandList = function() {
 	$.vwMainList.removeAllChildren();
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	// var appdata = Titanium.App.Properties.getObject('appdata', {});
+	var appdata = $.args.appdata;
 	var bandlist = [];
 	var currentCityData = [];
+	console.error('APPDATA ', JSON.stringify(appdata));
 	for (i in appdata.details) {
 
 		// console.log(appdata.details[i].showDetails.location.toLowerCase(), $.args.city);
@@ -41,7 +25,8 @@ nsEventList.showBandList = function() {
 	var list = searchList.init("BandList", {
 		list : bandlist,
 		currentCityData : currentCityData,
-		screen : 'lineup'
+		screen : 'lineup',
+		showsType : $.args.showsType
 	}, $.args.city);
 	console.debug(JSON.stringify(list));
 	Alloy.Globals.loading.hide();
@@ -50,7 +35,7 @@ nsEventList.showBandList = function() {
 
 nsEventList.showVenueList = function() {
 	$.vwMainList.removeAllChildren();
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	var appdata = $.args.appdata;
 	var venuelist = [];
 	var currentCityData = [];
 	for (i in appdata.details) {

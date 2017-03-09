@@ -1,4 +1,5 @@
 var nsSchedule = {};
+var currentCity = $.args.city;
 nsSchedule.propRed = {
 	color : '#cc0000',
 	touchEnabled : false
@@ -26,7 +27,7 @@ nsSchedule.changeInScheduleScreen = function() {
 		nsSchedule.showMySchedule();
 
 		// var mySchedule = Alloy.createController('MySchedule', {
-		// city : $.args.city,
+		// city : currentCity,
 		// schedule : schedule
 		// }).getView();
 		//
@@ -42,8 +43,9 @@ nsSchedule.changeInScheduleScreen = function() {
 
 		$.mainContent.removeAllChildren();
 		var eventListByDay = Alloy.createController('EventListByDay', {
-			city : $.args.city,
-			schedule : $.args.schedule
+			city : currentCity,
+			appdata : $.args.appdata,
+			showsType : $.args.showsType
 		}).getView();
 
 		$.mainContent.add(eventListByDay);
@@ -74,7 +76,7 @@ nsSchedule.showMySchedule = function() {
 
 			// Change to table
 			var userSchedule = Alloy.createController('UserSchedule', {
-				city : $.args.city,
+				city : currentCity,
 				schedule : schedule
 			}).getView();
 			$.mainContent.add(userSchedule);
@@ -83,7 +85,7 @@ nsSchedule.showMySchedule = function() {
 
 			// Change to grid
 			var mySchedule = Alloy.createController('MySchedule', {
-				city : $.args.city,
+				city : currentCity,
 				schedule : schedule
 			}).getView();
 
@@ -102,7 +104,7 @@ nsSchedule.showMySchedule = function() {
 
 nsSchedule.getEventsByDayForGrid = function() {
 
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	var appdata = $.args.appdata;
 	var bandlist = [];
 	var eventSchedule = [];
 	var show_date = '';
@@ -111,7 +113,7 @@ nsSchedule.getEventsByDayForGrid = function() {
 
 	for (i in appdata.details) {
 		show_date = new Date(appdata.details[i].showDetails.start_time * 1000);
-		if (appdata.details[i].showDetails.location.toLowerCase().replace(" ", "") === $.args.city && appdata.details[i].bandDetails) {
+		if (appdata.details[i].showDetails.location.toLowerCase().replace(" ", "") === currentCity && appdata.details[i].bandDetails) {
 			eventSchedule.push({
 				start_time : appdata.details[i].showDetails.start_time,
 				venue_id : appdata.details[i].showDetails.venue_id,
@@ -125,9 +127,10 @@ nsSchedule.getEventsByDayForGrid = function() {
 	}
 
 	var eventSchedule = Alloy.createController('UserSchedule', {
-		city : $.args.city,
+		city : currentCity,
 		schedule : eventSchedule,
-		type : 'eventSchedule'
+		type : 'eventSchedule',
+		appdata : appdata
 	}).getView();
 	$.mainContent.add(eventSchedule);
 };
@@ -173,8 +176,10 @@ $.line_up.addEventListener('click', function() {
 	$.schedule_text.applyProperties(nsSchedule.propGrey);
 
 	var eventList = Alloy.createController('EventList', {
-		city : $.args.city,
-		schedule : $.args.schedule
+		city : currentCity,
+		schedule : $.args.schedule,
+		appdata : $.args.appdata,
+		showsType : $.args.showsType
 	}).getView();
 
 	$.mainContent.add(eventList);
@@ -202,13 +207,56 @@ $.schedule.addEventListener('click', function() {
 
 	console.error('schedule --->>>> ', JSON.stringify($.args.schedule));
 	var eventListByDay = Alloy.createController('EventListByDay', {
-		city : $.args.city,
-		schedule : $.args.schedule
+		city : currentCity,
+		schedule : $.args.schedule,
+		appdata : $.args.appdata,
+		showsType : $.args.showsType
 	}).getView();
 
 	$.mainContent.add(eventListByDay);
 	Alloy.Globals.currentScreen = 'schedule', Alloy.Globals.currentLayout = 'table';
 	console.error('Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
+});
+
+nsSchedule.openLineup = function() {
+	$.my_schedule_icon.applyProperties(nsSchedule.propGrey);
+	$.my_schedule_text.applyProperties(nsSchedule.propGrey);
+
+	$.line_up_icon.applyProperties(nsSchedule.propRed);
+	$.line_up_text.applyProperties(nsSchedule.propRed);
+
+	$.schedule_icon.applyProperties(nsSchedule.propGrey);
+	$.schedule_text.applyProperties(nsSchedule.propGrey);
+	Titanium.App.fireEvent('hideGridOption');
+	console.error('before------------->>>>>> Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
+	Alloy.Globals.currentScreen = 'line_up', Alloy.Globals.currentLayout = 'table';
+	var eventList = Alloy.createController('EventList', {
+		city : currentCity,
+		schedule : $.args.schedule,
+		appdata : $.args.appdata,
+		showsType : $.args.showsType
+	}).getView();
+
+	$.mainContent.add(eventList);
+	nsSchedule.setLayoutToTable();
+};
+
+$.asburypark_view.addEventListener('click', function() {
+	console.log('Alloy.Globals.currentScreen ', Alloy.Globals.currentScreen);
+	if (currentCity == 'asburypark') {
+		return;
+	};
+	currentCity = 'asburypark';
+	nsSchedule.openLineup();
+});
+
+$.lasvegas_view.addEventListener('click', function() {
+	console.log('Alloy.Globals.currentScreen ', Alloy.Globals.currentScreen);
+	if (currentCity == 'lasvegas') {
+		return;
+	};
+	currentCity = 'lasvegas';
+	nsSchedule.openLineup();
 });
 
 nsSchedule.init = function() {
@@ -225,21 +273,24 @@ nsSchedule.init = function() {
 		func : nsSchedule.changeInScheduleScreen
 	});
 	console.error('nsSchedule.init CALLED........');
+	console.log('ARGS SCHEDULE ', JSON.stringify($.args));
 
-	$.line_up_icon.applyProperties(nsSchedule.propRed);
-	$.line_up_text.applyProperties(nsSchedule.propRed);
-	Titanium.App.fireEvent('hideGridOption');
-	console.error('before------------->>>>>> Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
-	Alloy.Globals.currentScreen = 'line_up', Alloy.Globals.currentLayout = 'table';
-	var eventList = Alloy.createController('EventList', {
-		city : $.args.city,
-		schedule : $.args.schedule
-	}).getView();
-
-	$.mainContent.add(eventList);
-	nsSchedule.setLayoutToTable();
+	// $.line_up_icon.applyProperties(nsSchedule.propRed);
+	// $.line_up_text.applyProperties(nsSchedule.propRed);
+	// Titanium.App.fireEvent('hideGridOption');
+	// console.error('before------------->>>>>> Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
+	// Alloy.Globals.currentScreen = 'line_up', Alloy.Globals.currentLayout = 'table';
+	// var eventList = Alloy.createController('EventList', {
+	// city : currentCity,
+	// schedule : $.args.schedule
+	// }).getView();
+	//
+	// $.mainContent.add(eventList);
+	// nsSchedule.setLayoutToTable();
+	nsSchedule.openLineup();
 
 	console.error('after------------->>>>>> Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
+	console.log('CURRENTCITY ======>> 1 ', currentCity);
 };
 
 nsSchedule.init();

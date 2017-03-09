@@ -9,9 +9,25 @@ nsFestLineup.openBandProfile = function(e) {
 	}, true, null, 'misc/center_logo');
 };
 
+$.lasvegas_view.addEventListener('click', function() {
+	console.log('lasvegas_view clicked');
+	$.lasvegas_lineup.visible = true;
+	$.asburypark_linup.visible = false;
+});
+
+$.asburypark_view.addEventListener('click', function() {
+	console.log('asburypark_view clicked');
+	$.lasvegas_lineup.visible = false;
+	$.asburypark_linup.visible = true;
+});
+
 nsFestLineup.init = function() {
 	var device_width = Titanium.Platform.displayCaps.platformWidth;
 	var device_height = Titanium.Platform.displayCaps.platformHeight;
+
+	// Las vegas labels
+
+	$.iggy_pop.top = Titanium.Platform.displayCaps.platformHeight * 0.112;
 
 	$.off.width = Titanium.Platform.displayCaps.platformWidth * 0.12;
 	$.the_spits.width = Titanium.Platform.displayCaps.platformWidth * 0.23;
@@ -66,6 +82,73 @@ nsFestLineup.init = function() {
 	$.wolfpack.height = Titanium.Platform.displayCaps.platformHeight * 0.029;
 	$.roadside_bombs.height = Titanium.Platform.displayCaps.platformHeight * 0.029;
 	$.the_quitters.height = Titanium.Platform.displayCaps.platformHeight * 0.029;
+
+	// Asbury park labels
+	$.the_specials.top = Titanium.Platform.displayCaps.platformHeight * 0.153;
+
+	$.the_specials.height = Titanium.Platform.displayCaps.platformHeight * 0.074;
+	$.the_specials.width = Titanium.Platform.displayCaps.platformWidth * 0.52;
+
+	$.charles_bradley.height = Titanium.Platform.displayCaps.platformHeight * 0.049;
+	$.charles_bradley.width = Titanium.Platform.displayCaps.platformWidth * 0.49;
+
+	$.dillinger_four.height = Titanium.Platform.displayCaps.platformHeight * 0.030;
+	$.dillinger_four.width = Titanium.Platform.displayCaps.platformWidth * 0.389;
+
+	$.the_explosion.height = Titanium.Platform.displayCaps.platformHeight * 0.022;
+	$.the_explosion.width = Titanium.Platform.displayCaps.platformWidth * 0.20;
+
+	$.pup.height = Titanium.Platform.displayCaps.platformHeight * 0.022;
+	$.pup.width = Titanium.Platform.displayCaps.platformWidth * 0.053;
+
+	$.the_templars.height = Titanium.Platform.displayCaps.platformHeight * 0.022;
+	$.the_templars.width = Titanium.Platform.displayCaps.platformWidth * 0.204;
+
+	$.crazy_brains.height = Titanium.Platform.displayCaps.platformHeight * 0.0165;
+	$.crazy_brains.width = Titanium.Platform.displayCaps.platformWidth * 0.165;
+
+	$.ravagers.height = Titanium.Platform.displayCaps.platformHeight * 0.0165;
+	$.ravagers.width = Titanium.Platform.displayCaps.platformWidth * 0.113;
+
+	$.the_vansaders.height = Titanium.Platform.displayCaps.platformHeight * 0.0165;
+	$.the_vansaders.width = Titanium.Platform.displayCaps.platformWidth * 0.143;
+
+	$.nofx.height = Titanium.Platform.displayCaps.platformHeight * 0.068;
+	$.nofx.width = Titanium.Platform.displayCaps.platformWidth * 0.444;
+
+	$.buzzcocks.height = Titanium.Platform.displayCaps.platformHeight * 0.046;
+	$.buzzcocks.width = Titanium.Platform.displayCaps.platformWidth * 0.373;
+
+	$.lifetime.height = Titanium.Platform.displayCaps.platformHeight * 0.029;
+	$.lifetime.width = Titanium.Platform.displayCaps.platformWidth * 0.24;
+
+	$.leftover_crack.height = Titanium.Platform.displayCaps.platformHeight * 0.024;
+	//0322
+	$.leftover_crack.width = Titanium.Platform.displayCaps.platformWidth * 0.32;
+
+	$.pietasters.height = Titanium.Platform.displayCaps.platformHeight * 0.025;
+	$.pietasters.width = Titanium.Platform.displayCaps.platformWidth * 0.21;
+
+	$.darkbuster.height = Titanium.Platform.displayCaps.platformHeight * 0.025;
+	$.darkbuster.width = Titanium.Platform.displayCaps.platformWidth * 0.236;
+
+	$.posers.height = Titanium.Platform.displayCaps.platformHeight * 0.024;
+	$.posers.width = Titanium.Platform.displayCaps.platformWidth * 0.091;
+
+	$.bigwig.height = Titanium.Platform.displayCaps.platformHeight * 0.024;
+	$.bigwig.width = Titanium.Platform.displayCaps.platformWidth * 0.118;
+
+	$.hotblood.height = Titanium.Platform.displayCaps.platformHeight * 0.019;
+	$.hotblood.width = Titanium.Platform.displayCaps.platformWidth * 0.12;
+
+	// $.all_ages.height = Titanium.Platform.displayCaps.platformHeight * 0.029; // TODO: ASK
+	// $.all_ages.width = Titanium.Platform.displayCaps.platformWidth * 0.24;
+	//
+	// $.stone_pony.height = Titanium.Platform.displayCaps.platformHeight * 0.029;
+	// $.stone_pony.width = Titanium.Platform.displayCaps.platformWidth * 0.24;
+
+	$.lasvegas_lineup.visible = true;
+	$.asburypark_linup.visible = false;
 };
 
 nsFestLineup.init();
