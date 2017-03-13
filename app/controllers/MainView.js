@@ -41,6 +41,8 @@ nsLanding.get_next_show = function() {
 
 	console.error('NEXT SHOW ', location);
 	Titanium.App.removeEventListener('get_next_show', nsLanding.get_next_show);
+	console.error('Alloy.Globals.getSponsorBanner');
+	console.log(JSON.stringify(Alloy.Globals.getSponsorBanner('manNav')));
 };
 
 nsLanding.getMenu = function() {
@@ -58,11 +60,11 @@ $.club_shows_action.addEventListener('click', function() {
 	var clubdata = Titanium.App.Properties.getObject('clubData', {});
 
 	if (clubdata.details.length === 0) {
-		var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
+		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
 
 			console.debug(JSON.stringify(schedule));
 
-			var getClubShows = new nsMenu.serviceCalls.getClubShows(function(clubData) {
+			var getClubShows = new nsLanding.serviceCalls.getClubShows(function(clubData) {
 				console.log('response Clubshows clubData ', JSON.stringify(clubData));
 				Alloy.Globals.openWindow('Schedule', {
 					city : Alloy.Globals.nextEventCity,
@@ -80,7 +82,7 @@ $.club_shows_action.addEventListener('click', function() {
 		});
 	} else {
 
-		var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
+		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
 
 			console.debug(JSON.stringify(schedule));
 
@@ -247,7 +249,8 @@ $.book_hotels_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/pages/golden-nugget-hotel",
-		addBanner : true
+		addBanner : true,
+		screen : 'hotels'
 	}, true, null, 'misc/center_logo');
 });
 
@@ -255,7 +258,8 @@ $.merch_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
-		addBanner : true
+		addBanner : true,
+		screen : 'merch'
 	}, true, null, 'misc/center_logo');
 });
 
@@ -284,14 +288,16 @@ $.bowling_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/pages/bowling-1",
-		addBanner : true
+		addBanner : true,
+		screen : 'bowling'
 	}, true, null, 'misc/center_logo');
 });
 
 $.food_vendors_action.addEventListener('click', function() {
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "http://buzzplay.com/PRBapp/ComingSoon.html",
-		addBanner : true
+		addBanner : true,
+		screen : 'foodVendors'
 	}, true, null, 'misc/center_logo');
 });
 
@@ -303,7 +309,7 @@ $.sponsors_action.addEventListener('click', function() {
 	 }, true, null, 'misc/center_logo');*/
 
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://www.Buzzplay.com/PRBapp/Sponsors.html",
+		url : "http://www.buzzplay.com/PRBapp/Sponsors.html",
 		// image : '/icons/merch_shop_ad.png',
 	}, true, null, 'misc/center_logo');
 });

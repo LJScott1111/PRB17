@@ -84,7 +84,7 @@ Alloy.Globals.checkUser = function(callback, errorCallback) {
 			Alloy.Globals.getAndStoreData();
 
 			console.error('getBannerInfogetBannerInfo HJKJHGFGHJKL');
-			var getBannerInfo = new nsIndex.serviceCalls.getBannerInfo(function(response) {
+			var getBannerInfo = new serviceCalls.getBannerInfo(function(response) {
 				console.error('response ', response);
 			}, function(error) {
 				console.error('error ', error);
@@ -140,7 +140,7 @@ Alloy.Globals.sponsers_rr = [];
 // Selecting array element in round robin manner
 Alloy.Globals.getSponsor = function() {
 
-	// console.error('Alloy.Globals.SPONSORS ', Alloy.Globals.SPONSORS);
+	console.error('Alloy.Globals.SPONSORS ', Alloy.Globals.SPONSORS);
 	if (!Alloy.Globals.haveSponsors) {
 		Alloy.Globals.getBanners(function() {
 			Alloy.Globals.getSponsor();
@@ -162,6 +162,79 @@ Alloy.Globals.getSponsor = function() {
 
 	Alloy.Globals.sponsers_rr.splice(random, 1);
 	return randomObj;
+};
+
+Alloy.Globals.getSponsorBanner = function(screen) {
+
+	var screen = screen;
+	var banner = {};
+	var bannerName = '';
+	console.log('Alloy.Globals.SPONSORS --->>> ', JSON.stringify(Alloy.Globals.SPONSORS));
+
+	if (!Alloy.Globals.haveSponsors) {
+		Alloy.Globals.getBanners(function() {
+			Alloy.Globals.getSponsorBanner(screen);
+		});
+		return;
+	}
+
+	this.getBannerInfo = function(bannerName) {
+
+		for (var i in Alloy.Globals.SPONSORS) {
+			console.log('Alloy.Globals.SPONSORS[i] i ', i);
+			if (bannerName == Alloy.Globals.SPONSORS[i].name) {
+				banner = Alloy.Globals.SPONSORS[i];
+				break;
+			};
+		}
+
+		return banner;
+	};
+
+	switch (screen) {
+	case 'mainNav':
+		console.error('CASE mainNav ', screen);
+		bannerName = 'banner1';
+		break;
+	case 'merch':
+		console.error('CASE merch ', screen);
+		bannerName = 'banner2';
+		break;
+	case 'bandProfile':
+		console.error('CASE bandProfile ', screen);
+		bannerName = 'banner3';
+		break;
+	case 'hotels':
+		console.error('CASE hotels ', screen);
+		bannerName = 'banner4';
+		break;
+	case 'bowling':
+		console.error('CASE bowling ', screen);
+		bannerName = 'banner5';
+		break;
+	case 'foodVendors':
+		console.error('CASE foodvnedors ', screen);
+		bannerName = 'banner6';
+		break;
+	case 'map':
+		console.error('CASE map ', screen);
+		bannerName = 'banner7';
+		break;
+	case 'contest':
+		console.error('CASE contest ', screen);
+		bannerName = 'banner8';
+		break;
+	default:
+		// bannerName = 'banner';
+		// no banner
+		console.error('CASE default ', screen);
+		break;
+	}
+
+	banner = this.getBannerInfo(bannerName);
+	// console.log('Alloy.Globals.getSponsorBanner ', JSON.stringify(banner));
+
+	return banner;
 };
 
 // iOS NavMenu

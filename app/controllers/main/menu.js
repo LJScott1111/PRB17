@@ -172,7 +172,8 @@ $.hotels.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/pages/golden-nugget-hotel",
-		addBanner : true
+		addBanner : true,
+		screen : 'hotels'
 	}, true, null, 'misc/center_logo');
 });
 
@@ -181,7 +182,8 @@ $.prb_shop.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
-		addBanner : true
+		addBanner : true,
+		screen : 'shop'
 	}, true, null, 'misc/center_logo');
 });
 
@@ -244,7 +246,8 @@ $.contests.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "http://buzzplay.com/PRBapp/Contests.html",
-		addBanner : true
+		addBanner : true,
+		screen : 'contest'
 	}, true, null, 'misc/center_logo');
 });
 
@@ -262,7 +265,8 @@ $.map.button.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "https://punkrockbowling.com/pages/festival-site-map",
-		addBanner : true
+		addBanner : true,
+		screen : 'map'
 	}, true, null, 'misc/center_logo');
 });
 
@@ -300,7 +304,8 @@ $.food.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "http://buzzplay.com/PRBapp/ComingSoon.html",
-		addBanner : true
+		addBanner : true,
+		screen : 'foodVendors'
 	}, true, null, 'misc/center_logo');
 });
 
@@ -310,7 +315,7 @@ $.sponsers.button.addEventListener('click', function() {
 	// Alloy.Globals.openWindow("Sponsors", {}, true, null, 'misc/center_logo');
 
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://www.Buzzplay.com/PRBapp/Sponsors.html",
+		url : "http://www.buzzplay.com/PRBapp/Sponsors.html",
 	}, true, null, 'misc/center_logo');
 });
 

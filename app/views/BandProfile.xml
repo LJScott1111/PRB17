@@ -29,6 +29,6 @@
 			</View>
 			<Label id="lblMoreInfo"></Label>
 		</ScrollView>
-		<Require id="sponsor" src="misc/sponsorAd" addBanner="true" />
+		<Require id="sponsor" src="misc/sponsorAd" addBanner="true" screen="bandProfile" />
 	</View>
 </Alloy>
