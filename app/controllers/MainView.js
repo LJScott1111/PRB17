@@ -29,15 +29,15 @@ nsLanding.get_next_show = function() {
 
 	console.log('LOCATION - ', location);
 
-	$.title.text = L(location).toUpperCase();
+	// $.title.text = L(location).toUpperCase();
 
 	Alloy.Globals.nextEventCity = location;
 	$.args.city = location;
 
-	if (Alloy.Globals.nextEventCity == 'asburypark') {
-		// Hide menus from menu screen
-		Titanium.App.fireEvent('hideOptions');
-	}
+	// if (Alloy.Globals.nextEventCity == 'asburypark') {
+	// // Hide menus from menu screen
+	// Titanium.App.fireEvent('hideOptions');
+	// }
 
 	console.error('NEXT SHOW ', location);
 	Titanium.App.removeEventListener('get_next_show', nsLanding.get_next_show);
@@ -50,8 +50,30 @@ nsLanding.getMenu = function() {
 	Titanium.App.fireEvent('toggleMenu');
 };
 
+nsLanding.openNews = function() {
+	Alloy.Globals.openWindow('NewsAndSocial', {
+		prb : {
+			twitter_url : "https://twitter.com/punkrockbowling",
+			fb_url : "https://www.facebook.com/Punk-Rock-Bowling-and-Music-Festival-288077407910557/",
+			insta_url : "https://www.instagram.com/punkrockbowling/"
+		},
+		sourpuss : {
+			twitter_url : "https://twitter.com/SourpussBrand",
+			fb_url : "https://www.facebook.com/Sourpussclothing",
+			insta_url : "https://www.instagram.com/sourpussclothing/"
+		},
+		hard_times : {
+			twitter_url : "https://twitter.com/RealPunkNews/",
+			fb_url : "https://www.facebook.com/thehardtimesnews/",
+			insta_url : "https://www.instagram.com/TheHardTimesNews/"
+		}
+	}, true, null, 'misc/center_logo');
+};
+
 $.lineup_action.addEventListener('click', function() {
-	Alloy.Globals.openWindow("FestLineup", {}, true, null, 'misc/center_logo');
+	Alloy.Globals.openWindow("FestLineup", {
+		city : 'lasvegas'
+	}, true, null, 'misc/center_logo');
 });
 
 $.club_shows_action.addEventListener('click', function() {
@@ -59,12 +81,13 @@ $.club_shows_action.addEventListener('click', function() {
 	Alloy.Globals.loading.show();
 	var clubdata = Titanium.App.Properties.getObject('clubData', {});
 
-	if (clubdata.details.length === 0) {
+	if (!clubdata.details || clubdata.details.length === 0) {
 		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
 
 			console.debug(JSON.stringify(schedule));
 
 			var getClubShows = new nsLanding.serviceCalls.getClubShows(function(clubData) {
+				Alloy.Globals.loading.hide();
 				console.log('response Clubshows clubData ', JSON.stringify(clubData));
 				Alloy.Globals.openWindow('Schedule', {
 					city : Alloy.Globals.nextEventCity,
@@ -85,6 +108,7 @@ $.club_shows_action.addEventListener('click', function() {
 		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
 
 			console.debug(JSON.stringify(schedule));
+			Alloy.Globals.loading.hide();
 
 			Alloy.Globals.openWindow('Schedule', {
 				city : Alloy.Globals.nextEventCity,
@@ -116,7 +140,7 @@ $.bands_action.addEventListener('click', function() {
 
 					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 					Alloy.Globals.openWindow('Schedule', {
-						city : $.args.city,
+						city : 'lasvegas',
 						schedule : schedule,
 						appdata : Titanium.App.Properties.getObject('appdata', {})
 					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
@@ -140,7 +164,7 @@ $.bands_action.addEventListener('click', function() {
 			console.debug(JSON.stringify(schedule));
 			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 			Alloy.Globals.openWindow('Schedule', {
-				city : $.args.city,
+				city : 'lasvegas',
 				schedule : schedule,
 				appdata : Titanium.App.Properties.getObject('appdata', {})
 			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
@@ -263,26 +287,7 @@ $.merch_action.addEventListener('click', function() {
 	}, true, null, 'misc/center_logo');
 });
 
-$.news_action.addEventListener('click', function() {
-
-	Alloy.Globals.openWindow('NewsAndSocial', {
-		prb : {
-			twitter_url : "https://twitter.com/punkrockbowling",
-			fb_url : "https://www.facebook.com/Punk-Rock-Bowling-and-Music-Festival-288077407910557/",
-			insta_url : "https://www.instagram.com/punkrockbowling/"
-		},
-		sourpuss : {
-			twitter_url : "https://twitter.com/SourpussBrand",
-			fb_url : "https://www.facebook.com/Sourpussclothing",
-			insta_url : "https://www.instagram.com/sourpussclothing/"
-		},
-		hard_times : {
-			twitter_url : "https://twitter.com/RealPunkNews/",
-			fb_url : "https://www.facebook.com/thehardtimesnews/",
-			insta_url : "https://www.instagram.com/TheHardTimesNews/"
-		}
-	}, true, null, 'misc/center_logo');
-});
+$.news_action.addEventListener('click', nsLanding.openNews);
 
 $.bowling_action.addEventListener('click', function() {
 
@@ -295,18 +300,13 @@ $.bowling_action.addEventListener('click', function() {
 
 $.food_vendors_action.addEventListener('click', function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://buzzplay.com/PRBapp/ComingSoon.html",
+		url : "https://punkrockbowling.com/pages/2017-las-vegas-vending",
 		addBanner : true,
 		screen : 'foodVendors'
 	}, true, null, 'misc/center_logo');
 });
 
 $.sponsors_action.addEventListener('click', function() {
-
-	/*
-	 Alloy.Globals.openWindow("Sponsors", {
-	 addBanner: true
-	 }, true, null, 'misc/center_logo');*/
 
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "http://www.buzzplay.com/PRBapp/Sponsors.html",
@@ -322,65 +322,101 @@ $.buy_tickets_action.addEventListener('click', function() {
 	}, true, null, 'misc/center_logo');
 });
 
-/*
+$.select_lv.addEventListener('click', function() {
+	$.las_vegas_nav.visible = true;
+	$.asbury_park_nav.visible = false;
+});
 
- nsLanding.openLineup = function() {
+$.select_ap.addEventListener('click', function() {
+	$.las_vegas_nav.visible = false;
+	$.asbury_park_nav.visible = true;
+});
 
- var appdata = Titanium.App.Properties.getObject('appdata', {});
- for (i in appdata.venues) {
- if (appdata.venues[i].name.toLowerCase().trim() === 'festival lineup') {
+$.ap_linup.addEventListener('click', function() {
+	Alloy.Globals.openWindow("FestLineup", {
+		city : 'asburypark'
+	}, true, null, 'misc/center_logo');
+});
 
- Alloy.Globals.openWindow("VenueProfile", {
- "id" : appdata.venues[i]._id
- }, true, null, 'misc/center_logo');
- break;
- }
- }
- };
+$.ap_news.addEventListener('click', nsLanding.openNews);
 
- nsLanding.getLineup = function() {
- var appdata = Titanium.App.Properties.getObject('appdata', {});
+$.ap_bands.addEventListener('click', function() {
+	Alloy.Globals.loading.show();
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
- if (appdata.venues) {
+	if (appdata.details.length === 0) {
+		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+			console.debug("fetchedData ", fetchedData);
+			if (fetchedData) {
 
- nsLanding.openLineup();
- } else {
- Alloy.Globals.getAndStoreData(function(data) {
- nsLanding.openLineup();
- });
- }
- };
+				var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
 
- nsLanding.getVenues = function() {
+					console.debug(JSON.stringify(schedule));
 
- /*
- var appdata = Titanium.App.Properties.getObject('appdata', {});
+					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+					Alloy.Globals.openWindow('Schedule', {
+						city : 'asburypark',
+						schedule : schedule,
+						appdata : Titanium.App.Properties.getObject('appdata', {})
+					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
 
- if (appdata.details.length === 0) {
- Alloy.Globals.loading.show();
- var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
- console.debug("fetchedData ", fetchedData);
- if (fetchedData) {
+					Alloy.Globals.loading.hide();
 
- Alloy.Globals.openWindow('VenueList', {
- city : $.args.city
- }, true, null, 'misc/center_logo');
+				}, function(error) {
+					alert(L('err_fetchingDetails'));
+					Alloy.Globals.loading.hide();
+				});
 
- Alloy.Globals.loading.hide();
- } else {
- console.debug("All data did not get downloaded!!!");
- alert(L('err_fetchingDetails'));
- }
- Alloy.Globals.loading.hide();
- });
- } else {
- Alloy.Globals.openWindow('VenueList', {
- city : $.args.city
- }, true, null, 'misc/center_logo');
- }
+			} else {
+				console.debug("The data did not get downloaded!!!");
+				alert(L('err_fetchingDetails'));
+				Alloy.Globals.loading.hide();
+			}
+		});
+	} else {
+		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
 
- };
- */
+			console.debug(JSON.stringify(schedule));
+			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+			Alloy.Globals.openWindow('Schedule', {
+				city : 'asburypark',
+				schedule : schedule,
+				appdata : Titanium.App.Properties.getObject('appdata', {})
+			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+			Alloy.Globals.loading.hide();
+
+		}, function(error) {
+			alert(L('err_fetchingDetails'));
+			Alloy.Globals.loading.hide();
+		});
+	}
+});
+
+$.ap_buy_tickets.addEventListener('click', function() {
+
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "https://www.eventbrite.com/e/punk-rock-bowling-music-festival-nj-tickets-32107295786?aff=PRBnj2day",
+		addBanner : false
+	}, true, null, 'misc/center_logo');
+});
+
+$.ap_my_schedule.addEventListener('click', function() {
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://buzzplay.com/PRBapp/ComingSoon.html"
+	}, true, null, 'misc/center_logo');
+});
+
+$.ap_club_shows.addEventListener('click', function() {
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://buzzplay.com/PRBapp/ComingSoon.html"
+	}, true, null, 'misc/center_logo');
+});
+
+$.ap_bowling.addEventListener('click', function() {
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://buzzplay.com/PRBapp/ComingSoon.html"
+	}, true, null, 'misc/center_logo');
+});
 
 nsLanding.checkLocationPermissions = function() {
 
@@ -406,9 +442,12 @@ nsLanding.init = function() {
 	if (!$.args.city) {
 		Titanium.App.addEventListener('get_next_show', nsLanding.get_next_show);
 	} else {
-		$.title.text = L($.args.city).toUpperCase();
+		// $.title.text = L($.args.city).toUpperCase();
 		return;
 	}
+
+	$.las_vegas_nav.visible = true;
+	$.asbury_park_nav.visible = false;
 
 	Alloy.Globals.checkUser(function(user) {
 		console.debug("Alloy.Globals.checkUser user - " + user);

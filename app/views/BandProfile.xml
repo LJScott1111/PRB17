@@ -10,7 +10,7 @@
 						<Label id="lblTime"></Label>
 						<Label id="lblVenue"></Label>
 					</View>
-					<View id="vwAddBand">
+					<View id="vwAddBand" visible="false">
 						<ImageView id="ivFavouriteStar" onClick="nsBandProfile.markFavourite"></ImageView>
 						<Label id="lblAddBand" textid="bandProfile_lblAddBand"></Label>
 					</View>

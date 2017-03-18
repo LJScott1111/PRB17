@@ -13,6 +13,7 @@ nsBandProfile.markFavourite = function(e) {
 		var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
 			e.source.selected = !e.source.selected;
 			e.source.setImage(Alloy.Globals.theme.icons.star);
+			Titanium.App.fireEvent('updateScheduleArgs');
 
 			var MS_PER_MINUTE = 60000;
 			var startDate = (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null) ? Alloy.Globals.getFormattedDate((nsBandProfile.data.showDetails.start_time) - 10 * 60) : "";
@@ -65,6 +66,7 @@ nsBandProfile.markFavourite = function(e) {
 
 			e.source.setImage(Alloy.Globals.theme.icons.star_off);
 			e.source.selected = !e.source.selected;
+			Titanium.App.fireEvent('updateScheduleArgs');
 		});
 	}
 

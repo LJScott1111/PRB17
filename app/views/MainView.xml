@@ -1,14 +1,13 @@
 <Alloy>
-	<View id="vwMain" backgroundImage='/icons/bg_nav.png'>
+	<View id="vwMain" >
 		<View id="vwTopOptions">
 
-			<Label id="title" class="frizQuaT" visible="false"/>
-
-			<!-- <View class="absolute_layout">
-			<ImageView id="mainview_text"></ImageView>
-			</View> -->
-			<View class="vertical_layout" top="60dp">
-				<View class="option_groups">
+			<View id="vwCityOptions" zIndex="199" class="padding_top">
+				<ImageView id="select_lv" class="padding_top"></ImageView>
+				<ImageView id="select_ap" class="padding_top"></ImageView>
+			</View>
+			<View class="vertical_layout nav_bgs" id="las_vegas_nav" backgroundImage='/icons/bg_nav.png'>
+				<View class="option_groups" top="60dp">
 					<View id="lineup_action" class="options_image" width="160dp" backgroundImage="/icons/lineup.png"></View>
 					<View id="club_shows_action" class="options_image" width="140dp" left="10dp" backgroundImage="/icons/club_shows.png"></View>
 				</View>
@@ -32,9 +31,16 @@
 					<View id="buy_tickets_action" class="options_image" width="150dp" backgroundImage="/icons/buy_tickets.png"></View>
 				</View>
 			</View>
+			<View class="vertical_layout nav_bgs" id="asbury_park_nav" backgroundImage='/icons/asbury_park_bg.png'>
+				<ImageView id="ap_linup"></ImageView>
+				<ImageView id="ap_club_shows"></ImageView>
+				<ImageView id="ap_bands"></ImageView>
+				<ImageView id="ap_my_schedule"></ImageView>
+				<ImageView id="ap_bowling"></ImageView>
+				<ImageView id="ap_news"></ImageView>
+				<ImageView id="ap_buy_tickets"></ImageView>
+			</View>
 		</View>
-		<ImageView class="character"></ImageView>
-		<!-- <Require id="sponsor" src="misc/sponsorAd" image="/icons/tickets_ad.png" url="" banner_url="" /> -->
 		<Require id="sponsor" src="misc/sponsorAd" addBanner="true" screen="mainNav"/>
 	</View>
 </Alloy>

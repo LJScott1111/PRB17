@@ -77,7 +77,10 @@ nsSchedule.showMySchedule = function() {
 			// Change to table
 			var userSchedule = Alloy.createController('UserSchedule', {
 				city : currentCity,
-				schedule : schedule
+				// schedule : schedule,
+				schedule : $.args.schedule,
+				appdata : $.args.appdata,
+				showsType : $.args.showsType
 			}).getView();
 			$.mainContent.add(userSchedule);
 			nsSchedule.setLayoutToGrid();
@@ -86,7 +89,10 @@ nsSchedule.showMySchedule = function() {
 			// Change to grid
 			var mySchedule = Alloy.createController('MySchedule', {
 				city : currentCity,
-				schedule : schedule
+				// schedule : schedule,
+				schedule : $.args.schedule,
+				appdata : $.args.appdata,
+				showsType : $.args.showsType
 			}).getView();
 
 			$.mainContent.add(mySchedule);
@@ -130,7 +136,8 @@ nsSchedule.getEventsByDayForGrid = function() {
 		city : currentCity,
 		schedule : eventSchedule,
 		type : 'eventSchedule',
-		appdata : appdata
+		appdata : appdata,
+		showsType : $.args.showsType
 	}).getView();
 	$.mainContent.add(eventSchedule);
 };
@@ -216,6 +223,19 @@ $.schedule.addEventListener('click', function() {
 	$.mainContent.add(eventListByDay);
 	Alloy.Globals.currentScreen = 'schedule', Alloy.Globals.currentLayout = 'table';
 	console.error('Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
+});
+
+Titanium.App.addEventListener('updateScheduleArgs', function() {
+
+	var serviceCalls = require("serverCalls");
+	var getUserSchedule = new serviceCalls.getUserSchedule(function(schedule) {
+
+		console.debug(JSON.stringify(schedule));
+		$.args.schedule = JSON.parse(JSON.stringify(schedule));
+
+	}, function(error) {
+		console.log('error Clubshows ', JSON.stringify(error));
+	});
 });
 
 nsSchedule.openLineup = function() {

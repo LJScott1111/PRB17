@@ -189,16 +189,19 @@ $.prb_shop.button.addEventListener('click', function() {
 
 $.club_shows.button.addEventListener('click', function() {
 
-	Ti.App.fireEvent('toggleMenu');
+	// Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.loading.show();
 	var clubdata = Titanium.App.Properties.getObject('clubData', {});
 
-	if (clubdata.details.length === 0) {
+	if (!clubdata.details || clubdata.details.length === 0) {
 		var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
 
 			console.debug(JSON.stringify(schedule));
 
 			var getClubShows = new nsMenu.serviceCalls.getClubShows(function(clubData) {
 				console.log('response Clubshows clubData ', JSON.stringify(clubData));
+				Ti.App.fireEvent('toggleMenu');
+				Alloy.Globals.loading.hide();
 				Alloy.Globals.openWindow('Schedule', {
 					city : Alloy.Globals.nextEventCity,
 					schedule : schedule,
@@ -218,6 +221,8 @@ $.club_shows.button.addEventListener('click', function() {
 		var getUserSchedule = new nsMenu.serviceCalls.getUserSchedule(function(schedule) {
 
 			console.debug(JSON.stringify(schedule));
+			Ti.App.fireEvent('toggleMenu');
+			Alloy.Globals.loading.hide();
 
 			Alloy.Globals.openWindow('Schedule', {
 				city : Alloy.Globals.nextEventCity,
@@ -303,7 +308,7 @@ $.food.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://buzzplay.com/PRBapp/ComingSoon.html",
+		url : "https://punkrockbowling.com/pages/2017-las-vegas-vending",
 		addBanner : true,
 		screen : 'foodVendors'
 	}, true, null, 'misc/center_logo');

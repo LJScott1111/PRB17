@@ -141,14 +141,15 @@ nsFestLineup.init = function() {
 	$.hotblood.height = Titanium.Platform.displayCaps.platformHeight * 0.019;
 	$.hotblood.width = Titanium.Platform.displayCaps.platformWidth * 0.12;
 
-	// $.all_ages.height = Titanium.Platform.displayCaps.platformHeight * 0.029; // TODO: ASK
-	// $.all_ages.width = Titanium.Platform.displayCaps.platformWidth * 0.24;
-	//
-	// $.stone_pony.height = Titanium.Platform.displayCaps.platformHeight * 0.029;
-	// $.stone_pony.width = Titanium.Platform.displayCaps.platformWidth * 0.24;
 
-	$.lasvegas_lineup.visible = true;
-	$.asburypark_linup.visible = false;
+	if ($.args.city == 'lasvegas') {
+		$.lasvegas_lineup.visible = true;
+		$.asburypark_linup.visible = false;
+	} else {
+		$.lasvegas_lineup.visible = false;
+		$.asburypark_linup.visible = true;
+	}
+
 };
 
 nsFestLineup.init();

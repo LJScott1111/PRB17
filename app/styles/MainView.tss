@@ -3,6 +3,11 @@
 	width: Titanium.UI.SIZE
 }
 
+".nav_bgs": {
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+}
+
 "#title": {
 	top: 0,
 	// color: "#f9ddb7",
@@ -19,19 +24,29 @@
 	width: Titanium.UI.FILL
 }
 
+"#vwCityOptions": {
+	layout: 'absolute',
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+"#select_lv": {
+	image: '/icons/las_vegas.png',
+	left: '40dp',
+	width: '120dp'
+}
+
+"#select_ap": {
+	image: '/icons/asbury_park.png',
+	right: '40dp',
+	width: '120dp'
+}
+
 "#vwTopOptions": {
-	layout: "vertical",
+	// layout: "vertical",
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL,
 	zIndex: 99
-}
-
-"#mainview_text": {
-	image: '/icons/mainview_text.png',
-	left: '10dp',
-	right: '10dp'
-	// width: Titanium.UI.FILL,
-	// height: '50%'
 }
 
 "#club_shows_view": {
@@ -50,13 +65,53 @@
 	left: 90
 }
 
-".character": {
-	// image: '/icons/character.png',
-	bottom: '70dp',
-	zIndex: 99,
-	width: '70%',
-	left: '0dp',
-	touchEnabled: false
+"#ap_linup": {
+	image: '/icons/ap_lineup.png',
+	width: '150dp',
+	right: '30dp',
+	top: '110dp'
+}
+
+"#ap_club_shows": {
+	image: '/icons/ap_club_shows.png',
+	top: '5dp',
+	width: '130dp',
+	right: '40dp'
+}
+
+"#ap_bands": {
+	image: '/icons/ap_bands.png',
+	top: '10dp',
+	right: '80dp',
+	width: '70dp'
+}
+
+"#ap_my_schedule": {
+	image: '/icons/ap_my_schedule.png',
+	top: '5dp',
+	right: '40dp',
+	width: '130dp'
+}
+
+"#ap_bowling": {
+	image: '/icons/ap_bowling.png',
+	top: '10dp',
+	right: '60dp',
+	width: '110dp'
+}
+
+"#ap_news": {
+	image: '/icons/ap_news.png',
+	top: '10dp',
+	right: '60dp',
+	width: '110dp'
+}
+
+"#ap_buy_tickets": {
+	image: '/icons/ap_buy_tickets.png',
+	top: '15dp',
+	right: '40dp',
+	width: '130dp'
 }
 
 ".option_groups": {

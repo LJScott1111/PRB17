@@ -90,6 +90,7 @@ nsLogin.init = function() {
 	
 	// Setting blank object
 	Titanium.App.Properties.setObject('appdata', Alloy.Globals.appData);
+	Titanium.App.Properties.setObject('clubData', Alloy.Globals.appData);
 
 	$.tfEmail.setHintText(L('index_tfEmail'));
 	$.tfPassword.setHintText(L('login_tfPassword'));

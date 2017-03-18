@@ -37,7 +37,8 @@ nsMySchedule.showBandList = function() {
 		list : bandlist,
 		currentCityData : currentCityData,
 		listType : 'time',
-		screen : 'myschedule'
+		screen : 'myschedule',
+		showsType : $.args.showsType
 	}, $.args.city);
 	console.debug(JSON.stringify(list));
 	Alloy.Globals.loading.hide();
