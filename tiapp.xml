@@ -4,11 +4,11 @@
     <id>com.interfuel.festfuel</id>
     <!--<id>com.buzzplay.prbmobile</id>-->
     <name>Punk Rock Bowling Mobile</name>
-    <version>2.5.9</version>
+    <version>2.5.12</version>
     <publisher>Buzzplay</publisher>
     <url>http://punkrockbowling.com</url>
     <description>Punk Rock Bowling mobile</description>
-    <copyright>2015 by Buzzplay</copyright>
+    <copyright>2015-17 by Buzzplay</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
@@ -85,7 +85,7 @@
             <service type="interval" url="android_notifications.js"/>
         </services>
         <manifest android:installLocation="preferExternal"
-            android:versionCode="13" android:versionName="7.5.4">
+            android:versionCode="14" android:versionName="7.5.5">
             <uses-permission android:name="android.permission.ACCESS_LOCATION"/>
             <uses-permission android:name="android.permission.ACCESS_GPS"/>
             <uses-permission android:name="android.permission.INTERNET"/>

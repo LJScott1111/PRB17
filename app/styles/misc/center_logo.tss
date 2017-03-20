@@ -1,6 +1,6 @@
 
 "#logo": {
-	width: 44,
-	height: 44,
+	width: '60dp',
+	height: '60dp',
 	backgroundImage: '/icons/logo.png'
 }

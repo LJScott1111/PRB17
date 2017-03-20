@@ -189,7 +189,13 @@ $.prb_shop.button.addEventListener('click', function() {
 
 $.club_shows.button.addEventListener('click', function() {
 
-	// Ti.App.fireEvent('toggleMenu');
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.com/collections/prb-2017-club-shows-lv",
+	}, true, null, 'misc/center_logo');
+
+	return;
+	
 	Alloy.Globals.loading.show();
 	var clubdata = Titanium.App.Properties.getObject('clubData', {});
 
