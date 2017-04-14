@@ -252,6 +252,36 @@ $.club_shows.button.addEventListener('click', function() {
 
 });
 
+$.club_shows_ap.button.addEventListener('click', function() {
+	
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.com/pages/asbury-park-club-shows",
+	}, true, null, 'misc/center_logo');
+
+	return;
+});
+
+$.denver_prb.button.addEventListener('click', function() {
+	
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.com/pages/prb-denver-june-2-4-2016",
+	}, true, null, 'misc/center_logo');
+
+	return;
+});
+
+$.denver_bowling.button.addEventListener('click', function() {
+	
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.com/pages/denver-bowling",
+	}, true, null, 'misc/center_logo');
+
+	return;
+});
+
 $.contests.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');

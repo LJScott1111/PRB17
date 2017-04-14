@@ -31,15 +31,33 @@
 }
 
 "#select_lv": {
+	top: 0,
 	image: '/icons/las_vegas.png',
-	left: '40dp',
+	left: 0,
 	width: '120dp'
 }
 
 "#select_ap": {
 	image: '/icons/asbury_park.png',
-	right: '40dp',
+	// right: '40dp',
 	width: '120dp'
+}
+
+".select_views": {
+	width: '120dp',
+	height: Titanium.UI.SIZE,
+	layout: 'vertical'
+}
+
+".selected": {
+	height: '5dp',
+	top: '3dp',
+	zIndex: 99,
+	width: '120dp'
+}
+
+"#lv_selected": {
+	backgroundColor: '#000'
 }
 
 "#vwTopOptions": {
@@ -123,3 +141,4 @@
 ".options_image": {
 	top: 0
 }
+

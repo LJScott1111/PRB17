@@ -3,8 +3,21 @@
 		<View id="vwTopOptions">
 
 			<View id="vwCityOptions" zIndex="199" class="padding_top">
-				<ImageView id="select_lv" class="padding_top"></ImageView>
-				<ImageView id="select_ap" class="padding_top"></ImageView>
+				<!-- <View id="vwLv" class="select_views" left="40dp" backgroundColor="red" class="padding_top"> -->
+					<!-- <ImageView id="select_lv" left="40dp"></ImageView> -->
+					<!-- <View id="lv_selected" class="selected"></View> -->
+				<!-- </View> -->
+				<View id="vwLv" class="select_views padding_top" left="40dp">
+					<ImageView id="select_lv"></ImageView>
+					<View id="lv_selected" class="selected"></View>
+				</View>
+				
+				<View id="vwAp" class="select_views padding_top" right="40dp">
+					<ImageView id="select_ap"></ImageView>
+					<View id="ap_selected" class="selected"></View>
+				</View>
+				
+				
 			</View>
 			<View class="vertical_layout nav_bgs" id="las_vegas_nav" backgroundImage='/icons/bg_nav.png'>
 				<View class="option_groups" top="60dp">

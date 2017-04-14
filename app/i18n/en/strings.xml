@@ -112,6 +112,11 @@
 	<string name="log_out">Logout</string>
 	<string name="lineup">Line up</string>
 	<string name="message_center">Message Center</string>
+	<string name="club_shows_lv">Club Shows(LV)</string>
+	<string name="club_shows_ap">Club Shows(AP)</string>
+	<string name="denver_prb">Denver PRB</string>
+	<string name="denver_bowling">Denver Bowling</string>
+	
 	
 	<string name="when_lbl">When</string>
 	<string name="where_lbl">Where</string>

@@ -6,7 +6,10 @@
 			<Require id="buy_tickets" src="misc/menu_button" title="L('buy_tickets').toUpperCase()" />
 			<Require id="festival_lineup" src="misc/menu_button" title="L('festival_lineup').toUpperCase()" />
 			<Require id="bands" src="misc/menu_button" title="L('bands').toUpperCase()" />
-			<Require id="club_shows" src="misc/menu_button" title="L('club_shows').toUpperCase()" />
+			<Require id="club_shows" src="misc/menu_button" title="L('club_shows_lv').toUpperCase()" />
+			<Require id="club_shows_ap" src="misc/menu_button" title="L('club_shows_ap').toUpperCase()" />
+			<Require id="denver_prb" src="misc/menu_button" title="L('denver_prb').toUpperCase()" />
+			<Require id="denver_bowling" src="misc/menu_button" title="L('denver_bowling').toUpperCase()" />
 			<Require id="contests" src="misc/menu_button" title="L('contests').toUpperCase()" />
 			<Require id="hotels" src="misc/menu_button" title="L('hotels').toUpperCase()" />
 			<Require id="prb_shop" src="misc/menu_button" title="L('prb_shop').toUpperCase()" />

@@ -266,6 +266,8 @@ $.asburypark_view.addEventListener('click', function() {
 	if (currentCity == 'asburypark') {
 		return;
 	};
+	$.lasvegas_ul.backgroundColor = 'transparent';
+	$.asburypark_ul.backgroundColor = '#D70C46';
 	currentCity = 'asburypark';
 	nsSchedule.openLineup();
 });
@@ -275,6 +277,8 @@ $.lasvegas_view.addEventListener('click', function() {
 	if (currentCity == 'lasvegas') {
 		return;
 	};
+	$.lasvegas_ul.backgroundColor = '#D70C46';
+	$.asburypark_ul.backgroundColor = 'transparent';
 	currentCity = 'lasvegas';
 	nsSchedule.openLineup();
 });
@@ -311,6 +315,13 @@ nsSchedule.init = function() {
 
 	console.error('after------------->>>>>> Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
 	console.log('CURRENTCITY ======>> 1 ', currentCity);
+	if (currentCity == 'lasvegas') {
+		$.lasvegas_ul.backgroundColor = '#D70C46';
+		$.asburypark_ul.backgroundColor = 'transparent';
+	} else {
+		$.lasvegas_ul.backgroundColor = 'transparent';
+		$.asburypark_ul.backgroundColor = '#D70C46';
+	}
 };
 
 nsSchedule.init();

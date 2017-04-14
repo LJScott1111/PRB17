@@ -331,11 +331,15 @@ $.buy_tickets_action.addEventListener('click', function() {
 $.select_lv.addEventListener('click', function() {
 	$.las_vegas_nav.visible = true;
 	$.asbury_park_nav.visible = false;
+	$.lv_selected.backgroundColor = '#000';
+	$.ap_selected.backgroundColor = 'transparent';
 });
 
 $.select_ap.addEventListener('click', function() {
 	$.las_vegas_nav.visible = false;
 	$.asbury_park_nav.visible = true;
+	$.ap_selected.backgroundColor = '#D70C46';
+	$.lv_selected.backgroundColor = 'transparent';
 });
 
 $.ap_linup.addEventListener('click', function() {
@@ -414,7 +418,7 @@ $.ap_my_schedule.addEventListener('click', function() {
 
 $.ap_club_shows.addEventListener('click', function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://buzzplay.com/PRBapp/ComingSoon.html"
+		url : "https://punkrockbowling.com/pages/asbury-park-club-shows"
 	}, true, null, 'misc/center_logo');
 });
 

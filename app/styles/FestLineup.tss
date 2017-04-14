@@ -44,7 +44,7 @@
 ".underline_view": {
 	height: '5dp',
 	width: Titanium.UI.FILL,
-	backgroundColor: '#D70C46',
+	// backgroundColor: '#D70C46',
 	left: '15dp',
 	right: '15dp',
 	top: '2dp'

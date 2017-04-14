@@ -3,11 +3,11 @@
 		<View class="city_options">
 			<View id="lasvegas_view" class="heading_view">
 				<Label id="lasvegas" class="heading_lbl langdon" text="L('lasvegas').toUpperCase()"></Label>
-				<View class="underline_view"></View>
+				<View id="lasvegas_ul" class="underline_view"></View>
 			</View>
 			<View id="asburypark_view" class="heading_view">
 				<Label id="asburypark" class="heading_lbl langdon" text="L('asburypark').toUpperCase()"></Label>
-				<View class="underline_view"></View>
+				<View id="asburypark_ul" class="underline_view" backgroundColor="transparent"></View>
 			</View>
 		</View>
 		<View id="lasvegas_lineup" backgroundImage='/icons/lineup_lasvegas.png' class="padding_top_zero lineup_views">
