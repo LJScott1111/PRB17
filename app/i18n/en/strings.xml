@@ -116,10 +116,13 @@
 	<string name="club_shows_ap">Club Shows(AP)</string>
 	<string name="denver_prb">Denver PRB</string>
 	<string name="denver_bowling">Denver Bowling</string>
+	<string name="chat">Chat</string>
 	
 	
 	<string name="when_lbl">When</string>
 	<string name="where_lbl">Where</string>
 	<string name="hotels">Hotels</string>
+	<string name="festivalbands">Festival Bands</string>
+	<string name="clubbands">Club Bands</string>
 
 </resources>

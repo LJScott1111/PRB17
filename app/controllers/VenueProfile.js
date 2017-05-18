@@ -28,7 +28,7 @@ nsVenueProfile.isShowDuplicate = function(showDetails, allShows) {
 
 nsVenueProfile.createList = function(shows) {
 
-	var userSchedule = Ti.App.Properties.getList('userSchedule');
+	var userSchedule = Ti.App.Properties.getObject('userSchedule');
 	for (var j in shows) {
 		if (shows[j].bandDetails !== undefined) {
 			for (var i in userSchedule) {

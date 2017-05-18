@@ -1,13 +1,21 @@
 <Alloy>
 	<View id="vwMain">
 		<View class="city_options">
-			<View id="lasvegas_view" class="heading_view">
+			<!-- <View id="lasvegas_view" class="heading_view">
 				<Label id="lasvegas" class="heading_lbl langdon" text="L('lasvegas').toUpperCase()"></Label>
 				<View id="lasvegas_ul" class="underline_view"></View>
 			</View>
 			<View id="asburypark_view" class="heading_view">
 				<Label id="asburypark" class="heading_lbl langdon" text="L('asburypark').toUpperCase()"></Label>
 				<View id="asburypark_ul" class="underline_view" backgroundColor="transparent"></View>
+			</View> -->
+			<View id="festivalbands_view" class="heading_view">
+				<Label id="festivalbands" class="heading_lbl langdon" text="L('festivalbands').toUpperCase()"></Label>
+				<View id="festivalbands_ul" class="underline_view"></View>
+			</View>
+			<View id="clubbands_view" class="heading_view">
+				<Label id="clubbands" class="heading_lbl langdon" text="L('clubbands').toUpperCase()"></Label>
+				<View id="clubbands_ul" class="underline_view" backgroundColor="transparent"></View>
 			</View>
 		</View>
 		<View id="mainContent"></View>
