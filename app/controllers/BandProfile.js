@@ -1,73 +1,97 @@
 var nsBandProfile = {};
-
-nsBandProfile.args = arguments[0];
 nsBandProfile.data = null;
 
 nsBandProfile.serverCalls = require('serverCalls');
 
 nsBandProfile.markFavourite = function(e) {
+
+	var starClick = function() {
+
+		e.source.selected = !e.source.selected;
+		e.source.setImage(Alloy.Globals.theme.icons.star);
+		Titanium.App.fireEvent('updateScheduleArgs');
+
+		var MS_PER_MINUTE = 60000;
+		var startDate = (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null) ? Alloy.Globals.getFormattedDate((nsBandProfile.data.showDetails.start_time) - 10 * 60) : "";
+		var venueName = (nsBandProfile.data.venueDetails !== undefined && nsBandProfile.data.venueDetails !== null) ? nsBandProfile.data.venueDetails.name : "";
+		var notificationTime = (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null) ? new Date((nsBandProfile.data.showDetails.start_time * 1000) - 10 * MS_PER_MINUTE) : "";
+
+		if (Titanium.Platform.osname !== "android") {
+			var notification = Ti.App.iOS.scheduleLocalNotification({
+				alertBody : nsBandProfile.data.bandDetails.name + "\n" + venueName + "\n" + startDate[1],
+				badge : 1,
+				date : notificationTime
+			});
+
+			Ti.App.iOS.addEventListener('notification', function(e) {
+
+				Ti.API.info('background event received = ' + notification);
+
+				// Reset the badge value
+				if (e.badge > 0) {
+					Ti.App.iOS.scheduleLocalNotification({
+						date : new Date(new Date().getTime()),
+						badge : -1
+					});
+				}
+			});
+		} else {
+			// android_notifications
+
+			// Create an intent using the JavaScript service file
+			var intent = Ti.Android.createServiceIntent({
+				url : 'android_notifications.js'
+			});
+			// Set the interval to run the service;
+			intent.putExtra('interval', 1000);
+			// Send extra data to the service;
+			intent.putExtra('timestamp', notificationTime);
+
+			intent.putExtra('band', nsBandProfile.data.bandDetails.name);
+			intent.putExtra('message', venueName + "\n" + startDate[1]);
+
+			// Start the service
+			Ti.Android.startService(intent);
+		}
+
+	};
+
 	var show_id = nsBandProfile.data.showDetails._id;
 	if (!e.source.selected && (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null)) {
 		console.log('MARK favorite');
 
-		var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
-			e.source.selected = !e.source.selected;
-			e.source.setImage(Alloy.Globals.theme.icons.star);
-			Titanium.App.fireEvent('updateScheduleArgs');
+		if ($.args.showsType == 'festshows') {
+			var addShow = new nsBandProfile.serverCalls.saveUserSchedule(show_id, function(response) {
+				starClick(response);
 
-			var MS_PER_MINUTE = 60000;
-			var startDate = (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null) ? Alloy.Globals.getFormattedDate((nsBandProfile.data.showDetails.start_time) - 10 * 60) : "";
-			var venueName = (nsBandProfile.data.venueDetails !== undefined && nsBandProfile.data.venueDetails !== null) ? nsBandProfile.data.venueDetails.name : "";
-			var notificationTime = (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null) ? new Date((nsBandProfile.data.showDetails.start_time * 1000) - 10 * MS_PER_MINUTE) : "";
+			}, function(error) {
+				alert(L('err_serviceError'));
+			}, $.args.showsType);
+		} else {
+			var addShow = new nsBandProfile.serverCalls.saveUserClubSchedule(show_id, function(response) {
+				starClick(response);
 
-			if (Titanium.Platform.osname !== "android") {
-				var notification = Ti.App.iOS.scheduleLocalNotification({
-					alertBody : nsBandProfile.data.bandDetails.name + "\n" + venueName + "\n" + startDate[1],
-					badge : 1,
-					date : notificationTime
-				});
+			}, function(error) {
+				alert(L('err_serviceError'));
+			}, $.args.showsType);
+		}
 
-				Ti.App.iOS.addEventListener('notification', function(e) {
-
-					Ti.API.info('background event received = ' + notification);
-
-					// Reset the badge value
-					if (e.badge > 0) {
-						Ti.App.iOS.scheduleLocalNotification({
-							date : new Date(new Date().getTime()),
-							badge : -1
-						});
-					}
-				});
-			} else {
-				// android_notifications
-
-				// Create an intent using the JavaScript service file
-				var intent = Ti.Android.createServiceIntent({
-					url : 'android_notifications.js'
-				});
-				// Set the interval to run the service;
-				intent.putExtra('interval', 1000);
-				// Send extra data to the service;
-				intent.putExtra('timestamp', notificationTime);
-
-				intent.putExtra('band', nsBandProfile.data.bandDetails.name);
-				intent.putExtra('message', venueName + "\n" + startDate[1]);
-
-				// Start the service
-				Ti.Android.startService(intent);
-			}
-
-		}, function(error) {
-			alert(L('err_serviceError'));
-		}, $.args.showsType);
 	} else {
-		nsBandProfile.serverCalls.deleteUserSchedule(show_id, function() {
+		if ($.args.showsType == 'festshows') {
+			nsBandProfile.serverCalls.deleteUserSchedule(show_id, function() {
 
-			e.source.setImage(Alloy.Globals.theme.icons.star_off);
-			e.source.selected = !e.source.selected;
-			Titanium.App.fireEvent('updateScheduleArgs');
-		});
+				e.source.setImage(Alloy.Globals.theme.icons.star_off);
+				e.source.selected = !e.source.selected;
+				Titanium.App.fireEvent('updateScheduleArgs');
+			});
+		} else {
+			nsBandProfile.serverCalls.deleteClubUserSchedule(show_id, function() {
+
+				e.source.setImage(Alloy.Globals.theme.icons.star_off);
+				e.source.selected = !e.source.selected;
+				Titanium.App.fireEvent('updateScheduleArgs');
+			});
+		}
 	}
 
 };
@@ -112,20 +136,20 @@ nsBandProfile.doSocialActivity = function(e) {
 };
 
 nsBandProfile.init = function() {
-	console.log('INIT Band Profile');
-	console.error('ID: ', nsBandProfile.args.id);
+	console.log('INIT Band Profile ', JSON.stringify($.args));
+	console.error('ID: ', $.args.id);
 
 	var appdata = ($.args.showsType == 'clubshows') ? Titanium.App.Properties.getObject('clubData', {}) : Titanium.App.Properties.getObject('appdata', {});
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
 
-		if (appdata.details[i].bandDetails !== undefined && (appdata.details[i].bandDetails._id === nsBandProfile.args.id)) {
+		if (appdata.details[i].bandDetails !== undefined && (appdata.details[i].bandDetails._id === $.args.id)) {
 			nsBandProfile.data = JSON.parse(JSON.stringify(appdata.details[i]));
 			break;
 		}
 	}
 
-	// console.debug("BandProfile id ", JSON.stringify(nsBandProfile.args));
+	// console.debug("BandProfile id ", JSON.stringify($.args));
 	// console.debug("BandProfile data ", JSON.stringify(nsBandProfile.data));
 
 	$.ivBandImage.setHeight(Alloy.Globals.platformHeight * 0.30);
@@ -135,7 +159,7 @@ nsBandProfile.init = function() {
 		nsBandProfile.data = {};
 		for (var i = 0,
 		    len = appdata.bands.length; i < len; i++) {
-			if (appdata.bands[i]._id === nsBandProfile.args.id) {
+			if (appdata.bands[i]._id === $.args.id) {
 				nsBandProfile.data.bandDetails = JSON.parse(JSON.stringify(appdata.bands[i]));
 				break;
 			}
@@ -144,7 +168,7 @@ nsBandProfile.init = function() {
 
 	// console.log('bandprodata:' + JSON.stringify(nsBandProfile.data));
 
-	var userSchedule = Ti.App.Properties.getObject('userSchedule');
+	var userSchedule = ($.args.showsType != 'clubshows') ? Ti.App.Properties.getObject('userSchedule') : Ti.App.Properties.getObject('userClubSchedule');
 	for (var i in userSchedule) {
 		if (userSchedule[i].band_id == nsBandProfile.data.bandDetails._id) {
 			$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);

@@ -74,9 +74,37 @@ nsMySchedule.showVenueList = function() {
 	Alloy.Globals.loading.hide();
 };
 
+Titanium.App.addEventListener('updateScheduleArgs', function() {
+
+	$.show_list.removeAllChildren();
+	var showType = $.args.showType;
+	var serviceCalls = require("serverCalls");
+	if (showsType == 'festshows') {
+		var getUserSchedule = new serviceCalls.getUserSchedule(function(schedule) {
+
+			console.debug(JSON.stringify(schedule));
+			$.args.schedule = JSON.parse(JSON.stringify(schedule));
+			nsMySchedule.showBandList();
+
+		}, function(error) {
+			console.log('error Clubshows ', JSON.stringify(error));
+		});
+	} else {
+		var getUserSchedule = new serviceCalls.getUserClubSchedule(function(schedule) {
+
+			console.debug(JSON.stringify(schedule));
+			$.args.schedule = JSON.parse(JSON.stringify(schedule));
+			nsMySchedule.showBandList();
+
+		}, function(error) {
+			console.log('error Clubshows ', JSON.stringify(error));
+		});
+	}
+});
+
 nsMySchedule.init = function() {
 
-	console.error('MYSCHEDULE ', JSON.stringify($.args.schedule));
+	console.error('MYSCHEDULE INIT', JSON.stringify($.args.schedule));
 	nsMySchedule.showBandList();
 };
 
