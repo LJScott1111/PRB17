@@ -124,5 +124,8 @@
 	<string name="hotels">Hotels</string>
 	<string name="festivalbands">Festival Bands</string>
 	<string name="clubbands">Club Bands</string>
-
+	
+	<!-- Chat -->
+	<string name="chatMainSubtitle">Get started with messaging \nand join groups to stay engaged.</string>
+	<string name="joinGroup">Join Group</string>
 </resources>

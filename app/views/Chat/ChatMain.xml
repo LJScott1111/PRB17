@@ -1,0 +1,7 @@
+<Alloy>
+	<View id="vmChatMain">
+	    <ImageView id="image" image="/icons/messaging.png" />
+	    <Label id="subtitle" text="L('chatMainSubtitle')" />
+	    <Label id="joinGroup" onClick="doClick" text="L('joinGroup')" />
+	</View>
+</Alloy>

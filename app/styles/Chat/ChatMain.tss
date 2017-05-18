@@ -1,0 +1,34 @@
+
+"#vmChatMain": {
+	backgroundColor: '#FFF',
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	layout: 'vertical'
+}
+
+"#image":{
+	top: 160,
+	width: '150dp'
+}
+
+"#subtitle":{
+	top: '10dp',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	color: '#C8C8C8',
+	font: {
+		fontSize: '16dp',
+	},
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE
+} 
+
+"#joinGroup":{
+	top: '50dp',
+	color: "#387EF5",
+	font: {
+		fontSize: '16dp',
+		fontWeight: 'bold'
+	},
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE
+}
