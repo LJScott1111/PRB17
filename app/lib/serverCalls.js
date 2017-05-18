@@ -663,3 +663,23 @@ nsServerCalls.getBannerInfo = function(onloadCallback, errorCallback) {
 };
 
 exports.getBannerInfo = nsServerCalls.getBannerInfo;
+
+nsServerCalls.getGroups = function(onloadCallback, errorCallback) {
+	var query = new Kinvey.Query();
+	var promise = Kinvey.DataStore.find('PRBChat', null);
+	promise.then(function(entities) {
+		console.log("Chat Groups :", JSON.stringify(entities));
+		
+		var appdata = Titanium.App.Properties.getObject('appdata', {});
+		appdata.groups = JSON.parse(JSON.stringify(entities));
+		Titanium.App.Properties.setObject('appdata', appdata);
+		
+		onloadCallback(entities);
+
+	}, function(error) {
+		console.debug("Shows Error ", error);
+		errorCallback(error);
+	});
+};
+
+exports.getGroups = nsServerCalls.getGroups;

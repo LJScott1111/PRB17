@@ -1,0 +1,147 @@
+
+"#chatWindow": {
+
+  // FIXME: https://jira.appcelerator.org/browse/TIMOB-19209
+  // This seems to make the issue with 4.1.0 happen less often
+  top: 0,
+  height: Ti.UI.FILL,
+  // We set the window to the backgroundColor we want for the wrapper of the TextField.
+  // This way it will also show this under that wrapper while the keyboard comes in and
+  // the container resizes to move the TextField up.
+  // backgroundColor: '#3CC6D9',
+}
+
+"ListView": {
+  top: 0,
+  bottom: '70dp',
+
+  backgroundColor: "transparent",
+
+  // FIXME: https://jira.appcelerator.org/browse/TIMOB-19209
+  // This seems to make the issue with 4.1.0 happen less often
+  height: Ti.UI.FILL
+}
+
+"ListView[platform=ios]": {
+  separatorStyle: Ti.UI.iPhone.ListViewSeparatorStyle.NONE,
+}
+
+"ItemTemplate": {
+  	height: Ti.UI.SIZE,
+	backgroundColor: "transparent",
+  	// Will disable swipe-to-the-left-to-delete
+  	canEdit: false,
+}
+
+"ItemTemplate[platform=ios]": {
+    // We don't want tapping on the item to change its backgroundColor
+    selectionStyle: Ti.UI.iPhone.ListViewCellSelectionStyle.NONE
+}
+
+// Styles for the bubbles
+
+".wrap": {
+  height: Ti.UI.SIZE,
+  layout: "vertical"
+}
+
+".myWrap": {
+  left: 50,
+  right: 10
+}
+
+".theirWrap": {
+  left: 10,
+  right: 50
+}
+
+".bubble": {
+  top: 5,
+  height: Ti.UI.SIZE,
+  borderRadius: 5
+}
+".myBubble": {
+  backgroundColor: "white"
+}
+
+".theirBubble": {
+  backgroundColor: "#B90204"
+}
+
+".message": {
+  top: 5,
+  right: 5,
+  bottom: 5,
+  left: 5,
+  height: Ti.UI.SIZE,
+
+  color: "#000"
+}
+
+".theirMessage": {
+	color: "white"
+}
+
+".user": {
+  top: 0,
+  height: 15,
+  color: "#515151",
+  font: {
+    fontSize: 12
+  }
+}
+
+".messengee": {
+  right: 5
+}
+
+".messenger": {
+  left: 5
+}
+
+".meta": {
+  top: 0,
+  height: 15,
+  color: "#515151",
+  font: {
+    fontSize: 10
+  }
+}
+
+".myMeta": {
+  right: 5
+}
+
+".theirMeta": {
+  left: 5
+}
+
+"#input": {
+  editable: true
+}
+
+// Styles for the TextField and its wrapper
+
+".textFieldWrap": {
+  height: '50dp',
+  bottom: '20dp',
+}
+
+"TextField": {
+  top: '8dp',
+  right: '5dp',
+  bottom: '8dp',
+  left: '5dp',
+
+  hintText: "Reply",
+  paddingLeft: '5dp',
+  paddingRight: '5dp',
+  borderRadius: '5dp',
+  backgroundColor: "white",
+
+  // The alert-style keyboards looks nice with our wrapper
+  appearance: Ti.UI.KEYBOARD_APPEARANCE_ALERT,
+
+  // Change the name of the return key on the keyboard
+  returnKeyType: Ti.UI.RETURNKEY_SEND
+}

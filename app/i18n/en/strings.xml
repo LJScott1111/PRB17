@@ -126,6 +126,7 @@
 	<string name="clubbands">Club Bands</string>
 	
 	<!-- Chat -->
-	<string name="chatMainSubtitle">Get started with messaging \nand join groups to stay engaged.</string>
-	<string name="joinGroup">Join Group</string>
+	<string name="chat_main_subtitle">Get started with messaging \nand join groups to stay engaged.</string>
+	<string name="join_group">Join Group</string>
+	<string name="available_groups">Available Groups</string>
 </resources>

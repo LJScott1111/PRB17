@@ -1,0 +1,7 @@
+
+"#vmGroupsList" : {
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	layout: 'vertical',
+	top: 0
+}

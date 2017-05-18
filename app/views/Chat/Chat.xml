@@ -1,0 +1,45 @@
+<Alloy>
+	<View id="chatWindow" backgroundImage='/icons/bg_chat.png'>
+    <!-- <TextArea id="chat" onClick="nsChat.hideKeyboard" /> -->
+    
+    <ListView id="messageListView">
+
+		<Templates>
+
+			<!-- Template for messages sent -->
+			<ItemTemplate name="mine">
+				<View class="wrap myWrap">
+					<Label class="user messengee" bindId="userName" />
+					<View class="bubble myBubble">
+						<Label class="message" bindId="message" />
+					</View>
+					<Label class="meta myMeta" bindId="meta" />
+				</View>
+			</ItemTemplate>
+
+			<!-- Template for messages received -->
+			<ItemTemplate name="theirs">
+				<View class="wrap theirWrap">
+					<Label class="user messenger" bindId="userName" />
+					<View class="bubble theirBubble">
+						<Label class="message theirMessage" bindId="message" />
+					</View>
+					<Label class="meta theirMeta" bindId="meta" />
+				</View>
+			</ItemTemplate>
+
+		</Templates>
+
+		<!-- dataTransform: Method to call one each model before binding it -->
+		<ListSection id="messagesSection" />
+
+	</ListView>
+
+    <View class="textFieldWrap">
+
+      <!-- sendMessage: Send new message by tapping the keyboard return button -->
+      <TextField id="input" />
+
+    </View>
+  </View>
+</Alloy>
