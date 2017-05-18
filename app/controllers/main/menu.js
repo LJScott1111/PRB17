@@ -195,6 +195,7 @@ $.club_shows.button.addEventListener('click', function() {
 	}, true, null, 'misc/center_logo');
 
 	return;
+	/*
 	
 	Alloy.Globals.loading.show();
 	var clubdata = Titanium.App.Properties.getObject('clubData', {});
@@ -241,7 +242,8 @@ $.club_shows.button.addEventListener('click', function() {
 			alert(L('err_fetchingDetails'));
 			Alloy.Globals.loading.hide();
 		});
-	}
+	}*/
+	
 
 	/*
 	 Ti.App.fireEvent('toggleMenu');
@@ -424,6 +426,7 @@ $.my_schedule.button.addEventListener('click', function() {
 		addBanner : true
 	}, true, null, 'misc/center_logo');
 	return;
+/*
 
 	//// TODO: Later
 	console.error('nsEvents.getSchedule');
@@ -475,7 +478,8 @@ $.my_schedule.button.addEventListener('click', function() {
 			alert(L('err_fetchingDetails'));
 			Alloy.Globals.loading.hide();
 		});
-	}
+	}*/
+
 
 	/*
 	 Ti.App.fireEvent('toggleMenu');

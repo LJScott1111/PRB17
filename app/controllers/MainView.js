@@ -83,6 +83,7 @@ $.club_shows_action.addEventListener('click', function() {
 	}, true, null, 'misc/center_logo');
 
 	return;
+/*
 
 	Alloy.Globals.loading.show();
 	var clubdata = Titanium.App.Properties.getObject('clubData', {});
@@ -127,7 +128,8 @@ $.club_shows_action.addEventListener('click', function() {
 			alert(L('err_fetchingDetails'));
 			Alloy.Globals.loading.hide();
 		});
-	}
+	}*/
+
 });
 
 $.bands_action.addEventListener('click', function() {
@@ -222,6 +224,7 @@ $.my_schedule_action.addEventListener('click', function() {
 		addBanner : true
 	}, true, null, 'misc/center_logo');
 	return;
+/*
 
 	//// TODO: Later
 	Alloy.Globals.loading.show();
@@ -272,7 +275,8 @@ $.my_schedule_action.addEventListener('click', function() {
 			alert(L('err_fetchingDetails'));
 			Alloy.Globals.loading.hide();
 		});
-	}
+	}*/
+
 });
 
 $.book_hotels_action.addEventListener('click', function() {

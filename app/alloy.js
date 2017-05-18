@@ -9,8 +9,9 @@ UrbanAirship.addEventListener(UrbanAirship.EVENT_PUSH_RECEIVED, function(e) {
 	Ti.API.info('Push received' + e.message);
 	alert(e.message);
 });
-Titanium.UI.iPhone.appBadge = 0;
-
+if (OS_IOS) {
+	Titanium.UI.iOS.appBadge = 0;
+};
 var deviceToken = null;
 
 // Process incoming push notifications
@@ -181,7 +182,6 @@ Alloy.Globals.getSponsorBanner = function(screen) {
 	this.getBannerInfo = function(bannerName) {
 
 		for (var i in Alloy.Globals.SPONSORS) {
-			console.log('Alloy.Globals.SPONSORS[i] i ', i);
 			if (bannerName == Alloy.Globals.SPONSORS[i].name) {
 				banner = Alloy.Globals.SPONSORS[i];
 				break;
@@ -193,41 +193,41 @@ Alloy.Globals.getSponsorBanner = function(screen) {
 
 	switch (screen) {
 	case 'mainNav':
-		console.error('CASE mainNav ', screen);
+		// console.error('CASE mainNav ', screen);
 		bannerName = 'banner1';
 		break;
 	case 'merch':
-		console.error('CASE merch ', screen);
+		// console.error('CASE merch ', screen);
 		bannerName = 'banner2';
 		break;
 	case 'bandProfile':
-		console.error('CASE bandProfile ', screen);
+		// console.error('CASE bandProfile ', screen);
 		bannerName = 'banner3';
 		break;
 	case 'hotels':
-		console.error('CASE hotels ', screen);
+		// console.error('CASE hotels ', screen);
 		bannerName = 'banner4';
 		break;
 	case 'bowling':
-		console.error('CASE bowling ', screen);
+		// console.error('CASE bowling ', screen);
 		bannerName = 'banner5';
 		break;
 	case 'foodVendors':
-		console.error('CASE foodvnedors ', screen);
+		// console.error('CASE foodvnedors ', screen);
 		bannerName = 'banner6';
 		break;
 	case 'map':
-		console.error('CASE map ', screen);
+		// console.error('CASE map ', screen);
 		bannerName = 'banner7';
 		break;
 	case 'contest':
-		console.error('CASE contest ', screen);
+		// console.error('CASE contest ', screen);
 		bannerName = 'banner8';
 		break;
 	default:
 		// bannerName = 'banner';
 		// no banner
-		console.error('CASE default ', screen);
+		// console.error('CASE default ', screen);
 		break;
 	}
 
@@ -499,6 +499,7 @@ Alloy.Globals.combinedDetails = function() {
 	appdata.details = JSON.parse(JSON.stringify(combinedData));
 	Titanium.App.fireEvent('get_next_show');
 	Titanium.App.Properties.setObject('appdata', appdata);
+
 	Alloy.Globals.loading.hide();
 
 	console.debug("appdata details ", JSON.stringify(Titanium.App.Properties.getObject('appdata')));
