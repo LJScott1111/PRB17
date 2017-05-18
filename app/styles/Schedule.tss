@@ -21,12 +21,22 @@
 	width: '49.5%',
 	layout: 'vertical'
 }
+/*
 
 "#lasvegas_view": {
 	left: '0dp'
 }
 
 "#asburypark_view": {
+	right: '0dp'
+}
+*/
+
+"#festivalbands_view": {
+	left: '0dp'
+}
+
+"#clubbands_view": {
 	right: '0dp'
 }
 

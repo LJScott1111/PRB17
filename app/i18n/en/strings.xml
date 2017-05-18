@@ -121,5 +121,7 @@
 	<string name="when_lbl">When</string>
 	<string name="where_lbl">Where</string>
 	<string name="hotels">Hotels</string>
+	<string name="festivalbands">Festival Bands</string>
+	<string name="clubbands">Club Bands</string>
 
 </resources>

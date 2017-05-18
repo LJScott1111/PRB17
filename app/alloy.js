@@ -415,6 +415,12 @@ Alloy.Globals.getAndStoreData = function(callback) {
 
 		count++;
 		console.debug("count++", count);
+		var getClubShows = new serviceCalls.getClubShows(function(clubData) {
+			console.log('response Clubshows clubData ', JSON.stringify(clubData));
+
+		}, function(error) {
+			console.log('error Clubshows ', JSON.stringify(error));
+		});
 		if (count === 3) {
 			var fetchedData = Alloy.Globals.combinedDetails();
 			callback(fetchedData);

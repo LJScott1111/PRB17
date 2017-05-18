@@ -1,5 +1,6 @@
 var nsSchedule = {};
 var currentCity = $.args.city;
+var currentView = 'fbands';
 nsSchedule.propRed = {
 	color : '#cc0000',
 	touchEnabled : false
@@ -216,7 +217,8 @@ $.schedule.addEventListener('click', function() {
 	var eventListByDay = Alloy.createController('EventListByDay', {
 		city : currentCity,
 		schedule : $.args.schedule,
-		appdata : $.args.appdata,
+		// appdata : $.args.appdata,
+		appdata : (currentView == 'fbands') ? $.args.appdata : Titanium.App.Properties.getObject('clubData'),
 		showsType : $.args.showsType
 	}).getView();
 
@@ -253,33 +255,41 @@ nsSchedule.openLineup = function() {
 	var eventList = Alloy.createController('EventList', {
 		city : currentCity,
 		schedule : $.args.schedule,
-		appdata : $.args.appdata,
-		showsType : $.args.showsType
+		appdata : (currentView == 'fbands') ? $.args.appdata : Titanium.App.Properties.getObject('clubData'),
+		showsType : $.args.showsType,
+		view : currentView
 	}).getView();
 
 	$.mainContent.add(eventList);
 	nsSchedule.setLayoutToTable();
 };
 
-$.asburypark_view.addEventListener('click', function() {
-	console.log('Alloy.Globals.currentScreen ', Alloy.Globals.currentScreen);
-	if (currentCity == 'asburypark') {
+$.clubbands_view.addEventListener('click', function() {
+	console.log('Alloy.Globals.currentScreen ', Alloy.Globals.currentScreen, currentCity);
+	if (currentView == 'cbands') {
 		return;
 	};
-	$.lasvegas_ul.backgroundColor = 'transparent';
-	$.asburypark_ul.backgroundColor = '#D70C46';
-	currentCity = 'asburypark';
+	// currentCity = 'asburypark';
+	currentView = 'cbands';
+	$.args.showsType = 'clubshows';
+
+	$.festivalbands_ul.backgroundColor = 'transparent';
+	$.clubbands_ul.backgroundColor = '#D70C46';
+	currentView = 'cbands';
 	nsSchedule.openLineup();
 });
 
-$.lasvegas_view.addEventListener('click', function() {
-	console.log('Alloy.Globals.currentScreen ', Alloy.Globals.currentScreen);
-	if (currentCity == 'lasvegas') {
+$.festivalbands_view.addEventListener('click', function() {
+	console.log('Alloy.Globals.currentScreen ', Alloy.Globals.currentScreen, currentCity);
+	if (currentView == 'fbands') {
 		return;
 	};
-	$.lasvegas_ul.backgroundColor = '#D70C46';
-	$.asburypark_ul.backgroundColor = 'transparent';
-	currentCity = 'lasvegas';
+	$.args.showsType = 'festshows';
+	// currentCity = 'lasvegas';
+	currentView = 'fbands';
+	$.festivalbands_ul.backgroundColor = '#D70C46';
+	$.clubbands_ul.backgroundColor = 'transparent';
+	currentView = 'fbands';
 	nsSchedule.openLineup();
 });
 
@@ -314,14 +324,14 @@ nsSchedule.init = function() {
 	nsSchedule.openLineup();
 
 	console.error('after------------->>>>>> Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
-	console.log('CURRENTCITY ======>> 1 ', currentCity);
-	if (currentCity == 'lasvegas') {
-		$.lasvegas_ul.backgroundColor = '#D70C46';
-		$.asburypark_ul.backgroundColor = 'transparent';
-	} else {
-		$.lasvegas_ul.backgroundColor = 'transparent';
-		$.asburypark_ul.backgroundColor = '#D70C46';
-	}
+	// if (currentCity == 'lasvegas') {
+	// console.log('VURRENTVIEW ======>> 1 ', currentView);
+	$.festivalbands_ul.backgroundColor = '#D70C46';
+	$.clubbands_ul.backgroundColor = 'transparent';
+	// } else {
+	// $.festivalbands_ul.backgroundColor = 'transparent';
+	// $.clubbands_ul.backgroundColor = '#D70C46';
+	// }
 };
 
 nsSchedule.init();
