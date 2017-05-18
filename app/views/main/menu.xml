@@ -4,10 +4,9 @@
 		<ScrollView class="container padding_bottom">
 
 			<Require id="buy_tickets" src="misc/menu_button" title="L('buy_tickets').toUpperCase()" />
-			<Require id="festival_lineup" src="misc/menu_button" title="L('festival_lineup').toUpperCase()" />
-			<Require id="bands" src="misc/menu_button" title="L('bands').toUpperCase()" />
+			<!-- <Require id="bands" src="misc/menu_button" title="L('bands').toUpperCase()" />
 			<Require id="club_shows" src="misc/menu_button" title="L('club_shows_lv').toUpperCase()" />
-			<Require id="club_shows_ap" src="misc/menu_button" title="L('club_shows_ap').toUpperCase()" />
+			<Require id="club_shows_ap" src="misc/menu_button" title="L('club_shows_ap').toUpperCase()" /> -->
 			<Require id="denver_prb" src="misc/menu_button" title="L('denver_prb').toUpperCase()" />
 			<Require id="denver_bowling" src="misc/menu_button" title="L('denver_bowling').toUpperCase()" />
 			<Require id="contests" src="misc/menu_button" title="L('contests').toUpperCase()" />
@@ -16,29 +15,13 @@
 			<Require id="map" src="misc/menu_button" title="L('map').toUpperCase()" />
 			<Require id="venues" src="misc/menu_button" title="L('venues').toUpperCase()" />
 			<Require id="poker" src="misc/menu_button" title="L('poker').toUpperCase()" />
-			<!--
-			<Require id="bowling" src="misc/menu_button" title="L('bowling').toUpperCase()" />
-			<View id="subWrapper1" class="vertical_layout">
-			<Require id="fest_events" src="misc/menu_button" title="L('fest_events').toUpperCase()" />
-
-			<Require id="poolparty" src="misc/menu_button" title="L('poolparty').toUpperCase()" />
-			</View>
-			<View id="subWrapper2" class="vertical_layout">
-			<Require id="art" src="misc/menu_button" title="L('art').toUpperCase()" />
-			<Require id="map" src="misc/menu_button" title="L('map').toUpperCase()" />
-			<Require id="denver" src="misc/menu_button" title="L('denver').toUpperCase()" />
-			</View> -->
 			<Require id="sponsers" src="misc/menu_button" title="L('sponsers').toUpperCase()" />
 			<Require id="food" src="misc/menu_button" title="L('food').toUpperCase()" />
 			<Require id="info" src="misc/menu_button" title="L('news_social').toUpperCase()" />
-			<!-- <Require id="asburypark" src="misc/menu_button" title="L('asburypark').toUpperCase()" />
-			<Require id="about" src="misc/menu_button" title="L('about').toUpperCase()" /> -->
 			<Require id="faq" src="misc/menu_button" title="L('faq').toUpperCase()" />
-			<Require id="privacy_policy" src="misc/menu_button" title="L('privacy_policy').toUpperCase()" />
-			<!-- <Require id="social" src="misc/menu_button" title="L('social').toUpperCase()" /> -->
-			<Require id="my_schedule" src="misc/menu_button" title="L('my_schedule').toUpperCase()" />
+			<Require id="chat" src="misc/menu_button" title="L('chat').toUpperCase()" />
 			<Require id="message_center" src="misc/menu_button" title="L('message_center').toUpperCase()" />
-			<!-- <Require id="profile" src="misc/menu_button" title="L('profile').toUpperCase()" /> -->
+			<Require id="privacy_policy" src="misc/menu_button" title="L('privacy_policy').toUpperCase()" />
 			<Require id="log_out" src="misc/menu_button" title="L('log_out').toUpperCase()" />
 			<!-- <Require id="settings" src="misc/menu_button" title="L('settings').toUpperCase()" /> -->
 		</ScrollView>
