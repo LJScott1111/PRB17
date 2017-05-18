@@ -449,6 +449,24 @@ Alloy.Globals.getAndStoreData = function(callback) {
 		callback(false);
 
 	});
+	
+	// Get Chat groups
+	var getGroups = new serviceCalls.getGroups(function( data ) {
+		
+		count++;
+		console.debug("count++", count);
+		if (count === 3) {
+			var fetchedData = Alloy.Globals.combinedDetails();
+			callback(fetchedData);
+		}
+		
+	}, function( error ) {
+		
+		fails++;
+		console.debug("fails ", fails);
+		callback(false);
+		
+	});
 };
 
 Alloy.Globals.combinedDetails = function() {
@@ -528,7 +546,8 @@ Alloy.Globals.appData = {
 	"details" : [],
 	"bands" : [],
 	"shows" : [],
-	"venues" : []
+	"venues" : [],
+	"groups": []
 };
 
 /*
@@ -536,6 +555,15 @@ Alloy.Globals.Facebook = require('facebook');
 Alloy.Globals.Facebook.appid = Alloy.Globals.fbAppID();
 Alloy.Globals.Facebook.permissions = ['email'];
 */
+
+// Pubnub
+Alloy.Globals.Pubnub = require('pubnub.js')({
+	publish_key : 'pub-c-9c8c5e8e-6c08-4a00-a0fe-70abbfe46d3e',
+	subscribe_key : 'sub-c-c8b63c82-3bde-11e7-a58b-02ee2ddab7fe',
+	ssl : false,
+	native_tcp_socket : false,
+	origin : 'pubsub.pubnub.com'
+});
 
 // Pageflow
 Alloy.Globals.jolicode = {};

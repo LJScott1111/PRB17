@@ -3,5 +3,5 @@ var args = $.args;
 
 function doClick(e) {
   console.log("Clicked on Join Group");
-  Alloy.Globals.openWindow('Chat/Groups', {}, true);
+  Alloy.Globals.openWindow('Chat/Groups', {}, true, null, 'misc/center_logo');
 }
