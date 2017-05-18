@@ -79,7 +79,7 @@ $.lineup_action.addEventListener('click', function() {
 $.club_shows_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/collections/prb-2017-club-shows-lv",
+		url : "https://punkrockbowling.com/collections/vegas-club-shows",
 	}, true, null, 'misc/center_logo');
 
 	return;
@@ -422,7 +422,7 @@ $.ap_my_schedule.addEventListener('click', function() {
 
 $.ap_club_shows.addEventListener('click', function() {
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/pages/asbury-park-club-shows"
+		url : "https://punkrockbowling.com/collections/prb-asbury-park-club-shows-1"
 	}, true, null, 'misc/center_logo');
 });
 

@@ -1,6 +1,7 @@
 var nsSchedule = {};
 var currentCity = $.args.city;
-var currentView = 'fbands';
+var currentView,
+    showType;
 nsSchedule.propRed = {
 	color : '#cc0000',
 	touchEnabled : false
@@ -46,7 +47,7 @@ nsSchedule.changeInScheduleScreen = function() {
 		var eventListByDay = Alloy.createController('EventListByDay', {
 			city : currentCity,
 			appdata : $.args.appdata,
-			showsType : $.args.showsType
+			showsType : showsType
 		}).getView();
 
 		$.mainContent.add(eventListByDay);
@@ -66,22 +67,21 @@ nsSchedule.setLayoutToGrid = function() {
 	Titanium.App.fireEvent('changeToTable');
 };
 
+var userschedule;
 nsSchedule.showMySchedule = function() {
-	var serviceCalls = require("serverCalls");
-	var getUserSchedule = new serviceCalls.getUserSchedule(function(schedule) {
 
-		console.error('JSON.stringify(schedule) ', JSON.stringify(schedule));
-		console.log('Alloy.Globals.currentLayout IS:::: ', Alloy.Globals.currentLayout);
+	var openMySchedule = function(userschedule) {
 
 		if (Alloy.Globals.currentLayout == 'grid') {
 
 			// Change to table
 			var userSchedule = Alloy.createController('UserSchedule', {
 				city : currentCity,
-				// schedule : schedule,
-				schedule : $.args.schedule,
+				schedule : userschedule,
+				// schedule : $.args.schedule,
 				appdata : $.args.appdata,
-				showsType : $.args.showsType
+				showsType : showsType,
+				view : currentView
 			}).getView();
 			$.mainContent.add(userSchedule);
 			nsSchedule.setLayoutToGrid();
@@ -90,23 +90,45 @@ nsSchedule.showMySchedule = function() {
 			// Change to grid
 			var mySchedule = Alloy.createController('MySchedule', {
 				city : currentCity,
-				// schedule : schedule,
-				schedule : $.args.schedule,
+				schedule : userschedule,
+				// schedule : $.args.schedule,
 				appdata : $.args.appdata,
-				showsType : $.args.showsType
+				showsType : showsType,
+				view : currentView
 			}).getView();
 
 			$.mainContent.add(mySchedule);
 			console.log('CALLING FROM INSIDE SHOWMYSCHEDULE');
 			nsSchedule.setLayoutToTable();
 		}
+	};
 
-	}, function(error) {
-		alert(L('err_fetchingDetails'));
-	});
+	var serviceCalls = require("serverCalls");
 
-	// Alloy.Globals.currentScreen = 'mySchedule', Alloy.Globals.currentLayout = 'table';
-	console.log('Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
+	
+	if (currentView == 'fbands') {
+		console.log('in fbands');
+
+		var getUserSchedule = new serviceCalls.getUserSchedule(function(schedule) {
+
+			userschedule = JSON.parse(JSON.stringify(schedule));
+			openMySchedule(userschedule);
+
+		}, function(error) {
+			alert(L('err_fetchingDetails'));
+		});
+	} else {
+		console.log('in cbands');
+
+		var getUserSchedule = new serviceCalls.getUserClubSchedule(function(schedule) {
+
+			userschedule = JSON.parse(JSON.stringify(schedule));
+			openMySchedule(userschedule);
+
+		}, function(error) {
+			alert(L('err_fetchingDetails'));
+		});
+	}
 };
 
 nsSchedule.getEventsByDayForGrid = function() {
@@ -138,7 +160,7 @@ nsSchedule.getEventsByDayForGrid = function() {
 		schedule : eventSchedule,
 		type : 'eventSchedule',
 		appdata : appdata,
-		showsType : $.args.showsType
+		showsType : showsType
 	}).getView();
 	$.mainContent.add(eventSchedule);
 };
@@ -187,7 +209,7 @@ $.line_up.addEventListener('click', function() {
 		city : currentCity,
 		schedule : $.args.schedule,
 		appdata : $.args.appdata,
-		showsType : $.args.showsType
+		showsType : showsType
 	}).getView();
 
 	$.mainContent.add(eventList);
@@ -219,26 +241,40 @@ $.schedule.addEventListener('click', function() {
 		schedule : $.args.schedule,
 		// appdata : $.args.appdata,
 		appdata : (currentView == 'fbands') ? $.args.appdata : Titanium.App.Properties.getObject('clubData'),
-		showsType : $.args.showsType
+		showsType : showsType
 	}).getView();
 
 	$.mainContent.add(eventListByDay);
 	Alloy.Globals.currentScreen = 'schedule', Alloy.Globals.currentLayout = 'table';
 	console.error('Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
 });
+/*
 
 Titanium.App.addEventListener('updateScheduleArgs', function() {
 
+	// return;
 	var serviceCalls = require("serverCalls");
-	var getUserSchedule = new serviceCalls.getUserSchedule(function(schedule) {
+	if (showsType == 'festshows') {
+		var getUserSchedule = new serviceCalls.getUserSchedule(function(schedule) {
 
-		console.debug(JSON.stringify(schedule));
-		$.args.schedule = JSON.parse(JSON.stringify(schedule));
+			console.debug(JSON.stringify(schedule));
+			userschedule = JSON.parse(JSON.stringify(schedule));
 
-	}, function(error) {
-		console.log('error Clubshows ', JSON.stringify(error));
-	});
+		}, function(error) {
+			console.log('error Clubshows ', JSON.stringify(error));
+		});
+	} else {
+		var getUserSchedule = new serviceCalls.getUserClubSchedule(function(schedule) {
+
+			console.debug(JSON.stringify(schedule));
+			userschedule = JSON.parse(JSON.stringify(schedule));
+
+		}, function(error) {
+			console.log('error Clubshows ', JSON.stringify(error));
+		});
+	}
 });
+*/
 
 nsSchedule.openLineup = function() {
 	$.my_schedule_icon.applyProperties(nsSchedule.propGrey);
@@ -256,7 +292,7 @@ nsSchedule.openLineup = function() {
 		city : currentCity,
 		schedule : $.args.schedule,
 		appdata : (currentView == 'fbands') ? $.args.appdata : Titanium.App.Properties.getObject('clubData'),
-		showsType : $.args.showsType,
+		showsType : showsType,
 		view : currentView
 	}).getView();
 
@@ -271,7 +307,7 @@ $.clubbands_view.addEventListener('click', function() {
 	};
 	// currentCity = 'asburypark';
 	currentView = 'cbands';
-	$.args.showsType = 'clubshows';
+	showsType = 'clubshows';
 
 	$.festivalbands_ul.backgroundColor = 'transparent';
 	$.clubbands_ul.backgroundColor = '#D70C46';
@@ -284,7 +320,7 @@ $.festivalbands_view.addEventListener('click', function() {
 	if (currentView == 'fbands') {
 		return;
 	};
-	$.args.showsType = 'festshows';
+	showsType = 'festshows';
 	// currentCity = 'lasvegas';
 	currentView = 'fbands';
 	$.festivalbands_ul.backgroundColor = '#D70C46';
@@ -309,29 +345,14 @@ nsSchedule.init = function() {
 	console.error('nsSchedule.init CALLED........');
 	console.log('ARGS SCHEDULE ', JSON.stringify($.args));
 
-	// $.line_up_icon.applyProperties(nsSchedule.propRed);
-	// $.line_up_text.applyProperties(nsSchedule.propRed);
-	// Titanium.App.fireEvent('hideGridOption');
-	// console.error('before------------->>>>>> Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
-	// Alloy.Globals.currentScreen = 'line_up', Alloy.Globals.currentLayout = 'table';
-	// var eventList = Alloy.createController('EventList', {
-	// city : currentCity,
-	// schedule : $.args.schedule
-	// }).getView();
-	//
-	// $.mainContent.add(eventList);
-	// nsSchedule.setLayoutToTable();
+	showsType = 'festshows';
+	currentView = 'fbands';
+
 	nsSchedule.openLineup();
 
 	console.error('after------------->>>>>> Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
-	// if (currentCity == 'lasvegas') {
-	// console.log('VURRENTVIEW ======>> 1 ', currentView);
 	$.festivalbands_ul.backgroundColor = '#D70C46';
 	$.clubbands_ul.backgroundColor = 'transparent';
-	// } else {
-	// $.festivalbands_ul.backgroundColor = 'transparent';
-	// $.clubbands_ul.backgroundColor = '#D70C46';
-	// }
 };
 
 nsSchedule.init();

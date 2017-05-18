@@ -261,7 +261,7 @@ nsServerCalls.getClubShows = function(onloadCallback, errorCallback) {
 	var promise = Kinvey.DataStore.find('ClubShows', null);
 	var clubData = Titanium.App.Properties.getObject('clubData', {});
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
-	var combinedData =[];
+	var combinedData = [];
 
 	var ClubBands = new nsServerCalls.getClubBands(function(resp) {
 		console.log('RESP BANDS ----> ', JSON.stringify(resp));
@@ -297,11 +297,12 @@ nsServerCalls.getClubShows = function(onloadCallback, errorCallback) {
 				combinedData.push(bandProfile);
 			}
 			clubData.details = JSON.parse(JSON.stringify(combinedData));
-			
+
 			console.error('clubData --> ', JSON.stringify(clubData));
-			
-			Titanium.App.Properties.setObject('clubData', clubData);;
-			
+
+			Titanium.App.Properties.setObject('clubData', clubData);
+			;
+
 			onloadCallback(Titanium.App.Properties.getObject('clubData', {}));
 
 		}, function(error) {
@@ -503,6 +504,149 @@ nsServerCalls.deleteUserSchedule = function(show_id, onloadCallback, errorCallba
 };
 
 exports.deleteUserSchedule = nsServerCalls.deleteUserSchedule;
+
+// Clubshow user schedule
+// Get user schedule
+nsServerCalls.getUserClubSchedule = function(onloadCallback, errorCallback) {
+
+	onloadCallback(Ti.App.Properties.getObject('userClubSchedule', []));
+};
+
+exports.getUserClubSchedule = nsServerCalls.getUserClubSchedule;
+
+//Saving a User schedule
+nsServerCalls.saveUserClubSchedule = function(show_id, onloadCallback, errorCallback, showsType) {
+
+	console.error('Ti.App.Properties.getObject( userClubSchedule-- ', Ti.App.Properties.getObject('userClubSchedule'));
+	var userClubSchedule = Ti.App.Properties.getObject('userClubSchedule', []);
+	console.log('userClubSchedule( -- ', userClubSchedule);
+
+	if (userClubSchedule.length != 0) {
+
+		for (var i in userClubSchedule) {
+
+			if (userClubSchedule[i].show_id == show_id) {
+
+				alert('You already added this show.');
+				return;
+			}
+		}
+	}
+
+	var appdata = Titanium.App.Properties.getObject('clubData', {});
+	var band_id = '',
+	    venue_id = '',
+	    start_time = '',
+	    isShowExists = false,
+	    showDetails = '',
+	    bandDetails = '',
+	    venueDetails = '';
+	for (var j in appdata.shows) {
+		if (appdata.shows[j]._id == show_id) {
+			appdata.shows[j].selected = true;
+			band_id = appdata.shows[j].band_id;
+			venue_id = appdata.shows[j].venue_id;
+			start_time = appdata.shows[j].start_time;
+			for (var k in appdata.details) {
+				if (appdata.details[k].showDetails._id == show_id) {
+					console.log('appdata.details[k].showDetails._id ', appdata.details[k].showDetails._id, show_id);
+					showDetails = appdata.details[k].showDetails,
+					bandDetails = appdata.details[k].bandDetails,
+					venueDetails = appdata.details[k].venueDetails;
+					break;
+				};
+			}
+
+		}
+	}
+
+	for (var i in userClubSchedule) {
+
+		if (userClubSchedule[i].start_time == start_time) {
+
+			isShowExists = true;
+			break;
+		}
+	}
+
+	if (isShowExists) {
+
+		var dialogBox = Titanium.UI.createAlertDialog({
+			title : L('appName'),
+			message : L('overlap_time'),
+			buttonNames : ['Continue', 'Cancel']
+		});
+
+		dialogBox.show();
+
+		dialogBox.addEventListener('click', function(e) {
+			if (e.index == 1) {
+				return;
+			} else {
+
+				Titanium.App.Properties.setObject('clubData', appdata);
+
+				userClubSchedule.push({
+					show_id : show_id,
+					band_id : band_id,
+					venue_id : venue_id,
+					showDetails : showDetails,
+					bandDetails : bandDetails,
+					venueDetails : venueDetails,
+					start_time : start_time
+				});
+
+				Ti.App.Properties.setObject('userClubSchedule', userClubSchedule);
+				onloadCallback();
+			}
+			dialogBox.hide();
+		});
+	} else {
+
+		Titanium.App.Properties.setObject('clubData', appdata);
+
+		userClubSchedule.push({
+			show_id : show_id,
+			band_id : band_id,
+			venue_id : venue_id,
+			showDetails : showDetails,
+			bandDetails : bandDetails,
+			venueDetails : venueDetails,
+
+			start_time : start_time
+		});
+
+		Ti.App.Properties.setObject('userClubSchedule', userClubSchedule);
+		onloadCallback();
+	}
+
+};
+
+exports.saveUserClubSchedule = nsServerCalls.saveUserClubSchedule;
+
+//Deleting a User schedule
+nsServerCalls.deleteClubUserSchedule = function(show_id, onloadCallback, errorCallback) {
+
+	var userClubSchedule = Ti.App.Properties.getObject('userClubSchedule', []);
+
+	if (userClubSchedule.length != 0) {
+
+		for (var i in userClubSchedule) {
+
+			if (userClubSchedule[i].show_id == show_id) {
+
+				userClubSchedule.splice(i, 1);
+				console.log('ENTRY DELETED');
+				break;
+			}
+		}
+	}
+
+	Ti.App.Properties.setObject('userClubSchedule', userClubSchedule);
+	onloadCallback();
+};
+
+exports.deleteClubUserSchedule = nsServerCalls.deleteClubUserSchedule;
 
 nsServerCalls.getBannerInfo = function(onloadCallback, errorCallback) {
 
