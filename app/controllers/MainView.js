@@ -383,9 +383,58 @@ $.ap_buy_tickets.addEventListener('click', function() {
 });
 
 $.ap_my_schedule.addEventListener('click', function() {
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://buzzplay.com/PRBapp/ComingSoon.html"
-	}, true, null, 'misc/center_logo');
+
+	Alloy.Globals.loading.show();
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
+
+	if (appdata.details.length === 0) {
+		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+			console.debug("fetchedData ", fetchedData);
+			if (fetchedData) {
+
+				var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+
+					console.debug(JSON.stringify(schedule));
+
+					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+					Alloy.Globals.openWindow('Schedule', {
+						city : 'asburypark',
+						schedule : schedule,
+						screen : 'myschedule',
+						appdata : Titanium.App.Properties.getObject('appdata', {})
+					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+
+					Alloy.Globals.loading.hide();
+
+				}, function(error) {
+					alert(L('err_fetchingDetails'));
+					Alloy.Globals.loading.hide();
+				});
+
+			} else {
+				console.debug("The data did not get downloaded!!!");
+				alert(L('err_fetchingDetails'));
+				Alloy.Globals.loading.hide();
+			}
+		});
+	} else {
+		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+
+			console.debug(JSON.stringify(schedule));
+			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+			Alloy.Globals.openWindow('Schedule', {
+				city : 'asburypark',
+				schedule : schedule,
+				screen : 'myschedule',
+				appdata : Titanium.App.Properties.getObject('appdata', {})
+			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+			Alloy.Globals.loading.hide();
+
+		}, function(error) {
+			alert(L('err_fetchingDetails'));
+			Alloy.Globals.loading.hide();
+		});
+	}
 });
 
 $.ap_club_shows.addEventListener('click', function() {

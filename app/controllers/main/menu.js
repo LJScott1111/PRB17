@@ -86,14 +86,16 @@ $.chat.button.addEventListener('click', function() {
 	Alloy.Globals.openWindow('Chat/ChatMain', {}, true, null, 'misc/center_logo');
 
 });
+/*
 
-$.message_center.button.addEventListener('click', function() {
+ $.message_center.button.addEventListener('click', function() {
 
-	// Ref: https://github.com/urbanairship/titanium-module/blob/master/example/app.js
-	var UrbanAirship = Alloy.Globals.UrbanAirship;
-	Ti.App.fireEvent('toggleMenu');
-	UrbanAirship.displayMessageCenter();
-});
+ // Ref: https://github.com/urbanairship/titanium-module/blob/master/example/app.js
+ var UrbanAirship = Alloy.Globals.UrbanAirship;
+ Ti.App.fireEvent('toggleMenu');
+ UrbanAirship.displayMessageCenter();
+ });
+ */
 
 $.map.button.addEventListener('click', function() {
 
