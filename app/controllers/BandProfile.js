@@ -148,6 +148,10 @@ nsBandProfile.init = function() {
 			break;
 		}
 	}
+	
+	if ($.args.showsType == 'clubshows') {
+		$.vwSocialActivities.height = 0;
+	};
 
 	// console.debug("BandProfile id ", JSON.stringify($.args));
 	// console.debug("BandProfile data ", JSON.stringify(nsBandProfile.data));
