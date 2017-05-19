@@ -6,27 +6,12 @@ nsProfile.showHideHint = function(label, txtField) {
 	label.visible = (txtField.value.trim() == "");
 };
 
-$.emailField.addEventListener('change', function() {
-	nsProfile.showHideHint($.lblHint_email, $.emailField);
-});
-
-$.edit_email_btn.addEventListener('click', function() {
-	var thisUser = Kinvey.getActiveUser();
-	$.emailField.value = thisUser.username;
-
-	$.edit_email_view.height = Titanium.UI.SIZE;
-	nsProfile.showHideHint($.lblHint_email, $.emailField);
-	$.email.height = 0;
-	$.email.visible = false;
-	$.edit_email_btn.height = 0;
-	$.save_email_btn.height = 15;
-});
-
-$.save_email_btn.addEventListener('click', function() {
+$.save.addEventListener('click', function() {
 
 	var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 	var emailField = $.emailField.getValue();
+	var nameField = $.nameField.getValue();
 	console.debug(emailField);
 	console.debug("Email validate ", reg.test(emailField).toString());
 
@@ -39,15 +24,12 @@ $.save_email_btn.addEventListener('click', function() {
 
 		this.onloadCallback = function(user) {
 
-			var thisUser = Kinvey.getActiveUser();
-			$.email.text = thisUser.username;
-
-			$.edit_email_view.height = 0;
-			$.email.height = Titanium.UI.SIZE;
-			$.email.visible = true;
-			$.save_email_btn.height = 0;
-			$.edit_email_btn.height = 15;
 			Alloy.Globals.loading.hide();
+			var thisUser = Kinvey.setActiveUser(user);
+			$.emailField.value = user.username;
+			$.nameField.value = user.name;
+			Titanium.App.Properties.setString('name', name);
+			console.log('Titanium.App.Properties.setString(', Titanium.App.Properties.getString('name'));
 		};
 
 		this.onerrorCallback = function(error) {
@@ -57,9 +39,10 @@ $.save_email_btn.addEventListener('click', function() {
 		};
 
 		Alloy.Globals.loading.show();
-		var updateEmail = new serviceCalls.updateUser(emailField, this.onloadCallback, this.onerrorCallback);
+		var updateEmail = new serviceCalls.updateUser(nameField, emailField, this.onloadCallback, this.onerrorCallback);
 
 	} else {
+		Alloy.Globals.loading.show();
 		alert(L('err_loginDetails'));
 	}
 
@@ -69,13 +52,13 @@ nsProfile.init = function() {
 
 	var thisUser = Kinvey.getActiveUser();
 	console.log(thisUser);
-	$.email.text = thisUser.username;
-	$.save_email_btn.height = 0;
+	$.emailField.value = thisUser.username;
+	$.nameField.value = Titanium.App.Properties.getString('name');
+	var thisUser = Kinvey.getActiveUser();
+	$.emailField.value = thisUser.username;
 
 	// Disabling update email option for username = defaultuserlogin@buzzplay.com
 	if (thisUser._id == '57426f4751ffd5bb03b001c3') {
-		$.edit_email_btn.height = 0;
-		$.save_email_btn.height = 0;
 		$.username_view.height = 0;
 		$.no_email_message.height = Titanium.UI.SIZE;
 		$.no_email_message.visible = true;

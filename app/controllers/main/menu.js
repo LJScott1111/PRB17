@@ -15,6 +15,12 @@ Titanium.App.addEventListener('hideOptions', function() {
  });
  */
 
+$.profile.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('Profile', {}, true, null, 'misc/center_logo');
+});
+
 $.buy_tickets.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
@@ -76,7 +82,7 @@ $.contests.button.addEventListener('click', function() {
 $.chat.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	
+
 	Alloy.Globals.openWindow('Chat/ChatMain', {}, true, null, 'misc/center_logo');
 
 });

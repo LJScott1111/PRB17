@@ -1,16 +1,10 @@
 <Alloy>
 	<View class="container vertical_layout" backgroundImage='icons/distress_bg.png'>
-		<View id="username_view" class="absolute_layout padding_top">
+		<View id="username_view" class="vertical_layout padding_top">
 
-			<View id="user_info" class="vertical_layout">
-				<View class="absolute_layout" id="edit_email_view">
-					<TextField id="emailField" class="tfClass" keyboardType="Titanium.UI.KEYBOARD_TYPE_EMAIL"></TextField>
-					<Label class="lblClass" text="L('index_tfEmail')" id="lblHint_email"></Label>
-				</View>
-				<Label id="email"></Label>
-			</View>
-			<ImageView id="edit_email_btn" class="padding_right"></ImageView>
-			<ImageView id="save_email_btn" class="padding_right"></ImageView>
+			<TextField id="nameField" class="tfClass padding_top" hintText="L('name')"></TextField>
+			<TextField id="emailField" class="tfClass padding_top" hintText="L('index_tfEmail')" keyboardType="Titanium.UI.KEYBOARD_TYPE_EMAIL"></TextField>
+			<Button title="L('save')" id="save" class="btnClass"></Button>
 		</View>
 		<Label id="no_email_message" text="L('no_email_message')"></Label>
 	</View>

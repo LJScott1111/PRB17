@@ -61,11 +61,12 @@ nsServerCalls.login = function(username, password, onloadCallback, errorCallback
 
 exports.login = nsServerCalls.login;
 
-nsServerCalls.updateUser = function(username, onloadCallback, errorCallback) {
+nsServerCalls.updateUser = function(name, username, onloadCallback, errorCallback) {
 
 	var promise = Kinvey.User.update({
 		_id : Titanium.App.Properties.getString('userid'),
-		username : username.toLowerCase()
+		username : username.toLowerCase().trim(),
+		name: name
 	});
 	promise.then(function(user) {
 		console.debug("Update success - user ", JSON.stringify(user));
