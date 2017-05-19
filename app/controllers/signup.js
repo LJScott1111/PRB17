@@ -22,13 +22,13 @@ nsIndex.closeWindow = function() {
 	$.winIndex.close();
 };
 
-nsIndex.user_exists = function(){
+nsIndex.user_exists = function() {
 
 	$.activityIndicator.show();
 	$.indicatorView.height = Titanium.UI.SIZE;
 	$.indicatorView.visible = true;
 
-	setTimeout(function(){
+	setTimeout(function() {
 		$.activityIndicator.hide();
 		$.indicatorView.height = 0;
 		$.indicatorView.visible = false;
@@ -38,7 +38,6 @@ nsIndex.user_exists = function(){
 };
 
 Titanium.App.addEventListener('user_exists', nsIndex.user_exists);
-
 
 nsIndex.validateEmail = function() {
 	var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
@@ -105,6 +104,9 @@ nsIndex.skipSignUp = function() {
 
 				var thisUser = Kinvey.setActiveUser(user);
 				console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
+				var randName = thisUser.name + Math.floor(Math.random() * 1000);
+				Titanium.App.Properties.setString('name', randName);
+				console.log('Titanium.App.Properties.setString(', Titanium.App.Properties.getString('name'));
 
 				//Alloy.Globals.setupPushNotifications();
 
@@ -129,35 +131,35 @@ nsIndex.skipSignUp = function() {
 };
 /*
 
-nsIndex.connectToFb = function() {
-	var accessToken = "";
-	// fb.forceDialogAuth = true;
+ nsIndex.connectToFb = function() {
+ var accessToken = "";
+ // fb.forceDialogAuth = true;
 
-	if (!Titanium.Network.online) {
-		Titanium.UI.createAlertDialog({
-			// title : L("lbl_appname"),
-			message : L('err_noConnection')
-		}).show();
-		return;
-	} else {
+ if (!Titanium.Network.online) {
+ Titanium.UI.createAlertDialog({
+ // title : L("lbl_appname"),
+ message : L('err_noConnection')
+ }).show();
+ return;
+ } else {
 
-		Alloy.Globals.loading.show();
-		var kinveyFb = new nsIndex.serviceCalls.fbLogin(function(response) {
-			console.debug("Go to next screen!");
-			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
-				console.debug("fetchedData ", fetchedData);
-			});
-			nsIndex.closeWindow();
-		}, function(error) {
-			console.debug("FB ERROR ", error);
-			alert(L('err_facebook'));
-		});
+ Alloy.Globals.loading.show();
+ var kinveyFb = new nsIndex.serviceCalls.fbLogin(function(response) {
+ console.debug("Go to next screen!");
+ var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+ console.debug("fetchedData ", fetchedData);
+ });
+ nsIndex.closeWindow();
+ }, function(error) {
+ console.debug("FB ERROR ", error);
+ alert(L('err_facebook'));
+ });
 
-		Alloy.Globals.loading.hide();
-	}
+ Alloy.Globals.loading.hide();
+ }
 
-};
-*/
+ };
+ */
 
 nsIndex.loginServiceCall = function() {
 
@@ -167,6 +169,17 @@ nsIndex.loginServiceCall = function() {
 
 	this.onloadCallback = function(user) {
 		console.debug("Go to next screen!");
+
+		var thisUser = Kinvey.setActiveUser(user);
+		console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
+		if (thisUser.name) {
+			Titanium.App.Properties.setString('name', thisUser.name);
+		} else {
+			var name = thisUser.username.substring(0, thisUser.username.lastIndexOf("@"));
+			Titanium.App.Properties.setString('name', name);
+		}
+		console.log('Titanium.App.Properties.setString(', Titanium.App.Properties.getString('name'));
+
 		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
 
 			console.debug("fetchedData ", fetchedData);
@@ -216,27 +229,26 @@ nsIndex.login = function() {
 };
 
 /*
-nsIndex.userCheck = function() {
+ nsIndex.userCheck = function() {
 
-	var user = null;
-	try {
-		// To fetch the active user
-		user = Kinvey.getActiveUser();
-		var promise = Kinvey.User.me();
-		promise.then(function(user1) {
-			console.log("Hello User" + JSON.stringify(user1));
-		}, function(error) {
-			console.log("No user");
-		});
-		console.debug("Active User: ", JSON.stringify(user));
+ var user = null;
+ try {
+ // To fetch the active user
+ user = Kinvey.getActiveUser();
+ var promise = Kinvey.User.me();
+ promise.then(function(user1) {
+ console.log("Hello User" + JSON.stringify(user1));
+ }, function(error) {
+ console.log("No user");
+ });
+ console.debug("Active User: ", JSON.stringify(user));
 
-	} catch(e) {
-		user = null;
-		// var logout = new nsLogin.serviceCalls.logout();
-		console.debug("Kinvey user exception ", JSON.stringify(e));
-	}
-};*/
-
+ } catch(e) {
+ user = null;
+ // var logout = new nsLogin.serviceCalls.logout();
+ console.debug("Kinvey user exception ", JSON.stringify(e));
+ }
+ };*/
 
 nsIndex.init = function() {
 
