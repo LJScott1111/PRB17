@@ -449,23 +449,14 @@ Alloy.Globals.getAndStoreData = function(callback) {
 		callback(false);
 
 	});
-	
+
 	// Get Chat groups
-	var getGroups = new serviceCalls.getGroups(function( data ) {
-		
-		count++;
-		console.debug("count++", count);
-		if (count === 3) {
-			var fetchedData = Alloy.Globals.combinedDetails();
-			callback(fetchedData);
-		}
-		
-	}, function( error ) {
-		
-		fails++;
-		console.debug("fails ", fails);
-		callback(false);
-		
+	var getGroups = new serviceCalls.getGroups(function(data) {
+
+		console.log('response Groups data ', JSON.stringify(data));
+	}, function(error) {
+
+		console.log('error Clubshows ', JSON.stringify(error));
 	});
 };
 
@@ -547,7 +538,7 @@ Alloy.Globals.appData = {
 	"bands" : [],
 	"shows" : [],
 	"venues" : [],
-	"groups": []
+	"groups" : []
 };
 
 /*
