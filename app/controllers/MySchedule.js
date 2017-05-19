@@ -105,6 +105,40 @@ Titanium.App.addEventListener('updateScheduleArgs', function() {
 nsMySchedule.init = function() {
 
 	console.error('MYSCHEDULE INIT', JSON.stringify($.args.schedule));
+	if ($.args.schedule.length == 0) {
+		var view = Titanium.UI.createView({
+			height : Titanium.UI.SIZE,
+			width : Titanium.UI.FILL,
+			top : '10dp'
+		});
+		var handImage = Titanium.UI.createImageView({
+			left : '10dp',
+			image : '/icons/hand.png',
+			width : '60%'
+		});
+		var starImage = Titanium.UI.createImageView({
+			right : '10dp',
+			width : '30%',
+			image : '/icons/star_red.png'
+		});
+		var noDataLabel = Titanium.UI.createLabel({
+			text : L('no_schedule_data'),
+			top : '50dp',
+			color : '#fff',
+			textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+			left: '20dp',
+			right: '20dp',
+			font : {
+				fontFamily : "Langdon",
+				fontSize: '20dp'
+			}
+		});
+		view.add(handImage);
+		view.add(starImage);
+		$.show_list.add(view);
+		$.show_list.add(noDataLabel);
+		return;
+	};
 	nsMySchedule.showBandList();
 };
 

@@ -52,5 +52,6 @@
 
 "#show_list": {
 	top: '50dp',
-	bottom: 0
+	bottom: 0,
+	layout: 'vertical'
 }

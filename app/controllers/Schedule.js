@@ -70,6 +70,20 @@ nsSchedule.setLayoutToGrid = function() {
 var userschedule;
 nsSchedule.showMySchedule = function() {
 
+	$.mainContent.removeAllChildren();
+	Titanium.App.fireEvent('showGridOption');
+	console.log('CALLING FROM MYSCHADULE AE');
+	nsSchedule.setLayoutToTable();
+
+	$.my_schedule_icon.applyProperties(nsSchedule.propRed);
+	$.my_schedule_text.applyProperties(nsSchedule.propRed);
+
+	$.line_up_icon.applyProperties(nsSchedule.propGrey);
+	$.line_up_text.applyProperties(nsSchedule.propGrey);
+
+	$.schedule_icon.applyProperties(nsSchedule.propGrey);
+	$.schedule_text.applyProperties(nsSchedule.propGrey);
+
 	var openMySchedule = function(userschedule) {
 
 		if (Alloy.Globals.currentLayout == 'grid') {
@@ -105,7 +119,6 @@ nsSchedule.showMySchedule = function() {
 
 	var serviceCalls = require("serverCalls");
 
-	
 	if (currentView == 'fbands') {
 		console.log('in fbands');
 
@@ -169,22 +182,10 @@ $.my_schedule.addEventListener('click', function() {
 	if (Alloy.Globals.currentScreen === 'mySchedule') {
 		return;
 	};
-	$.mainContent.removeAllChildren();
-	Titanium.App.fireEvent('showGridOption');
-	console.log('CALLING FROM MYSCHADULE AE');
-	nsSchedule.setLayoutToTable();
 
-	$.my_schedule_icon.applyProperties(nsSchedule.propRed);
-	$.my_schedule_text.applyProperties(nsSchedule.propRed);
-
-	$.line_up_icon.applyProperties(nsSchedule.propGrey);
-	$.line_up_text.applyProperties(nsSchedule.propGrey);
-
-	$.schedule_icon.applyProperties(nsSchedule.propGrey);
-	$.schedule_text.applyProperties(nsSchedule.propGrey);
-
-	nsSchedule.showMySchedule();
 	Alloy.Globals.currentScreen = 'mySchedule', Alloy.Globals.currentLayout = 'table';
+	nsSchedule.showMySchedule();
+
 });
 
 $.line_up.addEventListener('click', function() {
@@ -250,31 +251,31 @@ $.schedule.addEventListener('click', function() {
 });
 /*
 
-Titanium.App.addEventListener('updateScheduleArgs', function() {
+ Titanium.App.addEventListener('updateScheduleArgs', function() {
 
-	// return;
-	var serviceCalls = require("serverCalls");
-	if (showsType == 'festshows') {
-		var getUserSchedule = new serviceCalls.getUserSchedule(function(schedule) {
+ // return;
+ var serviceCalls = require("serverCalls");
+ if (showsType == 'festshows') {
+ var getUserSchedule = new serviceCalls.getUserSchedule(function(schedule) {
 
-			console.debug(JSON.stringify(schedule));
-			userschedule = JSON.parse(JSON.stringify(schedule));
+ console.debug(JSON.stringify(schedule));
+ userschedule = JSON.parse(JSON.stringify(schedule));
 
-		}, function(error) {
-			console.log('error Clubshows ', JSON.stringify(error));
-		});
-	} else {
-		var getUserSchedule = new serviceCalls.getUserClubSchedule(function(schedule) {
+ }, function(error) {
+ console.log('error Clubshows ', JSON.stringify(error));
+ });
+ } else {
+ var getUserSchedule = new serviceCalls.getUserClubSchedule(function(schedule) {
 
-			console.debug(JSON.stringify(schedule));
-			userschedule = JSON.parse(JSON.stringify(schedule));
+ console.debug(JSON.stringify(schedule));
+ userschedule = JSON.parse(JSON.stringify(schedule));
 
-		}, function(error) {
-			console.log('error Clubshows ', JSON.stringify(error));
-		});
-	}
-});
-*/
+ }, function(error) {
+ console.log('error Clubshows ', JSON.stringify(error));
+ });
+ }
+ });
+ */
 
 nsSchedule.openLineup = function() {
 	$.my_schedule_icon.applyProperties(nsSchedule.propGrey);
@@ -348,16 +349,16 @@ nsSchedule.init = function() {
 	showsType = 'festshows';
 	currentView = 'fbands';
 
-	nsSchedule.openLineup();
-
-	console.error('after------------->>>>>> Alloy.Globals.currentScreen = ', Alloy.Globals.currentScreen, ', Alloy.Globals.currentLayout = ', Alloy.Globals.currentLayout);
 	$.festivalbands_ul.backgroundColor = '#D70C46';
 	$.clubbands_ul.backgroundColor = 'transparent';
+
+	if ($.args.screen == 'myschedule') {
+
+		Alloy.Globals.currentScreen = 'mySchedule', Alloy.Globals.currentLayout = 'table';
+		nsSchedule.showMySchedule();
+	} else {
+		nsSchedule.openLineup();
+	}
 };
 
 nsSchedule.init();
-
-// $.vwMain.addEventListener('focus', nsSchedule.init);
-
-// var children = $.vwMain.getParent();
-// console.error('SCHEDULE CHILDREN +++++++=======?????>>>>> ', JSON.stringify(children));

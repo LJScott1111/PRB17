@@ -83,53 +83,6 @@ $.club_shows_action.addEventListener('click', function() {
 	}, true, null, 'misc/center_logo');
 
 	return;
-/*
-
-	Alloy.Globals.loading.show();
-	var clubdata = Titanium.App.Properties.getObject('clubData', {});
-
-	if (!clubdata.details || clubdata.details.length === 0) {
-		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
-
-			console.debug(JSON.stringify(schedule));
-
-			var getClubShows = new nsLanding.serviceCalls.getClubShows(function(clubData) {
-				Alloy.Globals.loading.hide();
-				console.log('response Clubshows clubData ', JSON.stringify(clubData));
-				Alloy.Globals.openWindow('Schedule', {
-					city : Alloy.Globals.nextEventCity,
-					schedule : schedule,
-					appdata : clubData,
-					showsType : 'clubshows'
-				}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-			}, function(error) {
-				console.log('error Clubshows ', JSON.stringify(error));
-			});
-
-		}, function(error) {
-			alert(L('err_fetchingDetails'));
-			Alloy.Globals.loading.hide();
-		});
-	} else {
-
-		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
-
-			console.debug(JSON.stringify(schedule));
-			Alloy.Globals.loading.hide();
-
-			Alloy.Globals.openWindow('Schedule', {
-				city : Alloy.Globals.nextEventCity,
-				schedule : schedule,
-				appdata : clubdata,
-				showsType : 'clubshows'
-			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-
-		}, function(error) {
-			alert(L('err_fetchingDetails'));
-			Alloy.Globals.loading.hide();
-		});
-	}*/
-
 });
 
 $.bands_action.addEventListener('click', function() {
@@ -183,50 +136,10 @@ $.bands_action.addEventListener('click', function() {
 			Alloy.Globals.loading.hide();
 		});
 	}
-
-	/*
-	 var appdata = Titanium.App.Properties.getObject('appdata', {});
-
-	 console.debug("Alloy.Globals.bands emply ", JSON.stringify(appdata.bands));
-
-	 if (appdata.details.length === 0) {
-	 Alloy.Globals.loading.show();
-	 var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
-	 console.debug("fetchedData ", fetchedData);
-	 if (fetchedData) {
-
-	 Alloy.Globals.openWindow('BandList', {
-	 city : $.args.city
-	 }, true, null, 'misc/center_logo');
-	 Alloy.Globals.loading.hide();
-	 } else {
-	 console.debug("All data did not get downloaded!!!");
-	 alert(L('err_fetchingDetails'));
-	 }
-	 Alloy.Globals.loading.hide();
-	 });
-
-	 } else {
-	 console.log('Opening bands');
-	 Alloy.Globals.openWindow('BandList', {
-	 city : $.args.city
-	 }, true, null, 'misc/center_logo');
-	 }*/
-
 });
 
 $.my_schedule_action.addEventListener('click', function() {
 
-	console.error('nsEvents.getSchedule');
-
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://buzzplay.com/PRBapp/ComingSoon.html",
-		addBanner : true
-	}, true, null, 'misc/center_logo');
-	return;
-/*
-
-	//// TODO: Later
 	Alloy.Globals.loading.show();
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
@@ -241,8 +154,9 @@ $.my_schedule_action.addEventListener('click', function() {
 
 					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 					Alloy.Globals.openWindow('Schedule', {
-						city : $.args.city,
+						city : 'lasvegas',
 						schedule : schedule,
+						screen : 'myschedule',
 						appdata : Titanium.App.Properties.getObject('appdata', {})
 					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
 
@@ -265,8 +179,9 @@ $.my_schedule_action.addEventListener('click', function() {
 			console.debug(JSON.stringify(schedule));
 			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 			Alloy.Globals.openWindow('Schedule', {
-				city : $.args.city,
+				city : 'lasvegas',
 				schedule : schedule,
+				screen : 'myschedule',
 				appdata : Titanium.App.Properties.getObject('appdata', {})
 			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
 			Alloy.Globals.loading.hide();
@@ -275,7 +190,60 @@ $.my_schedule_action.addEventListener('click', function() {
 			alert(L('err_fetchingDetails'));
 			Alloy.Globals.loading.hide();
 		});
-	}*/
+	}
+
+	/*
+
+	 //// TODO: Later
+	 Alloy.Globals.loading.show();
+	 var appdata = Titanium.App.Properties.getObject('appdata', {});
+
+	 if (appdata.details.length === 0) {
+	 var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+	 console.debug("fetchedData ", fetchedData);
+	 if (fetchedData) {
+
+	 var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+
+	 console.debug(JSON.stringify(schedule));
+
+	 // Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+	 Alloy.Globals.openWindow('Schedule', {
+	 city : $.args.city,
+	 schedule : schedule,
+	 appdata : Titanium.App.Properties.getObject('appdata', {})
+	 }, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+
+	 Alloy.Globals.loading.hide();
+
+	 }, function(error) {
+	 alert(L('err_fetchingDetails'));
+	 Alloy.Globals.loading.hide();
+	 });
+
+	 } else {
+	 console.debug("The data did not get downloaded!!!");
+	 alert(L('err_fetchingDetails'));
+	 Alloy.Globals.loading.hide();
+	 }
+	 });
+	 } else {
+	 var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+
+	 console.debug(JSON.stringify(schedule));
+	 // Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+	 Alloy.Globals.openWindow('Schedule', {
+	 city : $.args.city,
+	 schedule : schedule,
+	 appdata : Titanium.App.Properties.getObject('appdata', {})
+	 }, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+	 Alloy.Globals.loading.hide();
+
+	 }, function(error) {
+	 alert(L('err_fetchingDetails'));
+	 Alloy.Globals.loading.hide();
+	 });
+	 }*/
 
 });
 
