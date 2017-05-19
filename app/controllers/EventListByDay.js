@@ -19,12 +19,12 @@ $.where_view.addEventListener('click', function() {
 });
 
 nsEventList.getDay = function(timestamp, type) {
-	var dateObj = nsGridSchedule.momentjs(timestamp * 1000);
+	var dateObj = nsGridSchedule.momentjs(timestamp * 1000).utcOffset('-0700');
 
 	if (type === "day") {
-		return dateObj.format('dddd');
+		return dateObj.utcOffset('-0700').format('dddd');
 	} else {
-		return dateObj.format('h:m a');
+		return dateObj.utcOffset('-0700').format('h:m a');
 	}
 };
 
