@@ -346,11 +346,17 @@ nsSchedule.init = function() {
 	console.error('nsSchedule.init CALLED........');
 	console.log('ARGS SCHEDULE ', JSON.stringify($.args));
 
-	showsType = 'festshows';
-	currentView = 'fbands';
-
-	$.festivalbands_ul.backgroundColor = '#D70C46';
-	$.clubbands_ul.backgroundColor = 'transparent';
+	// showsType = 'festshows';
+	showsType = $.args.showsType;
+	if (showsType == 'festshows') {
+		currentView = 'fbands';
+		$.festivalbands_ul.backgroundColor = '#D70C46';
+		$.clubbands_ul.backgroundColor = 'transparent';
+	} else {
+		currentView = 'cbands';
+		$.festivalbands_ul.backgroundColor = 'transparent';
+		$.clubbands_ul.backgroundColor = '#D70C46';
+	}
 
 	if ($.args.screen == 'myschedule') {
 

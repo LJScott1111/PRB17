@@ -70,23 +70,7 @@ nsLanding.openNews = function() {
 	}, true, null, 'misc/center_logo');
 };
 
-$.lineup_action.addEventListener('click', function() {
-	Alloy.Globals.openWindow("FestLineup", {
-		city : 'lasvegas'
-	}, true, null, 'misc/center_logo');
-});
-
-$.club_shows_action.addEventListener('click', function() {
-
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/collections/vegas-club-shows",
-	}, true, null, 'misc/center_logo');
-
-	return;
-});
-
-$.bands_action.addEventListener('click', function() {
-
+nsLanding.openBandsScreen = function(city, showsType) {
 	Alloy.Globals.loading.show();
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
@@ -101,7 +85,8 @@ $.bands_action.addEventListener('click', function() {
 
 					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 					Alloy.Globals.openWindow('Schedule', {
-						city : 'lasvegas',
+						city : city,
+						showsType : showsType,
 						schedule : schedule,
 						appdata : Titanium.App.Properties.getObject('appdata', {})
 					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
@@ -125,7 +110,8 @@ $.bands_action.addEventListener('click', function() {
 			console.debug(JSON.stringify(schedule));
 			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 			Alloy.Globals.openWindow('Schedule', {
-				city : 'lasvegas',
+				city : city,
+				showsType : showsType,
 				schedule : schedule,
 				appdata : Titanium.App.Properties.getObject('appdata', {})
 			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
@@ -136,6 +122,23 @@ $.bands_action.addEventListener('click', function() {
 			Alloy.Globals.loading.hide();
 		});
 	}
+};
+
+$.lineup_action.addEventListener('click', function() {
+	Alloy.Globals.openWindow("FestLineup", {
+		city : 'lasvegas'
+	}, true, null, 'misc/center_logo');
+});
+
+$.club_shows_action.addEventListener('click', function() {
+
+	nsLanding.openBandsScreen('lasvegas', 'clubshows');
+	return;
+});
+
+$.bands_action.addEventListener('click', function() {
+
+	nsLanding.openBandsScreen('lasvegas', 'festshows');
 });
 
 $.my_schedule_action.addEventListener('click', function() {
@@ -191,60 +194,6 @@ $.my_schedule_action.addEventListener('click', function() {
 			Alloy.Globals.loading.hide();
 		});
 	}
-
-	/*
-
-	 //// TODO: Later
-	 Alloy.Globals.loading.show();
-	 var appdata = Titanium.App.Properties.getObject('appdata', {});
-
-	 if (appdata.details.length === 0) {
-	 var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
-	 console.debug("fetchedData ", fetchedData);
-	 if (fetchedData) {
-
-	 var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
-
-	 console.debug(JSON.stringify(schedule));
-
-	 // Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
-	 Alloy.Globals.openWindow('Schedule', {
-	 city : $.args.city,
-	 schedule : schedule,
-	 appdata : Titanium.App.Properties.getObject('appdata', {})
-	 }, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-
-	 Alloy.Globals.loading.hide();
-
-	 }, function(error) {
-	 alert(L('err_fetchingDetails'));
-	 Alloy.Globals.loading.hide();
-	 });
-
-	 } else {
-	 console.debug("The data did not get downloaded!!!");
-	 alert(L('err_fetchingDetails'));
-	 Alloy.Globals.loading.hide();
-	 }
-	 });
-	 } else {
-	 var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
-
-	 console.debug(JSON.stringify(schedule));
-	 // Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
-	 Alloy.Globals.openWindow('Schedule', {
-	 city : $.args.city,
-	 schedule : schedule,
-	 appdata : Titanium.App.Properties.getObject('appdata', {})
-	 }, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-	 Alloy.Globals.loading.hide();
-
-	 }, function(error) {
-	 alert(L('err_fetchingDetails'));
-	 Alloy.Globals.loading.hide();
-	 });
-	 }*/
-
 });
 
 $.book_hotels_action.addEventListener('click', function() {
@@ -323,55 +272,9 @@ $.ap_linup.addEventListener('click', function() {
 $.ap_news.addEventListener('click', nsLanding.openNews);
 
 $.ap_bands.addEventListener('click', function() {
-	Alloy.Globals.loading.show();
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
-	if (appdata.details.length === 0) {
-		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
-			console.debug("fetchedData ", fetchedData);
-			if (fetchedData) {
-
-				var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
-
-					console.debug(JSON.stringify(schedule));
-
-					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
-					Alloy.Globals.openWindow('Schedule', {
-						city : 'asburypark',
-						schedule : schedule,
-						appdata : Titanium.App.Properties.getObject('appdata', {})
-					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-
-					Alloy.Globals.loading.hide();
-
-				}, function(error) {
-					alert(L('err_fetchingDetails'));
-					Alloy.Globals.loading.hide();
-				});
-
-			} else {
-				console.debug("The data did not get downloaded!!!");
-				alert(L('err_fetchingDetails'));
-				Alloy.Globals.loading.hide();
-			}
-		});
-	} else {
-		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
-
-			console.debug(JSON.stringify(schedule));
-			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
-			Alloy.Globals.openWindow('Schedule', {
-				city : 'asburypark',
-				schedule : schedule,
-				appdata : Titanium.App.Properties.getObject('appdata', {})
-			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-			Alloy.Globals.loading.hide();
-
-		}, function(error) {
-			alert(L('err_fetchingDetails'));
-			Alloy.Globals.loading.hide();
-		});
-	}
+	nsLanding.openBandsScreen('asburypark', 'festshows');
+	return;
 });
 
 $.ap_buy_tickets.addEventListener('click', function() {
@@ -438,9 +341,9 @@ $.ap_my_schedule.addEventListener('click', function() {
 });
 
 $.ap_club_shows.addEventListener('click', function() {
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/collections/prb-asbury-park-club-shows-1"
-	}, true, null, 'misc/center_logo');
+
+	nsLanding.openBandsScreen('asburypark', 'clubshows');
+	return;
 });
 
 $.ap_bowling.addEventListener('click', function() {
