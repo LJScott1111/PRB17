@@ -3,7 +3,7 @@
     <id>com.interfuel.festfuel</id>
     <!--<id>com.buzzplay.prbmobile</id>-->
     <name>Punk Rock Bowling Mobile</name>
-    <version>2.6.7</version>
+    <version>2.6.8</version>
     <publisher>Buzzplay</publisher>
     <url>http://punkrockbowling.com</url>
     <description>Punk Rock Bowling mobile</description>
@@ -18,10 +18,10 @@
     <!--<guid>89355ec6-b84c-4e84-9888-8d786e284522</guid>-->
     <!-- Lego ID -->
     <!--<guid>95040078-7551-4c2f-9111-73101a77574c</guid>-->
-    <!-- Shraddha ID -->
-    <!-- <guid>912d6693-d5c6-4084-9134-ded88d697d9d</guid>-->
     <!-- Eric's ID -->
-    <guid>196f8ef3-dee8-47b8-9777-06c2e4d53cb1</guid>
+    <!--<guid>196f8ef3-dee8-47b8-9777-06c2e4d53cb1</guid>-->
+    <!-- Shraddha ID -->
+    <guid>912d6693-d5c6-4084-9134-ded88d697d9d</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="ti.facebook.appid">993161744029602</property>
     <ios>
