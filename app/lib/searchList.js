@@ -50,7 +50,7 @@ nsSearchList.createHeader = function() {
 		top : 5
 	});
 
-	var viewWidth = Alloy.Globals.platformWidth / 3.15;
+	var viewWidth = Alloy.Globals.platformWidth / 4.3;
 	/*
 
 	 nsSearchList.vwAll = Titanium.UI.createView({
@@ -137,49 +137,47 @@ nsSearchList.createHeader = function() {
 	 header.add(vwThurs);
 	 */
 
-	/*
-	 var vwFriday = Titanium.UI.createView({
-	 top : 5,
-	 left : 2,
-	 bottom : 5,
-	 height : Titanium.UI.SIZE,
-	 borderRadius : 5,
-	 borderColor : "#000000",
-	 backgroundColor : "#ffffff",
-	 width : viewWidth,
-	 day : "friday",
-	 selected : false
-	 });
+	var vwFriday = Titanium.UI.createView({
+		top : 5,
+		left : 2,
+		bottom : 5,
+		height : Titanium.UI.SIZE,
+		borderRadius : 5,
+		borderColor : "#000000",
+		backgroundColor : "#ffffff",
+		width : viewWidth,
+		day : "friday",
+		selected : false
+	});
 
-	 var lblFriday = Titanium.UI.createLabel({
-	 top : 2,
-	 bottom : 2,
-	 height : Titanium.UI.SIZE,
-	 touchEnabled : false,
-	 color : "#000000",
-	 text : L('friday'),
-	 font : {
-	 fontSize : Alloy.Globals.theme.fonts.size20Fonts,
-	 fontFamily : "KnowYourProduct"
-	 }
-	 });
+	var lblFriday = Titanium.UI.createLabel({
+		top : 2,
+		bottom : 2,
+		height : Titanium.UI.SIZE,
+		touchEnabled : false,
+		color : "#000000",
+		text : L('friday'),
+		font : {
+			fontSize : Alloy.Globals.theme.fonts.size20Fonts,
+			fontFamily : "KnowYourProduct"
+		}
+	});
 
-	 vwFriday.addEventListener('click', function(e) {
-	 console.log("e.source ", e.source.day);
-	 nsSearchList.selectedTab = e.source.day;
-	 if (!vwFriday.selected) {
-	 var bands = nsSearchList.getList(e.source.day);
+	vwFriday.addEventListener('click', function(e) {
+		console.log("e.source ", e.source.day);
+		nsSearchList.selectedTab = e.source.day;
+		if (!vwFriday.selected) {
+			var bands = nsSearchList.getList(e.source.day);
 
-	 nsSearchList.vwSearchView.removeAllChildren();
+			nsSearchList.vwSearchView.removeAllChildren();
 
-	 var vwList = nsSearchList.createList(bands);
-	 return vwList;
-	 }
-	 });
+			var vwList = nsSearchList.createList(bands);
+			return vwList;
+		}
+	});
 
-	 vwFriday.add(lblFriday);
-	 header.add(vwFriday);
-	 */
+	vwFriday.add(lblFriday);
+	header.add(vwFriday);
 
 	var vwSaturday = Titanium.UI.createView({
 		top : 5,
@@ -313,11 +311,12 @@ nsSearchList.createHeader = function() {
 	 vwThurs.backgroundColor = "#c0c0c0";
 	 } else
 
-	 if (nsSearchList.selectedTab === "friday") {
-	 vwFriday.selected = true;
-	 vwFriday.backgroundColor = "#c0c0c0";
-	 } else*/
-	if (nsSearchList.selectedTab === "saturday") {
+	 */
+
+	if (nsSearchList.selectedTab === "friday") {
+		vwFriday.selected = true;
+		vwFriday.backgroundColor = "#c0c0c0";
+	} else if (nsSearchList.selectedTab === "saturday") {
 		vwSaturday.selected = true;
 		vwSaturday.backgroundColor = "#c0c0c0";
 	} else if (nsSearchList.selectedTab === "sunday") {
@@ -642,10 +641,10 @@ nsSearchList.init = function(type, data) {
 
 	if (nsSearchList.screen != 'lineup') {
 		console.error('nsSearchList.screen != lineup');
-		var bands = nsSearchList.getList('saturday');
+		var bands = nsSearchList.getList('friday');
 
 		// nsSearchList.vwSearchView.removeAllChildren();
-		nsSearchList.selectedTab = 'saturday';
+		nsSearchList.selectedTab = 'friday';
 		var vwList = nsSearchList.createList(bands);
 		return vwList;
 
