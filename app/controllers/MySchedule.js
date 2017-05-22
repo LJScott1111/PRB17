@@ -24,7 +24,8 @@ nsMySchedule.showBandList = function() {
 	var currentCityData = [];
 
 	for (i in $.args.schedule) {
-		if ($.args.schedule[i].showDetails.location.toLowerCase().replace(" ", "") === $.args.city && $.args.schedule[i].bandDetails) {
+		console.log('$.args.schedule ', JSON.stringify($.args.schedule));
+		if ($.args.schedule[i].showDetails.location && $.args.schedule[i].showDetails.location.toLowerCase().replace(" ", "") === $.args.city && $.args.schedule[i].bandDetails) {
 			currentCityData.push($.args.schedule[i]);
 			$.args.schedule[i].bandDetails.start_time = $.args.schedule[i].showDetails.start_time;
 			bandlist.push($.args.schedule[i].bandDetails);

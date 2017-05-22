@@ -124,24 +124,7 @@ nsLanding.openBandsScreen = function(city, showsType) {
 	}
 };
 
-$.lineup_action.addEventListener('click', function() {
-	Alloy.Globals.openWindow("FestLineup", {
-		city : 'lasvegas'
-	}, true, null, 'misc/center_logo');
-});
-
-$.club_shows_action.addEventListener('click', function() {
-
-	nsLanding.openBandsScreen('lasvegas', 'clubshows');
-	return;
-});
-
-$.bands_action.addEventListener('click', function() {
-
-	nsLanding.openBandsScreen('lasvegas', 'festshows');
-});
-
-$.my_schedule_action.addEventListener('click', function() {
+nsLanding.openSchedule = function(city) {
 
 	Alloy.Globals.loading.show();
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
@@ -157,8 +140,9 @@ $.my_schedule_action.addEventListener('click', function() {
 
 					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 					Alloy.Globals.openWindow('Schedule', {
-						city : 'lasvegas',
+						city : city,
 						schedule : schedule,
+						showsType : 'festshows',
 						screen : 'myschedule',
 						appdata : Titanium.App.Properties.getObject('appdata', {})
 					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
@@ -182,9 +166,10 @@ $.my_schedule_action.addEventListener('click', function() {
 			console.debug(JSON.stringify(schedule));
 			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
 			Alloy.Globals.openWindow('Schedule', {
-				city : 'lasvegas',
+				city : city,
 				schedule : schedule,
 				screen : 'myschedule',
+				showsType : 'festshows',
 				appdata : Titanium.App.Properties.getObject('appdata', {})
 			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
 			Alloy.Globals.loading.hide();
@@ -194,6 +179,28 @@ $.my_schedule_action.addEventListener('click', function() {
 			Alloy.Globals.loading.hide();
 		});
 	}
+};
+
+$.lineup_action.addEventListener('click', function() {
+	Alloy.Globals.openWindow("FestLineup", {
+		city : 'lasvegas'
+	}, true, null, 'misc/center_logo');
+});
+
+$.club_shows_action.addEventListener('click', function() {
+
+	nsLanding.openBandsScreen('lasvegas', 'clubshows');
+	return;
+});
+
+$.bands_action.addEventListener('click', function() {
+
+	nsLanding.openBandsScreen('lasvegas', 'festshows');
+});
+
+$.my_schedule_action.addEventListener('click', function() {
+
+	nsLanding.openSchedule('lasvegas');
 });
 
 $.book_hotels_action.addEventListener('click', function() {
@@ -287,6 +294,8 @@ $.ap_buy_tickets.addEventListener('click', function() {
 
 $.ap_my_schedule.addEventListener('click', function() {
 
+	nsLanding.openSchedule('asburypark');
+	return;
 	Alloy.Globals.loading.show();
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 
