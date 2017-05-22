@@ -50,3 +50,13 @@
 		fontSize: Alloy.Globals.theme.fonts.size15Fonts
 	}
 }
+
+'.fieldLabels': {
+	color: '#ffffff',
+	width: '90%',
+	borderColor: 'red',
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	font: {
+		fontSize: '13dp'
+	}
+}

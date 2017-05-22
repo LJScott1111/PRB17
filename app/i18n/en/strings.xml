@@ -125,6 +125,7 @@
 	<string name="festivalbands">Festival Bands</string>
 	<string name="clubbands">Club Shows</string>
 	<string name="name">Name</string>
+	<string name="email">Email</string>
 	<string name="save">Save</string>
 	
 	<!-- Chat -->
