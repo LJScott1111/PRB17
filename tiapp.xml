@@ -19,7 +19,9 @@
     <!-- Lego ID -->
     <!--<guid>95040078-7551-4c2f-9111-73101a77574c</guid>-->
     <!-- Shraddha ID -->
-    <guid>912d6693-d5c6-4084-9134-ded88d697d9d</guid>
+    <!-- <guid>912d6693-d5c6-4084-9134-ded88d697d9d</guid>-->
+    <!-- Eric's ID -->
+    <guid>196f8ef3-dee8-47b8-9777-06c2e4d53cb1</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="ti.facebook.appid">993161744029602</property>
     <ios>
@@ -137,7 +139,7 @@
     <!-- Selects between production vs development credentials -->
     <property name="com.urbanairship.in_production" type="bool">true</property>
     <!-- Android -->
-    <property name="com.urbanairship.gcm_sender" type="String">396923721876</property>
+    <property name="com.urbanairship.gcm_sender" type="String">584509469992</property>
     <property name="com.urbanairship.notification_icon" type="string">appicon.png</property>
     <property name="com.urbanairship.notification_accent_color" type="string">#ff0000</property>
 </ti:app>
