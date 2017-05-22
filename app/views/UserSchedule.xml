@@ -2,17 +2,17 @@
 	<View id="vwScheduleMain" backgroundImage='icons/distress_bg.png'>
 		<View class="vertical_layout padding_top">
 			<View id="vwDays" class="vwDaysClass">
-				<View id="vwDay1" class = "dayClass" day="friday" >
-					<Label id="lblDay1" class="lblDayClass knowYourProduct" text="L('friday').toUpperCase()"></Label>
+				<!-- <View id="vwDay1" class = "dayClass" day="friday" >
+				<Label id="lblDay1" class="lblDayClass knowYourProduct" text="L('friday').toUpperCase()"></Label>
+				</View> -->
+				<!-- <View id="vwDays2" class="vwDaysClass"> -->
+				<View id="vwDay2" class = "dayClass" day="saturday" >
+					<Label id="lblDay2" class="lblDayClass knowYourProduct" text="L('saturday').toUpperCase()"></Label>
 				</View>
-				<View id="vwDays2" class="vwDaysClass">
-					<View id="vwDay2" class = "dayClass" day="saturday" >
-						<Label id="lblDay2" class="lblDayClass knowYourProduct" text="L('saturday').toUpperCase()"></Label>
-					</View>
-					<View id="vwDay3" class = "dayClass" day="sunday" >
-						<Label id="lblDay3" class="lblDayClass knowYourProduct" text="L('sunday').toUpperCase()"></Label>
-					</View>
+				<View id="vwDay3" class = "dayClass" day="sunday" >
+					<Label id="lblDay3" class="lblDayClass knowYourProduct" text="L('sunday').toUpperCase()"></Label>
 				</View>
+				<!-- </View> -->
 				<View id="vwDay4" class = "dayClass" day="monday" >
 					<Label id="lblDay4" class="lblDayClass knowYourProduct" text="L('monday').toUpperCase()"></Label>
 				</View>

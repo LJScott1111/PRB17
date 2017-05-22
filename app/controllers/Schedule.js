@@ -73,7 +73,7 @@ nsSchedule.showMySchedule = function() {
 	$.mainContent.removeAllChildren();
 	Titanium.App.fireEvent('showGridOption');
 	console.log('CALLING FROM MYSCHADULE AE');
-	nsSchedule.setLayoutToTable();
+	// nsSchedule.setLayoutToTable();
 
 	$.my_schedule_icon.applyProperties(nsSchedule.propRed);
 	$.my_schedule_text.applyProperties(nsSchedule.propRed);
@@ -184,6 +184,7 @@ $.my_schedule.addEventListener('click', function() {
 	};
 
 	Alloy.Globals.currentScreen = 'mySchedule', Alloy.Globals.currentLayout = 'table';
+	nsSchedule.setLayoutToTable();
 	nsSchedule.showMySchedule();
 
 });
@@ -361,6 +362,7 @@ nsSchedule.init = function() {
 	if ($.args.screen == 'myschedule') {
 
 		Alloy.Globals.currentScreen = 'mySchedule', Alloy.Globals.currentLayout = 'table';
+		nsSchedule.setLayoutToTable();
 		nsSchedule.showMySchedule();
 	} else {
 		nsSchedule.openLineup();
