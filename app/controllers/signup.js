@@ -83,7 +83,13 @@ nsIndex.skipSignUp = function() {
 
 	console.log('SKIP SIGNIN CALLED');
 	if (Kinvey.getActiveUser()) {
+		console.error('Kinvey.getActiveUser() ', Kinvey.getActiveUser() );
 		Alloy.Globals.getAndStoreData();
+		var thisUser = Kinvey.setActiveUser(Kinvey.getActiveUser());
+		console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
+		var randName = thisUser.name + Math.floor(Math.random() * 1000);
+		Titanium.App.Properties.setString('name', randName);
+		console.log('Titanium.App.Properties.setString(', Titanium.App.Properties.getString('name'));
 		nsIndex.closeWindow();
 		return;
 	};
@@ -121,6 +127,11 @@ nsIndex.skipSignUp = function() {
 		} else {
 
 			Alloy.Globals.getAndStoreData();
+			var thisUser = Kinvey.setActiveUser(user);
+			console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
+			var randName = thisUser.name + Math.floor(Math.random() * 1000);
+			Titanium.App.Properties.setString('name', randName);
+			console.log('Titanium.App.Properties.setString(', Titanium.App.Properties.getString('name'));
 			nsIndex.closeWindow();
 			Titanium.App.fireEvent('checkLocationPermissions');
 		}
