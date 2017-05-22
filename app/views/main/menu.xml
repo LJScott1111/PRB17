@@ -19,7 +19,7 @@
 			<Require id="food" src="misc/menu_button" title="L('food').toUpperCase()" />
 			<Require id="info" src="misc/menu_button" title="L('news_social').toUpperCase()" />
 			<Require id="faq" src="misc/menu_button" title="L('faq').toUpperCase()" />
-			<Require id="chat" src="misc/menu_button" title="L('chat').toUpperCase()" />
+			<!-- <Require id="chat" src="misc/menu_button" title="L('chat').toUpperCase()" /> -->
 			<!-- <Require id="message_center" src="misc/menu_button" title="L('message_center').toUpperCase()" /> -->
 			<Require id="privacy_policy" src="misc/menu_button" title="L('privacy_policy').toUpperCase()" />
 			<Require id="profile" src="misc/menu_button" title="L('profile').toUpperCase()" />

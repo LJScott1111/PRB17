@@ -78,7 +78,7 @@ $.contests.button.addEventListener('click', function() {
 		screen : 'contest'
 	}, true, null, 'misc/center_logo');
 });
-
+/*
 $.chat.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
@@ -86,7 +86,6 @@ $.chat.button.addEventListener('click', function() {
 	Alloy.Globals.openWindow('Chat/ChatMain', {}, true, null, 'misc/center_logo');
 
 });
-/*
 
  $.message_center.button.addEventListener('click', function() {
 
