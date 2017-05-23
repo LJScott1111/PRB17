@@ -5,7 +5,8 @@ nsFestLineup.openBandProfile = function(e) {
 	console.log('e.source.bandid: ', e.source.bandid);
 
 	Alloy.Globals.openWindow("BandProfile", {
-		"id" : e.source.bandid
+		"id" : e.source.bandid,
+		showsType : 'festshows'
 	}, true, null, 'misc/center_logo');
 };
 
