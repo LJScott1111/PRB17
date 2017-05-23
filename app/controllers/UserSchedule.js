@@ -491,26 +491,23 @@ nsGridSchedule.getList = function(source) {
 	nsGridSchedule.currentDay = source;
 	//UI changes
 	var day = source.day.toLowerCase().trim();
-	/*
 
-	 if (day === "friday") {
-	 $.vwDay1.selected = true;
-	 $.vwDay1.backgroundColor = "#c0c0c0";
+	if (day === "friday") {
+		$.vwDay1.selected = true;
+		$.vwDay1.backgroundColor = "#c0c0c0";
 
-	 $.vwDay2.selected = false;
-	 $.vwDay2.backgroundColor = "#ffffff";
+		$.vwDay2.selected = false;
+		$.vwDay2.backgroundColor = "#ffffff";
 
-	 $.vwDay3.selected = false;
-	 $.vwDay3.backgroundColor = "#ffffff";
+		$.vwDay3.selected = false;
+		$.vwDay3.backgroundColor = "#ffffff";
 
-	 $.vwDay4.selected = false;
-	 $.vwDay4.backgroundColor = "#ffffff";
+		$.vwDay4.selected = false;
+		$.vwDay4.backgroundColor = "#ffffff";
 
-	 } else*/
-
-	if (day === "saturday") {
-		// $.vwDay1.selected = false;
-		// $.vwDay1.backgroundColor = "#ffffff";
+	} else if (day === "saturday") {
+		$.vwDay1.selected = false;
+		$.vwDay1.backgroundColor = "#ffffff";
 
 		$.vwDay2.selected = true;
 		$.vwDay2.backgroundColor = "#c0c0c0";
@@ -522,8 +519,8 @@ nsGridSchedule.getList = function(source) {
 		$.vwDay4.backgroundColor = "#ffffff";
 
 	} else if (day === "sunday") {
-		// $.vwDay1.selected = false;
-		// $.vwDay1.backgroundColor = "#ffffff";
+		$.vwDay1.selected = false;
+		$.vwDay1.backgroundColor = "#ffffff";
 
 		$.vwDay2.selected = false;
 		$.vwDay2.backgroundColor = "#ffffff";
@@ -535,8 +532,8 @@ nsGridSchedule.getList = function(source) {
 		$.vwDay4.backgroundColor = "#ffffff";
 
 	} else if (day === "monday") {
-		// $.vwDay1.selected = false;
-		// $.vwDay1.backgroundColor = "#ffffff";
+		$.vwDay1.selected = false;
+		$.vwDay1.backgroundColor = "#ffffff";
 
 		$.vwDay2.selected = false;
 		$.vwDay2.backgroundColor = "#ffffff";
@@ -610,26 +607,25 @@ nsGridSchedule.init = function() {
 	// $.vwNoSchedule.setVisible(false);
 
 	// Setting width of days
-	// $.vwDays2.setWidth(Alloy.Globals.platformWidth / 2);
+	$.vwDays2.setWidth(Alloy.Globals.platformWidth / 2);
 
-	var vwDaysWidth = Alloy.Globals.platformWidth / 3.15;
-	// $.vwDay1.setWidth(vwDaysWidth);
-	// $.vwDay1.setLeft(2);
+	var vwDaysWidth = Alloy.Globals.platformWidth / 4.15;
+	$.vwDay1.setWidth(vwDaysWidth);
+	$.vwDay1.setLeft(2);
 
 	$.vwDay2.setWidth(vwDaysWidth);
 	$.vwDay2.setLeft(2);
 
 	$.vwDay3.setWidth(vwDaysWidth);
-	// $.vwDay3.setRight(2);
+	$.vwDay3.setRight(2);
 
 	$.vwDay4.setWidth(vwDaysWidth);
 	$.vwDay4.setRight(2);
 
 	// Event listeners for show views
-	/*
-	 $.vwDay1.addEventListener('click', function(e) {
-	 nsGridSchedule.getList(e.source);
-	 });*/
+	$.vwDay1.addEventListener('click', function(e) {
+		nsGridSchedule.getList(e.source);
+	});
 
 	$.vwDay2.addEventListener('click', function(e) {
 		nsGridSchedule.getList(e.source);
@@ -643,7 +639,7 @@ nsGridSchedule.init = function() {
 		nsGridSchedule.getList(e.source);
 	});
 
-	nsGridSchedule.getList($.vwDay2);
+	nsGridSchedule.getList($.vwDay1);
 
 	// } else {
 	// $.lblNoSchedule.setText(L('no_schedule_data'));
