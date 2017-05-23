@@ -91,6 +91,7 @@ nsIndex.skipSignUp = function() {
 		Titanium.App.Properties.setString('name', randName);
 		console.log('Titanium.App.Properties.setString(', Titanium.App.Properties.getString('name'));
 		nsIndex.closeWindow();
+		Titanium.App.fireEvent('onLogin');
 		return;
 	};
 
@@ -120,6 +121,7 @@ nsIndex.skipSignUp = function() {
 
 				Alloy.Globals.getAndStoreData();
 				nsIndex.closeWindow();
+				Titanium.App.fireEvent('onLogin');
 				Titanium.App.fireEvent('checkLocationPermissions');
 			}, function(error) {
 				alert(L('err_serviceError'));
@@ -133,6 +135,7 @@ nsIndex.skipSignUp = function() {
 			Titanium.App.Properties.setString('name', randName);
 			console.log('Titanium.App.Properties.setString(', Titanium.App.Properties.getString('name'));
 			nsIndex.closeWindow();
+			Titanium.App.fireEvent('onLogin');
 			Titanium.App.fireEvent('checkLocationPermissions');
 		}
 	}, function(error) {
@@ -182,6 +185,7 @@ nsIndex.loginServiceCall = function() {
 		console.debug("Go to next screen!");
 
 		var thisUser = Kinvey.setActiveUser(user);
+		Titanium.App.fireEvent('onLogin');
 		console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
 		if (thisUser.name) {
 			Titanium.App.Properties.setString('name', thisUser.name);
@@ -225,6 +229,7 @@ nsIndex.login = function() {
 		if (Kinvey.getActiveUser()) {
 
 			nsIndex.serviceCalls.logout(function() {
+				Titanium.App.fireEvent('onLogin');
 
 				nsIndex.loginServiceCall();
 			}, function(error) {

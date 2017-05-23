@@ -79,13 +79,13 @@ $.contests.button.addEventListener('click', function() {
 	}, true, null, 'misc/center_logo');
 });
 /*
-$.chat.button.addEventListener('click', function() {
+ $.chat.button.addEventListener('click', function() {
 
-	Ti.App.fireEvent('toggleMenu');
+ Ti.App.fireEvent('toggleMenu');
 
-	Alloy.Globals.openWindow('Chat/ChatMain', {}, true, null, 'misc/center_logo');
+ Alloy.Globals.openWindow('Chat/ChatMain', {}, true, null, 'misc/center_logo');
 
-});
+ });
 
  $.message_center.button.addEventListener('click', function() {
 
@@ -190,4 +190,34 @@ $.log_out.button.addEventListener('click', function() {
 		Alloy.Globals.loading.hide();
 	});
 });
+
+$.login.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.loading.show();
+	var logout = new nsMenu.serviceCalls.logout(function() {
+
+		Alloy.Globals.loading.hide();
+		var signupWindow = Alloy.createController("signup").getView();
+		signupWindow.open();
+
+	}, function(error) {
+		alert(L('err_fetchingDetails'));
+		Alloy.Globals.loading.hide();
+	});
+});
+
+nsMenu.init = function() {
+
+	if (Titanium.App.Properties.getString('defaultUser') == true) {
+		$.loginview.height = Ti.UI.SIZE;
+		$.logoutview.height = 0;
+	} else {
+		$.loginview.height = 0;
+		$.logoutview.height = Ti.UI.SIZE;
+	}
+};
+
+nsMenu.init();
+Titanium.App.addEventListener('onLogin', nsMenu.init);
 

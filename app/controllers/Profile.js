@@ -51,11 +51,9 @@ $.save.addEventListener('click', function() {
 nsProfile.init = function() {
 
 	var thisUser = Kinvey.getActiveUser();
-	console.log(thisUser);
+	// console.log(thisUser);
 	$.emailField.value = thisUser.username;
 	$.nameField.value = Titanium.App.Properties.getString('name');
-	var thisUser = Kinvey.getActiveUser();
-	$.emailField.value = thisUser.username;
 
 	// Disabling update email option for username = defaultuserlogin@buzzplay.com
 	if (thisUser._id == '57426f4751ffd5bb03b001c3') {

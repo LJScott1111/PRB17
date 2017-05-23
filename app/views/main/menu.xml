@@ -22,7 +22,12 @@
 			<!-- <Require id="message_center" src="misc/menu_button" title="L('message_center').toUpperCase()" /> -->
 			<Require id="privacy_policy" src="misc/menu_button" title="L('privacy_policy').toUpperCase()" />
 			<Require id="profile" src="misc/menu_button" title="L('profile').toUpperCase()" />
-			<Require id="log_out" src="misc/menu_button" title="L('log_out').toUpperCase()" />
+			<View id="logoutview">
+				<Require id="log_out" src="misc/menu_button" title="L('log_out').toUpperCase()" />
+			</View>
+			<View id="loginview">
+				<Require id="login" src="misc/menu_button" title="L('login_lbllogin').toUpperCase()" />
+			</View>
 			<!-- <Require id="settings" src="misc/menu_button" title="L('settings').toUpperCase()" /> -->
 		</ScrollView>
 	</View>
