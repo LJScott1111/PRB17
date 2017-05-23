@@ -10,7 +10,7 @@
 			<Require id="denver_prb" src="misc/menu_button" title="L('denver_prb').toUpperCase()" />
 			<Require id="denver_bowling" src="misc/menu_button" title="L('denver_bowling').toUpperCase()" />
 			<Require id="contests" src="misc/menu_button" title="L('contests').toUpperCase()" />
-			<Require id="hotels" src="misc/menu_button" title="L('hotels').toUpperCase()" />
+			<Require id="pool_parties" src="misc/menu_button" title="L('pool_parties').toUpperCase()" />
 			<Require id="prb_shop" src="misc/menu_button" title="L('prb_shop').toUpperCase()" />
 			<Require id="map" src="misc/menu_button" title="L('map').toUpperCase()" />
 			<Require id="poker" src="misc/menu_button" title="L('poker').toUpperCase()" />

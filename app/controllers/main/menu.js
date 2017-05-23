@@ -29,11 +29,11 @@ $.buy_tickets.button.addEventListener('click', function() {
 	}, true, null, 'misc/center_logo');
 });
 
-$.hotels.button.addEventListener('click', function() {
+$.pool_parties.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/pages/golden-nugget-hotel",
+		url : "https://punkrockbowling.com/pages/pool-parties",
 		addBanner : true,
 		screen : 'hotels'
 	}, true, null, 'misc/center_logo');

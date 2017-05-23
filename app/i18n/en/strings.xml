@@ -31,7 +31,7 @@
 	
 	<!-- Events screen -->
 	<string name="daily">Daily Schedule</string>
-	<string name="movies">Pool Parties</string>
+	<string name="pool_parties">Pool Parties</string>
 	<string name="bowling">Bowling</string>
 	<string name="poker">Poker</string>
 	<string name="art">Art</string>
