@@ -13,7 +13,6 @@
 			<Require id="hotels" src="misc/menu_button" title="L('hotels').toUpperCase()" />
 			<Require id="prb_shop" src="misc/menu_button" title="L('prb_shop').toUpperCase()" />
 			<Require id="map" src="misc/menu_button" title="L('map').toUpperCase()" />
-			<Require id="venues" src="misc/menu_button" title="L('venues').toUpperCase()" />
 			<Require id="poker" src="misc/menu_button" title="L('poker').toUpperCase()" />
 			<Require id="sponsers" src="misc/menu_button" title="L('sponsers').toUpperCase()" />
 			<Require id="food" src="misc/menu_button" title="L('food').toUpperCase()" />

@@ -107,14 +107,6 @@ $.map.button.addEventListener('click', function() {
 	}, true, null, 'misc/center_logo');
 });
 
-$.venues.button.addEventListener('click', function() {
-
-	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow('VenueList', {
-		city : Alloy.Globals.nextEventCity
-	}, true, null, 'misc/center_logo');
-});
-
 $.poker.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
