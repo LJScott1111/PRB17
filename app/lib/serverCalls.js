@@ -302,7 +302,6 @@ nsServerCalls.getClubShows = function(onloadCallback, errorCallback) {
 			console.error('clubData --> ', JSON.stringify(clubData));
 
 			Titanium.App.Properties.setObject('clubData', clubData);
-			;
 
 			onloadCallback(Titanium.App.Properties.getObject('clubData', {}));
 

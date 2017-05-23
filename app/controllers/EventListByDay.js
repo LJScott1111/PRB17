@@ -30,7 +30,7 @@ nsEventList.getDay = function(timestamp, type) {
 
 nsEventList.showBandList = function() {
 	$.show_list.removeAllChildren();
-	var appdata = $.args.appdata;
+	var appdata = ($.args.showsType == 'festshows') ? Titanium.App.Properties.getObject('appdata', {}) : Titanium.App.Properties.getObject('clubData', {});
 	var bandlist = [];
 	var currentCityData = [];
 	var show_date = '',
@@ -66,7 +66,7 @@ nsEventList.showBandList = function() {
 
 nsEventList.showVenueList = function() {
 	$.show_list.removeAllChildren();
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	var appdata = ($.args.showsType == 'festshows') ? Titanium.App.Properties.getObject('appdata', {}) : Titanium.App.Properties.getObject('clubData', {});
 	var venuelist = [];
 	var currentCityData = [];
 	var show_date = '',
