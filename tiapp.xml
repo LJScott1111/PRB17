@@ -3,7 +3,7 @@
     <id>com.interfuel.festfuel</id>
     <!--<id>com.buzzplay.prbmobile</id>-->
     <name>Punk Rock Bowling Mobile</name>
-    <version>3</version>
+    <version>3.0</version>
     <publisher>Buzzplay</publisher>
     <url>http://punkrockbowling.com</url>
     <description>Punk Rock Bowling mobile</description>
@@ -86,7 +86,7 @@
             <service type="interval" url="android_notifications.js"/>
         </services>
         <manifest android:installLocation="preferExternal"
-            android:versionCode="18" android:versionName="7.6.2">
+            android:versionCode="18" android:versionName="7.7">
             <uses-permission android:name="android.permission.ACCESS_LOCATION"/>
             <uses-permission android:name="android.permission.ACCESS_GPS"/>
             <uses-permission android:name="android.permission.INTERNET"/>
