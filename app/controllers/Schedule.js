@@ -146,7 +146,7 @@ nsSchedule.showMySchedule = function() {
 
 nsSchedule.getEventsByDayForGrid = function() {
 
-	var appdata = $.args.appdata;
+	var appdata = (showsType == 'festshows') ? Titanium.App.Properties.getObject('appdata') : Titanium.App.Properties.getObject('clubData');
 	var bandlist = [];
 	var eventSchedule = [];
 	var show_date = '';

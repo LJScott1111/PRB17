@@ -33,10 +33,8 @@ nsEventList.showBandList = function() {
 	var appdata = ($.args.showsType == 'festshows') ? Titanium.App.Properties.getObject('appdata', {}) : Titanium.App.Properties.getObject('clubData', {});
 	var bandlist = [];
 	var currentCityData = [];
-	var show_date = '',
-	    today = new Date();
-	// TODO: remove: This is for testing -1495148400000
-
+	var show_date = '';
+	
 	for (i in appdata.details) {
 		show_date = new Date(appdata.details[i].showDetails.start_time * 1000);
 		if (appdata.details[i].showDetails.location.toLowerCase().replace(" ", "") === $.args.city && appdata.details[i].bandDetails) {
@@ -69,9 +67,8 @@ nsEventList.showVenueList = function() {
 	var appdata = ($.args.showsType == 'festshows') ? Titanium.App.Properties.getObject('appdata', {}) : Titanium.App.Properties.getObject('clubData', {});
 	var venuelist = [];
 	var currentCityData = [];
-	var show_date = '',
-	    today = new Date();
-	// TODO: remove: This is for testing - 1495148400000 - show_date.toDateString() == today.toDateString() &&
+	var show_date = '';
+
 	for (i in appdata.details) {
 		show_date = new Date(appdata.details[i].showDetails.start_time * 1000);
 
