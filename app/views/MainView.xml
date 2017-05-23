@@ -29,7 +29,7 @@
 					<View id="my_schedule_action" class="options_image" width="150dp" left="10dp" backgroundImage="/icons/my_schedule.png"></View>
 				</View>
 				<View class="option_groups">
-					<View id="book_hotels_action" class="options_image" width="160dp" backgroundImage="/icons/book_hotels.png"></View>
+					<View id="book_hotels_action" class="options_image" width="160dp" backgroundImage="/icons/pool_parties.png"></View>
 					<View id="merch_action" class="options_image" width="100dp" left="10dp" backgroundImage="/icons/merch.png"></View>
 				</View>
 				<View class="option_groups">

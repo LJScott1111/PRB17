@@ -206,7 +206,7 @@ $.my_schedule_action.addEventListener('click', function() {
 $.book_hotels_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/pages/golden-nugget-hotel",
+		url : "https://punkrockbowling.com/pages/pool-parties",
 		addBanner : true,
 		screen : 'hotels'
 	}, true, null, 'misc/center_logo');
