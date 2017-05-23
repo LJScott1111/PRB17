@@ -6,6 +6,9 @@ $.when_view.addEventListener('click', function() {
 	$.where_lbl.color = '#c0c0c0';
 	$.when_selected.backgroundColor = '#cc0000';
 	$.where_selected.backgroundColor = 'transparent';
+	if (nsMySchedule.checkNoData() == false) {
+		return;
+	};
 	nsMySchedule.showBandList();
 });
 
@@ -15,6 +18,9 @@ $.where_view.addEventListener('click', function() {
 	$.when_lbl.color = '#c0c0c0';
 	$.where_selected.backgroundColor = '#cc0000';
 	$.when_selected.backgroundColor = 'transparent';
+	if (nsMySchedule.checkNoData() == false) {
+		return;
+	};
 	nsMySchedule.showVenueList();
 });
 
@@ -103,10 +109,10 @@ Titanium.App.addEventListener('updateScheduleArgs', function() {
 	}
 });
 
-nsMySchedule.init = function() {
+nsMySchedule.checkNoData = function() {
 
-	console.error('MYSCHEDULE INIT', JSON.stringify($.args.schedule));
 	if ($.args.schedule.length == 0) {
+		$.show_list.removeAllChildren();
 		var view = Titanium.UI.createView({
 			height : Titanium.UI.SIZE,
 			width : Titanium.UI.FILL,
@@ -126,20 +132,32 @@ nsMySchedule.init = function() {
 			text : L('no_schedule_data'),
 			top : '50dp',
 			color : '#fff',
-			textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-			left: '20dp',
-			right: '20dp',
+			textAlign : Titanium.UI.TEXT_ALIGNMENT_CENTER,
+			left : '20dp',
+			right : '20dp',
 			font : {
 				fontFamily : "Langdon",
-				fontSize: '20dp'
+				fontSize : '20dp'
 			}
 		});
 		view.add(handImage);
 		view.add(starImage);
 		$.show_list.add(view);
 		$.show_list.add(noDataLabel);
+		return false;
+	} else {
+		return true;
+	}
+};
+
+nsMySchedule.init = function() {
+
+	console.error('MYSCHEDULE INIT', JSON.stringify($.args.schedule));
+
+	if (nsMySchedule.checkNoData() == false) {
 		return;
 	};
+
 	nsMySchedule.showBandList();
 };
 
