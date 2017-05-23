@@ -73,7 +73,6 @@ nsSchedule.showMySchedule = function() {
 	$.mainContent.removeAllChildren();
 	Titanium.App.fireEvent('showGridOption');
 	console.log('CALLING FROM MYSCHADULE AE');
-	// nsSchedule.setLayoutToTable();
 
 	$.my_schedule_icon.applyProperties(nsSchedule.propRed);
 	$.my_schedule_text.applyProperties(nsSchedule.propRed);
@@ -150,8 +149,6 @@ nsSchedule.getEventsByDayForGrid = function() {
 	var bandlist = [];
 	var eventSchedule = [];
 	var show_date = '';
-	// today = new Date(1495148400000);
-	// TODO: remove: This is for testing
 
 	for (i in appdata.details) {
 		show_date = new Date(appdata.details[i].showDetails.start_time * 1000);
@@ -307,6 +304,7 @@ $.clubbands_view.addEventListener('click', function() {
 	if (currentView == 'cbands') {
 		return;
 	};
+	Alloy.Globals.selectedDay = null;
 	// currentCity = 'asburypark';
 	currentView = 'cbands';
 	showsType = 'clubshows';
@@ -322,6 +320,7 @@ $.festivalbands_view.addEventListener('click', function() {
 	if (currentView == 'fbands') {
 		return;
 	};
+	Alloy.Globals.selectedDay = null;
 	showsType = 'festshows';
 	// currentCity = 'lasvegas';
 	currentView = 'fbands';

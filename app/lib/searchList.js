@@ -316,12 +316,15 @@ nsSearchList.createHeader = function() {
 	if (nsSearchList.selectedTab === "friday") {
 		vwFriday.selected = true;
 		vwFriday.backgroundColor = "#c0c0c0";
+		Alloy.Globals.selectedDay = 'friday';
 	} else if (nsSearchList.selectedTab === "saturday") {
 		vwSaturday.selected = true;
 		vwSaturday.backgroundColor = "#c0c0c0";
+		Alloy.Globals.selectedDay = 'saturday';
 	} else if (nsSearchList.selectedTab === "sunday") {
 		vwSunday.selected = true;
 		vwSunday.backgroundColor = "#c0c0c0";
+		Alloy.Globals.selectedDay = 'sunday';
 	}
 	/* else
 	 {
@@ -332,6 +335,7 @@ nsSearchList.createHeader = function() {
 	else if (nsSearchList.selectedTab === "monday") {
 		vwMonday.selected = true;
 		vwMonday.backgroundColor = "#c0c0c0";
+		Alloy.Globals.selectedDay = 'monday';
 	}
 	/*
 	 else {
@@ -641,10 +645,16 @@ nsSearchList.init = function(type, data) {
 
 	if (nsSearchList.screen != 'lineup') {
 		console.error('nsSearchList.screen != lineup');
-		var bands = nsSearchList.getList('friday');
 
-		// nsSearchList.vwSearchView.removeAllChildren();
-		nsSearchList.selectedTab = 'friday';
+		if (Alloy.Globals.selectedDay) {
+			var bands = nsSearchList.getList(Alloy.Globals.selectedDay);
+			nsSearchList.selectedTab = Alloy.Globals.selectedDay;
+		} else {
+			var bands = nsSearchList.getList('friday');
+			Alloy.Globals.selectedDay = 'friday';
+			nsSearchList.selectedTab = 'friday';
+		}
+
 		var vwList = nsSearchList.createList(bands);
 		return vwList;
 

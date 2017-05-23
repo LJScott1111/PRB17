@@ -491,9 +491,10 @@ nsGridSchedule.getList = function(source) {
 
 	nsGridSchedule.currentDay = source;
 	//UI changes
-	var day = source.day.toLowerCase().trim();
+	var day = source.toLowerCase().trim();
 
 	if (day === "friday") {
+		Alloy.Globals.selectedDay = 'friday';
 		$.vwDay1.selected = true;
 		$.vwDay1.backgroundColor = "#c0c0c0";
 
@@ -507,6 +508,7 @@ nsGridSchedule.getList = function(source) {
 		$.vwDay4.backgroundColor = "#ffffff";
 
 	} else if (day === "saturday") {
+		Alloy.Globals.selectedDay = 'saturday';
 		$.vwDay1.selected = false;
 		$.vwDay1.backgroundColor = "#ffffff";
 
@@ -520,6 +522,7 @@ nsGridSchedule.getList = function(source) {
 		$.vwDay4.backgroundColor = "#ffffff";
 
 	} else if (day === "sunday") {
+		Alloy.Globals.selectedDay = 'sunday';
 		$.vwDay1.selected = false;
 		$.vwDay1.backgroundColor = "#ffffff";
 
@@ -533,6 +536,7 @@ nsGridSchedule.getList = function(source) {
 		$.vwDay4.backgroundColor = "#ffffff";
 
 	} else if (day === "monday") {
+		Alloy.Globals.selectedDay = 'monday';
 		$.vwDay1.selected = false;
 		$.vwDay1.backgroundColor = "#ffffff";
 
@@ -550,7 +554,6 @@ nsGridSchedule.getList = function(source) {
 	var appdata = (showsType != 'clubshows') ? Titanium.App.Properties.getObject('appdata', {}) : Titanium.App.Properties.getObject('clubData', {});
 	console.debug("day ", day);
 
-	// day = "tuesday";
 	// console.debug("day ", day);
 
 	var dayOfShow = "";
@@ -625,22 +628,26 @@ nsGridSchedule.init = function() {
 
 	// Event listeners for show views
 	$.vwDay1.addEventListener('click', function(e) {
-		nsGridSchedule.getList(e.source);
+		nsGridSchedule.getList(e.source.day);
 	});
 
 	$.vwDay2.addEventListener('click', function(e) {
-		nsGridSchedule.getList(e.source);
+		nsGridSchedule.getList(e.source.day);
 	});
 
 	$.vwDay3.addEventListener('click', function(e) {
-		nsGridSchedule.getList(e.source);
+		nsGridSchedule.getList(e.source.day);
 	});
 
 	$.vwDay4.addEventListener('click', function(e) {
-		nsGridSchedule.getList(e.source);
+		nsGridSchedule.getList(e.source.day);
 	});
 
-	nsGridSchedule.getList($.vwDay1);
+	if (Alloy.Globals.selectedDay) {
+		nsGridSchedule.getList(Alloy.Globals.selectedDay);
+	} else {
+		nsGridSchedule.getList($.vwDay1.day);
+	}
 
 	// } else {
 	// $.lblNoSchedule.setText(L('no_schedule_data'));

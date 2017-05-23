@@ -2,6 +2,7 @@ var nsMySchedule = {};
 
 $.when_view.addEventListener('click', function() {
 
+	Alloy.Globals.selectedDay = null;
 	$.when_lbl.color = '#cc0000';
 	$.where_lbl.color = '#c0c0c0';
 	$.when_selected.backgroundColor = '#cc0000';
@@ -14,6 +15,7 @@ $.when_view.addEventListener('click', function() {
 
 $.where_view.addEventListener('click', function() {
 
+	Alloy.Globals.selectedDay = null;
 	$.where_lbl.color = '#cc0000';
 	$.when_lbl.color = '#c0c0c0';
 	$.where_selected.backgroundColor = '#cc0000';
