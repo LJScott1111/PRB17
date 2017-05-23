@@ -161,6 +161,7 @@ nsGridSchedule.createLayout = function(data) {
 		var bandName = Titanium.UI.createLabel({
 			left : 5,
 			top : 5,
+			right : 5,
 			width : Titanium.UI.FILL,
 			text : bName,
 			ellipsize : true,
