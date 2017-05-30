@@ -144,7 +144,8 @@ nsGridSchedule.createLayout = function(data) {
 
 		bandBoxView.addEventListener('click', function(e) {
 			Alloy.Globals.openWindow("BandProfile", {
-				"id" : e.source.bandId
+				id : e.source.bandId,
+				showsType : $.args.showsType
 			}, true, null, 'misc/center_logo');
 		});
 

@@ -353,6 +353,7 @@ nsSchedule.init = function() {
 		$.festivalbands_ul.backgroundColor = '#D70C46';
 		$.clubbands_ul.backgroundColor = 'transparent';
 	} else {
+		showsType = 'clubshows';
 		currentView = 'cbands';
 		$.festivalbands_ul.backgroundColor = 'transparent';
 		$.clubbands_ul.backgroundColor = '#D70C46';
