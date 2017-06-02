@@ -48,6 +48,7 @@ $.prb_shop.button.addEventListener('click', function() {
 		screen : 'shop'
 	}, true, null, 'misc/center_logo');
 });
+/*
 
 $.denver_prb.button.addEventListener('click', function() {
 
@@ -64,6 +65,17 @@ $.denver_bowling.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/pages/denver-bowling",
+	}, true, null, 'misc/center_logo');
+
+	return;
+});
+*/
+
+$.lasvegas_lineup.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.com/pages/las-vegas-line-up",
 	}, true, null, 'misc/center_logo');
 
 	return;

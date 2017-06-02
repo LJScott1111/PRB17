@@ -181,6 +181,59 @@ nsLanding.openSchedule = function(city) {
 	}
 };
 
+$.d_lineup.addEventListener('click', function() {
+
+	Alloy.Globals.openWindow("FestLineup", {
+		city : 'denver'
+	}, true, null, 'misc/center_logo');
+});
+
+$.d_bands.addEventListener('click', function() {
+	nsLanding.openBandsScreen('denver', 'festshows');
+});
+
+$.d_my_schedule.addEventListener('click', function() {
+	nsLanding.openSchedule('denver');
+});
+
+$.d_merch.addEventListener('click', function() {
+
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
+		addBanner : true,
+		screen : 'bowling'
+	}, true, null, 'misc/center_logo');
+});
+
+$.d_news.addEventListener('click', nsLanding.openNews);
+
+$.d_bowling.addEventListener('click', function() {
+
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.com/pages/denver-bowling",
+		addBanner : true,
+		screen : 'bowling'
+	}, true, null, 'misc/center_logo');
+});
+
+$.d_sponsors.addEventListener('click', function() {
+
+	Alloy.Globals.openWindow("GenericWebView", {
+		url : "http://www.buzzplay.com/PRBapp/Sponsors.html",
+		// image : '/icons/merch_shop_ad.png',
+	}, true, null, 'misc/center_logo');
+});
+
+$.d_buy_tickets.addEventListener('click', function() {
+
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://www.ticketfly.com/search/?q=punk+rock+bowling",
+		addBanner : true,
+		screen : 'bowling'
+	}, true, null, 'misc/center_logo');
+});
+
+//////////////////////////////////////////////////// ------- LAS VEGAS STARTS --------////////////////////////////////////////////////
 $.lineup_action.addEventListener('click', function() {
 	Alloy.Globals.openWindow("FestLineup", {
 		city : 'lasvegas'
@@ -262,6 +315,7 @@ $.select_lv.addEventListener('click', function() {
 	$.lv_selected.backgroundColor = '#000';
 	$.ap_selected.backgroundColor = 'transparent';
 });
+//////////////////////////////////////////////////// ------- LAS VEGAS ENDS --------////////////////////////////////////////////////
 
 $.select_denver.addEventListener('click', function() {
 	$.denver_nav.visible = true;
