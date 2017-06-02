@@ -588,7 +588,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, c
 			},
 			navBar : {
 				// backgroundColor : '#000000',
-				backgroundImage : '/icons/header_bg.png',
+				backgroundImage : '/icons/d_header.png',
 				left : 'misc/openMenu',
 				// right : 'misc/right_logo',
 				right : rightLogo,

@@ -3,23 +3,43 @@
 		<View id="vwTopOptions">
 
 			<View id="vwCityOptions" zIndex="199" class="padding_top">
-				<!-- <View id="vwLv" class="select_views" left="40dp" backgroundColor="red" class="padding_top"> -->
-					<!-- <ImageView id="select_lv" left="40dp"></ImageView> -->
-					<!-- <View id="lv_selected" class="selected"></View> -->
-				<!-- </View> -->
-				<View id="vwLv" class="select_views padding_top" left="40dp">
+
+				<View id="vwLv" class="select_views padding_top" left="40dp" visible="false">
 					<ImageView id="select_lv"></ImageView>
 					<View id="lv_selected" class="selected"></View>
 				</View>
-				
+				<View id="vwDenver" class="select_views padding_top" left="40dp">
+					<ImageView id="select_denver"></ImageView>
+					<View id="denver_selected" class="selected"></View>
+				</View>
 				<View id="vwAp" class="select_views padding_top" right="40dp">
 					<ImageView id="select_ap"></ImageView>
 					<View id="ap_selected" class="selected"></View>
 				</View>
-				
-				
 			</View>
-			<View class="vertical_layout nav_bgs" id="las_vegas_nav" backgroundImage='/icons/bg_nav.png'>
+			<View class="vertical_layout nav_bgs" id="denver_nav" backgroundImage='/icons/bg_denver.png'>
+				<View class="option_groups2" top="60dp">
+					<View id="d_lineup" class="options_image" width="160dp" left="20dp" backgroundImage="/icons/d_lineup.png"></View>
+				</View>
+				<View class="option_groups2">
+					<View id="d_bands" class="options_image" width="100dp" left="50dp" backgroundImage="/icons/d_bands.png"></View>
+					<View id="d_my_schedule" class="options_image" width="150dp" right="50dp" backgroundImage="/icons/d_my_schedule.png"></View>
+				</View>
+				<View class="option_groups2 padding_top">
+					<View id="d_merch" class="options_image" width="100dp" right="60dp" backgroundImage="/icons/d_merch.png"></View>
+				</View>
+				<View class="option_groups2">
+					<View id="d_news" class="options_image" left="40dp" width="150dp" backgroundImage="/icons/d_news.png"></View>
+					<View id="d_bowling" class="options_image" width="120dp" right="50dp" backgroundImage="/icons/d_bowling.png"></View>
+				</View>
+				<View class="option_groups2">
+					<View id="d_sponsors" class="options_image" width="150dp" left="20dp" backgroundImage="/icons/d_sponsors.png"></View>
+				</View>
+				<View class="option_groups2 padding_top">
+					<View id="d_buy_tickets" class="options_image" width="150dp" backgroundImage="/icons/d_buy_tickets.png"></View>
+				</View>
+			</View>
+			<View class="vertical_layout nav_bgs" id="las_vegas_nav" backgroundImage='/icons/bg_nav.png' visible="false">
 				<View class="option_groups" top="60dp">
 					<View id="lineup_action" class="options_image" width="160dp" backgroundImage="/icons/lineup.png"></View>
 					<View id="club_shows_action" class="options_image" width="140dp" left="10dp" backgroundImage="/icons/club_shows.png"></View>
