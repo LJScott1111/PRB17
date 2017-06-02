@@ -21,15 +21,15 @@ var api = {
      * Builds the page content
      */
     buildPage: function(properties) {
-        properties.arguments = properties.arguments || {};
-        properties.arguments.containingPage = $.container;
+        properties.args = properties.args || {};
+        properties.args.containingPage = $.container;
 
         if (properties.containerProperties) {
             $.container.height = properties.containerProperties.height || Alloy.Globals.jolicode.pageflow.height;
             $.container.width = properties.containerProperties.width || Alloy.Globals.jolicode.pageflow.width;
         }
 
-        return Alloy.createController(properties.controller, properties.arguments);
+        return Alloy.createController(properties.controller, properties.args);
     },
 
     clearNavRight: function() {
