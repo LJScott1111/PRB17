@@ -332,6 +332,10 @@ $.festivalbands_view.addEventListener('click', function() {
 
 nsSchedule.init = function() {
 
+	if (currentCity == 'denver') {
+		$.clubbands_view.visible = false;
+	}
+
 	for (var i = Alloy.Globals.scheduleEventListeners.length - 1; i >= 0; i--) {
 		console.log(Alloy.Globals.scheduleEventListeners[i]);
 		Titanium.App.removeEventListener(Alloy.Globals.scheduleEventListeners[i].name, Alloy.Globals.scheduleEventListeners[i].func);
