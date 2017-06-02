@@ -28,6 +28,7 @@ $.buy_tickets.button.addEventListener('click', function() {
 		url : "https://punkrockbowling.com/pages/prb-17-ticket-prices",
 	}, true, null, 'misc/center_logo');
 });
+/*
 
 $.pool_parties.button.addEventListener('click', function() {
 
@@ -38,6 +39,7 @@ $.pool_parties.button.addEventListener('click', function() {
 		screen : 'hotels'
 	}, true, null, 'misc/center_logo');
 });
+*/
 
 $.prb_shop.button.addEventListener('click', function() {
 
@@ -107,6 +109,7 @@ $.contests.button.addEventListener('click', function() {
  UrbanAirship.displayMessageCenter();
  });
  */
+/*
 
 $.map.button.addEventListener('click', function() {
 
@@ -137,7 +140,8 @@ $.food.button.addEventListener('click', function() {
 		addBanner : true,
 		screen : 'foodVendors'
 	}, true, null, 'misc/center_logo');
-});
+});*/
+
 
 $.sponsers.button.addEventListener('click', function() {
 
@@ -148,6 +152,7 @@ $.sponsers.button.addEventListener('click', function() {
 		url : "http://www.buzzplay.com/PRBapp/Sponsors.html",
 	}, true, null, 'misc/center_logo');
 });
+/*
 
 $.faq.button.addEventListener('click', function() {
 
@@ -155,7 +160,8 @@ $.faq.button.addEventListener('click', function() {
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "https://punkrockbowling.com/pages/faqs",
 	}, true, null, 'misc/center_logo');
-});
+});*/
+
 
 $.privacy_policy.button.addEventListener('click', function() {
 
