@@ -18,11 +18,20 @@ $.lasvegas_view.addEventListener('click', function() {
 	$.asburypark_ul.backgroundColor = 'transparent';
 });
 
+$.denver_view.addEventListener('click', function() {
+	$.denver_lineup.visible = true;
+	$.asburypark_linup.visible = false;
+	$.denver_ul.backgroundColor = '#D70C46';
+	$.asburypark_ul.backgroundColor = 'transparent';
+});
+
 $.asburypark_view.addEventListener('click', function() {
 	console.log('asburypark_view clicked');
-	$.lasvegas_lineup.visible = false;
+	// $.lasvegas_lineup.visible = false;
+	$.denver_lineup.visible = false;
 	$.asburypark_linup.visible = true;
-	$.lasvegas_ul.backgroundColor = 'transparent';
+	$.denver_ul.backgroundColor = 'transparent';
+	// $.lasvegas_ul.backgroundColor = 'transparent';
 	$.asburypark_ul.backgroundColor = '#D70C46';
 });
 
@@ -31,6 +40,7 @@ nsFestLineup.init = function() {
 	var device_height = Titanium.Platform.displayCaps.platformHeight;
 
 	// Las vegas labels
+	/*
 
 	$.iggy_pop.top = Titanium.Platform.displayCaps.platformHeight * 0.112;
 
@@ -87,6 +97,7 @@ nsFestLineup.init = function() {
 	$.wolfpack.height = Titanium.Platform.displayCaps.platformHeight * 0.029;
 	$.roadside_bombs.height = Titanium.Platform.displayCaps.platformHeight * 0.029;
 	$.the_quitters.height = Titanium.Platform.displayCaps.platformHeight * 0.029;
+	*/
 
 	// Asbury park labels
 	$.the_specials.top = Titanium.Platform.displayCaps.platformHeight * 0.153;
@@ -146,16 +157,24 @@ nsFestLineup.init = function() {
 	$.hotblood.height = Titanium.Platform.displayCaps.platformHeight * 0.019;
 	$.hotblood.width = Titanium.Platform.displayCaps.platformWidth * 0.12;
 
+	console.log('$.args.city ', $.args.city);
 	if ($.args.city == 'lasvegas') {
 		$.lasvegas_lineup.visible = true;
 		$.asburypark_linup.visible = false;
 		$.lasvegas_ul.backgroundColor = '#D70C46';
 		$.asburypark_ul.backgroundColor = 'transparent';
-	} else {
-		$.lasvegas_lineup.visible = false;
+	} else if ($.args.city == 'asburypark') {
+		// $.lasvegas_lineup.visible = false;
+		$.denver_lineup.visible = false;
 		$.asburypark_linup.visible = true;
-		$.lasvegas_ul.backgroundColor = 'transparent';
+		$.denver_ul.backgroundColor = 'transparent';
+		// $.lasvegas_ul.backgroundColor = 'transparent';
 		$.asburypark_ul.backgroundColor = '#D70C46';
+	} else {
+		$.denver_lineup.visible = true;
+		$.asburypark_linup.visible = false;
+		$.denver_ul.backgroundColor = '#D70C46';
+		$.asburypark_ul.backgroundColor = 'transparent';
 	}
 
 };
