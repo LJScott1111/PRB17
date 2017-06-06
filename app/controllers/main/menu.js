@@ -28,6 +28,7 @@ $.buy_tickets.button.addEventListener('click', function() {
 		url : "https://punkrockbowling.com/pages/prb-17-ticket-prices",
 	}, true, null, 'misc/center_logo');
 });
+/*
 
 $.pool_parties.button.addEventListener('click', function() {
 
@@ -38,6 +39,7 @@ $.pool_parties.button.addEventListener('click', function() {
 		screen : 'hotels'
 	}, true, null, 'misc/center_logo');
 });
+*/
 
 $.prb_shop.button.addEventListener('click', function() {
 
@@ -48,6 +50,7 @@ $.prb_shop.button.addEventListener('click', function() {
 		screen : 'shop'
 	}, true, null, 'misc/center_logo');
 });
+/*
 
 $.denver_prb.button.addEventListener('click', function() {
 
@@ -64,6 +67,17 @@ $.denver_bowling.button.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/pages/denver-bowling",
+	}, true, null, 'misc/center_logo');
+
+	return;
+});
+*/
+
+$.lasvegas_lineup.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "https://punkrockbowling.com/pages/las-vegas-line-up",
 	}, true, null, 'misc/center_logo');
 
 	return;
@@ -95,6 +109,7 @@ $.contests.button.addEventListener('click', function() {
  UrbanAirship.displayMessageCenter();
  });
  */
+/*
 
 $.map.button.addEventListener('click', function() {
 
@@ -125,7 +140,8 @@ $.food.button.addEventListener('click', function() {
 		addBanner : true,
 		screen : 'foodVendors'
 	}, true, null, 'misc/center_logo');
-});
+});*/
+
 
 $.sponsers.button.addEventListener('click', function() {
 
@@ -136,6 +152,7 @@ $.sponsers.button.addEventListener('click', function() {
 		url : "http://www.buzzplay.com/PRBapp/Sponsors.html",
 	}, true, null, 'misc/center_logo');
 });
+/*
 
 $.faq.button.addEventListener('click', function() {
 
@@ -143,7 +160,8 @@ $.faq.button.addEventListener('click', function() {
 	Alloy.Globals.openWindow("GenericWebView", {
 		url : "https://punkrockbowling.com/pages/faqs",
 	}, true, null, 'misc/center_logo');
-});
+});*/
+
 
 $.privacy_policy.button.addEventListener('click', function() {
 

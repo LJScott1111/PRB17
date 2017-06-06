@@ -1,16 +1,21 @@
 <Alloy>
 	<View id="vwMain" class="absolute_layout">
 		<View class="city_options">
-			<View id="lasvegas_view" class="heading_view">
+			<View id="lasvegas_view" class="heading_view" visible="false">
 				<Label id="lasvegas" class="heading_lbl langdon" text="L('lasvegas').toUpperCase()"></Label>
 				<View id="lasvegas_ul" class="underline_view"></View>
+			</View>
+			<View id="denver_view" class="heading_view">
+				<Label id="denver" class="heading_lbl langdon" text="L('denver').toUpperCase()"></Label>
+				<View id="denver_ul" class="underline_view"></View>
 			</View>
 			<View id="asburypark_view" class="heading_view">
 				<Label id="asburypark" class="heading_lbl langdon" text="L('asburypark').toUpperCase()"></Label>
 				<View id="asburypark_ul" class="underline_view" backgroundColor="transparent"></View>
 			</View>
 		</View>
-		<View id="lasvegas_lineup" backgroundImage='/icons/lineup_lasvegas.png' class="padding_top_zero lineup_views">
+		<View id="denver_lineup" backgroundImage='/icons/lineup_denver.png' class="padding_top_zero lineup_views"></View>
+		<View id="lasvegas_lineup" backgroundImage='/icons/lineup_lasvegas.png' class="padding_top_zero lineup_views" visible="false">
 			<!-- First part -->
 			<Label id="iggy_pop" text="iggy_pop" class="options_bands" bandid="587cb0cd350958684b6ff765" onClick="nsFestLineup.openBandProfile"></Label>
 			<Label id="my_first_gimme_gimmes" text="my_first_gimme_gimmes" class="options_bands" bandid="5889f07258ea5f741da96645" onClick="nsFestLineup.openBandProfile"></Label>

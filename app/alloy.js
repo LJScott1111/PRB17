@@ -570,12 +570,12 @@ if (OS_ANDROID) {
 // Open a controller
 Alloy.Globals.rightGridEventListeners = [];
 Alloy.Globals.scheduleEventListeners = [];
-Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, center, rightLogo) {
+Alloy.Globals.openWindow = function(controller, args, newOne, title_text, center, rightLogo) {
 
 	if (Alloy.Globals.pageflow.getCurrentPage() == null || newOne === true) {
 
 		Alloy.Globals.pageflow.addChild({
-			arguments : arguments,
+			args : args,
 			controller : controller,
 			backButton : {
 				image : '/icons/back.png',
@@ -588,7 +588,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, c
 			},
 			navBar : {
 				// backgroundColor : '#000000',
-				backgroundImage : '/icons/header_bg.png',
+				backgroundImage : '/icons/d_header.png',
 				left : 'misc/openMenu',
 				// right : 'misc/right_logo',
 				right : rightLogo,
@@ -616,7 +616,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, title_text, c
 	} else if (currentPage != controller) {
 
 		Alloy.Globals.pageflow.replacePage(0, {
-			arguments : arguments,
+			args : args,
 			controller : controller,
 			backButton : {
 				hidden : true

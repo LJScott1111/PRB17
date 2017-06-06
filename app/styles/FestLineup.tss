@@ -28,6 +28,10 @@
 	left: '0dp'
 }
 
+"#denver_view": {
+	left: '0dp'
+}
+
 "#asburypark_view": {
 	right: '0dp'
 }
