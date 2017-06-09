@@ -22,7 +22,7 @@ nsSearchList.getList = function(day) {
 	var lookup = {};
 
 	for (i in nsSearchList.currentCityData) {
-		dayOfShow = nsSearchList.momentjs(nsSearchList.currentCityData[i].showDetails.start_time * 1000).utcOffset('-0700').format('dddd').toLowerCase().trim();
+		dayOfShow = nsSearchList.momentjs(nsSearchList.currentCityData[i].showDetails.start_time * 1000).utcOffset('-0500').format('dddd').toLowerCase().trim();
 
 		console.debug("dayOfShow ", dayOfShow);
 

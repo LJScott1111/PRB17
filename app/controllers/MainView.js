@@ -453,8 +453,8 @@ nsLanding.init = function() {
 	}
 
 	// $.las_vegas_nav.visible = true;
-	$.denver_nav.visible = true;
-	$.asbury_park_nav.visible = false;
+	// $.denver_nav.visible = true;
+	// $.asbury_park_nav.visible = false;
 
 	Alloy.Globals.checkUser(function(user) {
 		console.debug("Alloy.Globals.checkUser user - " + user);

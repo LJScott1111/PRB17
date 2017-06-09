@@ -1,6 +1,6 @@
 <Alloy>
 	<View id="vwMain" class="absolute_layout">
-		<View class="city_options">
+		<View class="city_options" visible="false">
 			<View id="lasvegas_view" class="heading_view" visible="false">
 				<Label id="lasvegas" class="heading_lbl langdon" text="L('lasvegas').toUpperCase()"></Label>
 				<View id="lasvegas_ul" class="underline_view"></View>

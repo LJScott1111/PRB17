@@ -3,12 +3,12 @@ nsGridSchedule.args = [];
 nsGridSchedule.momentjs = require('moment');
 
 nsGridSchedule.getDay = function(timestamp, type) {
-	var dateObj = nsGridSchedule.momentjs(timestamp * 1000).utcOffset('-0700');
+	var dateObj = nsGridSchedule.momentjs(timestamp * 1000).utcOffset('-0500');
 
 	if (type === "day") {
-		return dateObj.utcOffset('-0700').format('dddd');
+		return dateObj.utcOffset('-0500').format('dddd');
 	} else {
-		return dateObj.utcOffset('-0700').format('h:m a');
+		return dateObj.utcOffset('-0500').format('h:m a');
 	}
 };
 
@@ -87,8 +87,8 @@ nsGridSchedule.createLayout = function(data) {
 		var left = venueNameViewWidth + 5;
 		console.log('bName = ', bName, ' ', bImage, ' ', showTime);
 
-		var startTime = nsGridSchedule.momentjs(showTime * 1000).utcOffset('-0700').format('H.mm');
-		var displayableStartTime = nsGridSchedule.momentjs(showTime * 1000).utcOffset('-0700').format('h:mm a');
+		var startTime = nsGridSchedule.momentjs(showTime * 1000).utcOffset('-0500').format('H.mm');
+		var displayableStartTime = nsGridSchedule.momentjs(showTime * 1000).utcOffset('-0500').format('h:mm a');
 
 		// console.log('data.timeArray ', JSON.stringify(data.timeframe.timeArray));
 		// console.log('timeframe startTime ', startTime);
@@ -414,8 +414,8 @@ nsGridSchedule.createDataForLayout = function(data) {
 
 	dataToCreateSchedule.timeframe.numberOfBlocks = numberOfDateBlocks;
 
-	min = Math.floor(nsGridSchedule.momentjs(min * 1000).utcOffset('-0700').format('H.mm'));
-	max = Math.ceil(nsGridSchedule.momentjs(max * 1000).utcOffset('-0700').format('H.mm'));
+	min = Math.floor(nsGridSchedule.momentjs(min * 1000).utcOffset('-0500').format('H.mm'));
+	max = Math.ceil(nsGridSchedule.momentjs(max * 1000).utcOffset('-0500').format('H.mm'));
 
 	// console.log('min = ', min, '\n max = ', max);
 

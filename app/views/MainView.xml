@@ -2,7 +2,7 @@
 	<View id="vwMain" >
 		<View id="vwTopOptions">
 
-			<View id="vwCityOptions" zIndex="199" class="padding_top">
+			<View id="vwCityOptions" zIndex="199" class="padding_top" visible="false">
 
 				<View id="vwLv" class="select_views padding_top" left="40dp" visible="false">
 					<ImageView id="select_lv"></ImageView>
@@ -17,7 +17,7 @@
 					<View id="ap_selected" class="selected"></View>
 				</View>
 			</View>
-			<View class="vertical_layout nav_bgs" id="denver_nav" backgroundImage='/icons/bg_denver.png'>
+			<View class="vertical_layout nav_bgs" id="denver_nav" backgroundImage='/icons/bg_denver.png' visible="false">
 				<View class="option_groups2" top="60dp">
 					<View id="d_lineup" class="options_image" width="160dp" left="20dp" backgroundImage="/icons/d_lineup.png"></View>
 				</View>
