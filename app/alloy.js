@@ -526,8 +526,8 @@ Alloy.Globals.getFormattedDate = function(timestamp) {
 	var momentjs = require('moment');
 	var dateObj = momentjs(timestamp * 1000);
 	var dateString = [];
-	dateString[0] = dateObj.utcOffset('-0500').format('dddd, MMMM, Do');
-	dateString[1] = dateObj.utcOffset('-0500').format('h:mm a');
+	dateString[0] = dateObj.utcOffset('-0400').format('dddd, MMMM, Do');
+	dateString[1] = dateObj.utcOffset('-0400').format('h:mm a');
 	console.debug(JSON.stringify(dateString));
 	return dateString;
 };

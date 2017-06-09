@@ -4,12 +4,12 @@ nsVenueProfile.args = arguments[0];
 nsVenueProfile.momentjs = require('moment');
 
 nsVenueProfile.getDay = function(timestamp, type) {
-	var dateObj = nsVenueProfile.momentjs(timestamp * 1000).utcOffset('-0500');
+	var dateObj = nsVenueProfile.momentjs(timestamp * 1000).utcOffset('-0400');
 
 	if (type === "day") {
-		return dateObj.utcOffset('-0500').format('dddd');
+		return dateObj.utcOffset('-0400').format('dddd');
 	} else {
-		return dateObj.utcOffset('-0500').format('h:mm a');
+		return dateObj.utcOffset('-0400').format('h:mm a');
 	}
 };
 
