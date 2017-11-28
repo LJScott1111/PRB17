@@ -451,6 +451,7 @@ nsLanding.init = function() {
 		// $.title.text = L($.args.city).toUpperCase();
 		return;
 	}
+	return;
 
 	// $.las_vegas_nav.visible = true;
 	// $.denver_nav.visible = true;
