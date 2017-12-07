@@ -1,5 +1,0 @@
-<Alloy>
-	<View class="container vertical_layout" backgroundImage='icons/distress_bg.png'>
-		<Label id="contact_info"></Label>
-	</View>
-</Alloy>
