@@ -1,5 +1,6 @@
 <Alloy>
 	<View id="vwMainList">
+		<Label id="back" class="fontawesome back-button padding_left padding_top layout_size"></Label>
 		<View class="options_parent_view">
 			<View id="when_view" class="options">
 				<Label id="when_lbl" class="option_lbl" text="L('when_lbl')"></Label>

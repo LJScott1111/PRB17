@@ -63,4 +63,4 @@ nsProfile.init = function() {
 	}
 };
 
-nsProfile.init();
+// nsProfile.init();

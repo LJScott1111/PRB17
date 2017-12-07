@@ -2,13 +2,19 @@
 var nsLanding = {};
 
 Alloy.Globals.navWin = $.navWin;
-nsLanding.serviceCalls = require("serverCalls");
+// nsLanding.serviceCalls = require("serverCalls");
+
+$.sideMenu.addEventListener('click', function(){
+	Ti.App.fireEvent('toggleMenu');
+});
 
 nsLanding.get_next_show = function() {
 
 	console.log('Alloy.Globals.EVENTS ', JSON.stringify(Alloy.Globals.EVENTS));
 	var today = Date.now();
 	// var today = new Date('2016-05-27T00:00:00').getTime(); // to remove later - it is for testing different scenarios
+	
+	
 	var location = '';
 
 	console.log('TODAY ', today);
@@ -71,60 +77,65 @@ nsLanding.openNews = function() {
 };
 
 nsLanding.openBandsScreen = function(city, showsType) {
-	Alloy.Globals.loading.show();
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
-
-	if (appdata.details.length === 0) {
-		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
-			console.debug("fetchedData ", fetchedData);
-			if (fetchedData) {
-
-				var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
-
-					console.debug(JSON.stringify(schedule));
-
-					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
-					Alloy.Globals.openWindow('Schedule', {
-						city : city,
-						showsType : showsType,
-						schedule : schedule,
-						appdata : Titanium.App.Properties.getObject('appdata', {})
-					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-
-					Alloy.Globals.loading.hide();
-
-				}, function(error) {
+	/*
+	
+		Alloy.Globals.loading.show();
+		var appdata = Titanium.App.Properties.getObject('appdata', {});
+	
+		if (appdata.details.length === 0) {
+			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+				console.debug("fetchedData ", fetchedData);
+				if (fetchedData) {
+	
+					var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+	
+						console.debug(JSON.stringify(schedule));
+	
+						// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+						Alloy.Globals.openWindow('Schedule', {
+							city : city,
+							showsType : showsType,
+							schedule : schedule,
+							appdata : Titanium.App.Properties.getObject('appdata', {})
+						}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+	
+						Alloy.Globals.loading.hide();
+	
+					}, function(error) {
+						alert(L('err_fetchingDetails'));
+						Alloy.Globals.loading.hide();
+					});
+	
+				} else {
+					console.debug("The data did not get downloaded!!!");
 					alert(L('err_fetchingDetails'));
 					Alloy.Globals.loading.hide();
-				});
-
-			} else {
-				console.debug("The data did not get downloaded!!!");
+				}
+			});
+		} else {
+			var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+	
+				console.debug(JSON.stringify(schedule));
+				// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+				Alloy.Globals.openWindow('Schedule', {
+					city : city,
+					showsType : showsType,
+					schedule : schedule,
+					appdata : Titanium.App.Properties.getObject('appdata', {})
+				}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+				Alloy.Globals.loading.hide();
+	
+			}, function(error) {
 				alert(L('err_fetchingDetails'));
 				Alloy.Globals.loading.hide();
-			}
-		});
-	} else {
-		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
-
-			console.debug(JSON.stringify(schedule));
-			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
-			Alloy.Globals.openWindow('Schedule', {
-				city : city,
-				showsType : showsType,
-				schedule : schedule,
-				appdata : Titanium.App.Properties.getObject('appdata', {})
-			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-			Alloy.Globals.loading.hide();
-
-		}, function(error) {
-			alert(L('err_fetchingDetails'));
-			Alloy.Globals.loading.hide();
-		});
-	}
+			});
+		}
+		*/
+	
 };
 
 nsLanding.openSchedule = function(city) {
+/*
 
 	Alloy.Globals.loading.show();
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
@@ -178,7 +189,8 @@ nsLanding.openSchedule = function(city) {
 			alert(L('err_fetchingDetails'));
 			Alloy.Globals.loading.hide();
 		});
-	}
+	}*/
+
 };
 
 $.d_lineup.addEventListener('click', function() {
@@ -235,15 +247,24 @@ $.d_buy_tickets.addEventListener('click', function() {
 
 //////////////////////////////////////////////////// ------- LAS VEGAS STARTS --------////////////////////////////////////////////////
 $.lineup_action.addEventListener('click', function() {
-	Alloy.Globals.openWindow("FestLineup", {
-		city : 'lasvegas'
+	// Alloy.Globals.openWindow("FestLineup", {
+		// city : 'lasvegas'
+	// }, true, null, 'misc/center_logo');
+	
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://www.punkrockbowling.com",
+		addBanner : true,
+		// screen : 'hotels'
 	}, true, null, 'misc/center_logo');
 });
 
 $.club_shows_action.addEventListener('click', function() {
 
-	nsLanding.openBandsScreen('lasvegas', 'clubshows');
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://buzzplay.com/PRBapp/ComingSoon.html"
+	}, true, null, 'misc/center_logo');
 	return;
+	nsLanding.openBandsScreen('lasvegas', 'clubshows');
 });
 
 $.bands_action.addEventListener('click', function() {
@@ -253,13 +274,17 @@ $.bands_action.addEventListener('click', function() {
 
 $.my_schedule_action.addEventListener('click', function() {
 
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://buzzplay.com/PRBapp/ComingSoon.html"
+	}, true, null, 'misc/center_logo');
+	return;
 	nsLanding.openSchedule('lasvegas');
 });
 
 $.book_hotels_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/pages/pool-parties",
+		url : "http://www.punkrockbowling.com/hotels/",
 		addBanner : true,
 		screen : 'hotels'
 	}, true, null, 'misc/center_logo');
@@ -268,7 +293,7 @@ $.book_hotels_action.addEventListener('click', function() {
 $.merch_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/collections/2016-punk-rock-bowling-merch",
+		url : "http://www.punkrockbowling.com/2016-punk-rock-bowling-merch/",
 		addBanner : true,
 		screen : 'merch'
 	}, true, null, 'misc/center_logo');
@@ -279,13 +304,19 @@ $.news_action.addEventListener('click', nsLanding.openNews);
 $.bowling_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/pages/bowling-1",
+		url : "http://www.punkrockbowling.com/bowling/",
 		addBanner : true,
 		screen : 'bowling'
 	}, true, null, 'misc/center_logo');
 });
 
 $.food_vendors_action.addEventListener('click', function() {
+	
+	Alloy.Globals.openWindow('GenericWebView', {
+		url : "http://buzzplay.com/PRBapp/ComingSoon.html"
+	}, true, null, 'misc/center_logo');
+	return;
+	
 	Alloy.Globals.openWindow('GenericWebView', {
 		url : "https://punkrockbowling.com/pages/2017-las-vegas-vending",
 		addBanner : true,
@@ -296,7 +327,7 @@ $.food_vendors_action.addEventListener('click', function() {
 $.sponsors_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://www.buzzplay.com/PRBapp/Sponsors.html",
+		url : "http://buzzplay.com/PRBapp/Sponsors.html",
 		// image : '/icons/merch_shop_ad.png',
 	}, true, null, 'misc/center_logo');
 });
@@ -304,7 +335,7 @@ $.sponsors_action.addEventListener('click', function() {
 $.buy_tickets_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "https://punkrockbowling.com/pages/prb-17-ticket-prices",
+		url : "https://wl.seetickets.us/event/Punk-Rock-Bowling-Festival-2018/355297?afflky=PunkRockBowling",
 		addBanner : false
 	}, true, null, 'misc/center_logo');
 });
@@ -359,57 +390,60 @@ $.ap_my_schedule.addEventListener('click', function() {
 
 	nsLanding.openSchedule('asburypark');
 	return;
-	Alloy.Globals.loading.show();
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
-
-	if (appdata.details.length === 0) {
-		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
-			console.debug("fetchedData ", fetchedData);
-			if (fetchedData) {
-
-				var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
-
-					console.debug(JSON.stringify(schedule));
-
-					// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
-					Alloy.Globals.openWindow('Schedule', {
-						city : 'asburypark',
-						schedule : schedule,
-						screen : 'myschedule',
-						appdata : Titanium.App.Properties.getObject('appdata', {})
-					}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-
-					Alloy.Globals.loading.hide();
-
-				}, function(error) {
+	/*
+	
+		Alloy.Globals.loading.show();
+		var appdata = Titanium.App.Properties.getObject('appdata', {});
+	
+		if (appdata.details.length === 0) {
+			var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
+				console.debug("fetchedData ", fetchedData);
+				if (fetchedData) {
+	
+					var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+	
+						console.debug(JSON.stringify(schedule));
+	
+						// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+						Alloy.Globals.openWindow('Schedule', {
+							city : 'asburypark',
+							schedule : schedule,
+							screen : 'myschedule',
+							appdata : Titanium.App.Properties.getObject('appdata', {})
+						}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+	
+						Alloy.Globals.loading.hide();
+	
+					}, function(error) {
+						alert(L('err_fetchingDetails'));
+						Alloy.Globals.loading.hide();
+					});
+	
+				} else {
+					console.debug("The data did not get downloaded!!!");
 					alert(L('err_fetchingDetails'));
 					Alloy.Globals.loading.hide();
-				});
-
-			} else {
-				console.debug("The data did not get downloaded!!!");
+				}
+			});
+		} else {
+			var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
+	
+				console.debug(JSON.stringify(schedule));
+				// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
+				Alloy.Globals.openWindow('Schedule', {
+					city : 'asburypark',
+					schedule : schedule,
+					screen : 'myschedule',
+					appdata : Titanium.App.Properties.getObject('appdata', {})
+				}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+				Alloy.Globals.loading.hide();
+	
+			}, function(error) {
 				alert(L('err_fetchingDetails'));
 				Alloy.Globals.loading.hide();
-			}
-		});
-	} else {
-		var getUserSchedule = new nsLanding.serviceCalls.getUserSchedule(function(schedule) {
-
-			console.debug(JSON.stringify(schedule));
-			// Alloy.Globals.openWindow('UserSchedule', schedule, true, null, 'misc/center_logo');
-			Alloy.Globals.openWindow('Schedule', {
-				city : 'asburypark',
-				schedule : schedule,
-				screen : 'myschedule',
-				appdata : Titanium.App.Properties.getObject('appdata', {})
-			}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
-			Alloy.Globals.loading.hide();
-
-		}, function(error) {
-			alert(L('err_fetchingDetails'));
-			Alloy.Globals.loading.hide();
-		});
-	}
+			});
+		}*/
+	
 });
 
 $.ap_club_shows.addEventListener('click', function() {
@@ -445,6 +479,7 @@ Titanium.App.addEventListener('checkLocationPermissions', nsLanding.checkLocatio
 
 nsLanding.init = function() {
 
+	console.error('$.args ====>>>> ', JSON.stringify($.args));
 	if (!$.args.city) {
 		Titanium.App.addEventListener('get_next_show', nsLanding.get_next_show);
 	} else {
@@ -456,6 +491,7 @@ nsLanding.init = function() {
 	// $.las_vegas_nav.visible = true;
 	// $.denver_nav.visible = true;
 	// $.asbury_park_nav.visible = false;
+/*
 
 	Alloy.Globals.checkUser(function(user) {
 		console.debug("Alloy.Globals.checkUser user - " + user);
@@ -481,6 +517,8 @@ nsLanding.init = function() {
 		signupWindow.open();
 
 	});
+	*/
+
 };
 
 nsLanding.init();

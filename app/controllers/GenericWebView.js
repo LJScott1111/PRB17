@@ -1,5 +1,9 @@
 var nsGenericWebView = {};
 
+$.back.addEventListener('click', function(){
+	Alloy.Globals.pageflow.back();
+});
+
 nsGenericWebView.init = function() {
 
 	$.wvGenericWebView.setUrl($.args.url);

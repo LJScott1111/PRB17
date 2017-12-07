@@ -1,6 +1,8 @@
 
-".lbl_settings": {
-	width: Titanium.UI.SIZE
+"#logo": {
+	top: '10dp',
+	height: '100dp',
+	image: '/icons/logo_header.png'
 }
 
 ".nav_bgs": {

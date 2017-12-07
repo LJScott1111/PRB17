@@ -1,18 +1,19 @@
 <Alloy>
 	<View id="vwMain" >
+		<Label id="sideMenu" class="fontawesome side-menu padding_left padding_top"></Label>
 		<View id="vwTopOptions">
 
 			<View id="vwCityOptions" zIndex="199" class="padding_top" visible="false">
 
-				<View id="vwLv" class="select_views padding_top" left="40dp" visible="false">
+				<View id="vwLv" class="select_views padding_top" left="40dp">
 					<ImageView id="select_lv"></ImageView>
 					<View id="lv_selected" class="selected"></View>
 				</View>
-				<View id="vwDenver" class="select_views padding_top" left="40dp">
+				<View id="vwDenver" class="select_views padding_top" left="40dp" visible="false">
 					<ImageView id="select_denver"></ImageView>
 					<View id="denver_selected" class="selected"></View>
 				</View>
-				<View id="vwAp" class="select_views padding_top" right="40dp">
+				<View id="vwAp" class="select_views padding_top" right="40dp" visible="false">
 					<ImageView id="select_ap"></ImageView>
 					<View id="ap_selected" class="selected"></View>
 				</View>
@@ -39,8 +40,9 @@
 					<View id="d_buy_tickets" class="options_image" width="150dp" backgroundImage="/icons/d_buy_tickets.png"></View>
 				</View>
 			</View>
-			<View class="vertical_layout nav_bgs" id="las_vegas_nav" backgroundImage='/icons/bg_nav.png' visible="false">
-				<View class="option_groups" top="60dp">
+			<View class="vertical_layout nav_bgs" id="las_vegas_nav" backgroundImage='/icons/bg_nav.png'>
+				<ImageView id="logo"></ImageView>
+				<View class="option_groups" top="0dp">
 					<View id="lineup_action" class="options_image" width="160dp" backgroundImage="/icons/lineup.png"></View>
 					<View id="club_shows_action" class="options_image" width="140dp" left="10dp" backgroundImage="/icons/club_shows.png"></View>
 				</View>
@@ -49,7 +51,7 @@
 					<View id="my_schedule_action" class="options_image" width="150dp" left="10dp" backgroundImage="/icons/my_schedule.png"></View>
 				</View>
 				<View class="option_groups">
-					<View id="book_hotels_action" class="options_image" width="160dp" backgroundImage="/icons/pool_parties.png"></View>
+					<View id="book_hotels_action" class="options_image" width="160dp" backgroundImage="/icons/book_hotels.png"></View>
 					<View id="merch_action" class="options_image" width="100dp" left="10dp" backgroundImage="/icons/merch.png"></View>
 				</View>
 				<View class="option_groups">
@@ -57,14 +59,14 @@
 					<View id="bowling_action" class="options_image" width="120dp" left="10dp" backgroundImage="/icons/bowling.png"></View>
 				</View>
 				<View class="option_groups">
-					<View id="sponsors_action" class="options_image" width="150dp" backgroundImage="/icons/sponsors.png"></View>
-					<View id="food_vendors_action" class="options_image" width="170dp" left="10dp" backgroundImage="/icons/food_vendors.png"></View>
+					<View id="sponsors_action" class="options_image" width="140dp" backgroundImage="/icons/sponsors.png"></View>
+					<View id="food_vendors_action" class="options_image" width="150dp" left="10dp" backgroundImage="/icons/food_vendors.png"></View>
 				</View>
 				<View class="option_groups padding_top">
 					<View id="buy_tickets_action" class="options_image" width="150dp" backgroundImage="/icons/buy_tickets.png"></View>
 				</View>
 			</View>
-			<View class="vertical_layout nav_bgs" id="asbury_park_nav" backgroundImage='/icons/asbury_park_bg.png'>
+			<View class="vertical_layout nav_bgs" id="asbury_park_nav" backgroundImage='/icons/asbury_park_bg.png' visible="false">
 				<ImageView id="ap_linup"></ImageView>
 				<ImageView id="ap_club_shows"></ImageView>
 				<ImageView id="ap_bands"></ImageView>

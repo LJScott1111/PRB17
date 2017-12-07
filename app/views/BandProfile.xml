@@ -1,34 +1,37 @@
 <Alloy>
 	<View id="vwMain" backgroundImage='icons/distress_bg.png'>
-		<ScrollView id="svMain">
-			<ImageView id="ivBandImage"></ImageView>
-			<View id="vwBandInfo">
-				<Label id="lblBandName"></Label>
-				<View id="vwBandSchedule">
-					<View id="vwScheduleInfo">
-						<Label id="lblDay"></Label>
-						<Label id="lblTime"></Label>
-						<Label id="lblVenue"></Label>
-					</View>
-					<View id="vwAddBand">
-						<ImageView id="ivFavouriteStar" onClick="nsBandProfile.markFavourite"></ImageView>
-						<Label id="lblAddBand" textid="bandProfile_lblAddBand"></Label>
+		<Label id="back" class="fontawesome back-button padding_left padding_top layout_size"></Label>
+		<View layout="vertical">
+			<ScrollView id="svMain">
+				<ImageView id="ivBandImage"></ImageView>
+				<View id="vwBandInfo">
+					<Label id="lblBandName"></Label>
+					<View id="vwBandSchedule">
+						<View id="vwScheduleInfo">
+							<Label id="lblDay"></Label>
+							<Label id="lblTime"></Label>
+							<Label id="lblVenue"></Label>
+						</View>
+						<View id="vwAddBand">
+							<ImageView id="ivFavouriteStar" onClick="nsBandProfile.markFavourite"></ImageView>
+							<Label id="lblAddBand" textid="bandProfile_lblAddBand"></Label>
+						</View>
 					</View>
 				</View>
-			</View>
-			<View id="vwSocialActivities">
-				<View class="horizontal_layout width_size">
+				<View id="vwSocialActivities">
+					<View class="horizontal_layout width_size">
 
-					<ImageView id="ivSoundCloud" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
-					<ImageView id="ivYouTube" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
-					<ImageView id="ivWebsite" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
-					<ImageView id="ivFacebook" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
-					<ImageView id="ivTwitter" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
-					<ImageView id="ivInsta" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
+						<ImageView id="ivSoundCloud" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
+						<ImageView id="ivYouTube" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
+						<ImageView id="ivWebsite" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
+						<ImageView id="ivFacebook" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
+						<ImageView id="ivTwitter" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
+						<ImageView id="ivInsta" class="socialIconClass" onClick="nsBandProfile.doSocialActivity"></ImageView>
+					</View>
 				</View>
-			</View>
-			<Label id="lblMoreInfo"></Label>
-		</ScrollView>
-		<Require id="sponsor" src="misc/sponsorAd" addBanner="true" screen="bandProfile" />
+				<Label id="lblMoreInfo"></Label>
+			</ScrollView>
+			<Require id="sponsor" src="misc/sponsorAd" addBanner="true" screen="bandProfile" />
+		</View>
 	</View>
 </Alloy>

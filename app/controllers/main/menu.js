@@ -14,18 +14,20 @@ Titanium.App.addEventListener('hideOptions', function() {
  Alloy.Globals.openWindow('Settings', {}, true, null, 'misc/center_logo');
  });
  */
+/*
 
 $.profile.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('Profile', {}, true, null, 'misc/center_logo');
 });
+*/
 
 $.buy_tickets.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "https://punkrockbowling.com/pages/prb-17-ticket-prices",
+		url : "https://wl.seetickets.us/event/Punk-Rock-Bowling-Festival-2018/355297?afflky=PunkRockBowling",
 	}, true, null, 'misc/center_logo');
 });
 /*
@@ -77,7 +79,7 @@ $.lasvegas_lineup.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "https://punkrockbowling.com/pages/las-vegas-line-up",
+		url : "http://www.punkrockbowling.com/",
 	}, true, null, 'misc/center_logo');
 
 	return;
@@ -149,7 +151,7 @@ $.sponsers.button.addEventListener('click', function() {
 	// Alloy.Globals.openWindow("Sponsors", {}, true, null, 'misc/center_logo');
 
 	Alloy.Globals.openWindow("GenericWebView", {
-		url : "http://www.buzzplay.com/PRBapp/Sponsors.html",
+		url : "http://buzzplay.com/PRBapp/Sponsors.html",
 	}, true, null, 'misc/center_logo');
 });
 /*
@@ -192,6 +194,7 @@ $.info.button.addEventListener('click', function() {
 		}
 	}, true, null, 'misc/center_logo');
 });
+/*
 
 $.log_out.button.addEventListener('click', function() {
 
@@ -238,4 +241,5 @@ nsMenu.init = function() {
 
 nsMenu.init();
 Titanium.App.addEventListener('onLogin', nsMenu.init);
+*/
 

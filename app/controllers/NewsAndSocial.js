@@ -1,6 +1,10 @@
 var nsNewsAndSocial = {};
 nsNewsAndSocial.social_links = null;
 
+$.back.addEventListener('click', function(){
+	Alloy.Globals.pageflow.back();
+});
+
 nsNewsAndSocial.postLayout = function() {
 
 	$.twitter_underline.width = $.twitter.rect.width;
@@ -23,12 +27,12 @@ $.prb_view.addEventListener('click', function() {
 	nsNewsAndSocial.social_links = JSON.parse(JSON.stringify($.args.prb));
 	nsNewsAndSocial.resetLinks();
 });
-
-$.sourpuss_view.addEventListener('click', function() {
-
-	nsNewsAndSocial.social_links = JSON.parse(JSON.stringify($.args.sourpuss));
-	nsNewsAndSocial.resetLinks();
-});
+// 
+// $.sourpuss_view.addEventListener('click', function() {
+// 
+	// nsNewsAndSocial.social_links = JSON.parse(JSON.stringify($.args.sourpuss));
+	// nsNewsAndSocial.resetLinks();
+// });
 
 $.hard_times_view.addEventListener('click', function() {
 

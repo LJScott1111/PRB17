@@ -1,5 +1,6 @@
 <Alloy>
 	<View id="vwMain" backgroundImage='icons/bg_yellow.png'>
+		<Label id="back" class="fontawesome back-button padding_left padding_top layout_size"></Label>
 		<WebView id="wvGenericWebView"></WebView>
 		<View id="vwBottomView">
 			<ImageView id="ivSponsorAd"></ImageView>

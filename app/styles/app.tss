@@ -41,23 +41,49 @@ LAYOUTS
 	width: Titanium.UI.FILL
 }
 
-".options_view": {
-	height: Alloy.Globals.theme.sizes.landingOptionHeight,
-	width: Titanium.UI.FILL
+'.layout_size': {
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
 }
 
 ".touch_false": {
 	touchEnabled: false
 }
 
+
 /*
 FONTS
 */
+
+".side-menu": {
+	text: '\uf0c9',
+	zIndex: 9999,
+	color: '#fff',
+	font: {
+		fontSize: '30dp'
+	}
+}
+
+'.back-button': {
+	zIndex: 99999,
+	text: '\uf053',
+	zIndex: 9999,
+	color: '#fff',
+	font: {
+		fontSize: '30dp'
+	}
+}
 
 ".frizQuaT": {
 	font: {
 		fontSize: Alloy.Globals.theme.fonts.size15Fonts,
 		fontFamily: "FrizQua-Bold"
+	}
+}
+
+'.fontawesome': {
+	font: {
+		fontFamily: 'FontAwesome'
 	}
 }
 

@@ -16,7 +16,7 @@
 "#prb_view": {
 	// left: '10dp',
 	height: Titanium.UI.SIZE,
-	width: '70dp'
+	width: '49%'
 }
 
 "#prb": {
@@ -37,7 +37,8 @@
 
 "#hard_times_view": {
 	// right: 0,
-	height: Titanium.UI.SIZE
+	height: Titanium.UI.SIZE,
+	width: '49%'
 }
 
 "#hard_times": {

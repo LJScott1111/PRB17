@@ -1,4 +1,5 @@
 <Alloy>
 	<View id="vwMainList">
+		<Label id="back" class="fontawesome back-button padding_left padding_top layout_size"></Label>
 	</View>
 </Alloy>

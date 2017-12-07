@@ -1,38 +1,40 @@
 <Alloy>
-	<View id="vwMain" class="vertical_layout" backgroundImage='icons/distress_bg.png'>
+	<View id="vwMain" backgroundImage='icons/distress_bg.png'>
+		<Label id="back" class="fontawesome back-button padding_left padding_top layout_size"></Label>
+		<View layout="vertical">
+			<View class="vertical_layout" backgroundColor="#000">
+				<View class="logo_view padding_bottom horizontal_layout">
 
-		<View class="vertical_layout" backgroundColor="#000">
-			<View class="logo_view padding_bottom horizontal_layout">
+					<!-- <View id="sourpuss_view">
+						<ImageView id="sourpuss" class="touch_false"></ImageView>
+					</View>
+					<View class="vertical_separator padding_top"></View> -->
+					<View id="prb_view">
+						<ImageView id="prb" class="touch_false"></ImageView>
+					</View>
+					<View class="vertical_separator padding_top"></View>
+					<View id="hard_times_view">
+						<ImageView id="hard_times" class="touch_false"></ImageView>
+					</View>
 
-				<View id="sourpuss_view">
-					<ImageView id="sourpuss" class="touch_false"></ImageView>
 				</View>
-				<View class="vertical_separator padding_top"></View>
-				<View id="prb_view">
-					<ImageView id="prb" class="touch_false"></ImageView>
-				</View>
-				<View class="vertical_separator padding_top"></View>
-				<View id="hard_times_view">
-					<ImageView id="hard_times" class="touch_false"></ImageView>
-				</View>
-				
 			</View>
+			<View class="absolute_layout" backgroundColor="#1A1A1A">
+
+				<View class="padding_left vertical_layout" id="twitter_view">
+					<Label id="twitter" class="touch_false social_labels" text="L('twitter').toUpperCase()"></Label>
+					<View id="twitter_underline" class="underline"></View>
+				</View>
+				<View class="vertical_layout" id="fb_view">
+					<Label id="fb" class="touch_false social_labels" text="L('facebook').toUpperCase()"></Label>
+					<View id="fb_underline" class="underline"></View>
+				</View>
+				<View class="padding_right vertical_layout" id="insta_view">
+					<Label id="insta" class="touch_false social_labels" text="L('instagram').toUpperCase()"></Label>
+					<View id="insta_underline" class="underline"></View>
+				</View>
+			</View>
+			<WebView id="wvWebView"></WebView>
 		</View>
-		<View class="absolute_layout" backgroundColor="#1A1A1A">
-
-			<View class="padding_left vertical_layout" id="twitter_view">
-				<Label id="twitter" class="touch_false social_labels" text="L('twitter').toUpperCase()"></Label>
-				<View id="twitter_underline" class="underline"></View>
-			</View>
-			<View class="vertical_layout" id="fb_view">
-				<Label id="fb" class="touch_false social_labels" text="L('facebook').toUpperCase()"></Label>
-				<View id="fb_underline" class="underline"></View>
-			</View>
-			<View class="padding_right vertical_layout" id="insta_view">
-				<Label id="insta" class="touch_false social_labels" text="L('instagram').toUpperCase()"></Label>
-				<View id="insta_underline" class="underline"></View>
-			</View>
-		</View>
-		<WebView id="wvWebView"></WebView>
 	</View>
 </Alloy>

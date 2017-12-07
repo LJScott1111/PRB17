@@ -4,7 +4,7 @@
  * */
 
 var nsIndex = {};
-nsIndex.serviceCalls = require("serverCalls");
+// nsIndex.serviceCalls = require("serverCalls");
 
 nsIndex.showHideHint = function(label, txtField) {
 	label.visible = (txtField.value.trim() == "");
@@ -313,4 +313,4 @@ nsIndex.init = function() {
 	// nsIndex.userCheck();
 };
 
-nsIndex.init();
+// nsIndex.init();
