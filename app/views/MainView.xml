@@ -3,7 +3,7 @@
 		<Label id="sideMenu" class="fontawesome side-menu padding_left padding_top"></Label>
 		<View id="vwTopOptions">
 
-			<View id="vwCityOptions" zIndex="199" class="padding_top" visible="false">
+			<!-- <View id="vwCityOptions" zIndex="199" class="padding_top" visible="false">
 
 				<View id="vwLv" class="select_views padding_top" left="40dp">
 					<ImageView id="select_lv"></ImageView>
@@ -17,8 +17,8 @@
 					<ImageView id="select_ap"></ImageView>
 					<View id="ap_selected" class="selected"></View>
 				</View>
-			</View>
-			<View class="vertical_layout nav_bgs" id="denver_nav" backgroundImage='/icons/bg_denver.png' visible="false">
+			</View> -->
+			<!-- <View class="vertical_layout nav_bgs" id="denver_nav" backgroundImage='/icons/bg_denver.png' visible="false">
 				<View class="option_groups2" top="60dp">
 					<View id="d_lineup" class="options_image" width="160dp" left="20dp" backgroundImage="/icons/d_lineup.png"></View>
 				</View>
@@ -39,7 +39,7 @@
 				<View class="option_groups2 padding_top">
 					<View id="d_buy_tickets" class="options_image" width="150dp" backgroundImage="/icons/d_buy_tickets.png"></View>
 				</View>
-			</View>
+			</View> -->
 			<View class="vertical_layout nav_bgs" id="las_vegas_nav" backgroundImage='/icons/bg_nav.png'>
 				<ImageView id="logo"></ImageView>
 				<View class="option_groups" top="0dp">
@@ -66,7 +66,7 @@
 					<View id="buy_tickets_action" class="options_image" width="150dp" backgroundImage="/icons/buy_tickets.png"></View>
 				</View>
 			</View>
-			<View class="vertical_layout nav_bgs" id="asbury_park_nav" backgroundImage='/icons/asbury_park_bg.png' visible="false">
+			<!-- <View class="vertical_layout nav_bgs" id="asbury_park_nav" backgroundImage='/icons/asbury_park_bg.png' visible="false">
 				<ImageView id="ap_linup"></ImageView>
 				<ImageView id="ap_club_shows"></ImageView>
 				<ImageView id="ap_bands"></ImageView>
@@ -74,7 +74,7 @@
 				<ImageView id="ap_bowling"></ImageView>
 				<ImageView id="ap_news"></ImageView>
 				<ImageView id="ap_buy_tickets"></ImageView>
-			</View>
+			</View> -->
 		</View>
 		<Require id="sponsor" src="misc/sponsorAd" addBanner="true" screen="mainNav"/>
 	</View>
