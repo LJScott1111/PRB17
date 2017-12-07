@@ -1,6 +1,6 @@
 <Alloy>
 	<View id="vwMain" >
-		<Label id="sideMenu" class="fontawesome side-menu padding_left padding_top"></Label>
+		<Label id="sideMenu" visible="false" class="fontawesome side-menu padding_left padding_top"></Label>
 		<View id="vwTopOptions">
 
 			<!-- <View id="vwCityOptions" zIndex="199" class="padding_top" visible="false">

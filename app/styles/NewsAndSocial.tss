@@ -21,7 +21,7 @@
 
 "#prb": {
 	height: '60dp',
-	image: '/icons/prb_icon.png'
+	image: '/icons/logo.png'
 }
 
 "#sourpuss_view": {

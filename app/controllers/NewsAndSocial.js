@@ -33,12 +33,14 @@ $.prb_view.addEventListener('click', function() {
 	// nsNewsAndSocial.social_links = JSON.parse(JSON.stringify($.args.sourpuss));
 	// nsNewsAndSocial.resetLinks();
 // });
+/*
 
 $.hard_times_view.addEventListener('click', function() {
 
 	nsNewsAndSocial.social_links = JSON.parse(JSON.stringify($.args.hard_times));
 	nsNewsAndSocial.resetLinks();
 });
+*/
 
 $.fb_view.addEventListener('click', function() {
 	$.wvWebView.setUrl(nsNewsAndSocial.social_links.fb_url);

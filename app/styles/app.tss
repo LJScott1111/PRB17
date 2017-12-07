@@ -68,7 +68,7 @@ FONTS
 	zIndex: 99999,
 	text: '\uf053',
 	zIndex: 9999,
-	color: '#fff',
+	color: '#DB0000',
 	font: {
 		fontSize: '30dp'
 	}

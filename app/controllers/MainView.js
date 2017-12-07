@@ -257,7 +257,7 @@ $.lineup_action.addEventListener('click', function() {
 	// }, true, null, 'misc/center_logo');
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://www.punkrockbowling.com",
+		url : "http://www.punkrockbowling.com/lineup",
 		addBanner : true,
 		// screen : 'hotels'
 	}, true, null, 'misc/center_logo');
@@ -266,7 +266,7 @@ $.lineup_action.addEventListener('click', function() {
 $.club_shows_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://buzzplay.com/PRBapp/ComingSoon.html"
+		url : "http://buzzplay.com/PRBapp/Coming_Soon18.jpg"
 	}, true, null, 'misc/center_logo');
 	return;
 	nsLanding.openBandsScreen('lasvegas', 'clubshows');
@@ -280,7 +280,7 @@ $.bands_action.addEventListener('click', function() {
 $.my_schedule_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://buzzplay.com/PRBapp/ComingSoon.html"
+		url : "http://buzzplay.com/PRBapp/Coming_Soon18.jpg"
 	}, true, null, 'misc/center_logo');
 	return;
 	nsLanding.openSchedule('lasvegas');
@@ -318,7 +318,7 @@ $.bowling_action.addEventListener('click', function() {
 $.food_vendors_action.addEventListener('click', function() {
 
 	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://buzzplay.com/PRBapp/ComingSoon.html"
+		url : "http://buzzplay.com/PRBapp/Coming_Soon18.jpg"
 	}, true, null, 'misc/center_logo');
 	return;
 

@@ -31,7 +31,7 @@ if (OS_ANDROID) {
 		}
 	});
 }
-
+/*
 
 var vwLandingScreen = Titanium.UI.createView({
 	width : Titanium.UI.FILL,
@@ -46,3 +46,4 @@ vwLandingScreen.addEventListener('click', function() {
 	$.mainWindow.remove(vwLandingScreen);
 });
 
+*/

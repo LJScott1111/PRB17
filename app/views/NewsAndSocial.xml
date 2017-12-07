@@ -3,7 +3,7 @@
 		<Label id="back" class="fontawesome back-button padding_left padding_top layout_size"></Label>
 		<View layout="vertical">
 			<View class="vertical_layout" backgroundColor="#000">
-				<View class="logo_view padding_bottom horizontal_layout">
+				<View class="logo_view padding_bottom">
 
 					<!-- <View id="sourpuss_view">
 						<ImageView id="sourpuss" class="touch_false"></ImageView>
@@ -12,10 +12,10 @@
 					<View id="prb_view">
 						<ImageView id="prb" class="touch_false"></ImageView>
 					</View>
-					<View class="vertical_separator padding_top"></View>
+					<!-- <View class="vertical_separator padding_top"></View>
 					<View id="hard_times_view">
 						<ImageView id="hard_times" class="touch_false"></ImageView>
-					</View>
+					</View> -->
 
 				</View>
 			</View>
