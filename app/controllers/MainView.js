@@ -77,7 +77,7 @@ nsLanding.openNews = function() {
 };
 
 nsLanding.openBandsScreen = function(city, showsType) {
-	/*
+	
 	
 		Alloy.Globals.loading.show();
 		var appdata = Titanium.App.Properties.getObject('appdata', {});
@@ -130,7 +130,7 @@ nsLanding.openBandsScreen = function(city, showsType) {
 				Alloy.Globals.loading.hide();
 			});
 		}
-		*/
+		
 	
 };
 

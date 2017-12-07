@@ -1,5 +1,3 @@
-// Kinvey credentials
-var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-1.6.10');
 var UrbanAirship = require('com.urbanairship');
 Alloy.Globals.UrbanAirship = UrbanAirship;
 var channelId = UrbanAirship.channelId;
@@ -19,85 +17,16 @@ function receivedPushNotification(e) {
 	alert('Received push: ' + JSON.stringify(e));
 }
 
-// Save the device token for subsequent API calls
-function deviceTokenSuccess(e) {
-	if (Kinvey.getActiveUser() == null) {
-		// Error: there must be a logged-in user.
-	} else {
-		Kinvey.Push.register(e.deviceToken).then(function() {
-			// Successfully registered device with Kinvey.
-			console.log('Registered for Kinvey push');
-		}, function(error) {
-			// Error registering device with Kinvey.
-			console.log('Error registering device', error);
-			alert(error.message);
-		});
-	}
-};
-
 function deviceTokenError(e) {
 	alert('Failed to register for push notifications! ' + e.error);
 };
 
 Alloy.Globals.checkUser = function(callback, errorCallback) {
-	var promise = Kinvey.init({
-		appKey : 'kid_b1vnajEDkl',
-		appSecret : '10609ec172544ae6b75923af98bfab95'
-	});
-
-	promise.then(function(user) {
-		//Alloy.Globals.setupPushNotifications();
-
-		// If user is logged in using default user, the app will ask her login on every app load
-		console.log('CHECK USER = ', Titanium.App.Properties.getString('defaultUser'));
-		if (Titanium.App.Properties.getString('defaultUser') == true) {
-			callback();
-			return;
-		}
-
-		if (!user) {// For testing!
-			/*
-			 var promise2 = Kinvey.User.login({
-			 username : 'mobile@buzzplay.com',
-			 password : 'prb%2015'
-			 });
-			 promise2.then(function(user) {
-			 console.debug("Login success - user ", JSON.stringify(user));
-			 //Titanium.App.Properties.removeProperty('appdata');
-			 Titanium.App.Properties.setString('userid', user._id);
-
-			 var thisUser = Kinvey.setActiveUser(user);
-			 console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
-
-			 Alloy.Globals.getAndStoreData();
-			 callback(thisUser);
-
-			 }, function(error) {
-			 //Titanium.App.Properties.removeProperty('appdata');
-			 console.debug("Login error ", error);
-			 errorCallback(error);
-			 }); */
-			callback(user);
-
-		} else {
-
-			var thisUser = Kinvey.getActiveUser();
-			Alloy.Globals.getAndStoreData();
-
-			console.error('getBannerInfogetBannerInfo HJKJHGFGHJKL');
-			var getBannerInfo = new serviceCalls.getBannerInfo(function(response) {
-				console.error('response ', response);
-			}, function(error) {
-				console.error('error ', error);
-			});
-
-			callback(thisUser);
-		}
-
+	var serviceCalls = require('serverCalls');
+	var getBannerInfo = new serviceCalls.getBannerInfo(function(response) {
+		console.error('response ', response);
 	}, function(error) {
-		console.log("NO USER!!");
-		//errorCallback(error);
-		callback();
+		console.error('error ', error);
 	});
 };
 
@@ -113,9 +42,6 @@ Alloy.Globals.askToNotify = function() {
 	}
 };
 
-// To debug Kinvey
-//KINVEY_DEBUG = true;
-
 // Loading indicator
 Alloy.Globals.loading = Alloy.createWidget("nl.fokkezb.loading");
 
@@ -123,17 +49,19 @@ Alloy.Globals.CITIES = ['lasvegas', 'denver', 'asburypark'];
 
 Alloy.Globals.EVENTS = [{
 	city : 'lasvegas',
-	start : 1495148400000, // "2016-05-26T00:00:00",
-	end : 1495355400000, //"2016-05-30T23:59:59"
-}, {
-	city : 'denver',
-	start : 1464825600000, // "2016-06-02T00:00:00",
-	end : 1465084799000, // "2016-06-04T23:59:59"
-}, {
-	city : 'asburypark',
-	start : 1465516800000, //"2016-06-10T00:00:00",
-	end : 1465775999000, //"2016-06-12T23:59:59"
-}];
+	start : 1527206400000, // "2018-05-25T00:00:00",
+	end : 1527551999000, //"2018-05-28T23:59:59"
+}
+// , {
+// city : 'denver',
+// start : 1464825600000, // "2016-06-02T00:00:00",
+// end : 1465084799000, // "2016-06-04T23:59:59"
+// }, {
+// city : 'asburypark',
+// start : 1465516800000, //"2016-06-10T00:00:00",
+// end : 1465775999000, //"2016-06-12T23:59:59"
+// }
+];
 
 Alloy.Globals.SPONSORS = [];
 Alloy.Globals.sponsers_rr = [];
@@ -235,14 +163,6 @@ Alloy.Globals.getSponsorBanner = function(screen) {
 	// console.log('Alloy.Globals.getSponsorBanner ', JSON.stringify(banner));
 
 	return banner;
-};
-
-// iOS NavMenu
-Alloy.Globals.navMenu = null;
-
-//Fb appID
-Alloy.Globals.fbAppID = function() {
-	return 993161744029602;
 };
 
 // iOS - Android Screens UI match base
@@ -371,19 +291,19 @@ Alloy.Globals.hasShowsData = false;
 
 Alloy.Globals.getBanners = function(callback) {
 
-	var serviceCalls = require("serverCalls");
-	console.error('getBannerInfogetBannerInfo HJKJHGFGHJKL');
-	var getBannerInfo = new serviceCalls.getBannerInfo(function(response) {
-		console.error('response ', JSON.stringify(response));
-		Alloy.Globals.SPONSORS = JSON.parse(JSON.stringify(response));
-		Alloy.Globals.haveSponsors = true;
-		Titanium.App.fireEvent('updateBanner');
-		if (callback) {
-			callback();
-		};
-	}, function(error) {
-		console.error('error ', error);
-	});
+	// var serviceCalls = require("serverCalls");
+	// console.error('getBannerInfogetBannerInfo HJKJHGFGHJKL');
+	// var getBannerInfo = new serviceCalls.getBannerInfo(function(response) {
+	// console.error('response ', JSON.stringify(response));
+	// Alloy.Globals.SPONSORS = JSON.parse(JSON.stringify(response));
+	// Alloy.Globals.haveSponsors = true;
+	// Titanium.App.fireEvent('updateBanner');
+	// if (callback) {
+	// callback();
+	// };
+	// }, function(error) {
+	// console.error('error ', error);
+	// });
 };
 
 Alloy.Globals.getAndStoreData = function(callback) {
@@ -465,27 +385,6 @@ Alloy.Globals.combinedDetails = function() {
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	var combinedData = [];
 
-	/*for (var i = 0,bandLen = appdata.bands.length; i < bandLen; i++) {
-	 var bandProfile = {};
-	 bandProfile.bandDetails = appdata.bands[i];
-
-	 for (var j = 0,showLen = appdata.shows.length; j < showLen; j++) {
-
-	 if (appdata.shows[j].band_id === bandProfile.bandDetails._id) {
-	 bandProfile.showDetails = JSON.parse(JSON.stringify(appdata.shows[j]));
-	 // } else {
-	 // continue;
-
-	 for (var k = 0,venueLen = appdata.venues.length; k < venueLen; k++) {
-	 if (bandProfile.showDetails.venue_id === appdata.venues[k]._id) {
-	 bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
-	 combinedData.push(bandProfile);
-	 }
-	 }
-	 }
-	 }
-	 }*/
-
 	for (var j = 0,
 	    showLen = appdata.shows.length; j < showLen; j++) {
 		var bandProfile = {};
@@ -540,12 +439,6 @@ Alloy.Globals.appData = {
 	"venues" : [],
 	"groups" : []
 };
-
-/*
-Alloy.Globals.Facebook = require('facebook');
-Alloy.Globals.Facebook.appid = Alloy.Globals.fbAppID();
-Alloy.Globals.Facebook.permissions = ['email'];
-*/
 
 // Pubnub
 Alloy.Globals.Pubnub = require('pubnub.js')({

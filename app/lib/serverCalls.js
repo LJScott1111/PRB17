@@ -1,157 +1,197 @@
-//TODO - Proper error handling
-var nsServerCalls = {};
+/***
+ Api.js
+ Lease Tracker
 
-// User signup
-nsServerCalls.signup = function(username, password, onloadCallback, errorCallback) {
-	var promise = Kinvey.User.signup({
-		username : username.toLowerCase(),
-		password : password
-	});
-	promise.then(function(user) {
-		console.debug("Signup success - user ", JSON.stringify(user));
+ Created by Shraddha on 2017-03-14.
+ */
 
-		Titanium.App.Properties.setString('userid', user._id);
+// var moment = require('alloy/moment');
 
-		var thisUser = Kinvey.setActiveUser(user);
-		Titanium.App.Properties.removeProperty('defaultUser', false);
-		onloadCallback(thisUser);
+var api = {};
 
-	}, function(error) {
+/*
+ * Function for converting objects to structured querystring (email=example@example.com&password=AdAdw2)
+ */
+function queryString(data) {
+	var self = this;
+	for (var key in data) {
+		if ( typeof data[key] === 'object' && data[key] !== null) {
+			var o = data[key];
+			delete data[key];
+			for (var k in o) {
+				var new_key = key + "[" + k + "]";
+				var value = o[k];
 
-		console.debug("Signup error ", error);
+				if (value === true) {
+					value = 1;
+				}
 
-		if (Kinvey.Error.USER_ALREADY_EXISTS) {
+				if (value === false) {
+					value = 0;
+				}
+				data[new_key] = value;
+			}
+		}
+	}
+	var arr = [];
+	for (key in data)
+	arr.push(key + '=' + data[key]);
+	return arr.join("&");
+};
 
-			console.error('Kinvey.Error.USER_ALREADY_EXISTS');
-			Titanium.App.fireEvent('user_exists');
-			nsServerCalls.login(username, password, onloadCallback, errorCallback);
+/*
+ * Function for http request
+ */
+function httpRequest(endpoint, method, data, successFunction, errorFunction, fileType) {
+
+	if (!Ti.Network.online) {
+
+		if (OS_ANDROID) {
+
+			var dialog = Ti.UI.createAlertDialog({
+				cancel : 1,
+				buttonNames : ['Review Settings', 'Cancel'],
+				message : 'No internet connection. Please review your data settings',
+				title : 'Bunxious'
+			});
+			dialog.addEventListener('click', function(e) {
+
+				if (e.index === 0) {
+
+					var intent = Ti.Android.createIntent({
+						action : 'android.settings.WIRELESS_SETTINGS'
+					});
+					Ti.Android.currentActivity.startActivity(intent);
+				}
+			});
+			dialog.show();
 		} else {
 
-			errorCallback(error);
+			alert('No internet connection. Please review your data settings');
 		}
-	});
 
-};
+		if (errorFunction) {
 
-exports.signup = nsServerCalls.signup;
-
-// User login
-nsServerCalls.login = function(username, password, onloadCallback, errorCallback) {
-
-	var promise = Kinvey.User.login({
-		username : username.toLowerCase(),
-		password : password
-	});
-	promise.then(function(user) {
-		console.debug("Login success - user ", JSON.stringify(user));
-		Titanium.App.Properties.removeProperty('appdata');
-		Titanium.App.Properties.setString('userid', user._id);
-
-		var thisUser = Kinvey.setActiveUser(user);
-		console.debug("Active User - thisUser: ", JSON.stringify(thisUser));
-		Titanium.App.Properties.removeProperty('defaultUser', false);
-		onloadCallback(thisUser);
-
-	}, function(error) {
-		Titanium.App.Properties.removeProperty('appdata');
-		console.debug("Login error ", error);
-		errorCallback(error);
-	});
-};
-
-exports.login = nsServerCalls.login;
-
-nsServerCalls.updateUser = function(name, username, onloadCallback, errorCallback) {
-
-	var promise = Kinvey.User.update({
-		_id : Titanium.App.Properties.getString('userid'),
-		username : username.toLowerCase().trim(),
-		name: name
-	});
-	promise.then(function(user) {
-		console.debug("Update success - user ", JSON.stringify(user));
-
-		var thisUser = Kinvey.setActiveUser(user);
-		onloadCallback(thisUser);
-
-	}, function(error) {
-		console.debug("Update error ", error);
-		errorCallback(error);
-	});
-};
-
-exports.updateUser = nsServerCalls.updateUser;
-
-// User Logout
-nsServerCalls.logout = function(onloadCallback, errorCallback) {
-	var user = Kinvey.getActiveUser();
-	if (null !== user) {
-		var promise = Kinvey.User.logout();
-		promise.then(function() {
-			console.debug("Logout Success");
-			Titanium.App.Properties.removeProperty('appdata');
-			Titanium.App.Properties.removeProperty('userid');
-			console.debug("Titanium.App.Properties.removeProperty('userid') ", Titanium.App.Properties.getString('userid'));
-			Titanium.App.Properties.removeProperty('defaultUser', false);
-			onloadCallback();
-		}, function(error) {
-			console.debug("Logout Error");
-			errorCallback(error);
-		});
+			errorFunction();
+		}
+		return;
 	}
-};
 
-exports.logout = nsServerCalls.logout;
+	var url = "http://prb.buzzplay.com/api/v1/" + endpoint;
 
-// User Login with fb
-nsServerCalls.fbLogin = function(onloadCallback, errorCallback) {
-	console.log("Logging to FB");
-	var promise = Kinvey.Social.connect(null, 'facebook', {
-		appId : Alloy.Globals.fbAppID(),
-		permissions : ['email'],
-		success : function(response) {
-			console.debug("FB RESPONSE ", JSON.stringify(response));
-			Titanium.App.Properties.removeProperty('appdata');
-			Titanium.App.Properties.setString('login-type', "FB");
-			// TODO: Need to capture userid and put it in App Properties
-			Titanium.App.Properties.setString('userid', response._id);
-			onloadCallback(response);
-		},
-		error : function(error) {
-			console.debug("FB ERROR ", JSON.stringify(error));
-			errorCallback(error);
-		},
-		create : true
-	});
-};
+	// if (data && method == 'GET') {
+	//
+	// url = url + '?' + queryString(data);
+	//
+	// }
 
-exports.fbLogin = nsServerCalls.fbLogin;
+	var xhr = Ti.Network.createHTTPClient();
 
-// User Logout with fb
-nsServerCalls.fbLogout = function(onloadCallback, errorCallback) {
-	console.log("Logging out from FB");
-	var user = Kinvey.getActiveUser();
-	var promise = Kinvey.Social.disconnect(user, 'facebook', {
-		// appId : Alloy.Globals.fbAppID(),
-		success : function(response) {
-			console.debug("FB RESPONSE ", JSON.stringify(response));
-			onloadCallback(response);
-			Titanium.App.Properties.removeProperty('appdata');
-			Titanium.App.Properties.removeProperty('userid');
-			Titanium.App.Properties.removeProperty('login-type');
-		},
-		error : function(error) {
-			console.debug("FB ERROR ", JSON.stringify(error));
+	var retries = 0;
+
+	xhr.onload = function() {
+
+		Ti.API.info(endpoint, this.responseText);
+
+		if (this.status == '200' || this.status == '201') {
+
+			try {
+
+				var responseJSON = JSON.parse(this.responseText);
+
+				if (responseJSON && !responseJSON.error) {
+
+					if (successFunction) {
+
+						successFunction(responseJSON);
+					}
+				}
+			} catch (e) {
+
+				if (errorFunction) {
+
+					errorFunction(e);
+				}
+				Ti.API.error(endpoint, e);
+			}
+		} else {
+
+			if (errorFunction) {
+
+				errorFunction(this.response);
+			}
+			Ti.API.error(this.response);
 		}
-	});
-};
+	};
 
-exports.fbLogout = nsServerCalls.fbLogout;
+	xhr.onerror = function(e) {
+
+		// if (retries < 3) {
+		//
+		// retries++;
+		// doRequest();
+		// } else {
+
+		Ti.API.info('Transmission error: ' + endpoint + ' ' + JSON.stringify(this) + this.responseText);
+
+		// alert('There was a communication error. Please check your internet connection and try again.');
+
+		if (errorFunction && this.responseText) {
+
+			errorFunction(JSON.parse(this.responseText));
+
+		} else if (errorFunction) {
+
+			errorFunction(e);
+		}
+		// }
+	};
+
+	xhr.timeout = 20000;
+
+	function doRequest() {
+
+		xhr.open(method, url);
+
+		// xhr.setRequestHeader('Authorization', 'Bearer ' + Titanium.App.Properties.getString('token'));
+		// xhr.setRequestHeader('APPType', 'App');
+		// console.log('TOKEN ', 'Bearer ' + Titanium.App.Properties.getString('token'));
+
+		/*
+		 if (fileType === 'media') {
+		 xhr.setRequestHeader('enctype', 'multipart/form-data');
+		 Ti.API.info('gonna hit ' + url + ' and gonna send ' + JSON.stringify(data));
+		 xhr.send(data);
+
+		 } else if (fileType == 'urlencoded') {
+		 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		 Ti.API.info('gonna hit urlencoded ' + url + ' and gonna send ' + JSON.stringify(queryString(data)));
+		 xhr.send(queryString(data));
+		 } else */
+
+		if (data && method == 'POST') {
+
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			Ti.API.info('gonna hit ' + url + ' and gonna send ' + JSON.stringify(JSON.stringify(data)));
+			xhr.send(JSON.stringify(data));
+		} else {
+
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			Ti.API.info('gonna hit --> ' + url);
+			xhr.send();
+		}
+	}
+
+	doRequest();
+
+}
 
 // Get band list
-nsServerCalls.getBandList = function(onloadCallback, errorCallback) {
-	var promise = Kinvey.DataStore.find('BandsPBR17', null);
-	promise.then(function(entities) {
+api.getBandList = function(onloadCallback, errorCallback) {
+	
+	var endPoint = 'Bands';
+
+	httpRequest(endPoint, 'GET', {}, function(entities) {
 		console.debug("Band List success ", JSON.stringify(entities));
 
 		// Alloy.Globals.bands = JSON.parse(JSON.stringify(entities));
@@ -173,14 +213,37 @@ nsServerCalls.getBandList = function(onloadCallback, errorCallback) {
 
 		errorCallback(error);
 	});
+	
+	// var promise = Kinvey.DataStore.find('BandsPBR17', null);
+	// promise.then(function(entities) {
+		// console.debug("Band List success ", JSON.stringify(entities));
+// 
+		// // Alloy.Globals.bands = JSON.parse(JSON.stringify(entities));
+		// var appdata = Titanium.App.Properties.getObject('appdata', {});
+		// appdata.bands = JSON.parse(JSON.stringify(entities));
+		// Titanium.App.Properties.setObject('appdata', appdata);
+		// Alloy.Globals.hasBandsData = true;
+// 
+		// onloadCallback(entities);
+// 
+	// }, function(error) {
+		// console.debug("Band List Error ", error);
+		// Alloy.Globals.hasBandsData = false;
+// 
+		// // Alloy.Globals.bands.length = 0;
+		// var appdata = Titanium.App.Properties.getObject('appdata', {});
+		// appdata.bands.length = 0;
+		// Titanium.App.Properties.setObject('appdata', appdata);
+// 
+		// errorCallback(error);
+	// });
 };
 
-exports.getBandList = nsServerCalls.getBandList;
-
 // Get venue list
-nsServerCalls.getVenueList = function(onloadCallback, errorCallback) {
-	var promise = Kinvey.DataStore.find('venues', null);
-	promise.then(function(entities) {
+api.getVenueList = function(onloadCallback, errorCallback) {
+	var endPoint = 'Venues';
+
+	httpRequest(endPoint, 'GET', {}, function(entities) {
 		console.debug("Venue List success ", JSON.stringify(entities));
 
 		// Alloy.Globals.venues = JSON.parse(JSON.stringify(entities));
@@ -204,14 +267,11 @@ nsServerCalls.getVenueList = function(onloadCallback, errorCallback) {
 	});
 };
 
-exports.getVenueList = nsServerCalls.getVenueList;
-
 // Get shows
-nsServerCalls.getShows = function(onloadCallback, errorCallback) {
-	var query = new Kinvey.Query();
-	query.ascending('start_time');
-	var promise = Kinvey.DataStore.find('ShowsPRB17', null);
-	promise.then(function(entities) {
+api.getShows = function(onloadCallback, errorCallback) {
+	var endPoint = 'Shows';
+
+	httpRequest(endPoint, 'GET', {}, function(entities) {
 		console.log("Shows success ", JSON.stringify(entities));
 		// Alloy.Globals.shows = JSON.parse(JSON.stringify(entities));
 
@@ -235,14 +295,11 @@ nsServerCalls.getShows = function(onloadCallback, errorCallback) {
 	});
 };
 
-exports.getShows = nsServerCalls.getShows;
+api.getClubBands = function(onloadCallback, errorCallback) {
 
-nsServerCalls.getClubBands = function(onloadCallback, errorCallback) {
+	var endPoint = 'ClubBands';
 
-	var query = new Kinvey.Query();
-	query.ascending('start_time');
-	var promise = Kinvey.DataStore.find('ClubBands', null);
-	promise.then(function(entities) {
+	httpRequest(endPoint, 'GET', {}, function(entities) {
 		console.log("Bands success ", JSON.stringify(entities));
 
 		onloadCallback(entities);
@@ -253,22 +310,22 @@ nsServerCalls.getClubBands = function(onloadCallback, errorCallback) {
 	});
 };
 
-exports.getClubBands = nsServerCalls.getClubBands;
+api.getClubShows = function(onloadCallback, errorCallback) {
 
-nsServerCalls.getClubShows = function(onloadCallback, errorCallback) {
-
-	var query = new Kinvey.Query();
-	query.ascending('start_time');
-	var promise = Kinvey.DataStore.find('ClubShows', null);
+	// var query = new Kinvey.Query();
+	// query.ascending('start_time');
+	// var promise = Kinvey.DataStore.find('ClubShows', null);
 	var clubData = Titanium.App.Properties.getObject('clubData', {});
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	var combinedData = [];
 
-	var ClubBands = new nsServerCalls.getClubBands(function(resp) {
+	var ClubBands = new api.getClubBands(function(resp) {
 		console.log('RESP BANDS ----> ', JSON.stringify(resp));
 		clubData.bands = JSON.parse(JSON.stringify(resp));
 
-		promise.then(function(entities) {
+		var endPoint = 'ClubShows';
+
+		httpRequest(endPoint, 'GET', {}, function(entities) {
 			console.log("ClubShows success ", JSON.stringify(entities));
 			clubData.shows = JSON.parse(JSON.stringify(entities));
 			clubData.venues = JSON.parse(JSON.stringify(appdata.venues));
@@ -318,38 +375,16 @@ nsServerCalls.getClubShows = function(onloadCallback, errorCallback) {
 
 };
 
-exports.getClubShows = nsServerCalls.getClubShows;
+exports.getClubShows = api.getClubShows;
 
 // Get user schedule
-// Get user schedule
-nsServerCalls.getUserSchedule = function(onloadCallback, errorCallback) {
-	//var promise = Kinvey.DataStore.find('user-schedules', null);
-	//promise.then(function(entities) {
-	//	console.debug("user schedule success ", JSON.stringify(entities));
-	//	onloadCallback(entities);
-	//}, function(error) {
-	//	console.debug("user schedule Error ", error);
-	//	errorCallback(error);
-	//});
+api.getUserSchedule = function(onloadCallback, errorCallback) {
 
 	onloadCallback(Ti.App.Properties.getObject('userSchedule', []));
 };
 
-exports.getUserSchedule = nsServerCalls.getUserSchedule;
-
 //Saving a User schedule
-nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback, showsType) {
-	//var promise = Kinvey.DataStore.save('user-schedules', {
-	// _id : 'optional-id',
-	//	"user_id" : Titanium.App.Properties.getString('userid'),
-	//	"show_id" : show_id,
-	//});
-	//promise.then(function(entity) {
-	//	onloadCallback(entity);
-
-	//}, function(error) {
-	//	errorCallback(error);
-	//});
+api.saveUserSchedule = function(show_id, onloadCallback, errorCallback, showsType) {
 
 	console.error('Ti.App.Properties.getObject( -- ', Ti.App.Properties.getObject('userSchedule'));
 	var userSchedule = Ti.App.Properties.getObject('userSchedule', []);
@@ -456,34 +491,9 @@ nsServerCalls.saveUserSchedule = function(show_id, onloadCallback, errorCallback
 
 };
 
-exports.saveUserSchedule = nsServerCalls.saveUserSchedule;
-
 //Deleting a User schedule
-nsServerCalls.deleteUserSchedule = function(show_id, onloadCallback, errorCallback) {
+api.deleteUserSchedule = function(show_id, onloadCallback, errorCallback) {
 
-	/*var query = new Kinvey.Query();
-
-	 query.equalTo('user_id', Titanium.App.Properties.getString('userid'));
-	 query.equalTo('show_id', show_id);
-
-	 var promise = Kinvey.DataStore.find('user-schedules', query);
-	 promise.then(function(entities) {
-
-	 if (entities.length != 0) {
-
-	 for (var i in entities) {
-
-	 var promise = Kinvey.DataStore.destroy('user-schedules', entities[i]._id);
-	 promise.then(function() {
-
-	 onloadCallback();
-	 }, function(error) {
-	 });
-	 }
-	 }
-	 }, function(error) {
-	 });
-	 */
 	var userSchedule = Ti.App.Properties.getObject('userSchedule', []);
 
 	if (userSchedule.length != 0) {
@@ -503,19 +513,15 @@ nsServerCalls.deleteUserSchedule = function(show_id, onloadCallback, errorCallba
 	onloadCallback();
 };
 
-exports.deleteUserSchedule = nsServerCalls.deleteUserSchedule;
-
 // Clubshow user schedule
 // Get user schedule
-nsServerCalls.getUserClubSchedule = function(onloadCallback, errorCallback) {
+api.getUserClubSchedule = function(onloadCallback, errorCallback) {
 
 	onloadCallback(Ti.App.Properties.getObject('userClubSchedule', []));
 };
 
-exports.getUserClubSchedule = nsServerCalls.getUserClubSchedule;
-
 //Saving a User schedule
-nsServerCalls.saveUserClubSchedule = function(show_id, onloadCallback, errorCallback, showsType) {
+api.saveUserClubSchedule = function(show_id, onloadCallback, errorCallback, showsType) {
 
 	console.error('Ti.App.Properties.getObject( userClubSchedule-- ', Ti.App.Properties.getObject('userClubSchedule'));
 	var userClubSchedule = Ti.App.Properties.getObject('userClubSchedule', []);
@@ -622,10 +628,8 @@ nsServerCalls.saveUserClubSchedule = function(show_id, onloadCallback, errorCall
 
 };
 
-exports.saveUserClubSchedule = nsServerCalls.saveUserClubSchedule;
-
 //Deleting a User schedule
-nsServerCalls.deleteClubUserSchedule = function(show_id, onloadCallback, errorCallback) {
+api.deleteClubUserSchedule = function(show_id, onloadCallback, errorCallback) {
 
 	var userClubSchedule = Ti.App.Properties.getObject('userClubSchedule', []);
 
@@ -646,13 +650,11 @@ nsServerCalls.deleteClubUserSchedule = function(show_id, onloadCallback, errorCa
 	onloadCallback();
 };
 
-exports.deleteClubUserSchedule = nsServerCalls.deleteClubUserSchedule;
+api.getBannerInfo = function(onloadCallback, errorCallback) {
 
-nsServerCalls.getBannerInfo = function(onloadCallback, errorCallback) {
+	var endPoint = 'Banners';
 
-	var query = new Kinvey.Query();
-	var promise = Kinvey.DataStore.find('dynamic-content', null);
-	promise.then(function(entities) {
+	httpRequest(function(entities) {
 		console.log("Shows success ", JSON.stringify(entities));
 		onloadCallback(entities);
 
@@ -662,18 +664,16 @@ nsServerCalls.getBannerInfo = function(onloadCallback, errorCallback) {
 	});
 };
 
-exports.getBannerInfo = nsServerCalls.getBannerInfo;
+api.getGroups = function(onloadCallback, errorCallback) {
+	var endPoint = 'Groups';
 
-nsServerCalls.getGroups = function(onloadCallback, errorCallback) {
-	var query = new Kinvey.Query();
-	var promise = Kinvey.DataStore.find('PRBChat', null);
-	promise.then(function(entities) {
+	httpRequest(endPoint, 'GET', {}, function(entities) {
 		console.log("Chat Groups :", JSON.stringify(entities));
-		
+
 		var appdata = Titanium.App.Properties.getObject('appdata', {});
 		appdata.groups = JSON.parse(JSON.stringify(entities));
 		Titanium.App.Properties.setObject('appdata', appdata);
-		
+
 		onloadCallback(entities);
 
 	}, function(error) {
@@ -682,4 +682,4 @@ nsServerCalls.getGroups = function(onloadCallback, errorCallback) {
 	});
 };
 
-exports.getGroups = nsServerCalls.getGroups;
+module.exports = api;
