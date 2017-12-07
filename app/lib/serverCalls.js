@@ -213,30 +213,6 @@ api.getBandList = function(onloadCallback, errorCallback) {
 
 		errorCallback(error);
 	});
-	
-	// var promise = Kinvey.DataStore.find('BandsPBR17', null);
-	// promise.then(function(entities) {
-		// console.debug("Band List success ", JSON.stringify(entities));
-// 
-		// // Alloy.Globals.bands = JSON.parse(JSON.stringify(entities));
-		// var appdata = Titanium.App.Properties.getObject('appdata', {});
-		// appdata.bands = JSON.parse(JSON.stringify(entities));
-		// Titanium.App.Properties.setObject('appdata', appdata);
-		// Alloy.Globals.hasBandsData = true;
-// 
-		// onloadCallback(entities);
-// 
-	// }, function(error) {
-		// console.debug("Band List Error ", error);
-		// Alloy.Globals.hasBandsData = false;
-// 
-		// // Alloy.Globals.bands.length = 0;
-		// var appdata = Titanium.App.Properties.getObject('appdata', {});
-		// appdata.bands.length = 0;
-		// Titanium.App.Properties.setObject('appdata', appdata);
-// 
-		// errorCallback(error);
-	// });
 };
 
 // Get venue list
@@ -312,9 +288,6 @@ api.getClubBands = function(onloadCallback, errorCallback) {
 
 api.getClubShows = function(onloadCallback, errorCallback) {
 
-	// var query = new Kinvey.Query();
-	// query.ascending('start_time');
-	// var promise = Kinvey.DataStore.find('ClubShows', null);
 	var clubData = Titanium.App.Properties.getObject('clubData', {});
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
 	var combinedData = [];
