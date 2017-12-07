@@ -46,7 +46,7 @@
 
                 <!-- Google Play Services -->
                 <meta-data android:name="com.google.android.gms.version"
-                           android:value="9683000"/>
+                           android:value="10298000"/>
 
                 <!-- ADM -->
                 <amazon:enable-feature
