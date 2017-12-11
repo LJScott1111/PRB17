@@ -2,7 +2,7 @@
 var nsLanding = {};
 
 Alloy.Globals.navWin = $.navWin;
-// nsLanding.serviceCalls = require("serverCalls");
+nsLanding.serviceCalls = require("serverCalls");
 
 $.sideMenu.addEventListener('click', function() {
 	Ti.App.fireEvent('toggleMenu');
@@ -77,15 +77,16 @@ nsLanding.openNews = function() {
 
 nsLanding.openBandsScreen = function(city, showsType) {
 
-	Alloy.Globals.openWindow('GenericWebView', {
-		url : "http://www.punkrockbowling.com/lineup",
-		addBanner : true,
-		// screen : 'hotels'
-	}, true, null, 'misc/center_logo');
-	return;
+	// Alloy.Globals.openWindow('GenericWebView', {
+		// url : "http://www.punkrockbowling.com/lineup",
+		// addBanner : true,
+		// // screen : 'hotels'
+	// }, true, null, 'misc/center_logo');
+	// return;
 	
 	Alloy.Globals.loading.show();
 	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	console.log('appdata.----->>>> ', JSON.stringify(appdata));
 
 	if (appdata.details.length === 0) {
 		var hasData = Alloy.Globals.getAndStoreData(function(fetchedData) {
@@ -473,6 +474,10 @@ nsLanding.init = function() {
 	console.error('$.args ====>>>> ', JSON.stringify($.args));
 	if (!$.args.city) {
 		Titanium.App.addEventListener('get_next_show', nsLanding.get_next_show);
+	}
+	
+	if(!Titanium.App.Properties.getObject('appdata')){
+		Titanium.App.Properties.setObject('appdata',Alloy.Globals.appData);
 	}
 };
 

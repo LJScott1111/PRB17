@@ -1,5 +1,6 @@
 <Alloy>
 	<View id="vwMain">
+		<Label id="back" class="fontawesome back-button padding_left padding_top layout_size"></Label>
 		<View class="city_options">
 			<!-- <View id="lasvegas_view" class="heading_view">
 				<Label id="lasvegas" class="heading_lbl langdon" text="L('lasvegas').toUpperCase()"></Label>

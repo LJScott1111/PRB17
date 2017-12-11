@@ -148,23 +148,23 @@
 }
 
 "#ivSoundCloud": {
-	image: "/images/listen_icon.png"
+	image: "/icons/listen_icon.png"
 }
 
 "#ivYouTube": {
-	image: "/images/utube_icon.png"
+	image: "/icons/utube_icon.png"
 }
 
 "#ivWebsite": {
-	image: "/images/website_icon.png"
+	image: "/icons/website_icon.png"
 }
 
 "#ivFacebook": {
-	image: "/images/fb_icon.png"
+	image: "/icons/fb_icon.png"
 }
 
 "#ivTwitter": {
-	image: "/images/twitter_icon.png"
+	image: "/icons/twitter_icon.png"
 }
 
 "#ivInsta": {

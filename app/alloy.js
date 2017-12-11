@@ -335,12 +335,14 @@ Alloy.Globals.getAndStoreData = function(callback) {
 
 		count++;
 		console.debug("count++", count);
+		/*TODO reopen
 		var getClubShows = new serviceCalls.getClubShows(function(clubData) {
-			console.log('response Clubshows clubData ', JSON.stringify(clubData));
-
-		}, function(error) {
-			console.log('error Clubshows ', JSON.stringify(error));
-		});
+					console.log('response Clubshows clubData ', JSON.stringify(clubData));
+		
+				}, function(error) {
+					console.log('error Clubshows ', JSON.stringify(error));
+				});*/
+		
 		if (count === 3) {
 			var fetchedData = Alloy.Globals.combinedDetails();
 			callback(fetchedData);
@@ -371,13 +373,15 @@ Alloy.Globals.getAndStoreData = function(callback) {
 	});
 
 	// Get Chat groups
+	/* TODO reopen
 	var getGroups = new serviceCalls.getGroups(function(data) {
-
-		console.log('response Groups data ', JSON.stringify(data));
-	}, function(error) {
-
-		console.log('error Clubshows ', JSON.stringify(error));
-	});
+	
+			console.log('response Groups data ', JSON.stringify(data));
+		}, function(error) {
+	
+			console.log('error Clubshows ', JSON.stringify(error));
+		});*/
+	
 };
 
 Alloy.Globals.combinedDetails = function() {
@@ -392,7 +396,7 @@ Alloy.Globals.combinedDetails = function() {
 		// Find the matching band
 		for (var i = 0,
 		    bandLen = appdata.bands.length; i < bandLen; i++) {
-			if (appdata.bands[i]._id == bandProfile.showDetails.band_id) {
+			if (appdata.bands[i].id == bandProfile.showDetails.band_id) {
 				bandProfile.bandDetails = JSON.parse(JSON.stringify(appdata.bands[i]));
 				break;
 			}
@@ -400,7 +404,7 @@ Alloy.Globals.combinedDetails = function() {
 		// Find the matching venue
 		for (var k = 0,
 		    venueLen = appdata.venues.length; k < venueLen; k++) {
-			if (appdata.venues[k]._id == bandProfile.showDetails.venue_id) {
+			if (appdata.venues[k].id == bandProfile.showDetails.venue_id) {
 				bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
 				break;
 			}

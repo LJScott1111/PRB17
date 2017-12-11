@@ -7,12 +7,12 @@
 }
 
 "#mainContent": {
-	top: '50dp',
+	top: '90dp',
 	bottom: '70dp'
 }
 
 ".city_options": {
-	top: '0dp',
+	top: '40dp',
 	height: '50dp',
 	width: Titanium.UI.FILL
 }

@@ -29,7 +29,7 @@ nsSearchList.getList = function(day) {
 		if (nsSearchList.type === "BandList" && day === dayOfShow) {
 			listToShow.push(nsSearchList.currentCityData[i].bandDetails);
 		} else if (nsSearchList.type === "VenueList") {//  && day === dayOfShow
-			var venue = nsSearchList.currentCityData[i].venueDetails._id;
+			var venue = nsSearchList.currentCityData[i].venueDetails.id;
 
 			if (!( venue in lookup)) {
 				lookup[venue] = 1;
@@ -362,7 +362,7 @@ nsSearchList.createList = function(tblData) {
 
 		 for (var j in tblData) {
 		 for (var i in userSchedule) {
-		 if (userSchedule[i].band_id == tblData[j]._id) {
+		 if (userSchedule[i].band_id == tblData[j].id) {
 		 tblData[j].selected = true;
 		 }
 		 }
@@ -389,7 +389,7 @@ nsSearchList.createList = function(tblData) {
 
 	for (var j in tblData) {
 	for (var i in userSchedule) {
-	if (userSchedule[i].venue_id == tblData[j]._id) {
+	if (userSchedule[i].venue_id == tblData[j].id) {
 	tblData[j].selected = true;
 	}
 	}
@@ -489,7 +489,7 @@ nsSearchList.createList = function(tblData) {
 					ivImage.image = imagelink;
 				}
 
-				// console.log('imagelink ', tblData[i]._id, imagelink);
+				// console.log('imagelink ', tblData[i].id, imagelink);
 
 				vwRowView.add(ivImage);
 			} else {
@@ -575,14 +575,14 @@ nsSearchList.createList = function(tblData) {
 		if (nsSearchList.type === "BandList") {
 
 			Alloy.Globals.openWindow("BandProfile", {
-				"id" : tblData[e.source.id]._id,
+				"id" : tblData[e.source.id].id,
 				showsType : nsSearchList.showsType
 			}, true, null, 'misc/center_logo');
 
 		} else if (nsSearchList.type === "VenueList") {
 
 			Alloy.Globals.openWindow("VenueProfile", {
-				"id" : tblData[e.source.id]._id
+				"id" : tblData[e.source.id].id
 			}, true, null, 'misc/center_logo');
 
 		}

@@ -3,6 +3,10 @@ var nsVenueProfile = {};
 nsVenueProfile.args = arguments[0];
 nsVenueProfile.momentjs = require('moment');
 
+$.back.addEventListener('click', function(){
+	Alloy.Globals.pageflow.back();
+});
+
 nsVenueProfile.getDay = function(timestamp, type) {
 	var dateObj = nsVenueProfile.momentjs(timestamp * 1000).utcOffset('-0400');
 
@@ -32,7 +36,7 @@ nsVenueProfile.createList = function(shows) {
 	for (var j in shows) {
 		if (shows[j].bandDetails !== undefined) {
 			for (var i in userSchedule) {
-				if (userSchedule[i].band_id == shows[j].bandDetails._id) {
+				if (userSchedule[i].band_id == shows[j].bandDetails.id) {
 					shows[j].bandDetails.selected = true;
 				}
 			}
@@ -61,7 +65,7 @@ nsVenueProfile.createList = function(shows) {
 					console.log(e);
 
 					Alloy.Globals.openWindow("BandProfile", {
-						"id" : e.row.bandDetails._id
+						"id" : e.row.bandDetails.id
 					}, true, null, 'misc/center_logo');
 
 				});
@@ -280,7 +284,7 @@ nsVenueProfile.init = function() {
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
 
-		if (appdata.details[i].venueDetails && appdata.details[i].venueDetails._id === nsVenueProfile.args.id) {
+		if (appdata.details[i].venueDetails && appdata.details[i].venueDetails.id === nsVenueProfile.args.id) {
 			nsVenueProfile.data = JSON.parse(JSON.stringify(appdata.details[i]));
 			break;
 		}
@@ -293,7 +297,7 @@ nsVenueProfile.init = function() {
 		nsVenueProfile.data = {};
 		for (var i = 0,
 		    len = appdata.venues.length; i < len; i++) {
-			if (appdata.venues[i]._id === nsVenueProfile.args.id) {
+			if (appdata.venues[i].id === nsVenueProfile.args.id) {
 				nsVenueProfile.data.venueDetails = JSON.parse(JSON.stringify(appdata.venues[i]));
 				break;
 			}

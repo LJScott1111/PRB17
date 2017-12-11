@@ -3,6 +3,10 @@ nsBandProfile.data = null;
 
 nsBandProfile.serverCalls = require('serverCalls');
 
+$.back.addEventListener('click', function(){
+	Alloy.Globals.pageflow.back();
+});
+
 nsBandProfile.markFavourite = function(e) {
 
 	var starClick = function() {
@@ -56,7 +60,7 @@ nsBandProfile.markFavourite = function(e) {
 
 	};
 
-	var show_id = nsBandProfile.data.showDetails._id;
+	var show_id = nsBandProfile.data.showDetails.id;
 	if (!e.source.selected && (nsBandProfile.data.showDetails !== undefined && nsBandProfile.data.showDetails !== null)) {
 		console.log('MARK favorite');
 
@@ -143,7 +147,7 @@ nsBandProfile.init = function() {
 	for (var i = 0,
 	    len = appdata.details.length; i < len; i++) {
 
-		if (appdata.details[i].bandDetails !== undefined && (appdata.details[i].bandDetails._id === $.args.id)) {
+		if (appdata.details[i].bandDetails !== undefined && (appdata.details[i].bandDetails.id === $.args.id)) {
 			nsBandProfile.data = JSON.parse(JSON.stringify(appdata.details[i]));
 			break;
 		}
@@ -156,14 +160,14 @@ nsBandProfile.init = function() {
 	// console.debug("BandProfile id ", JSON.stringify($.args));
 	// console.debug("BandProfile data ", JSON.stringify(nsBandProfile.data));
 
-	$.ivBandImage.setHeight(Alloy.Globals.platformHeight * 0.30);
+	// $.ivBandImage.setHeight(Alloy.Globals.platformHeight * 0.30);
 	// console.log('showDetails:' + JSON.stringify(nsBandProfile.data));
 
 	if (nsBandProfile.data === null || nsBandProfile.data === undefined) {
 		nsBandProfile.data = {};
 		for (var i = 0,
 		    len = appdata.bands.length; i < len; i++) {
-			if (appdata.bands[i]._id === $.args.id) {
+			if (appdata.bands[i].id === $.args.id) {
 				nsBandProfile.data.bandDetails = JSON.parse(JSON.stringify(appdata.bands[i]));
 				break;
 			}
@@ -174,7 +178,7 @@ nsBandProfile.init = function() {
 
 	var userSchedule = ($.args.showsType != 'clubshows') ? Ti.App.Properties.getObject('userSchedule') : Ti.App.Properties.getObject('userClubSchedule');
 	for (var i in userSchedule) {
-		if (userSchedule[i].band_id == nsBandProfile.data.bandDetails._id) {
+		if (userSchedule[i].band_id == nsBandProfile.data.bandDetails.id) {
 			$.ivFavouriteStar.setImage(Alloy.Globals.theme.icons.star);
 			$.ivFavouriteStar.selected = true;
 			break;

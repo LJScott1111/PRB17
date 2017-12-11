@@ -1,8 +1,12 @@
 var nsGenericWebView = {};
 
-$.back.addEventListener('click', function(){
-	Alloy.Globals.pageflow.back();
-});
+if ($.args.backbutton == false) {
+	$.vwMain.remove($.back);
+} else {
+	$.back.addEventListener('click', function() {
+		Alloy.Globals.pageflow.back();
+	});
+}
 
 nsGenericWebView.init = function() {
 

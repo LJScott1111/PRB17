@@ -241,7 +241,7 @@ nsGridSchedule.createLayout = function(data) {
 		venue.shows.sort(Alloy.Globals.sortArray('start_time'));
 		for (i in venue.shows) {
 			console.log(new Date(venue.shows[i].show.start_time * 1000));
-			bandBoxContainer.add(this.createBandBox(venue.shows[i].band.name, venue.shows[i].band.image_link, venue.shows[i].show.start_time, venue.shows[i].band._id));
+			bandBoxContainer.add(this.createBandBox(venue.shows[i].band.name, venue.shows[i].band.image_link, venue.shows[i].show.start_time, venue.shows[i].band.id));
 		}
 		return bandBoxContainer;
 	};
@@ -455,7 +455,7 @@ nsGridSchedule.createDataForLayout = function(data) {
 
 	for (var item,
 	    i = 0; item = data[i++]; ) {
-		var venue = item.venueDetails._id;
+		var venue = item.venueDetails.id;
 
 		if (!( venue in lookup)) {
 			lookup[venue] = 1;
@@ -472,7 +472,7 @@ nsGridSchedule.createDataForLayout = function(data) {
 
 		for (j in data) {
 
-			if (showsGroupedByVenue[i].venue_id == data[j].venueDetails._id) {
+			if (showsGroupedByVenue[i].venue_id == data[j].venueDetails.id) {
 				showsGroupedByVenue[i].shows.push({
 					show : data[j].showDetails,
 					band : data[j].bandDetails,
@@ -567,7 +567,7 @@ nsGridSchedule.getList = function(source) {
 		if (day === dayOfShow) {
 			for (var j = 0,
 			    len2 = nsGridSchedule.args.length; j < len2; j++) {
-				if (nsGridSchedule.args[j].show_id === appdata.details[i].showDetails._id) {
+				if (nsGridSchedule.args[j].show_id === appdata.details[i].showDetails.id) {
 					shows.push(appdata.details[i]);
 				}
 			}
@@ -587,7 +587,7 @@ nsGridSchedule.getShows = function() {
 		for (var j = 0,
 		    len2 = nsGridSchedule.args.length; j < len2; j++) {
 
-			if (nsGridSchedule.args[j].show_id === appdata.details[i].showDetails._id) {
+			if (nsGridSchedule.args[j].show_id === appdata.details[i].showDetails.id) {
 				shows.push(appdata.details[i]);
 			}
 		}

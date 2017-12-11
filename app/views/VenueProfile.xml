@@ -1,5 +1,6 @@
 <Alloy>
 	<View id="vwMain" backgroundImage='icons/distress_bg.png'>
+		<Label id="back" class="fontawesome back-button padding_left padding_top layout_size"></Label>
 		<ScrollView id="svMain">
 			<ImageView id="ivVenueImage"></ImageView>
 			<View id="vwVenueInfo">

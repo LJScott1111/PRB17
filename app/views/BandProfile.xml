@@ -4,7 +4,7 @@
 		<View layout="vertical">
 			<ScrollView id="svMain">
 				<ImageView id="ivBandImage"></ImageView>
-				<View id="vwBandInfo">
+				<View id="vwBandInfo" height="0">
 					<Label id="lblBandName"></Label>
 					<View id="vwBandSchedule">
 						<View id="vwScheduleInfo">

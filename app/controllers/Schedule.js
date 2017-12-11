@@ -11,6 +11,10 @@ nsSchedule.propGrey = {
 	touchEnabled : true
 };
 
+$.back.addEventListener('click', function() {
+	Alloy.Globals.pageflow.back();
+});
+
 nsSchedule.changeInScheduleScreen = function() {
 	console.error(Alloy.Globals.currentScreen, Alloy.Globals.currentLayout);
 	if (Alloy.Globals.currentScreen == 'mySchedule' && Alloy.Globals.currentLayout == 'table') {
@@ -156,7 +160,7 @@ nsSchedule.getEventsByDayForGrid = function() {
 			eventSchedule.push({
 				start_time : appdata.details[i].showDetails.start_time,
 				venue_id : appdata.details[i].showDetails.venue_id,
-				show_id : appdata.details[i].showDetails._id,
+				show_id : appdata.details[i].showDetails.id,
 				band_id : appdata.details[i].showDetails.band_id,
 				showDetails : appdata.details[i].showDetails,
 				bandDetails : appdata.details[i].bandDetails,
@@ -187,6 +191,19 @@ $.my_schedule.addEventListener('click', function() {
 });
 
 $.line_up.addEventListener('click', function() {
+
+	if (currentView == 'cbands') {
+
+		// --------------------
+		$.mainContent.removeAllChildren();
+		var tempview = Alloy.createController('GenericWebView', {
+			url : "http://buzzplay.com/PRBapp/Coming_Soon18.jpg",
+			backbutton : false
+		}).getView();
+		$.mainContent.add(tempview);
+		return;
+		// --------------------
+	}
 	if (Alloy.Globals.currentScreen === 'line_up') {
 		return;
 	};
@@ -300,6 +317,7 @@ nsSchedule.openLineup = function() {
 };
 
 $.clubbands_view.addEventListener('click', function() {
+
 	console.log('Alloy.Globals.currentScreen ', Alloy.Globals.currentScreen, currentCity);
 	if (currentView == 'cbands') {
 		return;
@@ -312,6 +330,17 @@ $.clubbands_view.addEventListener('click', function() {
 	$.festivalbands_ul.backgroundColor = 'transparent';
 	$.clubbands_ul.backgroundColor = '#D70C46';
 	currentView = 'cbands';
+
+	// --------------------
+	$.mainContent.removeAllChildren();
+	var tempview = Alloy.createController('GenericWebView', {
+		url : "http://buzzplay.com/PRBapp/Coming_Soon18.jpg",
+		backbutton : false
+	}).getView();
+	$.mainContent.add(tempview);
+	return;
+	// --------------------
+
 	nsSchedule.openLineup();
 });
 

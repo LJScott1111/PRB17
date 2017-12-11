@@ -77,7 +77,7 @@ function httpRequest(endpoint, method, data, successFunction, errorFunction, fil
 		return;
 	}
 
-	var url = "http://prb.buzzplay.com/api/v1/" + endpoint;
+	var url = "http://prb.buzzplay.com/api/" + endpoint;
 
 	// if (data && method == 'GET') {
 	//
@@ -172,11 +172,12 @@ function httpRequest(endpoint, method, data, successFunction, errorFunction, fil
 		if (data && method == 'POST') {
 
 			xhr.setRequestHeader('Content-Type', 'application/json');
-			Ti.API.info('gonna hit ' + url + ' and gonna send ' + JSON.stringify(JSON.stringify(data)));
+			Ti.API.info('gonna hit POST ' + url + ' and gonna send ' + JSON.stringify(JSON.stringify(data)));
 			xhr.send(JSON.stringify(data));
 		} else {
 
 			xhr.setRequestHeader('Content-Type', 'application/json');
+			Ti.API.info('gonna hit GET ' + url + ' and gonna send ' + JSON.stringify(JSON.stringify(data)));
 			Ti.API.info('gonna hit --> ' + url);
 			xhr.send();
 		}
@@ -196,7 +197,7 @@ api.getBandList = function(onloadCallback, errorCallback) {
 
 		// Alloy.Globals.bands = JSON.parse(JSON.stringify(entities));
 		var appdata = Titanium.App.Properties.getObject('appdata', {});
-		appdata.bands = JSON.parse(JSON.stringify(entities));
+		appdata.bands = JSON.parse(JSON.stringify(entities)).data;
 		Titanium.App.Properties.setObject('appdata', appdata);
 		Alloy.Globals.hasBandsData = true;
 
@@ -224,7 +225,7 @@ api.getVenueList = function(onloadCallback, errorCallback) {
 
 		// Alloy.Globals.venues = JSON.parse(JSON.stringify(entities));
 		var appdata = Titanium.App.Properties.getObject('appdata', {});
-		appdata.venues = JSON.parse(JSON.stringify(entities));
+		appdata.venues = JSON.parse(JSON.stringify(entities)).data;
 		Titanium.App.Properties.setObject('appdata', appdata);
 		Alloy.Globals.hasVenuesData = true;
 
@@ -252,7 +253,7 @@ api.getShows = function(onloadCallback, errorCallback) {
 		// Alloy.Globals.shows = JSON.parse(JSON.stringify(entities));
 
 		var appdata = Titanium.App.Properties.getObject('appdata', {});
-		appdata.shows = JSON.parse(JSON.stringify(entities));
+		appdata.shows = JSON.parse(JSON.stringify(entities)).data;
 		Titanium.App.Properties.setObject('appdata', appdata);
 
 		Alloy.Globals.hasShowsData = true;
@@ -312,7 +313,7 @@ api.getClubShows = function(onloadCallback, errorCallback) {
 				// Find the matching band
 				for (var i = 0,
 				    bandLen = resp.length; i < bandLen; i++) {
-					if (resp[i]._id == bandProfile.showDetails.band_id) {
+					if (resp[i].id == bandProfile.showDetails.band_id) {
 						bandProfile.bandDetails = JSON.parse(JSON.stringify(resp[i]));
 						break;
 					}
@@ -320,7 +321,7 @@ api.getClubShows = function(onloadCallback, errorCallback) {
 				// Find the matching venue
 				for (var k = 0,
 				    venueLen = appdata.venues.length; k < venueLen; k++) {
-					if (appdata.venues[k]._id == bandProfile.showDetails.venue_id) {
+					if (appdata.venues[k].id == bandProfile.showDetails.venue_id) {
 						bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
 						break;
 					}
@@ -384,14 +385,14 @@ api.saveUserSchedule = function(show_id, onloadCallback, errorCallback, showsTyp
 	    bandDetails = '',
 	    venueDetails = '';
 	for (var j in appdata.shows) {
-		if (appdata.shows[j]._id == show_id) {
+		if (appdata.shows[j].id == show_id) {
 			appdata.shows[j].selected = true;
 			band_id = appdata.shows[j].band_id;
 			venue_id = appdata.shows[j].venue_id;
 			start_time = appdata.shows[j].start_time;
 			for (var k in appdata.details) {
-				if (appdata.details[k].showDetails._id == show_id) {
-					console.log('appdata.details[k].showDetails._id ', appdata.details[k].showDetails._id, show_id);
+				if (appdata.details[k].showDetails.id == show_id) {
+					console.log('appdata.details[k].showDetails.id ', appdata.details[k].showDetails.id, show_id);
 					showDetails = appdata.details[k].showDetails,
 					bandDetails = appdata.details[k].bandDetails,
 					venueDetails = appdata.details[k].venueDetails;
@@ -521,14 +522,14 @@ api.saveUserClubSchedule = function(show_id, onloadCallback, errorCallback, show
 	    bandDetails = '',
 	    venueDetails = '';
 	for (var j in appdata.shows) {
-		if (appdata.shows[j]._id == show_id) {
+		if (appdata.shows[j].id == show_id) {
 			appdata.shows[j].selected = true;
 			band_id = appdata.shows[j].band_id;
 			venue_id = appdata.shows[j].venue_id;
 			start_time = appdata.shows[j].start_time;
 			for (var k in appdata.details) {
-				if (appdata.details[k].showDetails._id == show_id) {
-					console.log('appdata.details[k].showDetails._id ', appdata.details[k].showDetails._id, show_id);
+				if (appdata.details[k].showDetails.id == show_id) {
+					console.log('appdata.details[k].showDetails.id ', appdata.details[k].showDetails.id, show_id);
 					showDetails = appdata.details[k].showDetails,
 					bandDetails = appdata.details[k].bandDetails,
 					venueDetails = appdata.details[k].venueDetails;
