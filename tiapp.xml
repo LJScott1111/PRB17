@@ -3,7 +3,7 @@
     <id>com.interfuel.festfuel</id>
     <!--<id>com.buzzplay.prbmobile</id>-->
     <name>Punk Rock Bowling Mobile</name>
-    <version>3.4.2</version>
+    <version>3.4.8</version>
     <publisher>Buzzplay</publisher>
     <url>http://punkrockbowling.com</url>
     <description>Punk Rock Bowling mobile</description>
@@ -25,7 +25,7 @@
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="ti.facebook.appid">993161744029602</property>
     <ios>
-    	<log-server-port>15233</log-server-port>
+        <log-server-port>15233</log-server-port>
         <team-id>RM2A9K7S83</team-id>
         <plist>
             <dict>
@@ -87,8 +87,7 @@
             <service type="interval" url="android_notifications.js"/>
         </services>
         <manifest android:installLocation="preferExternal"
-            android:versionCode="22" android:versionName="7.10">
-            
+            android:versionCode="24" android:versionName="7.12">
             <uses-permission android:name="android.permission.ACCESS_LOCATION"/>
             <uses-permission android:name="android.permission.ACCESS_GPS"/>
             <uses-permission android:name="android.permission.INTERNET"/>
