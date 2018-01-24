@@ -1,3 +1,21 @@
+var utils = {};
+
+utils.getDateFormatted = function(date) {
+	var momentjs = require("alloy/moment");
+	var dateString = "";
+	dateString = momentjs(date).format('YYYY-MM-DD');
+	return dateString;
+};
+
+utils.getTimeFormatted = function(time) {
+	console.log('time ', time);
+	var timeString = time.split(':');
+	var time1 = (parseInt(timeString[0]) > 12) ? parseInt(timeString[0]) - 12 : timeString[0];
+	console.error('timeString ', time1);
+	return (time1 + ':' + timeString[1] + ((parseInt(timeString[0]) > 12) ? 'PM' : 'AM'));
+};
+
+module.exports = utils;
 
 exports.networkCheck = function(callback) {
 

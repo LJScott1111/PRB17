@@ -1,5 +1,6 @@
 var nsBandProfile = {};
 nsBandProfile.data = null;
+var utils = require('/utils');
 
 nsBandProfile.serverCalls = require('serverCalls');
 
@@ -186,11 +187,10 @@ nsBandProfile.init = function() {
 	}
 
 	if (nsBandProfile.data !== null && nsBandProfile.data !== undefined) {
-		console.log('DATADAAAA ', JSON.stringify(nsBandProfile.data));
 		$.lblBandName.setText(nsBandProfile.data.bandDetails.name || "");
 		// Here we clean up the incoming band image_url data, and set a placeholder image if it is not set.
 		var band_image_url = $.ivBandImage.setImage(nsBandProfile.data.bandDetails.image_link.replace(/(\r\n|\n|\r)/gm, "") || "http://cdn.shopify.com/s/files/1/0809/7981/t/9/assets/logo.png?675478883972280314");
-		$.lblDay.setText(nsBandProfile.data.showDetails.start_time || "");
+		$.lblDay.setText((utils.getTimeFormatted(nsBandProfile.data.showDetails.start_time)) || "");
 		$.lblTime.setText(nsBandProfile.data.showDetails.event_day || "");
 		$.lblVenue.setText(nsBandProfile.data.showDetails.venue.venue_name || "");
 		$.lblMoreInfo.setText(nsBandProfile.data.bandDetails.description || "");
