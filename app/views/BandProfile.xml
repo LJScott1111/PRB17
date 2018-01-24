@@ -4,9 +4,9 @@
 		<View layout="vertical">
 			<ScrollView id="svMain">
 				<ImageView id="ivBandImage"></ImageView>
-				<View id="vwBandInfo" height="0">
+				<View id="vwBandInfo">
 					<Label id="lblBandName"></Label>
-					<View id="vwBandSchedule">
+					<View id="vwBandSchedule" height="0">
 						<View id="vwScheduleInfo">
 							<Label id="lblDay"></Label>
 							<Label id="lblTime"></Label>
