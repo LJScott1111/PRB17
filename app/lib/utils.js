@@ -12,7 +12,7 @@ utils.getTimeFormatted = function(time) {
 	var timeString = time.split(':');
 	var time1 = (parseInt(timeString[0]) > 12) ? parseInt(timeString[0]) - 12 : timeString[0];
 	console.error('timeString ', time1);
-	return (time1 + ':' + timeString[1] + ((parseInt(timeString[0]) > 12) ? 'PM' : 'AM'));
+	return (time1 + ':' + timeString[1] + ((parseInt(timeString[0]) > 12) ? 'pm' : 'am'));
 };
 
 module.exports = utils;

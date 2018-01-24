@@ -92,7 +92,6 @@
             <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="25"/>
         </manifest>
     </android>
-
     <modules>
         <module platform="android">ti.cloudpush</module>
         <module platform="iphone">com.urbanairship</module>
