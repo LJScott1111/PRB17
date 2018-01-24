@@ -92,14 +92,7 @@
             <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="25"/>
         </manifest>
     </android>
-    <mobileweb>
-        <precache/>
-        <splash>
-            <enabled>true</enabled>
-            <inline-css-images>true</inline-css-images>
-        </splash>
-        <theme>default</theme>
-    </mobileweb>
+
     <modules>
         <module platform="android">ti.cloudpush</module>
         <module platform="iphone">com.urbanairship</module>
@@ -109,7 +102,6 @@
         <target device="android">true</target>
         <target device="ipad">false</target>
         <target device="iphone">true</target>
-        <target device="mobileweb">false</target>
     </deployment-targets>
     <sdk-version>7.0.1.GA</sdk-version>
     <plugins>
