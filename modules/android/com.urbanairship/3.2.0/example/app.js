@@ -225,6 +225,7 @@ notificationsEnabledSwitch.addEventListener('change', function (e) {
 });
 
 Ti.API.info("Launch: " + UrbanAirship.getLaunchNotification(true).message);
+Ti.API.info("Launch Deep Link: " + UrbanAirship.getDeepLink(true));
 
 if(isAndroid) {
     window.addEventListener("open", function(e) {
@@ -246,6 +247,9 @@ if(isAndroid) {
     });
 }
 
+UrbanAirship.addEventListener(UrbanAirship.EVENT_DEEP_LINK_RECEIVED, function (e) {
+    alert("Received deepLink: " + e.deepLink);
+});
 
 UrbanAirship.addEventListener(UrbanAirship.EVENT_CHANNEL_UPDATED, function(e) {
         Ti.API.info('Channel Updated: ' + UrbanAirship.channelId);
